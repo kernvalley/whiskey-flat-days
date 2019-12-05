@@ -1,5 +1,40 @@
 <footer id="footer">
 	<div class="social-links cols-2">
+		<div class="cols inline-block">
+			<a href="/events/" class="block">Events</a>
+			<a href="/map/" class="block">Map</a>
+		</div>
+		<div class="cols inline-block">
+			{% if site.social.url %}
+				<a class="block" href="{{ site.social.url }}" target="_blank" rel="external noopener" itemprop="sameAs">
+					<svg class="current-color icon social-icon">
+						<use xlink:href="{{ site.icons }}#web-browser" />
+					</svg>
+					<span>Website</span>
+				</a>
+			{% endif %}{% if site.social.facebook %}
+				<a class="block" href="https://www.facebook.com/{{ site.social.facebook }}/" target="_blank" rel="external noopener" itemprop="sameAs">
+					<svg class="icon social-icon">
+						<use xlink:href="{{ site.icons }}#facebook" />
+					</svg>
+					<span>Facebook</span>
+				</a>
+			{% endif %}{% if site.social.twitter %}
+				<a class="block" href="https://twitter.com/{{ site.social.twitter }}" target="_blank" rel="external noopener" itemprop="sameAs">
+					<svg class="icon social-icon">
+						<use xlink:href="{{ site.icons }}#twitter" />
+					</svg>
+					<span>Twitter</span>
+				</a>
+			{% endif %}{% if site.social.linkedin %}
+				<a class="block" href="https://www.linkedin.com/{{ site.social.linkedin }}/" target="_blank" rel="external noopener" itemprop="sameAs">
+					<svg class="icon social-icon">
+						<use xlink:href="{{ site.icons }}#linkedin" />
+					</svg>
+					<span>LinkedIn</span>
+				</a>
+			{% endif %}
+		</div>
 		{% if site.repository %}
 			<div class="cols inline-block">
 				<a class="block" href="https://github.com/{{ site.repository.username }}/" target="_blank" rel="external noopener">
@@ -22,26 +57,6 @@
 				</a>
 			</div>
 		{% endif %}
-		<div class="cols inline-block">
-			<a class="block" href="https://shgysk8zer0.github.io" target="_blank" rel="external noopener" itemprop="sameAs">
-				<svg class="current-color icon social-icon">
-					<use xlink:href="{{ site.icons }}#web-browser" />
-				</svg>
-				<span>My Website</span>
-			</a>
-			<a class="block" href="https://twitter.com/shgysk8zer0" target="_blank" rel="external noopener" itemprop="sameAs">
-				<svg class="icon social-icon">
-					<use xlink:href="{{ site.icons }}#twitter" />
-				</svg>
-				<span>On Twitter</span>
-			</a>
-			<a class="block" href="https://www.linkedin.com/in/chris-zuber-455346141/" target="_blank" rel="external noopener" itemprop="sameAs">
-				<svg class="icon social-icon">
-					<use xlink:href="{{ site.icons }}#linkedin" />
-				</svg>
-				<span>LinkedIn</span>
-			</a>
-		</div>
 	</div>
 	<hr />
 	<div class="copyright">
