@@ -1,11 +1,46 @@
 <footer id="footer">
 	<div class="social-links cols-2">
+		<div class="cols inline-block">
+			<a href="/" class="block">
+				{% include icon.html icon="home" %}
+				<span>Home</span>
+			</a>
+			<a href="/events/" class="block">
+				{% include icon.html icon="calendar" %}
+				<span>Events</span>
+			</a>
+			<a href="/map/" class="block">
+				{% include icon.html icon="map" %}
+				<span>Map</span>
+			</a>
+		</div>
+		<div class="cols inline-block">
+			{% if site.social.url %}
+				<a class="block" href="{{ site.social.url }}" target="_blank" rel="external noopener" itemprop="sameAs">
+					{% include icon.html icon="globe" %}
+					<span>Website</span>
+				</a>
+			{% endif %}{% if site.social.facebook %}
+				<a class="block" href="https://www.facebook.com/{{ site.social.facebook }}/" target="_blank" rel="external noopener" itemprop="sameAs">
+					{% include icon.html icon="facebook" %}
+					<span>Facebook</span>
+				</a>
+			{% endif %}{% if site.social.twitter %}
+				<a class="block" href="https://twitter.com/{{ site.social.twitter }}" target="_blank" rel="external noopener" itemprop="sameAs">
+					{% include icon.html icon="twitter" %}
+					<span>Twitter</span>
+				</a>
+			{% endif %}{% if site.social.linkedin %}
+				<a class="block" href="https://www.linkedin.com/{{ site.social.linkedin }}/" target="_blank" rel="external noopener" itemprop="sameAs">
+					{% include icon.html icon="linkedin" %}
+					<span>LinkedIn</span>
+				</a>
+			{% endif %}
+		</div>
 		{% if site.repository %}
 			<div class="cols inline-block">
 				<a class="block" href="https://github.com/{{ site.repository.username }}/" target="_blank" rel="external noopener">
-					<svg class="current-color icon social-icon">
-						<use xlink:href="{{ site.icons }}#mark-github" />
-					</svg>
+					{% include icon.html icon="github" %}
 					<span>GitHub Profile</span>
 				</a>
 				<a class="block" href="https://github.com/{{ site.repository.username }}/{{ site.repository.project }}" target="_blank" rel="external noopener">
@@ -22,35 +57,20 @@
 				</a>
 			</div>
 		{% endif %}
-		<div class="cols inline-block">
-			<a class="block" href="https://shgysk8zer0.github.io" target="_blank" rel="external noopener" itemprop="sameAs">
-				<svg class="current-color icon social-icon">
-					<use xlink:href="{{ site.icons }}#web-browser" />
-				</svg>
-				<span>My Website</span>
-			</a>
-			<a class="block" href="https://twitter.com/shgysk8zer0" target="_blank" rel="external noopener" itemprop="sameAs">
-				<svg class="icon social-icon">
-					<use xlink:href="{{ site.icons }}#twitter" />
-				</svg>
-				<span>On Twitter</span>
-			</a>
-			<a class="block" href="https://www.linkedin.com/in/chris-zuber-455346141/" target="_blank" rel="external noopener" itemprop="sameAs">
-				<svg class="icon social-icon">
-					<use xlink:href="{{ site.icons }}#linkedin" />
-				</svg>
-				<span>LinkedIn</span>
-			</a>
-		</div>
 	</div>
 	<hr />
 	<div class="copyright">
 		<span>&copy;</span>
 		<time itemprop="copyrightYear">{{ 'now' | date: '%Y' }}</time>
-		<span itemprop="copyrightHolder" itemtype="https://schema.org/Person" itemscope="">
-			<a href="https://shgysk8zer0.github.io" target="_blank" rel="external noopener" itemprop="url">
-				<span itemprop="givenName">Chris</span>
-				<span itemprop="familyName">Zuber</span>
+		<span itemprop="copyrightHolder" itemtype="https://schema.org/Organization" itemscope="">
+			<meta itemprop="logo" content="https://kernvalley.us/img/icon-192.png" />
+			<a href="https://kernvalley.us" target="_blank" rel="external noopener" itemprop="url">
+				<span itemprop="name">KernValley.US</span>
+				<picture itemprop="logo" itemtype="https://schema.org/ImageObject" itemscope="">
+					<meta itemprop="url" content="https://kernvalley.us/img/icon-192.png" />
+					<source type="image/svg+xml" src="https://kernvalley.us/img/logo.svg" />
+					<img src="https://kernvalley.us/img/icon-32.png" alt="logo" />
+				</picture>
 			</a>
 		</span>
 	</div>

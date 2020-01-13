@@ -1,0 +1,12 @@
+- title: Wild West Daze Rodeo
+  location:
+    name: McNally Rodeo Grounds
+    geo:
+      latitude: 35.759874
+      longitude: -118.426883
+  startDate: 2020-01-13 00:00
+  endDate: 2020-01-21 00:00
+  image: /img/raster/rodeo.jpg
+  icon: /img/markers/activity.svg
+  description: |-
+    <p>Need a good description for the rodeo</p>

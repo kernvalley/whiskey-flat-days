@@ -3,4 +3,8 @@
 :root {
 	background: {{ site.data.theme.dark.background }};
 	color: {{ site.theme-color }};
+	--map-width: 100%;
+	--map-height: 65vh;
+	--sidebar-max-width: 30vw;
+	--accent-color: #511309;
 }

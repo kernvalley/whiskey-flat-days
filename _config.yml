@@ -1,6 +1,6 @@
 author: Chris Zuber
-title: Jekyll Template Demo
-# url: ''
+title: Whiskey Flat Days
+url: 'https://whiskeyflat.netlify.com/'
 markdown: kramdown
 version: 1.0.0
 timezone: America/Los_Angeles
@@ -14,29 +14,31 @@ robots: 'follow, index'
 referrer: origin-when-cross-origin
 manifest: /manifest.json
 tiles-config: /browserconfig.xml
-# service_worker:
+service_worker: 'service-worker.js'
 og-type: website
-description: "A template repository for Jekyll sites, including skeleton JS, CSS, SVGs, fonts, etc."
+description: "Map and events app for Whiskey Flat Days"
 mobile-web-app-capable: true
 # canonical: ''
 keywords:
-- jekyll
-- static
-- template
-- github
-- CSS3
-- HTML5
-- responsive design
-- progressive web app
-- pwa
-- ecmascript
-- javascript
-- es6
+- whiskey flat
+- kernville
+- kern valley
+- kern river valley
+- festival
+- events
+- parade
+- rodeo
+- events
+- vendor
 repository:
-  username: shgysk8zer0
-  project: jekyll-template
-  title: Jekyll Template
-# twitter:
+  username: kernvalley
+  project: whiskey-flat-days
+  title: Whiskey Flat Days
+social:
+  url: https://kernvalley.us
+  twitter: kern_valley
+  linkedin: company/kernvalley-us
+  facebook: KernValley.us
 feed:
   url: /feed.rss
   type: application/rss+xml
@@ -51,14 +53,14 @@ background-color: '#242424'
 #   bing:
 scripts:
   development:
-  - src: 'https://cdn.polyfill.io/v2/polyfill.min.js'
+  - src: 'https://cdn.polyfill.io/v3/polyfill.min.js'
     type: text/javascript
     crossorigin: anonymous
   - src: /js/index.js
     type: module
     async: true
   production:
-  - src: 'https://cdn.polyfill.io/v2/polyfill.min.js'
+  - src: 'https://cdn.polyfill.io/v3/polyfill.min.js'
     type: text/javascript
     crossorigin: anonymous
   - src: /js/index.js

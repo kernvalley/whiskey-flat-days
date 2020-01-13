@@ -1,8 +1,8 @@
 {
-  "name": "jekyll-template",
+  "name": "whiskey-flat-days",
   "version": "1.0.0",
   "private": true,
-  "description": "A template repository for Jekyll sites, including skeleton JS, CSS, SVGs, fonts, etc.",
+  "description": "Map and events app for Whiskey Flat Days",
   "config": {
     "serve": {
       "domain": "localhost",
@@ -18,23 +18,26 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shgysk8zer0/jekyll-template.git"
+    "url": "git+https://github.com/kernvalley/whiskey-flat-days.git"
   },
   "keywords": [
-    "jekyll",
-    "template",
-    "ecmascript",
-    "javascript",
-    "css",
-    "svg",
-    "icons"
+    "whiskey flat",
+    "kernville",
+    "kern valley",
+    "kern river valley",
+    "festival",
+    "events",
+    "parade",
+    "rodeo",
+    "events",
+    "vendor"
   ],
   "author": "Chris Zuber <shgysk8zer0@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/shgysk8zer0/jekyll-template/issues"
+    "url": "https://github.com/kernvalley/whiskey-flat-days/issues"
   },
-  "homepage": "https://github.com/shgysk8zer0/jekyll-template",
+  "homepage": "https://github.com/kernvalley/whiskey-flat-days",
   "scripts": {
     "git:fetch": "git fetch --prune --tags",
     "git:submodules": "if [ -f '.gitmodules' ]; then git submodule update --init --recursive; fi",
@@ -43,7 +46,7 @@
     "lint:js": "eslint ${npm_package_config_dir_js}",
     "lint:css": "stylelint ${npm_package_config_dir_css}",
     "test": "npm run lint",
-    "start": "npm run netlify:serve",
+    "start": "npm run netlify:live",
     "build": "npm run build:icons",
     "build:site": "JEKYLL_ENV=production bundle exec jekyll build",
     "build:site:dev": "bundle exec jekyll build --drafts --unpublished --future --profile --trace --strict_front_matter",
