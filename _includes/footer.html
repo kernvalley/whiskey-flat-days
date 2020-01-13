@@ -1,6 +1,10 @@
 <footer id="footer">
 	<div class="social-links cols-2">
 		<div class="cols inline-block">
+			<a href="/" class="block">
+				{% include icon.html icon="home" %}
+				<span>Home</span>
+			</a>
 			<a href="/events/" class="block">
 				{% include icon.html icon="calendar" %}
 				<span>Events</span>
@@ -13,7 +17,7 @@
 		<div class="cols inline-block">
 			{% if site.social.url %}
 				<a class="block" href="{{ site.social.url }}" target="_blank" rel="external noopener" itemprop="sameAs">
-					{% include icon.html icon="web-browser" %}
+					{% include icon.html icon="globe" %}
 					<span>Website</span>
 				</a>
 			{% endif %}{% if site.social.facebook %}
