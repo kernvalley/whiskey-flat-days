@@ -20,6 +20,31 @@ pinned: true
 				<div slot="popup">{{ marker.popup | default: marker.title }}</div>
 			</map-marker>
 		{% endfor %}
+		{% for marker in site.data.events %}
+			<map-marker longitude="{{ marker.location.geo.longitude }}" latitude="{{ marker.location.geo.latitude }}" slot="markers" title="{{ marker.title }}" data-end-date="{{ marker.end-date | date_to_xmlschema }}" data-start-date="{{ marker.startDate | date_to_xmlschema }}"{% if marker.category %} data-category={{ marker.category }}{% endif %}>
+				<img src="{{ marker.icon | default: '/img/adwaita-icons/actions/event.svg' }}" slot="icon" width="32" height="32" />
+				<div slot="popup" itemtype="https://schema.org/Event" itemscope="">
+					<h3 class="center" itemprop="name">{{ marker.title }}</h3>
+					{% if marker.image %}<img src="{{ marker.image }}" decoding="async" loading="lazy" itemprop="image" alt="{{ marker.title }}" />{% endif %}
+					<div>
+						<time itemprop="startDate" datetime="{{ marker.startDate | date_to_xmlschema}}">{{ marker.startDate | date: '%a %r'}}</time>
+						<span>&mdash;</span>
+						<time itemprop="endDate" datetime="{{ marker.endDate |  date_to_xmlschema}}">{{ marker.endDate | date: '%a %r'}}</time>
+					</div>
+					<div itemprop="location" itemtype="https://schema.org/Place" itemscope="">
+						{% if marker.location.name %}<h4 class="center" itemprop="name">{{ marker.location.name }}</h4>{% endif %}
+						{% if marker.location.address %}
+							<address itemprop="address" itemtype="https://schema.org/PostalAddress" itemscope=""></address>
+						{% endif %}
+						<div itemprop="geo" itemtype="https://schema.org/GeoCoordinates" itemscope="" hidden="">
+							<meta itemprop="latitude" content="{{ marker.location.geo.latitude }}" />
+							<meta itemprop="longitude" content="{{ marker.location.geo.longitude }}" />
+						</div>
+					</div>
+					{% if marker.description %}<div itemprop="description">{{ marker.description }}</div>{% endif %}
+				</div>
+			</map-marker>
+		{% endfor %}
 	</open-street-map>
 </main>
 <aside id="sidebar"></aside>
