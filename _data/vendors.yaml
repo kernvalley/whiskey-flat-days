@@ -1,0 +1,9 @@
+- title: Center
+  location:
+    latitude: 35.755105
+    longitude: -118.424974
+  popup: Lorem Ipsum
+- title: Info Booth
+  location:
+    longitude: -118.424414
+    latitude: 35.755369

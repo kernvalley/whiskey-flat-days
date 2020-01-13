@@ -1,4 +1,13 @@
 <aside id="sidebar" class="card shadow">
+	<weather-current appid="41ff0542577756523c5fcfaaeabe89d7" postalcode="93238"></weather-current>
+	<hr />
+	<ad-block></ad-block>
 	{% if include.pinned-posts %}{% include pinned-posts.html count=layout.pinned-posts %}{% endif %}
+	<ad-block url="https://events.kernvalley.us">
+		<img src="https://events.kernvalley.us/img/favicon.svg" alt="logo" slot="image" />
+		<b slot="label">Kern Valley Events</b>
+		<p slot="description">The best things going on in the Valley. None of the clutter 😄 </p>
+		<span slot="calltoaction">See what's going on today.</span>
+	</ad-block>
 	{% if include.recent-posts %}{% include recent-posts.html count=layout.recent-posts %}{% endif %}
 </aside>

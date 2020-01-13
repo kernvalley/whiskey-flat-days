@@ -5,4 +5,5 @@
 	color: {{ site.theme-color }};
 	--map-width: 100%;
 	--map-height: 65vh;
+	--sidebar-max-width: 25vw;
 }
