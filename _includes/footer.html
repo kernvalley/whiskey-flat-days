@@ -1,36 +1,34 @@
 <footer id="footer">
 	<div class="social-links cols-2">
 		<div class="cols inline-block">
-			<a href="/events/" class="block">Events</a>
-			<a href="/map/" class="block">Map</a>
+			<a href="/events/" class="block">
+				{% include icon.html icon="calendar" %}
+				<span>Events</span>
+			</a>
+			<a href="/map/" class="block">
+				{% include icon.html icon="map" %}
+				<span>Map</span>
+			</a>
 		</div>
 		<div class="cols inline-block">
 			{% if site.social.url %}
 				<a class="block" href="{{ site.social.url }}" target="_blank" rel="external noopener" itemprop="sameAs">
-					<svg class="current-color icon social-icon">
-						<use xlink:href="{{ site.icons }}#web-browser" />
-					</svg>
+					{% include icon.html icon="web-browser" %}
 					<span>Website</span>
 				</a>
 			{% endif %}{% if site.social.facebook %}
 				<a class="block" href="https://www.facebook.com/{{ site.social.facebook }}/" target="_blank" rel="external noopener" itemprop="sameAs">
-					<svg class="icon social-icon">
-						<use xlink:href="{{ site.icons }}#facebook" />
-					</svg>
+					{% include icon.html icon="facebook" %}
 					<span>Facebook</span>
 				</a>
 			{% endif %}{% if site.social.twitter %}
 				<a class="block" href="https://twitter.com/{{ site.social.twitter }}" target="_blank" rel="external noopener" itemprop="sameAs">
-					<svg class="icon social-icon">
-						<use xlink:href="{{ site.icons }}#twitter" />
-					</svg>
+					{% include icon.html icon="twitter" %}
 					<span>Twitter</span>
 				</a>
 			{% endif %}{% if site.social.linkedin %}
 				<a class="block" href="https://www.linkedin.com/{{ site.social.linkedin }}/" target="_blank" rel="external noopener" itemprop="sameAs">
-					<svg class="icon social-icon">
-						<use xlink:href="{{ site.icons }}#linkedin" />
-					</svg>
+					{% include icon.html icon="linkedin" %}
 					<span>LinkedIn</span>
 				</a>
 			{% endif %}
@@ -38,9 +36,7 @@
 		{% if site.repository %}
 			<div class="cols inline-block">
 				<a class="block" href="https://github.com/{{ site.repository.username }}/" target="_blank" rel="external noopener">
-					<svg class="current-color icon social-icon">
-						<use xlink:href="{{ site.icons }}#mark-github" />
-					</svg>
+					{% include icon.html icon="github" %}
 					<span>GitHub Profile</span>
 				</a>
 				<a class="block" href="https://github.com/{{ site.repository.username }}/{{ site.repository.project }}" target="_blank" rel="external noopener">
