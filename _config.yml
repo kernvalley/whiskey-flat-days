@@ -1,6 +1,6 @@
 author: Chris Zuber
 title: Whiskey Flat Days
-url: 'https://whiskeyflat.netlify.com/'
+url: 'https://whiskeyflatdays.com/'
 markdown: kramdown
 version: 1.0.0
 timezone: America/Los_Angeles
@@ -17,6 +17,8 @@ tiles-config: /browserconfig.xml
 service_worker: 'service-worker.js'
 og-type: website
 description: "Map and events app for Whiskey Flat Days"
+thumbnail:
+  url: https://i.imgur.com/Qnvw7I2l.jpg
 mobile-web-app-capable: true
 # canonical: ''
 keywords:
