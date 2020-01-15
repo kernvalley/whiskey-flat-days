@@ -4,6 +4,11 @@
     geo:
       latitude: 35.759874
       longitude: -118.426883
+    address:
+      addressLocality: Kernville
+      addressRegion: CA
+      postalCode: 93238
+      addressCountry: US
   startDate: 2020-02-16 13:00
   endDate: 2020-02-16 15:00
   image: /img/raster/rodeo.jpg
