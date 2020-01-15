@@ -1,13 +1,22 @@
 - title: Wild West Daze Rodeo
   location:
-    name: McNally Rodeo Grounds
+    name: McNally Rodeo Arena
     geo:
       latitude: 35.759874
       longitude: -118.426883
-  startDate: 2020-02-15 08:00
-  endDate: 2020-02-15 12:00
+  startDate: 2020-02-16 13:00
+  endDate: 2020-02-16 15:00
   image: /img/raster/rodeo.jpg
   icon: /img/markers/activity.svg
   description: |-
-    <p>The 62<sup>nd</sup> annual Wild West Daze Rodeo</p>
-    <p>Whiskey Flat Days Weekend</p>
+    <p>Brought to you by Cotton Rosser's Flying U Rodeo</p>
+    <ul>
+      <li>Open Team Roping</li>
+      <li>Bull Riding</li>
+      <li>Hide Race</li>
+      <li>Open Barrel Race</li>
+      <li>Junion Barrel Race</li>
+      <li>Calf Scramble</li>
+      <li>Sheep Riding</li>
+      <li>...and more</li>
+    </ul>
