@@ -34,7 +34,15 @@ pinned: true
 					<div itemprop="location" itemtype="https://schema.org/Place" itemscope="">
 						{% if marker.location.name %}<h4 class="center" itemprop="name">{{ marker.location.name }}</h4>{% endif %}
 						{% if marker.location.address %}
-							<address itemprop="address" itemtype="https://schema.org/PostalAddress" itemscope=""></address>
+							<address itemprop="address" itemtype="https://schema.org/PostalAddress" itemscope="">
+								{% if marker.location.address.streetAddress %}<div itemprop="streetAddress">{{ marker.location.address.streetAddress }}</div>{% endif %}
+								<div>
+									<span itemprop="addressLocality">{{ marker.location.address.addressLocality | default: 'Kernville' }}</span>,
+									<span itemprop="addressRegion">{{ marker.location.address.addressRegion | default: 'CA' }}</span>
+								</div>
+								<meta itemprop="addressCountry" content="{{ marker.location.address.addressCountry | default: 'US' }}" />
+								<meta itemprop="postalCode" content="{{ marker.location.address.postalCode | default: 93238 }}" />
+							</address>
 						{% endif %}
 						<div itemprop="geo" itemtype="https://schema.org/GeoCoordinates" itemscope="" hidden="">
 							<meta itemprop="latitude" content="{{ marker.location.geo.latitude }}" />
