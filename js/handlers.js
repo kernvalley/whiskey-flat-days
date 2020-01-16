@@ -1,4 +1,4 @@
-import {loaded, ready, wait} from 'https://cdn.kernvalley.us/js/std-js/functions.js';
+import {loaded, wait} from 'https://cdn.kernvalley.us/js/std-js/functions.js';
 
 export async function hashChange() {
 	if (location.hash !== '' && ! location.hash.includes(',')) {
@@ -44,6 +44,7 @@ export async function hashChange() {
 		marker.append(icon, popup);
 		map.append(marker);
 		map.center = {latitude, longitude};
+		map.scrollIntoView({behavior: 'smooth', block: 'start'});
 		await wait(200);
 		marker.open = true;
 	}
