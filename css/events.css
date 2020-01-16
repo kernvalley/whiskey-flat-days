@@ -1,0 +1,28 @@
+.event-item {
+	grid-template-areas: "image title link" "image date date" "image description .";
+	padding: 0.8em 1em;
+	border: 1px solid currentColor;
+	border-radius: 6px;
+	grid-template-rows: 2.5em 1.3em 1.3em;
+	grid-template-columns: 6em auto 1.3em;
+}
+
+.event-item > .event-title {
+	grid-area: title;
+}
+
+.event-item > .event-image {
+	grid-area: image;
+}
+
+.event-item > .event-dates {
+	grid-area: date;
+}
+
+.event-item > .event-description {
+	grid-area: description;
+}
+
+.event-item > .event-link {
+	grid-area: link;
+}
