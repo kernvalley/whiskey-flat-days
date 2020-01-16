@@ -1,6 +1,7 @@
 ---
 layout: null
 ---
+{% assign postCount = site.posts | size %}
 	'use strict';
 /*eslint no-unused-vars: 0*/
 const config = {
@@ -8,7 +9,7 @@ const config = {
 	fresh: [
 		/* Root document */
 		'{{ site.pages | where: "pinned", true | map: "url" | join: "', '" }}',
-		'{{ site.posts | where: "pinned", true | map: "url" | join: "', '" }}',
+		{% if postCount > 0 %}'{{ site.posts | where: "pinned", true | map: "url" | join: "', '" }}',{% endif %}
 	].map(path => new URL(path, location.origin).href),
 	stale: [
 		/* Other HTML */
