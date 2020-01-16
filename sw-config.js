@@ -17,7 +17,7 @@ const config = {
 		'/js/index.js',
 		'/img/icons.svg',
 		'https://polyfill.io/v3/polyfill.min.js?features=matchMedia%2CWebAnimations',
-		'https://unpkg.com/@webcomponents/custom-elements@1.3.1/custom-elements.min.js',
+		'https://unpkg.com/@webcomponents/custom-elements@1.3.2/custom-elements.min.js',
 		'https://cdn.kernvalley.us/components/toast-message.html',
 		'https://cdn.kernvalley.us/components/login-form/login-form.html',
 		'https://cdn.kernvalley.us/components/registration-form/registration-form.html',
