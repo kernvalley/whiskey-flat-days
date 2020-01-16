@@ -11,14 +11,36 @@ index: true
 <main id="main">
 	<open-street-map center="35.755105,-118.424974" zoom="16" class="relative z-1">
 		{% for marker in site.data.vendors %}
-			<map-marker longitude="{{ marker.location.longitude }}" latitude="{{ marker.location.latitude }}" slot="markers" title="{{ marker.title }}"{% if marker.category %} data-category={{ marker.category }}{% endif %} hidden="">
+			<map-marker longitude="{{ marker.location.longitude }}" latitude="{{ marker.location.latitude }}" slot="markers" title="{{ marker.title }}"{% if marker.category %} data-category={{ marker.category }}{% endif %}>
 				<img src="{{ marker.icon | default: '/img/adwaita-icons/actions/mark-location.svg' }}" slot="icon" width="32" height="32" />
-				<div slot="popup">{{ marker.popup | default: marker.title }}</div>
+				<div slot="popup">
+					{{ marker.popup | default: marker.title }}
+					{% if marker.uuid %}
+						<br />
+						<button type="button" is="share-button" url="https://whiskeyflatdays.com/map/#{{ marker.uuid }}" text="Check out {{ marker.title }}" title="{{ marker.title }} | Whiskey Flat Days Map" hidden="">
+							<svg width="16" height="16">
+								<use xlink:href="{{ site.icons }}#folder-publicshare"></use>
+							</svg>
+							<span>Share</span>
+						</button>
+					{% endif %}
+				</div>
 			</map-marker>
 		{% endfor %}{% for marker in site.data.businesses %}
 			<map-marker longitude="{{ marker.location.longitude }}" latitude="{{ marker.location.latitude }}" slot="markers" title="{{ marker.title }}"{% if marker.category %} data-category={{ marker.category }}{% endif %}>
 				<img src="{{ marker.icon | default: '/img/adwaita-icons/actions/mark-location.svg' }}" slot="icon" width="32" height="32" />
-				<div slot="popup">{{ marker.popup | default: marker.title }}</div>
+				<div slot="popup">
+					{{ marker.popup | default: marker.title }}
+					{% if marker.uuid %}
+						<br />
+						<button type="button" is="share-button" url="https://whiskeyflatdays.com/map/#{{ marker.uuid }}" text="Check out {{ marker.title }}" title="{{ marker.title }} | Whiskey Flat Days Map" hidden="">
+							<svg width="16" height="16">
+								<use xlink:href="{{ site.icons }}#folder-publicshare"></use>
+							</svg>
+							<span>Share</span>
+						</button>
+					{% endif %}
+				</div>
 			</map-marker>
 		{% endfor %}
 		{% for marker in site.data.events %}
@@ -51,12 +73,14 @@ index: true
 						</div>
 					</div>
 					{% if marker.description %}<div itemprop="description">{{ marker.description }}</div>{% endif %}
-					<button type="button" is="share-button" url="https://whiskeyflatdays.com/map/#{{ marker.uuid }}" title="{{ marker.title }} | Whiskey Flat Days Map" hidden="">
-						<svg width="16" height="16">
-							<use xlink:href="{{ site.icons }}#folder-publicshare"></use>
-						</svg>
-						<span>Share</span>
-					</button>
+					{% if marker.uuid %}
+						<button type="button" is="share-button" url="https://whiskeyflatdays.com/map/#{{ marker.uuid }}" text="Check out {{ marker.title }}" title="{{ marker.title }} | Whiskey Flat Days Map" hidden="">
+							<svg width="16" height="16">
+								<use xlink:href="{{ site.icons }}#folder-publicshare"></use>
+							</svg>
+							<span>Share</span>
+						</button>
+					{% endif %}
 				</div>
 			</map-marker>
 		{% endfor %}
