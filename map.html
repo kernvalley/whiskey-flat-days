@@ -50,6 +50,12 @@ pinned: true
 						</div>
 					</div>
 					{% if marker.description %}<div itemprop="description">{{ marker.description }}</div>{% endif %}
+					<button type="button" is="share-button" url="https://whiskeyflatdays.com/map/#{{ marker.uuid }}" title="{{ marker.title }} | Whiskey Flat Days Map" hidden="">
+						<svg width="16" height="16">
+							<use xlink:href="{{ site.icons }}#folder-publicshare"></use>
+						</svg>
+						<span>Share</span>
+					</button>
 				</div>
 			</map-marker>
 		{% endfor %}
