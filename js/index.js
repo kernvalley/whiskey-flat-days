@@ -7,6 +7,7 @@ import 'https://cdn.kernvalley.us/components/gravatar-img.js';
 import 'https://cdn.kernvalley.us/components/login-button.js';
 import 'https://cdn.kernvalley.us/components/logout-button.js';
 import HTMLOpenStreetMapElement from 'https://cdn.kernvalley.us/components/open-street-map.js';
+import * as handlers from './handlers.js';
 import {$, ready, registerServiceWorker} from 'https://cdn.kernvalley.us/js/std-js/functions.js';
 
 customElements.define(HTMLOpenStreetMapElement.tagName, HTMLOpenStreetMapElement);
@@ -18,7 +19,8 @@ if (document.documentElement.dataset.hasOwnProperty('serviceWorker')) {
 document.documentElement.classList.replace('no-js', 'js');
 document.body.classList.toggle('no-dialog', document.createElement('dialog') instanceof HTMLUnknownElement);
 document.body.classList.toggle('no-details', document.createElement('details') instanceof HTMLUnknownElement);
-
+handlers.hashChange();
+window.addEventListener('hashchange', handlers.hashChange);
 ready().then(async () => {
 	$('[data-scroll-to]').click(event => {
 		const target = document.querySelector(event.target.closest('[data-scroll-to]').dataset.scrollTo);
