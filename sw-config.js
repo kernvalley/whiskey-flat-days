@@ -15,6 +15,7 @@ const config = {
 		/* Other HTML */
 		'/css/index.css',
 		'/js/index.js',
+		'/js/handlers.js',
 		'/img/icons.svg',
 		'https://polyfill.io/v3/polyfill.min.js?features=matchMedia%2CWebAnimations',
 		'https://unpkg.com/@webcomponents/custom-elements@1.3.2/custom-elements.min.js',

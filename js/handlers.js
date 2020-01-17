@@ -4,7 +4,7 @@ export async function hashChange() {
 	if (location.hash !== '' && ! location.hash.includes(',')) {
 		const marker = document.getElementById(location.hash.substr(1));
 
-		if (marker instanceof HTMLElement && marker.tagName.toLowerCase() === 'map-marker') {
+		if (marker instanceof HTMLElement && marker.tagName.toLowerCase() === 'leaflet-marker') {
 			const map = marker.parentElement;
 			map.center = {latitude: marker.latitude, longitude: marker.longitude};
 			map.scrollIntoView({behavior: 'smooth', block: 'start'});
@@ -14,13 +14,13 @@ export async function hashChange() {
 		}
 	} else if (location.hash.includes(',')) {
 		await loaded();
-		await Promise.all(['share-button', 'map-marker'].map(tag => customElements.whenDefined(tag)));
-		const Marker = customElements.get('map-marker');
+		await Promise.all(['share-button', 'leaflet-marker'].map(tag => customElements.whenDefined(tag)));
+		const Marker = customElements.get('leaflet-marker');
 		const Share = customElements.get('share-button');
 		const [latitude, longitude] = location.hash.substr(1).split(',').map(parseFloat);
 		const marker = new Marker();
 		const icon = document.createElement('img');
-		const map = document.querySelector('open-street-map');
+		const map = document.querySelector('leaflet-map');
 		const popup = document.createElement('div');
 		const share = new Share();
 
