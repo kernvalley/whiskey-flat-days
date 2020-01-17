@@ -9,9 +9,9 @@ index: true
 {% include header.html %}
 {% include nav.html %}
 <main id="main">
-	<open-street-map center="35.755105,-118.424974" zoom="16" class="relative z-1">
+	<leaflet-map center="35.755105,-118.424974" zoom="16" class="relative z-1">
 		{% for marker in site.data.vendors %}
-			<map-marker longitude="{{ marker.location.longitude }}" latitude="{{ marker.location.latitude }}" slot="markers" title="{{ marker.title }}"{% if marker.category %} data-category={{ marker.category }}{% endif %}>
+			<leaflet-marker longitude="{{ marker.location.longitude }}" latitude="{{ marker.location.latitude }}" slot="markers" title="{{ marker.title }}"{% if marker.category %} data-category={{ marker.category }}{% endif %}>
 				<img src="{{ marker.icon | default: '/img/adwaita-icons/actions/mark-location.svg' }}" slot="icon" width="32" height="32" />
 				<div slot="popup">
 					{{ marker.popup | default: marker.title }}
@@ -25,9 +25,9 @@ index: true
 						</button>
 					{% endif %}
 				</div>
-			</map-marker>
+			</leaflet-marker>
 		{% endfor %}{% for marker in site.data.businesses %}
-			<map-marker longitude="{{ marker.location.longitude }}" latitude="{{ marker.location.latitude }}" slot="markers" title="{{ marker.title }}"{% if marker.category %} data-category={{ marker.category }}{% endif %}>
+			<leaflet-marker longitude="{{ marker.location.longitude }}" latitude="{{ marker.location.latitude }}" slot="markers" title="{{ marker.title }}"{% if marker.category %} data-category={{ marker.category }}{% endif %}>
 				<img src="{{ marker.icon | default: '/img/adwaita-icons/actions/mark-location.svg' }}" slot="icon" width="32" height="32" />
 				<div slot="popup">
 					{{ marker.popup | default: marker.title }}
@@ -41,10 +41,10 @@ index: true
 						</button>
 					{% endif %}
 				</div>
-			</map-marker>
+			</leaflet-marker>
 		{% endfor %}
 		{% for marker in site.data.events %}
-			<map-marker id="{{ marker.uuid }}" longitude="{{ marker.location.geo.longitude }}" latitude="{{ marker.location.geo.latitude }}" slot="markers" title="{{ marker.title }}" data-end-date="{{ marker.end-date | date_to_xmlschema }}" data-start-date="{{ marker.startDate | date_to_xmlschema }}"{% if marker.category %} data-category={{ marker.category }}{% endif %}>
+			<leaflet-marker id="{{ marker.uuid }}" longitude="{{ marker.location.geo.longitude }}" latitude="{{ marker.location.geo.latitude }}" slot="markers" title="{{ marker.title }}" data-end-date="{{ marker.end-date | date_to_xmlschema }}" data-start-date="{{ marker.startDate | date_to_xmlschema }}"{% if marker.category %} data-category={{ marker.category }}{% endif %}>
 				<img src="{{ marker.icon | default: '/img/adwaita-icons/actions/event.svg' }}" slot="icon" width="32" height="32" />
 				<div slot="popup" itemtype="https://schema.org/Event" itemscope="">
 					<h3 class="center" itemprop="name">{{ marker.title }}</h3>
@@ -82,9 +82,9 @@ index: true
 						</button>
 					{% endif %}
 				</div>
-			</map-marker>
+			</leaflet-marker>
 		{% endfor %}
-	</open-street-map>
+	</leaflet-map>
 </main>
 <aside id="sidebar"></aside>
 {% include footer.html %}
