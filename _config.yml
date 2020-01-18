@@ -2,7 +2,7 @@ author: Chris Zuber
 title: Whiskey Flat Days
 url: 'https://whiskeyflatdays.com/'
 markdown: kramdown
-version: 1.0.06
+version: 1.0.07
 timezone: America/Los_Angeles
 lang: en
 dir: ltr
@@ -48,7 +48,7 @@ icons: '/img/icons.svg'
 theme-color: '#528ff9'
 background-color: '#242424'
 # discus-identifier:
-# google-analytics:
+google-analytics: UA-156441506-1
 # ad-sense:
 # webmaster-verifications:
 #   google:
