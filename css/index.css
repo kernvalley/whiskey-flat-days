@@ -34,3 +34,9 @@ img.avatar {
 	vertical-align: middle;
 	margin-left: 1.2em;
 }
+
+.pretty-input {
+	border: none;
+	background: inherit;
+	color: inherit;
+}

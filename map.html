@@ -9,14 +9,7 @@ index: true
 {% include header.html %}
 {% include nav.html %}
 <main id="main">
-	<style>
-		.pretty-input {
-			border: none;
-			background: inherit;
-			color: inherit;
-		}
-	</style>
-	<form name="markerFilter">
+	<form name="markerFilter" hidden="">
 		<label class="inline-block">
 			<span>Vendors</span>
 			<input type="checkbox" name="vendor-marker" checked="" />
@@ -38,7 +31,7 @@ index: true
 			<span class="mobile-hidden">Clear</span>
 		</button>
 	</form>
-	<form name="startDate">
+	<form name="startDate" hidden="">
 		<input type="date" id="search-date" class="pretty-input" name="date" placeholder="yyyy-mm-dd" />
 		<input type="time" id="search-time" class="pretty-input" name="time" step="900" placeholder="hh:mm" />
 		<button type="submit" class="btn btn-accept">
@@ -50,7 +43,7 @@ index: true
 			<span class="mobile-hidden">Clear</span>
 		</button>
 	</form>
-	<form name="search">
+	<form name="search" hidden="">
 		<datalist id="events-list">
 			{% for marker in site.data.events %}
 				<option>{{ marker.title }}</option>
