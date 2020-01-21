@@ -18,8 +18,25 @@ document.documentElement.classList.replace('no-js', 'js');
 document.body.classList.toggle('no-dialog', document.createElement('dialog') instanceof HTMLUnknownElement);
 document.body.classList.toggle('no-details', document.createElement('details') instanceof HTMLUnknownElement);
 handlers.hashChange();
+
 window.addEventListener('hashchange', handlers.hashChange);
+
 ready().then(async () => {
+	const now = new Date();
+	const wfdStart = new Date('2020-02-14T08:00');
+	const wfdEnd = new Date('2020-02-17T18:00');
+	const current = wfdStart > now && wfdEnd < now;
+	const date = `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')}`;
+	const time = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes()}`;
+
+	$('#search-time').attr({value: time, min: '06:00', max: '20:00'});
+	$('#search-date').attr({value: current ? date : '2020-02-14', min: current ? date : '2020-02-14', max: '2020-02-17'});
+
+	$('form[name="startDate"]').submit(handlers.startDateSearch);
+	$('form[name="startDate"], form[name="search"]').reset(handlers.searchReset);
+	$('form[name="search"]').submit(handlers.search);
+	$('form[name="markerFilter"]').submit(handlers.filterMarkersSubmit);
+
 	$('[data-scroll-to]').click(event => {
 		const target = document.querySelector(event.target.closest('[data-scroll-to]').dataset.scrollTo);
 		target.scrollIntoView({

@@ -11,7 +11,8 @@ chevron-up,img/octicons/chevron-up.svg
 clippy,img/octicons/clippy.svg
 cloud-download,img/octicons/cloud-download.svg
 comment,img/octicons/comment.svg
-credit-card.svg,img/octicons/credit-card.svg
+edit-clear,img/adwaita-icons/actions/edit-clear.svg
+credit-card,img/octicons/credit-card.svg
 dashboard,img/octicons/dashboard.svg
 globe,img/octicons/globe.svg
 heart,img/octicons/heart.svg
@@ -30,12 +31,12 @@ question,img/octicons/question.svg
 reply,img/octicons/reply.svg
 repo,img/octicons/repo.svg
 rss,img/octicons/rss.svg
-search.svg,img/octicons/search.svg
+search,img/octicons/search.svg
 settings,img/octicons/settings.svg
 sign-in,img/octicons/sign-in.svg
 sign-out,img/octicons/sign-out.svg
 sync,img/octicons/sync.svg
-tag.svg,img/octicons/tag.svg
+tag,img/octicons/tag.svg
 thumbsdown,img/octicons/thumbsdown.svg
 thumbsup,img/octicons/thumbsup.svg
 tools,img/octicons/tools.svg

@@ -1,16 +1,46 @@
-import {loaded, wait} from 'https://cdn.kernvalley.us/js/std-js/functions.js';
+import {loaded, wait, $} from 'https://cdn.kernvalley.us/js/std-js/functions.js';
+
+export async function startDateSearch(event) {
+	let date;
+	const markers = [...document.querySelectorAll('.event-marker')];
+
+	if (event instanceof Event) {
+		event.preventDefault();
+		const data = new FormData(event.target);
+		date = new Date(`${data.get('date')}T${data.get('time')}`);
+	} else {
+		date = new Date();
+	}
+
+	markers.forEach(marker => {
+		const start = new Date(marker.dataset.startDate);
+		const end = new Date(marker.dataset.endDate);
+		marker.hidden = date < start || date > end;
+	});
+}
 
 export async function hashChange() {
 	if (location.hash !== '' && ! location.hash.includes(',')) {
+		$('leaflet-geojson').hide();
+		$('leaflet-marker').close();
 		const marker = document.getElementById(location.hash.substr(1));
 
-		if (marker instanceof HTMLElement && marker.tagName.toLowerCase() === 'leaflet-marker') {
+		if (marker instanceof HTMLElement) {
 			const map = marker.parentElement;
-			map.center = {latitude: marker.latitude, longitude: marker.longitude};
-			map.scrollIntoView({behavior: 'smooth', block: 'start'});
-			await Promise.all([marker.ready, map.ready, loaded()]);
-			await wait(100);
-			marker.open = true;
+			switch(marker.tagName.toLowerCase()) {
+			case 'leaflet-marker':
+				map.center = {latitude: marker.latitude, longitude: marker.longitude};
+				map.scrollIntoView({behavior: 'smooth', block: 'start'});
+				await Promise.all([marker.ready, map.ready, loaded()]);
+				await wait(100);
+				marker.open = true;
+				break;
+
+			case 'leaflet-geojson':
+				map.scrollIntoView({behavior: 'smooth', block: 'start'});
+				marker.hidden = false;
+				break;
+			}
 		}
 	} else if (location.hash.includes(',')) {
 		await loaded();
@@ -47,5 +77,52 @@ export async function hashChange() {
 		map.scrollIntoView({behavior: 'smooth', block: 'start'});
 		await wait(200);
 		marker.open = true;
+	}
+}
+
+export async function search(event) {
+	event.preventDefault();
+	const data = new FormData(event.target);
+	const term = data.get('term').toLowerCase();
+	const markers = [...document.querySelectorAll('.event-marker')];
+	const marker = markers.find(el => el.title.toLowerCase().startsWith(term));
+
+	if (marker instanceof HTMLElement) {
+		marker.hidden = false;
+		marker.open = true;
+	}
+}
+
+export async function searchReset() {
+	const date = new Date();
+	const markers = [...document.querySelectorAll('.event-marker')];
+
+	markers.forEach(marker => {
+		const start = new Date(marker.dataset.startDate);
+		const end = new Date(marker.dataset.endDate);
+		marker.hidden = date < start || date > end;
+	});
+}
+
+export async function filterMarkersSubmit(event) {
+	event.preventDefault();
+	const data = new FormData(event.target);
+
+	if (data.has('event-marker')) {
+		$('.event-marker').unhide();
+	} else {
+		$('.event-marker').hide();
+	}
+
+	if (data.has('vendor-marker')) {
+		$('.vendor-marker').unhide();
+	} else {
+		$('.vendor-marker').hide();
+	}
+
+	if (data.has('business-marker')) {
+		$('.business-marker').unhide();
+	} else {
+		$('.business-marker').hide();
 	}
 }
