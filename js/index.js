@@ -21,20 +21,43 @@ handlers.hashChange();
 
 window.addEventListener('hashchange', handlers.hashChange);
 
+function filterEventNamesDatalist() {
+	const datalist = document.getElementById('events-list');
+
+	if (datalist instanceof HTMLElement) {
+		const opts = new Set();
+
+		[...datalist.options].forEach(opt => {
+			opts.add(opt.value);
+			opt.remove();
+		});
+
+		opts.forEach(opt => {
+			const el = document.createElement('option');
+			el.value = opt;
+			datalist.append(el);
+		});
+	}
+}
+
+function isOnGoing() {
+	const start = new Date('2020-02-14T08:00-08');
+	const end = new Date('2020-02-17T16:00-08');
+	const now = new Date();
+	return start > now && end < now;
+}
+
 ready().then(async () => {
 	const now = new Date();
-	const wfdStart = new Date('2020-02-14T08:00');
-	const wfdEnd = new Date('2020-02-17T18:00');
-	const current = wfdStart > now && wfdEnd < now;
+	const current = isOnGoing();
 	const date = `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')}`;
-	const time = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes()}`;
 
-	$('#search-time').attr({value: time, min: '06:00', max: '20:00'});
+	$('#search-time').attr({min: '06:00', max: '20:00'});
 	$('#search-date').attr({value: current ? date : '2020-02-14', min: current ? date : '2020-02-14', max: '2020-02-17'});
 
 	$('form[name="startDate"]').submit(handlers.startDateSearch);
 	$('form[name="startDate"], form[name="search"]').reset(handlers.searchReset);
-	$('form[name="search"]').submit(handlers.search);
+	$('form[name="search"]').submit(handlers.searchSubmit);
 	$('form[name="markerFilter"]').submit(handlers.filterMarkersSubmit);
 
 	$('[data-scroll-to]').click(event => {
@@ -65,4 +88,6 @@ ready().then(async () => {
 			target.tagName === 'DIALOG' ? target.close() : target.open = false;
 		}
 	});
+
+	filterEventNamesDatalist();
 });

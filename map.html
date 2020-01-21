@@ -9,62 +9,71 @@ index: true
 {% include header.html %}
 {% include nav.html %}
 <main id="main">
-	<form name="markerFilter" hidden="">
-		<label class="inline-block">
-			<span>Vendors</span>
-			<input type="checkbox" name="vendor-marker" checked="" />
-		</label>
-		<label class="inline-block">
-			<span>Events</span>
-			<input type="checkbox" name="event-marker" checked="" />
-		</label>
-		<label class="inline-block">
-			<span>Other</span>
-			<input type="checkbox" name="business-marker" />
-		</label>
-		<button type="submit" class="btn btn-accept">
-			{% include icon.html icon="search" %}
-			<span class="mobile-hidden">Search</span>
-		</button>
-		<button type="reset" class="btn btn-reject">
-			{% include icon.html icon="edit-clear" %}
-			<span class="mobile-hidden">Clear</span>
-		</button>
-	</form>
-	<form name="startDate" hidden="">
-		<input type="date" id="search-date" class="pretty-input" name="date" placeholder="yyyy-mm-dd" />
-		<input type="time" id="search-time" class="pretty-input" name="time" step="900" placeholder="hh:mm" />
-		<button type="submit" class="btn btn-accept">
-			{% include icon.html icon="search" %}
-			<span class="mobile-hidden">Search</span>
-		</button>
-		<button type="reset" class="btn btn-reject">
-			{% include icon.html icon="edit-clear" %}
-			<span class="mobile-hidden">Clear</span>
-		</button>
-	</form>
-	<form name="search" hidden="">
-		<datalist id="events-list">
-			{% for marker in site.data.events %}
-				<option>{{ marker.title }}</option>
-			{% endfor %}
-		</datalist>
-		<input type="text" name="term" class="pretty-input" list="events-list" placeholder="Search for Event" required="" />
-		<button type="submit" class="btn btn-accept">
-			{% include icon.html icon="search" %}
-			<span class="mobile-hidden">Search</span>
-		</button>
-		<button type="reset" class="btn btn-reject">
-			{% include icon.html icon="edit-clear" %}
-			<span class="mobile-hidden">Clear</span>
-		</button>
-	</form>
+	<button type="button" class="btn btn-primary" data-show-modal="#search-form" hidden="">
+		{% include icon.html icon="search" %}
+		<span>Search</span>
+	</button>
+	<dialog id="search-form" class="animation-speed-normal animation-ease-in-out fadeIn">
+		<form name="search">
+			<datalist id="events-list">
+				{% for marker in site.data.events %}
+					<option>{{ marker.title }}</option>
+				{% endfor %}
+			</datalist>
+			<fieldset id="search-startDate" class="no-border">
+				<legend>Search by Date &amp; Time</legend>
+				<input type="date" id="search-date" class="pretty-input" name="date" placeholder="yyyy-mm-dd" />
+				<input type="time" id="search-time" class="pretty-input" name="time" step="900" placeholder="hh:mm" />
+			</fieldset>
+			<details>
+				<summary>Search by Event Name</summary>
+				<fiedlset class="no-border">
+					<legend hidden=""><label for="search-term">Event Name</label></legend>
+					<input type="text" name="term" id="search-term" class="pretty-input" list="events-list" autocomplete="off" placeholder="Search for Event" />
+				</fieldset>
+			</details>
+			<details>
+				<summary>Show Markers</summary>
+				<fieldset id="search-filters" class="no-border">
+					<legend hidden="">Filter By Type</legend>
+					<label class="inline-block">
+						<span>Vendors</span>
+						<input type="checkbox" name="vendors" checked="" />
+					</label>
+					<label class="inline-block">
+						<span>Other</span>
+						<input type="checkbox" name="businesses" />
+					</label>
+				</fieldset>
+			</details>
+			<button type="submit" class="btn btn-accept">
+				{% include icon.html icon="search" %}
+				<span class="mobile-hidden">Search</span>
+			</button>
+			<button type="reset" class="btn btn-reject" data-close="#search-form">
+				{% include icon.html icon="edit-clear" %}
+				<span class="mobile-hidden">Clear</span>
+			</button>
+		</form>
+	</dialog>
 	<leaflet-map center="35.755105,-118.424974" zoom="16" class="relative z-1">
 		{% for marker in site.data.poi %}
 			<leaflet-marker class="poi-marker" longitude="{{ marker.location.longitude }}" latitude="{{ marker.location.latitude }}" slot="markers" title="{{ marker.title }}"{% if marker.category %} data-category={{ marker.category }}{% endif %}>
 				<img src="{{ marker.icon | default: '/img/adwaita-icons/actions/mark-location.svg' }}" slot="icon" width="32" height="32" />
 				<div slot="popup">
-					{{ marker.popup | default: marker.title }}
+					<div>{{ marker.popup | default: marker.title }}</div>
+					{% if marker.location.url %}
+						<a href="{{ marker.location.url }}" class="inline-block btn btn-primary" rel="noopener external" role="button" itemprop="url">
+							{% include icon.html icon="map" height="16" width="16" %}
+							<span>View in Map App</span>
+						</a>
+					{% else %}
+						<!-- geo:35.760197,-118.426793;crs=wgs84;u=0 -->
+						<a href="https://www.google.com/maps/?q={{ marker.location.latitude }},{{ marker.location.longitude }}" class="inline-block btn btn-primary" rel="noopener external" role="button" itemprop="url">
+							{% include icon.html icon="map" height="16" width="16" %}
+							<span>View in Map App</span>
+						</a>
+					{% endif %}
 					{% if marker.uuid %}
 						<br />
 						<button type="button" is="share-button" url="https://whiskeyflatdays.com/map/#{{ marker.uuid }}" text="Check out {{ marker.title }}" title="{{ marker.title }} | Whiskey Flat Days Map" hidden="">
@@ -80,7 +89,19 @@ index: true
 			<leaflet-marker class="vendor-marker" longitude="{{ marker.location.longitude }}" latitude="{{ marker.location.latitude }}" slot="markers" title="{{ marker.title }}"{% if marker.category %} data-category={{ marker.category }}{% endif %}>
 				<img src="{{ marker.icon | default: '/img/adwaita-icons/actions/mark-location.svg' }}" slot="icon" width="32" height="32" />
 				<div slot="popup">
-					{{ marker.popup | default: marker.title }}
+					<p>{{ marker.popup | default: marker.title }}</p>
+					{% if marker.location.url %}
+						<a href="{{ marker.location.url }}" class="inline-block btn btn-primary" rel="noopener external" role="button" itemprop="url">
+							{% include icon.html icon="map" height="16" width="16" %}
+							<span>View in Map App</span>
+						</a>
+					{% else %}
+						<!-- geo:35.760197,-118.426793;crs=wgs84;u=0 -->
+						<a href="https://www.google.com/maps/?q={{ marker.location.latitude }},{{ marker.location.longitude }}" class="inline-block btn btn-primary" rel="noopener external" role="button" itemprop="url">
+							{% include icon.html icon="map" height="16" width="16" %}
+							<span>View in Map App</span>
+						</a>
+					{% endif %}
 					{% if marker.uuid %}
 						<br />
 						<button type="button" is="share-button" url="https://whiskeyflatdays.com/map/#{{ marker.uuid }}" text="Check out {{ marker.title }}" title="{{ marker.title }} | Whiskey Flat Days Map" hidden="">
@@ -96,7 +117,19 @@ index: true
 			<leaflet-marker class="business-marker" longitude="{{ marker.location.longitude }}" latitude="{{ marker.location.latitude }}" slot="markers" title="{{ marker.title }}"{% if marker.category %} data-category={{ marker.category }}{% endif %}>
 				<img src="{{ marker.icon | default: '/img/adwaita-icons/actions/mark-location.svg' }}" slot="icon" width="32" height="32" />
 				<div slot="popup">
-					{{ marker.popup | default: marker.title }}
+					<p>{{ marker.popup | default: marker.title }}</p>
+					{% if marker.location.url %}
+						<a href="{{ marker.location.url }}" class="inline-block btn btn-primary" rel="noopener external" role="button" itemprop="url">
+							{% include icon.html icon="map" height="16" width="16" %}
+							<span>View in Map App</span>
+						</a>
+					{% else %}
+						<!-- geo:35.760197,-118.426793;crs=wgs84;u=0 -->
+						<a href="https://www.google.com/maps/?q={{ marker.location.latitude }},{{ marker.location.longitude }}" class="inline-block btn btn-primary" rel="noopener external" role="button" itemprop="url">
+							{% include icon.html icon="map" height="16" width="16" %}
+							<span>View in Map App</span>
+						</a>
+					{% endif %}
 					{% if marker.uuid %}
 						<br />
 						<button type="button" is="share-button" url="https://whiskeyflatdays.com/map/#{{ marker.uuid }}" text="Check out {{ marker.title }}" title="{{ marker.title }} | Whiskey Flat Days Map" hidden="">
@@ -132,6 +165,20 @@ index: true
 								<meta itemprop="addressCountry" content="{{ marker.location.address.addressCountry | default: 'US' }}" />
 								<meta itemprop="postalCode" content="{{ marker.location.address.postalCode | default: 93238 }}" />
 							</address>
+						{% endif %}
+						{% if marker.location.url %}
+							<br />
+							<a href="{{ marker.location.url }}" class="inline-block btn btn-primary" rel="noopener external" role="button" itemprop="url">
+								{% include icon.html icon="map" height="16" width="16" %}
+								<span>View in Map App</span>
+							</a>
+						{% else %}
+							<br />
+							<!-- geo:35.760197,-118.426793;crs=wgs84;u=0 -->
+							<a href="https://www.google.com/maps/?q={{ marker.location.geo.latitude }},{{ marker.location.geo.longitude }}" class="inline-block btn btn-primary" rel="noopener external" role="button" itemprop="url">
+								{% include icon.html icon="map" height="16" width="16" %}
+								<span>View in Map App</span>
+							</a>
 						{% endif %}
 						<div itemprop="geo" itemtype="https://schema.org/GeoCoordinates" itemscope="" hidden="">
 							<meta itemprop="latitude" content="{{ marker.location.geo.latitude }}" />
