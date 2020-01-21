@@ -1,4 +1,5 @@
-- title: Kernville Chamber of Commerce
+- uuid: d8aa25f9-f1ae-4cb4-8ac5-8410e7e1dba1
+  title: Kernville Chamber of Commerce
   category: other
   location:
     latitude: 35.755794
@@ -6,13 +7,15 @@
   icon: "/img/markers/business.svg"
   popup: |-
     <a href="https://www.gotokernville.com">Kernville Chamber of Commerce</a>
-- title: Bank of America ATM
+- uuid: ef25b44c-77c4-43bd-8678-516fd8e4b4e1
+  title: Bank of America ATM
   category: banking
   location:
     latitude: 35.755138
     longitude: -118.425422
   icon: /img/markers/atm.svg
-- title: Kern River Brewing Company
+- uuid: 102477d0-8539-4a8a-b9c7-3b9e5c2bdf51
+  title: Kern River Brewing Company
   category: dining
   location:
     latitude: 35.757514
@@ -24,7 +27,8 @@
     latitude: 35.758063
     longitude: -118.418771
   icon: /img/markers/shopping.svg
-- title: Regional Transit Stop
+- uuid: 6f8ff7be-e425-4dc2-95eb-2cce1a2472f6
+  title: Regional Transit Stop
   category: other
   location:
     latitude: 35.753937
