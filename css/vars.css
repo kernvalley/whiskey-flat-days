@@ -1,8 +1,6 @@
 ---
 ---
 :root {
-	background: {{ site.data.theme.dark.background }};
-	color: {{ site.theme-color }};
 	--map-width: 100%;
 	--map-height: calc(100vh - var(--nav-height, 4rem));
 	--sidebar-max-width: 30vw;
