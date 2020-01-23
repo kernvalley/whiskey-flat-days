@@ -1,3 +1,21 @@
 #header {
 	background-image: url("/img/raster/coach-1280.jpg");
 }
+
+@media (max-width: 1280px) {
+	#header {
+		background-image: url("/img/raster/coach-800.jpg");
+	}
+}
+
+@media (max-width: 800px) {
+	#header {
+		background-image: url("/img/raster/coach-640.jpg");
+	}
+}
+
+@media (max-width: 640px) {
+	#header {
+		background-image: url("/img/raster/coach-320.jpg");
+	}
+}
