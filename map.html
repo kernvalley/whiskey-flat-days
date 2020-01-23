@@ -146,7 +146,7 @@ index: true
 			<leaflet-marker id="{{ marker.uuid }}" class="event-marker" longitude="{{ marker.location.geo.longitude }}" latitude="{{ marker.location.geo.latitude }}" slot="markers" title="{{ marker.title }}" data-end-date="{{ marker.endDate | date_to_xmlschema }}" data-start-date="{{ marker.startDate | date_to_xmlschema }}"{% if marker.category %} data-category={{ marker.category }}{% endif %}>
 				<img src="{{ marker.icon | default: '/img/adwaita-icons/actions/event.svg' }}" slot="icon" width="32" height="32" />
 				<div slot="popup" itemtype="https://schema.org/Event" itemscope="">
-					<meta itemprop="url" content="{{ site.url }}/#{{ marker.uuid }}" />
+					<meta itemprop="url" content="{{ site.url }}/map/#{{ marker.uuid }}" />
 					<h3 class="center" itemprop="name">{{ marker.title }}</h3>
 					{% if marker.image %}<img src="{{ marker.image }}" decoding="async" loading="lazy" itemprop="image" alt="{{ marker.title }}" />{% endif %}
 					<div>
