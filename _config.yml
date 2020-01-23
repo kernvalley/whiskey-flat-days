@@ -2,7 +2,7 @@ author: Chris Zuber
 title: Whiskey Flat Days
 url: 'https://whiskeyflatdays.com'
 markdown: kramdown
-version: 1.0.09
+version: 1.0.10
 timezone: America/Los_Angeles
 lang: en
 dir: ltr
@@ -20,7 +20,7 @@ description: "Map and events app for Whiskey Flat Days"
 thumbnail:
   url: https://i.imgur.com/Qnvw7I2l.jpg
 mobile-web-app-capable: true
-# canonical: ''
+canonical: 'https://whiskeyflatdays.com'
 keywords:
 - whiskey flat
 - kernville

@@ -1,5 +1,5 @@
 ---
-layout: base
+layout: default
 title: Events
 permalink: /events/
 pinned: true
@@ -17,7 +17,7 @@ index: true
 				<time itemprop="endDate" class="event-end-date" datetime="{{ event.endDate | date_to_xmlschema }}">{{ event.endDate | date: '%a, %b %d %r'}}</time>
 			</div>
 			<div class="event-description" itemprop="description" hidden="">{{ event.description }}</div>
-			<a href="/map/#{{ event.uuid }}" class="event-link" title="View on Map">
+			<a href="/map/#{{ event.uuid }}" class="event-link" title="View on Map" itemprop="url">
 				{% include icon.html icon="map" %}
 			</a>
 		</div>
