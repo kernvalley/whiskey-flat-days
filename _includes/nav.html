@@ -1,4 +1,10 @@
 <nav id="nav" class="sticky top shadow background-accent color-alt z-top clearfix">
+	{% for link in site.data.nav %}
+		<a role="button" class="btn btn-primary nav-link" href="{{ link.url }}">
+			{% include icon.html icon=link.icon %}
+			<span class="mobile-hidden">{{ link.label }}</span>
+		</a>
+	{% endfor %}
 	{% if page.url != '/' %}
 		<a href="{{ '/' }}" rel="bookmark" title="Home" class="color-inherit" title="Home">
 			{% include icon.html icon='logo' class='current-color icon' %}

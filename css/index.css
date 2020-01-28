@@ -40,3 +40,12 @@ img.avatar {
 	background: inherit;
 	color: inherit;
 }
+
+.nav-link .icon {
+	transform: none;
+	transition: transform 600ms ease-in-out;
+}
+
+.nav-link:hover .icon {
+	transform: rotate(1turn) scale(1.3);
+}

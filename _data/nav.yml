@@ -1,0 +1,9 @@
+- label: Home
+  url: /
+  icon: home
+- label: Events
+  url: /events/
+  icon: calendar
+- label: Map
+  url: /map/
+  icon: map
