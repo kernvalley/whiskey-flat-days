@@ -154,6 +154,14 @@ index: true
 						<span>&mdash;</span>
 						<time itemprop="endDate" datetime="{{ marker.endDate |  date_to_xmlschema }}">{{ marker.endDate | date: '%a %r'}}</time>
 					</div>
+					{% if marker.offers %}<ul>{% for offer in marker.offers %}
+						<li class="offer offer-{{ offer.availability | default: 'InStock' }}" itemprop="offers" itemtype="https://schema.org/Offer" itemscope="">
+							<span class="offer-label" itemprop="name">{{ offer.name | default: "Admission" }}</span>:
+							<meta itemprop="priceCurrency" content="{{ offer.priceCurrency | default: 'USD' }}" />
+							<meta itemprop="availability" content="https://schema.org/{{ offer.availability | default: 'InStock' }}" />
+							<span>$</span><span itemprop="price">{{ offer.price }}</span>
+						</li>
+					{% endfor %}</ul>{% endif %}
 					<div itemprop="location" itemtype="https://schema.org/Place" itemscope="">
 						{% if marker.location.name %}<h4 class="center" itemprop="name">{{ marker.location.name }}</h4>{% endif %}
 						{% if marker.location.address %}

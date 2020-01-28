@@ -31,6 +31,21 @@
       addressCountry: US
   startDate: 2020-02-16 13:00
   endDate: 2020-02-16 15:00
+  offers:
+  - name: Adult
+    price: 15
+  - name: Adult pre-sale
+    availability: PreSale
+    price: 12
+  - name: Senior
+    availability: InStoreOnly
+    price: 15
+  - name: Child (7-12)
+    availability: InStoreOnly
+    price: 15
+  - name: Child (0-6)
+    price: Free
+    availability: InStoreOnly
   image: /img/raster/rodeo.jpg
   icon: /img/markers/activity.svg
   description: |-
