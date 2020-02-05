@@ -18,6 +18,7 @@ index: true
 			</span>
 		</span>
 		<address class="inline-block event-location" itemprop="location" itemtype="https://schema.org/Place" itemscope="">
+			{% if event.location.name %}<span itemprop="name">{{ event.location.name }}</span>{% endif %}
 			{% if event.location.address %}
 				<span class="inline-address inline-block" itemprop="address" itemtype="https://schema.org/PostalAddress" itemscope="">
 					{% if event.location.address.streetAddress %}<span itemprop="streetAddress">{{ event.location.address.streetAddress }}</span>,{% endif %}
