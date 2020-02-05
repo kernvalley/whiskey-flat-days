@@ -1,15 +1,15 @@
 ---
-layout: null
+	layout: null
 ---
-{% assign postCount = site.posts | size %}
-	'use strict';
+	{% assign postCount = site.posts | size %}
+'use strict';
 /*eslint no-unused-vars: 0*/
 const config = {
 	version: '{{ site.version }}',
 	fresh: [
 		/* Root document */
 		'{{ site.pages | where: "pinned", true | map: "url" | join: "', '" }}',
-		{% if postCount > 0 %}'{{ site.posts | where: "pinned", true | map: "url" | join: "', '" }}',{% endif %}
+		{% if postCount > 0 %}'{{ site.posts | where: "pinned", true | map: "url" | join: "', '" }}', {% endif %}
 	].map(path => new URL(path, location.origin).href),
 	stale: [
 		/* Other HTML */
@@ -49,6 +49,9 @@ const config = {
 		'https://cdn.kernvalley.us/components/leaflet/marker.js',
 		'https://cdn.kernvalley.us/components/leaflet/image-overlay.js',
 		'https://cdn.kernvalley.us/components/leaflet/geojson.js',
+		'https://cdn.kernvalley.us/components/network-online.js',
+		'https://cdn.kernvalley.us/components/network-offline.js',
+		'https://cdn.kernvalley.us/components/not-supported.js',
 
 		/* CSS */
 		'/css/vars.css',
@@ -105,9 +108,9 @@ const config = {
 		'https://cdn.kernvalley.us/fonts/ubuntu.woff2',
 		/* Other */
 	].map(path => new URL(path, location.origin).href),
-	allowed: [
-		/https:\/\/secure\.gravatar\.com\/avatar\/*/,
-		/https:\/\/i\.imgur\.com\/*/,
-		/https:\/\/maps\.wikimedia\.org\/osm-intl\/*/,
-	],
+		allowed: [
+			/https:\/\/secure\.gravatar\.com\/avatar\/*/,
+			/https:\/\/i\.imgur\.com\/*/,
+			/https:\/\/maps\.wikimedia\.org\/osm-intl\/*/,
+		],
 };
