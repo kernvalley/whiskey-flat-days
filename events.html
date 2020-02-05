@@ -5,22 +5,36 @@ permalink: /events/
 pinned: true
 index: true
 ---
-<main id="main">
-	{% assign events = site.data.events | sort: 'startDate' %}
-	{% for event in events %}
-		<div id="{{ event.uuid }}" class="event-item grid" itemtype="https://schema.org/Event" itemscope="">
-			<img src="{{ event.image }}" class="event-image" itemprop="image" decoding="async" alt="{{ event.title }} image" loading="lazy" />
-			<h3 itemprop="title" class="event-title center">{{ event.title }}</h3>
-			<div class="event-dates">
-				<time itemprop="startDate" class="event-start-date" datetime="{{ event.startDate | date_to_xmlschema }}">{{ event.startDate | date: '%a, %b %d %r'}}</time>
-				<span>&mdash;</span>
-				<time itemprop="endDate" class="event-end-date" datetime="{{ event.endDate | date_to_xmlschema }}">{{ event.endDate | date: '%a, %b %d %r'}}</time>
-			</div>
-			<div class="event-description" itemprop="description" hidden="">{{ event.description }}</div>
-			<a href="/map/#{{ event.uuid }}" class="event-link" title="View on Map" itemprop="url">
-				{% include icon.html icon="map" %}
-			</a>
-		</div>
-	{% endfor %}
-</main>
-{% include footer.html %}
+{% assign events = site.data.events | sort: 'startDate' %}
+{% for event in events %}
+	<div id="{{ event.uuid }}" class="event-item grid contain-content" itemtype="https://schema.org/Event" itemscope="">
+		<img src="{{ event.image }}" class="event-image object-fit-cover" itemprop="image" decoding="async" alt="{{ event.title }} image" loading="lazy" />
+		<h3 itemprop="name" class="event-title center no-margins">{{ event.title }}</h3>
+		<time itemprop="startDate" class="event-start-date" datetime="{{ event.startDate | date_to_xmlschema }}">{{ event.startDate | date: '%a, %b %d %r'}}</time>
+		<span class="event-end-date mobile-hidden">
+			<span>&mdash;</span>
+			<time itemprop="endDate" datetime="{{ event.endDate | date_to_xmlschema }}">{{ event.endDate | date: '%a, %b %d %r'}}</time>
+		</span>
+		<address class="inline-block event-location" itemprop="location" itemtype="https://schema.org/Place" itemscope="">
+			{% if event.location.address %}
+				<span class="inline-address inline-block" itemprop="address" itemtype="https://schema.org/PostalAddress" itemscope="">
+					{% if event.location.address.streetAddress %}<span itemprop="streetAddress">{{ event.location.address.streetAddress }}</span>,{% endif %}
+					<span class="locality" itemprop="addressLocality">{{ event.location.address.addressLocality | default: 'Kernville' }}</span>
+					<meta itemprop="addressRegion" content="{{ event.location.address.addressRegion | default: 'CA' }}" />
+					<meta itemprop="addressCountry" content="{{ event.location.address.addressCountry | default: 'US' }}" />
+					<meta itemprop="postalCode" content="{{ event.location.address.postalCode | default: '93238' }}" />
+				</span>
+			{% endif %}
+			{% if event.location.geo %}
+				<div itemprop="geo" itemtype="https://schema.org/GeoCoordinates" itemscope="" hidden="">
+					<meta itemprop="latitude" content="{{ event.location.geo.latitude }}" />
+					<meta itemprop="longitude" content="{{ event.location.geo.longitude }}" />
+				</div>
+			{% endif %}
+		</address>
+		<div class="event-description" itemprop="description" hidden="">{{ event.description }}</div>
+		<a href="/map/#{{ event.uuid }}" class="event-link" title="View on Map" itemprop="url">
+			{% include icon.html icon="map" %}
+		</a>
+	</div>
+{% endfor %}

@@ -5,6 +5,7 @@
 @import url("https://cdn.kernvalley.us/css/core-css/viewport.css");
 @import url("https://cdn.kernvalley.us/css/core-css/element.css");
 @import url("https://cdn.kernvalley.us/css/core-css/class-rules.css");
+@import url("https://cdn.kernvalley.us/css/core-css/scrollbar.css");
 @import url("https://cdn.kernvalley.us/css/core-css/fonts.css");
 @import url("https://cdn.kernvalley.us/css/animate.css/animate.css");
 @import url("https://cdn.kernvalley.us/css/core-css/animations.css");
@@ -36,7 +37,9 @@ img.avatar {
 }
 
 .pretty-input {
-	border: none;
+	border-color: currentColor;
+	border-width: 0 0 1px 0;
+	border-style: solid;
 	background: inherit;
 	color: inherit;
 }
@@ -48,4 +51,9 @@ img.avatar {
 
 .nav-link:hover .icon {
 	transform: rotate(1turn) scale(1.3);
+}
+
+.flex.row > .btn.btn-wide {
+	flex: 1 0 auto;
+	margin: 0 0.6em;
 }

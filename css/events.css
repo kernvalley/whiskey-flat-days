@@ -1,10 +1,14 @@
 .event-item {
-	grid-template-areas: "image title link" "image date date" "image description .";
+	grid-template-areas: "image title link" "image start-date end-date" "image location .";
 	padding: 0.8em 1em;
 	border: 1px solid currentColor;
 	border-radius: 6px;
-	grid-template-rows: auto 1.3em 1.3em;
-	grid-template-columns: 6em auto 1.3em;
+	grid-template-rows: auto;
+	grid-template-columns: 6em auto auto 1.3em;
+}
+
+.event-item > .event-location {
+	grid-area: location;
 }
 
 .event-item > .event-title {
@@ -15,8 +19,12 @@
 	grid-area: image;
 }
 
-.event-item > .event-dates {
-	grid-area: date;
+.event-item > .event-start-date {
+	grid-area: start-date;
+}
+
+.event-item > .event-end-date {
+	grid-area: end-date;
 }
 
 .event-item > .event-description {
