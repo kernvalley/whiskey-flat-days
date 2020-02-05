@@ -10,10 +10,12 @@ index: true
 	<div id="{{ event.uuid }}" class="event-item grid contain-content" itemtype="https://schema.org/Event" itemscope="">
 		<img src="{{ event.image }}" class="event-image object-fit-cover" itemprop="image" decoding="async" alt="{{ event.title }} image" loading="lazy" />
 		<h3 itemprop="name" class="event-title center no-margins">{{ event.title }}</h3>
-		<time itemprop="startDate" class="event-start-date" datetime="{{ event.startDate | date_to_xmlschema }}">{{ event.startDate | date: '%a, %b %d %r'}}</time>
-		<span class="event-end-date mobile-hidden">
-			<span>&mdash;</span>
-			<time itemprop="endDate" datetime="{{ event.endDate | date_to_xmlschema }}">{{ event.endDate | date: '%a, %b %d %r'}}</time>
+		<span class="event-dates inline-block">
+			<time itemprop="startDate" class="event-start-date" datetime="{{ event.startDate | date_to_xmlschema }}">{{ event.startDate | date: '%a, %b %d %r'}}</time>
+			<span class="event-end-date mobile-hidden">
+				<span>&mdash;</span>
+				<time class="event-end-date" itemprop="endDate" datetime="{{ event.endDate | date_to_xmlschema }}">{{ event.endDate | date: '%a, %b %d %r'}}</time>
+			</span>
 		</span>
 		<address class="inline-block event-location" itemprop="location" itemtype="https://schema.org/Place" itemscope="">
 			{% if event.location.address %}

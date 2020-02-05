@@ -1,6 +1,7 @@
 .event-item {
-	grid-template-areas: "image title link" "image start-date end-date" "image location .";
+	grid-template-areas: "image title link" "image dates dates" "image location .";
 	padding: 0.8em 1em;
+	margin-top: 0.6em;
 	border: 1px solid currentColor;
 	border-radius: 6px;
 	grid-template-rows: auto;
@@ -19,12 +20,8 @@
 	grid-area: image;
 }
 
-.event-item > .event-start-date {
-	grid-area: start-date;
-}
-
-.event-item > .event-end-date {
-	grid-area: end-date;
+.event-item > .event-dates {
+	grid-area: dates;
 }
 
 .event-item > .event-description {
