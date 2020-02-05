@@ -56,6 +56,7 @@ const config = {
 		'/css/header.css',
 		'/css/nav.css',
 		'/css/main.css',
+		'/css/events.css',
 		'/css/sidebar.css',
 		'/css/footer.css',
 		'https://cdn.kernvalley.us/css/core-css/layout/index.css',

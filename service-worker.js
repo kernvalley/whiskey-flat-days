@@ -60,8 +60,10 @@ self.addEventListener('fetch', event => {
 					});
 
 					if (resp instanceof Response) {
-						const cache = await caches.open(config.version);
-						cache.put(event.request.url, resp.clone());
+						if (resp.ok) {
+							const cache = await caches.open(config.version);
+							cache.put(event.request.url, resp.clone());
+						}
 						return resp;
 					} else {
 						console.error(`Failed in request for ${event.request.url}`);
