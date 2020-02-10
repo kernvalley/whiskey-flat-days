@@ -4,6 +4,7 @@ title: Map
 permalink: /map/
 pinned: true
 index: true
+referrer: no-referrer
 ---
 {% include header.html %}
 {% include nav.html %}
@@ -204,6 +205,9 @@ index: true
 					{% endif %}
 				</div>
 			</leaflet-marker>
+			{% if marker.geojson %}
+				<leaflet-geojson src="{{ marker.geojson.src }}" marker="{{ marker.uuid }}" color="{{ marker.geojson.color | default: '#3871EA' }}" hidden="" {% if marker.geojson.fill %}fill=""{% else %}stroke=""{% endif %}></leaflet-geojson>
+			{% endif %}
 		{% endfor %}
 		{% for path in site.data.paths %}
 			<leaflet-geojson id="{{ path.uuid }}" src="{{ path.src }}" color="{{ path.color }}" title="{{ path.title }}" stroke="" hidden=""></leaflet-geojson>
