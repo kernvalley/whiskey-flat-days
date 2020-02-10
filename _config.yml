@@ -2,7 +2,7 @@ author: Chris Zuber
 title: Whiskey Flat Days
 url: 'https://whiskeyflatdays.com'
 markdown: kramdown
-version: 1.0.13
+version: 1.0.14
 timezone: America/Los_Angeles
 lang: en
 dir: ltr
@@ -41,9 +41,9 @@ social:
   twitter: kern_valley
   linkedin: company/kernvalley-us
   facebook: KernValley.us
-feed:
-  url: /feed.rss
-  type: application/rss+xml
+# feed:
+#   url: /feed.rss
+#   type: application/rss+xml
 icons: '/img/icons.svg'
 theme-color: '#528ff9'
 background-color: '#242424'
