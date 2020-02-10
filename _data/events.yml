@@ -16,7 +16,25 @@
   icon: /img/markers/activity.svg
   description: |-
     <p>Dust off your Boots and Hats or, in this case, your helment and Motorcycle
-    Boots as Whiskey Flat Days bring for the first time the MC/ATV Rodeo.
+    Boots as Whiskey Flat Days bring for the first time the MC/ATV Rodeo.</p>
+- uuid: b3b97450-6102-4f02-9ed9-03dab08a848c
+  title: Whiskey Flat Days Parade
+  startDate: 2020-02-15 10:00
+  endDate: 2020-02-15 12:00
+  description: |-
+    <p>Grand Marshals: Mick Gleason Kern County 1<sup>st</sup> District Supervisior</p>
+    <p><b>Note</b>: Roads will be closed for parade</p>
+  image: /img/raster/parade.jpg
+  icon: /img/markers/activity.svg
+  location:
+    geo:
+      latitude: 35.755366
+      longitude: -118.423604
+    address:
+      addressLocality: Kernville
+  geojson:
+    src: /paths/parade.geojson
+    color: "#54EA38"
 - uuid: 9027fbbc-9e1c-4f05-a92a-10ef29cbc4dc
   title: Wild West Daze Rodeo
   location:

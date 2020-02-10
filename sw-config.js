@@ -1,5 +1,5 @@
 ---
-	layout: null
+layout: null
 ---
 	{% assign postCount = site.posts | size %}
 'use strict';
@@ -109,8 +109,10 @@ const config = {
 		/* Other */
 	].map(path => new URL(path, location.origin).href),
 		allowed: [
-			/https:\/\/secure\.gravatar\.com\/avatar\/*/,
-			/https:\/\/i\.imgur\.com\/*/,
-			/https:\/\/maps\.wikimedia\.org\/osm-intl\/*/,
+			/https:\/\/secure\.gravatar\.com\/avatar\/.*/,
+			/https:\/\/i\.imgur\.com\/.*/,
+			/https:\/\/maps\.wikimedia\.org\/osm-intl\/.*/,
+			new RegExp(`${location.origin.replace('/', '\/').replace('.', '\.')}\/paths/.*`),
+			new RegExp(`${location.origin.replace('/', '\/').replace('.', '\.')}/img/raster/.*`),
 		],
 };
