@@ -24,7 +24,9 @@
 	<!-- /Facebook | OpenGraph -->
 	<!-- Twitter -->
 	<meta name="twitter:card" content="summary" />
-	<meta name="twitter:creator" content="" />
+	{% if site.social.twitter %}
+		<meta name="twitter:creator" content="@{{ site.social.twitter }}" />
+	{% endif %}
 	<meta name="twitter:description" content="{{ page.description }}" />
 	<meta name="twitter:image" content="{{{ page.thumbnail.url | default: site.thumbnail.url }}" />
 	<!-- /Twitter -->
