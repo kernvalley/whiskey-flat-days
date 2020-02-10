@@ -4,7 +4,6 @@
 	--map-width: 100%;
 	--map-height: calc(100vh - var(--nav-height, 4rem));
 	--sidebar-max-width: 30vw;
-	--accent-color: #511309;
 	--scrollbar-color: var(--accent-color);
 	--scrollbar-track: transparent;
 }
