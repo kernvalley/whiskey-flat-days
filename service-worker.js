@@ -51,12 +51,24 @@ self.addEventListener('fetch', event => {
 					: url.host === entry
 			))) {
 				const resp = await caches.match(event.request.url);
+
 				if (resp instanceof Response) {
 					return resp;
 				} else if (navigator.onLine) {
+					if (event.request.headers.has('Referer')) {
+						event.request.remove('Referer');
+					}
 					const resp = await fetch(event.request.url, {
-						mode: 'cors',
+						cache: event.request.cache,
+						credentials: event.request.credentials,
 						headers: event.request.headers,
+						integrity: event.request.integrity,
+						method: event.request.method,
+						mode: event.request.mode,
+						redirect: event.request.redirect,
+						referrer: event.request.referrer,
+						referrerPolicy: event.request.referrerPolicy,
+
 					});
 
 					if (resp instanceof Response) {
