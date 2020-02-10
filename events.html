@@ -7,37 +7,63 @@ index: true
 ---
 {% assign events = site.data.events | sort: 'startDate' %}
 {% for event in events %}
-	<div id="{{ event.uuid }}" class="event-item grid contain-content" itemtype="https://schema.org/Event" itemscope="">
-		<img src="{{ event.image }}" class="event-image object-fit-cover" itemprop="image" decoding="async" alt="{{ event.title }} image" loading="lazy" />
-		<h3 itemprop="name" class="event-title center no-margins">{{ event.title }}</h3>
-		<span class="event-dates inline-block">
-			<time itemprop="startDate" class="event-start-date" datetime="{{ event.startDate | date_to_xmlschema }}">{{ event.startDate | date: '%a, %b %d %r'}}</time>
-			<span class="event-end-date mobile-hidden">
-				<span>&mdash;</span>
-				<time class="event-end-date" itemprop="endDate" datetime="{{ event.endDate | date_to_xmlschema }}">{{ event.endDate | date: '%a, %b %d %r'}}</time>
-			</span>
-		</span>
-		<address class="inline-block event-location" itemprop="location" itemtype="https://schema.org/Place" itemscope="">
-			{% if event.location.name %}<b itemprop="name">{{ event.location.name }}</b>,{% endif %}
-			{% if event.location.address %}
-				<span class="inline-address inline-block" itemprop="address" itemtype="https://schema.org/PostalAddress" itemscope="">
-					{% if event.location.address.streetAddress %}<span itemprop="streetAddress">{{ event.location.address.streetAddress }}</span>,{% endif %}
-					<span class="locality" itemprop="addressLocality">{{ event.location.address.addressLocality | default: 'Kernville' }}</span>
-					<meta itemprop="addressRegion" content="{{ event.location.address.addressRegion | default: 'CA' }}" />
-					<meta itemprop="addressCountry" content="{{ event.location.address.addressCountry | default: 'US' }}" />
-					<meta itemprop="postalCode" content="{{ event.location.address.postalCode | default: '93238' }}" />
-				</span>
-			{% endif %}
-			{% if event.location.geo %}
-				<div itemprop="geo" itemtype="https://schema.org/GeoCoordinates" itemscope="" hidden="">
-					<meta itemprop="latitude" content="{{ event.location.geo.latitude }}" />
-					<meta itemprop="longitude" content="{{ event.location.geo.longitude }}" />
-				</div>
-			{% endif %}
+	<div itemtype="https://schema.org/Event" itemscope="">
+		<meta itemprop="name" content="Whiskey Flat Days" />
+		<meta itemprop="url" content="https://whiskeyflatdays.com" />
+		<meta itemprop="description" content="63rd Annual Whiskey Flat Days | President's Day Weekend in Kernville, CA" />
+		<meta itemprop="image" content="https://whiskeyflatdays.com/coach-800.jpg" />
+		<meta itemprop="startDate" content="2020-02-14" />
+		<meta itemprop="endDate" content="2020-02-17" />
+		<div itemprop="organizer" itemtype="https://schema.org/Organization" itemscope="" hidden="">
+			<meta itemprop="name" content="Kernville Chamber of Commerce" />
+			<meta itemprop="url" content="https://www.gotokernville.com/" />
+		</div>
+		<address itemprop="location" itemtype="https://schema.org/Place" itemscope="" hidden="">
+			<meta itemprop="name" content="Kernville, CA" />
+			<meta itemprop="image" content="https://whiskeyflatdays.com/coach-800.jpg" />
+			<div itemprop="address" itemtype="https://schema.org/PostalAddress" itemscope="" hidden="">
+				<meta itemprop="addressLocality" content="Kernville" />
+				<meta itemprop="addressRegion" content="CA" />
+				<meta itemprop="addressCountry" content="US" />
+				<meta itemprop="postalCode" content="93238" />
+			</div>
+			<div itemprop="geo" itemtype="https://schema.org/GeoCoordinates" itemscope="" hidden="">
+				<meta itemprop="longitude" content="-118.423604" />
+				<meta itemprop="latitude" content="35.755366" />
+			</div>
 		</address>
-		<div class="event-description" itemprop="description" hidden="">{{ event.description }}</div>
-		<a href="/map/#{{ event.uuid }}" class="event-link" title="View on Map" itemprop="url">
-			{% include icon.html icon="map" %}
-		</a>
+		<div id="{{ event.uuid }}" class="event-item grid contain-content" itemprop="subEvent" itemtype="https://schema.org/Event" itemscope="">
+			<img src="{{ event.image }}" class="event-image object-fit-cover" itemprop="image" decoding="async" alt="{{ event.title }} image" loading="lazy" />
+			<h3 itemprop="name" class="event-title center no-margins">{{ event.title }}</h3>
+			<span class="event-dates inline-block">
+				<time itemprop="startDate" class="event-start-date" datetime="{{ event.startDate | date_to_xmlschema }}">{{ event.startDate | date: '%a, %b %d %r'}}</time>
+				<span class="event-end-date mobile-hidden">
+					<span>&mdash;</span>
+					<time class="event-end-date" itemprop="endDate" datetime="{{ event.endDate | date_to_xmlschema }}">{{ event.endDate | date: '%a, %b %d %r'}}</time>
+				</span>
+			</span>
+			<address class="inline-block event-location" itemprop="location" itemtype="https://schema.org/Place" itemscope="">
+				{% if event.location.name %}<b itemprop="name">{{ event.location.name }}</b>,{% endif %}
+				{% if event.location.address %}
+					<span class="inline-address inline-block" itemprop="address" itemtype="https://schema.org/PostalAddress" itemscope="">
+						{% if event.location.address.streetAddress %}<span itemprop="streetAddress">{{ event.location.address.streetAddress }}</span>,{% endif %}
+						<span class="locality" itemprop="addressLocality">{{ event.location.address.addressLocality | default: 'Kernville' }}</span>
+						<meta itemprop="addressRegion" content="{{ event.location.address.addressRegion | default: 'CA' }}" />
+						<meta itemprop="addressCountry" content="{{ event.location.address.addressCountry | default: 'US' }}" />
+						<meta itemprop="postalCode" content="{{ event.location.address.postalCode | default: '93238' }}" />
+					</span>
+				{% endif %}
+				{% if event.location.geo %}
+					<div itemprop="geo" itemtype="https://schema.org/GeoCoordinates" itemscope="" hidden="">
+						<meta itemprop="latitude" content="{{ event.location.geo.latitude }}" />
+						<meta itemprop="longitude" content="{{ event.location.geo.longitude }}" />
+					</div>
+				{% endif %}
+			</address>
+			<div class="event-description" itemprop="description" hidden="">{{ event.description }}</div>
+			<a href="/map/#{{ event.uuid }}" class="event-link" title="View on Map" itemprop="url">
+				{% include icon.html icon="map" %}
+			</a>
+		</div>
 	</div>
 {% endfor %}
