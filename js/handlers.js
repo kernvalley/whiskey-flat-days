@@ -29,15 +29,17 @@ export async function hashChange() {
 			const map = marker.parentElement;
 			switch(marker.tagName.toLowerCase()) {
 			case 'leaflet-marker':
-				map.center = {latitude: marker.latitude, longitude: marker.longitude};
-				map.scrollIntoView({behavior: 'smooth', block: 'start'});
-				const geojson = map.querySelector(`leaflet-geojson[marker="${marker.id}"]`);
-				await Promise.all([marker.ready, map.ready, loaded()]);
-				await wait(100);
-				marker.open = true;
-				if (geojson instanceof HTMLElement) {
-					geojson.hidden = false;
-				}
+				(async () => {
+					map.center = {latitude: marker.latitude, longitude: marker.longitude};
+					map.scrollIntoView({behavior: 'smooth', block: 'start'});
+					const geojson = map.querySelector(`leaflet-geojson[marker="${marker.id}"]`);
+					await Promise.all([marker.ready, map.ready, loaded()]);
+					await wait(100);
+					marker.open = true;
+					if (geojson instanceof HTMLElement) {
+						geojson.hidden = false;
+					}
+				})();
 				break;
 
 			case 'leaflet-geojson':
