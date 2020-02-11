@@ -9,7 +9,6 @@ import 'https://cdn.kernvalley.us/components/logout-button.js';
 import 'https://cdn.kernvalley.us/components/leaflet/map.js';
 import 'https://cdn.kernvalley.us/components/leaflet/marker.js';
 import 'https://cdn.kernvalley.us/components/leaflet/geojson.js';
-import 'https://cdn.kernvalley.us/components/leaflet/image-overlay.js';
 import 'https://cdn.kernvalley.us/components/not-supported.js';
 import 'https://cdn.kernvalley.us/components/network-offline.js';
 import 'https://cdn.kernvalley.us/components/network-online.js';
