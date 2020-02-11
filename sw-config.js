@@ -38,6 +38,7 @@ const config = {
 		'https://cdn.kernvalley.us/components/register-button.js',
 		'https://cdn.kernvalley.us/components/gravatar-img.js',
 		'https://cdn.kernvalley.us/components/toast-message.js',
+		'https://cdn.kernvalley.us/components/bacon-ipsum.js',
 		'https://cdn.kernvalley.us/js/std-js/asyncDialog.js',
 		'https://cdn.kernvalley.us/js/User.js',
 		'https://cdn.kernvalley.us/components/login-form/login-form.js',
