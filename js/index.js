@@ -82,6 +82,26 @@ ready().then(async () => {
 		}
 	});
 
+	$('[data-action]').click(({ target }) => {
+		const { action } = target.closest('[data-action]').dataset;
+		switch (action.toLowerCase()) {
+		case 'reload':
+			location.reload();
+			break;
+
+		case 'back':
+			history.back();
+			break;
+
+		case 'forward':
+			history.forward();
+			break;
+
+		default:
+			throw new Error(`Unknown click action: ${action}`);
+		}
+	});
+
 	$('[data-show-modal]').click(event => {
 		const target = document.querySelector(event.target.closest('[data-show-modal]').dataset.showModal);
 		if (target instanceof HTMLElement) {

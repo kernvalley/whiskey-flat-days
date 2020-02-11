@@ -12,6 +12,9 @@ clippy,img/octicons/clippy.svg
 cloud-download,img/octicons/cloud-download.svg
 comment,img/octicons/comment.svg
 edit-clear,img/adwaita-icons/actions/edit-clear.svg
+view-refresh,img/adwaita-icons/actions/view-refresh.svg
+go-previous,img/adwaita-icons/actions/go-previous.svg
+go-next,img/adwaita-icons/actions/go-next.svg
 credit-card,img/octicons/credit-card.svg
 dashboard,img/octicons/dashboard.svg
 globe,img/octicons/globe.svg

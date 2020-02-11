@@ -1,4 +1,9 @@
 <nav id="nav" class="sticky top shadow background-accent color-alt z-top clearfix">
+	<span class="display-mode-standalone float-left">
+		<button type="button" class="btn btn-primary" title="Go Back" data-action="back">{% include icon.html icon="go-previous" %}</button>
+		<button type="button" class="btn btn-primary" title="Reload" data-action="reload">{% include icon.html icon="view-refresh" %}</button>
+		<button type="button" class="btn btn-primary" title="Go Forward" data-action="forward">{% include icon.html icon="go-next" %}</button>
+	</span>
 	{% for link in site.data.nav %}
 		<a role="button" class="btn btn-primary nav-link" href="{{ link.url }}">
 			{% include icon.html icon=link.icon %}

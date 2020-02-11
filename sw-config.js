@@ -88,6 +88,7 @@ const config = {
 		'https://cdn.kernvalley.us/css/normalize/normalize.css',
 		'https://cdn.kernvalley.us/css/animate.css/animate.css',
 		'https://cdn.kernvalley.us/css/core-css/scrollbar.css',
+		'https://cdn.kernvalley.us/css/core-css/display-mode.css',
 		'https://unpkg.com/leaflet@1.6.0/dist/leaflet.css',
 
 		/* Images & Icons */

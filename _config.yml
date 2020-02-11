@@ -1,8 +1,8 @@
 author: Chris Zuber
-title: Whiskey Flat Days
+title: WFD
 url: 'https://whiskeyflatdays.com'
 markdown: kramdown
-version: 1.0.18
+version: 1.0.19
 timezone: America/Los_Angeles
 lang: en
 dir: ltr
