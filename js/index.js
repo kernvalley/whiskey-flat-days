@@ -12,6 +12,8 @@ import 'https://cdn.kernvalley.us/components/leaflet/geojson.js';
 import 'https://cdn.kernvalley.us/components/not-supported.js';
 import 'https://cdn.kernvalley.us/components/network-offline.js';
 import 'https://cdn.kernvalley.us/components/network-online.js';
+import 'https://cdn.kernvalley.us/components/ad-block.js';
+import 'https://cdn.kernvalley.us/components/weather-current.js';
 import * as handlers from './handlers.js';
 import { $, ready, registerServiceWorker } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
 

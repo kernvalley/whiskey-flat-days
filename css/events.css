@@ -1,11 +1,26 @@
 .event-item {
-	grid-template-areas: "image title link" "image dates dates" "image location .";
 	padding: 0.8em 1em;
 	margin-top: 0.6em;
 	border: 1px solid currentColor;
 	border-radius: 6px;
+	grid-template-areas: "image title link" "image dates dates" "image location location";
 	grid-template-rows: auto;
-	grid-template-columns: 6em auto auto 1.3em;
+	grid-template-columns: 6em 1fr 1rem;
+	grid-gap: 0.8em;
+}
+
+@media (max-width: 800px) {
+	.event-item {
+		grid-template-areas: "title link" "image image" "dates dates" "location location";
+		grid-template-rows: auto 5em auto auto auto;
+		grid-template-columns: 1fr auto;
+	}
+
+	.event-item > .event-image-container > .event-image {
+		width: 100%;
+		height: auto;
+		max-height: 5em;
+	}
 }
 
 .event-item > .event-location {
@@ -16,8 +31,14 @@
 	grid-area: title;
 }
 
-.event-item > .event-image {
+.event-item > .event-image-container {
 	grid-area: image;
+}
+
+.event-item > .event-image-container > .event-image {
+	width: auto;
+	height: 100%;
+	border-radius: 5px;
 }
 
 .event-item > .event-dates {
@@ -31,3 +52,4 @@
 .event-item > .event-link {
 	grid-area: link;
 }
+

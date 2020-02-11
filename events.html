@@ -40,7 +40,9 @@ tags:
 			</div>
 		</address>
 		<div id="{{ event.uuid }}" class="event-item grid contain-content" itemprop="subEvent" itemtype="https://schema.org/Event" itemscope="">
-			<img src="{{ event.image }}" class="event-image object-fit-cover" itemprop="image" decoding="async" alt="{{ event.title }} image" loading="lazy" />
+			<span class="event-image-container inline-block center">
+				<img src="{{ event.image }}" class="event-image fit-cover" itemprop="image" decoding="async" alt="{{ event.title }} image" loading="lazy" />
+			</span>
 			<h3 itemprop="name" class="event-title center no-margins">{{ event.title }}</h3>
 			<span class="event-dates inline-block">
 				<time itemprop="startDate" class="event-start-date" datetime="{{ event.startDate | date_to_xmlschema }}">{{ event.startDate | date: '%a, %b %d %r'}}</time>
