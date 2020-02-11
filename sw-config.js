@@ -108,7 +108,7 @@ const config = {
 		'/img/markers/shopping.svg',
 		'/img/markers/store.svg',
 		'/img/markers/train.svg',
-		'/img/markers/info.svg',
+		'/img/octicons/info.svg',
 
 		/* Event Images */
 		'/img/raster/rodeo.jpg',
