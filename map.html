@@ -249,9 +249,16 @@ tags:
 		{% endfor %}
 	</leaflet-map>
 </main>
-<aside id="sidebar" class="card shadow">
+<aside id="sidebar" class="card shadow contain-content">
 	<weather-current class="card shadow" appid="{{ site.data.weather.appid }}" postalcode="{{ site.data.weather.postalCode }}"></weather-current>
-
+	{% for ad in site.data.ads %}
+		<ad-block url="{{ ad.url }}">
+			<img src="{{ ad.image }}" alt="logo" slot="image" />
+			<b slot="label">{{ ad.label }}</b>
+			<p slot="description">{{ ad.description }}</p>
+			<span slot="calltoaction">{{ ad.callToAction }}</span>
+		</ad-block>
+	{% endfor %	}
 </aside>
 {% include footer.html %}
 {% include share-button.html %}

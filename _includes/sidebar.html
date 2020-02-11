@@ -1,13 +1,14 @@
 <aside id="sidebar" class="card shadow contain-content">
-	<weather-current appid="{{ site.data.weather.appid }}" postalcode="{{ site.data.weather.postalCode }}"></weather-current>
+	<weather-current class="card shadow" appid="{{ site.data.weather.appid }}" postalcode="{{ site.data.weather.postalCode }}"></weather-current>
 	<hr />
-	<ad-block url="https://ads.kernvalley.us"></ad-block>
 	{% if include.pinned-posts %}{% include pinned-posts.html count=layout.pinned-posts %}{% endif %}
-	<ad-block url="https://events.kernvalley.us">
-		<img src="https://events.kernvalley.us/img/favicon.svg" alt="logo" slot="image" />
-		<b slot="label">Kern Valley Events</b>
-		<p slot="description">The best things going on in the Valley. None of the clutter 😄 </p>
-		<span slot="calltoaction">See what's going on today.</span>
-	</ad-block>
+	{% for ad in site.data.ads %}
+		<ad-block url="{{ ad.url }}">
+			<img src="{{ ad.image }}" alt="logo" slot="image" />
+			<b slot="label">{{ ad.label }}</b>
+			<p slot="description">{{ ad.description }}</p>
+			<span slot="calltoaction">{{ ad.callToAction }}</span>
+		</ad-block>
+	{% endfor %}
 	{% if include.recent-posts %}{% include recent-posts.html count=layout.recent-posts %}{% endif %}
 </aside>

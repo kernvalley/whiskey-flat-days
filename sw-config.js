@@ -1,7 +1,7 @@
 ---
 layout: null
 ---
-{% assign postCount = site.posts | size %}
+	{% assign postCount = site.posts | size %}
 'use strict';
 /*eslint no-unused-vars: 0*/
 const config = {
@@ -9,6 +9,8 @@ const config = {
 	fresh: [
 		/* Root document */
 		'{{ site.pages | where: "pinned", true | map: "url" | join: "', '" }}',
+		'https://baconipsum.com/api/?paras=4&format=json&type=all-meat',
+		'https://api.openweathermap.org/data/2.5/weather?appid=41ff0542577756523c5fcfaaeabe89d7&zip=93238%2Cus&units=imperial&lang=en',
 		{% if postCount > 0 %}'{{ site.posts | where: "pinned", true | map: "url" | join: "', '" }}', {% endif %}
 	].map(path => new URL(path, location.origin).href),
 	stale: [
@@ -16,7 +18,7 @@ const config = {
 		'/css/index.css',
 		'/js/index.js',
 		'/js/handlers.js',
-		'https://polyfill.io/v3/polyfill.min.js?features=matchMedia%2CWebAnimations',
+		'https://polyfill.io/v3/polyfill.min.js',
 		'https://unpkg.com/@webcomponents/custom-elements@1.3.2/custom-elements.min.js',
 		'https://cdn.kernvalley.us/components/toast-message.html',
 		'https://cdn.kernvalley.us/components/login-form/login-form.html',
@@ -85,6 +87,7 @@ const config = {
 		'https://cdn.kernvalley.us/css/core-css/animations.css',
 		'https://cdn.kernvalley.us/css/normalize/normalize.css',
 		'https://cdn.kernvalley.us/css/animate.css/animate.css',
+		'https://cdn.kernvalley.us/css/core-css/scrollbar.css',
 		'https://unpkg.com/leaflet@1.6.0/dist/leaflet.css',
 
 		/* Images & Icons */
@@ -110,6 +113,7 @@ const config = {
 		'/img/markers/store.svg',
 		'/img/markers/train.svg',
 		'/img/octicons/info.svg',
+		'/img/adwaita-icons/status/avatar-default.svg',
 
 		/* Event Images */
 		'/img/raster/rodeo.jpg',
@@ -133,14 +137,14 @@ const config = {
 		'https://cdn.kernvalley.us/fonts/ubuntu.woff2',
 		/* Other */
 	].map(path => new URL(path, location.origin).href),
-	allowed: [
-		/https:\/\/secure\.gravatar\.com\/avatar\/.*/,
-		/https:\/\/i\.imgur\.com\/.*/,
-		/https:\/\/maps\.wikimedia\.org\/osm-intl\/.*/,
-		/https:\/\/cdn\.kernvalley\.us\/img\/.*/,
-		/https:\/\/api\.openweathermap\.org\/data\/2.5\/weather\/.*/,
-		new RegExp(`${location.origin.replace('/', '\/').replace('.', '\.')}\/paths/.*`),
-		new RegExp(`${location.origin.replace('/', '\/').replace('.', '\.')}/img/raster/.*`),
-		new RegExp(`${location.origin.replace('/', '\/').replace('.', '\.')}/img/markers/.*`),
-	],
+		allowed: [
+			/https:\/\/secure\.gravatar\.com\/avatar\/.*/,
+			/https:\/\/i\.imgur\.com\/.*/,
+			/https:\/\/maps\.wikimedia\.org\/osm-intl\/.*/,
+			/https:\/\/cdn\.kernvalley\.us\/img\/.*/,
+			/https:\/\/api\.openweathermap\.org\/data\/2.5\/weather\/.*/,
+			new RegExp(`${location.origin.replace('/', '\/').replace('.', '\.')}\/paths\/.*`),
+			new RegExp(`${location.origin.replace('/', '\/').replace('.', '\.')}\/img\/raster\/.*`),
+			new RegExp(`${location.origin.replace('/', '\/').replace('.', '\.')}\/img\/markers\/.*`),
+		],
 };
