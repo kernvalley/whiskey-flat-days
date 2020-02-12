@@ -13,37 +13,37 @@ tags:
 - encampment
 ---
 {% assign events = site.data.events | sort: 'startDate' %}
-{% for event in events %}
-	<div itemtype="https://schema.org/Event" itemscope="">
-		<meta itemprop="name" content="Whiskey Flat Days" />
-		<meta itemprop="url" content="https://whiskeyflatdays.com" />
-		<meta itemprop="description" content="63rd Annual Whiskey Flat Days | President's Day Weekend in Kernville, CA" />
+<div itemtype="https://schema.org/Event" itemscope="">
+	<meta itemprop="name" content="Whiskey Flat Days" />
+	<meta itemprop="url" content="https://whiskeyflatdays.com" />
+	<meta itemprop="description" content="63rd Annual Whiskey Flat Days | President's Day Weekend in Kernville, CA" />
+	<meta itemprop="image" content="https://whiskeyflatdays.com/coach-800.jpg" />
+	<meta itemprop="startDate" content="2020-02-14" />
+	<meta itemprop="endDate" content="2020-02-17" />
+	<div itemprop="organizer" itemtype="https://schema.org/Organization" itemscope="" hidden="">
+		<meta itemprop="name" content="Kernville Chamber of Commerce" />
+		<meta itemprop="url" content="https://www.gotokernville.com/" />
+	</div>
+	<address itemprop="location" itemtype="https://schema.org/Place" itemscope="" hidden="">
+		<meta itemprop="name" content="Kernville, CA" />
 		<meta itemprop="image" content="https://whiskeyflatdays.com/coach-800.jpg" />
-		<meta itemprop="startDate" content="2020-02-14" />
-		<meta itemprop="endDate" content="2020-02-17" />
-		<div itemprop="organizer" itemtype="https://schema.org/Organization" itemscope="" hidden="">
-			<meta itemprop="name" content="Kernville Chamber of Commerce" />
-			<meta itemprop="url" content="https://www.gotokernville.com/" />
+		<div itemprop="address" itemtype="https://schema.org/PostalAddress" itemscope="" hidden="">
+			<meta itemprop="addressLocality" content="Kernville" />
+			<meta itemprop="addressRegion" content="CA" />
+			<meta itemprop="addressCountry" content="US" />
+			<meta itemprop="postalCode" content="93238" />
 		</div>
-		<address itemprop="location" itemtype="https://schema.org/Place" itemscope="" hidden="">
-			<meta itemprop="name" content="Kernville, CA" />
-			<meta itemprop="image" content="https://whiskeyflatdays.com/coach-800.jpg" />
-			<div itemprop="address" itemtype="https://schema.org/PostalAddress" itemscope="" hidden="">
-				<meta itemprop="addressLocality" content="Kernville" />
-				<meta itemprop="addressRegion" content="CA" />
-				<meta itemprop="addressCountry" content="US" />
-				<meta itemprop="postalCode" content="93238" />
-			</div>
-			<div itemprop="geo" itemtype="https://schema.org/GeoCoordinates" itemscope="" hidden="">
-				<meta itemprop="longitude" content="-118.423604" />
-				<meta itemprop="latitude" content="35.755366" />
-			</div>
-		</address>
+		<div itemprop="geo" itemtype="https://schema.org/GeoCoordinates" itemscope="" hidden="">
+			<meta itemprop="longitude" content="-118.423604" />
+			<meta itemprop="latitude" content="35.755366" />
+		</div>
+	</address>
+	{% for event in events %}
 		<div id="{{ event.uuid }}" class="event-item grid contain-content" itemprop="subEvent" itemtype="https://schema.org/Event" itemscope="">
 			<span class="event-image-container inline-block center">
-				<img src="{{ event.image }}" class="event-image fit-cover" itemprop="image" decoding="async" alt="{{ event.title }} image" loading="lazy" />
+				<img src="{{ event.image | default: '/img/markers/activity.svg' }}" class="event-image fit-cover" itemprop="image" decoding="async" alt="{{ event.title }} image" loading="lazy" />
 			</span>
-			<h3 itemprop="name" class="event-title center no-margins">{{ event.title }}</h3>
+			<a href="/map/#{{ event.uuid }}" class="event-title"><h3 itemprop="name" class="center no-margins">{{ event.title }}</h3></a>
 			<span class="event-dates inline-block">
 				<time itemprop="startDate" class="event-start-date" datetime="{{ event.startDate | date_to_xmlschema }}">{{ event.startDate | date: '%a, %b %d %r'}}</time>
 				<span class="event-end-date mobile-hidden">
@@ -74,5 +74,5 @@ tags:
 				{% include icon.html icon="map" %}
 			</a>
 		</div>
-	</div>
-{% endfor %}
+	{% endfor %}
+</div>
