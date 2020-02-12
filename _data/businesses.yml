@@ -2,35 +2,74 @@
   title: Kernville Chamber of Commerce
   category: other
   location:
-    latitude: 35.755794
-    longitude: -118.418143
+    geo:
+      latitude: 35.755794
+      longitude: -118.418143
   icon: "/img/markers/business.svg"
-  popup: |-
-    <a href="https://www.gotokernville.com">Kernville Chamber of Commerce</a>
+  url: https://www.gotokernville.com
 - uuid: ef25b44c-77c4-43bd-8678-516fd8e4b4e1
   title: Bank of America ATM
   category: banking
   location:
-    latitude: 35.755138
-    longitude: -118.425422
+    geo:
+      latitude: 35.755138
+      longitude: -118.425422
   icon: /img/markers/atm.svg
+- uuid: ee8d2e72-4370-4f3c-97ba-c0af3d29234b
+  title: Kernville Saloon
+  category: bar
+  telephone: 1-760-376-2500
+  location:
+    address:
+      streetAddress: 20 Tobias Street
+    geo:
+       longitude: -118.424971
+       latitude: 35.755727
+  icon: /img/markers/bar.svg
 - uuid: 102477d0-8539-4a8a-b9c7-3b9e5c2bdf51
   title: Kern River Brewing Company
   category: dining
+  url: https://kernriverbrewing.com/
+  telephone: 1-760-376-2337
   location:
-    latitude: 35.757514
-    longitude: -118.419226
+    address:
+      streetAddress: 13415 Sierra Way
+    geo:
+     longitude: -118.419232
+     latitude: 35.757488
   icon: /img/markers/restaurant.svg
 - title: James Sierra Gateway
   category: groceries
   location:
-    latitude: 35.758063
-    longitude: -118.418771
-  icon: /img/markers/shopping.svg
+    geo:
+      latitude: 35.758063
+      longitude: -118.418771
+  icon: /img/markers/store.svg
 - uuid: 6f8ff7be-e425-4dc2-95eb-2cce1a2472f6
   title: Regional Transit Stop
   category: other
   location:
-    latitude: 35.753937
-    longitude: -118.425665
+    geo:
+      latitude: 35.753937
+      longitude: -118.425665
   icon: /img/markers/bus.svg
+- uuid: a6f05819-1b6f-402a-85f9-cd05d7f940d7
+  title: Big Blue Bear
+  location:
+    address:
+      streetAddress: 101 Piute Drive
+    geo:
+      latitude: 35.755127
+      longitude: -118.425548
+  icon: /img/markers/cafe.svg
+- uuid: bd20431c-1e2d-401d-8178-ad0d2fe3e71d
+  title: Cheryl's Diner
+  telephone: 1-760-376-6131
+  url: https://www.cherylsdiner.com
+  location:
+    address:
+      streetAddress: 11030 Kernville Road
+    geo:
+      latitude: 35.754615
+      longitude: -118.424722
+  icon: /img/markers/restaurant.svg

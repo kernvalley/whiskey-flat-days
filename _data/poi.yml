@@ -1,6 +1,24 @@
 - uuid: 86019dd1-f979-4833-ba6d-7b8b3378614f
   title: Whiskey Flat Days Info Booth
   location:
-    longitude: -118.424414
-    latitude: 35.755369
+    geo:
+      longitude: -118.424414
+      latitude: 35.755369
   icon: /img/octicons/info.svg
+- uuid: 1f0b29d1-8d2d-4a5f-9ffc-be1763360e39
+  title: Schoeppner Amusement Carnival
+  description: |-
+    <p>On Kern River Drive by Riverside Park</p>
+    <p>Come and enjoy great adult and children's rides and games.</p>
+  location:
+    geo:
+      longitude: -118.424493
+      latitude: 35.753448
+- uuid: 894298ad-e120-49d6-93b3-17b3b019dbb5
+  title: Golden Gulch
+  location:
+    name: Circle Park
+    geo:
+      latitude: 35.755220
+      longitude: -118.425045
+  icon: /img/markers/shopping.svg
