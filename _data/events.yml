@@ -17,6 +17,25 @@
   description: |-
     <p>Dust off your Boots and Hats or, in this case, your helment and Motorcycle
     Boots as Whiskey Flat Days bring for the first time the MC/ATV Rodeo.</p>
+- uuid: e8df6782-d0e7-45e1-944e-d16f27ce019b
+  title: Main Stage Street Dance
+  startDate: 2020-02-14 17:00
+  endDate: 2020-02-14 20:00
+  icon: /img/markers/activity.svg
+  # image:
+  location:
+    name: Tobias Street in Kernville
+    address:
+      streetAddress: Tobias Street
+      addressLocality: Kernville
+      addressRegion: CA
+      addressCountry: US
+      postalCode: 93238
+    geo:
+      longitude: -118.424799
+      latitude: 35.755498
+  description: |-
+    Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Red Headed Strangers</span></span>
 - uuid: b3b97450-6102-4f02-9ed9-03dab08a848c
   title: Whiskey Flat Days Parade
   startDate: 2020-02-15 10:00
@@ -78,6 +97,82 @@
       <li>Sheep Riding</li>
       <li>...and more</li>
     </ul>
+- uuid: 17afcd60-29f1-4d3e-b40d-0f7070ce1891
+  title: Backflow - Main Stage
+  startDate: 2020-02-15 12:00
+  endDate: 2020-02-15 14:00
+  icon: /img/markers/activity.svg
+  # image:
+  location:
+    name: Tobias Street in Kernville
+    address:
+      streetAddress: Tobias Street
+      addressLocality: Kernville
+      addressRegion: CA
+      addressCountry: US
+      postalCode: 93238
+    geo:
+      longitude: -118.424799
+      latitude: 35.755498
+  description: |-
+    Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Backflow</span></span>
+- uuid: 17afcd60-29f1-4d3e-b40d-0f7070ce1891
+  title: Backflow - Main Stage
+  startDate: 2020-02-15 16:00
+  endDate: 2020-02-15 18:00
+  icon: /img/markers/activity.svg
+  # image:
+  location:
+    name: Tobias Street in Kernville
+    address:
+      streetAddress: Tobias Street
+      addressLocality: Kernville
+      addressRegion: CA
+      addressCountry: US
+      postalCode: 93238
+    geo:
+      longitude: -118.424799
+      latitude: 35.755498
+  description: |-
+    Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Backflow</span></span>
+- uuid: c1f8133b-c326-467a-9a28-6a974b8266ba
+  title: Kern River Band - Main Stage
+  startDate: 2020-02-16 09:00
+  endDate: 2020-02-16 11:00
+  icon: /img/markers/activity.svg
+  # image:
+  location:
+    name: Tobias Street in Kernville
+    address:
+      streetAddress: Tobias Street
+      addressLocality: Kernville
+      addressRegion: CA
+      addressCountry: US
+      postalCode: 93238
+    geo:
+      longitude: -118.424799
+      latitude: 35.755498
+  description: |-
+    Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Kern River Band</span></span>
+- uuid: 5ecd1605-ef72-4d7f-bfd5-61bf1cee67cb
+  title: kern River Band - Main Stage
+  startDate: 2020-02-16 16:00
+  endDate: 2020-02-16 18:00
+  icon: /img/markers/activity.svg
+  # image:
+  location:
+    name: Tobias Street in Kernville
+    address:
+      streetAddress: Tobias Street
+      addressLocality: Kernville
+      addressRegion: CA
+      addressCountry: US
+      postalCode: 93238
+    geo:
+      longitude: -118.424799
+      latitude: 35.755498
+  description: |-
+    Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Kern River Band</span></span>
 - uuid: ea262b89-22f4-4fb5-adaf-4f8780ee474d
   title: Whiskey Flat Encampment
   location:
