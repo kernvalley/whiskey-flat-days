@@ -9,7 +9,7 @@ const config = {
 	fresh: [
 		/* Root document */
 		'{{ site.pages | where: "pinned", true | map: "url" | join: "', '" }}',
-		'https://baconipsum.com/api/?paras=4&format=json&type=all-meat',
+		// 'https://baconipsum.com/api/?paras=4&format=json&type=all-meat',
 		'https://api.openweathermap.org/data/2.5/weather?appid=41ff0542577756523c5fcfaaeabe89d7&zip=93238%2Cus&units=imperial&lang=en',
 		{% if postCount > 0 %}'{{ site.posts | where: "pinned", true | map: "url" | join: "', '" }}', {% endif %}
 	].map(path => new URL(path, location.origin).href),
