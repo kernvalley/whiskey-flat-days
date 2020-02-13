@@ -217,7 +217,10 @@ tags:
 				<img src="{{ marker.icon | default: '/img/adwaita-icons/actions/events.svg' }}" slot="icon" width="32" height="32" />
 				<div slot="popup" itemprop="subEvent" itemtype="https://schema.org/Event" itemscope="">
 					<meta itemprop="url" content="{{ site.url }}/map/#{{ marker.uuid }}" />
-					<h3 class="center" itemprop="name">{{ marker.title }}</h3>
+					<h3 class="center">
+						{% if marker.music %}<span class="emoji">🎶 </span>{% endif %}
+						<span itemprop="name">{{ marker.title }}</span>
+					</h3>
 					{% if marker.image %}<img src="{{ marker.image }}" decoding="async" loading="lazy" itemprop="image" alt="{{ marker.title }}" />{% endif %}
 					<div>
 						<time itemprop="startDate" datetime="{{ marker.startDate | date_to_xmlschema }}">{{ marker.startDate | date: '%a %r'}}</time>
