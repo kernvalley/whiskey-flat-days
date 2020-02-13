@@ -269,3 +269,75 @@
     <p>There'll be horse shoe'n and horse doctor'n, the Whiskey Flats Saloon, and Justice of the Peace,
     a Saddle maker and leather craft, a Bath house, Beautifier and Hygenist,
     storytellers of the Old West, mining and sawmill demonstrations and a Civil War Confederate camp!</p>
+- uuid: bde1727f-fc0f-453f-afbb-9329aa3fec32
+  title: '"First Heat" Frog Jumping Contents'
+  startDate: 2020-02-15 14:00
+  endDate: 2020-02-15 14:30
+  description: |-
+    <p>Held at the Green Stage on Piute Road. Come and bet on your favorite jumpin frog!</p>
+  location:
+    name: Tobias Street in Kernville
+    address:
+      streetAddress: Tobias Street
+      addressLocality: Kernville
+      addressRegion: CA
+      addressCountry: US
+      postalCode: 93238
+    geo:
+      latitude: 35.755721
+      longitude: -118.425114
+  icon: /img/markers/activity.svg
+- uuid: 640838f3-4a6e-424b-a9bc-2e33ae8e9d7d
+  title: '"Final Heat" Frog Jumping Contents'
+  startDate: 2020-02-16 11:00
+  endDate: 2020-02-16 11:30
+  description: |-
+    <p>Held at the Green Stage on Piute Road. Come and bet on your favorite jumpin frog!</p>
+  location:
+    name: Tobias Street in Kernville
+    address:
+      streetAddress: Tobias Street
+      addressLocality: Kernville
+      addressRegion: CA
+      addressCountry: US
+      postalCode: 93238
+    geo:
+      latitude: 35.755721
+      longitude: -118.425114
+  icon: /img/markers/activity.svg
+- uuid: f52e2469-b6eb-4088-96d8-a58b81d225cf
+  title: Whiskerino Contest
+  startDate: 2020-02-16 13:00
+  endDate: 2020-02-16 14:00
+  description: |-
+    <p>Judging starts at 1:30 PM</p>
+  location:
+    name: Tobias Street in Kernville
+    address:
+      streetAddress: Tobias Street
+      addressLocality: Kernville
+      addressRegion: CA
+      addressCountry: US
+      postalCode: 93238
+    geo:
+      latitude: 35.755721
+      longitude: -118.425114
+  icon: /img/markers/activity.svg
+- uuid: caaa72d1-3ac0-4ffc-ab5e-ec6794aaa981
+  title: Pet Parade Contest
+  startDate: 2020-02-16 14:00
+  endDate: 2020-02-16 15:00
+  description: |-
+    <p>Judging starts at 2:30 PM</p>
+  location:
+    name: Tobias Street in Kernville
+    address:
+      streetAddress: Tobias Street
+      addressLocality: Kernville
+      addressRegion: CA
+      addressCountry: US
+      postalCode: 93238
+    geo:
+      latitude: 35.755721
+      longitude: -118.425114
+  icon: /img/markers/activity.svg
