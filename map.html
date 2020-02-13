@@ -67,7 +67,7 @@ tags:
 			</button>
 		</form>
 	</dialog>
-	<leaflet-map center="35.755105,-118.424974" zoom="16" class="relative contain-content z-1" crossorigin="annonymous" detectretina="detectretina" itemtype="https://schema.org/Event" itemscope="">
+	<leaflet-map center="35.755105,-118.424974" zoom="18" class="relative contain-content z-1" crossorigin="annonymous" detectretina="detectretina" itemtype="https://schema.org/Event" itemscope="">
 		<meta itemprop="name" content="Whiskey Flat Days" />
 		<meta itemprop="url" content="https://whiskeyflatdays.com" />
 		<meta itemprop="description" content="63rd Annual Whiskey Flat Days | President's Day Weekend in Kernville, CA" />
@@ -93,10 +93,12 @@ tags:
 			</div>
 		</address>
 		{% for marker in site.data.poi %}
-			<leaflet-marker class="poi-marker" longitude="{{ marker.location.longitude }}" latitude="{{ marker.location.latitude }}" slot="markers" title="{{ marker.title }}"{% if marker.category %} data-category={{ marker.category }}{% endif %}>
+			<leaflet-marker class="poi-marker" id="{{ marker.uuid }}" longitude="{{ marker.location.geo.longitude }}" latitude="{{ marker.location.geo.latitude }}" slot="markers" title="{{ marker.title }}"{% if marker.category %} data-category={{ marker.category }}{% endif %}>
 				<img src="{{ marker.icon | default: '/img/adwaita-icons/actions/mark-location.svg' }}" slot="icon" width="32" height="32" />
 				<div slot="popup">
-					<div>{{ marker.popup | default: marker.title }}</div>
+					<h4>{{ marker.popup | default: marker.title }}</h4>
+					{% if marker.description %}<div>{{ marker.description }}</div>{% endif %}
+					{% if marker.image %}<img src="{{ marker.image.url }}" alt="{{ marker.image.description }}" decoding="async" width="{{ marker.image.width }}" height="{{ marker.image.height }}" loading="lazy" />{% endif %}
 					{% if marker.location.url %}
 						<a href="{{ marker.location.url }}" class="inline-block btn btn-primary" rel="noopener external" role="button">
 							{% include icon.html icon="map" height="16" width="16" %}
@@ -104,7 +106,7 @@ tags:
 						</a>
 					{% else %}
 						<!-- geo:35.760197,-118.426793;crs=wgs84;u=0 -->
-						<a href="https://www.google.com/maps/?q={{ marker.location.latitude }},{{ marker.location.longitude }}" class="inline-block btn btn-primary" rel="noopener external" role="button">
+						<a href="https://www.google.com/maps/?q={{ marker.location.geo.latitude }},{{ marker.location.geo.longitude }}" class="inline-block btn btn-primary" rel="noopener external" role="button">
 							{% include icon.html icon="map" height="16" width="16" %}
 							<span>View in Map App</span>
 						</a>
@@ -121,7 +123,7 @@ tags:
 				</div>
 			</leaflet-marker>
 		{% endfor %}{% for marker in site.data.vendors %}
-			<leaflet-marker class="vendor-marker" longitude="{{ marker.location.longitude }}" latitude="{{ marker.location.latitude }}" slot="markers" title="{{ marker.title }}"{% if marker.category %} data-category={{ marker.category }}{% endif %}>
+			<leaflet-marker id="{{ marker.uuid }}" class="vendor-marker" longitude="{{ marker.location.longitude }}" latitude="{{ marker.location.latitude }}" slot="markers" title="{{ marker.title }}"{% if marker.category %} data-category={{ marker.category | join: ' ' }}{% endif %}>
 				<img src="{{ marker.icon | default: '/img/adwaita-icons/actions/mark-location.svg' }}" slot="icon" width="32" height="32" />
 				<div slot="popup">
 					<p>{{ marker.popup | default: marker.title }}</p>
@@ -149,18 +151,51 @@ tags:
 				</div>
 			</leaflet-marker>
 		{% endfor %}{% for marker in site.data.businesses %}
-			<leaflet-marker class="business-marker" longitude="{{ marker.location.longitude }}" latitude="{{ marker.location.latitude }}" slot="markers" title="{{ marker.title }}"{% if marker.category %} data-category={{ marker.category }}{% endif %}>
+			<leaflet-marker itemtype="{{ marker['@itemtype'] | default: 'https://schema.org/LocalBusiness' }}" id="{{ marker.uuid }}" class="business-marker" longitude="{{ marker.location.geo.longitude }}" latitude="{{ marker.location.geo.latitude }}" slot="markers" title="{{ marker.title }}"{% if marker.category %} data-category="{{ marker.category | join: ' ' }}"{% endif %} itemscope="">
 				<img src="{{ marker.icon | default: '/img/adwaita-icons/actions/mark-location.svg' }}" slot="icon" width="32" height="32" />
 				<div slot="popup">
-					<p>{{ marker.popup | default: marker.title }}</p>
+					<h4 itemprop="name">{{ marker.popup | default: marker.title }}</h4>
+					{% if marker.description %}<div itemprop="description">{{ marker.description }}</div>{% endif %}
+					{% if marker.image %}<img itemprop="image" src="{{ marker.image.url }}" alt="{{ marker.image.description }}" decoding="async" width="{{ marker.image.width }}" height="{{ marker.image.height }}" loading="lazy" />{% endif %}
+						<div itemprop="geo" itemtype="https://schema.org/GeoCoordinates" itemscope="" hidden="">
+							<meta itemprop="longitude" content="{{ marker.location.geo.longitude }}" />
+							<meta itemprop="latitude" content="{{ marker.location.geo.latitude }}" />
+						</div>
+						{% if marker.location.address %}
+							<address itemprop="address" itemtype="https://schema.org/PostalAddress" itemscope="">
+								{% if marker.location.address.streetAddress %}<div itemprop="streetAddress">{{ marker.location.address.streetAddress }}</div>{% endif %}
+								<div>
+									<span itemprop="addressLocality">{{ marker.location.address.addressLocality | default: 'Kernville' }}</span>,
+									<span itemprop="addressRegion">{{ marker.location.address.addressRegion | default: 'CA' }}</span>
+								</div>
+								<meta itemprop="addressCountry" content="{{ marker.location.address.addressCountry | default: 'US' }}" />
+								<meta itemprop="postalCode" content="{{ marker.location.address.postalCode | default: 93238 }}" />
+							</address>
+						{% endif %}
+					{% if marker.telephone %}
+						<div>
+							<a href="tel:+{{ marker.telephone }}">
+								{% include icon.html icon="call-start"  height="16" width="16" %}
+								<span itemprop="telephone">{{ marker.telephone }}</span>
+							</a>
+						</div>
+					{% endif %}
+					{% if marker.url %}
+						<div>
+							<a href="{{ marker.url }}" rel="noopener external">
+								{% include icon.html icon="globe"  height="16" width="16" %}
+								<span itemprop="url">{{ marker.url }}</span>
+							</a>
+						</div>
+					{% endif %}
 					{% if marker.location.url %}
-						<a href="{{ marker.location.url }}" class="inline-block btn btn-primary" rel="noopener external" role="button">
+						<a itemprop="url" href="{{ marker.location.url }}" class="inline-block btn btn-primary" rel="noopener external" role="button">
 							{% include icon.html icon="map" height="16" width="16" %}
 							<span>View in Map App</span>
 						</a>
 					{% else %}
 						<!-- geo:35.760197,-118.426793;crs=wgs84;u=0 -->
-						<a href="https://www.google.com/maps/?q={{ marker.location.latitude }},{{ marker.location.longitude }}" class="inline-block btn btn-primary" rel="noopener external" role="button">
+						<a itemprop="url" href="https://www.google.com/maps/?q={{ marker.location.geo.latitude }},{{ marker.location.geo.longitude }}" class="inline-block btn btn-primary" rel="noopener external" role="button">
 							{% include icon.html icon="map" height="16" width="16" %}
 							<span>View in Map App</span>
 						</a>
@@ -179,10 +214,13 @@ tags:
 		{% endfor %}
 		{% for marker in site.data.events %}
 			<leaflet-marker id="{{ marker.uuid }}" class="event-marker" longitude="{{ marker.location.geo.longitude }}" latitude="{{ marker.location.geo.latitude }}" slot="markers" title="{{ marker.title }}" data-end-date="{{ marker.endDate | date_to_xmlschema }}" data-start-date="{{ marker.startDate | date_to_xmlschema }}"{% if marker.category %} data-category={{ marker.category }}{% endif %}>
-				<img src="{{ marker.icon | default: '/img/adwaita-icons/actions/event.svg' }}" slot="icon" width="32" height="32" />
+				<img src="{{ marker.icon | default: '/img/adwaita-icons/actions/events.svg' }}" slot="icon" width="32" height="32" />
 				<div slot="popup" itemprop="subEvent" itemtype="https://schema.org/Event" itemscope="">
 					<meta itemprop="url" content="{{ site.url }}/map/#{{ marker.uuid }}" />
-					<h3 class="center" itemprop="name">{{ marker.title }}</h3>
+					<h3 class="center">
+						{% if marker.music %}<span class="emoji">🎶 </span>{% endif %}
+						<span itemprop="name">{{ marker.title }}</span>
+					</h3>
 					{% if marker.image %}<img src="{{ marker.image }}" decoding="async" loading="lazy" itemprop="image" alt="{{ marker.title }}" />{% endif %}
 					<div>
 						<time itemprop="startDate" datetime="{{ marker.startDate | date_to_xmlschema }}">{{ marker.startDate | date: '%a %r'}}</time>

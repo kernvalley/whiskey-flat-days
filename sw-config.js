@@ -113,6 +113,8 @@ const config = {
 		'/img/markers/shopping.svg',
 		'/img/markers/store.svg',
 		'/img/markers/train.svg',
+		'/img/markers/gas.svg',
+		'/img/markers/hospital.svg',
 		'/img/octicons/info.svg',
 		'/img/adwaita-icons/status/avatar-default.svg',
 

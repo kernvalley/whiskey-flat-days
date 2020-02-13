@@ -43,7 +43,12 @@ tags:
 			<span class="event-image-container inline-block center">
 				<img src="{{ event.image | default: '/img/markers/activity.svg' }}" class="event-image fit-cover" itemprop="image" decoding="async" alt="{{ event.title }} image" loading="lazy" />
 			</span>
-			<a href="/map/#{{ event.uuid }}" class="event-title"><h3 itemprop="name" class="center no-margins">{{ event.title }}</h3></a>
+			<a href="/map/#{{ event.uuid }}" class="event-title">
+				<h3 class="center no-margins">
+					{% if event.music %}<span class="emoji">🎶 </span>{% endif %}
+					<span itemprop="name">{{ event.title }}</span>
+				</h3>
+			</a>
 			<span class="event-dates inline-block">
 				<time itemprop="startDate" class="event-start-date" datetime="{{ event.startDate | date_to_xmlschema }}">{{ event.startDate | date: '%a, %b %d %r'}}</time>
 				<span class="event-end-date mobile-hidden">
