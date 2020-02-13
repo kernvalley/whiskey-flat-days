@@ -285,7 +285,27 @@
   startDate: 2020-02-16 13:00
   endDate: 2020-02-16 14:00
   description: |-
+    <p>Sign-up starts at 11:00 AM</p>
     <p>Judging starts at 1:30 PM</p>
+  location:
+    name: Tobias Street in Kernville
+    address:
+      streetAddress: Tobias Street
+      addressLocality: Kernville
+      addressRegion: CA
+      addressCountry: US
+      postalCode: 93238
+    geo:
+      latitude: 35.755721
+      longitude: -118.425114
+  icon: /img/markers/activity.svg
+- uuid: 796d7881-008a-4ce2-bdb1-efb916793eb5
+  title: Adult & child 1860's Costume Contest
+  startDate: 2020-02-16 12:00
+  endDate: 2020-02-16 13:00
+  description: |-
+    <p>Sign-up starts at 11:00 AM</p>
+    <p>Judging starts at 12:30 PM</p>
   location:
     name: Tobias Street in Kernville
     address:
@@ -303,6 +323,7 @@
   startDate: 2020-02-16 14:00
   endDate: 2020-02-16 15:00
   description: |-
+    <p>Sign-up starts at 11:00 AM</p>
     <p>Judging starts at 2:30 PM</p>
   location:
     name: Tobias Street in Kernville
