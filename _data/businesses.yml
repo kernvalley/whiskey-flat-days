@@ -9,6 +9,18 @@
       latitude: 35.755794
       longitude: -118.418143
   icon: "/img/markers/business.svg"
+- uuid: 882ff5ef-521d-4da6-9a50-eb837077e5b9
+  title: Kernville Cowork
+  url: https://kernvillecowork.com/en
+  category:
+  - other
+  location:
+    address:
+      streetAddress: 21 Sierra Drive
+    geo:
+      longitude: -118.4206114
+      latitude: 35.756003
+  icon: /img/markers/business.svg
 - uuid: ef25b44c-77c4-43bd-8678-516fd8e4b4e1
   title: Bank of America ATM
   category:
