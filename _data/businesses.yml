@@ -38,6 +38,18 @@
      longitude: -118.419232
      latitude: 35.757488
   icon: /img/markers/restaurant.svg
+- uuid: 49578c9b-ca54-458c-844b-375b2287d1ee
+  title: Ewings on the Kern
+  category: dining
+  telephone: 1-760-376-2411
+  url: https://www.ewingsonthekern.com
+  location:
+    geo:
+      latitude: 35.758029
+      longitude: -118.420556
+    address:
+      streetAddress: 125 Buena Vista Drive
+  icon: /img/markers/restaurant.svg
 - title: James Sierra Gateway
   category: groceries
   location:
@@ -63,7 +75,7 @@
       longitude: -118.425548
   icon: /img/markers/cafe.svg
 - uuid: bd20431c-1e2d-401d-8178-ad0d2fe3e71d
-  title: Cheryl's Diner
+  title: "Cheryl's Diner"
   telephone: 1-760-376-6131
   url: https://www.cherylsdiner.com
   location:
@@ -73,3 +85,20 @@
       latitude: 35.754615
       longitude: -118.424722
   icon: /img/markers/restaurant.svg
+- uuid: d70abd8e-d632-4059-be2f-b1ba79b0edee
+  title: El Rio Mexican & American Food
+  telephone: 1-760-376-3246
+  location:
+    address: 11 Kern River Drive
+    geo:
+      latitude: 35.753481
+      longitude: -118.424675
+  icon: /img/markers/restaurant.svg
+- uuid: 2bc25a06-313a-49d8-8d5f-ed08de333c05
+  title: Riverside One Stop
+  location:
+    address:
+      streetAddress: 10800 Kernville Road
+    geo:
+      latitude: 35.753332
+      longitude: -118.424990

@@ -32,8 +32,8 @@
       addressCountry: US
       postalCode: 93238
     geo:
-      longitude: -118.424799
-      latitude: 35.755498
+      latitude: 35.755721
+      longitude: -118.425114
   description: |-
     Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Red Headed Strangers</span></span>
 - uuid: b3b97450-6102-4f02-9ed9-03dab08a848c
@@ -112,11 +112,11 @@
       addressCountry: US
       postalCode: 93238
     geo:
-      longitude: -118.424799
-      latitude: 35.755498
+      latitude: 35.755721
+      longitude: -118.425114
   description: |-
     Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Backflow</span></span>
-- uuid: 17afcd60-29f1-4d3e-b40d-0f7070ce1891
+- uuid: 1ec57723-3979-4083-af56-3b04072aa367
   title: Backflow - Main Stage
   startDate: 2020-02-15 16:00
   endDate: 2020-02-15 18:00
@@ -131,8 +131,8 @@
       addressCountry: US
       postalCode: 93238
     geo:
-      longitude: -118.424799
-      latitude: 35.755498
+      latitude: 35.755721
+      longitude: -118.425114
   description: |-
     Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Backflow</span></span>
 - uuid: c1f8133b-c326-467a-9a28-6a974b8266ba
@@ -150,8 +150,8 @@
       addressCountry: US
       postalCode: 93238
     geo:
-      longitude: -118.424799
-      latitude: 35.755498
+      latitude: 35.755721
+      longitude: -118.425114
   description: |-
     Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Kern River Band</span></span>
 - uuid: 5ecd1605-ef72-4d7f-bfd5-61bf1cee67cb
@@ -169,8 +169,8 @@
       addressCountry: US
       postalCode: 93238
     geo:
-      longitude: -118.424799
-      latitude: 35.755498
+      latitude: 35.755721
+      longitude: -118.425114
   description: |-
     Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Kern River Band</span></span>
 - uuid: ea262b89-22f4-4fb5-adaf-4f8780ee474d
