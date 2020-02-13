@@ -15,8 +15,8 @@
   image: /img/raster/rodeo.jpg
   icon: /img/markers/activity.svg
   description: |-
-    <p>Dust off your Boots and Hats or, in this case, your helment and Motorcycle
-    Boots as Whiskey Flat Days bring for the first time the MC/ATV Rodeo.</p>
+    <p>Dust off your boots and hats or, in this case, your helment and motorcycle
+    boots as Whiskey Flat Days brings for the first time the MC/ATV Rodeo.</p>
 - uuid: e8df6782-d0e7-45e1-944e-d16f27ce019b
   title: Main Stage Street Dance
   startDate: 2020-02-14 17:00
@@ -41,7 +41,7 @@
   startDate: 2020-02-15 10:00
   endDate: 2020-02-15 12:00
   description: |-
-    <p>Grand Marshals: Mick Gleason Kern County 1<sup>st</sup> District Supervisior</p>
+    <p>Grand Marshal: Mick Gleason Kern County 1<sup>st</sup> District Supervisior</p>
     <p><b>Note</b>: Roads will be closed for parade</p>
   image: /img/raster/parade.jpg
   icon: /img/markers/activity.svg
@@ -192,10 +192,10 @@
   description: |-
     <h4>Cowboy and Mountain Men Encampment</h4>
     <p>On Scodie Ave. across from the Rodeo Grounds. You'll see history and gunfights.</p>
-    <p>All day there will be a Wells Fargo station and eatery, Chuck wagon cook'n and coffee,
+    <p>All day there will be a Wells Fargo station and eatery, chuck wagon cook'n and coffee,
     a horse trader and livery.</p>
     <p>There'll be horse shoe'n and horse doctor'n, the Whiskey Flats Saloon, and Justice of the Peace,
-    a Saddle maker and leather craft, a Bath house, Beautifier and Hygenist,
+    a saddle maker and leather craft, a bath house, beautifier and hygenist,
     storytellers of the Old West, mining and sawmill demonstrations and a Civil War Confederate camp!</p>
 - uuid: 1864b0a6-f4f9-48e7-9e3a-abda565c21ca
   title: Whiskey Flat Encampment
@@ -216,12 +216,12 @@
   description: |-
     <h4>Cowboy and Mountain Men Encampment</h4>
     <p>On Scodie Ave. across from the Rodeo Grounds. You'll see history and gunfights.</p>
-    <p>All day there will be a Wells Fargo station and eatery, Chuck wagon cook'n and coffee,
+    <p>All day there will be a Wells Fargo station and eatery, chuck wagon cook'n and coffee,
     a horse trader and livery.</p>
     <p>There'll be horse shoe'n and horse doctor'n, the Whiskey Flats Saloon, and Justice of the Peace,
-    a Saddle maker and leather craft, a Bath house, Beautifier and Hygenist,
+    a Saddle maker and leather craft, a bath house, beautifier and hygenist,
     storytellers of the Old West, mining and sawmill demonstrations and a Civil War Confederate camp!</p>
-    - uuid: 1864b0a6-f4f9-48e7-9e3a-abda565c21ca
+- uuid: 1864b0a6-f4f9-48e7-9e3a-abda565c21ca
   title: Whiskey Flat Encampment
   location:
     name: Whiskey Flat Encampment
@@ -240,10 +240,10 @@
   description: |-
     <h4>Cowboy and Mountain Men Encampment</h4>
     <p>On Scodie Ave. across from the Rodeo Grounds. You'll see history and gunfights.</p>
-    <p>All day there will be a Wells Fargo station and eatery, Chuck wagon cook'n and coffee,
+    <p>All day there will be a Wells Fargo station and eatery, chuck wagon cook'n and coffee,
     a horse trader and livery.</p>
     <p>There'll be horse shoe'n and horse doctor'n, the Whiskey Flats Saloon, and Justice of the Peace,
-    a Saddle maker and leather craft, a Bath house, Beautifier and Hygenist,
+    a saddle maker and leather craft, a bath house, beautifier and hygenist,
     storytellers of the Old West, mining and sawmill demonstrations and a Civil War Confederate camp!</p>
 - uuid: 9b50b186-8647-43f3-949e-a33d83f55d09
   title: Whiskey Flat Encampment Old West Church Service
@@ -264,10 +264,10 @@
   description: |-
     <h4>Cowboy and Mountain Men Encampment</h4>
     <p>On Scodie Ave. across from the Rodeo Grounds. You'll see history and gunfights.</p>
-    <p>All day there will be a Wells Fargo station and eatery, Chuck wagon cook'n and coffee,
+    <p>All day there will be a Wells Fargo station and eatery, chuck wagon cook'n and coffee,
     a horse trader and livery.</p>
     <p>There'll be horse shoe'n and horse doctor'n, the Whiskey Flats Saloon, and Justice of the Peace,
-    a Saddle maker and leather craft, a Bath house, Beautifier and Hygenist,
+    a saddle maker and leather craft, a bath house, beautifier and hygenist,
     storytellers of the Old West, mining and sawmill demonstrations and a Civil War Confederate camp!</p>
 - uuid: bde1727f-fc0f-453f-afbb-9329aa3fec32
   title: '"First Heat" Frog Jumping Contents'
@@ -446,12 +446,12 @@
   description: |-
     <h4>Cowboy and Mountain Men Encampment</h4>
     <p>On Scodie Ave. across from the Rodeo Grounds. You'll see history and gunfights.</p>
-    <p>All day there will be a Wells Fargo station and eatery, Chuck wagon cook'n and coffee,
+    <p>All day there will be a Wells Fargo station and eatery, chuck wagon cook'n and coffee,
     a horse trader and livery.</p>
     <p>There'll be horse shoe'n and horse doctor'n, the Whiskey Flats Saloon, and Justice of the Peace,
-    a Saddle maker and leather craft, a Bath house, Beautifier and Hygenist,
+    a saddle maker and leather craft, a bath house, beautifier and hygenist,
     storytellers of the Old West, mining and sawmill demonstrations and a Civil War Confederate camp!</p>
-    - uuid: 1864b0a6-f4f9-48e7-9e3a-abda565c21ca
+- uuid: 1864b0a6-f4f9-48e7-9e3a-abda565c21ca
   title: Whiskey Flat Encampment
   location:
     name: Whiskey Flat Encampment
@@ -470,8 +470,8 @@
   description: |-
     <h4>Cowboy and Mountain Men Encampment</h4>
     <p>On Scodie Ave. across from the Rodeo Grounds. You'll see history and gunfights.</p>
-    <p>All day there will be a Wells Fargo station and eatery, Chuck wagon cook'n and coffee,
+    <p>All day there will be a Wells Fargo station and eatery, chuck wagon cook'n and coffee,
     a horse trader and livery.</p>
     <p>There'll be horse shoe'n and horse doctor'n, the Whiskey Flats Saloon, and Justice of the Peace,
-    a Saddle maker and leather craft, a Bath house, Beautifier and Hygenist,
+    a saddle maker and leather craft, a bath house, beautifier and hygenist,
     storytellers of the Old West, mining and sawmill demonstrations and a Civil War Confederate camp!</p>
