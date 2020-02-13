@@ -1,6 +1,6 @@
-- label: Home
-  url: /
-  icon: home
+# - label: Home
+#   url: /
+#   icon: home
 - label: Events
   url: /events/
   icon: calendar

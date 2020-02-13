@@ -2,16 +2,16 @@ import 'https://cdn.kernvalley.us/js/std-js/deprefixer.js';
 import 'https://cdn.kernvalley.us/js/std-js/shims.js';
 import 'https://cdn.kernvalley.us/components/share-button.js';
 import 'https://cdn.kernvalley.us/components/current-year.js';
-import 'https://cdn.kernvalley.us/components/bacon-ipsum.js';
-import 'https://cdn.kernvalley.us/components/gravatar-img.js';
-import 'https://cdn.kernvalley.us/components/login-button.js';
-import 'https://cdn.kernvalley.us/components/logout-button.js';
+// import 'https://cdn.kernvalley.us/components/bacon-ipsum.js';
+// import 'https://cdn.kernvalley.us/components/gravatar-img.js';
+// import 'https://cdn.kernvalley.us/components/login-button.js';
+// import 'https://cdn.kernvalley.us/components/logout-button.js';
 import 'https://cdn.kernvalley.us/components/leaflet/map.js';
 import 'https://cdn.kernvalley.us/components/leaflet/marker.js';
 import 'https://cdn.kernvalley.us/components/leaflet/geojson.js';
 import 'https://cdn.kernvalley.us/components/not-supported.js';
-import 'https://cdn.kernvalley.us/components/network-offline.js';
-import 'https://cdn.kernvalley.us/components/network-online.js';
+// import 'https://cdn.kernvalley.us/components/network-offline.js';
+// import 'https://cdn.kernvalley.us/components/network-online.js';
 import 'https://cdn.kernvalley.us/components/ad-block.js';
 import 'https://cdn.kernvalley.us/components/weather-current.js';
 import * as handlers from './handlers.js';
@@ -57,7 +57,12 @@ function isOnGoing() {
 ready().then(async () => {
 	const now = new Date();
 	const current = isOnGoing();
+	handlers.searchDateTimeRange({from: current ? new Date() : '2020-02-14T10:00'});
 	const date = `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')}`;
+
+	$('form[name="eventSearch"]').submit(handlers.eventSearchHandler);
+	$('form[name="businessSearch"]').submit(handlers.businessCategorySearch);
+	$('toast-message > form').reset(({target}) => target.closest('toast-message').close());
 
 	$('#search-time').attr({ min: '06:00', max: '20:00' });
 	$('#search-date').attr({ value: current ? date : '2020-02-14', min: current ? date : '2020-02-14', max: '2020-02-17' });

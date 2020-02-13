@@ -1,22 +1,39 @@
 import {loaded, wait, $} from 'https://cdn.kernvalley.us/js/std-js/functions.js';
 
-export async function startDateSearch(event) {
-	let date;
-	const markers = [...document.querySelectorAll('.event-marker')];
-
-	if (event instanceof Event) {
-		event.preventDefault();
-		const data = new FormData(event.target);
-		date = new Date(`${data.get('date')}T${data.get('time')}`);
-	} else {
-		date = new Date();
+export function  searchDateTimeRange({from = new Date('2020-02-14T11:00'), hours = 2} = {}) {
+	if (! (from instanceof Date)) {
+		from = new Date(from) || new Date();
 	}
 
-	markers.forEach(marker => {
-		const start = new Date(marker.dataset.startDate);
-		const end = new Date(marker.dataset.endDate);
-		marker.hidden = date < start || date > end;
+	if (typeof hours !== 'number') {
+		hours = parseInt(hours);
+	}
+
+	if (Number.isNaN(hours)) {
+		hours = 1;
+	}
+
+	let to = new Date(from.toISOString());
+	to.setHours(to.getHours() + hours);
+
+	[...document.querySelectorAll('leaflet-marker.event-marker')].forEach(event => {
+		const start = new Date(event.dataset.startDate);
+		const end = new Date(event.dataset.endDate);
+		event.hidden = ! (end >= from && start <= to);
 	});
+
+	console.info({from, to, hours, shown: Array.from(document.querySelectorAll('leaflet-marker.event-marker:not([hidden'))});
+}
+
+export async function eventSearchHandler(event) {
+	event.preventDefault();
+	const form = event.target;
+	const toast = form.closest('toast-message');
+	const data = new FormData(form);
+	const from = new Date(`${data.get('day')}T${data.get('time')}`);
+	searchDateTimeRange({from});
+	console.info(from);
+	toast.close();
 }
 
 export async function hashChange() {
@@ -86,118 +103,24 @@ export async function hashChange() {
 	}
 }
 
-export async function searchSubmit(event) {
+export async function businessCategorySearch(event) {
 	event.preventDefault();
-	const dialog = event.target.closest('dialog');
-	const data = Object.fromEntries(new FormData(event.target).entries());
-	const term = data.term.toLowerCase();
-	const markers = [...document.querySelectorAll('.event-marker')];
+	const form = event.target;
+	const toast = form.closest('toast-message');
+	const data = new FormData(form);
+	const category = data.get('category').toLowerCase();
 
-	if (data.date && data.time) {
-		const date = new Date(`${data.date}T${data.time}`);
-
-		if (term !== '') {
-			const match = markers.find(marker => {
-				if (marker.title.toLowerCase().includes(term)) {
-					const start = new Date(marker.dataset.startDate);
-					const end = new Date(marker.dataset.endDate);
-					return date >= start && date <= end;
-				} else {
-					return false;
-				}
-			});
-
-			if (match instanceof HTMLElement) {
-				match.hidden = false;
-				match.open = true;
-			}
-		} else {
-			const match = markers.find(marker => {
-				const start = new Date(marker.dataset.startDate);
-				const end = new Date(marker.dataset.endDate);
-				return date >= start && date <= end;
-			});
-
-			if (match instanceof HTMLElement) {
-				match.hidden = false;
-				match.open = true;
-			}
-		}
-	} else if (term !== '') {
-		const match = markers.filter(el => {
-			if (el.title.toLowerCase().includes(term)) {
-				el.hidden = false;
-				return true;
-			} else {
-				return false;
-			}
+	if (typeof category === 'string' && category !== '') {
+		$('leaflet-marker.business-marker[data-category]').forEach(marker => {
+			marker.hidden = !marker.dataset.category.toLowerCase().includes(category);
 		});
-
-		if (match.length === 1) {
-			match[0].open = true;
-		}
-	}
-
-	if (data.vendors) {
-		$('.vendor-marker').unhide();
 	} else {
-		$('.vendor-marker').hide();
+		$('leaflet-marker.business-marker').unhide();
 	}
 
-	if (data.businesses) {
-		$('.business-marker').unhide();
-	} else {
-		$('.business-marker').hide();
-	}
-
-	document.querySelector('leaflet-map').scrollIntoView({block: 'start', behavior: 'smooth'});
-
-	if (dialog instanceof HTMLElement) {
-		dialog.close();
+	if (toast instanceof HTMLElement) {
+		toast.close();
 	}
 }
 
-export async function searchReset() {
-	const date = new Date();
-	const markers = [...document.querySelectorAll('.event-marker')];
-
-	markers.forEach(marker => {
-		const start = new Date(marker.dataset.startDate);
-		const end = new Date(marker.dataset.endDate);
-		marker.hidden = date < start || date > end;
-	});
-}
-
-export async function filterMarkersSubmit(event) {
-	event.preventDefault();
-	const data = new FormData(event.target);
-
-	if (data.has('date') && data.has('time')) {
-		const date = new Date(`${data.get('date')}T${data.get('time')}`);
-		const markers = [...document.querySelectorAll('.event-marker')];
-
-		markers.forEach(marker => {
-			const start = new Date(marker.dataset.startDate);
-			const end = new Date(marker.dataset.endDate);
-			marker.hidden = date < start || date > end;
-		});
-	}
-
-	if (data.has('event-marker')) {
-		$('.event-marker').unhide();
-	} else {
-		$('.event-marker').hide();
-	}
-
-	if (data.has('vendor-marker')) {
-		$('.vendor-marker').unhide();
-	} else {
-		$('.vendor-marker').hide();
-	}
-
-	if (data.has('business-marker')) {
-		$('.business-marker').unhide();
-	} else {
-		$('.business-marker').hide();
-	}
-}
+window.businessCategorySearch = businessCategorySearch;

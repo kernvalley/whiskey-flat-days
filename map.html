@@ -20,54 +20,36 @@ tags:
 {% include header.html %}
 {% include nav.html %}
 <main id="main" class="contain-content">
-	<button type="button" class="btn btn-primary" data-show-modal="#search-form" hidden="">
-		{% include icon.html icon="search" %}
-		<span>Search</span>
-	</button>
-	<dialog id="search-form" class="animation-speed-normal animation-ease-in-out fadeIn">
-		<form name="search">
-			<datalist id="events-list">
-				{% for marker in site.data.events %}
-					<option>{{ marker.title }}</option>
-				{% endfor %}
-			</datalist>
-			<fieldset id="search-startDate" class="no-border">
-				<legend>Search by Date &amp; Time</legend>
-				<input type="date" id="search-date" class="pretty-input" name="date" placeholder="yyyy-mm-dd" />
-				<input type="time" id="search-time" class="pretty-input" name="time" step="900" placeholder="hh:mm" />
-			</fieldset>
-			<details>
-				<summary>Search by Event Name</summary>
-				<fiedlset class="no-border">
-					<legend hidden=""><label for="search-term">Event Name</label></legend>
-					<input type="text" name="term" id="search-term" class="pretty-input" list="events-list" autocomplete="off" placeholder="Search for Event" />
-				</fieldset>
-			</details>
-			<details>
-				<summary>Show Markers</summary>
-				<fieldset id="search-filters" class="no-border">
-					<legend hidden="">Filter By Type</legend>
-					<label class="inline-block">
-						<span>Vendors</span>
-						<input type="checkbox" name="vendors" checked="" />
-					</label>
-					<label class="inline-block">
-						<span>Other</span>
-						<input type="checkbox" name="businesses" />
-					</label>
-				</fieldset>
-			</details>
-			<button type="submit" class="btn btn-accept">
-				{% include icon.html icon="search" %}
-				<span class="mobile-hidden">Search</span>
-			</button>
-			<button type="reset" class="btn btn-reject" data-close="#search-form">
-				{% include icon.html icon="edit-clear" %}
-				<span class="mobile-hidden">Clear</span>
-			</button>
-		</form>
-	</dialog>
-	<leaflet-map center="35.755105,-118.424974" zoom="18" class="relative contain-content z-1" crossorigin="annonymous" detectretina="detectretina" zoomcontrol="" itemtype="https://schema.org/Event" itemscope="">
+	<not-supported class="card shadow block">
+		<p>Your browser does not meet the minal requirements to display the events map.</p>
+		<p>Please install a better browser that supports modern websites.</p>
+		<div class="flex row nowrap clearfix browser-installs">
+			<a href="https://www.mozilla.org/en-US/firefox/new/" class="browser-install center inline-block float-left card" rel="noopener external">
+				<img src="https://cdn.kernvalley.us/img/logos/firefox.svg" decoding="async" loading="lazy" alt="Firefox" height="128" width="128" />
+				<br />
+				<span>Mozilla Firefox</span>
+				{% include icon.html icon="link-external" %}
+			</a>
+			<a href="https://www.google.com/chrome/" class="browser-install center inline-block float-left card" rel="noopener external">
+				<img src="https://cdn.kernvalley.us/img/logos/chrome.svg" decoding="async" loading="lazy" alt="Firefox" height="128" width="128" />
+				<br />
+				<span>Google Chrome</span>
+				{% include icon.html icon="link-external" %}
+			</a>
+		</div>
+		<br />
+	</not-supported>
+	<div class="flex row">
+		<button type="button" class="btn btn-primary" data-show="#event-search-toast">
+			{% include icon.html icon="clock" %}
+			<span class="mobile-hidden">Search Events by Time</span>
+		</button>
+		<button type="button" class="btn btn-primary" data-show="#business-search-toast">
+			{% include icon.html icon="organization" %}
+			<span class="mobile-hidden">Search Businesses by Category</span>
+		</span>
+	</div>
+	<leaflet-map center="35.75597653686914,-118.42221021652223" zoom="17" class="relative contain-content z-1" maxzoom="18" minzoom="15" crossorigin="annonymous" detectretina="detectretina" zoomcontrol="" itemtype="https://schema.org/Event" itemscope="">
 		<meta itemprop="name" content="Whiskey Flat Days" />
 		<meta itemprop="url" content="https://whiskeyflatdays.com" />
 		<meta itemprop="description" content="63rd Annual Whiskey Flat Days | President's Day Weekend in Kernville, CA" />
@@ -122,7 +104,7 @@ tags:
 					{% endif %}
 				</div>
 			</leaflet-marker>
-		{% endfor %}{% for marker in site.data.vendors %}
+		{% endfor %}{% for marker in site.data.vendors %}{% if marker.title %}
 			<leaflet-marker id="{{ marker.uuid }}" class="vendor-marker" data-space="{{ marker.space }}" data-title="{{ marker.title | default: marker.space }}" data-category="{{ marker.category | join: ' ' }}" longitude="{{ marker.longitude }}" latitude="{{ marker.latitude }}" slot="markers" title="{{ marker.title }}"{% if marker.category %} data-category={{ marker.category | join: ' ' }}{% endif %} hidden="">
 				<img src="{{ marker.icon | default: '/img/adwaita-icons/actions/mark-location.svg' }}" slot="icon" width="32" height="32" />
 				<div slot="popup">
@@ -151,7 +133,7 @@ tags:
 					{% endif %}
 				</div>
 			</leaflet-marker>
-		{% endfor %}{% for marker in site.data.businesses %}
+		{% endif %}{% endfor %}{% for marker in site.data.businesses %}
 			<leaflet-marker itemtype="{{ marker['@itemtype'] | default: 'https://schema.org/LocalBusiness' }}" id="{{ marker.uuid }}" class="business-marker" longitude="{{ marker.location.geo.longitude }}" latitude="{{ marker.location.geo.latitude }}" slot="markers" title="{{ marker.title }}"{% if marker.category %} data-category="{{ marker.category | join: ' ' }}"{% endif %} itemscope="">
 				<img src="{{ marker.icon | default: '/img/adwaita-icons/actions/mark-location.svg' }}" slot="icon" width="32" height="32" />
 				<div slot="popup">
@@ -214,7 +196,7 @@ tags:
 			</leaflet-marker>
 		{% endfor %}
 		{% for marker in site.data.events %}
-			<leaflet-marker id="{{ marker.uuid }}" class="event-marker" longitude="{{ marker.location.geo.longitude }}" latitude="{{ marker.location.geo.latitude }}" slot="markers" title="{{ marker.title }}" data-end-date="{{ marker.endDate | date_to_xmlschema }}" data-start-date="{{ marker.startDate | date_to_xmlschema }}"{% if marker.category %} data-category={{ marker.category }}{% endif %}>
+			<leaflet-marker id="{{ marker.uuid }}" class="event-marker" longitude="{{ marker.location.geo.longitude }}" latitude="{{ marker.location.geo.latitude }}" slot="markers" title="{{ marker.title }}" data-end-date="{{ marker.endDate | date_to_xmlschema }}" data-start-date="{{ marker.startDate | date_to_xmlschema }}"{% if marker.category %} data-category={{ marker.category }}{% endif %} hidden="">
 				<img src="{{ marker.icon | default: '/img/adwaita-icons/actions/events.svg' }}" slot="icon" width="32" height="32" />
 				<div slot="popup" itemprop="subEvent" itemtype="https://schema.org/Event" itemscope="">
 					<meta itemprop="url" content="{{ site.url }}/map/#{{ marker.uuid }}" />
@@ -299,5 +281,93 @@ tags:
 		</ad-block>
 	{% endfor %}
 </aside>
+<toast-message id="event-search-toast" backdrop="">
+	<form name="eventSearch" slot="content">
+		<fieldset class="no-border">
+			<legend>Search Events by Date &amp; Time</legend>
+			<label for="search-date">
+				{% include icon.html icon="calendar" %}
+				<span class="mobile-hidden">Day</span>
+			</label>
+			<select name="day" id="search-date" class="background-inherit color-inherit no-border" required="">
+				<option value="2020-02-14">Friday</option>
+				<option value="2020-02-15">Saturday</option>
+				<option value="2020-02-16">Sunday</option>
+				<option value="2020-02-17">Monday</option>
+			</select>
+			<label for="search-time">
+				{% include icon.html icon="clock" %}
+				<span class="mobile-hidden">Time</span>
+			</label>
+			<input type="time" name="time" id="search-time" class="background-inherit color-inherit no-border" min="08:00" max="20:00" required="" />
+		</fieldset>
+		<div class="btns flex row nowrap">
+			<button type="submit" class="btn btn-accept btn-wide">
+				{% include icon.html icon="search" %}
+				<span class="mobile-hidden">Search</span>
+			</button>
+			<button type="reset" class="btn btn-reject btn-wide">
+				{% include icon.html icon="x" %}
+				<span class="mobile-hidden">Cancel</span>
+			</button>
+		</div>
+	</form>
+</toast-message>
+<toast-message id="business-search-toast" backdrop="">
+	<form name="businessSearch" slot="content">
+		<fieldset class="no-border">
+			<datalist id="business-categories">
+				<option value="Dining" />
+				<option value="Restaurant" />
+				<option value="Gas" />
+				<option value="Bar" />
+				<option value="Groceries" />
+				<option value="Other" />
+				<option value="Cafe" />
+				<option value="ATM" />
+			</datalist>
+			<legend>Search Businesses</legend>
+			<label for="search-business-category">
+				{% include icon.html icon="tag" %}
+				<span class="mobile-hidden">Category</span>
+			</label>
+			<input type="text" name="category" list="business-categories" placeholder="Category" id="search-business-category" class="background-inherit color-inherit no-border" autocomplete="off" required="" />
+		</fieldset>
+		<div class="btns flex row nowrap">
+			<button type="submit" class="btn btn-accept btn-wide">
+				{% include icon.html icon="search" %}
+				<span class="mobile-hidden">Search</span>
+			</button>
+			<button type="reset" class="btn btn-reject btn-wide">
+				{% include icon.html icon="x" %}
+				<span class="mobile-hidden">Cancel</span>
+			</button>
+		</div>
+	</form>
+</toast-message>
+<toast-message id="vendor-search-toast" backdrop="">
+	<form name="vendorSearch" slot="content">
+		<fieldset class="no-border">
+			<datalist id="vendor-categories">
+			</datalist>
+			<legend>Search Vendors</legend>
+			<label for="search-vendor-category">
+				{% include icon.html icon="tag" %}
+				<span class="mobile-hidden">Category</span>
+			</label>
+			<input type="text" name="category" list="vendor-categories" placeholder="Category" id="search-vendor-category" class="background-inherit color-inherit no-border" autocomplete="off" required="" />
+		</fieldset>
+		<div class="btns flex row nowrap">
+			<button type="submit" class="btn btn-accept btn-wide">
+				{% include icon.html icon="search" %}
+				<span class="mobile-hidden">Search</span>
+			</button>
+			<button type="reset" class="btn btn-reject btn-wide">
+				{% include icon.html icon="x" %}
+				<span class="mobile-hidden">Cancel</span>
+			</button>
+		</div>
+	</form>
+</toast-message>
 {% include footer.html %}
 {% include share-button.html %}
