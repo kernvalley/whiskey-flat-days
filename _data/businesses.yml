@@ -2,7 +2,8 @@
   title: Kernville Chamber of Commerce
   url: https://www.gotokernville.com/
   telephone: 1-760-376-2629
-  category: other
+  category:
+  - other
   location:
     geo:
       latitude: 35.755794
@@ -10,7 +11,9 @@
   icon: "/img/markers/business.svg"
 - uuid: ef25b44c-77c4-43bd-8678-516fd8e4b4e1
   title: Bank of America ATM
-  category: banking
+  category:
+  - banking
+  - atm
   location:
     geo:
       latitude: 35.755138
@@ -18,7 +21,8 @@
   icon: /img/markers/atm.svg
 - uuid: ee8d2e72-4370-4f3c-97ba-c0af3d29234b
   title: Kernville Saloon
-  category: bar
+  category:
+  - bar
   telephone: 1-760-376-2500
   location:
     address:
@@ -29,7 +33,10 @@
   icon: /img/markers/bar.svg
 - uuid: 102477d0-8539-4a8a-b9c7-3b9e5c2bdf51
   title: Kern River Brewing Company
-  category: dining
+  category:
+  - restaurant
+  - dining
+  - pub
   url: https://kernriverbrewing.com/
   telephone: 1-760-376-2337
   location:
@@ -41,7 +48,9 @@
   icon: /img/markers/restaurant.svg
 - uuid: 49578c9b-ca54-458c-844b-375b2287d1ee
   title: Ewings on the Kern
-  category: dining
+  category:
+  - restaurant
+  - dining
   telephone: 1-760-376-2411
   url: https://www.ewingsonthekern.com
   location:
@@ -52,7 +61,9 @@
       streetAddress: 125 Buena Vista Drive
   icon: /img/markers/restaurant.svg
 - title: James Sierra Gateway
-  category: groceries
+  category:
+  - groceries
+  - gas
   location:
     geo:
       latitude: 35.758063
@@ -60,7 +71,9 @@
   icon: /img/markers/store.svg
 - uuid: 6f8ff7be-e425-4dc2-95eb-2cce1a2472f6
   title: Regional Transit Stop
-  category: other
+  category:
+  - transportation
+  - other
   location:
     geo:
       latitude: 35.753937
@@ -68,6 +81,9 @@
   icon: /img/markers/bus.svg
 - uuid: a6f05819-1b6f-402a-85f9-cd05d7f940d7
   title: Big Blue Bear
+  category:
+  - coffee
+  - wine
   location:
     address:
       streetAddress: 101 Piute Drive
@@ -77,6 +93,9 @@
   icon: /img/markers/cafe.svg
 - uuid: bd20431c-1e2d-401d-8178-ad0d2fe3e71d
   title: "Cheryl's Diner"
+  category:
+  - dining
+  - restaurant
   telephone: 1-760-376-6131
   url: https://www.cherylsdiner.com
   location:
@@ -88,6 +107,9 @@
   icon: /img/markers/restaurant.svg
 - uuid: d70abd8e-d632-4059-be2f-b1ba79b0edee
   title: El Rio Mexican & American Food
+  category:
+  - dining
+  - restaurant
   telephone: 1-760-376-3246
   location:
     address: 11 Kern River Drive
@@ -97,14 +119,21 @@
   icon: /img/markers/restaurant.svg
 - uuid: 2bc25a06-313a-49d8-8d5f-ed08de333c05
   title: Riverside One Stop
+  category:
+  - gas
   location:
     address:
       streetAddress: 10800 Kernville Road
     geo:
       latitude: 35.753332
-      longitude: -118.424990
+      longitude: -118.42499
+  icon: /img/markers/gas.svg
 - uuid: 8a379678-811d-4590-92a1-0ca824b62751
   title: Pizza Barn
+  category:
+  - dining
+  - restaurant
+  - pizza
   url: https://ordernow.menudrive.com/mobile/pizzabarn
   telephone: 1-760-376-1856
   location:
@@ -116,6 +145,10 @@
   icon: /img/markers/restaurant.svg
 - uuid: 4d866db2-c506-444b-aa3f-87b3dd86a204
   title: Starlite Lounge
+  category:
+  - dining
+  - restaurant
+  - wine
   url: http://starliteloungewinebar.com
   telephone: 1-760-376-1895
   location:
@@ -127,6 +160,10 @@
   icon: /img/markers/restaurant.svg
 - uuid: 4d866db2-c506-444b-aa3f-87b3dd86a204
   title: Fremont Deli
+  category:
+  - dining
+  - deli
+  - sandwiches
   telephone: 1-760-614-0869
   url: https://www.fremontdeli.com
   location:
@@ -136,3 +173,46 @@
       latitude: 35.755462
       longitude: -118.421127
   icon: /img/markers/restaurant.svg
+- uuid: 94109964-6ee3-4ace-804d-46ba0feeb748
+  title: "Primo's Liquor & Deli"
+  category:
+  - deli
+  - gas
+  location:
+    address:
+      streetAddress: 13435 Sierra Way
+    geo:
+      latitude: 35.758465
+      longitude: -118.419904
+  icon: /img/markers/gas.svg
+- uuid: d0dcb588-b713-45c3-a7bd-69988edca915
+  title: "That's Italian"
+  telephone: 1-760-376-6020
+  location:
+    address:
+      streetAddress: 9 Big Blue Road
+    geo:
+      latitude: 35.754860
+      longitude: -118.425623
+  icon: /img/markers/restaurant.svg
+- uuid: 27d94a27-4d43-4112-90cd-0e0bee75008d
+  title: Kern County Fire Station 76
+  telephone: 1-760-376-2219
+  category:
+  - fire
+  - emergency
+  location:
+    geo:
+      latitude: 35.754342
+      longitude: -118.424868
+- uuid: 60c24087-e0a1-45a9-b437-2f4aa6779bf1
+  title: Liberty Ambulance
+  telephone: 1-760-376-2271
+  category:
+  - ambulance
+  - emergency
+  location:
+    geo:
+      latitude: 35.755433
+      longitude: -118.420280
+  icon: /img/markers/hospital.svg
