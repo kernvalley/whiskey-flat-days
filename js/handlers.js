@@ -52,6 +52,7 @@ export async function hashChange() {
 					const geojson = map.querySelector(`leaflet-geojson[marker="${marker.id}"]`);
 					await Promise.all([marker.ready, map.ready, loaded()]);
 					await wait(100);
+					marker.hidden = false;
 					marker.open = true;
 					if (geojson instanceof HTMLElement) {
 						geojson.hidden = false;

@@ -57,7 +57,9 @@ function isOnGoing() {
 ready().then(async () => {
 	const now = new Date();
 	const current = isOnGoing();
-	handlers.searchDateTimeRange({from: current ? new Date() : '2020-02-14T10:00'});
+	if (location.hash === '') {
+		handlers.searchDateTimeRange({from: current ? new Date() : '2020-02-14T10:00'});
+	}
 	const date = `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')}`;
 
 	$('form[name="eventSearch"]').submit(handlers.eventSearchHandler);
