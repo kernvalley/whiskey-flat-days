@@ -51,9 +51,9 @@
       longitude: -118.423604
     address:
       addressLocality: Kernville
-  geojson:
-    src: /paths/parade.geojson
-    color: "#54EA38"
+  # geojson:
+  #   src: /paths/parade.geojson
+  #   color: "#54EA38"
 - uuid: 9027fbbc-9e1c-4f05-a92a-10ef29cbc4dc
   title: Wild West Daze Rodeo
   location:
