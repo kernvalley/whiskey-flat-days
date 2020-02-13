@@ -102,3 +102,36 @@
     geo:
       latitude: 35.753332
       longitude: -118.424990
+- uuid: 8a379678-811d-4590-92a1-0ca824b62751
+  title: Pizza Barn
+  url: https://ordernow.menudrive.com/mobile/pizzabarn
+  telephone: 1-760-376-1856
+  location:
+    address:
+      streetAddress: 11401 Kernville Road
+    geo:
+      latitude: 35.755638
+      longitude: -118.418979
+  icon: /img/markers/restaurant.svg
+- uuid: 4d866db2-c506-444b-aa3f-87b3dd86a204
+  title: Starlite Lounge
+  url: http://starliteloungewinebar.com
+  telephone: 1-760-376-1895
+  location:
+    address:
+      streetAddress: 13423 Sierra Way
+    geo:
+      latitude: 35.757870
+      longitude: -118.419496
+  icon: /img/markers/restaurant.svg
+- uuid: 4d866db2-c506-444b-aa3f-87b3dd86a204
+  title: Fremont Deli
+  telephone: 1-760-614-0869
+  url: https://www.fremontdeli.com
+  location:
+    address:
+      streetAddress: 11301 Kernville Road
+    geo:
+      latitude: 35.755462
+      longitude: -118.421127
+  icon: /img/markers/restaurant.svg
