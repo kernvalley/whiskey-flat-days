@@ -67,7 +67,7 @@ tags:
 			</button>
 		</form>
 	</dialog>
-	<leaflet-map center="35.755105,-118.424974" zoom="18" class="relative contain-content z-1" crossorigin="annonymous" detectretina="detectretina" itemtype="https://schema.org/Event" itemscope="">
+	<leaflet-map center="35.755105,-118.424974" zoom="18" class="relative contain-content z-1" crossorigin="annonymous" detectretina="detectretina" zoomcontrol="" itemtype="https://schema.org/Event" itemscope="">
 		<meta itemprop="name" content="Whiskey Flat Days" />
 		<meta itemprop="url" content="https://whiskeyflatdays.com" />
 		<meta itemprop="description" content="63rd Annual Whiskey Flat Days | President's Day Weekend in Kernville, CA" />
@@ -123,10 +123,11 @@ tags:
 				</div>
 			</leaflet-marker>
 		{% endfor %}{% for marker in site.data.vendors %}
-			<leaflet-marker id="{{ marker.uuid }}" class="vendor-marker" longitude="{{ marker.location.longitude }}" latitude="{{ marker.location.latitude }}" slot="markers" title="{{ marker.title }}"{% if marker.category %} data-category={{ marker.category | join: ' ' }}{% endif %}>
+			<leaflet-marker id="{{ marker.uuid }}" class="vendor-marker" data-space="{{ marker.space }}" data-title="{{ marker.title | default: marker.space }}" data-category="{{ marker.category | join: ' ' }}" longitude="{{ marker.longitude }}" latitude="{{ marker.latitude }}" slot="markers" title="{{ marker.title }}"{% if marker.category %} data-category={{ marker.category | join: ' ' }}{% endif %} hidden="">
 				<img src="{{ marker.icon | default: '/img/adwaita-icons/actions/mark-location.svg' }}" slot="icon" width="32" height="32" />
 				<div slot="popup">
-					<p>{{ marker.popup | default: marker.title }}</p>
+					<h4>{{ marker.title | default: marker.space }}</h4>
+					{% if marker.description %}<div>{{ marker.description }}</div>{% endif %}
 					{% if marker.location.url %}
 						<a href="{{ marker.location.url }}" class="inline-block btn btn-primary" rel="noopener external" role="button">
 							{% include icon.html icon="map" height="16" width="16" %}
@@ -134,7 +135,7 @@ tags:
 						</a>
 					{% else %}
 						<!-- geo:35.760197,-118.426793;crs=wgs84;u=0 -->
-						<a href="https://www.google.com/maps/?q={{ marker.location.latitude }},{{ marker.location.longitude }}" class="inline-block btn btn-primary" rel="noopener external" role="button">
+						<a href="https://www.google.com/maps/?q={{ marker.latitude }},{{ marker.longitude }}" class="inline-block btn btn-primary" rel="noopener external" role="button">
 							{% include icon.html icon="map" height="16" width="16" %}
 							<span>View in Map App</span>
 						</a>

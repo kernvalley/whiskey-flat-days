@@ -9,6 +9,18 @@
       latitude: 35.755794
       longitude: -118.418143
   icon: "/img/markers/business.svg"
+- uuid: 882ff5ef-521d-4da6-9a50-eb837077e5b9
+  title: Kernville Cowork
+  url: https://kernvillecowork.com/en
+  category:
+  - other
+  location:
+    address:
+      streetAddress: 21 Sierra Drive
+    geo:
+      longitude: -118.4206114
+      latitude: 35.756003
+  icon: /img/markers/business.svg
 - uuid: ef25b44c-77c4-43bd-8678-516fd8e4b4e1
   title: Bank of America ATM
   category:
@@ -216,3 +228,27 @@
       latitude: 35.755433
       longitude: -118.420280
   icon: /img/markers/hospital.svg
+- uuid: 730a9491-a8bb-4ffb-9232-ed641bfb8afd
+  title: The Hut
+  category:
+  - bar
+  telephone: 1-760-376-2314
+  location:
+    address:
+      streetAddress: 11320 Kernville Road
+    geo:
+      latitude: 35.755051
+      longitude: -118.420283
+  icon: /img/markers/bar.svg
+- uuid: daff7998-3bb4-468c-8a36-2bf4a0763564
+  title: "Sportsman's Inn"
+  category:
+  - bar
+  telephone: 1-760-376-2556
+  location:
+    address:
+      streetAddress: 11123 Kernville Road
+    geo:
+      latitude: 35.754730
+      longitude: -118.425440
+  icon: /img/markers/bar.svg
