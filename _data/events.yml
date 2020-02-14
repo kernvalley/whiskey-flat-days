@@ -88,7 +88,7 @@
     availability: PreSale
     price: 7
   - name: Child (0-6)
-    price: Free
+    price: 0
     availability: InStoreOnly
   image: /img/raster/rodeo.jpg
   icon: /img/markers/activity.svg
@@ -376,7 +376,7 @@
     availability: PreSale
     price: 7
   - name: Child (0-6)
-    price: Free
+    price: 0
     availability: InStoreOnly
   image: /img/raster/rodeo.jpg
   icon: /img/markers/activity.svg
