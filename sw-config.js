@@ -124,6 +124,7 @@ const config = {
 		'/img/raster/rodeo.jpg',
 		'/img/raster/parade.jpg',
 		'/img/raster/encampment.jpg',
+		'/img/raster/coach-320.jpg',
 
 		/* Social Icons for Web Share API shim */
 		'https://cdn.kernvalley.us/img/octicons/mail.svg',

@@ -92,6 +92,20 @@ button[is="share-button"] {
 	font-size: 1.5rem;
 }
 
+.floating-image {
+	border-radius: 4px;
+}
+
+.floating-image.float-left {
+	margin-right: 1em;
+}
+
+@media (max-width: 800px) {
+	.mobile-clearfix {
+		clear: both;
+	}
+}
+
 #search-btn {
 	bottom: 1rem;
 	left: 1rem;
