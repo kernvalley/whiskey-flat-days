@@ -82,16 +82,6 @@
       latitude: 35.758063
       longitude: -118.418771
   icon: /img/markers/store.svg
-- uuid: 6f8ff7be-e425-4dc2-95eb-2cce1a2472f6
-  title: Regional Transit Stop
-  category:
-  - transportation
-  - other
-  location:
-    geo:
-      latitude: 35.753937
-      longitude: -118.425665
-  icon: /img/markers/bus.svg
 - uuid: a6f05819-1b6f-402a-85f9-cd05d7f940d7
   title: Big Blue Bear
   category:

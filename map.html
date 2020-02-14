@@ -81,6 +81,22 @@ tags:
 					<h4>{{ marker.popup | default: marker.title }}</h4>
 					{% if marker.description %}<div>{{ marker.description }}</div>{% endif %}
 					{% if marker.image %}<img src="{{ marker.image.url }}" alt="{{ marker.image.description }}" decoding="async" width="{{ marker.image.width }}" height="{{ marker.image.height }}" loading="lazy" />{% endif %}
+					{% if marker.telephone %}
+						<div>
+							<a href="tel:+{{ marker.telephone }}">
+								{% include icon.html icon="call-start"  height="16" width="16" %}
+								<span itemprop="telephone">{{ marker.telephone }}</span>
+							</a>
+						</div>
+					{% endif %}
+					{% if marker.url %}
+						<div>
+							<a href="{{ marker.url }}" rel="noopener external">
+								{% include icon.html icon="globe"  height="16" width="16" %}
+								<span itemprop="url">{{ marker.url }}</span>
+							</a>
+						</div>
+					{% endif %}
 					{% if marker.location.url %}
 						<a href="{{ marker.location.url }}" class="inline-block btn btn-primary" rel="noopener external" role="button">
 							{% include icon.html icon="map" height="16" width="16" %}

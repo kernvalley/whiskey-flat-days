@@ -43,3 +43,41 @@
       latitude: 35.75586
       longitude: -118.4254629
   icon: /img/markers/outhouse.svg
+- uuid: f94a7c6a-afc8-4e68-acb0-4ea93d910c97
+  title: Outhouses
+  location:
+    geo:
+      latitude: 35.7546709
+      longitude: -118.4235427
+  icon: /img/markers/outhouse.svg
+- uuid: d1fd3f48-9526-4e55-b53d-3027fdb02b1c
+  title: Outhouses
+  location:
+    geo:
+      latitude: 35.7615506
+      longitude: -118.4251894
+  icon: /img/markers/outhouse.svg
+- uuid: 6f8ff7be-e425-4dc2-95eb-2cce1a2472f6
+  title: Regional Transit Stop
+  telephone: 1-800-323-2396
+  url: "https://kerntransit.org/routes-and-schedules/220-lake-isabella-kernville/"
+  category:
+  - transportation
+  - other
+  location:
+    geo:
+      latitude: 35.753937
+      longitude: -118.425665
+  icon: /img/markers/bus.svg
+- uuid: a75e6417-9c50-470a-ad14-2315213aafdc
+  title: Regional Transit Stop
+  telephone: 1-800-323-2396
+  url: "https://kerntransit.org/routes-and-schedules/220-lake-isabella-kernville/"
+  category:
+  - transportation
+  - other
+  location:
+    geo:
+      latitude: 35.762797
+      longitude:  -118.4267104
+  icon: /img/markers/bus.svg
