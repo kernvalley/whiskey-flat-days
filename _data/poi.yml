@@ -22,3 +22,24 @@
       latitude: 35.755220
       longitude: -118.425045
   icon: /img/markers/shopping.svg
+- uuid: f94a7c6a-afc8-4e68-acb0-4ea93d910c97
+  title: Outhouses
+  location:
+    geo:
+      latitude: 35.7546709
+      longitude: -118.4235427
+  icon: /img/markers/outhouse.svg
+- uuid: e98386b5-97e6-4144-b467-b2c1c6c4eb15
+  title: Outhouses
+  location:
+    geo:
+      latitude: 35.7531129
+      longitude: -118.4249145
+  icon: /img/markers/outhouse.svg
+- uuid: fa5c0e6b-09fa-4ccc-9928-2e66b2df2b9d
+  title: Outhouses
+  location:
+    geo:
+      latitude: 35.75586
+      longitude: -118.4254629
+  icon: /img/markers/outhouse.svg

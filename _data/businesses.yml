@@ -72,7 +72,8 @@
     address:
       streetAddress: 125 Buena Vista Drive
   icon: /img/markers/restaurant.svg
-- title: James Sierra Gateway
+- uuid: f7e94bcf-4d3c-4e6b-a6d8-bc5a569f282f
+  title: James Sierra Gateway
   category:
   - groceries
   - gas
@@ -154,7 +155,7 @@
     geo:
       latitude: 35.755638
       longitude: -118.418979
-  icon: /img/markers/restaurant.svg
+  icon: /img/markers/pizza.svg
 - uuid: 4d866db2-c506-444b-aa3f-87b3dd86a204
   title: Starlite Lounge
   category:
@@ -252,3 +253,30 @@
       latitude: 35.754730
       longitude: -118.425440
   icon: /img/markers/bar.svg
+- uuid: 697f828d-a43f-4123-8b4e-10975740f17f
+  title: Alta One Federal Credit Union
+  category:
+  - bank
+  - atm
+  telephone: 1-760-376-2251
+  url: https://www.altaone.com
+  location:
+    address:
+      streetAddress: 44 Big Blue Road
+    geo:
+      latitude: 35.754700
+      longitude: -118.426382
+  icon: /img/markers/atm.svg
+- uuid: db35e5f0-7e50-4482-a137-64d240198cfc
+  title: Designs By Erin
+  category:
+  - florist
+  telephone: 1-760-376-1409
+  url: https://designsbyerin.org
+  location:
+    address:
+      streetAddress: 11006 Kernville Road
+    geo:
+      latitude: 35.754042
+      longitude: -118.425104
+  icon: /img/markers/florist.svg

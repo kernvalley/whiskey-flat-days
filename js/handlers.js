@@ -21,8 +21,6 @@ export function  searchDateTimeRange({from = new Date('2020-02-14T11:00'), hours
 		const end = new Date(event.dataset.endDate);
 		event.hidden = ! (end >= from && start <= to);
 	});
-
-	console.info({from, to, hours, shown: Array.from(document.querySelectorAll('leaflet-marker.event-marker:not([hidden'))});
 }
 
 export async function eventSearchHandler(event) {
@@ -32,7 +30,12 @@ export async function eventSearchHandler(event) {
 	const data = new FormData(form);
 	const from = new Date(`${data.get('day')}T${data.get('time')}`);
 	searchDateTimeRange({from});
-	console.info(from);
+	const open = document.querySelectorAll('leaflet-marker.event-marker:not([hidden])');
+
+	if (open.length === 1) {
+		open.item(0).open = true;
+	}
+
 	toast.close();
 }
 
