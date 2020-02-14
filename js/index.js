@@ -48,10 +48,10 @@ function filterEventNamesDatalist() {
 }
 
 function isOnGoing() {
-	const start = new Date('2020-02-14T08:00-08');
-	const end = new Date('2020-02-17T16:00-08');
+	const start = new Date('2020-02-14T08:00');
+	const end = new Date('2020-02-17T16:00');
 	const now = new Date();
-	return start > now && end < now;
+	return (now > start && now < end);
 }
 
 ready().then(async () => {
