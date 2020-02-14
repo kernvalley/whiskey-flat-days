@@ -253,3 +253,17 @@
       latitude: 35.754730
       longitude: -118.425440
   icon: /img/markers/bar.svg
+- uuid: dfgdfg
+  title: Alta One Federal Credit Union
+  category:
+  - bank
+  - atm
+  telephone: 1-760-376-2251
+  url: https://www.altaone.com
+  location:
+    address:
+      streetAddress: 44 Big Blue Road
+    geo:
+      latitude: 35.754700
+      longitude: -118.426382
+  icon: /img/markers/atm.svg
