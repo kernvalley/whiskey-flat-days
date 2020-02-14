@@ -39,7 +39,7 @@ tags:
 		</div>
 		<br />
 	</not-supported>
-	<div class="flex row">
+	<div class="flex row" hidden="">
 		<button type="button" class="btn btn-primary" data-show="#event-search-toast">
 			{% include icon.html icon="clock" %}
 			<span class="mobile-hidden">Search Events by Time</span>
@@ -285,21 +285,21 @@ tags:
 	<form name="eventSearch" slot="content">
 		<fieldset class="no-border">
 			<legend>Search Events by Date &amp; Time</legend>
-			<label for="search-date">
+			<label class="block card input-group" for="search-date">
 				{% include icon.html icon="calendar" %}
 				<span class="mobile-hidden">Day</span>
+				<select name="day" id="search-date" class="pretty-input" required="">
+					<option value="2020-02-14">Friday</option>
+					<option value="2020-02-15">Saturday</option>
+					<option value="2020-02-16">Sunday</option>
+					<option value="2020-02-17">Monday</option>
+				</select>
 			</label>
-			<select name="day" id="search-date" class="background-inherit color-inherit no-border" required="">
-				<option value="2020-02-14">Friday</option>
-				<option value="2020-02-15">Saturday</option>
-				<option value="2020-02-16">Sunday</option>
-				<option value="2020-02-17">Monday</option>
-			</select>
-			<label for="search-time">
+			<label class="card input-group block" for="search-time">
 				{% include icon.html icon="clock" %}
 				<span class="mobile-hidden">Time</span>
+				<input type="time" name="time" id="search-time" class="pretty-input" min="08:00" max="20:00" placeholder="hh:mm" required="" />
 			</label>
-			<input type="time" name="time" id="search-time" class="background-inherit color-inherit no-border" min="08:00" max="20:00" required="" />
 		</fieldset>
 		<div class="btns flex row nowrap">
 			<button type="submit" class="btn btn-accept btn-wide">
@@ -371,3 +371,6 @@ tags:
 </toast-message>
 {% include footer.html %}
 {% include share-button.html %}
+<button type="button" id="search-btn" class="btn btn-primary fixed bottom left z-top shadow round" data-show="#event-search-toast" title="Search Events">
+	{% include icon.html icon="search" %}
+</button>
