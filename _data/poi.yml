@@ -12,8 +12,8 @@
     <p>Come and enjoy great adult and children's rides and games.</p>
   location:
     geo:
-      longitude: -118.424493
-      latitude: 35.753448
+      latitude:  35.754512
+      longitude: -118.423701
 - uuid: 894298ad-e120-49d6-93b3-17b3b019dbb5
   title: Golden Gulch
   location:
@@ -80,16 +80,4 @@
     geo:
       latitude: 35.762797
       longitude:  -118.4267104
-  icon: /img/markers/bus.svg
-- uuid: b22b7727-fb19-422a-a291-b1484ca03104
-  title: Regional Transit Stop
-  telephone: 1-800-323-2396
-  url: "https://kerntransit.org/routes-and-schedules/220-lake-isabella-kernville/"
-  category:
-  - transportation
-  - other
-  location:
-    geo:
-      latitude: 35.755257
-      longitude: -118.424621
   icon: /img/markers/bus.svg
