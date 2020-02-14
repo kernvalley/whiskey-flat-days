@@ -81,18 +81,6 @@ tags:
 					<h4>{{ marker.popup | default: marker.title }}</h4>
 					{% if marker.description %}<div>{{ marker.description }}</div>{% endif %}
 					{% if marker.image %}<img src="{{ marker.image.url }}" alt="{{ marker.image.description }}" decoding="async" width="{{ marker.image.width }}" height="{{ marker.image.height }}" loading="lazy" />{% endif %}
-					{% if marker.location.url %}
-						<a href="{{ marker.location.url }}" class="inline-block btn btn-primary" rel="noopener external" role="button">
-							{% include icon.html icon="map" height="16" width="16" %}
-							<span>View in Map App</span>
-						</a>
-					{% else %}
-						<!-- geo:35.760197,-118.426793;crs=wgs84;u=0 -->
-						<a href="https://www.google.com/maps/?q={{ marker.location.geo.latitude }},{{ marker.location.geo.longitude }}" class="inline-block btn btn-primary" rel="noopener external" role="button">
-							{% include icon.html icon="map" height="16" width="16" %}
-							<span>View in Map App</span>
-						</a>
-					{% endif %}
 					{% if marker.telephone %}
 						<div>
 							<a href="tel:+{{ marker.telephone }}">
@@ -108,6 +96,18 @@ tags:
 								<span itemprop="url">{{ marker.url }}</span>
 							</a>
 						</div>
+					{% endif %}
+					{% if marker.location.url %}
+						<a href="{{ marker.location.url }}" class="inline-block btn btn-primary" rel="noopener external" role="button">
+							{% include icon.html icon="map" height="16" width="16" %}
+							<span>View in Map App</span>
+						</a>
+					{% else %}
+						<!-- geo:35.760197,-118.426793;crs=wgs84;u=0 -->
+						<a href="https://www.google.com/maps/?q={{ marker.location.geo.latitude }},{{ marker.location.geo.longitude }}" class="inline-block btn btn-primary" rel="noopener external" role="button">
+							{% include icon.html icon="map" height="16" width="16" %}
+							<span>View in Map App</span>
+						</a>
 					{% endif %}
 					{% if marker.uuid %}
 						<br />
