@@ -72,7 +72,8 @@
     address:
       streetAddress: 125 Buena Vista Drive
   icon: /img/markers/restaurant.svg
-- title: James Sierra Gateway
+- uuid: f7e94bcf-4d3c-4e6b-a6d8-bc5a569f282f
+  title: James Sierra Gateway
   category:
   - groceries
   - gas
@@ -154,7 +155,7 @@
     geo:
       latitude: 35.755638
       longitude: -118.418979
-  icon: /img/markers/restaurant.svg
+  icon: /img/markers/pizza.svg
 - uuid: 4d866db2-c506-444b-aa3f-87b3dd86a204
   title: Starlite Lounge
   category:

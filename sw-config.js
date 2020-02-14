@@ -117,6 +117,9 @@ const config = {
 		'/img/markers/train.svg',
 		'/img/markers/gas.svg',
 		'/img/markers/hospital.svg',
+		'/img/markers/pizza.svg',
+		'/img/markers/music.svg',
+		'/img/markers/outhouse.svg',
 		'/img/octicons/info.svg',
 		'/img/adwaita-icons/status/avatar-default.svg',
 
