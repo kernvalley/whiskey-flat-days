@@ -77,10 +77,16 @@
     price: 12
   - name: Senior
     availability: InStoreOnly
-    price: 15
+    price: 10
+  - name: Senior pre-sale
+    availability: PreSale
+    price: 7
   - name: Child (7-12)
     availability: InStoreOnly
-    price: 15
+    price: 10
+  - name: Child pre-sale
+    availability: PreSale
+    price: 7
   - name: Child (0-6)
     price: Free
     availability: InStoreOnly
@@ -359,10 +365,16 @@
     price: 12
   - name: Senior
     availability: InStoreOnly
-    price: 15
+    price: 10
+  - name: Senior pre-sale
+    availability: PreSale
+    price: 7
   - name: Child (7-12)
     availability: InStoreOnly
-    price: 15
+    price: 10
+  - name: Child pre-sale
+    availability: PreSale
+    price: 7
   - name: Child (0-6)
     price: Free
     availability: InStoreOnly
