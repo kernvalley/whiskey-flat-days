@@ -4,7 +4,7 @@
   "name": "{{ site.title }}",
   "short_name": "{{ site.shortName | default: site.title }}",
   "version": "{{ site.version }}",
-  "start_url": "{{ site.base-uri | default: '/' }}",
+  "start_url": "/",
   "lang": "{{ site.lang | default: 'en' }}",
   "description": "{{ site.description }}",
   "icons": [{

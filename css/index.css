@@ -58,3 +58,7 @@ img.avatar {
 	flex: 1 0 auto;
 	margin: 0 0.6em;
 }
+
+input[type="time"] {
+	max-width: 10ch;
+}

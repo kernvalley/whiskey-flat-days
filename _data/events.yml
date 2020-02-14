@@ -243,13 +243,7 @@
   image: /img/raster/encampment.jpg
   icon: /img/markers/activity.svg
   description: |-
-    <h4>Cowboy and Mountain Men Encampment</h4>
-    <p>On Scodie Ave. across from the Rodeo Grounds. You'll see history and gunfights.</p>
-    <p>All day there will be a Wells Fargo station and eatery, chuck wagon cook'n and coffee,
-    a horse trader and livery.</p>
-    <p>There'll be horse shoe'n and horse doctor'n, the Whiskey Flats Saloon, and Justice of the Peace,
-    a saddle maker and leather craft, a bath house, beautifier and hygenist,
-    storytellers of the Old West, mining and sawmill demonstrations and a Civil War Confederate camp!</p>
+    <p>Service at the Whiskey Flat Days Encampment starts at 10:00 AM</p>
 - uuid: bde1727f-fc0f-453f-afbb-9329aa3fec32
   title: '"First Heat" Frog Jumping Contents'
   startDate: 2020-02-15 14:00
@@ -291,7 +285,27 @@
   startDate: 2020-02-16 13:00
   endDate: 2020-02-16 14:00
   description: |-
+    <p>Sign-up starts at 11:00 AM</p>
     <p>Judging starts at 1:30 PM</p>
+  location:
+    name: Tobias Street in Kernville
+    address:
+      streetAddress: Tobias Street
+      addressLocality: Kernville
+      addressRegion: CA
+      addressCountry: US
+      postalCode: 93238
+    geo:
+      latitude: 35.755721
+      longitude: -118.425114
+  icon: /img/markers/activity.svg
+- uuid: 796d7881-008a-4ce2-bdb1-efb916793eb5
+  title: Adult & child 1860's Costume Contest
+  startDate: 2020-02-16 12:00
+  endDate: 2020-02-16 13:00
+  description: |-
+    <p>Sign-up starts at 11:00 AM</p>
+    <p>Judging starts at 12:30 PM</p>
   location:
     name: Tobias Street in Kernville
     address:
@@ -309,6 +323,7 @@
   startDate: 2020-02-16 14:00
   endDate: 2020-02-16 15:00
   description: |-
+    <p>Sign-up starts at 11:00 AM</p>
     <p>Judging starts at 2:30 PM</p>
   location:
     name: Tobias Street in Kernville
@@ -365,3 +380,19 @@
       <li>Sheep Riding</li>
       <li>...and more</li>
     </ul>
+- uuid: 233273c1-c22c-4ad5-94b3-dfd57766c107
+  startDate: 2020-02-16 15:00
+  endDate: 2020-02-16 15:15
+  title: Whiskey Flat Mayor Campaign Winner Announced
+  location:
+    name: Tobias Street in Kernville
+    address:
+      streetAddress: Tobias Street
+      addressLocality: Kernville
+      addressRegion: CA
+      addressCountry: US
+      postalCode: 93238
+    geo:
+      latitude: 35.755721
+      longitude: -118.425114
+

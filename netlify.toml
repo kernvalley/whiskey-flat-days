@@ -37,5 +37,7 @@
       upgrade-insecure-requests;
       disown-opener;'''
 # [[redirects]]
-  # from = ""
-  # to = ""
+#   from = "/"
+#   to = "/events/"
+#   status = 302
+#   force = true
