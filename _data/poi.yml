@@ -12,8 +12,8 @@
     <p>Come and enjoy great adult and children's rides and games.</p>
   location:
     geo:
-      longitude: -118.424493
-      latitude: 35.753448
+      latitude:  35.754512
+      longitude: -118.423701
 - uuid: 894298ad-e120-49d6-93b3-17b3b019dbb5
   title: Golden Gulch
   location:
