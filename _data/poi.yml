@@ -58,7 +58,7 @@
       longitude: -118.4251894
   icon: /img/markers/outhouse.svg
 - uuid: 6f8ff7be-e425-4dc2-95eb-2cce1a2472f6
-  title: Regional Transit Stop
+  title: Regional Transit Stop A
   telephone: 1-800-323-2396
   url: "https://kerntransit.org/routes-and-schedules/220-lake-isabella-kernville/"
   category:
@@ -66,6 +66,8 @@
   - other
   location:
     geo:
+      latitude: 35.754697
+      longitude: -118.427793
       latitude: 35.753937
       longitude: -118.425665
   icon: /img/markers/bus.svg
@@ -81,3 +83,21 @@
       latitude: 35.762797
       longitude:  -118.4267104
   icon: /img/markers/bus.svg
+- uuid: b22b7727-fb19-422a-a291-b1484ca03104
+  title: Regional Transit Stop
+  telephone: 1-800-323-2396
+  url: "https://kerntransit.org/routes-and-schedules/220-lake-isabella-kernville/"
+  category:
+  - transportation
+  - other
+  location:
+    geo:
+      latitude: 35.755257
+      longitude: -118.424621
+  icon: /img/markers/bus.svg
+
+
+# burlando silvermine
+# click reality
+# scodie
+# circle park latitude: 35.755257 longitude: -118.424621
