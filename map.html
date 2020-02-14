@@ -93,6 +93,22 @@ tags:
 							<span>View in Map App</span>
 						</a>
 					{% endif %}
+					{% if marker.telephone %}
+						<div>
+							<a href="tel:+{{ marker.telephone }}">
+								{% include icon.html icon="call-start"  height="16" width="16" %}
+								<span itemprop="telephone">{{ marker.telephone }}</span>
+							</a>
+						</div>
+					{% endif %}
+					{% if marker.url %}
+						<div>
+							<a href="{{ marker.url }}" rel="noopener external">
+								{% include icon.html icon="globe"  height="16" width="16" %}
+								<span itemprop="url">{{ marker.url }}</span>
+							</a>
+						</div>
+					{% endif %}
 					{% if marker.uuid %}
 						<br />
 						<button type="button" is="share-button" url="https://whiskeyflatdays.com/map/#{{ marker.uuid }}" text="Check out {{ marker.title }}" title="{{ marker.title }} | Whiskey Flat Days Map" hidden="">
