@@ -120,6 +120,7 @@ const config = {
 		'/img/markers/pizza.svg',
 		'/img/markers/music.svg',
 		'/img/markers/outhouse.svg',
+		'/img/markers/florist.svg',
 		'/img/octicons/info.svg',
 		'/img/adwaita-icons/status/avatar-default.svg',
 
