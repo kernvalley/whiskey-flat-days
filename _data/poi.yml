@@ -81,3 +81,21 @@
       latitude: 35.762797
       longitude:  -118.4267104
   icon: /img/markers/bus.svg
+- uuid: 588275ae-ee9c-4fd2-a4f0-22171d7f2bbc
+  title: $10 Parking
+  category:
+  - parking
+  location:
+    geo:
+      latitude: 35.754735
+      longitude: -118.426679
+  icon: /img/markers/parking.svg
+- uuid: 588275ae-ee9c-4fd2-a4f0-22171d7f2bbc
+  title: $10 Parking
+  category:
+  - parking
+  location:
+    geo:
+      latitude: 35.758007
+      longitude: -118.424189
+  icon: /img/markers/parking.svg
