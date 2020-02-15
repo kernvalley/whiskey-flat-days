@@ -121,6 +121,7 @@ const config = {
 		'/img/markers/music.svg',
 		'/img/markers/outhouse.svg',
 		'/img/markers/florist.svg',
+		'/img/markers/museum.svg',
 		'/img/octicons/info.svg',
 		'/img/adwaita-icons/status/avatar-default.svg',
 
