@@ -62,6 +62,10 @@ ready().then(async () => {
 	}
 	const date = `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')}`;
 
+	if (location.pathname.startsWith('/map') && ('geolocation' in navigator) && navigator.geolocation.getCurrentPosition instanceof Function) {
+		$('button[data-action="find-location"]').unhide();
+	}
+
 	$('form[name="eventSearch"]').submit(handlers.eventSearchHandler);
 	$('form[name="businessSearch"]').submit(handlers.businessCategorySearch);
 	$('toast-message > form').reset(({target}) => target.closest('toast-message').close());
@@ -102,6 +106,21 @@ ready().then(async () => {
 
 		case 'forward':
 			history.forward();
+			break;
+
+		case 'find-location':
+			if (('geolocation' in navigator) && navigator.geolocation.getCurrentPosition instanceof Function) {
+				Promise.all([
+					customElements.whenDefined('leaflet-map'),
+					customElements.whenDefined('leaflet-marker'),
+				]).then(() => {
+					navigator.geolocation.getCurrentPosition(({coords}) => {
+						location.hash = `#${coords.latitude},${coords.longitude}`;
+					}, console.error, {
+						enableHighAccuracy: true,
+					});
+				});
+			}
 			break;
 
 		default:
