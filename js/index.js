@@ -73,6 +73,18 @@ ready().then(async () => {
 	$('#search-time').attr({ min: '06:00', max: '20:00' });
 	$('#search-date').attr({ value: current ? date : '2020-02-14', min: current ? date : '2020-02-14', max: '2020-02-17' });
 
+	$('leaflet-marker[id]').on('markerclick', ({target}) => {
+		if (! target.open) {
+			const {id} = target;
+
+			if (id !== 'my-location-marker') {
+				location.hash = `#${id}`;
+			}
+		} else {
+			location.hash = '';
+		}
+	});
+
 	$('form[name="startDate"]').submit(handlers.startDateSearch);
 	$('form[name="startDate"], form[name="search"]').reset(handlers.searchReset);
 	$('form[name="search"]').submit(handlers.searchSubmit);

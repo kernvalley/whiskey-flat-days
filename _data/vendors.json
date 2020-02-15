@@ -575,6 +575,7 @@
     "uuid": "513acf33-9dc1-442b-81be-b440230b2f5c",
     "title": "Sweet Adelines",
     "description": "Pastrami Sandwiches",
+
     "latitude": 35.755154,
     "longitude": -118.4249156
 }, {
@@ -597,4 +598,9 @@
     "title": "Rotary Club - KRV",
     "latitude": 35.7550727,
     "longitude": -118.425014
+}, {
+    "uuid": "37705446-5f14-40a8-9aee-02bdfb7d7ffb",
+    "title": "Kern River Valley Elks BBQ",
+    "latitude": 35.7553479,
+    "longitude": -118.4252904
 }]
