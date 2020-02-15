@@ -73,6 +73,19 @@ ready().then(async () => {
 	$('#search-time').attr({ min: '06:00', max: '20:00' });
 	$('#search-date').attr({ value: current ? date : '2020-02-14', min: current ? date : '2020-02-14', max: '2020-02-17' });
 
+	$('leaflet-marker[id]').on('markerclick', ({target}) => {
+		const {id, title} = target;
+		if (id !== 'my-location-marker') {
+			location.hash = `#${id}`;
+
+			if (title === '') {
+				document.title = 'Map | Whiskey Flat Days';
+			} else {
+				document.title = `${title} | Whiskey Flat Days`;
+			}
+		}
+	});
+
 	$('form[name="startDate"]').submit(handlers.startDateSearch);
 	$('form[name="startDate"], form[name="search"]').reset(handlers.searchReset);
 	$('form[name="search"]').submit(handlers.searchSubmit);
