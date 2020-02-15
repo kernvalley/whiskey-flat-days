@@ -130,6 +130,7 @@
     "longitude": -118.4253121
 }, {
     "uuid": "4e5d5a28-b1fe-410b-972c-0aebc78c35df",
+    "title": "Fish & Chips",
     "space": "b41",
     "latitude": 35.7541784,
     "longitude": -118.42529
@@ -235,6 +236,7 @@
     "longitude": -118.4252758
 }, {
     "uuid": "b9c2b83d-982d-4b9f-a3de-9cb45cef04e4",
+    "title": "Lemonade Stand",
     "space": "b34",
     "latitude": 35.7548411,
     "longitude": -118.4249732
@@ -270,6 +272,7 @@
     "longitude": -118.4247782
 }, {
     "uuid": "9cc9181b-a1db-419b-9f2e-344e94c6f80c",
+    "title": "Strength of Shadow",
     "space": "b27",
     "latitude": 35.7549106,
     "longitude": -118.424759
@@ -309,6 +312,7 @@
 }, {
     "uuid": "bb112cc4-8df4-4a89-9abc-06c1acc0c692",
     "space": "b20",
+    "title": "Old West Kettle Korn",
     "latitude": 35.7550004,
     "longitude": -118.4245107
 }, {
@@ -413,6 +417,7 @@
     "longitude": -118.4236747
 }, {
     "uuid": "3ce967ef-bdf4-4747-ae72-18ee1ff760cf",
+    "title": "Ewings Smoker Trailer",
     "space": "a1",
     "latitude": 35.7550998,
     "longitude": -118.4236322
@@ -475,6 +480,7 @@
     "longitude": -118.4241578
 }, {
     "uuid": "6263e444-460e-4c8d-9d82-3836c06310d0",
+    "title": "Bliss Cookie Dough",
     "space": "a15",
     "latitude": 35.7550415,
     "longitude": -118.4241824
@@ -538,4 +544,57 @@
     "space": "a27",
     "latitude": 35.7547401,
     "longitude": -118.4247984
+}, {
+    "uuid": "d5058e06-16fd-420a-afbf-0a0db6723d45",
+    "title": "Sophia's Kitchen",
+    "description": "Corn Dogs, Carne Asada, Fries, Nachos",
+    "latitude": 35.7532951,
+    "longitude": -118.4247512
+}, {
+    "uuid": "d8a566bd-3a9f-47de-9e1a-4bbd84ddffbb",
+    "title": "Amazing Bounce",
+    "latitude": 35.7531535,
+    "longitude": -118.4242464
+}, {
+    "uuid": "acf92fef-b170-48a3-bd02-4b60de26e4cf",
+    "title": "India Gourmet",
+    "latitude": 35.7534044,
+    "longitude": -118.4245907
+}, {
+    "uuid": "600ef94a-ed24-416d-bc3e-33382ed758e1",
+    "title": "White Blanket Tubatulabals",
+    "description": "Indian Tacos since 1970",
+    "latitude": 35.7551741,
+    "longitude": -118.4248286
+}, {
+    "uuid": "3ab00e18-7418-4317-8892-7663d3ee71d4",
+    "title": "Keepers of the Kern",
+    "latitude": 35.7555522,
+    "longitude": -118.4237333
+}, {
+    "uuid": "513acf33-9dc1-442b-81be-b440230b2f5c",
+    "title": "Sweet Adelines",
+    "description": "Pastrami Sandwiches",
+    "latitude": 35.755154,
+    "longitude": -118.4249156
+}, {
+    "uuid": "b2d2cd8e-d3cb-4b7d-a94f-912bd711b38e",
+    "title": "Fazackerley's Fudge",
+    "latitude": 35.7534056,
+    "longitude": -118.4246701
+}, {
+    "uuid": "19e011d4-c1c3-4eee-9f88-116b6a300b3a",
+    "title": "Ricardo's Grill",
+    "latitude": 35.7544945,
+    "longitude": -118.4253634
+}, {
+    "uuid": "64b1ce20-5022-4578-8aa2-882b94156caf",
+    "title": "Schroeder's Kettle Corn",
+    "latitude": 35.7546047,
+    "longitude": -118.4253694
+}, {
+    "uuid": "63ce268b-55b9-4163-b988-dd3ba2fe8537",
+    "title": "Rotary Club - KRV",
+    "latitude": 35.7550727,
+    "longitude": -118.425014
 }]
