@@ -43,10 +43,18 @@ export async function hashChange() {
 	if (location.hash !== '' && ! location.hash.includes(',')) {
 		$('leaflet-geojson').hide();
 		$('leaflet-marker').close();
+
 		const marker = document.getElementById(location.hash.substr(1));
 
 		if (marker instanceof HTMLElement) {
 			const map = marker.parentElement;
+
+			if (marker.title !== '') {
+				document.title = `${marker.title} | Whiskey Flat Days`;
+			} else {
+				document.title = 'Map | Whiskey Flat Days';
+			}
+
 			switch(marker.tagName.toLowerCase()) {
 			case 'leaflet-marker':
 				(async () => {
@@ -88,6 +96,7 @@ export async function hashChange() {
 		icon.width = 42;
 		icon.height = 42;
 		icon.slot = 'icon';
+		document.title = 'Marker Location';
 
 		popup.slot = 'popup';
 		popup.textContent = 'Marked Location';
