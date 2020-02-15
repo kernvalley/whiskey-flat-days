@@ -100,7 +100,7 @@ export async function hashChange() {
 		popup.append(document.createElement('br'), share);
 
 		marker.append(icon, popup);
-		await $('my-location-marker').remove();
+		await $('#my-location-marker').remove();
 		map.append(marker);
 		map.center = {latitude, longitude};
 		map.scrollIntoView({behavior: 'smooth', block: 'start'});
