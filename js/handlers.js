@@ -85,6 +85,7 @@ export async function hashChange() {
 		share.textContent = 'Share Location';
 		share.title = 'My location | Whiskey Flat Days Map';
 
+		marker.id = 'my-location-marker';
 		marker.latitude = latitude;
 		marker.longitude = longitude;
 		marker.slot = 'markers';
@@ -99,6 +100,7 @@ export async function hashChange() {
 		popup.append(document.createElement('br'), share);
 
 		marker.append(icon, popup);
+		await $('#my-location-marker').remove();
 		map.append(marker);
 		map.center = {latitude, longitude};
 		map.scrollIntoView({behavior: 'smooth', block: 'start'});

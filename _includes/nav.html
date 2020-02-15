@@ -11,10 +11,15 @@
 		</a>
 	{% endfor %}
 	{% if page.url != '/' %}
-		<a href="{{ '/' }}" rel="bookmark" title="Home" class="color-inherit" title="Home">
+		<a href="{{ '/' }}" rel="bookmark" title="Home" class="color-inherit">
 			{% include icon.html icon='logo' class='current-color icon' %}
 		</a>
 	{% endif %}
+	<button type="button" class="btn btn-primary" data-action="find-location" title="Use my Location" hidden="">
+		{% include icon.html icon="find-location" %}
+		<span class="mobile-hidden">Find my Location</span>
+	</button>
+	<!-- {{ page.url  }} -->
 	<!--
 	<button is="login-button" title="Sign In" class="btn btn-accept float-right" hidden="">Sign In</button>
 	<button is="logout-button" title="Sign Out" class="btn btn-reject float-right" hidden="">Sign Out</button>
