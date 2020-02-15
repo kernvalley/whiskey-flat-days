@@ -73,17 +73,11 @@ export async function hashChange() {
 		await loaded();
 		await Promise.all(['share-button', 'leaflet-marker'].map(tag => customElements.whenDefined(tag)));
 		const Marker = customElements.get('leaflet-marker');
-		const Share = customElements.get('share-button');
 		const [latitude, longitude] = location.hash.substr(1).split(',').map(parseFloat);
 		const marker = new Marker();
 		const icon = document.createElement('img');
 		const map = document.querySelector('leaflet-map');
 		const popup = document.createElement('div');
-		const share = new Share();
-
-		share.url = location.href;
-		share.textContent = 'Share Location';
-		share.title = 'My location | Whiskey Flat Days Map';
 
 		marker.id = 'my-location-marker';
 		marker.latitude = latitude;
@@ -97,7 +91,20 @@ export async function hashChange() {
 
 		popup.slot = 'popup';
 		popup.textContent = 'Marked Location';
-		popup.append(document.createElement('br'), share);
+
+		if (navigator.share instanceof Function) {
+			try {
+				const Share = customElements.get('share-button');
+				const share = new Share();
+
+				share.url = location.href;
+				share.textContent = 'Share Location';
+				share.title = 'My location | Whiskey Flat Days Map';
+				popup.append(document.createElement('br'), share);
+			} catch(err) {
+				console.error(err);
+			}
+		}
 
 		marker.append(icon, popup);
 		await $('#my-location-marker').remove();
