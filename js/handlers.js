@@ -42,7 +42,7 @@ export async function eventSearchHandler(event) {
 export async function hashChange() {
 	if (location.hash === '') {
 		document.title = 'Map | Whiskey Flat Days';
-		$('leaflet-marker[open]').close();
+		$('leaflet-marker[open]').attr({open: false});
 	} else if (! location.hash.includes(',')) {
 		$('leaflet-geojson').hide();
 		$('leaflet-marker').close();
