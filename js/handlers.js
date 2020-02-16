@@ -40,7 +40,10 @@ export async function eventSearchHandler(event) {
 }
 
 export async function hashChange() {
-	if (location.hash !== '' && ! location.hash.includes(',')) {
+	if (location.hash === '') {
+		document.title = 'Map | Whiskey Flat Days';
+		$('leaflet-marker[open]').close();
+	} else if (! location.hash.includes(',')) {
 		$('leaflet-geojson').hide();
 		$('leaflet-marker').close();
 
@@ -65,6 +68,7 @@ export async function hashChange() {
 					await wait(100);
 					marker.hidden = false;
 					marker.open = true;
+
 					if (geojson instanceof HTMLElement) {
 						geojson.hidden = false;
 					}
@@ -96,7 +100,7 @@ export async function hashChange() {
 		icon.width = 42;
 		icon.height = 42;
 		icon.slot = 'icon';
-		document.title = 'Marker Location';
+		document.title = 'Marked Location | Whiskey Flat Days';
 
 		popup.slot = 'popup';
 		popup.textContent = 'Marked Location';
