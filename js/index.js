@@ -14,12 +14,10 @@ import 'https://cdn.kernvalley.us/components/not-supported.js';
 // import 'https://cdn.kernvalley.us/components/network-online.js';
 import 'https://cdn.kernvalley.us/components/ad-block.js';
 import 'https://cdn.kernvalley.us/components/weather-current.js';
+import 'https://cdn.kernvalley.us/components/github/user.js';
+import 'https://cdn.kernvalley.us/components/pwa/install.js';
 import * as handlers from './handlers.js';
-import { $, ready, registerServiceWorker } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
-
-if (document.documentElement.dataset.hasOwnProperty('serviceWorker')) {
-	registerServiceWorker(document.documentElement.dataset.serviceWorker).catch(console.error);
-}
+import { $, ready } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
 
 document.documentElement.classList.replace('no-js', 'js');
 document.body.classList.toggle('no-dialog', document.createElement('dialog') instanceof HTMLUnknownElement);

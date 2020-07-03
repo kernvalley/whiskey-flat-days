@@ -1,0 +1,3 @@
+<div class="embed-container">
+	<iframe title="{{ include.title | default: 'YouTube video player' }}" width="{{ include.width | default: '640' }}" height="{{ include.width | default: '390' }}" src="https://www.youtube-nocookie.com/embed/{{ include.id }}" frameborder="0" allowfullscreen="" crossorigin="{{ include.crossorigin | default: 'anonymous' }}" referrerpolicy="{{ include.referrerpolicy | default: 'origin' }}" importance="{{ include.importance | default: 'low' }}" loading="{{ include.loading | default: 'lazy' }}"></iframe>
+</div>

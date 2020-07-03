@@ -1,18 +1,13 @@
 ---
 name: default
 theme: default
-layout: base
 og-type: website
 itemtype: 'https://schema.org/WebPage'
-sidebar: true
-recent-posts: false
-pinned-posts: false
+layout: base
+sidebar: false
+main-itemtype: Event
 ---
-{% include header.html %}
-{% include nav.html %}
-<main id="main" class="card shadow contain-content">
-	{{ content }}
-</main>
-{% if layout.sidebar %}{% include sidebar.html recent-posts=layout.recent-posts pinned-posts=layout.pinned-posts %}{% endif %}
-{% include footer.html %}
-{% include share-button.html %}
+{% unless page.no-header == true %}{% include header.html %}{% endunless %}
+<main id="main">{{ content }}</main>
+{% unless page.no-footer == true %}{% include footer.html %}{% endunless %}
+{% unless page.no-share == true %}{% include share-button.html text=page.description %}{% endunless %}

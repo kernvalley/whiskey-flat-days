@@ -1,0 +1,46 @@
+name: Whiskey Flat Days
+shortName: Whiskey Flats
+version: 2.0.0
+display: standalone
+description: "The best events in the Kern River Valley and without the clutter"
+icons-file: /img/icons.svg
+theme:
+  color: '#528ff9'
+  background: '#242424'
+categories:
+- events
+- lifestyle
+- news
+- social
+features:
+  - Listing of events throughout the Kern River Valley
+  - All events are open to the public (ticket prices listed if applicable)
+  - Offline access on supported devices
+  - Easy sharing to Facebook, Twitter, text message, and any app installed on your device
+  - Maps to events (with directions on Google Maps)
+  - Local weather so you know whether to pack sunscreen or an umbrella
+icons:
+- src: /img/favicon.svg
+  type: image/svg+xml
+  sizes: any
+- src: /img/apple-touch-icon.png
+  rel: apple-touch-icon
+  type: image/png
+  sizes: 180x180
+- src: /img/icon-512.png
+  type: image/png
+  sizes: 512x512
+- src: /img/icon-192.png
+  type: image/png
+  sizes: 192x192
+- src: /img/icon-32.png
+  type: image/png
+  sizes: 32x32
+- src: /img/icon-16.png
+  type: image/png
+  sizes: 16x16
+screenshots:
+- src: 'https://i.imgur.com/Qnvw7I2l.jpg'
+  sizes: 640x266
+  type: image/jpeg
+related_applications: []

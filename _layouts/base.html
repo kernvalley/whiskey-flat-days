@@ -1,28 +1,28 @@
----
-theme: default
-og-type: website
-itemtype: 'https://schema.org/WebPage'
-sidebar: false
-recent-posts: false
-pinned-posts: false
----
 <!DOCTYPE html>
 <html
-	lang="{{ site.lang }}"
-	dir="{{ site.dir }}"
-	class="no-js border-box smooth-scroll font-main background-primary color-default"
-	data-theme="{{ page.theme | default: layout.theme }}"
-	{% if page.data-layout %}data-layout="{{ page.data-layout }}"{% endif %}
-	{% if site.service_worker %}data-service-worker="{{ site.service_worker }}"{% endif %}
+	lang="{{ site.lang | default: 'en' }}"
+	dir="{{ site.dir | default: 'ltr' }}"
+	class="no-js scroll-smooth background-primary color-default font-main border-box"
 	{% if site.google-analytics %}data-google-analytics="{{ site.google-analytics }}"{% endif %}
 	{% if page.ads %}data-ad-sense-id="{{ site.ad-sense }}"{% endif %}
 	{% if page.pageLevelAds %}data-page-level-ads="{{ page.pageLevelAds }}"{% endif %}
-	itemtype="{{ layout.itemtype }}"
-	prefix="og: http://ogp.me/ns#"
+	data-layout="{{ layout.data-layout | default: 'default' }}"
+	data-theme="{{ layout.data-theme | default: 'auto' }}"
+	itemtype="{{ page.itemtype | default: 'http://schema.org/WebPage' }}"
 	itemscope=""
 >
-	{% include head.html %}
-	<body id="top" class="grid overflow-x-hidden">
+{% include head.html %}
+	<body
+		id="top"
+		{% if page.scene %}data-scene="{{ page.scene }}"{% endif %}
+		class="layout-{{ page.layout }} {{ page.body-class | default: 'grid' }}"
+		contextmenu="{{ page.contextmenu | default: site.contextmenu }}"
+		{% if page.itemprop and page.itemtype %}
+			itemprop="{{ page.itemprop }}"
+			itemtype="{{ page.itemtype }}"
+			itemscope=""
+		{% endif %}
+	>
 		{{ content }}
 	</body>
 </html>

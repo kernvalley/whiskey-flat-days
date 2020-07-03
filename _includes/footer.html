@@ -1,77 +1,65 @@
 <footer id="footer">
 	<div class="social-links cols-2">
-		<div class="cols inline-block">
-			<a href="/" class="block">
-				{% include icon.html icon="home" %}
-				<span>Home</span>
-			</a>
-			<a href="/events/" class="block">
-				{% include icon.html icon="calendar" %}
-				<span>Events</span>
-			</a>
-			<a href="/map/" class="block">
-				{% include icon.html icon="map" %}
-				<span>Map</span>
-			</a>
-		</div>
-		<div class="cols inline-block">
-			{% if site.social.url %}
-				<a class="block" href="{{ site.social.url }}" target="_blank" rel="external noopener" itemprop="sameAs">
-					{% include icon.html icon="globe" %}
-					<span>Website</span>
-				</a>
-			{% endif %}{% if site.social.facebook %}
-				<a class="block" href="https://www.facebook.com/{{ site.social.facebook }}/" target="_blank" rel="external noopener" itemprop="sameAs">
-					{% include icon.html icon="facebook" %}
-					<span>Facebook</span>
-				</a>
-			{% endif %}{% if site.social.twitter %}
-				<a class="block" href="https://twitter.com/{{ site.social.twitter }}" target="_blank" rel="external noopener" itemprop="sameAs">
-					{% include icon.html icon="twitter" %}
-					<span>Twitter</span>
-				</a>
-			{% endif %}{% if site.social.linkedin %}
-				<a class="block" href="https://www.linkedin.com/{{ site.social.linkedin }}/" target="_blank" rel="external noopener" itemprop="sameAs">
-					{% include icon.html icon="linkedin" %}
-					<span>LinkedIn</span>
-				</a>
-			{% endif %}
-		</div>
 		{% if site.repository %}
 			<div class="cols inline-block">
 				<a class="block" href="https://github.com/{{ site.repository.username }}/" target="_blank" rel="external noopener">
-					{% include icon.html icon="github" %}
+					{% include icon.html icon="mark-github" class="current-color icon social-icon" %}
 					<span>GitHub Profile</span>
 				</a>
 				<a class="block" href="https://github.com/{{ site.repository.username }}/{{ site.repository.project }}" target="_blank" rel="external noopener">
-					<svg class="current-color icon social-icon">
-						<use xlink:href="{{ site.icons }}#repo" />
-					</svg>
+					{% include icon.html icon="repo" class="current-color icon social-icon" %}
 					<span>GitHub Repo</span>
 				</a>
 				<a class="block" href="https://github.com/{{ site.repository.username }}/{{ site.repository.project }}/issues" target="_blank" rel="external noopener">
-					<svg class="current-color icon social-icon">
-						<use xlink:href="{{ site.icons }}#issue-opened" />
-					</svg>
+					{% include icon.html icon="issue-opened" class="current-color icon social-icon" %}
 					<span>Report a Problem</span>
 				</a>
 			</div>
 		{% endif %}
+		<div class="cols inline-block">
+			<a class="block" href="https://kernvalley.us" target="_blank" rel="external noopener" itemprop="sameAs">
+				{% include icon.html icon="web-browser" class="current-color icon social-icon" %}
+				<span>KernValley.US</span>
+			</a>
+			<a class="block" href="/contact/">
+				{% include icon.html icon="address-book" class="current-color icon social-icon" %}
+				<span>Contact</span>
+			</a>
+			<a class="block" href="/privacy/">
+				{% include icon.html icon="eye" class="current-color icon social-icon" %}
+				<span>Privacy Policy</span>
+			</a>
+			<a class="block" href="https://twitter.com/kern_valley" target="_blank" rel="external noopener" itemprop="sameAs">
+				{% include icon.html icon="twitter" class="icon social-icon" %}
+				<span>On Twitter</span>
+			</a>
+			<a class="block" href="https://www.linkedin.com/in/chris-zuber-455346141/" target="_blank" rel="external noopener" itemprop="sameAs">
+				{% include icon.html icon="linkedin" class="icon social-icon" %}
+				<span>LinkedIn</span>
+			</a>
+		</div>
 	</div>
+	{% if site.service_worker %}
+		<div class="flex row center">
+			<button is="pwa-install" class="btn btn-primary btn-big btn-wide" src="{{ site.service_worker }}" scope="/" title="Install Web App" reloadonupdate="">
+				{% include icon.html icon="system-software-install" %}
+				<span>Install</span>
+			</button>
+		</div>
+	{% endif %}
 	<hr />
 	<div class="copyright">
-		<span>&copy;</span>
-		<time itemprop="copyrightYear">{{ 'now' | date: '%Y' }}</time>
-		<span itemprop="copyrightHolder" itemtype="https://schema.org/Organization" itemscope="">
-			<meta itemprop="logo" content="https://kernvalley.us/img/icon-192.png" />
-			<a href="https://kernvalley.us" target="_blank" rel="external noopener" itemprop="url">
-				<span itemprop="name">KernValley.US</span>
-				<picture itemprop="logo" itemtype="https://schema.org/ImageObject" itemscope="">
-					<meta itemprop="url" content="https://kernvalley.us/img/icon-192.png" />
-					<source type="image/svg+xml" src="https://kernvalley.us/img/logo.svg" />
-					<img src="https://kernvalley.us/img/icon-32.png" alt="logo" />
-				</picture>
-			</a>
-		</span>
+		<github-user user="{{ site.repository.username }}">
+			<h3 slot="header" class="center">Created By</h3>
+			<div slot="footer">
+				<span>&copy;</span>
+				<time itemprop="copyrightYear">{{ 'now' | date: '%Y' }}</time>
+				<span itemprop="copyrightHolder" itemtype="https://schema.org/Organization" itemscope="" hidden="">
+					<a href="https://kernvalley.us" target="_blank" rel="external noopener" itemprop="url">
+						<span itemprop="name">KernValley.US</span>
+					</a>
+				</span>
+			</div>
+		</github-user>
 	</div>
 </footer>
