@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add `<github-user>` to footer
 - Implement Dependabot and Super Linter
 - Create CHANGELOG
+- Create Privacy Policy and Contact pages
 
 ### Changed
 - Numerous dependency and other version updates
