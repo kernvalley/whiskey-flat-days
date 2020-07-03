@@ -112,8 +112,8 @@ tags:
 					{% if marker.uuid %}
 						<br />
 						<button type="button" is="share-button" url="https://whiskeyflatdays.com/map/#{{ marker.uuid }}" text="Check out {{ marker.title }}" title="{{ marker.title }} | Whiskey Flat Days Map" hidden="">
-							<svg width="16" height="16">
-								<use xlink:href="{{ site.icons }}#folder-publicshare"></use>
+							<svg width="16" height="16" aria-hidden="true">
+								<use xlink:href="{{ site.icons }}#share"></use>
 							</svg>
 							<span>Share</span>
 						</button>
@@ -141,8 +141,8 @@ tags:
 					{% if marker.uuid %}
 						<br />
 						<button type="button" is="share-button" url="https://whiskeyflatdays.com/map/#{{ marker.uuid }}" text="Check out {{ marker.title }}" title="{{ marker.title }} | Whiskey Flat Days Map" hidden="">
-							<svg width="16" height="16">
-								<use xlink:href="{{ site.icons }}#folder-publicshare"></use>
+							<svg width="16" height="16" aria-hidden="true">
+								<use xlink:href="{{ site.icons }}#share"></use>
 							</svg>
 							<span>Share</span>
 						</button>
@@ -202,8 +202,8 @@ tags:
 					{% if marker.uuid %}
 						<br />
 						<button type="button" is="share-button" url="https://whiskeyflatdays.com/map/#{{ marker.uuid }}" text="Check out {{ marker.title }}" title="{{ marker.title }} | Whiskey Flat Days Map" hidden="">
-							<svg width="16" height="16">
-								<use xlink:href="{{ site.icons }}#folder-publicshare"></use>
+							<svg width="16" height="16" aria-hidden="true">
+								<use xlink:href="{{ site.icons }}#share"></use>
 							</svg>
 							<span>Share</span>
 						</button>
@@ -269,8 +269,8 @@ tags:
 					{% if marker.description %}<div itemprop="description">{{ marker.description }}</div>{% endif %}
 					{% if marker.uuid %}
 						<button type="button" is="share-button" url="https://whiskeyflatdays.com/map/#{{ marker.uuid }}" text="Check out {{ marker.title }}" title="{{ marker.title }} | Whiskey Flat Days Map" hidden="">
-							<svg width="16" height="16">
-								<use xlink:href="{{ site.icons }}#folder-publicshare"></use>
+							<svg width="16" height="16" aria-hidden="true">
+								<use xlink:href="{{ site.icons }}#share"></use>
 							</svg>
 							<span>Share</span>
 						</button>

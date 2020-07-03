@@ -1,4 +1,4 @@
-<a href="{{ include.post.url }}" title="{{ include.post.title }}">
+<a href="{{ include.post.url  }}" title="{{ include.post.title }}">
 	<h3 class="center post-title">{{ include.post.title }}</h3>
 	{% if include.post.imgur %}
 		{% include imgur.html
@@ -9,7 +9,7 @@
 			decoding='async'
 		%}
 	{% elsif include.post.image %}
-		<img src="{{ include.post.image }}" class="post-img"{% if post.srcset %} srcset="{{ post.srcset | join: ', ' }}" sizes="(min-width: 700px) 23vw, 100vw"{% endif %} alt="Article thumbnail" crossorigin="anonymous" />
+		<img src="{{ include.post.image  }}" class="post-img"{% if post.srcset %} srcset="{{ post.srcset | join: ', ' }}" sizes="(min-width: 700px) 23vw, 100vw"{% endif %} alt="Article thumbnail" crossorigin="anonymous" />
 	{% endif %}
 </a>
 <br />
@@ -18,14 +18,14 @@
 	<hr />
 	<div>
 		{% include icon.html icon='avatar-default' %}
-		{{ include.post.author.givenName }} {{ include.post.author.familyName }}
+		{{ include.post.author }}
 	</div>
 	<time datetime="{{ include.post.date | date: data_to_xmlschema }}">
 		{% include icon.html icon='calendar' %}
 		{{ include.post.date | date: '%a, %B %e, %Y' }}
 	</time>
 	{% if include.post.category %}
-		<a href="{{ include.post.category | slogify | prepend: '/posts/' }}" class="block">
+		<a href="{{ include.post.category | slogify | prepend: '/posts/'  }}" class="block">
 			{% include icon.html icon='tag' %}
 			{{ include.post.category }}
 		</a>

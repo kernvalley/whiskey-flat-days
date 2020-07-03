@@ -1,27 +1,14 @@
 <span hidden="">
 	{% include breadcrumb-nav.html category=page.category post=page %}
 </span>
-<article itemtype="http://schema.org/{{ include.itemtype | default: 'Article' }}" role="article" class="font-article" itemscope="">
-	{% if page.publisher %}
-		<div itemprop="publisher" itemtype="https://schema.org/{{ include.publisher[@type] | default: 'Organization' }}" itemscope="" hidden="">
-			<meta itemprop="name" content="{{ include.publisher.name }}" />
-			{% if include.publisher.url %}<meta itemprop="url" content="{{ include.publisher.url }}" />{% endif %}
-			{% if include.publisher.logo %}
-				<div itemprop="logo" itemtype="https://schema.org/ImageObject" itemscope="" hidden="">
-					<meta itemprop="url" content="{{ include.publisher.logo.url }}" />
-				</div>
-			{% endif %}
-		</div>
-	{% endif %}
-	<header class="article-meta background-accent color-alt">
+<article itemtype="http://schema.org/BlogPosting" itemscope="" itemprop="{{ include.itemprop | default: 'mainEntityOfPage' }}" role="article" class="font-article">
+	<header class="article-meta shadow-dark">
 		{% if page.tags %}<meta itemprop="keywords" content="{{ page.tags | join: ', '}}" />{% endif %}
-		{% if page.thumbnail %}
-			<meta itemprop="image" content="{{ page.thumbnail }}" />
-		{% elsif page.imgur %}
-			{% capture hash %}{{ page.imgur | replace: 'https://i.imgur.com/', '' | replace: 'https://imgur.com/', '' | replace: '.png', '' | replace: '.jpg', '' }}{% endcapture %}
-			<meta itemprop="image" content="https://i.imgur.com/{{ hash }}l.png" />
+		{% if page.imgur %}
+			{% capture hash %}{{ include.url | replace: 'https://i.imgur.com/', '' | replace: 'https://imgur.com/', '' | replace: '.png', '' | replace: '.jpg', '' }}{% endcapture %}
+			<meta itemprop="image" content="https://i.imgur.com/{{ hash }}m.png" />
 		{% elsif page.image %}
-			<meta itemprop="image" content="{{ page.image | absolute_url }}" />
+			<meta itemprop="image" content="{{ page.image  }}" />
 		{% endif %}
 		{% if page.description %}
 			<meta itemprop="description" content="{{ page.description }}" />
@@ -30,7 +17,7 @@
 			<meta itemprop="keywords" content="{{ page.tags | join: ', '}}" />
 		{% endif %}
 		<meta itemptop="wordCount" content="{{ content | number_of_words }}" />
-		<meta itemprop="url" content="{{ page.url | absolute_url }}" />
+		<meta itemprop="url" content="{{ page.url  }}" />
 		<details open="">
 			<summary class="block">
 				<h1 class="inline-block">
@@ -48,8 +35,16 @@
 					</div>
 					<hr />
 				{% endif %}
-				{% if include.author %}
-					{% include by-line.html author=include.author %}
+				{% if page.author %}
+					{% assign author = page.author | downcase | replace: ' ', '-'  %}
+					{% if site.data.authors contains author %}
+						{% include by-line.html author=author %}
+					{% else %}
+						<div>
+							<b>By <span itemprop="author">{{ page.author }}</span></b>
+						</div>
+						<br />
+					{% endif %}
 				{% endif %}
 				{% if page.date %}
 					<b class="meta-date-posted">
@@ -77,7 +72,7 @@
 						{% if publisher.email %}<meta itemprop="email" content="{{ publisher.email }}" />{% endif %}
 						{% if publisher.logo %}
 							<div itemprop="logo" itemtype="http://schema.org/ImageObject" itemscope="">
-								<meta itemprop="url" content="{{ publisher.logo.url | absolute_url }}" />
+								<meta itemprop="url" content="{{ publisher.logo.url  }}" />
 							</div>
 						{% endif %}
 						{% if publisher.sameAs %}{% for link in publisher.sameAs %}
@@ -89,7 +84,7 @@
 		</details>
 	</header>
 	{% if page.subheading %}{% include subheading.html subheading=page.subheading %}{% endif %}
-	<div itemprop="articleBody mainEntityOfPage" class="optimize-legibility"{% if include.columns %} data-columns="{{ include.columns }}"{% endif %}>{{ content }}</div>
+	<div itemprop="articleBody mainEntityOfPage" class="optimize-legibility">{{ content }}</div>
 	<footer class="clearfix relative">
 		{% if page.ads and site.ad-sense %}{% include ad.html %}{% endif %}
 		{% if jekyll.environment == 'production' and  page.comments and site.discus-identifier %}{% include disqus.html %}{% endif %}

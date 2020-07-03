@@ -1,7 +1,7 @@
 # https://www.netlify.com/docs/netlify-toml-reference/
 [build]
   base = "./"
-  publish = "./_site/"
+  publish = "./_site"
   command = "npm run build && npm run build:site"
   [build.environment]
     GIT_LFS_ENABLED = "1"
@@ -9,35 +9,31 @@
   for="/*"
   [headers.values]
     Link = '''
-      </css/index.css>; rel=preload; as=style, \
+      </css/index.min.css>; rel=preload; as=style, \
       </js/index.js>; rel=preload; as=script, \
       </img/icons.svg>; rel=preload; as=image
     '''
     X-Frame-Options = "DENY"
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "origin-when-cross-origin"
+    Referrer-Policy = "no-referrer-when-downgrade"
     Strict-Transport-Security = "max-age=31536000"
     Content-Security-Policy = '''
       default-src 'self';
-      base-uri 'self';
-      img-src 'self' https://i.imgur.com https://cdn.kernvalley.us/ https://events.kernvalley.us/ https://kernvalley.us/ https://secure.gravatar.com/ https://maps.wikimedia.org/osm-intl/ https://www.google-analytics.com/r/collect;
-      script-src 'self' moz-extension: https://cdn.kernvalley.us/ https://polyfill.io/v3/ https://cdn.polyfill.io/v3/ https://unpkg.com/ https://www.google-analytics.com/ https://www.googletagmanager.com/ https://www.youtube.com/ https://www.youtube-nocookie.com/ 'sha256-uv9ihhWV1/99Lna4PlyzJ4Ji2ofiXKU9ak+GUXMN0gw=' 'sha256-YCSlybv0BJeWnGWF8JCyQMs1TUOxVjFyr5upfHiDysc=' 'sha256-YmEu57ZRfDpDDhMApyHsyE3PA6DSf2V+9bIVooFPFHw=';
-      style-src 'self' 'unsafe-inline' https://cdn.kernvalley.us/ https://unpkg.com/ https://fonts.googleapis.com/ https://www.youtube.com/ https://www.youtube-nocookie.com/;
-      connect-src 'self' https://cdn.kernvalley.us https://api.kernvalley.us/ https://events.kernvalley.us/ https://kernvalley.us/ https://api.openweathermap.org/data/ https://unpkg.com/ https://polyfill.io/v3/ https://cdn.polyfill.io/v3/ https://www.google-analytics.com/ https://www.googletagmanager.com/ https://i.imgur.com/ https://secure.gravatar.com https://maps.wikimedia.org/osm-intl/ https://fonts.gstatic.com/  https://fonts.googleapis.com/ https://baconipsum.com/api/ https://secure.gravatar.com/;
-      font-src 'self' https://cdn.kernvalley.us https://fonts.gstatic.com/;
-      media-src 'none';
+      img-src * blob: data:;
+      script-src 'self' moz-extension: https://cdn.kernvalley.us https://unpkg.com/ https://unpkg.com/ https://www.google-analytics.com https://www.googletagmanager.com https://polyfill.io https://*.disqus.com/embed.js https://disqus.com/ https://c.disquscdn.com/ 'sha256-uv9ihhWV1/99Lna4PlyzJ4Ji2ofiXKU9ak+GUXMN0gw=' 'sha256-YCSlybv0BJeWnGWF8JCyQMs1TUOxVjFyr5upfHiDysc=' 'sha256-YmEu57ZRfDpDDhMApyHsyE3PA6DSf2V+9bIVooFPFHw=';
+      style-src 'self' 'unsafe-inline' https://cdn.kernvalley.us https://unpkg.com/leaflet@1.6.0/ https://www.youtube.com https://www.youtube-nocookie.com;
+      connect-src 'self' https://cdn.kernvalley.us https://api.kernvalley.us https://api.github.com/users/ https://*.githubusercontent.com/u/ https://maps.wikimedia.org/osm-intl/ https://polyfill.io/ https://api.openweathermap.org/data/2.5/weather https://www.google-analytics.com/ https://www.googletagmanager.com/gtag/ https://i.imgur.com https://secure.gravatar.com https://unpkg.com/ https://disqus.com wss://realtime.services.disqus.com;
+      font-src 'self' https://cdn.kernvalley.us;
+      media-src *;
       frame-src https://www.youtube.com https://www.youtube-nocookie.com https://disqus.com;
-      object-src: 'none';
-      worker-src: 'self';
-      manifest-src 'self';
       form-action 'self';
+      manifest-src 'self';
+      worker-src 'self';
       reflected-xss block;
-      block-all-mixed-content;
       upgrade-insecure-requests;
+      block-all-mixed-content;
       disown-opener;'''
 # [[redirects]]
-#   from = "/"
-#   to = "/events/"
-#   status = 302
-#   force = true
+  # from = ""
+  # to = ""

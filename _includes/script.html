@@ -1,7 +1,7 @@
 <script
-	type="{{ include.type | default: 'text/javascript' }}"
+	type="{{ include.type | default: 'application/javascript' }}"
 	src="{{ include.src }}"
-	{% if include.crossorigin %}crossorigin="{{ include.crossorigin }}"{% endif %}
+	crossorigin="{{ include.crossorigin | default: 'anonymous'}}"
 	{% if include.async %}async=""{% endif %}
 	{% if include.defer %}defer=""{% endif %}
 	{% if include.nomodule %}nomodule=""{% endif %}

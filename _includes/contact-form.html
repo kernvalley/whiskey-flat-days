@@ -1,0 +1,44 @@
+<form name="contact" method="POST" data-netlify="true">
+	<fieldset class="no-border">
+		<div class="input-group">
+			<label for="name" class="block">
+				{% include icon.html icon="avatar-default" %}
+				<span>Name</span>
+			</label>
+			<input type="text" id="name" class="full-width" name="name" autocomplete="name" placeholder="First Last" required="" />
+		</div>
+		<div class="input-group">
+			<label for="email" class="block">
+				{% include icon.html icon="mail-send" %}
+				<span>Email</span>
+			</label>
+			<input type="email" id="email" class="full-width" name="email" autocomplete="email" placeholder="user@example.com" required="" />
+		</div>
+		<div class="input-group">
+			<label for="phone" class="block">
+				{% include icon.html icon="call-start" %}
+				<span>Phone</span>
+			</label>
+			<input type="tel" id="phone" class="full-width" name="phone" autocomplete="telephone" placeholder="1-555-555-5555" />
+		</div>
+		<br />
+		<div class="input-group">
+			<label for="message" class="block">
+				{% include icon.html icon="note" %}
+				<span>Message</span>
+			</label>
+			<textarea name="message" id="message" class="full-width" placeholder="Enter message here" required=""></textarea>
+		</div>
+	<hr />
+	</fieldset>
+	<input type="hidden" name="submittedFrom" value="{{ page.url }}" />
+	<input type="hidden" name="configVersion" value="{{ site.version }}" />
+	<button type="submit" class="btn btn-accept">
+		{% include icon.html icon="mail-send" %}
+		<span>Submit</span>
+	</button>
+	<button type="reset" class="btn btn-reject">
+		{% include icon.html icon="x" %}
+		<span>Cancel</span>
+	</button>
+</form>
