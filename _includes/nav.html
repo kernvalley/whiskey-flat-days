@@ -1,41 +1,17 @@
-<nav class="sticky top shadow-dark color-alt flex row title-font center no-text-decoration z-3" role="navigation" itemtype="http://schema.org/SiteNavigationElement" itemscope="">
-	{% if page.url != '/' %}
-		<a href="{{ '/'  }}" rel="bookmark" title="Home" class="color-inherit">
-			{% include icon.html icon='home' %}
-			<span class="mobile-hidden">Home</span>
+<nav id="nav" class="sticky top shadow background-accent color-alt z-top clearfix">
+	<span class="display-mode-standalone float-left">
+		<button type="button" class="btn btn-primary" title="Go Back" data-action="back">{% include icon.html icon="go-previous" %}</button>
+		<button type="button" class="btn btn-primary" title="Reload" data-action="reload">{% include icon.html icon="view-refresh" %}</button>
+		<button type="button" class="btn btn-primary" title="Go Forward" data-action="forward">{% include icon.html icon="go-next" %}</button>
+	</span>
+	{% for link in site.data.nav %}
+		<a role="button" class="btn btn-primary nav-link" href="{{ link.url }}">
+			{% include icon.html icon=link.icon %}
+			<span class="mobile-hidden">{{ link.label }}</span>
 		</a>
-	{% endif %}
-	<a href="{{ '#top' | prepend: page.url  }}" title="Top" class="color-inherit">
-		{% include icon.html icon='top' %}
-		<span class="mobile-hidden">Top</span>
-	</a>
-	{% if page.comments %}
-		<a href="{{ page.url | append: '#disqus_thread'  }}" title="Comments">
-			{% include icon.html icon='comments' %}
-			<span class="mobile-hidden">Comments</span>
-		</a>
-	{% endif %}
-	<a href="{{ page.url | append: '#about-dialog'  }}" class="color-inherit" title="About">
-		{% include icon.html icon='avatar-default' %}
-		<span class="mobile-hidden">About</span>
-	</a>
-	{% if page.layout != 'full-width' %}
-	<a href="{{ '#pinned-posts' | prepend: page.url  }}" title="Pinned Posts" class="color-inherit">
-		{% include icon.html icon='pin' %}
-		<span class="mobile-hidden">Pinned Posts</span>
-	</a>
-	<a href="{{ '#calendar' | prepend: page.url  }}" title="Calendar" class="color-inherit">
-		{% include icon.html icon='calendar' %}
-		<span class="mobile-hidden">Calendar</span>
-	</a>
-	{% else %}
-		<a href="{{ '/posts/javascript/'  }}" class="color-inherit">
-			<img src="{{ '/img/logos/javascript.svg'  }}" class="icon" alt="" />
-			JavaScript
-		</a>
-		<a href="{{ '/posts/php/'  }}" class="color-inherit">
-			<img src="{{ '/img/logos/php.svg'  }}" class="icon" alt="" />
-			PHP
-		</a>
-	{% endif %}
+	{% endfor %}
+	<button type="button" class="btn btn-primary" data-action="find-location" title="Use my Location" hidden="">
+		{% include icon.html icon="find-location" %}
+		<span class="mobile-hidden">Find my Location</span>
+	</button>
 </nav>

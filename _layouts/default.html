@@ -4,10 +4,11 @@ theme: default
 og-type: website
 itemtype: 'https://schema.org/WebPage'
 layout: base
-sidebar: false
 main-itemtype: Event
 ---
 {% unless page.no-header == true %}{% include header.html %}{% endunless %}
+{% unless page.no-nav == true %}{% include nav.html %}{% endunless %}
 <main id="main">{{ content }}</main>
+{% unless page.no-sidebar == true %}{% include sidebar.html %}{% endunless %}
 {% unless page.no-footer == true %}{% include footer.html %}{% endunless %}
 {% unless page.no-share == true %}{% include share-button.html text=page.description %}{% endunless %}
