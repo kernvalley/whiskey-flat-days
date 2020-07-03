@@ -148,5 +148,3 @@ export async function businessCategorySearch(event) {
 		toast.close();
 	}
 }
-
-window.businessCategorySearch = businessCategorySearch;
