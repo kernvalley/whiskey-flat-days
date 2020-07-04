@@ -1,0 +1,63 @@
+'@context': 'http://schema.org'
+'@type': Person
+givenName: Christopher
+additionalName: Wayne
+familyName: Zuber
+url: 'https://shgysk8zer0.github.io'
+sameAs:
+  twitter: shgysk8zer0
+  github: shgysk8zer0
+  # google_plus: +ChrisZuber
+  youtube: shgysk8zer0
+  facebook: shgysk8zer0
+  codepen: shgysk8zer0
+  linkedin: chris-zuber-455346141
+  stackoverflow: 2573566
+  upwork: _~01568b211423f33d85
+birthDate: '1985-03-26'
+telephone: +1-661-619-6712
+email: admin@kernvalley.us
+description: |-
+  I write code and poetry. Overall <q>knurd.</q> I know how to exit vim!
+  <br />
+  Full Stack Web Developer and follower of the Unix Philosophy
+jobTitle: Full Stack Web Developer
+worksFor:
+  '@type': Organization
+  name: KernValley.us
+  url: 'https://kernvalley.us'
+  email: admin@kernvalley.us
+  telephone: +1-661-619-6712
+  address:
+    addressLocality: Kernville
+    addressRegion: California
+  logo:
+    '@type': ImageObject
+    contentUrl: '/img/favicon.svg'
+    width: 128
+    height: 128
+    encodingFormat: svg
+  sameAs:
+    twitter: kern_valley
+    linkedin: kernvalley-us
+    github: kernvalley
+    facebook: KernValley.us
+image:
+  '@type': ImageObject
+  gravatar: 314fe5e355732b0a15b18053d318cf37
+  width: 256
+  height: 256
+  encodingFormat: png
+homeLocation:
+  '@type': Place
+  address:
+    '@type': PostalAddress
+    addressLocality: Kernville
+    addressRegion: California
+    postalCode: 93238
+    addressCountry: United States
+  geo:
+    '@type': GeoCoordinates
+    latitude: 35.617475
+    longitude: -118.477462
+    url: 'geo:35.617475,-118.477462;crs=wgs84;u=0'

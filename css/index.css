@@ -13,6 +13,7 @@
 @import url("./vars.css");
 @import url("./layout.css");
 @import url("./events.css");
+@import url("./contact.css");
 
 input[hidden] + label[for].btn-toggle {
 	background-color: var(--button-disabled-background);

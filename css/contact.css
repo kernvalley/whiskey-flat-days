@@ -1,0 +1,48 @@
+
+
+#contact-section figure {
+	margin: 0;
+	width: 100vw;
+}
+
+#org-info-dialog {
+	max-height: 90vh;
+	min-width: 65vw;
+	background: darkgray;
+}
+
+@media screen and (min-width: 1000px) {
+	#org-info-dialog > .org-info {
+		margin: 1% 20% 1% 20%;
+		width: 60%
+	}
+}
+
+#contact-section .contact-info-card {
+	padding: 1em;
+	display: inline-block;
+	overflow-y: auto;
+	display: flex;
+	flex-direction: column;
+}
+
+#contact-section .icon {
+	margin-right: 1.3em;
+}
+
+#contact-section button .icon {
+	margin-right: 0;
+}
+
+@media (min-aspect-ratio: 3/2) {
+	#contact-section .contact-info-card {
+		max-width: calc(100vw - 100vh);
+		max-height: calc(100vh - 2em);
+		overflow-y: auto;
+	}
+
+	#contact-section figure {
+		width: 100vh;
+		display: inline-block;
+	}
+}

@@ -1,6 +1,6 @@
 name: Whiskey Flat Days
 shortName: Whiskey Flats
-version: 2.0.0_b2
+version: 2.0.1
 display: standalone
 description: "Map and events app for Whiskey Flat Days"
 icons-file: /img/icons.svg
@@ -42,4 +42,6 @@ screenshots:
 - src: 'https://i.imgur.com/Qnvw7I2l.jpg'
   sizes: 640x266
   type: image/jpeg
-related_applications: []
+related_applications:
+- platform: play
+  id: com.whiskey_flats.twa
