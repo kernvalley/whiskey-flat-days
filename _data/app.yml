@@ -42,4 +42,6 @@ screenshots:
 - src: 'https://i.imgur.com/Qnvw7I2l.jpg'
   sizes: 640x266
   type: image/jpeg
-related_applications: []
+related_applications:
+- platform: play
+  id: com.whiskey_flats.twa
