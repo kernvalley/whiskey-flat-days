@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `.well-known/assetlinks.json` for TWA deployment
 - Play Store info to webapp manifest
 
+### Fixed
+- Contact page content & style
+
 ## [v2.0.0] - 2020-07-03
 
 ### Added
