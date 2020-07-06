@@ -84,11 +84,11 @@ const config = {
 		/* Other */
 	].map(path => new URL(path, location.origin).href),
 		allowed: [
-			/https:\/\/secure\.gravatar\.com\/avatar\/.*/,
-			/https:\/\/i\.imgur\.com\/.*/,
-			/https:\/\/maps\.wikimedia\.org\/osm-intl\/.*/,
-			/https:\/\/cdn\.kernvalley\.us\/img\/.*/,
-			/https:\/\/api\.openweathermap\.org\/data\/2.5\/weather\/.*/,
+			/https:\/\/secure\.gravatar\.com\/avatar\/*/,
+			/https:\/\/i\.imgur\.com\/*/,
+			/https:\/\/maps\.wikimedia\.org\/osm-intl\/*/,
+			/https:\/\/cdn\.kernvalley\.us\/img\/*/,
+			/https:\/\/api\.openweathermap\.org\/data\/*/,
 			new RegExp(`${location.origin.replace('/', '\/').replace('.', '\.')}\/paths\/.*`),
 			new RegExp(`${location.origin.replace('/', '\/').replace('.', '\.')}\/img\/raster\/.*`),
 			new RegExp(`${location.origin.replace('/', '\/').replace('.', '\.')}\/img\/markers\/.*`),
