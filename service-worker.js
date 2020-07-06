@@ -1,6 +1,9 @@
+---
+layout: null
+---
 'use strict';
 /*eslint no-undef: 0*/
-/* {{ site.time | date: data_to_xmlschema }} */
+/* {{ site.data.app.version }} */
 self.importScripts('/sw-config.js');
 
 self.addEventListener('install', async event => {
@@ -13,7 +16,7 @@ self.addEventListener('install', async event => {
 			}
 
 			const cache = await caches.open(config.version);
-			await cache.addAll([...config.stale || [], ...config.fresh || []]);
+			await cache.addAll([...config.stale || [], ...config.fresh || []]).catch(console.error);
 		} catch (err) {
 			console.error(err);
 		}
@@ -25,57 +28,51 @@ self.addEventListener('activate', event => event.waitUntil(clients.claim()));
 self.addEventListener('fetch', event => {
 	if (event.request.method === 'GET') {
 		event.respondWith((async () => {
-			const url = new URL(event.request.url);
-			url.hash = '';
-
-			if (Array.isArray(config.stale) && config.stale.includes(url.href)) {
-				const cached = await caches.match(url);
+			if (Array.isArray(config.stale) && config.stale.includes(event.request.url)) {
+				const cached = await caches.match(event.request);
 				if (cached instanceof Response) {
 					return cached;
+				} else {
+					const [resp, cache] = await Promise.all([
+						fetch(event.request),
+						caches.open(config.version),
+					]);
+
+					if (resp.ok) {
+						cache.put(event.request, resp.clone());
+					}
+
+					return resp;
 				}
-			} else if (Array.isArray(config.fresh) && config.fresh.includes(url.href)) {
+			} else if (Array.isArray(config.fresh) && config.fresh.includes(event.request.url)) {
 				if (navigator.onLine) {
-					const resp = await fetch(url.href);
-					const cache = await caches.open(config.version);
+					const [resp, cache] = await Promise.all([
+						fetch(event.request),
+						caches.open(config.version),
+					]);
 
 					if (resp.ok) {
 						cache.put(event.request, resp.clone());
 					}
 					return resp;
 				} else {
-					return caches.match(event.request.url);
+					return caches.match(event.request);
 				}
 			} else if (Array.isArray(config.allowed) && config.allowed.some(entry => (
 				entry instanceof RegExp
 					? entry.test(event.request.url)
-					: url.host === entry
+					: event.request.url === entry
 			))) {
-				const resp = await caches.match(event.request.url);
+				const resp = await caches.match(event.request);
 
 				if (resp instanceof Response) {
 					return resp;
 				} else if (navigator.onLine) {
-					if (event.request.headers.has('Referer')) {
-						event.request.remove('Referer');
-					}
-					const resp = await fetch(event.request.url, {
-						cache: event.request.cache,
-						credentials: event.request.credentials,
-						headers: event.request.headers,
-						integrity: event.request.integrity,
-						method: event.request.method,
-						mode: event.request.mode,
-						redirect: event.request.redirect,
-						referrer: event.request.referrer,
-						referrerPolicy: event.request.referrerPolicy,
-
-					});
+					const resp = await fetch(event.request);
 
 					if (resp instanceof Response) {
-						if (resp.ok) {
-							const cache = await caches.open(config.version);
-							cache.put(event.request.url, resp.clone());
-						}
+						const cache = await caches.open(config.version);
+						cache.put(event.request, resp.clone());
 						return resp;
 					} else {
 						console.error(`Failed in request for ${event.request.url}`);
