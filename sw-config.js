@@ -1,8 +1,10 @@
 ---
 layout: null
 ---
+/* eslint-env serviceworker */
+/* eslint no-unused-vars: 0*/
 'use strict';
-/*eslint no-unused-vars: 0*/
+
 const config = {
 	version: '{{ site.data.app.version | default: site.version }}',
 	fresh: [
@@ -83,14 +85,14 @@ const config = {
 		'https://cdn.kernvalley.us/fonts/ubuntu.woff2',
 		/* Other */
 	].map(path => new URL(path, location.origin).href),
-		allowed: [
-			/https:\/\/secure\.gravatar\.com\/avatar\/*/,
-			/https:\/\/i\.imgur\.com\/*/,
-			/https:\/\/maps\.wikimedia\.org\/osm-intl\/*/,
-			/https:\/\/cdn\.kernvalley\.us\/img\/*/,
-			/https:\/\/api\.openweathermap\.org\/data\/*/,
-			new RegExp(`${location.origin.replace('/', '\/').replace('.', '\.')}\/paths\/.*`),
-			new RegExp(`${location.origin.replace('/', '\/').replace('.', '\.')}\/img\/raster\/.*`),
-			new RegExp(`${location.origin.replace('/', '\/').replace('.', '\.')}\/img\/markers\/.*`),
-		],
+	allowed: [
+		/https:\/\/secure\.gravatar\.com\/avatar\/*/,
+		/https:\/\/i\.imgur\.com\/*/,
+		/https:\/\/maps\.wikimedia\.org\/osm-intl\/*/,
+		/https:\/\/cdn\.kernvalley\.us\/img\/*/,
+		/https:\/\/api\.openweathermap\.org\/data\/*/,
+		new RegExp(`${location.origin.replace('/', '\\/').replace('.', '\\.')}\\/paths\\/.*`),
+		new RegExp(`${location.origin.replace('/', '\\/').replace('.', '\\.')}\\/img\\/raster\\/.*`),
+		new RegExp(`${location.origin.replace('/', '\\/').replace('.', '\\.')}\\/img\\/markers\\/.*`),
+	],
 };
