@@ -70,6 +70,7 @@ icons:
 - src: /img/favicon.svg
   type: image/svg+xml
   sizes: 150x150
+  purpose: maskable any
 - src: /img/apple-touch-icon.png
   rel: apple-touch-icon
   type: image/png
@@ -77,12 +78,15 @@ icons:
 - src: /img/icon-512.png
   type: image/png
   sizes: 512x512
+  purpose: maskable any
 - src: /img/icon-192.png
   type: image/png
   sizes: 192x192
+  purpose: maskable any
 - src: /img/icon-32.png
   type: image/png
   sizes: 32x32
+  purpose: maskable any
 - src: /img/icon-16.png
   type: image/png
   sizes: 16x16
