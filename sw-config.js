@@ -14,19 +14,24 @@ const config = {
 		'https://api.openweathermap.org/data/2.5/weather?appid=41ff0542577756523c5fcfaaeabe89d7&zip=93238%2Cus&units=imperial&lang=en',
 	].map(path => new URL(path, location.origin).href),
 	stale: [
-		/* Other HTML */
 		'/css/index.min.css',
 		'/js/index.min.js',
-		'https://polyfill.io/v3/polyfill.min.js',
-		'https://cdn.kernvalley.us/components/toast-message.html',
-		'https://cdn.kernvalley.us/components/pwa/prompt.html',
+		'/img/icons.svg',
+		'https://cdn.polyfill.io/v3/polyfill.min.js',
+		/* Other HTML */
 
 		/* JS, `customElements`, etc. */
+		'https://cdn.kernvalley.us/components/toast-message.html',
+		'https://cdn.kernvalley.us/components/pwa/prompt.html',
 		'https://cdn.kernvalley.us/components/leaflet/map.html',
 		'https://cdn.kernvalley.us/components/weather-current.html',
 
 		/* CSS */
 		'https://unpkg.com/leaflet@1.6.0/dist/leaflet.css',
+		'https://cdn.kernvalley.us/components/toast-message.css',
+		'https://cdn.kernvalley.us/components/pwa/prompt.css',
+		'https://cdn.kernvalley.us/components/leaflet/map.css',
+		'https://cdn.kernvalley.us/components/weather-current.css',
 
 		/* Images & Icons */
 		'/img/apple-touch-icon.png',
@@ -38,7 +43,6 @@ const config = {
 		'https://cdn.kernvalley.us/img/logos/firefox.svg',
 		'https://cdn.kernvalley.us/img/logos/chrome.svg',
 		/* Map Icons */
-		'/img/icons.svg',
 		'/img/markers/activity.svg',
 		'/img/markers/atm.svg',
 		'/img/markers/bar.svg',
