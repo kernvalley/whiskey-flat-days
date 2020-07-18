@@ -1,6 +1,6 @@
 :root.js {
 	--map-width: 100%;
-	--map-height: calc(100vh - var(--nav-height, 4rem));
+	--map-height: calc(90vh - var(--nav-height, 4rem));
 	--sidebar-max-width: 30vw;
 	--scrollbar-color: var(--accent-color);
 	--scrollbar-track: transparent;

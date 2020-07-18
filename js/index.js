@@ -12,14 +12,54 @@ import 'https://cdn.kernvalley.us/components/github/user.js';
 import 'https://cdn.kernvalley.us/components/pwa/install.js';
 import 'https://unpkg.com/@webcomponents/custom-elements@1.3.2/custom-elements.min.js';
 import * as handlers from './handlers.js';
-import { $, ready } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
+import { $, ready, wait } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
+import { searchLocationMarker, stateHandler } from './functions.js';
+import { site } from './consts.js';
 
 document.documentElement.classList.replace('no-js', 'js');
 document.body.classList.toggle('no-dialog', document.createElement('dialog') instanceof HTMLUnknownElement);
 document.body.classList.toggle('no-details', document.createElement('details') instanceof HTMLUnknownElement);
-handlers.hashChange();
 
-window.addEventListener('hashchange', handlers.hashChange);
+if (location.pathname.startsWith('/map')) {
+	Promise.all([
+		ready(),
+		customElements.whenDefined('leaflet-map'),
+		customElements.whenDefined('leaflet-marker'),
+	]).then(async () => {
+		window.addEventListener('popstate', stateHandler);
+
+		if (history.state === null) {
+			// Check if hash contains GPS coordinates
+			if (location.hash.includes(',')) {
+				const [latitude = NaN, longitude = NaN] = location.hash.substr(1).split(',', 2).map(parseFloat);
+				if (! (Number.isNaN(latitude) || Number.isNaN(longitude))) {
+					history.replaceState({
+						latitude,
+						longitude,
+						title: 'Location',
+						body: `GPS Coorinates: ${latitude}, ${longitude}`,
+					}, `Location | ${site.title}`, location.href);
+				}
+				stateHandler(history);
+			} else if (location.hash !== '') {
+				// This is a marker with a UUID
+				const marker = document.getElementById(location.hash.substr(1));
+
+				if (marker instanceof HTMLElement && marker.tagName === 'LEAFLET-MARKER') {
+					history.replaceState({
+						latitude: marker.latitude,
+						longitude: marker.longitude,
+						title: marker.title,
+						uuid: marker.id,
+					}, `${marker.title} | ${site.title}`, location.href);
+					stateHandler(history);
+				}
+			}
+		} else {
+			stateHandler(history);
+		}
+	});
+}
 
 function filterEventNamesDatalist() {
 	const datalist = document.getElementById('events-list');
@@ -66,15 +106,23 @@ ready().then(async () => {
 	$('#search-time').attr({ min: '06:00', max: '20:00' });
 	$('#search-date').attr({ value: current ? date : '2020-02-14', min: current ? date : '2020-02-14', max: '2020-02-17' });
 
-	$('leaflet-marker[id]').on('markerclick', ({target}) => {
-		if (! target.open) {
-			const {id} = target;
+	$('leaflet-marker[id]').on('markerclick', async ({target}) => {
+		await wait(100);
 
-			if (id !== 'my-location-marker') {
-				location.hash = `#${id}`;
+		if (target.open) {
+			const url = new URL(location.pathname, location.origin);
+			document.title = `${target.title} | ${site.title}`;
+
+			if (typeof target.id === 'string') {
+				url.hash = `#${target.id}`;
 			}
-		} else {
-			location.hash = '';
+
+			history.pushState({
+				latitude: target.latitude,
+				longitude: target.longitude,
+				title: target.title,
+				uuid: target.id,
+			}, document.title, url.href);
 		}
 	});
 
@@ -101,35 +149,39 @@ ready().then(async () => {
 	$('[data-action]').click(({ target }) => {
 		const { action } = target.closest('[data-action]').dataset;
 		switch (action.toLowerCase()) {
-		case 'reload':
-			location.reload();
-			break;
+			case 'reload':
+				location.reload();
+				break;
 
-		case 'back':
-			history.back();
-			break;
+			case 'back':
+				history.back();
+				break;
 
-		case 'forward':
-			history.forward();
-			break;
+			case 'forward':
+				history.forward();
+				break;
 
-		case 'find-location':
-			if (('geolocation' in navigator) && navigator.geolocation.getCurrentPosition instanceof Function) {
-				Promise.all([
-					customElements.whenDefined('leaflet-map'),
-					customElements.whenDefined('leaflet-marker'),
-				]).then(() => {
+			case 'find-location':
+				if (('geolocation' in navigator) && navigator.geolocation.getCurrentPosition instanceof Function) {
 					navigator.geolocation.getCurrentPosition(({coords}) => {
-						location.hash = `#${coords.latitude},${coords.longitude}`;
+						const url = new URL(location.pathname, location.origin);
+						document.title = `Location: ${site.title}`;
+						url.hash = `${coords.latitude},${coords.longitude}`;
+						history.pushState({
+							latitude: coords.latitude,
+							longitude: coords.longitude,
+							title: 'Location',
+							body: `GPS Coordinates: ${coords.latitude}, ${coords.longitude}`
+						}, document.title, url.href);
+						stateHandler(history);
 					}, console.error, {
 						enableHighAccuracy: true,
 					});
-				});
-			}
-			break;
+				}
+				break;
 
-		default:
-			throw new Error(`Unknown click action: ${action}`);
+			default:
+				throw new Error(`Unknown click action: ${action}`);
 		}
 	});
 
@@ -148,4 +200,7 @@ ready().then(async () => {
 	});
 
 	filterEventNamesDatalist();
+	searchLocationMarker();
 });
+
+

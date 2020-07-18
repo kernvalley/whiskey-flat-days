@@ -1,6 +1,12 @@
-main {
+#main {
 	--link-color: #049ccf;
 	--link-decoration: underline;
+}
+
+leaflet-map::part(popup) {
+	max-height: 60vh;
+	max-width: 60vw;
+	overflow: auto;
 }
 
 .breach.card {
