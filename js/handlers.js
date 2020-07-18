@@ -1,4 +1,6 @@
-import {loaded, wait, $} from 'https://cdn.kernvalley.us/js/std-js/functions.js';
+import { loaded, wait, $ } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
+import { site } from './consts.js';
+import { getMap, createMarker } from './functions.js';
 
 export function  searchDateTimeRange({from = new Date('2020-02-14T11:00'), hours = 2} = {}) {
 	if (! (from instanceof Date)) {
@@ -40,8 +42,17 @@ export async function eventSearchHandler(event) {
 }
 
 export async function hashChange() {
-	if (location.hash === '') {
-		document.title = 'Map | Whiskey Flat Days';
+	if (! location.pathname.startsWith('/map')) {
+		return;
+	} else if (location.hash === '') {
+		document.title = `Map | ${site.title}`;
+		history.replaceState({
+			title: 'Map',
+			latitude: NaN,
+			longitude: NaN,
+			uuid: null,
+		}, document.title, location.href);
+
 		$('leaflet-marker[open]').attr({open: false});
 	} else if (! location.hash.includes(',')) {
 		$('leaflet-geojson').hide();
@@ -53,75 +64,60 @@ export async function hashChange() {
 			const map = marker.parentElement;
 
 			if (marker.title !== '') {
-				document.title = `${marker.title} | Whiskey Flat Days`;
+				document.title = `${marker.title} |${site.title}`;
 			} else {
-				document.title = 'Map | Whiskey Flat Days';
+				document.title = `Map | ${site.title}`;
 			}
 
 			switch(marker.tagName.toLowerCase()) {
-			case 'leaflet-marker':
-				(async () => {
-					map.center = {latitude: marker.latitude, longitude: marker.longitude};
+				case 'leaflet-marker':
+					history.replaceState({
+						latitude: marker.latitude,
+						longitude: marker.longitude,
+						uuid: location.hash.substr(1),
+						title: marker.title,
+					}, document.title, location.href);
+
+					(async () => {
+						map.center = {latitude: marker.latitude, longitude: marker.longitude};
+						map.scrollIntoView({behavior: 'smooth', block: 'start'});
+						const geojson = map.querySelector(`leaflet-geojson[marker="${marker.id}"]`);
+						await Promise.all([marker.ready, map.ready, loaded()]);
+						await wait(100);
+						marker.hidden = false;
+						marker.open = true;
+
+						if (geojson instanceof HTMLElement) {
+							geojson.hidden = false;
+						}
+					})();
+					break;
+
+				case 'leaflet-geojson':
 					map.scrollIntoView({behavior: 'smooth', block: 'start'});
-					const geojson = map.querySelector(`leaflet-geojson[marker="${marker.id}"]`);
-					await Promise.all([marker.ready, map.ready, loaded()]);
-					await wait(100);
 					marker.hidden = false;
-					marker.open = true;
-
-					if (geojson instanceof HTMLElement) {
-						geojson.hidden = false;
-					}
-				})();
-				break;
-
-			case 'leaflet-geojson':
-				map.scrollIntoView({behavior: 'smooth', block: 'start'});
-				marker.hidden = false;
-				break;
+					break;
 			}
 		}
 	} else if (location.hash.includes(',')) {
-		await loaded();
-		await Promise.all(['share-button', 'leaflet-marker'].map(tag => customElements.whenDefined(tag)));
-		const Marker = customElements.get('leaflet-marker');
-		const [latitude, longitude] = location.hash.substr(1).split(',').map(parseFloat);
-		const marker = new Marker();
-		const icon = document.createElement('img');
-		const map = document.querySelector('leaflet-map');
-		const popup = document.createElement('div');
+		const [latitude = NaN, longitude = NaN] = location.hash.substr(1).split(',').map(parseFloat);
+		const map = await getMap();
+		await $('#my-location-marker', map).remove();
+		const marker = await createMarker({
+			latitude,
+			longitude,
+			size: 42,
+			body: 'Marked Location',
+			id: 'my-location-marker',
+		});
 
-		marker.id = 'my-location-marker';
-		marker.latitude = latitude;
-		marker.longitude = longitude;
-		marker.slot = 'markers';
-
-		icon.src = new URL('/img/adwaita-icons/actions/mark-location.svg', document.baseURI);
-		icon.width = 42;
-		icon.height = 42;
-		icon.slot = 'icon';
-		document.title = 'Marked Location | Whiskey Flat Days';
-
-		popup.slot = 'popup';
-		popup.textContent = 'Marked Location';
-
-		if (navigator.share instanceof Function) {
-			try {
-				const Share = customElements.get('share-button');
-				const share = new Share();
-
-				share.url = location.href;
-				share.textContent = 'Share Location';
-				share.title = 'My location | Whiskey Flat Days Map';
-				popup.append(document.createElement('br'), share);
-			} catch(err) {
-				console.error(err);
-			}
-		}
-
-		marker.append(icon, popup);
-		await $('#my-location-marker').remove();
-		map.append(marker);
+		document.title = `Marked Location | ${site.title}`;
+		history.replaceState({
+			longitude,
+			latitude,
+			uuid: null,
+			title: document.title,
+		}, document.title, location.href);
 		map.center = {latitude, longitude};
 		map.scrollIntoView({behavior: 'smooth', block: 'start'});
 		await wait(200);
