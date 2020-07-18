@@ -42,8 +42,8 @@
   "scripts": {
     "test": "npm run lint",
     "start": "npm run netlify",
-    "preinstallx": "npm run git:submodules",
-    "postinstallx": "npm run build",
+    "preinstall": "npm run git:submodules",
+    "postinstall": "npm run build",
     "git:fetch": "git fetch --prune --tags",
     "git:submodules": "if [ -f '.gitmodules' ]; then git submodule update --init --recursive; fi",
     "lint": "npm run lint:js && npm run lint:css",
