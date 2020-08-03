@@ -1,4 +1,3 @@
-<!-- markdownlint-disable -->
 ---
 layout: default
 title: CHANGELOG
@@ -6,6 +5,7 @@ description: List of changes
 robots: noindex
 permalink: /changelog/
 ---
+<!-- markdownlint-disable -->
 # Changelog
 All notable changes to this project will be documented in this file.
 
@@ -13,6 +13,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [v2.0.5] - 2020-08-03
+
+### Updated
+- Various dependecy updates
+- Dynamically load `polyfill.io`
+- Mark pages as not having a header, & do not `@import url("header.css")`
+- Update components from template repo
+- Misc. performance improvements
+- Preload / prefetch required assets / connections
+
+### Fixed
+- Quote attributes for `<leaflet-marker>`s
+- Set `loading="lazy"` on all images
+- Currectly set image for Twitter
 
 ## [v2.0.4] - 2020-07-18
 

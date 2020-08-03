@@ -4,6 +4,7 @@ title: Map
 permalink: /map/
 pinned: true
 index: true
+no-header: true
 referrer: no-referrer
 description: Map of events, vendors, and other Points-of-interest for Whiskey Flat Days in Kernville, CA
 tags:
@@ -16,6 +17,23 @@ tags:
 - point of interest
 - map
 - festival
+preload:
+  - href: "https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+    as: style
+    referrerpolicy: no-referrer
+    crossorigin: anonymous
+  - href: "https://cdn.kernvalley.us/components/leaflet/map.css"
+    as: style
+    referrerpolicy: no-referrer
+    crossorigin: anonymous
+  - href: "https://cdn.kernvalley.us/components/leaflet/map.css"
+    as: fetch
+    referrerpolicy: no-referrer
+    crossorigin: anonymous
+preconnect:
+  href: "https://maps.wikimedia.org"
+  referrerpolicy: no-referrer
+  crossorigin: anonymous
 ---
 {% include header.html %}
 {% include nav.html %}
@@ -75,8 +93,8 @@ tags:
 			</div>
 		</address>
 		{% for marker in site.data.poi %}
-			<leaflet-marker class="poi-marker" id="{{ marker.uuid }}" longitude="{{ marker.location.geo.longitude }}" latitude="{{ marker.location.geo.latitude }}" slot="markers" title="{{ marker.title }}"{% if marker.category %} data-category={{ marker.category }}{% endif %}>
-				<img src="{{ marker.icon | default: '/img/adwaita-icons/actions/mark-location.svg' }}" slot="icon" width="32" height="32" />
+			<leaflet-marker class="poi-marker" id="{{ marker.uuid }}" longitude="{{ marker.location.geo.longitude }}" latitude="{{ marker.location.geo.latitude }}" slot="markers" title="{{ marker.title }}"{% if marker.category %} data-category="{{ marker.category }}"{% endif %}>
+				<img src="{{ marker.icon | default: '/img/adwaita-icons/actions/mark-location.svg' }}" slot="icon" width="32" height="32" loading="lazy" decoding="async" />
 				<div slot="popup">
 					<h4>{{ marker.popup | default: marker.title }}</h4>
 					{% if marker.description %}<div>{{ marker.description }}</div>{% endif %}
@@ -121,8 +139,8 @@ tags:
 				</div>
 			</leaflet-marker>
 		{% endfor %}{% for marker in site.data.vendors %}{% if marker.title %}
-			<leaflet-marker id="{{ marker.uuid }}" class="vendor-marker" data-space="{{ marker.space }}" data-title="{{ marker.title | default: marker.space }}" data-category="{{ marker.category | join: ' ' }}" longitude="{{ marker.longitude }}" latitude="{{ marker.latitude }}" slot="markers" title="{{ marker.title }}"{% if marker.category %} data-category={{ marker.category | join: ' ' }}{% endif %}>
-				<img src="{{ marker.icon | default: '/img/adwaita-icons/actions/mark-location.svg' }}" slot="icon" width="32" height="32" />
+			<leaflet-marker id="{{ marker.uuid }}" class="vendor-marker" data-space="{{ marker.space }}" data-title="{{ marker.title | default: marker.space }}" data-category="{{ marker.category | join: ' ' }}" longitude="{{ marker.longitude }}" latitude="{{ marker.latitude }}" slot="markers" title="{{ marker.title }}"{% if marker.category %} data-category="{{ marker.category | join: ' ' }}"{% endif %}>
+				<img src="{{ marker.icon | default: '/img/adwaita-icons/actions/mark-location.svg' }}" slot="icon" width="32" height="32" loading="lazy" decoding="async" />
 				<div slot="popup">
 					<h4>{{ marker.title | default: marker.space }}</h4>
 					{% if marker.description %}<div>{{ marker.description }}</div>{% endif %}
@@ -151,7 +169,7 @@ tags:
 			</leaflet-marker>
 		{% endif %}{% endfor %}{% for marker in site.data.businesses %}
 			<leaflet-marker itemtype="{{ marker['@itemtype'] | default: 'https://schema.org/LocalBusiness' }}" id="{{ marker.uuid }}" class="business-marker" longitude="{{ marker.location.geo.longitude }}" latitude="{{ marker.location.geo.latitude }}" slot="markers" title="{{ marker.title }}"{% if marker.category %} data-category="{{ marker.category | join: ' ' }}"{% endif %} itemscope="">
-				<img src="{{ marker.icon | default: '/img/adwaita-icons/actions/mark-location.svg' }}" slot="icon" width="32" height="32" />
+				<img src="{{ marker.icon | default: '/img/adwaita-icons/actions/mark-location.svg' }}" slot="icon" width="32" height="32" loading="lazy" decoding="async" />
 				<div slot="popup">
 					<h4 itemprop="name">{{ marker.popup | default: marker.title }}</h4>
 					{% if marker.description %}<div itemprop="description">{{ marker.description }}</div>{% endif %}
@@ -212,7 +230,7 @@ tags:
 			</leaflet-marker>
 		{% endfor %}
 		{% for marker in site.data.events %}
-			<leaflet-marker id="{{ marker.uuid }}" class="event-marker" longitude="{{ marker.location.geo.longitude }}" latitude="{{ marker.location.geo.latitude }}" slot="markers" title="{{ marker.title }}" data-end-date="{{ marker.endDate | date_to_xmlschema }}" data-start-date="{{ marker.startDate | date_to_xmlschema }}"{% if marker.category %} data-category={{ marker.category }}{% endif %} hidden="">
+			<leaflet-marker id="{{ marker.uuid }}" class="event-marker" longitude="{{ marker.location.geo.longitude }}" latitude="{{ marker.location.geo.latitude }}" slot="markers" title="{{ marker.title }}" data-end-date="{{ marker.endDate | date_to_xmlschema }}" data-start-date="{{ marker.startDate | date_to_xmlschema }}"{% if marker.category %} data-category="{{ marker.category }}"{% endif %} hidden="">
 				<img src="{{ marker.icon | default: '/img/markers/event.svg' }}" slot="icon" width="32" height="32" />
 				<div slot="popup" itemprop="subEvent" itemtype="https://schema.org/Event" itemscope="">
 					<meta itemprop="url" content="{{ site.url }}/map/#{{ marker.uuid }}" />
@@ -290,7 +308,7 @@ tags:
 	<weather-current class="card shadow" appid="{{ site.data.weather.appid }}" postalcode="{{ site.data.weather.postalCode }}"></weather-current>
 	{% for ad in site.data.ads %}
 		<ad-block url="{{ ad.url }}">
-			<img src="{{ ad.image }}" alt="logo" slot="image" />
+			<img src="{{ ad.image }}" alt="logo" slot="image" loading="lazy" decoding="async" />
 			<b slot="label">{{ ad.label }}</b>
 			<p slot="description">{{ ad.description }}</p>
 			<span slot="calltoaction">{{ ad.callToAction }}</span>
@@ -386,7 +404,7 @@ tags:
 	</form>
 </toast-message>
 {% include footer.html %}
-{% include share-button.html %}
+{% include share-button.html text=page.description %}
 <button type="button" id="search-btn" class="btn btn-primary fixed bottom left z-top shadow round" data-show="#event-search-toast" title="Search Events">
 	{% include icon.html icon="search" %}
 </button>

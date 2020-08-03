@@ -2,7 +2,7 @@
 	{% if include.title %}title="{{ include.title | escape }}"{% endif %}
 	{% if include.url %}url="{{ include.url }}"{% endif %}
 	{% if include.text %}text="{{ include.text | strip_newlines | strip_html | escape }}"{% endif %}
-	class="{{ include.position | default: 'fixed' }} round shadow-dark color-alt border-hidden background-accent z-top"
+	class="{{ include.position | default: 'fixed' }} btn btn-primary round shadow-dark color-alt border-hidden background-accent z-top"
 	aria-label="Share Page"
 	is="share-button"
 	hidden=""
