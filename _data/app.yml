@@ -1,12 +1,12 @@
 ---
 name: Whiskey Flat Days
 shortName: Whiskey Flats
-version: 2.0.4
+version: 2.0.5
 display: standalone
 description: "Map and events app for Whiskey Flat Days"
 icons-file: /img/icons.svg
 theme:
-  color: '#528ff9'
+  color: '#007bff'
   background: '#242424'
 shortcuts:
 - name: Events

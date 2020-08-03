@@ -1,0 +1,12 @@
+- href: "https://polyfill.io/v3/pollyfill.min.js"
+  as: script
+  referrerpolicy: no-referrer
+  crossorigin: anonymous
+- href: "https://cdn.kernvalley.us/components/github/user.html"
+  as: fetch
+  referrerpolicy: no-referrer
+  crossorigin: anonymous
+- href: "https://cdn.kernvalley.us/components/github/user.css"
+  as: style
+  referrerpolicy: no-referrer
+  crossorigin: anonymous

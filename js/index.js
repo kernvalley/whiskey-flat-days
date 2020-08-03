@@ -1,5 +1,6 @@
 import 'https://cdn.kernvalley.us/js/std-js/deprefixer.js';
 import 'https://cdn.kernvalley.us/js/std-js/shims.js';
+import 'https://unpkg.com/@webcomponents/custom-elements@1.4.2/custom-elements.min.js';
 import 'https://cdn.kernvalley.us/components/share-button.js';
 import 'https://cdn.kernvalley.us/components/current-year.js';
 import 'https://cdn.kernvalley.us/components/leaflet/map.js';
@@ -10,9 +11,9 @@ import 'https://cdn.kernvalley.us/components/ad-block.js';
 import 'https://cdn.kernvalley.us/components/weather-current.js';
 import 'https://cdn.kernvalley.us/components/github/user.js';
 import 'https://cdn.kernvalley.us/components/pwa/install.js';
-import 'https://unpkg.com/@webcomponents/custom-elements@1.3.2/custom-elements.min.js';
 import * as handlers from './handlers.js';
 import { $, ready, wait } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
+import { loadScript } from 'https://cdn.kernvalley.us/js/std-js/loader.js';
 import { searchLocationMarker, stateHandler } from './functions.js';
 import { site } from './consts.js';
 
@@ -87,7 +88,10 @@ function isOnGoing() {
 	return (now > start && now < end);
 }
 
-ready().then(async () => {
+Promise.all([
+	loadScript('https://polyfill.io/v3/polyfill.min.js'),
+	ready(),
+]).then(async () => {
 	const now = new Date();
 	const current = isOnGoing();
 	if (location.hash === '') {

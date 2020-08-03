@@ -3,14 +3,12 @@
   base = "./"
   publish = "./_site"
   command = "npm run build && npm run build:site"
-  [build.environment]
-    GIT_LFS_ENABLED = "1"
 [[headers]]
   for="/*"
   [headers.values]
     Link = '''
       </css/index.min.css>; rel=preload; as=style, \
-      </js/index.js>; rel=preload; as=script, \
+      </js/index.min.js>; rel=preload; as=script, \
       </img/icons.svg>; rel=preload; as=image
     '''
     X-Frame-Options = "DENY"
