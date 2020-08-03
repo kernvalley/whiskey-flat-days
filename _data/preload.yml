@@ -1,4 +1,4 @@
-- href: "https://polyfill.io/v3/pollyfill.min.js"
+- href: "https://cdn.polyfill.io/v3/pollyfill.min.js"
   as: script
   referrerpolicy: no-referrer
   crossorigin: anonymous
