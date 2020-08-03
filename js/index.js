@@ -89,7 +89,7 @@ function isOnGoing() {
 }
 
 Promise.all([
-	loadScript('https://polyfill.io/v3/polyfill.min.js'),
+	loadScript('https://cdn.polyfill.io/v3/polyfill.min.js'),
 	ready(),
 ]).then(async () => {
 	const now = new Date();
