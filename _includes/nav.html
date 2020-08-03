@@ -5,7 +5,7 @@
 		<button type="button" class="btn btn-primary" title="Go Forward" data-action="forward">{% include icon.html icon="go-next" %}</button>
 	</span>
 	{% for link in site.data.nav %}
-		<a class="btn btn-primary nav-link" href="{{ link.url }}">
+		<a class="btn btn-primary nav-link" href="{{ link.url }}" title="{{ link.label }}">
 			{% include icon.html icon=link.icon %}
 			<span class="mobile-hidden">{{ link.label }}</span>
 		</a>
