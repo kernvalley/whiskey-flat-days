@@ -7,7 +7,7 @@ module.exports = {
 		require('postcss-import-url'),
 		require('postcss-preset-env'),
 		require('postcss-discard-comments'),
-		require('postcss-custom-properties'),
+		// require('postcss-custom-properties'),
 		require('postcss-media-minmax'),
 		require('cssnano'),
 	]
