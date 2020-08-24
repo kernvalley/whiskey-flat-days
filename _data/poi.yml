@@ -43,7 +43,7 @@
       latitude: 35.75586
       longitude: -118.4254629
   icon: /img/markers/outhouse.svg
-- uuid: f94a7c6a-afc8-4e68-acb0-4ea93d910c97
+- uuid: bc57e443-c180-4534-bca7-c94b18ba2a15
   title: Outhouses
   location:
     geo:
@@ -90,7 +90,7 @@
       latitude: 35.754735
       longitude: -118.426679
   icon: /img/markers/parking.svg
-- uuid: 588275ae-ee9c-4fd2-a4f0-22171d7f2bbc
+- uuid: 5748664e-0a59-4cc6-93c0-175e7e76a648
   title: $10 Parking
   category:
   - parking
