@@ -14,6 +14,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- Use `escape_once` to escape titles when used as attributes
+
 ## [v2.0.5] - 2020-08-03
 
 ### Updated
