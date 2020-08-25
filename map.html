@@ -74,6 +74,8 @@ preconnect:
 		<meta itemprop="image" content="https://whiskeyflatdays.com/coach-800.jpg" />
 		<meta itemprop="startDate" content="2020-02-14" />
 		<meta itemprop="endDate" content="2020-02-17" />
+		<meta itemprop="eventAttendanceMode" content="{{ marker.eventAttendanceMode | default: 'https://schema.org/OfflineEventAttendanceMode' }}" />
+		<meta itemprop="eventStatus" content="{{ marker.eventStatus | default: 'https://schema.org/EventScheduled' }}" />
 		<div itemprop="organizer" itemtype="https://schema.org/Organization" itemscope="" hidden="">
 			<meta itemprop="name" content="Kernville Chamber of Commerce" />
 			<meta itemprop="url" content="https://www.gotokernville.com/" />
@@ -93,10 +95,10 @@ preconnect:
 			</div>
 		</address>
 		{% for marker in site.data.poi %}
-			<leaflet-marker class="poi-marker" id="{{ marker.uuid }}" longitude="{{ marker.location.geo.longitude }}" latitude="{{ marker.location.geo.latitude }}" slot="markers" title="{{ marker.title }}"{% if marker.category %} data-category="{{ marker.category }}"{% endif %}>
+			<leaflet-marker class="poi-marker" id="{{ marker.uuid }}" longitude="{{ marker.location.geo.longitude }}" latitude="{{ marker.location.geo.latitude }}" slot="markers" title="{{ marker.title | escape_once }}"{% if marker.category %} data-category="{{ marker.category }}"{% endif %}>
 				<img src="{{ marker.icon | default: '/img/adwaita-icons/actions/mark-location.svg' }}" slot="icon" width="32" height="32" loading="lazy" decoding="async" />
 				<div slot="popup">
-					<h4>{{ marker.popup | default: marker.title }}</h4>
+					<h4>{{ marker.popup | default: marker.title | escape_once }}</h4>
 					{% if marker.description %}<div>{{ marker.description }}</div>{% endif %}
 					{% if marker.image %}<img src="{{ marker.image.url }}" alt="{{ marker.image.description }}" decoding="async" width="{{ marker.image.width }}" height="{{ marker.image.height }}" loading="lazy" />{% endif %}
 					{% if marker.telephone %}
@@ -129,7 +131,7 @@ preconnect:
 					{% endif %}
 					{% if marker.uuid %}
 						<br />
-						<button type="button" is="share-button" url="https://whiskeyflatdays.com/map/#{{ marker.uuid }}" text="Check out {{ marker.title }}" title="{{ marker.title }} | Whiskey Flat Days Map" hidden="">
+						<button type="button" is="share-button" url="https://whiskeyflatdays.com/map/#{{ marker.uuid }}" text="Check out {{ marker.title | escape_once }}" title="{{ marker.title | escape_once }} | Whiskey Flat Days Map" hidden="">
 							<svg width="16" height="16" aria-hidden="true">
 								<use xlink:href="{{ site.icons }}#share"></use>
 							</svg>
@@ -139,7 +141,7 @@ preconnect:
 				</div>
 			</leaflet-marker>
 		{% endfor %}{% for marker in site.data.vendors %}{% if marker.title %}
-			<leaflet-marker id="{{ marker.uuid }}" class="vendor-marker" data-space="{{ marker.space }}" data-title="{{ marker.title | default: marker.space }}" data-category="{{ marker.category | join: ' ' }}" longitude="{{ marker.longitude }}" latitude="{{ marker.latitude }}" slot="markers" title="{{ marker.title }}"{% if marker.category %} data-category="{{ marker.category | join: ' ' }}"{% endif %}>
+			<leaflet-marker id="{{ marker.uuid }}" class="vendor-marker" data-space="{{ marker.space }}" data-title="{{ marker.title | default: marker.space }}" data-category="{{ marker.category | join: ' ' }}" longitude="{{ marker.longitude }}" latitude="{{ marker.latitude }}" slot="markers" title="{{ marker.title | escape_once }}"{% if marker.category %} data-category="{{ marker.category | join: ' ' }}"{% endif %}>
 				<img src="{{ marker.icon | default: '/img/adwaita-icons/actions/mark-location.svg' }}" slot="icon" width="32" height="32" loading="lazy" decoding="async" />
 				<div slot="popup">
 					<h4>{{ marker.title | default: marker.space }}</h4>
@@ -158,7 +160,7 @@ preconnect:
 					{% endif %}
 					{% if marker.uuid %}
 						<br />
-						<button type="button" is="share-button" url="https://whiskeyflatdays.com/map/#{{ marker.uuid }}" text="Check out {{ marker.title }}" title="{{ marker.title }} | Whiskey Flat Days Map" hidden="">
+						<button type="button" is="share-button" url="https://whiskeyflatdays.com/map/#{{ marker.uuid }}" text="Check out {{ marker.title | escape_once }}" title="{{ marker.title | escape_once }} | Whiskey Flat Days Map" hidden="">
 							<svg width="16" height="16" aria-hidden="true">
 								<use xlink:href="{{ site.icons }}#share"></use>
 							</svg>
@@ -168,10 +170,10 @@ preconnect:
 				</div>
 			</leaflet-marker>
 		{% endif %}{% endfor %}{% for marker in site.data.businesses %}
-			<leaflet-marker itemtype="{{ marker['@itemtype'] | default: 'https://schema.org/LocalBusiness' }}" id="{{ marker.uuid }}" class="business-marker" longitude="{{ marker.location.geo.longitude }}" latitude="{{ marker.location.geo.latitude }}" slot="markers" title="{{ marker.title }}"{% if marker.category %} data-category="{{ marker.category | join: ' ' }}"{% endif %} itemscope="">
+			<leaflet-marker itemtype="{{ marker['@itemtype'] | default: 'https://schema.org/LocalBusiness' }}" id="{{ marker.uuid }}" class="business-marker" longitude="{{ marker.location.geo.longitude }}" latitude="{{ marker.location.geo.latitude }}" slot="markers" title="{{ marker.title | escape_once }}"{% if marker.category %} data-category="{{ marker.category | join: ' ' }}"{% endif %} itemscope="">
 				<img src="{{ marker.icon | default: '/img/adwaita-icons/actions/mark-location.svg' }}" slot="icon" width="32" height="32" loading="lazy" decoding="async" />
 				<div slot="popup">
-					<h4 itemprop="name">{{ marker.popup | default: marker.title }}</h4>
+					<h4 itemprop="name">{{ marker.popup | default: marker.title | escape_once }}</h4>
 					{% if marker.description %}<div itemprop="description">{{ marker.description }}</div>{% endif %}
 					{% if marker.image %}<img itemprop="image" src="{{ marker.image.url }}" alt="{{ marker.image.description }}" decoding="async" width="{{ marker.image.width }}" height="{{ marker.image.height }}" loading="lazy" />{% endif %}
 						<div itemprop="geo" itemtype="https://schema.org/GeoCoordinates" itemscope="" hidden="">
@@ -219,7 +221,7 @@ preconnect:
 					{% endif %}
 					{% if marker.uuid %}
 						<br />
-						<button type="button" is="share-button" url="https://whiskeyflatdays.com/map/#{{ marker.uuid }}" text="Check out {{ marker.title }}" title="{{ marker.title }} | Whiskey Flat Days Map" hidden="">
+						<button type="button" is="share-button" url="https://whiskeyflatdays.com/map/#{{ marker.uuid }}" text="Check out {{ marker.title | escape_once }}" title="{{ marker.title | escape_once }} | Whiskey Flat Days Map" hidden="">
 							<svg width="16" height="16" aria-hidden="true">
 								<use xlink:href="{{ site.icons }}#share"></use>
 							</svg>
@@ -230,15 +232,17 @@ preconnect:
 			</leaflet-marker>
 		{% endfor %}
 		{% for marker in site.data.events %}
-			<leaflet-marker id="{{ marker.uuid }}" class="event-marker" longitude="{{ marker.location.geo.longitude }}" latitude="{{ marker.location.geo.latitude }}" slot="markers" title="{{ marker.title }}" data-end-date="{{ marker.endDate | date_to_xmlschema }}" data-start-date="{{ marker.startDate | date_to_xmlschema }}"{% if marker.category %} data-category="{{ marker.category }}"{% endif %} hidden="">
+			<leaflet-marker id="{{ marker.uuid }}" class="event-marker" longitude="{{ marker.location.geo.longitude }}" latitude="{{ marker.location.geo.latitude }}" slot="markers" title="{{ marker.title | escape_once }}" data-end-date="{{ marker.endDate | date_to_xmlschema }}" data-start-date="{{ marker.startDate | date_to_xmlschema }}"{% if marker.category %} data-category="{{ marker.category }}"{% endif %} hidden="">
 				<img src="{{ marker.icon | default: '/img/markers/event.svg' }}" slot="icon" width="32" height="32" />
 				<div slot="popup" itemprop="subEvent" itemtype="https://schema.org/Event" itemscope="">
+					<meta itemprop="eventAttendanceMode" content="{{ marker.eventAttendanceMode | default: 'https://schema.org/OfflineEventAttendanceMode' }}" />
+					<meta itemprop="eventStatus" content="{{ marker.eventStatus | default: 'https://schema.org/EventScheduled' }}" />
 					<meta itemprop="url" content="{{ site.url }}/map/#{{ marker.uuid }}" />
 					<h3 class="center">
 						{% if marker.music %}<span class="emoji">🎶 </span>{% endif %}
-						<span itemprop="name">{{ marker.title }}</span>
+						<span itemprop="name">{{ marker.title | escape_once }}</span>
 					</h3>
-					{% if marker.image %}<img src="{{ marker.image }}" decoding="async" loading="lazy" itemprop="image" alt="{{ marker.title }}" />{% endif %}
+					{% if marker.image %}<img src="{{ marker.image }}" decoding="async" loading="lazy" itemprop="image" alt="{{ marker.title | escape_once }}" />{% endif %}
 					<div>
 						<time itemprop="startDate" datetime="{{ marker.startDate | date_to_xmlschema }}">{{ marker.startDate | date: '%a %r'}}</time>
 						<span>&mdash;</span>
@@ -286,7 +290,7 @@ preconnect:
 					</div>
 					{% if marker.description %}<div itemprop="description">{{ marker.description }}</div>{% endif %}
 					{% if marker.uuid %}
-						<button type="button" is="share-button" url="https://whiskeyflatdays.com/map/#{{ marker.uuid }}" text="Check out {{ marker.title }}" title="{{ marker.title }} | Whiskey Flat Days Map" hidden="">
+						<button type="button" is="share-button" url="https://whiskeyflatdays.com/map/#{{ marker.uuid }}" text="Check out {{ marker.title | escape_once }}" title="{{ marker.title | escape_once }} | Whiskey Flat Days Map" hidden="">
 							<svg width="16" height="16" aria-hidden="true">
 								<use xlink:href="{{ site.icons }}#share"></use>
 							</svg>
