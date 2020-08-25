@@ -21,6 +21,8 @@ tags:
 	<meta itemprop="image" content="https://whiskeyflatdays.com/coach-800.jpg" />
 	<meta itemprop="startDate" content="2020-02-14" />
 	<meta itemprop="endDate" content="2020-02-17" />
+	<meta itemprop="eventAttendanceMode" content="https://schema.org/OfflineEventAttendanceMode" />
+	<meta itemprop="eventStatus" content="https://schema.org/EventScheduled" />
 	<div itemprop="organizer" itemtype="https://schema.org/Organization" itemscope="" hidden="">
 		<meta itemprop="name" content="Kernville Chamber of Commerce" />
 		<meta itemprop="url" content="https://www.gotokernville.com/" />
@@ -42,7 +44,7 @@ tags:
 	{% for event in events %}
 		<div id="{{ event.uuid }}" class="event-item grid contain-content" itemprop="subEvent" itemtype="https://schema.org/Event" itemscope="">
 			<meta itemprop="eventAttendanceMode" content="{{ marker.eventAttendanceMode | default: 'https://schema.org/OfflineEventAttendanceMode' }}" />
-			<meta itemptop="eventStatus" content="{{ marker.eventStatus | default: 'https://schema.org/EventScheduled' }}" />
+			<meta itemprop="eventStatus" content="{{ marker.eventStatus | default: 'https://schema.org/EventScheduled' }}" />
 			<span class="event-image-container inline-block center">
 				<img src="{{ event.image | default: '/img/markers/activity.svg' }}" class="event-image fit-cover" itemprop="image" decoding="async" alt="{{ event.title | escape_once }} image" loading="lazy" />
 			</span>

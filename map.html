@@ -74,6 +74,8 @@ preconnect:
 		<meta itemprop="image" content="https://whiskeyflatdays.com/coach-800.jpg" />
 		<meta itemprop="startDate" content="2020-02-14" />
 		<meta itemprop="endDate" content="2020-02-17" />
+		<meta itemprop="eventAttendanceMode" content="{{ marker.eventAttendanceMode | default: 'https://schema.org/OfflineEventAttendanceMode' }}" />
+		<meta itemprop="eventStatus" content="{{ marker.eventStatus | default: 'https://schema.org/EventScheduled' }}" />
 		<div itemprop="organizer" itemtype="https://schema.org/Organization" itemscope="" hidden="">
 			<meta itemprop="name" content="Kernville Chamber of Commerce" />
 			<meta itemprop="url" content="https://www.gotokernville.com/" />
@@ -231,10 +233,10 @@ preconnect:
 		{% endfor %}
 		{% for marker in site.data.events %}
 			<leaflet-marker id="{{ marker.uuid }}" class="event-marker" longitude="{{ marker.location.geo.longitude }}" latitude="{{ marker.location.geo.latitude }}" slot="markers" title="{{ marker.title | escape_once }}" data-end-date="{{ marker.endDate | date_to_xmlschema }}" data-start-date="{{ marker.startDate | date_to_xmlschema }}"{% if marker.category %} data-category="{{ marker.category }}"{% endif %} hidden="">
-				<meta itemprop="eventAttendanceMode" content="{{ marker.eventAttendanceMode | default: 'https://schema.org/OfflineEventAttendanceMode' }}" />
-				<meta itemptop="eventStatus" content="{{ marker.eventStatus | default: 'https://schema.org/EventScheduled' }}" />
 				<img src="{{ marker.icon | default: '/img/markers/event.svg' }}" slot="icon" width="32" height="32" />
 				<div slot="popup" itemprop="subEvent" itemtype="https://schema.org/Event" itemscope="">
+					<meta itemprop="eventAttendanceMode" content="{{ marker.eventAttendanceMode | default: 'https://schema.org/OfflineEventAttendanceMode' }}" />
+					<meta itemprop="eventStatus" content="{{ marker.eventStatus | default: 'https://schema.org/EventScheduled' }}" />
 					<meta itemprop="url" content="{{ site.url }}/map/#{{ marker.uuid }}" />
 					<h3 class="center">
 						{% if marker.music %}<span class="emoji">🎶 </span>{% endif %}
