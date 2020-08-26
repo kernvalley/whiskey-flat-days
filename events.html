@@ -14,7 +14,7 @@ tags:
 - encampment
 ---
 {% assign events = site.data.events | sort: 'startDate' %}
-<div itemtype="https://schema.org/Event" itemscope="">
+<div class="card shadow" itemtype="https://schema.org/Event" itemscope="">
 	<meta itemprop="name" content="Whiskey Flat Days" />
 	<meta itemprop="url" content="https://whiskeyflatdays.com" />
 	<meta itemprop="description" content="63rd Annual Whiskey Flat Days | President's Day Weekend in Kernville, CA" />
@@ -42,7 +42,7 @@ tags:
 		</div>
 	</address>
 	{% for event in events %}
-		<div id="{{ event.uuid }}" class="event-item grid contain-content" itemprop="subEvent" itemtype="https://schema.org/Event" itemscope="">
+		<div id="{{ event.uuid }}" class="event-item grid contain-content content-visibility-auto" itemprop="subEvent" itemtype="https://schema.org/Event" itemscope="">
 			<meta itemprop="eventAttendanceMode" content="{{ marker.eventAttendanceMode | default: 'https://schema.org/OfflineEventAttendanceMode' }}" />
 			<meta itemprop="eventStatus" content="{{ marker.eventStatus | default: 'https://schema.org/EventScheduled' }}" />
 			<span class="event-image-container inline-block center">
