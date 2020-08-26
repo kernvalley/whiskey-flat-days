@@ -38,7 +38,7 @@ preconnect:
 {% include header.html %}
 {% include nav.html %}
 <main id="main" class="contain-content">
-	<not-supported class="card shadow block">
+	<not-supported class="card shadow block content-visibility-auto">
 		<p>Your browser does not meet the minal requirements to display the events map.</p>
 		<p>Please install a better browser that supports modern websites.</p>
 		<div class="flex row nowrap clearfix browser-installs">
@@ -95,7 +95,7 @@ preconnect:
 			</div>
 		</address>
 		{% for marker in site.data.poi %}
-			<leaflet-marker class="poi-marker" id="{{ marker.uuid }}" longitude="{{ marker.location.geo.longitude }}" latitude="{{ marker.location.geo.latitude }}" slot="markers" title="{{ marker.title | escape_once }}"{% if marker.category %} data-category="{{ marker.category }}"{% endif %}>
+			<leaflet-marker class="poi-marker content-visibility-hidden" id="{{ marker.uuid }}" longitude="{{ marker.location.geo.longitude }}" latitude="{{ marker.location.geo.latitude }}" slot="markers" title="{{ marker.title | escape_once }}"{% if marker.category %} data-category="{{ marker.category }}"{% endif %}>
 				<img src="{{ marker.icon | default: '/img/adwaita-icons/actions/mark-location.svg' }}" slot="icon" width="32" height="32" loading="lazy" decoding="async" />
 				<div slot="popup">
 					<h4>{{ marker.popup | default: marker.title | escape_once }}</h4>
@@ -141,7 +141,7 @@ preconnect:
 				</div>
 			</leaflet-marker>
 		{% endfor %}{% for marker in site.data.vendors %}{% if marker.title %}
-			<leaflet-marker id="{{ marker.uuid }}" class="vendor-marker" data-space="{{ marker.space }}" data-title="{{ marker.title | default: marker.space }}" data-category="{{ marker.category | join: ' ' }}" longitude="{{ marker.longitude }}" latitude="{{ marker.latitude }}" slot="markers" title="{{ marker.title | escape_once }}"{% if marker.category %} data-category="{{ marker.category | join: ' ' }}"{% endif %}>
+			<leaflet-marker id="{{ marker.uuid }}" class="vendor-marker content-visibility-hidden" data-space="{{ marker.space }}" data-title="{{ marker.title | default: marker.space }}" data-category="{{ marker.category | join: ' ' }}" longitude="{{ marker.longitude }}" latitude="{{ marker.latitude }}" slot="markers" title="{{ marker.title | escape_once }}"{% if marker.category %} data-category="{{ marker.category | join: ' ' }}"{% endif %}>
 				<img src="{{ marker.icon | default: '/img/adwaita-icons/actions/mark-location.svg' }}" slot="icon" width="32" height="32" loading="lazy" decoding="async" />
 				<div slot="popup">
 					<h4>{{ marker.title | default: marker.space }}</h4>
@@ -232,7 +232,7 @@ preconnect:
 			</leaflet-marker>
 		{% endfor %}
 		{% for marker in site.data.events %}
-			<leaflet-marker id="{{ marker.uuid }}" class="event-marker" longitude="{{ marker.location.geo.longitude }}" latitude="{{ marker.location.geo.latitude }}" slot="markers" title="{{ marker.title | escape_once }}" data-end-date="{{ marker.endDate | date_to_xmlschema }}" data-start-date="{{ marker.startDate | date_to_xmlschema }}"{% if marker.category %} data-category="{{ marker.category }}"{% endif %} hidden="">
+			<leaflet-marker id="{{ marker.uuid }}" class="event-marker content-visibility-hidden" longitude="{{ marker.location.geo.longitude }}" latitude="{{ marker.location.geo.latitude }}" slot="markers" title="{{ marker.title | escape_once }}" data-end-date="{{ marker.endDate | date_to_xmlschema }}" data-start-date="{{ marker.startDate | date_to_xmlschema }}"{% if marker.category %} data-category="{{ marker.category }}"{% endif %} hidden="">
 				<img src="{{ marker.icon | default: '/img/markers/event.svg' }}" slot="icon" width="32" height="32" />
 				<div slot="popup" itemprop="subEvent" itemtype="https://schema.org/Event" itemscope="">
 					<meta itemprop="eventAttendanceMode" content="{{ marker.eventAttendanceMode | default: 'https://schema.org/OfflineEventAttendanceMode' }}" />
@@ -300,7 +300,7 @@ preconnect:
 				</div>
 			</leaflet-marker>
 			{% if marker.geojson %}
-				<leaflet-geojson src="{{ marker.geojson.src }}" marker="{{ marker.uuid }}" color="{{ marker.geojson.color | default: '#3871EA' }}" hidden="" {% if marker.geojson.fill %}fill=""{% else %}stroke=""{% endif %}></leaflet-geojson>
+				<leaflet-geojson src="{{ marker.geojson.src }}" class="content-visibility-hidden" marker="{{ marker.uuid }}" color="{{ marker.geojson.color | default: '#3871EA' }}" hidden="" {% if marker.geojson.fill %}fill=""{% else %}stroke=""{% endif %}></leaflet-geojson>
 			{% endif %}
 		{% endfor %}
 		{% for path in site.data.paths %}
