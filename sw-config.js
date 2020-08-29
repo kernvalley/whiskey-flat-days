@@ -42,6 +42,7 @@ const config = {
 		'https://cdn.kernvalley.us/img/octicons/file-media.svg',
 		'https://cdn.kernvalley.us/img/logos/firefox.svg',
 		'https://cdn.kernvalley.us/img/logos/chrome.svg',
+		'https://cdn.kernvalley.us/img/keep-kern-clean.svg',
 		/* Map Icons */
 		'/img/markers/activity.svg',
 		'/img/markers/atm.svg',
