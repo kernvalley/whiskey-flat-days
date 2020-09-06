@@ -1,12 +1,25 @@
 - href: "https://cdn.polyfill.io/v3/polyfill.min.js"
   as: script
-  referrerpolicy: no-referrer
-  crossorigin: anonymous
+  type: text/javascript
+  referrerPolicy: no-referrer
+  crossOrigin: anonymous
 - href: "https://cdn.kernvalley.us/components/github/user.html"
   as: fetch
-  referrerpolicy: no-referrer
-  crossorigin: anonymous
+  type: text/html
+  referrerPolicy: no-referrer
+  crossOrigin: anonymous
 - href: "https://cdn.kernvalley.us/components/github/user.css"
   as: style
-  referrerpolicy: no-referrer
-  crossorigin: anonymous
+  type: text/css
+  referrerPolicy: no-referrer
+  crossOrigin: anonymous
+- href: "https://cdn.kernvalley.us/components/weather-current.html"
+  as: fetch
+  type: text/html
+  referrerPolicy: no-referrer
+  crossOrigin: anonymous
+- href: "https://cdn.kernvalley.us/components/weather-current.css"
+  as: style
+  type: text/css
+  referrerPolicy: no-referrer
+  crossOrigin: anonymous

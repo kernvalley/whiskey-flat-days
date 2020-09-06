@@ -14,11 +14,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v2.0.6] - 2020-09-06
+
 ### Added
 - Add event status and attendance mode to events (including map)
+- GA events for external link clicks
+
+### Changed
+- Update components/`_includes/`
+- Make `crossorigin` and `referrerpolicy` attribute setting consistent
 
 ### Fixed
 - Use `escape_once` to escape titles when used as attributes
+- Disable bash linting due to issues with `.rvmrc`
+- Re-enable Google Analytics
 
 ## [v2.0.5] - 2020-08-03
 

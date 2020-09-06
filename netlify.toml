@@ -7,9 +7,8 @@
   for="/*"
   [headers.values]
     Link = '''
-      </css/index.min.css>; rel=preload; as=style, \
-      </js/index.min.js>; rel=preload; as=script, \
-      </img/icons.svg>; rel=preload; as=image
+      </css/index.min.css>; rel=preload; as=style, referrerpolicy=no-referrer \
+      </js/index.min.js>; rel=preload; as=script, referrerpolicy=no-referrer
     '''
     X-Frame-Options = "DENY"
     X-XSS-Protection = "1; mode=block"
