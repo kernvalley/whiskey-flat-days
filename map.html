@@ -20,20 +20,22 @@ tags:
 preload:
   - href: "https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
     as: style
-    referrerpolicy: no-referrer
-    crossorigin: anonymous
+    referrerPolicy: no-referrer
+    crossOrigin: anonymous
+    integrity: "sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
   - href: "https://cdn.kernvalley.us/components/leaflet/map.css"
     as: style
-    referrerpolicy: no-referrer
-    crossorigin: anonymous
-  - href: "https://cdn.kernvalley.us/components/leaflet/map.css"
+    referrerPolicy: no-referrer
+    crossOrigin: anonymous
+  - href: "https://cdn.kernvalley.us/components/leaflet/map.html"
     as: fetch
-    referrerpolicy: no-referrer
-    crossorigin: anonymous
+    type: text/html
+    referrerPolicy: no-referrer
+    crossOrigin: anonymous
 preconnect:
   href: "https://maps.wikimedia.org"
-  referrerpolicy: no-referrer
-  crossorigin: anonymous
+  referrerPolicy: no-referrer
+  crossOrigin: anonymous
 ---
 {% include header.html %}
 {% include nav.html %}
