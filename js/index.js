@@ -14,46 +14,29 @@ import 'https://cdn.kernvalley.us/components/pwa/install.js';
 import * as handlers from './handlers.js';
 import { $, ready, wait } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
 import { loadScript } from 'https://cdn.kernvalley.us/js/std-js/loader.js';
+import { importGa } from 'https://cdn.kernvalley.us/js/std-js/google-analytics.js';
 import { searchLocationMarker, stateHandler } from './functions.js';
 import { site, GA } from './consts.js';
-import { importGa } from 'https://cdn.kernvalley.us/js/std-js/google-analytics.js';
+import { outbound, madeCall } from './analytics.js';
 
 document.documentElement.classList.replace('no-js', 'js');
 document.body.classList.toggle('no-dialog', document.createElement('dialog') instanceof HTMLUnknownElement);
 document.body.classList.toggle('no-details', document.createElement('details') instanceof HTMLUnknownElement);
 
 if (typeof GA === 'string' && GA !== '') {
-	importGa(GA).then(async () => {
-		/* global ga */
-		ga('create', GA, 'auto');
-		ga('set', 'transport', 'beacon');
-		ga('send', 'pageview');
+	requestIdleCallback(() => {
+		importGa(GA).then(async () => {
+			/* global ga */
+			ga('create', GA, 'auto');
+			ga('set', 'transport', 'beacon');
+			ga('send', 'pageview');
 
+			await ready();
 
-		function outbound() {
-			ga('send', {
-				hitType: 'event',
-				eventCategory: 'outbound',
-				eventAction: 'click',
-				eventLabel: this.href,
-				transport: 'beacon',
-			});
-		}
-
-		function madeCall() {
-			ga('send', {
-				hitType: 'event',
-				eventCategory: 'call',
-				eventLabel: 'Called',
-				transport: 'beacon',
-			});
-		}
-
-		await ready();
-
-		$('a[rel~="external"]').click(outbound, { passive: true, capture: true });
-		$('a[href^="tel:"]').click(madeCall, { passive: true, capture: true });
-	}).catch(console.error);
+			$('a[rel~="external"]').click(outbound, { passive: true, capture: true });
+			$('a[href^="tel:"]').click(madeCall, { passive: true, capture: true });
+		}).catch(console.error);
+	});
 }
 
 if (location.pathname.startsWith('/map')) {
@@ -241,5 +224,3 @@ Promise.all([
 	filterEventNamesDatalist();
 	searchLocationMarker();
 });
-
-
