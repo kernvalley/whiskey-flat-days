@@ -147,12 +147,13 @@
       longitude: -118.418979
   icon: /img/markers/pizza.svg
 - uuid: 4d866db2-c506-444b-aa3f-87b3dd86a204
-  title: Starlite Lounge
+  title: Eddy Out Tap House &amp; Grill
   category:
   - dining
   - restaurant
+  - craft beer
   - wine
-  url: http://starliteloungewinebar.com
+  url: https://www.eddyouttaphouse.com/
   telephone: 1-760-376-1895
   location:
     address:
