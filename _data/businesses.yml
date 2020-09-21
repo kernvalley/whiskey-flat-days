@@ -73,7 +73,7 @@
       streetAddress: 125 Buena Vista Drive
   icon: /img/markers/restaurant.svg
 - uuid: f7e94bcf-4d3c-4e6b-a6d8-bc5a569f282f
-  title: James Sierra Gateway
+  title: Sierra Gateway
   category:
   - groceries
   - gas
