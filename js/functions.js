@@ -81,7 +81,9 @@ export async function createMarker({
 	uuid = null,
 	id = null,
 } = {}) {
-	const marker = await createCustomElement('leaflet-marker', { latitude, longitude });
+	const marker = await createCustomElement('leaflet-marker');
+	marker.latitude = latitude;
+	marker.longitude = longitude;
 	const map = await getMap();
 	const hash = typeof uuid === 'string' ? uuid : `${latitude},${longitude}`;
 

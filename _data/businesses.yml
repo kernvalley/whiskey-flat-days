@@ -1,6 +1,6 @@
 - uuid: d8aa25f9-f1ae-4cb4-8ac5-8410e7e1dba1
   title: Kernville Chamber of Commerce
-  url: https://www.gotokernville.com/
+  url: https://www.gotokernville.com
   telephone: 1-760-376-2629
   category:
   - other
@@ -49,7 +49,7 @@
   - restaurant
   - dining
   - pub
-  url: https://kernriverbrewing.com/
+  url: https://kernriverbrewing.com
   telephone: 1-760-376-2337
   location:
     address:
@@ -73,7 +73,7 @@
       streetAddress: 125 Buena Vista Drive
   icon: /img/markers/restaurant.svg
 - uuid: f7e94bcf-4d3c-4e6b-a6d8-bc5a569f282f
-  title: James Sierra Gateway
+  title: Sierra Gateway
   category:
   - groceries
   - gas
@@ -147,12 +147,13 @@
       longitude: -118.418979
   icon: /img/markers/pizza.svg
 - uuid: 4d866db2-c506-444b-aa3f-87b3dd86a204
-  title: Starlite Lounge
+  title: Eddy Out Tap House &amp; Grill
   category:
   - dining
   - restaurant
+  - craft beer
   - wine
-  url: http://starliteloungewinebar.com
+  url: https://www.eddyouttaphouse.com
   telephone: 1-760-376-1895
   location:
     address:
