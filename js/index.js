@@ -78,6 +78,27 @@ if (location.pathname.startsWith('/map')) {
 			stateHandler(history);
 		}
 	});
+} else if (location.pathname.startsWith('/events') && ('IntersectionObserver' in window)) {
+	ready().then(() => {
+		$('.event-item').intersect(({ target, isIntersecting }) => {
+			if (isIntersecting) {
+				target.animate([{
+					transform: 'rotateX(-30deg) scale(0.85) translateY(3em)',
+					opacity: 0.3,
+				}, {
+					transform: 'none',
+					opacity: 1,
+				}], {
+					duration: 300,
+					easing: 'ease-in-out',
+				});
+
+				target.classList.remove('hidden');
+			} else {
+				target.classList.add('hidden');
+			}
+		});
+	});
 }
 
 function filterEventNamesDatalist() {
