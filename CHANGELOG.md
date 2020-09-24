@@ -14,6 +14,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Animate on intersection for event cards on events page
+
 ## [v2.0.6] - 2020-09-06
 
 ### Added
