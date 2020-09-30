@@ -13,12 +13,12 @@
     Content-Security-Policy = '''
       default-src 'self';
       img-src * blob: data:;
-      script-src 'self' moz-extension: https://cdn.kernvalley.us https://unpkg.com/ https://unpkg.com/ https://www.google-analytics.com https://www.googletagmanager.com https://cdn.polyfill.io/ https://*.disqus.com/embed.js https://disqus.com/ https://c.disquscdn.com/ 'sha256-uv9ihhWV1/99Lna4PlyzJ4Ji2ofiXKU9ak+GUXMN0gw=' 'sha256-YCSlybv0BJeWnGWF8JCyQMs1TUOxVjFyr5upfHiDysc=' 'sha256-YmEu57ZRfDpDDhMApyHsyE3PA6DSf2V+9bIVooFPFHw=';
-      style-src 'self' https://cdn.kernvalley.us https://unpkg.com/ https://www.youtube.com https://www.youtube-nocookie.com;
-      connect-src 'self' https://cdn.kernvalley.us https://api.kernvalley.us https://api.github.com/users/ https://*.githubusercontent.com/u/ https://maps.wikimedia.org/osm-intl/ https://cdn.polyfill.io/ https://api.openweathermap.org/data/2.5/weather https://www.google-analytics.com/ https://www.googletagmanager.com/gtag/ https://i.imgur.com https://secure.gravatar.com https://unpkg.com/ https://disqus.com wss://realtime.services.disqus.com https://events.kernvalley.us;
+      script-src 'self' https://cdn.kernvalley.us https://unpkg.com/ https://www.google-analytics.com https://www.googletagmanager.com https://cdn.polyfill.io/v3/polyfill.min.js;
+      style-src 'self' https://cdn.kernvalley.us https://unpkg.com/;
+      connect-src 'self' https://cdn.kernvalley.us https://api.kernvalley.us https://api.github.com/users/ https://api.openweathermap.org/data/2.5/weather https://www.google-analytics.com/ https://www.googletagmanager.com/gtag/ ;
       font-src 'self' https://cdn.kernvalley.us;
       media-src *;
-      frame-src https://www.youtube.com https://www.youtube-nocookie.com https://disqus.com;
+      frame-src https://www.youtube.com https://www.youtube-nocookie.com;
       form-action 'self';
       manifest-src 'self';
       worker-src 'self';
@@ -26,6 +26,14 @@
       upgrade-insecure-requests;
       block-all-mixed-content;
       disown-opener;'''
+[[headers]]
+  for="/*.*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'none'"
+[[headers]]
+  for="/service-worker.js"
+  [headers.values]
+    Content-Security-Policy = "connect-src *"
 # [[redirects]]
   # from = ""
   # to = ""
