@@ -3,7 +3,7 @@
 	<hr />
 	{% for ad in site.data.ads %}
 		<ad-block url="{{ ad.url }}" theme="{{ ad.theme | default: 'auto' }}" class="custom-element if-defined" itemtype="https://schema.org/WPAdBlock" itemscope="">
-			{% if ad.image %}<img src="{{ ad.image }}" decoding="async" loading="lazy" referrerpolicy="no-referrer" alt="" slot="image" />{% endif %}
+			{% if ad.image %}<img src="{{ ad.image }}" decoding="async" loading="lazy" referrerpolicy="no-referrer" crossorigin="anonymous" alt="" slot="image" />{% endif %}
 			<b slot="label">{{ ad.label }}</b>
 			<p slot="description">{{ ad.description }}</p>
 			<span slot="calltoaction">{{ ad.callToAction }}</span>
