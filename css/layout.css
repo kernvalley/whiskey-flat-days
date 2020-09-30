@@ -6,6 +6,10 @@
 @import url("./events.css");
 @import url("https://cdn.kernvalley.us/css/core-css/layout/index.css");
 
+weather-current {
+	margin: 0;
+}
+
 @media screen {
 	:root:not([data-layout]) > body.grid, :root[data-layout="default"] > body.grid {
 		grid-template-areas: 'header header header' 'nav nav nav' '. main sidebar' 'footer footer footer';
