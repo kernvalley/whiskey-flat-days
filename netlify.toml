@@ -6,6 +6,10 @@
 [[headers]]
   for="/*"
   [headers.values]
+    Link = '''
+      </js/index.min.js>; rel=preload; as=script; crossorigin=anonymous,
+      </css/index.min.css>; rel=preload; as=style; crossorigin=anonymous
+    '''
     X-Frame-Options = "DENY"
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
