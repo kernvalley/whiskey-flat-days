@@ -14,7 +14,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Added
+### Changed
+- Add more sample ads
+- Update to newer version of `<ad-block>`
+- Update preloading
+- Misc. style updates
 - Update Leaflet Version
 - Animate on intersection for event cards on events page
 

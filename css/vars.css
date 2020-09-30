@@ -5,4 +5,13 @@
 	--scrollbar-color: var(--accent-color);
 	--scrollbar-track: transparent;
 	--title-font: Rye;
+	--ad-block-width: 30vw;
+
+	--ad-block-height: 180px;
+}
+
+@media (max-width: 800px) {
+	:root.js {
+		--ad-block-width: 95vw;
+	}
 }

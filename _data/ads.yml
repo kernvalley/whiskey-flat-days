@@ -1,5 +1,19 @@
+- label: Wild West Daze Rodeo
+  url: /map/#f44131d1-2128-4d23-be86-2cc7d38e80ff
+  description: Starts Sat. at 1 PM
+  image: /img/raster/rodeo.jpg
+  callToAction: Click to view Event
 - label: Kern Valley Events
   url: https://events.kernvalley.us
   description: The best things going on in the Valley
   image: /img/kv-events.svg
   callToAction: See what's going on today.
+- label: Schoeppner Carnival
+  description: Come and enjoy great adult and children's rides and games.
+  url: /map/#1f0b29d1-8d2d-4a5f-9ffc-be1763360e39
+  callToAction: Click for location
+- label: Paradise Cove Lodge
+  image: https://www.paradisecovelodge.com/img/favicon.svg
+  url: https://www.paradisecovelodge.com/menu/
+  description: Skip the lines and head to Lake Isabella to try our famous Prime Rib
+  callToAction: View Menu 
