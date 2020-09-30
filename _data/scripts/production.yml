@@ -1,3 +1,2 @@
 - src: /js/index.min.js
-  referrerPolicy: no-referrer
   async: true
