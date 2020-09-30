@@ -1,2 +1,3 @@
 - src: /js/index.min.js
+  referrerPolicy: no-referrer-when-downgrade
   async: true
