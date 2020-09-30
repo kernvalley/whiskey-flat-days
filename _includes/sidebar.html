@@ -2,7 +2,7 @@
 	<weather-current class="card" appid="{{ site.data.weather.appid }}" postalcode="{{ site.data.weather.postalCode }}"></weather-current>
 	<hr />
 	{% for ad in site.data.ads %}
-		<ad-block url="{{ ad.url }}" class="custom-element if-defined" itemtype="https://schema.org/WPAdBlock" itemscope="">
+		<ad-block url="{{ ad.url }}" theme="{{ ad.theme | default: 'auto' }}" class="custom-element if-defined" itemtype="https://schema.org/WPAdBlock" itemscope="">
 			{% if ad.image %}<img src="{{ ad.image }}" decoding="async" loading="lazy" referrerpolicy="no-referrer" alt="" slot="image" />{% endif %}
 			<b slot="label">{{ ad.label }}</b>
 			<p slot="description">{{ ad.description }}</p>
