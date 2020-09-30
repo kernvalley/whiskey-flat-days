@@ -34,22 +34,27 @@
   for="/*.js"
   [headers.values]
     Content-Security-Policy = "default-src 'none'"
+    Link = "reset"
 [[headers]]
   for="/*.css"
   [headers.values]
     Content-Security-Policy = "default-src 'none'"
+    Link = "reset"
 [[headers]]
   for="/*.svg"
   [headers.values]
     Content-Security-Policy = "default-src 'none'"
+    Link = "reset"
 [[headers]]
   for="/*.png"
   [headers.values]
     Content-Security-Policy = "default-src 'none'"
+    Link = "reset"
 [[headers]]
   for="/*.jpg"
   [headers.values]
     Content-Security-Policy = "default-src 'none'"
+    Link = "reset"
 [[headers]]
   for="/*.ico"
   [headers.values]
@@ -58,14 +63,17 @@
   for="/*.json"
   [headers.values]
     Content-Security-Policy = "default-src 'none'"
+    Link = "reset"
 [[headers]]
   for="/*.xml"
   [headers.values]
     Content-Security-Policy = "default-src 'none'"
+    Link = "reset"
 [[headers]]
   for="/service-worker.js"
   [headers.values]
     Content-Security-Policy = "connect-src *"
+    Link = "</sw-config.js> rel=preload; as=script"
 # [[redirects]]
   # from = ""
   # to = ""
