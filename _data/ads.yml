@@ -1,24 +1,27 @@
-- label: Wild West Daze Rodeo
-  url: https://whiskeyflatdays.com/map/#f44131d1-2128-4d23-be86-2cc7d38e80ff
-  description: Starts Sat. at 1 PM
-  image: /img/raster/rodeo.jpg
-  callToAction: Click to view Event
-- label: Kern Valley Ads
-  url: https://ads.kernvalley.us/?utm_source=wfd&utm_medium=web&utm_campaign=ad
-  image: /img/ads/kv-ads.svg
-  description: Advertise on the Whiskey Flat Days App and any KernValley.US sites
-  callToAction: Your Ad Here!
-- label: Paradise Cove Lodge
-  image: https://www.paradisecovelodge.com/img/raster/background/restaurant-350.jpg
-  url: https://www.paradisecovelodge.com/menu/?utm_source=wfd&utm_medium=web&utm_campaign=wfd-ad
-  description: Skip the lines and head to Lake Isabella to try our famous Prime Rib
-  callToAction: View Menu
-- label: Kern Valley Events
-  url: https://events.kernvalley.us/?utm_source=wfd&utm_medium=web&utm_campaign=wfd-ad
-  description: The best things going on in the Valley
-  image: /img/ads/kv-events.svg
-  callToAction: See what's going on today.
-- label: Schoeppner Carnival
-  description: Come and enjoy great adult and children's rides and games.
-  url: https://whiskeyflatdays.com/map/#1f0b29d1-8d2d-4a5f-9ffc-be1763360e39
-  callToAction: Click for location
+sidebar:
+  - label: Kern Valley Ads
+    url: https://ads.kernvalley.us/?utm_source=wfd&utm_medium=web&utm_campaign=ad
+    image: /img/ads/kv-ads.svg
+    description: Advertise on the Whiskey Flat Days App and any KernValley.US sites
+    callToAction: Your Ad Here!
+    layout: stack
+  - label: Wild West Daze Rodeo
+    url: https://whiskeyflatdays.com/map/#f44131d1-2128-4d23-be86-2cc7d38e80ff
+    description: Starts Sat. at 1 PM
+    image: /img/raster/rodeo.jpg
+    callToAction: Click to view Event
+  - label: Paradise Cove Lodge
+    image: https://www.paradisecovelodge.com/img/raster/background/restaurant-350.jpg
+    url: https://www.paradisecovelodge.com/menu/?utm_source=wfd&utm_medium=web&utm_campaign=wfd-ad
+    description: Skip the lines and head to Lake Isabella to try our famous Prime Rib
+    callToAction: View Menu
+  - label: Kern Valley Events
+    url: https://events.kernvalley.us/?utm_source=wfd&utm_medium=web&utm_campaign=wfd-ad
+    description: The best things going on in the Valley
+    image: /img/ads/kv-events.svg
+    callToAction: See what's going on today.
+  - label: Schoeppner Carnival
+    description: Come and enjoy great adult and children's rides and games.
+    url: https://whiskeyflatdays.com/map/#1f0b29d1-8d2d-4a5f-9ffc-be1763360e39
+    callToAction: Click for location
+    layout: text
