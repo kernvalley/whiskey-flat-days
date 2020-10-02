@@ -3,6 +3,10 @@
 	--link-decoration: underline;
 }
 
+#main ad-block {
+	margin: 0.4em;
+}
+
 leaflet-map::part(popup) {
 	max-height: 60vh;
 	max-width: 60vw;
