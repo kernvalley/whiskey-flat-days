@@ -1,7 +1,17 @@
 <aside id="sidebar" class="card shadow contain-content">
 	<weather-current class="card" appid="{{ site.data.weather.appid }}" postalcode="{{ site.data.weather.postalCode }}"></weather-current>
 	<hr />
-	{% for ad in site.data.ads %}
-		{% include ad.html label=ad.label image=ad.image description=ad.description url=ad.url callToAction=ad.callToAction theme=ad.theme %}
+	{% for ad in site.data.ads.sidebar %}
+		{% include ad.html
+			label=ad.label
+			image=ad.image
+			description=ad.description
+			url=ad.url
+			callToAction=ad.callToAction
+			theme=ad.theme
+			layout=ad.layout
+			imageFit=ad.imageFit
+			imagePosition=ad.imagePosition
+		%}
 	{% endfor %}
 </aside>

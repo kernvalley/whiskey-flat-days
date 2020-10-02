@@ -3,6 +3,32 @@
 	--link-decoration: underline;
 }
 
+
+@media (min-width: 801px) {
+	#main ad-block:not(.floating) {
+		margin: 0.4em;
+	}
+
+	#main ad-block.floating.float-right {
+		margin-left: 0.7em;
+	}
+
+	#main ad-block.floating.float-left {
+		margin-right: 0.7em;
+	}
+}
+
+@media (max-width: 800px) {
+	#main ad-block.float-left, #main ad-block.float-right {
+		margin: 0;
+		float: none;
+		display: block;
+		--ad-block-width: 90vw;
+		--ad-block-text-width: 90vw;
+		--ad-block-stack-width: 90vw;
+	}
+}
+
 leaflet-map::part(popup) {
 	max-height: 60vh;
 	max-width: 60vw;

@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Misc. style updates
 - Update Leaflet Version
 - Animate on intersection for event cards on events page
+- Add options for ad layout and other attributes
 
 ## [v2.0.6] - 2020-09-06
 

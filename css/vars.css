@@ -8,10 +8,17 @@
 	--ad-block-width: 30vw;
 
 	--ad-block-height: 180px;
+	--ad-block-text-height: 220px;
+}
+
+#sidebar {
+	--ad-block-width: 30vw;
+	--ad-block-stack-width: var(--ad-block-width);
+	--ad-block-text-width: var(--ad-block-width);
 }
 
 @media (max-width: 800px) {
-	:root.js {
+	#sidebar {
 		--ad-block-width: 95vw;
 	}
 }
