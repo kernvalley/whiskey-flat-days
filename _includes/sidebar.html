@@ -3,6 +3,7 @@
 	<hr />
 	{% for ad in site.data.ads.sidebar %}
 		{% include ad.html
+			id=ad.uuid
 			label=ad.label
 			image=ad.image
 			description=ad.description
@@ -12,6 +13,8 @@
 			layout=ad.layout
 			imageFit=ad.imageFit
 			imagePosition=ad.imagePosition
+			campaign=ad.campaign
+			content='sidebar-ad'
 		%}
 	{% endfor %}
 </aside>
