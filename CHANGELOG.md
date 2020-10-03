@@ -14,6 +14,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Page to reset all data using HTTP `Clear-Site-Data: *` header
+
 ### Changed
 - Add more sample ads
 - Update to newer version of `<ad-block>`
