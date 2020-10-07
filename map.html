@@ -177,7 +177,7 @@ preconnect:
 				<div slot="popup">
 					<h4 itemprop="name">{{ marker.popup | default: marker.title | escape_once }}</h4>
 					{% if marker.description %}<div itemprop="description">{{ marker.description }}</div>{% endif %}
-					{% if marker.image %}<img itemprop="image" src="{{ marker.image.url }}" alt="{{ marker.image.description }}" decoding="async" width="{{ marker.image.width }}" height="{{ marker.image.height }}" loading="lazy" />{% endif %}
+					{% if marker.image %}<img itemprop="image" src="{{ marker.image.url }}" alt="{{ marker.image.title | escape_once }}" decoding="async" width="{{ marker.image.width }}" height="{{ marker.image.height }}" loading="lazy" />{% endif %}
 						<div itemprop="geo" itemtype="https://schema.org/GeoCoordinates" itemscope="" hidden="">
 							<meta itemprop="longitude" content="{{ marker.location.geo.longitude }}" />
 							<meta itemprop="latitude" content="{{ marker.location.geo.latitude }}" />
