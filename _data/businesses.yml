@@ -1,4 +1,4 @@
-- uuid: d8aa25f9-f1ae-4cb4-8ac5-8410e7e1dba1
+- uuid: kernville-chamber-of-commerce
   title: Kernville Chamber of Commerce
   url: https://www.gotokernville.com
   telephone: 1-760-376-2629
@@ -12,6 +12,7 @@
 - uuid: 882ff5ef-521d-4da6-9a50-eb837077e5b9
   title: Kernville Cowork
   url: https://kernvillecowork.com/en
+  description: At Kernville Cowork, we are working to create a community for collaboration, innovation, and continuous learning.
   category:
   - other
   location:

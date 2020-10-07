@@ -10,6 +10,7 @@ sidebar:
     callToAction: Your Ad Here!
     layout: stack
     campaign: wfd-ad
+    theme: inherit
   - uuid: fd2e2c83-83a1-4469-bb55-0556f244d5a5
     label: Wild West Daze Rodeo
     url: https://whiskeyflatdays.com/map/#f44131d1-2128-4d23-be86-2cc7d38e80ff
