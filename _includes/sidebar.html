@@ -1,21 +1,35 @@
 <aside id="sidebar" class="card shadow contain-content">
 	<weather-current class="card" appid="{{ site.data.weather.appid }}" postalcode="{{ site.data.weather.postalCode }}"></weather-current>
 	<hr />
-	{% for ad in site.data.ads.sidebar %}
-		{% include ad.html
-			id=ad.uuid
-			label=ad.label
-			image=ad.image
-			description=ad.description
-			url=ad.url
-			callToAction=ad.callToAction
-			theme=ad.theme
-			layout=ad.layout
-			imageFit=ad.imageFit
-			imagePosition=ad.imagePosition
-			classList=ad.classList
-			campaign=ad.campaign
-			content='sidebar-ad'
-		%}
-	{% endfor %}
+	{% if page.ads.sidebar %}{% for ad in page.ads.sidebar %}{% include ad.html
+		id=ad.uuid
+		label=ad.label
+		image=ad.image
+		description=ad.description
+		url=ad.url
+		callToAction=ad.callToAction
+		theme=ad.theme
+		layout=ad.layout
+		imageFit=ad.imageFit
+		imagePosition=ad.imagePosition
+		classList=ad.classList
+		campaign=ad.campaign
+		content='sidebar-ad'
+		media=ad.media
+	%}{% endfor %}{% else %}{% for ad in site.data.ads.sidebar %}{% include ad.html
+		id=ad.uuid
+		label=ad.label
+		image=ad.image
+		description=ad.description
+		url=ad.url
+		callToAction=ad.callToAction
+		theme=ad.theme
+		layout=ad.layout
+		imageFit=ad.imageFit
+		imagePosition=ad.imagePosition
+		classList=ad.classList
+		campaign=ad.campaign
+		content='sidebar-ad'
+		media=ad.media
+	%}{% endfor %}{% endif %}
 </aside>
