@@ -1,8 +1,8 @@
 ---
 name: Whiskey Flat Days
 shortName: Whiskey Flats
-version: 2.0.6-2020-10-07T15:51
-start_url: /?utm_source=pwa&utm_medium=web
+version: 2.0.6-2020-10-16T14:25
+start_url: /
 display: standalone
 description: "Map and events app for Whiskey Flat Days"
 icons-file: /img/icons.svg

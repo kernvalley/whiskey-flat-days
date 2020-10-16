@@ -6,8 +6,8 @@ sidebar:
     label: Kern Valley Ads
     url: https://ads.kernvalley.us/
     image: /img/ads/kv-ads.svg
-    description: Advertise on the Whiskey Flat Days App and any KernValley.US sites
-    callToAction: Your Ad Here!
+    description: Advertise on websites throughout the Kern River Valley
+    callToAction: Click here to get started!
     layout: stack
     campaign: wfd-ad
     theme: auto

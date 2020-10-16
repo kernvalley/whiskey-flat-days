@@ -133,7 +133,7 @@ preconnect:
 					{% endif %}
 					{% if marker.uuid %}
 						<br />
-						<button type="button" is="share-button" url="https://whiskeyflatdays.com/map/#{{ marker.uuid }}" text="Check out {{ marker.title | escape_once }}" title="{{ marker.title | escape_once }} | Whiskey Flat Days Map" hidden="">
+						<button type="button" is="share-button" url="https://whiskeyflatdays.com/map/#{{ marker.uuid }}" text="Check out {{ marker.title | escape_once }}" title="{{ marker.title | escape_once }} | Whiskey Flat Days Map" source="whiskey-flat-days" medium="social" content="map-marker" hidden="">
 							<svg width="16" height="16" aria-hidden="true">
 								<use xlink:href="{{ site.icons }}#share"></use>
 							</svg>
@@ -162,7 +162,7 @@ preconnect:
 					{% endif %}
 					{% if marker.uuid %}
 						<br />
-						<button type="button" is="share-button" url="https://whiskeyflatdays.com/map/#{{ marker.uuid }}" text="Check out {{ marker.title | escape_once }}" title="{{ marker.title | escape_once }} | Whiskey Flat Days Map" hidden="">
+						<button type="button" is="share-button" url="https://whiskeyflatdays.com/map/#{{ marker.uuid }}" text="Check out {{ marker.title | escape_once }}" title="{{ marker.title | escape_once }} | Whiskey Flat Days Map" source="whiskey-flat-days" medium="social" content="map-marker" hidden="">
 							<svg width="16" height="16" aria-hidden="true">
 								<use xlink:href="{{ site.icons }}#share"></use>
 							</svg>
@@ -223,7 +223,7 @@ preconnect:
 					{% endif %}
 					{% if marker.uuid %}
 						<br />
-						<button type="button" is="share-button" url="https://whiskeyflatdays.com/map/#{{ marker.uuid }}" text="Check out {{ marker.title | escape_once }}" title="{{ marker.title | escape_once }} | Whiskey Flat Days Map" hidden="">
+						<button type="button" is="share-button" url="https://whiskeyflatdays.com/map/#{{ marker.uuid }}" text="Check out {{ marker.title | escape_once }}" title="{{ marker.title | escape_once }} | Whiskey Flat Days Map" source="whiskey-flat-days" medium="social" content="map-marker"  hidden="">
 							<svg width="16" height="16" aria-hidden="true">
 								<use xlink:href="{{ site.icons }}#share"></use>
 							</svg>
@@ -292,7 +292,7 @@ preconnect:
 					</div>
 					{% if marker.description %}<div itemprop="description">{{ marker.description }}</div>{% endif %}
 					{% if marker.uuid %}
-						<button type="button" is="share-button" url="https://whiskeyflatdays.com/map/#{{ marker.uuid }}" text="Check out {{ marker.title | escape_once }}" title="{{ marker.title | escape_once }} | Whiskey Flat Days Map" hidden="">
+						<button type="button" is="share-button" url="https://whiskeyflatdays.com/map/#{{ marker.uuid }}" text="Check out {{ marker.title | escape_once }}" title="{{ marker.title | escape_once }} | Whiskey Flat Days Map" source="whiskey-flat-days" medium="social" content="map-marker" hidden="">
 							<svg width="16" height="16" aria-hidden="true">
 								<use xlink:href="{{ site.icons }}#share"></use>
 							</svg>
