@@ -11,6 +11,7 @@ import 'https://cdn.kernvalley.us/components/ad/block.js';
 import 'https://cdn.kernvalley.us/components/weather-current.js';
 import 'https://cdn.kernvalley.us/components/github/user.js';
 import 'https://cdn.kernvalley.us/components/pwa/install.js';
+import { HTMLNotificationElement } from 'https://cdn.kernvalley.us/components/notification/html-notification.js';
 import * as handlers from './handlers.js';
 import { $, ready, wait } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
 import { loadScript } from 'https://cdn.kernvalley.us/js/std-js/loader.js';
@@ -48,6 +49,30 @@ if (typeof GA === 'string' && GA !== '') {
 		});
 	});
 }
+
+cookieStore.get({ name: 'visited' }).then(cookie => {
+	if (typeof cookie === 'undefined') {
+		new HTMLNotificationElement('Information not yet updated', {
+			body: 'This information is for the 2020 Whiskey Flat Days. It has not yet been updated for 2021.',
+			icon: '/img/favicon.svg',
+			requireInteraction: true,
+			actions:[{
+				title: 'Dismiss Notification',
+				action: 'dismiss',
+			}]
+		}).addEventListener('notificationclick', ({ action, target }) => {
+			switch(action) {
+				case 'dismiss':
+					target.close();
+					break;
+			}
+		});
+
+		const now = new Date();
+
+		cookieStore.set({ name: 'visited', value: now.toISOString(), secure: true, expires: new Date('2020-12-20T00:00').getTime() });
+	}
+});
 
 if (location.pathname.startsWith('/map')) {
 	Promise.all([

@@ -14,8 +14,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v2.0.7] - 2020-10-26
+
 ### Added
 - Page to reset all data using HTTP `Clear-Site-Data: *` header
+- Notification of outdated information on first visit (via cookie)
 
 ### Changed
 - Add more sample ads
@@ -25,6 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update Leaflet Version
 - Animate on intersection for event cards on events page
 - Add options for ad layout and other attributes
+- Move PWA install button to `<nav>`
 
 ## [v2.0.6] - 2020-09-06
 

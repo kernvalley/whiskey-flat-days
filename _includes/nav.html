@@ -1,4 +1,4 @@
-<nav id="nav" class="sticky top shadow background-accent color-alt z-top clearfix">
+<nav id="nav" class="sticky top shadow background-accent color-alt z-3 flex row clearfix">
 	<span class="display-mode-standalone float-left">
 		<button type="button" class="btn btn-primary" title="Go Back" data-action="back">{% include icon.html icon="go-previous" %}</button>
 		<button type="button" class="btn btn-primary" title="Reload" data-action="reload">{% include icon.html icon="view-refresh" %}</button>
@@ -14,4 +14,10 @@
 		{% include icon.html icon="find-location" %}
 		<span class="mobile-hidden">Find my Location</span>
 	</button>
+	{% if site.service_worker %}
+		<button is="pwa-install" id="install-btn" class="btn btn-primary" src="{{ site.service_worker }}" scope="/" title="Install Web App" reloadonupdate="" hidden="">
+			{% include icon.html icon="system-software-install" %}
+			<span class="mobile-hidden">Install</span>
+		</button>
+	{% endif %}
 </nav>
