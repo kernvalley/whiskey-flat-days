@@ -39,14 +39,6 @@
 			</a>
 		</div>
 	</div>
-	{% if site.service_worker %}
-		<div class="flex row center">
-			<button is="pwa-install" class="btn btn-primary btn-big btn-wide" src="{{ site.service_worker }}" scope="/" title="Install Web App" reloadonupdate="">
-				{% include icon.html icon="system-software-install" %}
-				<span>Install</span>
-			</button>
-		</div>
-	{% endif %}
 	<hr />
 	<div class="copyright">
 		<github-user user="{{ site.repository.username }}" loading="lazy">

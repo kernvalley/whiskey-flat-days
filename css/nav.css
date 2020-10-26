@@ -1,5 +1,9 @@
 #nav {
 	padding: 0.6em;
 	font-size: 1.2em;
-	justify-content: space-around;
+}
+
+#install-btn {
+	margin-left: auto;
+	margin-right: 0.4em;
 }
