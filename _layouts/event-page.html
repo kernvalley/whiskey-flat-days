@@ -161,7 +161,7 @@ main-itemtype: Event
 			{% include address.html address=page.location %}
 		{% endif %}
 		{% if page.location.geo %}
-			<leaflet-map center="{{ page.location.geo.latitude }},{{ page.location.geo.longitude }}" zoom="15" crossorigin="annonymous" detectretina="" itemprop="geo" itemtype="https://schema.org/GeoCoordinates" itemscope="">
+			<leaflet-map center="{{ page.location.geo.latitude }},{{ page.location.geo.longitude }}" zoom="15" crossorigin="annonymous" loading="lazy" detectretina="" itemprop="geo" itemtype="https://schema.org/GeoCoordinates" itemscope="">
 				<meta itemprop="longitude" content="{{ page.location.geo.longitude }}" />
 				<meta itemprop="latitude" content="{{ page.location.geo.latitude }}" />
 				<leaflet-marker slot="markers" longitude="{{ page.location.geo.longitude }}" latitude="{{ page.location.geo.latitude }}" title="{{ page.location.name }}" open="">
@@ -190,6 +190,39 @@ main-itemtype: Event
 		{% endif %}
 	</div>
 	{% include weather.html appId = site.data.apikeys.openweathermap postalCode = page.location.postalCode %}
+	{% if page.ads.sidebar %}{% for ad in page.ads.sidebar %}{% include ad.html
+		id=ad.uuid
+		label=ad.label
+		image=ad.image
+		description=ad.description
+		url=ad.url
+		callToAction=ad.callToAction
+		theme=ad.theme
+		layout=ad.layout
+		imageFit=ad.imageFit
+		imagePosition=ad.imagePosition
+		classList=ad.classList
+		campaign=ad.campaign
+		content='sidebar-ad'
+		loading='lazy'
+		media=ad.media
+	%}{% endfor %}{% else %}{% for ad in site.data.ads.sidebar %}{% include ad.html
+		id=ad.uuid
+		label=ad.label
+		image=ad.image
+		description=ad.description
+		url=ad.url
+		callToAction=ad.callToAction
+		theme=ad.theme
+		layout=ad.layout
+		imageFit=ad.imageFit
+		imagePosition=ad.imagePosition
+		classList=ad.classList
+		campaign=ad.campaign
+		content='sidebar-ad'
+		loading='lazy'
+		media=ad.media
+	%}{% endfor %}{% endif %}
 </aside>
 {% include footer.html %}
 {% include share-button.html text=page.description %}
