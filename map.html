@@ -44,13 +44,13 @@ preconnect:
 		<p>Your browser does not meet the minal requirements to display the events map.</p>
 		<p>Please install a better browser that supports modern websites.</p>
 		<div class="flex row nowrap clearfix browser-installs">
-			<a href="https://www.mozilla.org/en-US/firefox/new/" class="browser-install center inline-block float-left card" rel="noopener external">
+			<a href="https://www.mozilla.org/en-US/firefox/new/" class="browser-install center inline-block float-left card" rel="external noopener noreferrer">
 				<img src="https://cdn.kernvalley.us/img/logos/firefox.svg" decoding="async" loading="lazy" alt="Firefox" height="128" width="128" />
 				<br />
 				<span>Mozilla Firefox</span>
 				{% include icon.html icon="link-external" %}
 			</a>
-			<a href="https://www.google.com/chrome/" class="browser-install center inline-block float-left card" rel="noopener external">
+			<a href="https://www.google.com/chrome/" class="browser-install center inline-block float-left card" rel="external noopener noreferrer">
 				<img src="https://cdn.kernvalley.us/img/logos/chrome.svg" decoding="async" loading="lazy" alt="Firefox" height="128" width="128" />
 				<br />
 				<span>Google Chrome</span>
@@ -113,20 +113,20 @@ preconnect:
 					{% endif %}
 					{% if marker.url %}
 						<div>
-							<a href="{{ marker.url }}" rel="noopener external">
+							<a href="{{ marker.url }}" rel="external noopener noreferrer">
 								{% include icon.html icon="globe"  height="16" width="16" %}
 								<span itemprop="url">{{ marker.url | replace: 'https://', '' | replace: 'http://', '' | replace: 'www.', '' }}</span>
 							</a>
 						</div>
 					{% endif %}
 					{% if marker.location.url %}
-						<a href="{{ marker.location.url }}" class="inline-block btn btn-primary" rel="noopener external" role="button">
+						<a href="{{ marker.location.url }}" class="inline-block btn btn-primary" rel="external noopener noreferrer" role="button">
 							{% include icon.html icon="map" height="16" width="16" %}
 							<span>View in Map App</span>
 						</a>
 					{% else %}
 						<!-- geo:35.760197,-118.426793;crs=wgs84;u=0 -->
-						<a href="https://www.google.com/maps/?q={{ marker.location.geo.latitude }},{{ marker.location.geo.longitude }}" class="inline-block btn btn-primary" rel="noopener external" role="button">
+						<a href="https://www.google.com/maps/?q={{ marker.location.geo.latitude }},{{ marker.location.geo.longitude }}" class="inline-block btn btn-primary" rel="external noopener noreferrer" role="button">
 							{% include icon.html icon="map" height="16" width="16" %}
 							<span>View in Map App</span>
 						</a>
@@ -149,19 +149,18 @@ preconnect:
 					<h4>{{ marker.title | default: marker.space }}</h4>
 					{% if marker.description %}<div>{{ marker.description }}</div>{% endif %}
 					{% if marker.location.url %}
-						<a href="{{ marker.location.url }}" class="inline-block btn btn-primary" rel="noopener external" role="button">
+						<a href="{{ marker.location.url }}" class="inline-block btn btn-primary" rel="external noopener noreferrer" role="button">
 							{% include icon.html icon="map" height="16" width="16" %}
 							<span>View in Map App</span>
 						</a>
 					{% else %}
-						<!-- geo:35.760197,-118.426793;crs=wgs84;u=0 -->
-						<a href="https://www.google.com/maps/?q={{ marker.latitude }},{{ marker.longitude }}" class="inline-block btn btn-primary" rel="noopener external" role="button">
+						<a href="https://www.google.com/maps/?q={{ marker.latitude }},{{ marker.longitude }}" class="inline-block btn btn-primary" rel="external noopener noreferrer" role="button">
 							{% include icon.html icon="map" height="16" width="16" %}
 							<span>View in Map App</span>
 						</a>
 					{% endif %}
 					{% if marker.uuid %}
-						<br />
+						<br /><br />
 						<button type="button" is="share-button" url="https://whiskeyflatdays.com/map/#{{ marker.uuid }}" text="Check out {{ marker.title | escape_once }}" title="{{ marker.title | escape_once }} | Whiskey Flat Days Map" source="whiskey-flat-days" medium="social" content="map-marker" hidden="">
 							<svg width="16" height="16" aria-hidden="true">
 								<use xlink:href="{{ site.icons }}#share"></use>
@@ -203,20 +202,20 @@ preconnect:
 					{% endif %}
 					{% if marker.url %}
 						<div>
-							<a href="{{ marker.url }}" rel="noopener external">
+							<a href="{{ marker.url }}" rel="external noopener noreferrer">
 								{% include icon.html icon="globe"  height="16" width="16" %}
 								<span itemprop="url">{{ marker.url | replace: 'https://', '' | replace: 'http://', '' | replace: 'www.', '' }}</span>
 							</a>
 						</div>
 					{% endif %}
 					{% if marker.location.url %}
-						<a itemprop="url" href="{{ marker.location.url }}" class="inline-block btn btn-primary" rel="noopener external" role="button">
+						<a itemprop="url" href="{{ marker.location.url }}" class="inline-block btn btn-primary" rel="external noopener noreferrer" role="button">
 							{% include icon.html icon="map" height="16" width="16" %}
 							<span>View in Map App</span>
 						</a>
 					{% else %}
 						<!-- geo:35.760197,-118.426793;crs=wgs84;u=0 -->
-						<a itemprop="url" href="https://www.google.com/maps/?q={{ marker.location.geo.latitude }},{{ marker.location.geo.longitude }}" class="inline-block btn btn-primary" rel="noopener external" role="button">
+						<a itemprop="url" href="https://www.google.com/maps/?q={{ marker.location.geo.latitude }},{{ marker.location.geo.longitude }}" class="inline-block btn btn-primary" rel="external noopener noreferrer" role="button">
 							{% include icon.html icon="map" height="16" width="16" %}
 							<span>View in Map App</span>
 						</a>
@@ -273,14 +272,14 @@ preconnect:
 						{% endif %}
 						{% if marker.location.url %}
 							<br />
-							<a href="{{ marker.location.url }}" class="inline-block btn btn-primary" rel="noopener external" role="button" itemprop="url">
+							<a href="{{ marker.location.url }}" class="inline-block btn btn-primary" rel="external noopener noreferrer" role="button" itemprop="url">
 								{% include icon.html icon="map" height="16" width="16" %}
 								<span>View in Map App</span>
 							</a>
 						{% else %}
 							<br />
 							<!-- geo:35.760197,-118.426793;crs=wgs84;u=0 -->
-							<a href="https://www.google.com/maps/?q={{ marker.location.geo.latitude }},{{ marker.location.geo.longitude }}" class="inline-block btn btn-primary" rel="noopener external" role="button" itemprop="url">
+							<a href="https://www.google.com/maps/?q={{ marker.location.geo.latitude }},{{ marker.location.geo.longitude }}" class="inline-block btn btn-primary" rel="external noopener noreferrer" role="button" itemprop="url">
 								{% include icon.html icon="map" height="16" width="16" %}
 								<span>View in Map App</span>
 							</a>
