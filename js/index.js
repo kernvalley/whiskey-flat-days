@@ -50,17 +50,21 @@ if (typeof GA === 'string' && GA !== '') {
 	});
 }
 
-cookieStore.get({ name: 'visited' }).then(cookie => {
-	if (typeof cookie === 'undefined') {
-		new HTMLNotificationElement('Information not yet updated', {
+cookieStore.get({ name: 'visited' }).then(async cookie => {
+	if (! cookie) {
+		await ready();
+		const notification = new HTMLNotificationElement('Information not yet updated', {
 			body: 'This information is for the 2020 Whiskey Flat Days. It has not yet been updated for 2021.',
 			icon: '/img/favicon.svg',
+			vibrate: [0],
 			requireInteraction: true,
 			actions:[{
 				title: 'Dismiss Notification',
 				action: 'dismiss',
 			}]
-		}).addEventListener('notificationclick', ({ action, target }) => {
+		});
+
+		notification.addEventListener('notificationclick', ({ action, target }) => {
 			switch(action) {
 				case 'dismiss':
 					target.close();
@@ -68,9 +72,14 @@ cookieStore.get({ name: 'visited' }).then(cookie => {
 			}
 		});
 
-		const now = new Date();
-
-		cookieStore.set({ name: 'visited', value: now.toISOString(), secure: true, expires: new Date('2020-12-20T00:00').getTime() });
+		notification.addEventListener('close', () => {
+			cookieStore.set({
+				name: 'visited',
+				value: 'yes',
+				secure: true,
+				expires: new Date('2020-12-21T00:00').getTime(),
+			});
+		});
 	}
 });
 
