@@ -25,8 +25,7 @@ document.body.classList.toggle('no-details', document.createElement('details') i
 
 if (typeof GA === 'string' && GA !== '') {
 	requestIdleCallback(async () => {
-		importGa(GA).then(async () => {
-			/* global ga */
+		importGa(GA).then(async ({ ga }) => {
 			ga('create', GA, 'auto');
 			ga('set', 'transport', 'beacon');
 			ga('send', 'pageview');
@@ -38,6 +37,7 @@ if (typeof GA === 'string' && GA !== '') {
 			$('a[href^="mailto:"]').click(mailtoHandler, { passive: true, capture: true });
 		}).catch(console.error).finally(() => {
 			const url = new URL(location.href);
+
 			if (url.searchParams.has('utm_source')) {
 				url.searchParams.delete('utm_source');
 				url.searchParams.delete('utm_medium');
