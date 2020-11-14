@@ -8,13 +8,13 @@ import 'https://cdn.kernvalley.us/components/leaflet/marker.js';
 import 'https://cdn.kernvalley.us/components/leaflet/geojson.js';
 import 'https://cdn.kernvalley.us/components/not-supported.js';
 import 'https://cdn.kernvalley.us/components/ad/block.js';
-import 'https://cdn.kernvalley.us/components/weather-current.js';
+import 'https://cdn.kernvalley.us/components/weather/current.js';
 import 'https://cdn.kernvalley.us/components/github/user.js';
 import 'https://cdn.kernvalley.us/components/pwa/install.js';
 import { HTMLNotificationElement } from 'https://cdn.kernvalley.us/components/notification/html-notification.js';
 import * as handlers from './handlers.js';
 import { $, ready, wait } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
-import { loadScript } from 'https://cdn.kernvalley.us/js/std-js/loader.js';
+import { loadScript, preload } from 'https://cdn.kernvalley.us/js/std-js/loader.js';
 import { importGa, externalHandler, telHandler, mailtoHandler } from 'https://cdn.kernvalley.us/js/std-js/google-analytics.js';
 import { searchLocationMarker, stateHandler } from './functions.js';
 import { site, GA } from './consts.js';
@@ -30,7 +30,7 @@ if (typeof GA === 'string' && GA !== '') {
 			ga('set', 'transport', 'beacon');
 			ga('send', 'pageview');
 
-			await ready();
+			ready();
 
 			$('a[rel~="external"]').click(externalHandler, { passive: true, capture: true });
 			$('a[href^="tel:"]').click(telHandler, { passive: true, capture: true });
@@ -52,14 +52,28 @@ if (typeof GA === 'string' && GA !== '') {
 
 cookieStore.get({ name: 'visited' }).then(async cookie => {
 	if (! cookie) {
-		await ready();
-		const notification = new HTMLNotificationElement('Information not yet updated', {
+		await Promise.allSettled([
+			ready(),
+			preload('https://cdn.kernvalley.us/components/notification/html-notification.html', { as: 'fetch', type: 'text/html' }),
+			preload('https://cdn.kernvalley.us/components/notification/html-notification.css', { as: 'style', type: 'text/css' }),
+			preload('/img/favicon.svg', { as: 'image', type: 'image/svg+xml' }),
+			preload('/img/octicons/info.svg', { as: 'image', type: 'image/svg+xml' }),
+		]);
+		const notification = new HTMLNotificationElement('Outdated Info', {
 			body: 'This information is for the 2020 Whiskey Flat Days. It has not yet been updated for 2021.',
 			icon: '/img/favicon.svg',
-			vibrate: [0],
+			badge: '/img/octicons/info.svg',
 			requireInteraction: true,
+			data: {
+				cookie: {
+					name: 'visited',
+					value: 'yes',
+					secure: true,
+					expired: 1608537600000, // 2020-12-21T00:00
+				}
+			},
 			actions:[{
-				title: 'Dismiss Notification',
+				title: 'Dismiss',
 				action: 'dismiss',
 			}]
 		});
@@ -67,18 +81,10 @@ cookieStore.get({ name: 'visited' }).then(async cookie => {
 		notification.addEventListener('notificationclick', ({ action, target }) => {
 			switch(action) {
 				case 'dismiss':
+					cookieStore.set(target.data.cookie);
 					target.close();
 					break;
 			}
-		});
-
-		notification.addEventListener('close', () => {
-			cookieStore.set({
-				name: 'visited',
-				value: 'yes',
-				secure: true,
-				expires: new Date('2020-12-21T00:00').getTime(),
-			});
 		});
 	}
 });

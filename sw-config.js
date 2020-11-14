@@ -24,14 +24,14 @@ const config = {
 		'https://cdn.kernvalley.us/components/toast-message.html',
 		'https://cdn.kernvalley.us/components/pwa/prompt.html',
 		'https://cdn.kernvalley.us/components/leaflet/map.html',
-		'https://cdn.kernvalley.us/components/weather-current.html',
+		'https://cdn.kernvalley.us/components/weather/current.html',
 
 		/* CSS */
 		'https://unpkg.com/leaflet@1.7.1/dist/leaflet.css',
 		'https://cdn.kernvalley.us/components/toast-message.css',
 		'https://cdn.kernvalley.us/components/pwa/prompt.css',
 		'https://cdn.kernvalley.us/components/leaflet/map.css',
-		'https://cdn.kernvalley.us/components/weather-current.css',
+		'https://cdn.kernvalley.us/components/weather/current.css',
 
 		/* Images & Icons */
 		'/img/apple-touch-icon.png',
