@@ -122,6 +122,7 @@ exclude:
 - "*.config.js"
 - ".gitkeep"
 - docs/
+- "/*-theme.xml"
 - "/.github/"
 - Gemfile
 - node_modules/
