@@ -30,7 +30,7 @@ if (typeof GA === 'string' && GA !== '') {
 			ga('set', 'transport', 'beacon');
 			ga('send', 'pageview');
 
-			ready();
+			await ready();
 
 			$('a[rel~="external"]').click(externalHandler, { passive: true, capture: true });
 			$('a[href^="tel:"]').click(telHandler, { passive: true, capture: true });
