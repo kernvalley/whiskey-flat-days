@@ -2,6 +2,16 @@ source: wfd-app
 medium: web
 campaign: wfd-ad
 sidebar:
+  - uuid: 87873b5a-dad1-4d07-9b17-e24747793f94
+    label: Kernville Cowork
+    url: https://www.kernvillecowork.com/en
+    description: "Want to work where you play?  Bring your laptop and get things done in scenic Kernville!"
+    image: "https://cdn.kernvalley.us/img/branding/kernville-cowork.svg"
+    imageFit: contain
+    imagePosition: center
+    callToAction: Click to see your options
+    layout: card
+    theme: light
   - uuid: c180201e-e40b-49d1-a069-2b09b6e99800
     label: Kern Valley Ads
     url: https://ads.kernvalley.us/
