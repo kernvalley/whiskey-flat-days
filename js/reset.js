@@ -12,14 +12,6 @@
 			script.async = true;
 			script.src = 'https://cdn.kernvalley.us/js/pwa-reset.js';
 			document.head.appendChild(script);
-
-			if ('cookieStore' in window && cookieStore.getAll instanceof Function) {
-				cookieStore.getAll().then(function(cookies) {
-					cookies.forEach(function(cookie) {
-						cookieStore.delete(cookie);
-					});
-				});
-			}
 		}, {
 			once: true,
 			capture: true
