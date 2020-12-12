@@ -33,7 +33,6 @@ cookieStore.get({ name: 'theme' }).then(async cookie => {
 	const $ads = $('ad-block[theme="auto"]');
 	const setTheme = ({ name, value = 'auto' }) => {
 		if (name === 'theme') {
-			console.info({ name, value });
 			$(':root, [data-theme]').data({ theme: value });
 			$('[theme]:not(ad-block)').attr({ theme: value });
 			$ads.attr({ theme: value });
