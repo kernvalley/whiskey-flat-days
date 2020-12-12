@@ -28,6 +28,10 @@
 	margin-right: 0.4em;
 }
 
+#install-btn svg.icon {
+	margin-bottom: 10px;
+}
+
 #app-menu {
 	background-color: transparent;
 	color: inherit;

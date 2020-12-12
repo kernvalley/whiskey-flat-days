@@ -1,9 +1,12 @@
 - label: Home
   url: /
   icon: home
+  accessKey: h
 - label: Events
   url: /events/
   icon: calendar
+  accessKey: e
 - label: Map
   url: /map/
   icon: map
+  accessKey: m

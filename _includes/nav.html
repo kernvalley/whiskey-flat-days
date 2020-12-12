@@ -1,5 +1,5 @@
 <nav id="nav" class="sticky top shadow background-accent color-alt z-3 flex row clearfix">
-	<button type="button" is="app-list" id="app-menu" class="btn" title="Open KernValley.US Apps Menu" source="{{ site.data.ads.source }}" hidden="">
+	<button type="button" is="app-list" id="app-menu" class="btn" title="Open KernValley.US Apps Menu" source="{{ site.data.ads.source }}" accesskey="a" hidden="">
 		{% include icon.html icon="apps" fill="currentColor" height=22 width=22 %}
 	</button>
 	<span class="display-mode-standalone float-left">
@@ -8,17 +8,17 @@
 		<button type="button" class="btn btn-primary" title="Go Forward" data-action="forward">{% include icon.html icon="go-next" %}</button>
 	</span>
 	{% for link in site.data.nav %}
-		<a class="nav-link inline-block grow-1{% if link.url == page.url %} no-pointer-events current-link{% endif %}" href="{{ link.url }}" title="{{ link.label }}">
+		<a class="nav-link inline-block grow-1{% if link.url == page.url %} no-pointer-events current-link{% endif %}" href="{{ link.url }}" accesskey="{{ link.accessKey }}" title="{{ link.label }}">
 			{% include icon.html icon=link.icon %}
 			<span class="mobile-hidden">{{ link.label }}</span>
 		</a>
 	{% endfor %}
-	<button type="button" class="btn btn-primary grow-1" data-action="find-location" title="Use my Location" hidden="">
+	<button type="button" class="btn btn-primary grow-1" data-action="find-location" title="Use my Location" accesskey="f" hidden="">
 		{% include icon.html icon="find-location" %}
 		<span class="mobile-hidden">Find my Location</span>
 	</button>
 	{% if site.service_worker %}
-		<button is="pwa-install" id="install-btn" class="btn btn-primary" src="{{ site.service_worker }}" scope="/" title="Install Web App" reloadonupdate="" hidden="">
+		<button is="pwa-install" id="install-btn" class="btn btn-primary" src="{{ site.service_worker }}" scope="/" title="Install Web App" reloadonupdate="" accesskey="i" hidden="">
 			{% include icon.html icon="system-software-install" height=22 width=22 fill="currentColor" %}
 			<span class="mobile-hidden">Install</span>
 		</button>
