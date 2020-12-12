@@ -14,6 +14,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v2.0.8] - 2020-12-12
+
+### Added
+
+- Add apps icon
+- Use `<button is="app-list">` component
+- Add `cookieStore` handling for theme
+
+### Changed
+
+- Allow `apps.kernvalley.us` in CSP
+- Update style of nav links & buttons
+- Use weather component via `_includes/` in sidebar
+
 ## [v2.0.7] - 2020-10-26
 
 ### Added

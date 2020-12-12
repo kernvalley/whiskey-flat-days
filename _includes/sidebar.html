@@ -1,5 +1,5 @@
 <aside id="sidebar" class="card shadow contain-content">
-	<weather-current class="card" appid="{{ site.data.weather.appid }}" postalcode="{{ site.data.weather.postalCode }}"></weather-current>
+	{% include weather.html appId=site.data.weather.appid postalcode=site.data.weather.postalCode theme=site.data.weather.theme %}
 	<hr />
 	{% if page.ads.sidebar %}{% for ad in page.ads.sidebar %}{% include ad.html
 		id=ad.uuid

@@ -1,9 +1,36 @@
 #nav {
-	padding: 0.6em;
 	font-size: 1.2em;
+}
+
+#nav > a.nav-link {
+	line-height: var(--nav-height, 3rem);
+	vertical-align: middle;
+	text-align: center;
+	border-radius: 0;
+	padding: var(--button-padding, 0.3em);
+	transition: background-color 300ms ease-in-out;
+}
+
+#nav > a.nav-link:hover {
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+#nav > .btn, #nav > .nav-link {
+	max-width: 230px;
+}
+
+#nav > a.nav-link.current-link, #nav > a.nav-link:active, #nav > a.nav-liink:focus {
+	background-color: rgba(0, 0, 0, 0.2);
 }
 
 #install-btn {
 	margin-left: auto;
 	margin-right: 0.4em;
+}
+
+#app-menu {
+	background-color: transparent;
+	color: inherit;
+	min-width: 47px;
+	border: none;
 }
