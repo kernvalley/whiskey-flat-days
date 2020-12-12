@@ -11,17 +11,46 @@ import 'https://cdn.kernvalley.us/components/ad/block.js';
 import 'https://cdn.kernvalley.us/components/weather/current.js';
 import 'https://cdn.kernvalley.us/components/github/user.js';
 import 'https://cdn.kernvalley.us/components/pwa/install.js';
+import 'https://cdn.kernvalley.us/components/app/list-button.js';
 import { HTMLNotificationElement } from 'https://cdn.kernvalley.us/components/notification/html-notification.js';
+import { init } from 'https://cdn.kernvalley.us/js/std-js/data-handlers.js';
 import * as handlers from './handlers.js';
-import { $, ready, wait } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
+import { $, ready, sleep } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
 import { loadScript, preload } from 'https://cdn.kernvalley.us/js/std-js/loader.js';
 import { importGa, externalHandler, telHandler, mailtoHandler } from 'https://cdn.kernvalley.us/js/std-js/google-analytics.js';
 import { searchLocationMarker, stateHandler } from './functions.js';
 import { site, GA } from './consts.js';
 
-document.documentElement.classList.replace('no-js', 'js');
-document.body.classList.toggle('no-dialog', document.createElement('dialog') instanceof HTMLUnknownElement);
-document.body.classList.toggle('no-details', document.createElement('details') instanceof HTMLUnknownElement);
+$(document.documentElement).toggleClass({
+	'no-dialog': document.createElement('dialog') instanceof HTMLUnknownElement,
+	'no-details': document.createElement('details') instanceof HTMLUnknownElement,
+	'js': true,
+	'no-js': false,
+});
+
+cookieStore.get({ name: 'theme' }).then(async cookie => {
+	await $.ready;
+	const $ads = $('ad-block[theme="auto"]');
+	const setTheme = ({ name, value = 'auto' }) => {
+		if (name === 'theme') {
+			$(':root, [data-theme]').data({ theme: value });
+			$('[theme]:not(ad-block)').attr({ theme: value });
+			$ads.attr({ theme: value });
+		}
+	};
+
+	if (cookie) {
+		setTheme(cookie);
+	}
+
+	cookieStore.addEventListener('change', ({ changed, deleted }) => {
+		const cookie = [...changed, ...deleted].find(({ name }) => name === 'theme');
+
+		if (cookie) {
+			setTheme(cookie);
+		}
+	});
+});
 
 if (typeof GA === 'string' && GA !== '') {
 	requestIdleCallback(async () => {
@@ -181,6 +210,7 @@ Promise.all([
 	loadScript('https://cdn.polyfill.io/v3/polyfill.min.js'),
 	ready(),
 ]).then(async () => {
+	init().catch(console.error);
 	const now = new Date();
 	const current = isOnGoing();
 	if (location.hash === '') {
@@ -200,7 +230,7 @@ Promise.all([
 	$('#search-date').attr({ value: current ? date : '2020-02-14', min: current ? date : '2020-02-14', max: '2020-02-17' });
 
 	$('leaflet-marker[id]').on('markerclick', async ({target}) => {
-		await wait(100);
+		await sleep(100);
 
 		if (target.open) {
 			const url = new URL(location.pathname, location.origin);
@@ -223,21 +253,6 @@ Promise.all([
 	$('form[name="startDate"], form[name="search"]').reset(handlers.searchReset);
 	$('form[name="search"]').submit(handlers.searchSubmit);
 	$('form[name="markerFilter"]').submit(handlers.filterMarkersSubmit);
-
-	$('[data-scroll-to]').click(event => {
-		const target = document.querySelector(event.target.closest('[data-scroll-to]').dataset.scrollTo);
-		target.scrollIntoView({
-			bahavior: 'smooth',
-			block: 'start',
-		});
-	});
-
-	$('[data-show]').click(event => {
-		const target = document.querySelector(event.target.closest('[data-show]').dataset.show);
-		if (target instanceof HTMLElement) {
-			target.show();
-		}
-	});
 
 	$('[data-action]').click(({ target }) => {
 		const { action } = target.closest('[data-action]').dataset;
@@ -275,20 +290,6 @@ Promise.all([
 
 			default:
 				throw new Error(`Unknown click action: ${action}`);
-		}
-	});
-
-	$('[data-show-modal]').click(event => {
-		const target = document.querySelector(event.target.closest('[data-show-modal]').dataset.showModal);
-		if (target instanceof HTMLElement) {
-			target.showModal();
-		}
-	});
-
-	$('[data-close]').click(event => {
-		const target = document.querySelector(event.target.closest('[data-close]').dataset.close);
-		if (target instanceof HTMLElement) {
-			target.tagName === 'DIALOG' ? target.close() : target.open = false;
 		}
 	});
 
