@@ -1,5 +1,6 @@
 #nav {
 	font-size: 1.2em;
+	gap: 6px;
 }
 
 #nav > a.nav-link {
@@ -11,16 +12,29 @@
 	transition: background-color 300ms ease-in-out;
 }
 
-#nav > a.nav-link:hover {
+#nav > button {
+	background-color: transparent;
+	color: inherit;
+	border: none;
+	min-width: 47px;
+}
+
+#nav > button, #nav > .nav-link {
+	max-width: 230px;
+	border-width: 0 1px 0 1px;
+	border-style: solid;
+	border-color: #0052b3;
+}
+
+#nav > a.nav-link:hover, #nav > button:hover, #nav > button:focus,
+#nav > a.nav-link:focus {
 	background-color: rgba(0, 0, 0, 0.1);
 }
 
-#nav > .btn, #nav > .nav-link {
-	max-width: 230px;
-}
-
-#nav > a.nav-link.current-link, #nav > a.nav-link:active, #nav > a.nav-liink:focus {
+#nav > a.nav-link.current-link, #nav > a.nav-link:active {
 	background-color: rgba(0, 0, 0, 0.2);
+	border-color: #043469;
+	box-shadow: 0 0 0.3em rgba(0, 0, 0, 0.3) inset;
 }
 
 #install-btn {
@@ -30,11 +44,4 @@
 
 #install-btn svg.icon {
 	margin-bottom: 10px;
-}
-
-#app-menu {
-	background-color: transparent;
-	color: inherit;
-	min-width: 47px;
-	border: none;
 }
