@@ -1,5 +1,6 @@
 import 'https://cdn.kernvalley.us/js/std-js/deprefixer.js';
 import 'https://cdn.kernvalley.us/js/std-js/shims.js';
+import 'https://cdn.kernvalley.us/js/std-js/theme-cookie.js';
 import 'https://unpkg.com/@webcomponents/custom-elements@1.4.2/custom-elements.min.js';
 import 'https://cdn.kernvalley.us/components/share-button.js';
 import 'https://cdn.kernvalley.us/components/current-year.js';
@@ -26,30 +27,6 @@ $(document.documentElement).toggleClass({
 	'no-details': document.createElement('details') instanceof HTMLUnknownElement,
 	'js': true,
 	'no-js': false,
-});
-
-cookieStore.get({ name: 'theme' }).then(async cookie => {
-	await $.ready;
-	const $ads = $('ad-block[theme="auto"]');
-	const setTheme = ({ name, value = 'auto' }) => {
-		if (name === 'theme') {
-			$(':root, [data-theme]').data({ theme: value });
-			$('[theme]:not(ad-block)').attr({ theme: value });
-			$ads.attr({ theme: value });
-		}
-	};
-
-	if (cookie) {
-		setTheme(cookie);
-	}
-
-	cookieStore.addEventListener('change', ({ changed, deleted }) => {
-		const cookie = [...changed, ...deleted].find(({ name }) => name === 'theme');
-
-		if (cookie) {
-			setTheme(cookie);
-		}
-	});
 });
 
 if (typeof GA === 'string' && GA !== '') {
