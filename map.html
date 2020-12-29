@@ -33,9 +33,14 @@ preload:
     referrerPolicy: no-referrer
     crossOrigin: anonymous
 preconnect:
-  href: "https://maps.wikimedia.org"
-  referrerPolicy: no-referrer
-  crossOrigin: anonymous
+  - href: "https://maps.wikimedia.org"
+    referrerPolicy: no-referrer
+    crossOrigin: anonymous
+scripts:
+  - src: /js/map.min.js
+    async: true
+    defer: true
+    referrerPolicy: no-referrer
 ---
 {% include header.html %}
 {% include nav.html %}
