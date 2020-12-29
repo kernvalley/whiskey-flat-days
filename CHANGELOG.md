@@ -14,6 +14,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Update to load `polyfill.io` and custom elements shim as `<script nomodule>`
+- Move `<leaflet-map>` component scripts to separate script to not load for every page
+
 ## [v2.0.8] - 2020-12-12
 
 ### Added
