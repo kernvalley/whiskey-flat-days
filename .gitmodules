@@ -7,3 +7,6 @@
 [submodule "img/adwaita-icons"]
 	path = img/adwaita-icons
 	url = https://github.com/shgysk8zer0/adwaita-icons.git
+[submodule "_data/places"]
+	path = _data/places
+	url = https://github.com/kernvalley/places.git

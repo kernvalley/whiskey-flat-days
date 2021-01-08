@@ -99,14 +99,3 @@
       latitude: 35.758007
       longitude: -118.424189
   icon: /img/markers/parking.svg
-- uuid: 3c2f762c-23f5-4579-826e-85d51cad0249
-  title: Kern Valley Museum
-  url: https://kernvalleymuseum.org
-  telephone: 1-760-376-6683
-  location:
-    address:
-      streetAddress: 49 Big Blue Road
-    geo:
-      latitude: 35.755170
-      longitude: -118.426782
-  icon: /img/markers/museum.svg
