@@ -37,13 +37,16 @@ preconnect:
     referrerPolicy: no-referrer
     crossOrigin: anonymous
 scripts:
-  - src: /js/map.min.js
+  - src: https://cdn.kernvalley.us/components/leaflet/map.min.js
     async: true
     defer: true
+    crossOrigin: anonymous
     referrerPolicy: no-referrer
 ---
 {% include header.html %}
 {% include nav.html %}
+{% assign kernville=site.data.places.towns | where: "name", "Kernville" %}
+{% assign kernville=kernville.first %}
 <main id="main" class="contain-content">
 	<not-supported class="card shadow block content-visibility-auto">
 		<p>Your browser does not meet the minal requirements to display the events map.</p>
@@ -74,7 +77,7 @@ scripts:
 			<span class="mobile-hidden">Search Businesses by Category</span>
 		</span>
 	</div>
-	<leaflet-map center="35.75444393106021,-118.42502302653762" class="relative contain-content z-1" zoom="18" maxzoom="19" minzoom="15" crossorigin="annonymous" detectretina="detectretina" zoomcontrol="" itemtype="https://schema.org/Event" itemscope="">
+	<leaflet-map center="{{ kernville.latitude }},{{ kernville.longitude }}" class="relative contain-content z-1" zoom="18" maxzoom="19" minzoom="15" crossorigin="annonymous" detectretina="detectretina" zoomcontrol="" itemtype="https://schema.org/Event" itemscope="">
 		<meta itemprop="name" content="Whiskey Flat Days" />
 		<meta itemprop="url" content="https://whiskeyflatdays.com" />
 		<meta itemprop="description" content="63rd Annual Whiskey Flat Days | President's Day Weekend in Kernville, CA" />
@@ -101,6 +104,51 @@ scripts:
 				<meta itemprop="latitude" content="35.755366" />
 			</div>
 		</address>
+		{% for business in site.data.places.businesses %}
+			{% if business.address.addressLocality == "Kernville" %}
+				{% include local-business-marker.html business=business %}
+			{% endif %}
+		{% endfor %}
+		{% for business in site.data.places.restuarants %}
+			{% if business.address.addressLocality == "Kernville" %}
+				{% include restaurant-marker.html business=business %}
+			{% endif %}
+		{% endfor %}
+		{% for business in site.data.places.cafes %}
+			{% if business.address.addressLocality == "Kernville" %}
+				{% include restaurant-marker.html business=business %}
+			{% endif %}
+		{% endfor %}
+		{% for business in site.data.places.gas %}
+			{% if business.address.addressLocality == "Kernville" %}
+				{% include local-business-marker.html business=business %}
+			{% endif %}
+		{% endfor %}
+		{% for business in site.data.places.stores %}
+			{% if business.address.addressLocality == "Kernville" %}
+				{% include local-business-marker.html business=business %}
+			{% endif %}
+		{% endfor %}
+		{% for business in site.data.places.bars %}
+			{% if business.address.addressLocality == "Kernville" %}
+				{% include local-business-marker.html business=business %}
+			{% endif %}
+		{% endfor %}
+		{% for business in site.data.places.banks %}
+			{% if business.address.addressLocality == "Kernville" %}
+				{% include local-business-marker.html business=business %}
+			{% endif %}
+		{% endfor %}
+		{% for business in site.data.places.civic %}
+			{% if business.address.addressLocality == "Kernville" %}
+				{% include local-business-marker.html business=business %}
+			{% endif %}
+		{% endfor %}
+		{% for business in site.data.places.campgrounds %}
+			{% if business.address.addressLocality == "Kernville" %}
+				{% include local-business-marker.html business=business %}
+			{% endif %}
+		{% endfor %}
 		{% for marker in site.data.poi %}
 			<leaflet-marker class="poi-marker content-visibility-hidden" id="{{ marker.uuid }}" longitude="{{ marker.location.geo.longitude }}" latitude="{{ marker.location.geo.latitude }}" slot="markers" title="{{ marker.title | escape_once }}"{% if marker.category %} data-category="{{ marker.category }}"{% endif %}>
 				<img src="{{ marker.icon | default: '/img/adwaita-icons/actions/mark-location.svg' }}" slot="icon" width="32" height="32" loading="lazy" decoding="async" />
@@ -175,68 +223,7 @@ scripts:
 					{% endif %}
 				</div>
 			</leaflet-marker>
-		{% endif %}{% endfor %}{% for marker in site.data.businesses %}
-			<leaflet-marker itemtype="{{ marker['@itemtype'] | default: 'https://schema.org/LocalBusiness' }}" id="{{ marker.uuid }}" class="business-marker" longitude="{{ marker.location.geo.longitude }}" latitude="{{ marker.location.geo.latitude }}" slot="markers" title="{{ marker.title | escape_once }}"{% if marker.category %} data-category="{{ marker.category | join: ' ' }}"{% endif %} itemscope="">
-				<img src="{{ marker.icon | default: '/img/adwaita-icons/actions/mark-location.svg' }}" slot="icon" width="32" height="32" loading="lazy" decoding="async" />
-				<div slot="popup">
-					<h4 itemprop="name">{{ marker.popup | default: marker.title | escape_once }}</h4>
-					{% if marker.description %}<div itemprop="description">{{ marker.description }}</div>{% endif %}
-					{% if marker.image %}<img itemprop="image" src="{{ marker.image.url }}" alt="{{ marker.image.title | escape_once }}" decoding="async" width="{{ marker.image.width }}" height="{{ marker.image.height }}" loading="lazy" />{% endif %}
-						<div itemprop="geo" itemtype="https://schema.org/GeoCoordinates" itemscope="" hidden="">
-							<meta itemprop="longitude" content="{{ marker.location.geo.longitude }}" />
-							<meta itemprop="latitude" content="{{ marker.location.geo.latitude }}" />
-						</div>
-						{% if marker.location.address %}
-							<address itemprop="address" itemtype="https://schema.org/PostalAddress" itemscope="">
-								{% if marker.location.address.streetAddress %}<div itemprop="streetAddress">{{ marker.location.address.streetAddress }}</div>{% endif %}
-								<div>
-									<span itemprop="addressLocality">{{ marker.location.address.addressLocality | default: 'Kernville' }}</span>,
-									<span itemprop="addressRegion">{{ marker.location.address.addressRegion | default: 'CA' }}</span>
-								</div>
-								<meta itemprop="addressCountry" content="{{ marker.location.address.addressCountry | default: 'US' }}" />
-								<meta itemprop="postalCode" content="{{ marker.location.address.postalCode | default: 93238 }}" />
-							</address>
-						{% endif %}
-					{% if marker.telephone %}
-						<div>
-							<a href="tel:+{{ marker.telephone }}">
-								{% include icon.html icon="call-start"  height="16" width="16" %}
-								<span itemprop="telephone">{{ marker.telephone }}</span>
-							</a>
-						</div>
-					{% endif %}
-					{% if marker.url %}
-						<div>
-							<a href="{{ marker.url }}" rel="external noopener noreferrer">
-								{% include icon.html icon="globe"  height="16" width="16" %}
-								<span itemprop="url">{{ marker.url | replace: 'https://', '' | replace: 'http://', '' | replace: 'www.', '' }}</span>
-							</a>
-						</div>
-					{% endif %}
-					{% if marker.location.url %}
-						<a itemprop="url" href="{{ marker.location.url }}" class="inline-block btn btn-primary" rel="external noopener noreferrer" role="button">
-							{% include icon.html icon="map" height="16" width="16" %}
-							<span>View in Map App</span>
-						</a>
-					{% else %}
-						<!-- geo:35.760197,-118.426793;crs=wgs84;u=0 -->
-						<a itemprop="url" href="https://www.google.com/maps/?q={{ marker.location.geo.latitude }},{{ marker.location.geo.longitude }}" class="inline-block btn btn-primary" rel="external noopener noreferrer" role="button">
-							{% include icon.html icon="map" height="16" width="16" %}
-							<span>View in Map App</span>
-						</a>
-					{% endif %}
-					{% if marker.uuid %}
-						<br />
-						<button type="button" is="share-button" url="https://whiskeyflatdays.com/map/#{{ marker.uuid }}" text="Check out {{ marker.title | escape_once }}" title="{{ marker.title | escape_once }} | Whiskey Flat Days Map" source="whiskey-flat-days" medium="social" content="map-marker"  hidden="">
-							<svg width="16" height="16" aria-hidden="true">
-								<use xlink:href="{{ site.icons }}#share"></use>
-							</svg>
-							<span>Share</span>
-						</button>
-					{% endif %}
-				</div>
-			</leaflet-marker>
-		{% endfor %}
+		{% endif %}{% endfor %}
 		{% for marker in site.data.events %}
 			<leaflet-marker id="{{ marker.uuid }}" class="event-marker content-visibility-hidden" longitude="{{ marker.location.geo.longitude }}" latitude="{{ marker.location.geo.latitude }}" slot="markers" title="{{ marker.title | escape_once }}" data-end-date="{{ marker.endDate | date_to_xmlschema }}" data-start-date="{{ marker.startDate | date_to_xmlschema }}"{% if marker.category %} data-category="{{ marker.category }}"{% endif %} hidden="">
 				<img src="{{ marker.icon | default: '/img/markers/event.svg' }}" slot="icon" width="32" height="32" />

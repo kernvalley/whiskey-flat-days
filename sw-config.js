@@ -22,6 +22,7 @@ const config = {
 		/* Other HTML */
 
 		/* JS, `customElements`, etc. */
+		'https://cdn.kernvalley.us/components/leaflet/map.min.js',
 		'https://cdn.kernvalley.us/components/toast-message.html',
 		'https://cdn.kernvalley.us/components/pwa/prompt.html',
 		'https://cdn.kernvalley.us/components/leaflet/map.html',
