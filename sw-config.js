@@ -18,7 +18,7 @@ const config = {
 		'/css/index.min.css',
 		'/js/index.min.js',
 		'/img/icons.svg',
-		'https://cdn.polyfill.io/v3/polyfill.min.js',
+		'https://cdn.kernvalley.us/img/markers.svg',
 		/* Other HTML */
 
 		/* JS, `customElements`, etc. */
@@ -46,26 +46,6 @@ const config = {
 		'https://cdn.kernvalley.us/img/logos/chrome.svg',
 		'https://cdn.kernvalley.us/img/keep-kern-clean.svg',
 		/* Map Icons */
-		'/img/markers/activity.svg',
-		'/img/markers/atm.svg',
-		'/img/markers/bar.svg',
-		'/img/markers/bus.svg',
-		'/img/markers/business.svg',
-		'/img/markers/cafe.svg',
-		'/img/markers/event.svg',
-		'/img/markers/hotel.svg',
-		'/img/markers/parking.svg',
-		'/img/markers/restaurant.svg',
-		'/img/markers/shopping.svg',
-		'/img/markers/store.svg',
-		'/img/markers/train.svg',
-		'/img/markers/gas.svg',
-		'/img/markers/hospital.svg',
-		'/img/markers/pizza.svg',
-		'/img/markers/music.svg',
-		'/img/markers/outhouse.svg',
-		'/img/markers/florist.svg',
-		'/img/markers/museum.svg',
 		'/img/octicons/info.svg',
 		'/img/adwaita-icons/status/avatar-default.svg',
 

@@ -55,6 +55,8 @@
 		{% include map-icon.html icon='radio-tower' %}
 	{% when 'EventVenue' %}
 		{% include map-icon.html icon='event' %}
+	{% when 'EducationalOrganization' or 'School' or 'Preschool' or 'ElementarySchool' or 'MidddleSchool' or 'HighSchool' or 'CollegeOrUniversity' %}
+		{% include map-icon.html icon='school' %}
 	{% else %}
 		{% include map-icon.html icon='business' %}
 {% endcase %}
