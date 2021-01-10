@@ -36,6 +36,20 @@ preconnect:
   - href: "https://maps.wikimedia.org"
     referrerPolicy: no-referrer
     crossOrigin: anonymous
+preload:
+  - href: https://cdn.kernvalley.us/img/markers.svg
+    as: image
+    type: image/svg+xml
+    crossOrigin: anonymous
+    referrerPolicy: no-referrer
+    importance: high
+  - href: https://unpkg.com/leaflet@1.7.1/dist/leaflet.css
+    as: style
+    type: text/css
+    crossOrigin: anonymous
+    referrerPolicy: anonymous
+    integrity: sha384-VzLXTJGPSyTLX6d96AxgkKvE/LRb7ECGyTxuwtpjHnVWVZs2gp5RDjeM/tgBnVdM
+    importance: high
 scripts:
   - src: https://cdn.kernvalley.us/components/leaflet/map.min.js
     async: true
@@ -151,7 +165,7 @@ scripts:
 		{% endfor %}
 		{% for marker in site.data.poi %}
 			<leaflet-marker class="poi-marker content-visibility-hidden" id="{{ marker.uuid }}" longitude="{{ marker.location.geo.longitude }}" latitude="{{ marker.location.geo.latitude }}" slot="markers" title="{{ marker.title | escape_once }}"{% if marker.category %} data-category="{{ marker.category }}"{% endif %}>
-				<img src="{{ marker.icon | default: '/img/adwaita-icons/actions/mark-location.svg' }}" slot="icon" width="32" height="32" loading="lazy" decoding="async" />
+				<img src="{{ marker.icon | default: 'https://cdn.kernvalley.us/img/markers.svg#event' }}" slot="icon" width="32" height="32" loading="lazy" decoding="async" crossorigin="anonymous" referrerpolicy="no-referrer" />
 				<div slot="popup">
 					<h4>{{ marker.popup | default: marker.title | escape_once }}</h4>
 					{% if marker.description %}<div>{{ marker.description }}</div>{% endif %}
