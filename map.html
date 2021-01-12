@@ -91,31 +91,31 @@ scripts:
 			<span class="mobile-hidden">Search Businesses by Category</span>
 		</span>
 	</div>
-	<leaflet-map center="{{ kernville.latitude }},{{ kernville.longitude }}" class="relative contain-content z-1" zoom="18" maxzoom="19" minzoom="15" crossorigin="annonymous" detectretina="detectretina" zoomcontrol="" itemtype="https://schema.org/Event" itemscope="">
-		<meta itemprop="name" content="Whiskey Flat Days" />
-		<meta itemprop="url" content="https://whiskeyflatdays.com" />
-		<meta itemprop="description" content="63rd Annual Whiskey Flat Days | President's Day Weekend in Kernville, CA" />
-		<meta itemprop="image" content="https://whiskeyflatdays.com/coach-800.jpg" />
-		<meta itemprop="startDate" content="2020-02-14" />
-		<meta itemprop="endDate" content="2020-02-17" />
-		<meta itemprop="eventAttendanceMode" content="{{ marker.eventAttendanceMode | default: 'https://schema.org/OfflineEventAttendanceMode' }}" />
-		<meta itemprop="eventStatus" content="{{ marker.eventStatus | default: 'https://schema.org/EventScheduled' }}" />
-		<div itemprop="organizer" itemtype="https://schema.org/Organization" itemscope="" hidden="">
-			<meta itemprop="name" content="Kernville Chamber of Commerce" />
-			<meta itemprop="url" content="https://www.gotokernville.com/" />
+	<leaflet-map center="{{ site.data.mainEvent.location.geo.latitude }},{{ site.data.mainEvent.location.geo.longitude }}" class="relative contain-content z-1" zoom="18" maxzoom="19" minzoom="15" crossorigin="annonymous" detectretina="detectretina" zoomcontrol="" itemtype="https://schema.org/Event" itemscope="">
+		<meta itemprop="name" content="{{ site.data.mainEvent.name | escape }}" />
+		<meta itemprop="url" content="{{ site.data.mainEvent.url }}" />
+		<meta itemprop="description" content="{{ site.data.mainEvent.description | escape }}" />
+		<meta itemprop="startDate" content="{{ site.data.mainEvent.startDate }}" />
+		<meta itemprop="endDate" content="{{ site.data.mainEvent.endDate }}" />
+		<meta itemprop="image" content="{{ site.data.mainEvent.image.first.url }}" />
+		<meta itemprop="eventAttendanceMode" content="{{ site.data.mainEvent.eventAttendanceMode | default: 'https://schema.org/OfflineEventAttendanceMode' }}" />
+		<meta itemprop="eventStatus" content="{{ site.data.mainEvent | default: 'https://schema.org/EventScheduled' }}" />
+		<div itemprop="organizer" itemtype="https://schema.org/{{ site.data.mainEvent.organizer['@type'] | default: 'Organization' }}" itemscope="" hidden="">
+			<meta itemprop="name" content="{{ site.data.mainEvent.organizer.name }}" />
+			<meta itemprop="url" content="{{ site.data.mainEvent.organizer.url }}" />
 		</div>
-		<address itemprop="location" itemtype="https://schema.org/Place" itemscope="" hidden="">
-			<meta itemprop="name" content="Kernville, CA" />
+		<address itemprop="location" itemtype="https://schema.org/{{ site.data.mainEvent.location['@type'] | default: 'Place' }}" itemscope="" hidden="">
+			<meta itemprop="name" content="{{ site.data.mainEvent.location.name }}" />
 			<meta itemprop="image" content="https://whiskeyflatdays.com/coach-800.jpg" />
 			<div itemprop="address" itemtype="https://schema.org/PostalAddress" itemscope="" hidden="">
-				<meta itemprop="addressLocality" content="Kernville" />
-				<meta itemprop="addressRegion" content="CA" />
-				<meta itemprop="addressCountry" content="US" />
-				<meta itemprop="postalCode" content="93238" />
+				<meta itemprop="addressLocality" content="{{ site.data.mainEvent.location.address.addressLocality }}" />
+				<meta itemprop="addressRegion" content="{{ site.data.mainEvent.location.address.addressRegion }}" />
+				<meta itemprop="addressCountry" content="{{ site.data.mainEvent.location.address.addressCountry }}" />
+				<meta itemprop="postalCode" content="{{ site.data.mainEvent.location.address.postalCode }}" />
 			</div>
 			<div itemprop="geo" itemtype="https://schema.org/GeoCoordinates" itemscope="" hidden="">
-				<meta itemprop="longitude" content="-118.423604" />
-				<meta itemprop="latitude" content="35.755366" />
+				<meta itemprop="longitude" content="{{ site.data.mainEvent.location.geo.latitude }}" />
+				<meta itemprop="latitude" content="{{ site.data.mainEvent.location.geo.longitude }}" />
 			</div>
 		</address>
 		{% for business in site.data.places.businesses %}
@@ -163,7 +163,7 @@ scripts:
 				{% include local-business-marker.html business=business %}
 			{% endif %}
 		{% endfor %}
-		{% for marker in site.data.poi %}
+		{% unless site.data.mainEvent.eventStatus == 'EventCancelled' %}{% for marker in site.data.poi %}
 			<leaflet-marker class="poi-marker content-visibility-hidden" id="{{ marker.uuid }}" longitude="{{ marker.location.geo.longitude }}" latitude="{{ marker.location.geo.latitude }}" slot="markers" title="{{ marker.title | escape_once }}"{% if marker.category %} data-category="{{ marker.category }}"{% endif %}>
 				<img src="{{ marker.icon | default: 'https://cdn.kernvalley.us/img/markers.svg#event' }}" slot="icon" width="32" height="32" loading="lazy" decoding="async" crossorigin="anonymous" referrerpolicy="no-referrer" />
 				<div slot="popup">
@@ -312,100 +312,102 @@ scripts:
 		{% endfor %}
 		{% for path in site.data.paths %}
 			<leaflet-geojson id="{{ path.uuid }}" src="{{ path.src }}" color="{{ path.color }}" title="{{ path.title }}" stroke="" hidden=""></leaflet-geojson>
-		{% endfor %}
+		{% endfor %}{% endunless %}
 	</leaflet-map>
 </main>
 {% include sidebar.html %}
-<toast-message id="event-search-toast" backdrop="">
-	<form name="eventSearch" slot="content">
-		<fieldset class="no-border">
-			<legend>Search Events by Date &amp; Time</legend>
-			<label class="block card input-group" for="search-date">
-				{% include icon.html icon="calendar" %}
-				<span class="mobile-hidden">Day</span>
-				<select name="day" id="search-date" class="pretty-input" required="">
-					<option value="2020-02-14">Friday</option>
-					<option value="2020-02-15">Saturday</option>
-					<option value="2020-02-16">Sunday</option>
-					<option value="2020-02-17">Monday</option>
-				</select>
-			</label>
-			<label class="card input-group block" for="search-time">
-				{% include icon.html icon="clock" %}
-				<span class="mobile-hidden">Time</span>
-				<input type="time" name="time" id="search-time" class="pretty-input" min="08:00" max="20:00" placeholder="hh:mm" required="" />
-			</label>
-		</fieldset>
-		<div class="btns flex row nowrap">
-			<button type="submit" class="btn btn-accept btn-wide">
-				{% include icon.html icon="search" %}
-				<span class="mobile-hidden">Search</span>
-			</button>
-			<button type="reset" class="btn btn-reject btn-wide">
-				{% include icon.html icon="x" %}
-				<span class="mobile-hidden">Cancel</span>
-			</button>
-		</div>
-	</form>
-</toast-message>
-<toast-message id="business-search-toast" backdrop="">
-	<form name="businessSearch" slot="content">
-		<fieldset class="no-border">
-			<datalist id="business-categories">
-				<option value="Dining" />
-				<option value="Restaurant" />
-				<option value="Gas" />
-				<option value="Bar" />
-				<option value="Groceries" />
-				<option value="Other" />
-				<option value="Cafe" />
-				<option value="ATM" />
-			</datalist>
-			<legend>Search Businesses</legend>
-			<label for="search-business-category">
-				{% include icon.html icon="tag" %}
-				<span class="mobile-hidden">Category</span>
-			</label>
-			<input type="text" name="category" list="business-categories" placeholder="Category" id="search-business-category" class="background-inherit color-inherit no-border" autocomplete="off" required="" />
-		</fieldset>
-		<div class="btns flex row nowrap">
-			<button type="submit" class="btn btn-accept btn-wide">
-				{% include icon.html icon="search" %}
-				<span class="mobile-hidden">Search</span>
-			</button>
-			<button type="reset" class="btn btn-reject btn-wide">
-				{% include icon.html icon="x" %}
-				<span class="mobile-hidden">Cancel</span>
-			</button>
-		</div>
-	</form>
-</toast-message>
-<toast-message id="vendor-search-toast" backdrop="">
-	<form name="vendorSearch" slot="content">
-		<fieldset class="no-border">
-			<datalist id="vendor-categories">
-			</datalist>
-			<legend>Search Vendors</legend>
-			<label for="search-vendor-category">
-				{% include icon.html icon="tag" %}
-				<span class="mobile-hidden">Category</span>
-			</label>
-			<input type="text" name="category" list="vendor-categories" placeholder="Category" id="search-vendor-category" class="background-inherit color-inherit no-border" autocomplete="off" required="" />
-		</fieldset>
-		<div class="btns flex row nowrap">
-			<button type="submit" class="btn btn-accept btn-wide">
-				{% include icon.html icon="search" %}
-				<span class="mobile-hidden">Search</span>
-			</button>
-			<button type="reset" class="btn btn-reject btn-wide">
-				{% include icon.html icon="x" %}
-				<span class="mobile-hidden">Cancel</span>
-			</button>
-		</div>
-	</form>
-</toast-message>
+{% unless site.data.mainEvent.eventStatus == 'EventCancelled' %}
+	<toast-message id="event-search-toast" backdrop="">
+		<form name="eventSearch" slot="content">
+			<fieldset class="no-border">
+				<legend>Search Events by Date &amp; Time</legend>
+				<label class="block card input-group" for="search-date">
+					{% include icon.html icon="calendar" %}
+					<span class="mobile-hidden">Day</span>
+					<select name="day" id="search-date" class="pretty-input" required="">
+						<option value="2020-02-14">Friday</option>
+						<option value="2020-02-15">Saturday</option>
+						<option value="2020-02-16">Sunday</option>
+						<option value="2020-02-17">Monday</option>
+					</select>
+				</label>
+				<label class="card input-group block" for="search-time">
+					{% include icon.html icon="clock" %}
+					<span class="mobile-hidden">Time</span>
+					<input type="time" name="time" id="search-time" class="pretty-input" min="08:00" max="20:00" placeholder="hh:mm" required="" />
+				</label>
+			</fieldset>
+			<div class="btns flex row nowrap">
+				<button type="submit" class="btn btn-accept btn-wide">
+					{% include icon.html icon="search" %}
+					<span class="mobile-hidden">Search</span>
+				</button>
+				<button type="reset" class="btn btn-reject btn-wide">
+					{% include icon.html icon="x" %}
+					<span class="mobile-hidden">Cancel</span>
+				</button>
+			</div>
+		</form>
+	</toast-message>
+	<toast-message id="business-search-toast" backdrop="">
+		<form name="businessSearch" slot="content">
+			<fieldset class="no-border">
+				<datalist id="business-categories">
+					<option value="Dining" />
+					<option value="Restaurant" />
+					<option value="Gas" />
+					<option value="Bar" />
+					<option value="Groceries" />
+					<option value="Other" />
+					<option value="Cafe" />
+					<option value="ATM" />
+				</datalist>
+				<legend>Search Businesses</legend>
+				<label for="search-business-category">
+					{% include icon.html icon="tag" %}
+					<span class="mobile-hidden">Category</span>
+				</label>
+				<input type="text" name="category" list="business-categories" placeholder="Category" id="search-business-category" class="background-inherit color-inherit no-border" autocomplete="off" required="" />
+			</fieldset>
+			<div class="btns flex row nowrap">
+				<button type="submit" class="btn btn-accept btn-wide">
+					{% include icon.html icon="search" %}
+					<span class="mobile-hidden">Search</span>
+				</button>
+				<button type="reset" class="btn btn-reject btn-wide">
+					{% include icon.html icon="x" %}
+					<span class="mobile-hidden">Cancel</span>
+				</button>
+			</div>
+		</form>
+	</toast-message>
+	<toast-message id="vendor-search-toast" backdrop="">
+		<form name="vendorSearch" slot="content">
+			<fieldset class="no-border">
+				<datalist id="vendor-categories">
+				</datalist>
+				<legend>Search Vendors</legend>
+				<label for="search-vendor-category">
+					{% include icon.html icon="tag" %}
+					<span class="mobile-hidden">Category</span>
+				</label>
+				<input type="text" name="category" list="vendor-categories" placeholder="Category" id="search-vendor-category" class="background-inherit color-inherit no-border" autocomplete="off" required="" />
+			</fieldset>
+			<div class="btns flex row nowrap">
+				<button type="submit" class="btn btn-accept btn-wide">
+					{% include icon.html icon="search" %}
+					<span class="mobile-hidden">Search</span>
+				</button>
+				<button type="reset" class="btn btn-reject btn-wide">
+					{% include icon.html icon="x" %}
+					<span class="mobile-hidden">Cancel</span>
+				</button>
+			</div>
+		</form>
+	</toast-message>
+	<button type="button" id="search-btn" class="btn btn-primary fixed bottom left z-top shadow round" data-show="#event-search-toast" title="Search Events">
+		{% include icon.html icon="search" %}
+	</button>
+	{% endunless %}
 {% include footer.html %}
 {% include share-button.html text=page.description %}
-<button type="button" id="search-btn" class="btn btn-primary fixed bottom left z-top shadow round" data-show="#event-search-toast" title="Search Events">
-	{% include icon.html icon="search" %}
-</button>

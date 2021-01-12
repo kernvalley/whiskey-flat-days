@@ -19,6 +19,7 @@ const config = {
 		'/js/index.min.js',
 		'/img/icons.svg',
 		'https://cdn.kernvalley.us/img/markers.svg',
+		'https://cdn.kernvalley.us/img/logos/play-badge.svg',
 		/* Other HTML */
 
 		/* JS, `customElements`, etc. */

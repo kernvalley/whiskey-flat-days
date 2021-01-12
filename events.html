@@ -14,34 +14,38 @@ tags:
 - encampment
 ---
 {% assign events = site.data.events | sort: 'startDate' %}
-<div class="card shadow" itemtype="https://schema.org/Event" itemscope="">
-	<meta itemprop="name" content="Whiskey Flat Days" />
-	<meta itemprop="url" content="https://whiskeyflatdays.com" />
-	<meta itemprop="description" content="63rd Annual Whiskey Flat Days | President's Day Weekend in Kernville, CA" />
-	<meta itemprop="image" content="https://whiskeyflatdays.com/coach-800.jpg" />
-	<meta itemprop="startDate" content="2020-02-14" />
-	<meta itemprop="endDate" content="2020-02-17" />
-	<meta itemprop="eventAttendanceMode" content="https://schema.org/OfflineEventAttendanceMode" />
-	<meta itemprop="eventStatus" content="https://schema.org/EventScheduled" />
-	<div itemprop="organizer" itemtype="https://schema.org/Organization" itemscope="" hidden="">
-		<meta itemprop="name" content="Kernville Chamber of Commerce" />
-		<meta itemprop="url" content="https://www.gotokernville.com/" />
+<div class="card shadow" itemprop="about" itemtype="https://schema.org/{{ site.data.mainEvent['@type'] | default: 'Event' }}" itemscope="">
+	<h2 class="center" itemprop="name">{{ site.data.mainEvent.name }}</</h2>
+	<meta itemprop="url" content="{{ site.data.mainEvent.url }}" />
+	<div itemprop="description">{{ site.data.mainEvent.description }}</div>
+	<meta itemprop="image" content="{{ site.data.mainEvent.image.first.url }}" />
+	<div class="event-dates">
+		<time itemprop="startDate" datetime="{{ site.data.mainEvent.startDate }}">{{ site.data.mainEvent.startDate | date: "%b %d, %Y" }}</time>
+		<span>&mdash;</span>
+		<time itemprop="endDate" datetime="{{ site.data.mainEvent.endDate }}">{{ site.data.mainEvent.endDate| date: "%b %d, %Y" }}</time>
 	</div>
-	<address itemprop="location" itemtype="https://schema.org/Place" itemscope="" hidden="">
-		<meta itemprop="name" content="Kernville, CA" />
-		<meta itemprop="image" content="https://whiskeyflatdays.com/coach-800.jpg" />
+	<meta itemprop="eventAttendanceMode" content="{{ site.data.mainEvent.eventAttendanceMode | default: 'OfflineEventAttendanceMode' }}" />
+	<meta itemprop="eventStatus" content="{{ site.data.mainEvent.eventStatus | default: 'EventScheduled' }}" />
+	<div itemprop="organizer" itemtype="https://schema.org/{{ site.data.mainEvent.organizer['@type'] | default: 'Organization' }}" itemscope="" hidden="">
+		<meta itemprop="name" content="{{ site.data.mainEvent.organizer.name }}" />
+		<meta itemprop="url" content="{{ site.data.mainEvent.organizer.url }}" />
+	</div>
+	<address itemprop="location" itemtype="https://schema.org/{{ site.data.mainEvent.location['@type'] | default: 'Place' }}" itemscope="" hidden="">
+		<meta itemprop="name" content="{{ site.data.mainEvent.location.name }}" />
+		<!-- <meta itemprop="image" content="https://whiskeyflatdays.com/coach-800.jpg" /> -->
 		<div itemprop="address" itemtype="https://schema.org/PostalAddress" itemscope="" hidden="">
-			<meta itemprop="addressLocality" content="Kernville" />
-			<meta itemprop="addressRegion" content="CA" />
-			<meta itemprop="addressCountry" content="US" />
-			<meta itemprop="postalCode" content="93238" />
+			<meta itemprop="addressLocality" content="{{ site.data.mainEvent.location.address.addressLocality }}" />
+			<meta itemprop="addressRegion" content="{{ site.data.mainEvent.location.address.addressRegion }}" />
+			<meta itemprop="addressCountry" content="{{ site.data.mainEvent.location.address.addressCountry }}" />
+			<meta itemprop="postalCode" content="{{ site.data.mainEvent.location.address.postalCode }}" />
 		</div>
 		<div itemprop="geo" itemtype="https://schema.org/GeoCoordinates" itemscope="" hidden="">
-			<meta itemprop="longitude" content="-118.423604" />
-			<meta itemprop="latitude" content="35.755366" />
+			<meta itemprop="latitude" content="{{ site.data.mainEvent.location.geo.latitude }}" />
+			<meta itemprop="longitude" content="{{ site.data.mainEvent.location.geo.longitude }}" />
 		</div>
 	</address>
-	{% for event in events %}
+	{% if site.data.mainEvent.eventStatus == 'EventCancelled' %}{% include cancelled-notice.html %}{% endif %}
+	{% unless site.data.mainEvent.eventStatus == 'EventCancelled' %}{% for event in events %}
 		<div id="{{ event.uuid }}" class="event-item grid contain-content content-visibility-auto" itemprop="subEvent" itemtype="https://schema.org/Event" itemscope="">
 			<meta itemprop="eventAttendanceMode" content="{{ marker.eventAttendanceMode | default: 'https://schema.org/OfflineEventAttendanceMode' }}" />
 			<meta itemprop="eventStatus" content="{{ marker.eventStatus | default: 'https://schema.org/EventScheduled' }}" />
@@ -84,5 +88,5 @@ tags:
 				{% include icon.html icon="map" %}
 			</a>
 		</div>
-	{% endfor %}
+	{% endfor %}{% endunless %}
 </div>
