@@ -1,0 +1,40 @@
+"@context": htts://schema.org
+"@type": Event
+name: Whiskey Flay Days
+description: 64th Annual Whiskey Flat Days | President's Day Weekend in Kernville, CA
+url: https://whiskeyflatdays.com
+startDate: 2021-02-12
+endDate: 2021-02-17
+eventAttendanceMode: OfflineEventAttendanceMode
+eventStatus: EventCancelled
+image:
+  - "@type": ImageObject
+    url: https://whiskeyflatdays.com/img/raster/coach-800.jpg
+    width: 800
+    height: 534
+    encodingFormat: image/jpeg
+location:
+  "type": City
+  name: Kernville, CA
+  address:
+    "@type": PostalAddress
+    addressLocality: Kernville
+    addressRegion: CA
+    postalCode: 93238
+  geo:
+    "@type": GeoCoordinates
+    latitude: 35.754960
+    longitude: -118.424825
+sponsor: null
+organizer:
+  "@type": Organization
+  name: Kernville Chamber of Commerce
+  url: https://www.gotokernville.com
+  telephone: +1-760-376-2629
+  address:
+    "@type": PostalAddress
+    streetAddress: 11447 Kernville Rd.
+    addressLocality: Kernville
+    addressRegion: CA
+    addressCountry: US
+    postalCode: 93238

@@ -57,25 +57,26 @@ if (typeof GA === 'string' && GA !== '') {
 }
 
 cookieStore.get({ name: 'visited' }).then(async cookie => {
-	if (! cookie) {
+	if (new Date() < new Date('2021-02-18') && ! cookie) {
 		await Promise.allSettled([
 			ready(),
 			preload('https://cdn.kernvalley.us/components/notification/html-notification.html', { as: 'fetch', type: 'text/html' }),
 			preload('https://cdn.kernvalley.us/components/notification/html-notification.css', { as: 'style', type: 'text/css' }),
 			preload('/img/favicon.svg', { as: 'image', type: 'image/svg+xml' }),
-			preload('/img/octicons/info.svg', { as: 'image', type: 'image/svg+xml' }),
+			preload('/img/adwaita-icons/status/dialog-warning.svg', { as: 'image', type: 'image/svg+xml' }),
 		]);
+
 		const notification = new HTMLNotificationElement('Outdated Info', {
-			body: 'This information is for the 2020 Whiskey Flat Days. It has not yet been updated for 2021.',
+			body: 'Whiskey Flat Days has been cancelled for 2021 due to COVID-19 and the inability to obtain the necessary permits',
 			icon: '/img/favicon.svg',
-			badge: '/img/octicons/info.svg',
+			badge: '/img/adwaita-icons/status/dialog-warning.svg',
 			requireInteraction: true,
 			data: {
 				cookie: {
 					name: 'visited',
 					value: 'yes',
 					secure: true,
-					expired: 1608537600000, // 2020-12-21T00:00
+					expires: new Date('2021-02-18T00:00'),
 				}
 			},
 			actions:[{

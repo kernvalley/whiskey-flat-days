@@ -1,0 +1,35 @@
+nav:
+  - label: Home
+    href: /
+    icon: home
+    accessKey: h
+  - label: Events
+    href: /events/
+    icon: calendar
+    accessKey: e
+  - label: Map
+    href: /map/
+    icon: map
+    accessKey: m
+footer:
+  - label: KernValley.US
+    href: https://kernvalley.us
+    icon: web-browser
+    rel:
+      - noreferrer
+      - noopener
+      - external
+  - label: Kernville Chamber of Commerce
+    href: https://www.gotokernville.com
+    icon: link-external
+    rel:
+      - noreferrer
+      - noopener
+      - external
+  - label: Privacy
+    href: https://kernvalley.us/privacy/
+    icon: eye
+    rel:
+      - noreferrer
+      - noopener
+      - external

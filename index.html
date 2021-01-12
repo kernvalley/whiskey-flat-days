@@ -16,13 +16,42 @@ tags:
 ---
 <article class="card shadow">
 	<header>
-		<h1 class="center title-font">63<sup>rd</sup> Annual Whiskey Flat Days</h1>
-		<h2 class="center">Presidents' Day Weekend</h2>
+		<div class="card shadow" itemprop="about" itemtype="https://schema.org/{{ site.data.mainEvent['@type'] | default: 'Event' }}" itemscope="">
+			<h2 class="center" itemprop="name">{{ site.data.mainEvent.name }}</h2>
+			<meta itemprop="url" content="{{ site.data.mainEvent.url }}" />
+			<div itemprop="description">{{ site.data.mainEvent.description }}</div>
+			<meta itemprop="image" content="{{ site.data.mainEvent.image.first.url }}" />
+			<div class="event-dates center">
+				<time itemprop="startDate" datetime="{{ site.data.mainEvent.startDate }}">{{ site.data.mainEvent.startDate | date: "%b %d, %Y" }}</time>
+				<span>&mdash;</span>
+				<time itemprop="endDate" datetime="{{ site.data.mainEvent.endDate }}">{{ site.data.mainEvent.endDate| date: "%b %d, %Y" }}</time>
+			</div>
+			<meta itemprop="eventAttendanceMode" content="{{ site.data.mainEvent.eventAttendanceMode | default: 'OfflineEventAttendanceMode' }}" />
+			<meta itemprop="eventStatus" content="{{ site.data.mainEvent.eventStatus | default: 'EventScheduled' }}" />
+			<div itemprop="organizer" itemtype="https://schema.org/{{ site.data.mainEvent.organizer['@type'] | default: 'Organization' }}" itemscope="" hidden="">
+				<meta itemprop="name" content="{{ site.data.mainEvent.organizer.name }}" />
+				<meta itemprop="url" content="{{ site.data.mainEvent.organizer.url }}" />
+			</div>
+			<address itemprop="location" itemtype="https://schema.org/{{ site.data.mainEvent.location['@type'] | default: 'Place' }}" itemscope="" hidden="">
+				<meta itemprop="name" content="{{ site.data.mainEvent.location.name }}" />
+				<!-- <meta itemprop="image" content="https://whiskeyflatdays.com/coach-800.jpg" /> -->
+				<div itemprop="address" itemtype="https://schema.org/PostalAddress" itemscope="" hidden="">
+					<meta itemprop="addressLocality" content="{{ site.data.mainEvent.location.address.addressLocality }}" />
+					<meta itemprop="addressRegion" content="{{ site.data.mainEvent.location.address.addressRegion }}" />
+					<meta itemprop="addressCountry" content="{{ site.data.mainEvent.location.address.addressCountry }}" />
+					<meta itemprop="postalCode" content="{{ site.data.mainEvent.location.address.postalCode }}" />
+				</div>
+				<div itemprop="geo" itemtype="https://schema.org/GeoCoordinates" itemscope="" hidden="">
+					<meta itemprop="latitude" content="{{ site.data.mainEvent.location.geo.latitude }}" />
+					<meta itemprop="longitude" content="{{ site.data.mainEvent.location.geo.longitude }}" />
+				</div>
+			</address>
+			{% if site.data.mainEvent.eventStatus == 'EventCancelled' %}{% include cancelled-notice.html %}{% endif %}
 	</header>
 	<div class="clearfix content-visibility-auto">
 		<img src="/img/raster/coach-320.jpg" class="floating-image float-left" decoding="async" alt="Stage Coach" />
 		<div class="mobile-clearfix"></div>
-		<p>Join us this Presidents' Day Weekend for our 63<sup>rd</sup> annual Whiskey Flat Day Weekend!</p>
+		<p>Join us this Presidents' Day Weekend for our 64<sup>th</sup> annual Whiskey Flat Day Weekend!</p>
 		<p>As always, we have tons in store. There will be an <a href="/map/#c8bf2ead-cd88-407c-9c70-30cb7289c24b">MC/ATV Rodeo</a>,
 			<a href="/map/#e8df6782-d0e7-45e1-944e-d16f27ce019b">Street Danncing</a>
 			with live music, our <a href="/map/#b3b97450-6102-4f02-9ed9-03dab08a848c">parade</a>,

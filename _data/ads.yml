@@ -15,10 +15,10 @@ sidebar:
   - uuid: c180201e-e40b-49d1-a069-2b09b6e99800
     label: Kern Valley Ads
     url: https://ads.kernvalley.us/
-    image: /img/ads/kv-ads.svg
-    description: Advertise on websites throughout the Kern River Valley
+    image: https://cdn.kernvalley.us/img/branding/ads.kernvalley.us.svg
+    description: Advertise on local websites throughout the Kern River Valley
     callToAction: Click here to get started!
-    layout: stack
+    layout: card
     campaign: wfd-ad
     theme: auto
   - uuid: 091b2538-e3a9-422b-8a3a-e870fdf35d0e
@@ -28,12 +28,12 @@ sidebar:
     layout: image
     imageFit: contain
     imagePosition: center
-  - uuid: fd2e2c83-83a1-4469-bb55-0556f244d5a5
-    label: Wild West Daze Rodeo
-    url: https://whiskeyflatdays.com/map/#f44131d1-2128-4d23-be86-2cc7d38e80ff
-    description: Starts Sat. at 1 PM
-    image: /img/raster/rodeo.jpg
-    callToAction: Click to view Event
+  # - uuid: fd2e2c83-83a1-4469-bb55-0556f244d5a5
+  #   label: Wild West Daze Rodeo
+  #   url: https://whiskeyflatdays.com/map/#f44131d1-2128-4d23-be86-2cc7d38e80ff
+  #   description: Starts Sat. at 1 PM
+  #   image: /img/raster/rodeo.jpg
+  #   callToAction: Click to view Event
   - uuid: 2201758a-da5f-49a4-8a5b-0d4074b2c0ba
     label: Paradise Cove Lodge
     image: https://www.paradisecovelodge.com/img/raster/background/restaurant-350.jpg
@@ -45,7 +45,7 @@ sidebar:
     label: Kern Valley Events
     url: https://events.kernvalley.us/
     description: The best things going on in the Valley
-    image: /img/ads/kv-events.svg
+    image: https://cdn.kernvalley.us/img/branding/events.kernvalley.us.svg
     callToAction: See what's going on today.
   - uuid: ad66057e-bd72-4534-bc8c-11cfc9b020b8
     label: Schoeppner Carnival

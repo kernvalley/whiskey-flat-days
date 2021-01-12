@@ -2,7 +2,7 @@ author: Chris Zuber
 title: Whiskey Flat Days
 url: 'https://whiskeyflatdays.com'
 markdown: kramdown
-version: 2.0.8
+version: 2.1.0
 timezone: America/Los_Angeles
 lang: en
 dir: ltr
@@ -22,16 +22,16 @@ thumbnail:
 mobile-web-app-capable: true
 canonical: 'https://whiskeyflatdays.com'
 keywords:
-- whiskey flat
-- kernville
-- kern valley
-- kern river valley
-- festival
-- events
-- parade
-- rodeo
-- events
-- vendor
+  - whiskey flat
+  - kernville
+  - kern valley
+  - kern river valley
+  - festival
+  - events
+  - parade
+  - rodeo
+  - events
+  - vendor
 repository:
   username: kernvalley
   project: whiskey-flat-days

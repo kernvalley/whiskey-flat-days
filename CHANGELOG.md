@@ -14,9 +14,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+##[v2.1.0]
+
+### Added
+- Notice that Whiskey Flat Days 2021 has been cancelled
+- Whiskey Flat Days event info in `site.data.mainEvent`
+
 ### Changed
 - Update to load `polyfill.io` and custom elements shim as `<script nomodule>`
-- Move `<leaflet-map>` component scripts to separate script to not load for every page
+- Use `<leaflet-map>` as separate script from CDN
+- Use `site.data.mainEvent` for the majority of data for WFD
+- Misc. component updates, especially for footer
 
 ## [v2.0.8] - 2020-12-12
 
@@ -107,7 +115,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Enable linting on `sw-config.js`
 - Resize app icons
-- Update icons with `purpose: maskable any` 
+- Update icons with `purpose: maskable any`
 
 ## [v2.0.1] - 2020-07-03
 

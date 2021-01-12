@@ -5,12 +5,13 @@
 	<button type="button" class="display-mode-standalone" title="Go Back" data-action="back">{% include icon.html icon="go-previous" %}</button>
 	<button type="button" class="display-mode-standalone" title="Reload" data-action="reload">{% include icon.html icon="view-refresh" %}</button>
 	<button type="button" class="display-mode-standalone" title="Go Forward" data-action="forward">{% include icon.html icon="go-next" %}</button>
-	{% for link in site.data.nav %}
-		<a class="nav-link inline-block grow-1{% if link.url == page.url %} no-pointer-events current-link{% endif %}" href="{{ link.url }}" accesskey="{{ link.accessKey }}" title="{{ link.label }}">
+	{% for link in site.data.links.nav %}
+		<a class="nav-link inline-block grow-1{% if link.href == page.url %} no-pointer-events current-link{% endif %}" href="{{ link.href }}" accesskey="{{ link.accessKey }}" title="{{ link.label }}">
 			{% include icon.html icon=link.icon %}
 			<span class="mobile-hidden">{{ link.label }}</span>
 		</a>
 	{% endfor %}
+	<span class="grow-4"></span>
 	<button type="button" class="grow-1" data-action="find-location" title="Use my Location" accesskey="f" hidden="">
 		{% include icon.html icon="find-location" %}
 		<span class="mobile-hidden">Find my Location</span>

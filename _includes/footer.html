@@ -1,7 +1,35 @@
 <footer id="footer">
-	<div class="social-links cols-2">
-		{% if site.repository %}
-			<div class="cols">
+	<div class="flex row wrap space-around footer-links">
+		{% if site.data.links.footer %}
+			<div class="inline-block footer-links">
+				{% for link in site.data.links.footer %}
+					<a href="{{ link.href }}" class="block" target="{{ link.target | default: '_self' }}" rel="{{ link.rel | join: ' ' }}">
+						{% if link.icon %}{% include icon.html icon=link.icon fill="currentColor" height="24" width="24" %}{% endif %}
+						<span>{{ link.label }}</span>
+					</a>
+				{% endfor %}
+			</div>
+		{% endif %}{% if site.data.social %}
+			<div class="inline-block footer-links">
+				{% if site.data.social.facebook %}
+					<a class="block" href="{{ site.data.social.facebook }}" target="_blank" rel="external noopener" itemprop="sameAs">
+						{% include icon.html icon="facebook" class="social-icon" fill="currentColor" width="24" height="24" %}
+						<span>Facebook</span>
+					</a>
+				{% endif %}{% if site.data.social.twitter %}
+					<a class="block" href="{{ site.data.social.twitter }}" target="_blank" rel="external noopener" itemprop="sameAs">
+						{% include icon.html icon="twitter" class="social-icon" fill="currentColor" width="24" height="24" %}
+						<span>Twitter</span>
+					</a>
+				{% endif %}{% if site.data.social.linkedIn %}
+					<a class="block" href="{{ site.data.social.linkedIn }}" target="_blank" rel="external noopener" itemprop="sameAs">
+						{% include icon.html icon="linkedin" class="current-color icon social-icon" %}
+						<span>LinkedIn</span>
+					</a>
+				{% endif %}
+			</div>
+		{% endif %}{% if site.repository %}
+			<div class="inline-block">
 				<a class="block" href="https://github.com/{{ site.repository.username }}/" target="_blank" rel="external noopener">
 					{% include icon.html icon="mark-github" class="current-color icon social-icon" %}
 					<span>GitHub Profile</span>
@@ -16,38 +44,22 @@
 				</a>
 			</div>
 		{% endif %}
-		<div class="cols">
-			<a class="block" href="https://kernvalley.us" target="_blank" rel="external noopener" itemprop="sameAs">
-				{% include icon.html icon="web-browser" class="current-color icon social-icon" %}
-				<span>KernValley.US</span>
-			</a>
-			<a class="block" href="/contact/">
-				{% include icon.html icon="address-book" class="current-color icon social-icon" %}
-				<span>Contact</span>
-			</a>
-			<a class="block" href="/privacy/">
-				{% include icon.html icon="eye" class="current-color icon social-icon" %}
-				<span>Privacy Policy</span>
-			</a>
-			<a class="block" href="https://twitter.com/kern_valley" target="_blank" rel="external noopener" itemprop="sameAs">
-				{% include icon.html icon="twitter" class="current-color icon social-icon" %}
-				<span>On Twitter</span>
-			</a>
-			<a class="block" href="https://www.linkedin.com/in/chris-zuber-455346141/" target="_blank" rel="external noopener" itemprop="sameAs">
-				{% include icon.html icon="linkedin" class="current-color icon social-icon" %}
-				<span>LinkedIn</span>
-			</a>
-		</div>
 	</div>
+	{% if site.data.app.related_applications %}
+		<div>
+			<hr />
+			{% include app-list.html apps=site.data.app.related_applications %}
+		</div>
+	{% endif %}
 	<hr />
-	<div class="copyright">
+	<div class="copyright flex wrap space-evenly">
 		<github-user user="{{ site.repository.username }}" loading="lazy">
 			<h3 slot="header" class="center">Created By</h3>
 			<div slot="footer">
 				<span>&copy;</span>
 				<time itemprop="copyrightYear">{{ 'now' | date: '%Y' }}</time>
 				<span itemprop="copyrightHolder" itemtype="https://schema.org/Organization" itemscope="" hidden="">
-					<a href="https://kernvalley.us" target="_blank" rel="external noopener" itemprop="url">
+					<a href="https://kernvalley.us" target="_blank" rel="external noopener noreferrer" itemprop="url">
 						<span itemprop="name">KernValley.US</span>
 					</a>
 				</span>
