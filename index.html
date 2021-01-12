@@ -17,11 +17,11 @@ tags:
 <article class="card shadow">
 	<header>
 		<div class="card shadow" itemprop="about" itemtype="https://schema.org/{{ site.data.mainEvent['@type'] | default: 'Event' }}" itemscope="">
-			<h2 class="center" itemprop="name">{{ site.data.mainEvent.name }}</</h2>
+			<h2 class="center" itemprop="name">{{ site.data.mainEvent.name }}</h2>
 			<meta itemprop="url" content="{{ site.data.mainEvent.url }}" />
 			<div itemprop="description">{{ site.data.mainEvent.description }}</div>
 			<meta itemprop="image" content="{{ site.data.mainEvent.image.first.url }}" />
-			<div class="event-dates">
+			<div class="event-dates center">
 				<time itemprop="startDate" datetime="{{ site.data.mainEvent.startDate }}">{{ site.data.mainEvent.startDate | date: "%b %d, %Y" }}</time>
 				<span>&mdash;</span>
 				<time itemprop="endDate" datetime="{{ site.data.mainEvent.endDate }}">{{ site.data.mainEvent.endDate| date: "%b %d, %Y" }}</time>
