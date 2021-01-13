@@ -18,7 +18,6 @@ const config = {
 		'/js/index.min.js',
 		'/img/icons.svg',
 		'https://cdn.kernvalley.us/img/markers.svg',
-		'https://cdn.kernvalley.us/img/logos/play-badge.svg',
 		/* Other HTML */
 
 		/* JS, `customElements`, etc. */
@@ -39,12 +38,11 @@ const config = {
 		'/img/apple-touch-icon.png',
 		'/img/icon-192.png',
 		'/img/favicon.svg',
-		'https://cdn.kernvalley.us/img/adwaita-icons/actions/mail-send.svg',
-		'https://cdn.kernvalley.us/img/adwaita-icons/actions/mark-location.svg',
-		'https://cdn.kernvalley.us/img/octicons/file-media.svg',
 		'https://cdn.kernvalley.us/img/logos/firefox.svg',
 		'https://cdn.kernvalley.us/img/logos/chrome.svg',
 		'https://cdn.kernvalley.us/img/keep-kern-clean.svg',
+		'https://cdn.kernvalley.us/img/logos/play-badge.svg',
+
 		/* Map Icons */
 		'/img/octicons/info.svg',
 		'/img/adwaita-icons/status/avatar-default.svg',
