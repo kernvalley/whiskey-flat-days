@@ -8,4 +8,10 @@
       "E3:A4:CB:C2:32:A5:22:D8:38:94:98:4D:EA:25:44:B3:FE:8A:4F:82:49:9B:F0:D9:78:88:7C:4A:5B:B3:AB:39"
     ]
   }
+}, {
+  "relation": ["delegate_permission/common.query_webapk"],
+  "target": {
+    "namespace": "web",
+    "site": "https://whiskeyflatdays.com/manifest.json"
+  }
 }]

@@ -95,5 +95,9 @@ screenshots:
     sizes: 640x266
     type: image/jpeg
 related_applications:
-- platform: play
-  id: com.whiskey_flats.twa
+  - platform: play
+    id: com.whiskey_flats.twa
+  - platform: webapp
+    url: https://whiskeyflatdays.com/manifest.json
+  - platform: webapp
+    url: /manifest.json
