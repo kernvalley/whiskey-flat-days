@@ -10,8 +10,7 @@ const config = {
 	fresh: [
 		/* Root document */
 		'{{ site.pages | where: "pinned", true | map: "url" | join: "', '" }}',
-		// 'https://baconipsum.com/api/?paras=4&format=json&type=all-meat',
-		'https://api.openweathermap.org/data/2.5/weather?appid=41ff0542577756523c5fcfaaeabe89d7&zip=93238%2Cus&units=imperial&lang=en',
+		'/manifest.json',
 		'https://apps.kernvalley.us/apps.json',
 	].map(path => new URL(path, location.origin).href),
 	stale: [
@@ -58,8 +57,6 @@ const config = {
 
 		/* Fonts */
 		'https://cdn.kernvalley.us/fonts/roboto.woff2',
-		'https://cdn.kernvalley.us/fonts/Libertine.woff',
-		'https://cdn.kernvalley.us/fonts/ubuntu.woff2',
 		/* Other */
 	].map(path => new URL(path, location.origin).href),
 	allowed: [
