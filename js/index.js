@@ -77,7 +77,7 @@ cookieStore.get({ name: 'visited' }).then(async cookie => {
 					name: 'visited',
 					value: 'yes',
 					secure: true,
-					expires: new Date('2021-02-18T00:00'),
+					expires: new Date('2021-02-18T00:00').getTime(),
 				}
 			},
 			actions:[{
