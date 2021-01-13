@@ -56,17 +56,6 @@ const config = {
 		'/img/raster/encampment.jpg',
 		'/img/raster/coach-320.jpg',
 
-		/* Social Icons for Web Share API shim */
-		'https://cdn.kernvalley.us/img/octicons/mail.svg',
-		'https://cdn.kernvalley.us/img/logos/facebook.svg',
-		'https://cdn.kernvalley.us/img/logos/twitter.svg',
-		'https://cdn.kernvalley.us/img/logos/google-plus.svg',
-		'https://cdn.kernvalley.us/img/logos/linkedin.svg',
-		'https://cdn.kernvalley.us/img/logos/reddit.svg',
-		'https://cdn.kernvalley.us/img/logos/gmail.svg',
-		'https://cdn.kernvalley.us/img/logos/instagram.svg',
-		'https://cdn.kernvalley.us/img/octicons/clippy.svg',
-
 		/* Fonts */
 		'https://cdn.kernvalley.us/fonts/roboto.woff2',
 		'https://cdn.kernvalley.us/fonts/Libertine.woff',
