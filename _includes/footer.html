@@ -48,7 +48,7 @@
 	{% if site.data.app.related_applications %}
 		<div>
 			<hr />
-			{% include app-list.html apps=site.data.app.related_applications %}
+			<app-stores id="app-badges" class="flex row wrap space-around"></app-stores>
 		</div>
 	{% endif %}
 	<hr />
