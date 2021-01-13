@@ -99,5 +99,3 @@ related_applications:
     id: com.whiskey_flats.twa
   - platform: webapp
     url: https://whiskeyflatdays.com/manifest.json
-  - platform: webapp
-    url: /manifest.json
