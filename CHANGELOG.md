@@ -17,6 +17,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Channged
 - Add `"webapp"` platform to manifest
 - Use `<app-stores>` to dynamically generate list of apps (not installed?)
+- Use CDN service worker
+- Update App Data
 
 ##[v2.1.0]
 
