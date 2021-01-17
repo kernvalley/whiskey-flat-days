@@ -19,6 +19,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Use `<app-stores>` to dynamically generate list of apps (not installed?)
 - Use CDN service worker
 - Update App Data
+- List towns
+- Show gas stations, lodging, and campgrounds in other areas
+
+### Fixed
+- Correctly set event status
 
 ##[v2.1.0]
 
