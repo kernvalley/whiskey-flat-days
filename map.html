@@ -59,8 +59,7 @@ scripts:
 ---
 {% include header.html %}
 {% include nav.html %}
-{% assign kernville=site.data.places.towns | where: "name", "Kernville" %}
-{% assign kernville=kernville.first %}
+{% assign kernville=site.data.places.towns | find: "name", "Kernville" %}
 <main id="main" class="contain-content">
 	<not-supported class="card shadow block content-visibility-auto">
 		<p>Your browser does not meet the minal requirements to display the events map.</p>

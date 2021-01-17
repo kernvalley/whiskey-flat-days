@@ -67,10 +67,10 @@ cookieStore.get({ name: 'visited' }).then(async cookie => {
 			preload('/img/adwaita-icons/status/dialog-warning.svg', { as: 'image', type: 'image/svg+xml' }),
 		]);
 
-		const notification = new HTMLNotificationElement('Outdated Info', {
+		new HTMLNotificationElement('WFD cancelled', {
 			body: 'Whiskey Flat Days has been cancelled for 2021 due to COVID-19 and the inability to obtain the necessary permits',
 			icon: '/img/favicon.svg',
-			badge: '/img/adwaita-icons/status/dialog-warning.svg',
+			badge: 'https://cdn.kernvalley.us/img/adwaita-icons/status/dialog-warning.svg',
 			requireInteraction: true,
 			data: {
 				cookie: {
@@ -83,10 +83,9 @@ cookieStore.get({ name: 'visited' }).then(async cookie => {
 			actions:[{
 				title: 'Dismiss',
 				action: 'dismiss',
+				icon: 'https://cdn.kernvalley.us/img/octicons/x.svg',
 			}]
-		});
-
-		notification.addEventListener('notificationclick', ({ action, target }) => {
+		}).addEventListener('notificationclick', ({ action, target }) => {
 			switch(action) {
 				case 'dismiss':
 					cookieStore.set(target.data.cookie);
