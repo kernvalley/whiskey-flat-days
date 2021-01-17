@@ -59,8 +59,7 @@ scripts:
 ---
 {% include header.html %}
 {% include nav.html %}
-{% assign kernville=site.data.places.towns | where: "name", "Kernville" %}
-{% assign kernville=kernville.first %}
+{% assign kernville=site.data.places.towns | find: "name", "Kernville" %}
 <main id="main" class="contain-content">
 	<not-supported class="card shadow block content-visibility-auto">
 		<p>Your browser does not meet the minal requirements to display the events map.</p>
@@ -99,7 +98,7 @@ scripts:
 		<meta itemprop="endDate" content="{{ site.data.mainEvent.endDate }}" />
 		<meta itemprop="image" content="{{ site.data.mainEvent.image.first.url }}" />
 		<meta itemprop="eventAttendanceMode" content="{{ site.data.mainEvent.eventAttendanceMode | default: 'https://schema.org/OfflineEventAttendanceMode' }}" />
-		<meta itemprop="eventStatus" content="{{ site.data.mainEvent | default: 'https://schema.org/EventScheduled' }}" />
+		<meta itemprop="eventStatus" content="{{ site.data.mainEvent.eventStatus | default: 'https://schema.org/EventScheduled' }}" />
 		<div itemprop="organizer" itemtype="https://schema.org/{{ site.data.mainEvent.organizer['@type'] | default: 'Organization' }}" itemscope="" hidden="">
 			<meta itemprop="name" content="{{ site.data.mainEvent.organizer.name }}" />
 			<meta itemprop="url" content="{{ site.data.mainEvent.organizer.url }}" />
@@ -118,6 +117,12 @@ scripts:
 				<meta itemprop="latitude" content="{{ site.data.mainEvent.location.geo.longitude }}" />
 			</div>
 		</address>
+		{% for town in site.data.places.towns %}
+			<leaflet-marker slot="markers" latitude="{{ town.latitude }}" longitude="{{ town.longitude }}" title="{{ town.name | escape }}" id="{{ town.identifier }}">
+				<img slot="icon" src="https://cdn.kernvalley.us/img/markers.svg#city" width="30" height="30" crossorigin="anonymous" referrerpolicy="no-referrer" alt="" />
+				<h3 slot="popup">{{ town.name }}, CA</h3>
+			</leaflet-marker>
+		{% endfor %}
 		{% for business in site.data.places.businesses %}
 			{% if business.address.addressLocality == "Kernville" %}
 				{% include local-business-marker.html business=business %}
@@ -134,9 +139,7 @@ scripts:
 			{% endif %}
 		{% endfor %}
 		{% for business in site.data.places.gas %}
-			{% if business.address.addressLocality == "Kernville" %}
-				{% include local-business-marker.html business=business %}
-			{% endif %}
+			{% include local-business-marker.html business=business %}
 		{% endfor %}
 		{% for business in site.data.places.stores %}
 			{% if business.address.addressLocality == "Kernville" %}
@@ -148,7 +151,7 @@ scripts:
 				{% include local-business-marker.html business=business %}
 			{% endif %}
 		{% endfor %}
-		{% for business in site.data.places.banks %}
+		{% for business in site.data.places.financial %}
 			{% if business.address.addressLocality == "Kernville" %}
 				{% include local-business-marker.html business=business %}
 			{% endif %}
@@ -159,9 +162,16 @@ scripts:
 			{% endif %}
 		{% endfor %}
 		{% for business in site.data.places.campgrounds %}
-			{% if business.address.addressLocality == "Kernville" %}
-				{% include local-business-marker.html business=business %}
-			{% endif %}
+			{% include local-business-marker.html business=business %}
+		{% endfor %}
+		{% for business in site.data.places.lodging %}
+			{% include local-business-marker.html business=business %}
+		{% endfor %}
+		{% for business in site.data.places.landmarks %}
+			{% include local-business-marker.html business=business %}
+		{% endfor %}
+		{% for business in site.data.places.activities %}
+			{% include local-business-marker.html business=business %}
 		{% endfor %}
 		{% unless site.data.mainEvent.eventStatus == 'EventCancelled' %}{% for marker in site.data.poi %}
 			<leaflet-marker class="poi-marker content-visibility-hidden" id="{{ marker.uuid }}" longitude="{{ marker.location.geo.longitude }}" latitude="{{ marker.location.geo.latitude }}" slot="markers" title="{{ marker.title | escape_once }}"{% if marker.category %} data-category="{{ marker.category }}"{% endif %}>

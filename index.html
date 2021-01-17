@@ -46,7 +46,7 @@ tags:
 					<meta itemprop="longitude" content="{{ site.data.mainEvent.location.geo.longitude }}" />
 				</div>
 			</address>
-			{% if site.data.mainEvent.eventStatus == 'EventCancelled' %}{% include cancelled-notice.html %}{% endif %}
+			{% include event-status.html event=site.data.mainEvent %}
 	</header>
 	<div class="clearfix content-visibility-auto">
 		<img src="/img/raster/coach-320.jpg" class="floating-image float-left" decoding="async" alt="Stage Coach" />

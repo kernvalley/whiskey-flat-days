@@ -1,0 +1,6 @@
+{% case include.event.eventStatus %}
+	{% when 'EventCancelled' %}{% include cancelled-notice.html %}
+	{% when 'EventMovedOnline %}
+	{% when 'EventPostponed' %}
+	{% when 'EventRescheduled' %}
+{% endcase %}
