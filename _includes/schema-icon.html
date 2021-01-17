@@ -63,6 +63,8 @@
 			{% include map-icon.html icon='school' %}
 		{% when 'TouristAttraction' or 'LandmarksOrHistoricalBuildings' %}
 			{% include map-icon.html icon='pin' %}
+		{% when 'Mountain' %}
+			{% include map-icon.html icon='summit' %}
 		{% else %}
 			{% include map-icon.html icon='business' %}
 	{% endcase %}
