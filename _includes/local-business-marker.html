@@ -1,6 +1,6 @@
 <leaflet-marker id="{{ include.business.identifier }}" class="custom-element if-defined content-visibility-hidden" data-marker-type="{{ include.type | default: 'unknown' }}" latitude="{{ include.business.geo.latitude }}" longitude="{{ include.business.geo.longitude }}" title="{{ include.business.name | escape }}" itemtype="https://schema.org/{{ include.business['@type'] | default: 'LocalBusiness' }}" minzoom="{{ include.minZoom }}" maxzoom="{{ include.maxZoom }}" hidden="">
 	{% if include.ld == true %}<script type="application/ld+json">{{ include.business | jsonify }}</script>{% endif %}
-	{% assign icon=include.business.additionalProperty | where: 'name', 'icon' %}
+	{% assign icon=include.business.additionalProperty | find: 'name', 'icon' %}
 	{% assign logo=include.business.logo | find: 'encodingFormat', 'image/svg+xml' %}
 	{% if icon %}
 		<img slot="icon" src="https://cdn.kernvalley.us/img/markers.svg#{{ icon.value }}" loading="lazy" decoding="async" crossorigin="anonymous" referrerpolicy="no-referrer" width="28" height="28" alt="" />
