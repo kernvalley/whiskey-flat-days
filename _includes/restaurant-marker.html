@@ -1,7 +1,11 @@
 <leaflet-marker id="{{ include.business.identifier }}" class="custom-element if-defined content-visibility-hidden" data-marker-type="{{ include.type | default: 'unknown' }}" latitude="{{ include.business.geo.latitude }}" longitude="{{ include.business.geo.longitude }}" title="{{ include.business.name | escape }}" itemtype="https://schema.org/{{ include.business['@type'] | default: 'Restaurant' }}" minzoom="{{ include.minZoom }}" maxzoom="{{ include.maxZoom }}" hidden="">
-	<script type="application/ld+json">{{ include.business | jsonify }}</script>
-	{% if include.business.logo.size != 0 and include.business.logo.first.encodingFormat == 'image/svg+xml' %}
-		<img slot="icon" src="{{ include.business.logo.first.url }}" crossorigin="anonymous" referrerpolicy="no-referrer" loading="lazy" decoding="async" height="30" width="30" alt="" />
+	{% if include.ld == true %}<script type="application/ld+json">{{ include.business | jsonify }}</script>{% endif %}
+	{% assign icon=include.business.additionalProperty | where: 'name', 'icon' %}
+	{% assign logo=include.business.logo | find: 'encodingFormat', 'image/svg+xml' %}
+	{% if icon %}
+		<img slot="icon" src="https://cdn.kernvalley.us/img/markers.svg#{{ icon.value }}" loading="lazy" decoding="async" crossorigin="anonymous" referrerpolicy="no-referrer" width="28" height="28" alt="" />
+	{% elsif logo %}
+		<img slot="icon" src="{{ logo.url }}" loading="lazy" decoding="async" crossorigin="anonymous" referrerpolicy="no-referrer" height="30" width="30" alt="" />
 	{% else %}
 		{% include schema-icon.html place=include.business size=include.size %}
 	{% endif %}
