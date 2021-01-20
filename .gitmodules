@@ -10,3 +10,9 @@
 [submodule "_data/places"]
 	path = _data/places
 	url = https://github.com/kernvalley/places.git
+[submodule "_includes/leaflet"]
+	path = _includes/leaflet
+	url = https://github.com/shgysk8zer0/jekyll-leaflet.git
+[submodule "_includes/common"]
+	path = _includes/common
+	url = https://github.com/shgysk8zer0/jekyll-common.git
