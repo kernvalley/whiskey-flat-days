@@ -15,6 +15,7 @@ referrer: no-referrer
 manifest: /manifest.json
 tiles-config: /browserconfig.xml
 service_worker: '/service-worker.js'
+keep-kern-clean: true
 og-type: website
 description: "Map and events app for Whiskey Flat Days"
 thumbnail:

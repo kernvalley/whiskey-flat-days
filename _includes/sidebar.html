@@ -1,37 +1,9 @@
 <aside id="sidebar" class="card shadow contain-content">
-	{% include weather.html appId=site.data.weather.appid postalCode=site.data.weather.postalCode theme=site.data.weather.theme %}
+	{% include common/weather.html appId=site.data.weather.appid postalCode=site.data.weather.postalCode theme=site.data.weather.theme %}
 	<hr />
-	{% if page.ads.sidebar %}{% for ad in page.ads.sidebar %}{% include ad.html
-		id=ad.uuid
-		label=ad.label
-		image=ad.image
-		description=ad.description
-		url=ad.url
-		callToAction=ad.callToAction
-		theme=ad.theme
-		layout=ad.layout
-		imageFit=ad.imageFit
-		imagePosition=ad.imagePosition
-		classList=ad.classList
-		campaign=ad.campaign
-		content='sidebar-ad'
-		loading="lazy"
-		media=ad.media
-	%}{% endfor %}{% else %}{% for ad in site.data.ads.sidebar %}{% include ad.html
-		id=ad.uuid
-		label=ad.label
-		image=ad.image
-		description=ad.description
-		url=ad.url
-		callToAction=ad.callToAction
-		theme=ad.theme
-		layout=ad.layout
-		imageFit=ad.imageFit
-		imagePosition=ad.imagePosition
-		classList=ad.classList
-		campaign=ad.campaign
-		content='sidebar-ad'
-		loading="lazy"
-		media=ad.media
-	%}{% endfor %}{% endif %}
+	{% if page.ads.sidebar %}{% for ad in page.ads.sidebar %}
+		{% include common/ad.html ad=ad content="sidebar"%}
+	{% endfor %}{% else %}{% for ad in site.data.ads.sidebar %}
+		{% include common/ad.html ad=ad content="sidebar" %}
+	{% endfor %}{% endif %}
 </aside>

@@ -1,5 +1,5 @@
 ---
-layout: base
+layout: default
 title: Map
 permalink: /map/
 pinned: true
@@ -57,8 +57,6 @@ scripts:
     crossOrigin: anonymous
     referrerPolicy: no-referrer
 ---
-{% include header.html %}
-{% include nav.html %}
 {% assign kernville=site.data.places.towns | find: "name", "Kernville" %}
 <main id="main" class="contain-content">
 	<not-supported class="card shadow block content-visibility-auto">
@@ -69,24 +67,24 @@ scripts:
 				<img src="https://cdn.kernvalley.us/img/logos/firefox.svg" decoding="async" loading="lazy" alt="Firefox" height="128" width="128" />
 				<br />
 				<span>Mozilla Firefox</span>
-				{% include icon.html icon="link-external" %}
+				{% include common/icon.html icon="link-external" %}
 			</a>
 			<a href="https://www.google.com/chrome/" class="browser-install center inline-block float-left card" rel="external noopener noreferrer">
 				<img src="https://cdn.kernvalley.us/img/logos/chrome.svg" decoding="async" loading="lazy" alt="Firefox" height="128" width="128" />
 				<br />
 				<span>Google Chrome</span>
-				{% include icon.html icon="link-external" %}
+				{% include common/icon.html icon="link-external" %}
 			</a>
 		</div>
 		<br />
 	</not-supported>
 	<div class="flex row" hidden="">
 		<button type="button" class="btn btn-primary" data-show="#event-search-toast">
-			{% include icon.html icon="clock" %}
+			{% include common/icon.html icon="clock" %}
 			<span class="mobile-hidden">Search Events by Time</span>
 		</button>
 		<button type="button" class="btn btn-primary" data-show="#business-search-toast">
-			{% include icon.html icon="organization" %}
+			{% include common/icon.html icon="organization" %}
 			<span class="mobile-hidden">Search Businesses by Category</span>
 		</span>
 	</div>
@@ -125,53 +123,53 @@ scripts:
 		{% endfor %}
 		{% for business in site.data.places.businesses %}
 			{% if business.address.addressLocality == "Kernville" %}
-				{% include local-business-marker.html business=business %}
+				{% include leaflet/local-business-marker.html business=business %}
 			{% endif %}
 		{% endfor %}
 		{% for business in site.data.places.restuarants %}
 			{% if business.address.addressLocality == "Kernville" %}
-				{% include restaurant-marker.html business=business %}
+				{% include leaflet/restaurant-marker.html business=business %}
 			{% endif %}
 		{% endfor %}
 		{% for business in site.data.places.cafes %}
 			{% if business.address.addressLocality == "Kernville" %}
-				{% include restaurant-marker.html business=business %}
+				{% include leaflet/restaurant-marker.html business=business %}
 			{% endif %}
 		{% endfor %}
 		{% for business in site.data.places.gas %}
-			{% include local-business-marker.html business=business %}
+			{% include leaflet/local-business-marker.html business=business %}
 		{% endfor %}
 		{% for business in site.data.places.stores %}
 			{% if business.address.addressLocality == "Kernville" %}
-				{% include local-business-marker.html business=business %}
+				{% include leaflet/local-business-marker.html business=business %}
 			{% endif %}
 		{% endfor %}
 		{% for business in site.data.places.bars %}
 			{% if business.address.addressLocality == "Kernville" %}
-				{% include local-business-marker.html business=business %}
+				{% include leaflet/local-business-marker.html business=business %}
 			{% endif %}
 		{% endfor %}
 		{% for business in site.data.places.financial %}
 			{% if business.address.addressLocality == "Kernville" %}
-				{% include local-business-marker.html business=business %}
+				{% include leaflet/local-business-marker.html business=business %}
 			{% endif %}
 		{% endfor %}
 		{% for business in site.data.places.civic %}
 			{% if business.address.addressLocality == "Kernville" %}
-				{% include local-business-marker.html business=business %}
+				{% include leaflet/local-business-marker.html business=business %}
 			{% endif %}
 		{% endfor %}
 		{% for business in site.data.places.campgrounds %}
-			{% include local-business-marker.html business=business %}
+			{% include leaflet/local-business-marker.html business=business %}
 		{% endfor %}
 		{% for business in site.data.places.lodging %}
-			{% include local-business-marker.html business=business %}
+			{% include leaflet/local-business-marker.html business=business %}
 		{% endfor %}
 		{% for business in site.data.places.landmarks %}
-			{% include local-business-marker.html business=business %}
+			{% include leaflet/local-business-marker.html business=business %}
 		{% endfor %}
 		{% for business in site.data.places.activities %}
-			{% include local-business-marker.html business=business %}
+			{% include leaflet/local-business-marker.html business=business %}
 		{% endfor %}
 		{% unless site.data.mainEvent.eventStatus == 'EventCancelled' %}{% for marker in site.data.poi %}
 			<leaflet-marker class="poi-marker content-visibility-hidden" id="{{ marker.uuid }}" longitude="{{ marker.location.geo.longitude }}" latitude="{{ marker.location.geo.latitude }}" slot="markers" title="{{ marker.title | escape_once }}"{% if marker.category %} data-category="{{ marker.category }}"{% endif %}>
@@ -183,7 +181,7 @@ scripts:
 					{% if marker.telephone %}
 						<div>
 							<a href="tel:+{{ marker.telephone }}">
-								{% include icon.html icon="call-start"  height="16" width="16" %}
+								{% include common/icon.html icon="call-start"  height="16" width="16" %}
 								<span itemprop="telephone">{{ marker.telephone }}</span>
 							</a>
 						</div>
@@ -191,20 +189,20 @@ scripts:
 					{% if marker.url %}
 						<div>
 							<a href="{{ marker.url }}" rel="external noopener noreferrer">
-								{% include icon.html icon="globe"  height="16" width="16" %}
+								{% include common/icon.html icon="globe"  height="16" width="16" %}
 								<span itemprop="url">{{ marker.url | replace: 'https://', '' | replace: 'http://', '' | replace: 'www.', '' }}</span>
 							</a>
 						</div>
 					{% endif %}
 					{% if marker.location.url %}
 						<a href="{{ marker.location.url }}" class="inline-block btn btn-primary" rel="external noopener noreferrer" role="button">
-							{% include icon.html icon="map" height="16" width="16" %}
+							{% include common/icon.html icon="map" height="16" width="16" %}
 							<span>View in Map App</span>
 						</a>
 					{% else %}
 						<!-- geo:35.760197,-118.426793;crs=wgs84;u=0 -->
 						<a href="https://www.google.com/maps/?q={{ marker.location.geo.latitude }},{{ marker.location.geo.longitude }}" class="inline-block btn btn-primary" rel="external noopener noreferrer" role="button">
-							{% include icon.html icon="map" height="16" width="16" %}
+							{% include common/icon.html icon="map" height="16" width="16" %}
 							<span>View in Map App</span>
 						</a>
 					{% endif %}
@@ -227,12 +225,12 @@ scripts:
 					{% if marker.description %}<div>{{ marker.description }}</div>{% endif %}
 					{% if marker.location.url %}
 						<a href="{{ marker.location.url }}" class="inline-block btn btn-primary" rel="external noopener noreferrer" role="button">
-							{% include icon.html icon="map" height="16" width="16" %}
+							{% include common/icon.html icon="map" height="16" width="16" %}
 							<span>View in Map App</span>
 						</a>
 					{% else %}
 						<a href="https://www.google.com/maps/?q={{ marker.latitude }},{{ marker.longitude }}" class="inline-block btn btn-primary" rel="external noopener noreferrer" role="button">
-							{% include icon.html icon="map" height="16" width="16" %}
+							{% include common/icon.html icon="map" height="16" width="16" %}
 							<span>View in Map App</span>
 						</a>
 					{% endif %}
@@ -289,14 +287,14 @@ scripts:
 						{% if marker.location.url %}
 							<br />
 							<a href="{{ marker.location.url }}" class="inline-block btn btn-primary" rel="external noopener noreferrer" role="button" itemprop="url">
-								{% include icon.html icon="map" height="16" width="16" %}
+								{% include common/icon.html icon="map" height="16" width="16" %}
 								<span>View in Map App</span>
 							</a>
 						{% else %}
 							<br />
 							<!-- geo:35.760197,-118.426793;crs=wgs84;u=0 -->
 							<a href="https://www.google.com/maps/?q={{ marker.location.geo.latitude }},{{ marker.location.geo.longitude }}" class="inline-block btn btn-primary" rel="external noopener noreferrer" role="button" itemprop="url">
-								{% include icon.html icon="map" height="16" width="16" %}
+								{% include common/icon.html icon="map" height="16" width="16" %}
 								<span>View in Map App</span>
 							</a>
 						{% endif %}
@@ -325,14 +323,13 @@ scripts:
 		{% endfor %}{% endunless %}
 	</leaflet-map>
 </main>
-{% include sidebar.html %}
 {% unless site.data.mainEvent.eventStatus == 'EventCancelled' %}
 	<toast-message id="event-search-toast" backdrop="">
 		<form name="eventSearch" slot="content">
 			<fieldset class="no-border">
 				<legend>Search Events by Date &amp; Time</legend>
 				<label class="block card input-group" for="search-date">
-					{% include icon.html icon="calendar" %}
+					{% include common/icon.html icon="calendar" %}
 					<span class="mobile-hidden">Day</span>
 					<select name="day" id="search-date" class="pretty-input" required="">
 						<option value="2020-02-14">Friday</option>
@@ -342,18 +339,18 @@ scripts:
 					</select>
 				</label>
 				<label class="card input-group block" for="search-time">
-					{% include icon.html icon="clock" %}
+					{% include common/icon.html icon="clock" %}
 					<span class="mobile-hidden">Time</span>
 					<input type="time" name="time" id="search-time" class="pretty-input" min="08:00" max="20:00" placeholder="hh:mm" required="" />
 				</label>
 			</fieldset>
 			<div class="btns flex row nowrap">
 				<button type="submit" class="btn btn-accept btn-wide">
-					{% include icon.html icon="search" %}
+					{% include common/icon.html icon="search" %}
 					<span class="mobile-hidden">Search</span>
 				</button>
 				<button type="reset" class="btn btn-reject btn-wide">
-					{% include icon.html icon="x" %}
+					{% include common/icon.html icon="x" %}
 					<span class="mobile-hidden">Cancel</span>
 				</button>
 			</div>
@@ -374,18 +371,18 @@ scripts:
 				</datalist>
 				<legend>Search Businesses</legend>
 				<label for="search-business-category">
-					{% include icon.html icon="tag" %}
+					{% include common/icon.html icon="tag" %}
 					<span class="mobile-hidden">Category</span>
 				</label>
 				<input type="text" name="category" list="business-categories" placeholder="Category" id="search-business-category" class="background-inherit color-inherit no-border" autocomplete="off" required="" />
 			</fieldset>
 			<div class="btns flex row nowrap">
 				<button type="submit" class="btn btn-accept btn-wide">
-					{% include icon.html icon="search" %}
+					{% include common/icon.html icon="search" %}
 					<span class="mobile-hidden">Search</span>
 				</button>
 				<button type="reset" class="btn btn-reject btn-wide">
-					{% include icon.html icon="x" %}
+					{% include common/icon.html icon="x" %}
 					<span class="mobile-hidden">Cancel</span>
 				</button>
 			</div>
@@ -398,26 +395,24 @@ scripts:
 				</datalist>
 				<legend>Search Vendors</legend>
 				<label for="search-vendor-category">
-					{% include icon.html icon="tag" %}
+					{% include common/icon.html icon="tag" %}
 					<span class="mobile-hidden">Category</span>
 				</label>
 				<input type="text" name="category" list="vendor-categories" placeholder="Category" id="search-vendor-category" class="background-inherit color-inherit no-border" autocomplete="off" required="" />
 			</fieldset>
 			<div class="btns flex row nowrap">
 				<button type="submit" class="btn btn-accept btn-wide">
-					{% include icon.html icon="search" %}
+					{% include common/icon.html icon="search" %}
 					<span class="mobile-hidden">Search</span>
 				</button>
 				<button type="reset" class="btn btn-reject btn-wide">
-					{% include icon.html icon="x" %}
+					{% include common/icon.html icon="x" %}
 					<span class="mobile-hidden">Cancel</span>
 				</button>
 			</div>
 		</form>
 	</toast-message>
 	<button type="button" id="search-btn" class="btn btn-primary fixed bottom left z-top shadow round" data-show="#event-search-toast" title="Search Events">
-		{% include icon.html icon="search" %}
+		{% include common/icon.html icon="search" %}
 	</button>
-	{% endunless %}
-{% include footer.html %}
-{% include share-button.html text=page.description %}
+{% endunless %}

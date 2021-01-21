@@ -1,24 +1,29 @@
 <nav id="nav" class="sticky top shadow background-accent color-alt z-3 flex row no-wrap overflow-x-auto">
 	<button type="button" is="app-list" id="app-menu" class="btn" title="Open KernValley.US Apps Menu" source="{{ site.data.ads.source }}" accesskey="a" hidden="">
-		{% include icon.html icon="apps" fill="currentColor" height=22 width=22 %}
+		{% include common/icon.html icon="apps" fill="currentColor" height=22 width=22 %}
 	</button>
-	<button type="button" class="display-mode-standalone" title="Go Back" data-action="back">{% include icon.html icon="go-previous" %}</button>
-	<button type="button" class="display-mode-standalone" title="Reload" data-action="reload">{% include icon.html icon="view-refresh" %}</button>
-	<button type="button" class="display-mode-standalone" title="Go Forward" data-action="forward">{% include icon.html icon="go-next" %}</button>
+	<button type="button" class="display-mode-standalone" title="Go Back" data-action="back">{% include common/icon.html icon="go-previous" %}</button>
+	<button type="button" class="display-mode-standalone" title="Reload" data-action="reload">{% include common/icon.html icon="view-refresh" %}</button>
+	<button type="button" class="display-mode-standalone" title="Go Forward" data-action="forward">{% include common/icon.html icon="go-next" %}</button>
 	{% for link in site.data.links.nav %}
 		<a class="nav-link inline-block grow-1{% if link.href == page.url %} no-pointer-events current-link{% endif %}" href="{{ link.href }}" accesskey="{{ link.accessKey }}" title="{{ link.label }}">
-			{% include icon.html icon=link.icon %}
+			{% include common/icon.html icon=link.icon %}
 			<span class="mobile-hidden">{{ link.label }}</span>
 		</a>
 	{% endfor %}
 	<span class="grow-4"></span>
-	<button type="button" class="grow-1" data-action="find-location" title="Use my Location" accesskey="f" hidden="">
-		{% include icon.html icon="find-location" %}
-		<span class="mobile-hidden">Find my Location</span>
-	</button>
+	{% if page.url == '/map/' %}
+		<button type="button" data-full-screen="leaflet-map" title="Enter Fullscreen">
+			{% include common/icon.html icon="screen-full" %}
+		</button>
+		<button type="button" data-action="find-location" title="Use my Location" accesskey="f" hidden="">
+			{% include common/icon.html icon="find-location" %}
+			<span class="mobile-hidden">Find my Location</span>
+		</button>
+	{% endif %}
 	{% if site.service_worker %}
 		<button is="pwa-install" id="install-btn" src="{{ site.service_worker }}" scope="/" title="Install Web App" reloadonupdate="" accesskey="i" hidden="">
-			{% include icon.html icon="system-software-install" height=22 width=22 fill="currentColor" %}
+			{% include common/icon.html icon="system-software-install" height=22 width=22 fill="currentColor" %}
 			<span class="mobile-hidden">Install</span>
 		</button>
 	{% endif %}
