@@ -8,16 +8,15 @@ layout: null
 const config = {
 	version: '{{ site.data.app.version | default: site.version }}',
 	fresh: [
-		/* Root document */
 		'{{ site.pages | where: "pinned", true | map: "url" | join: "', '" }}',
 		'/manifest.json',
 		'https://apps.kernvalley.us/apps.json',
+		'https://cdn.kernvalley.us/img/markers.svg',
 	].map(path => new URL(path, location.origin).href),
 	stale: [
 		'/css/index.min.css',
 		'/js/index.min.js',
 		'/img/icons.svg',
-		'https://cdn.kernvalley.us/img/markers.svg',
 		/* Other HTML */
 
 		/* JS, `customElements`, etc. */
