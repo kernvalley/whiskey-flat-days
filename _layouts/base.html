@@ -5,12 +5,12 @@
 	class="no-js scroll-smooth background-primary color-default font-main border-box"
 	{% if page.ads %}data-ad-sense-id="{{ site.ad-sense }}"{% endif %}
 	{% if page.pageLevelAds %}data-page-level-ads="{{ page.pageLevelAds }}"{% endif %}
-	data-layout="{{ layout.data-layout | default: 'default' }}"
-	data-theme="{{ layout.data-theme | default: 'auto' }}"
+	data-layout="{{ page.data-layout | default: layout.name }}"
+	data-theme="{{ page.theme | default: layout.theme }}"
 	itemtype="{{ page.itemtype | default: 'http://schema.org/WebPage' }}"
 	itemscope=""
 >
-{% include head.html %}
+{% include common/head.html %}
 	<body
 		id="top"
 		{% if page.scene %}data-scene="{{ page.scene }}"{% endif %}

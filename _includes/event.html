@@ -21,7 +21,7 @@
 		{% if include.event.url %}</a>{% endif %}
 		{% if include.event.imgur %}
 			<figure class="event-thumb center" itemprop="image" itemtype="http://schema.org/ImageObject" itemscope="">
-				{% include imgur.html
+				{% include common/imgur.html
 					url=include.event.image
 					itemprop='url'
 					sizes='(min-width: 700px) 30vw, 90vw'
@@ -33,7 +33,7 @@
 			</figure>
 		{% endif %}
 		<time class="event-begin" itemprop="startDate" datetime="{{ include.event.startDate | date_to_xmlschema }}">
-			{% include icon.html icon='events' %}
+			{% include common/icon.html icon='events' %}
 			{{ include.event.startDate | date: '%a %b %-d, %Y %l:%M %p' }}
 		</time>
 	</div>
@@ -42,7 +42,7 @@
 		<summary role="button">More Info</summary>
 		<hr />
 		<time class="event-end" itemprop="endDate" datetime="{{ include.event.startDate | date_to_xmlschema }}">
-			{% include icon.html icon='events' %}
+			{% include common/icon.html icon='events' %}
 			<span>Ends:</span>
 			{{ include.event.endDate | date: '%a %b %-d, %Y %l:%M %p' }}
 		</time>
@@ -50,17 +50,17 @@
 		<div class="event-location" itemprop="location" itemtype="http://schema.org/{{ include.event.location['@type'] | default: 'Place' }}" itemscope="">
 			{% if include.event.location.url %}
 				<a href="{{ event.location.url }}" class="event-location-link" rel="noopener external" itemprop="url">
-					{% include icon.html icon="link=external" %}
+					{% include common/icon.html icon="link=external" %}
 			{% endif %}
 			{% if event.location.name %}<b class="event-location-name" itemprop="name">{{ event.location.name }}</b>{% endif %}
 			{% if event.location.url %}</a>{% endif %}
 			{% if include.event.location.addressRegion %}
-				{% include address.html address=include.event.location itemprop='address' %}
+				{% include common/address.html address=include.event.location itemprop='address' %}
 			{% endif %}
 		</div>
 		<hr />
 		<div class="event-description" itemprop="description">
-			{% include icon.html icon='note' %}{{ include.event.description }}
+			{% include common/icon.html icon='note' %}{{ include.event.description }}
 		</div>
 		<hr />
 		{% if include.event.offers %}<div>{% for offer in include.event.offers %}
@@ -96,7 +96,7 @@
 		{% endif %}
 		{% if include.event.url %}
 			<hr />
-			{% include icon.html icon='link' %}
+			{% include common/icon.html icon='link' %}
 			<a href="{{ include.event.url  }}" class="underline" itemprop="url">Click here to learn more</a>
 		{% endif %}
 		{% if include.event.organizer %}

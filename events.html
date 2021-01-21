@@ -85,7 +85,7 @@ tags:
 			</address>
 			<div class="event-description" itemprop="description" hidden="">{{ event.description }}</div>
 			<a href="/map/#{{ event.uuid }}" class="event-link" title="View on Map" itemprop="url">
-				{% include icon.html icon="map" %}
+				{% include common/icon.html icon="map" fill="currentColor" height="20" width="20" %}
 			</a>
 		</div>
 	{% endfor %}{% endunless %}

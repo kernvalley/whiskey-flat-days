@@ -6,7 +6,7 @@ url: https://whiskeyflatdays.com
 startDate: 2021-02-12
 endDate: 2021-02-17
 eventAttendanceMode: OfflineEventAttendanceMode
-eventStatus: EventCancelled
+# eventStatus: EventCancelled
 image:
   - "@type": ImageObject
     url: https://whiskeyflatdays.com/img/raster/coach-800.jpg

@@ -1,28 +1,6 @@
-<!DOCTYPE html>
-<html
-	lang="{{ site.lang | default: 'en' }}"
-	dir="{{ site.dir | default: 'ltr' }}"
-	class="no-js scroll-smooth background-primary color-default font-main border-box"
-	itemtype="{{ page.itemtype | default: 'http://schema.org/WebPage' }}"
-	itemscope=""
-	{% if page.ads %}data-ad-sense-id="{{ site.ad-sense }}"{% endif %}
-	{% if page.pageLevelAds %}data-page-level-ads="{{ page.pageLevelAds }}"{% endif %}
->
-{% include head.html %}
-	<body
-		id="top"
-		{% if page.scene %}data-scene="{{ page.scene }}"{% endif %}
-		class="layout-{{ page.layout }} {{ page.body-class | default: 'grid' }}"
-		contextmenu="{{ page.contextmenu | default: site.contextmenu }}"
-		{% if page.itemprop and page.itemtype %}
-			itemprop="{{ page.itemprop }}"
-			itemtype="{{ page.itemtype }}"
-			itemscope=""
-		{% endif %}
-	>
-		{% include header.html %}
-		<main id="main" class="card shadow">{{ content }}</main>
-		{% include footer.html %}
-		{% include share-button.html %}
-	</body>
-</html>
+---
+name: right-sidebar
+theme: default
+layout: default
+---
+{{ content }}
