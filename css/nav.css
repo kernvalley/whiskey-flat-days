@@ -1,6 +1,6 @@
 #nav {
 	font-size: 1.2em;
-	gap: 6px;
+	gap: 5px;
 }
 
 #nav > a.nav-link {
@@ -21,9 +21,6 @@
 
 #nav > button, #nav > .nav-link {
 	max-width: 230px;
-	border-width: 0 1px 0 1px;
-	border-style: solid;
-	border-color: #0052b3;
 }
 
 #nav > a.nav-link:hover, #nav > button:hover, #nav > button:focus,
