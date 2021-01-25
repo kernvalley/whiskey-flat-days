@@ -64,6 +64,8 @@ const config = {
 		/https:\/\/api\.openweathermap\.org\/data\/*/,
 		new RegExp(`${location.origin.replace('/', '\\/').replace('.', '\\.')}\\/paths\\/.*`),
 		new RegExp(`${location.origin.replace('/', '\\/').replace('.', '\\.')}\\/img\\/raster\\/.*`),
-		new RegExp(`${location.origin.replace('/', '\\/').replace('.', '\\.')}\\/img\\/markers\\/.*`),
+	],
+	allowedFresh: [
+		'https://api.openweathermap.org/data/',
 	],
 };
