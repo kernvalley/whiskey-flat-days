@@ -8,76 +8,43 @@ no-header: true
 referrer: no-referrer
 description: Map of events, vendors, and other Points-of-interest for Whiskey Flat Days in Kernville, CA
 tags:
-- events
-- whiskey flat days
-- kernville
-- rodeo
-- encampment
-- vendors
-- point of interest
-- map
-- festival
+  - events
+  - whiskey flat days
+  - kernville
+  - rodeo
+  - encampment
+  - vendors
+  - point of interest
+  - map
+  - festival
+preconnect:
+  - href: https://maps.wikimedia.org
+    referrerPolicy: no-referrer
+    crossOrigin: anonymous
 preload:
-  - href: "https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+  - href: https://unpkg.com/leaflet@1.7.1/dist/leaflet.css
     as: style
     referrerPolicy: no-referrer
     crossOrigin: anonymous
-    integrity: "sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-  - href: "https://cdn.kernvalley.us/components/leaflet/map.css"
+    integrity: sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==
+  - href: https://cdn.kernvalley.us/components/leaflet/map.css
     as: style
     referrerPolicy: no-referrer
     crossOrigin: anonymous
-  - href: "https://cdn.kernvalley.us/components/leaflet/map.html"
+  - href: https://cdn.kernvalley.us/components/leaflet/map.html
     as: fetch
     type: text/html
     referrerPolicy: no-referrer
     crossOrigin: anonymous
-preconnect:
-  - href: "https://maps.wikimedia.org"
-    referrerPolicy: no-referrer
-    crossOrigin: anonymous
-preload:
   - href: https://cdn.kernvalley.us/img/markers.svg
     as: image
     type: image/svg+xml
     crossOrigin: anonymous
     referrerPolicy: no-referrer
     importance: high
-  - href: https://unpkg.com/leaflet@1.7.1/dist/leaflet.css
-    as: style
-    type: text/css
-    crossOrigin: anonymous
-    referrerPolicy: anonymous
-    integrity: sha384-VzLXTJGPSyTLX6d96AxgkKvE/LRb7ECGyTxuwtpjHnVWVZs2gp5RDjeM/tgBnVdM
-    importance: high
-scripts:
-  - src: https://cdn.kernvalley.us/components/leaflet/map.min.js
-    async: true
-    defer: true
-    crossOrigin: anonymous
-    referrerPolicy: no-referrer
 ---
-{% assign kernville=site.data.places.towns | find: "name", "Kernville" %}
 <main id="main" class="contain-content">
-	<not-supported class="card shadow block content-visibility-auto">
-		<p>Your browser does not meet the minal requirements to display the events map.</p>
-		<p>Please install a better browser that supports modern websites.</p>
-		<div class="flex row nowrap clearfix browser-installs">
-			<a href="https://www.mozilla.org/en-US/firefox/new/" class="browser-install center inline-block float-left card" rel="external noopener noreferrer">
-				<img src="https://cdn.kernvalley.us/img/logos/firefox.svg" decoding="async" loading="lazy" alt="Firefox" height="128" width="128" />
-				<br />
-				<span>Mozilla Firefox</span>
-				{% include common/icon.html icon="link-external" %}
-			</a>
-			<a href="https://www.google.com/chrome/" class="browser-install center inline-block float-left card" rel="external noopener noreferrer">
-				<img src="https://cdn.kernvalley.us/img/logos/chrome.svg" decoding="async" loading="lazy" alt="Firefox" height="128" width="128" />
-				<br />
-				<span>Google Chrome</span>
-				{% include common/icon.html icon="link-external" %}
-			</a>
-		</div>
-		<br />
-	</not-supported>
+	{% include not-supported.html %}
 	<div class="flex row" hidden="">
 		<button type="button" class="btn btn-primary" data-show="#event-search-toast">
 			{% include common/icon.html icon="clock" %}
@@ -88,330 +55,12 @@ scripts:
 			<span class="mobile-hidden">Search Businesses by Category</span>
 		</span>
 	</div>
-	<leaflet-map center="{{ site.data.mainEvent.location.geo.latitude }},{{ site.data.mainEvent.location.geo.longitude }}" class="relative contain-content z-1" zoom="18" maxzoom="19" minzoom="15" crossorigin="annonymous" detectretina="detectretina" zoomcontrol="" itemtype="https://schema.org/Event" itemscope="">
-		<meta itemprop="name" content="{{ site.data.mainEvent.name | escape }}" />
-		<meta itemprop="url" content="{{ site.data.mainEvent.url }}" />
-		<meta itemprop="description" content="{{ site.data.mainEvent.description | escape }}" />
-		<meta itemprop="startDate" content="{{ site.data.mainEvent.startDate }}" />
-		<meta itemprop="endDate" content="{{ site.data.mainEvent.endDate }}" />
-		<meta itemprop="image" content="{{ site.data.mainEvent.image.first.url }}" />
-		<meta itemprop="eventAttendanceMode" content="{{ site.data.mainEvent.eventAttendanceMode | default: 'https://schema.org/OfflineEventAttendanceMode' }}" />
-		<meta itemprop="eventStatus" content="{{ site.data.mainEvent.eventStatus | default: 'https://schema.org/EventScheduled' }}" />
-		<div itemprop="organizer" itemtype="https://schema.org/{{ site.data.mainEvent.organizer['@type'] | default: 'Organization' }}" itemscope="" hidden="">
-			<meta itemprop="name" content="{{ site.data.mainEvent.organizer.name }}" />
-			<meta itemprop="url" content="{{ site.data.mainEvent.organizer.url }}" />
-		</div>
-		<address itemprop="location" itemtype="https://schema.org/{{ site.data.mainEvent.location['@type'] | default: 'Place' }}" itemscope="" hidden="">
-			<meta itemprop="name" content="{{ site.data.mainEvent.location.name }}" />
-			<meta itemprop="image" content="https://whiskeyflatdays.com/coach-800.jpg" />
-			<div itemprop="address" itemtype="https://schema.org/PostalAddress" itemscope="" hidden="">
-				<meta itemprop="addressLocality" content="{{ site.data.mainEvent.location.address.addressLocality }}" />
-				<meta itemprop="addressRegion" content="{{ site.data.mainEvent.location.address.addressRegion }}" />
-				<meta itemprop="addressCountry" content="{{ site.data.mainEvent.location.address.addressCountry }}" />
-				<meta itemprop="postalCode" content="{{ site.data.mainEvent.location.address.postalCode }}" />
-			</div>
-			<div itemprop="geo" itemtype="https://schema.org/GeoCoordinates" itemscope="" hidden="">
-				<meta itemprop="longitude" content="{{ site.data.mainEvent.location.geo.latitude }}" />
-				<meta itemprop="latitude" content="{{ site.data.mainEvent.location.geo.longitude }}" />
-			</div>
-		</address>
-		{% for town in site.data.places.towns %}
-			<leaflet-marker slot="markers" latitude="{{ town.latitude }}" longitude="{{ town.longitude }}" title="{{ town.name | escape }}" id="{{ town.identifier }}">
-				<img slot="icon" src="https://cdn.kernvalley.us/img/markers.svg#city" width="30" height="30" crossorigin="anonymous" referrerpolicy="no-referrer" alt="" />
-				<h3 slot="popup">{{ town.name }}, CA</h3>
-			</leaflet-marker>
-		{% endfor %}
-		{% for business in site.data.places.businesses %}
-			{% if business.address.addressLocality == "Kernville" %}
-				{% include leaflet/local-business-marker.html business=business %}
-			{% endif %}
-		{% endfor %}
-		{% for business in site.data.places.restuarants %}
-			{% if business.address.addressLocality == "Kernville" %}
-				{% include leaflet/restaurant-marker.html business=business %}
-			{% endif %}
-		{% endfor %}
-		{% for business in site.data.places.cafes %}
-			{% if business.address.addressLocality == "Kernville" %}
-				{% include leaflet/restaurant-marker.html business=business %}
-			{% endif %}
-		{% endfor %}
-		{% for business in site.data.places.gas %}
-			{% include leaflet/local-business-marker.html business=business %}
-		{% endfor %}
-		{% for business in site.data.places.stores %}
-			{% if business.address.addressLocality == "Kernville" %}
-				{% include leaflet/local-business-marker.html business=business %}
-			{% endif %}
-		{% endfor %}
-		{% for business in site.data.places.bars %}
-			{% if business.address.addressLocality == "Kernville" %}
-				{% include leaflet/local-business-marker.html business=business %}
-			{% endif %}
-		{% endfor %}
-		{% for business in site.data.places.financial %}
-			{% if business.address.addressLocality == "Kernville" %}
-				{% include leaflet/local-business-marker.html business=business %}
-			{% endif %}
-		{% endfor %}
-		{% for business in site.data.places.civic %}
-			{% if business.address.addressLocality == "Kernville" %}
-				{% include leaflet/local-business-marker.html business=business %}
-			{% endif %}
-		{% endfor %}
-		{% for business in site.data.places.campgrounds %}
-			{% include leaflet/local-business-marker.html business=business %}
-		{% endfor %}
-		{% for business in site.data.places.lodging %}
-			{% include leaflet/local-business-marker.html business=business %}
-		{% endfor %}
-		{% for business in site.data.places.landmarks %}
-			{% include leaflet/local-business-marker.html business=business %}
-		{% endfor %}
-		{% for business in site.data.places.activities %}
-			{% include leaflet/local-business-marker.html business=business %}
-		{% endfor %}
-		{% unless site.data.mainEvent.eventStatus == 'EventCancelled' %}{% for marker in site.data.poi %}
-			<leaflet-marker class="poi-marker content-visibility-hidden" id="{{ marker.uuid }}" longitude="{{ marker.location.geo.longitude }}" latitude="{{ marker.location.geo.latitude }}" slot="markers" title="{{ marker.title | escape_once }}"{% if marker.category %} data-category="{{ marker.category }}"{% endif %}>
-				<img src="{{ marker.icon | default: 'https://cdn.kernvalley.us/img/markers.svg#event' }}" slot="icon" width="32" height="32" loading="lazy" decoding="async" crossorigin="anonymous" referrerpolicy="no-referrer" />
-				<div slot="popup">
-					<h4>{{ marker.popup | default: marker.title | escape_once }}</h4>
-					{% if marker.description %}<div>{{ marker.description }}</div>{% endif %}
-					{% if marker.image %}<img src="{{ marker.image.url }}" alt="{{ marker.image.description }}" decoding="async" width="{{ marker.image.width }}" height="{{ marker.image.height }}" loading="lazy" />{% endif %}
-					{% if marker.telephone %}
-						<div>
-							<a href="tel:+{{ marker.telephone }}">
-								{% include common/icon.html icon="call-start"  height="16" width="16" %}
-								<span itemprop="telephone">{{ marker.telephone }}</span>
-							</a>
-						</div>
-					{% endif %}
-					{% if marker.url %}
-						<div>
-							<a href="{{ marker.url }}" rel="external noopener noreferrer">
-								{% include common/icon.html icon="globe"  height="16" width="16" %}
-								<span itemprop="url">{{ marker.url | replace: 'https://', '' | replace: 'http://', '' | replace: 'www.', '' }}</span>
-							</a>
-						</div>
-					{% endif %}
-					{% if marker.location.url %}
-						<a href="{{ marker.location.url }}" class="inline-block btn btn-primary" rel="external noopener noreferrer" role="button">
-							{% include common/icon.html icon="map" height="16" width="16" %}
-							<span>View in Map App</span>
-						</a>
-					{% else %}
-						<!-- geo:35.760197,-118.426793;crs=wgs84;u=0 -->
-						<a href="https://www.google.com/maps/?q={{ marker.location.geo.latitude }},{{ marker.location.geo.longitude }}" class="inline-block btn btn-primary" rel="external noopener noreferrer" role="button">
-							{% include common/icon.html icon="map" height="16" width="16" %}
-							<span>View in Map App</span>
-						</a>
-					{% endif %}
-					{% if marker.uuid %}
-						<br />
-						<button type="button" is="share-button" url="https://whiskeyflatdays.com/map/#{{ marker.uuid }}" text="Check out {{ marker.title | escape_once }}" title="{{ marker.title | escape_once }} | Whiskey Flat Days Map" source="whiskey-flat-days" medium="social" content="map-marker" hidden="">
-							<svg width="16" height="16" aria-hidden="true">
-								<use xlink:href="{{ site.icons }}#share"></use>
-							</svg>
-							<span>Share</span>
-						</button>
-					{% endif %}
-				</div>
-			</leaflet-marker>
-		{% endfor %}{% for marker in site.data.vendors %}{% if marker.title %}
-			<leaflet-marker id="{{ marker.uuid }}" class="vendor-marker content-visibility-hidden" data-space="{{ marker.space }}" data-title="{{ marker.title | default: marker.space }}" data-category="{{ marker.category | join: ' ' }}" longitude="{{ marker.longitude }}" latitude="{{ marker.latitude }}" slot="markers" title="{{ marker.title | escape_once }}"{% if marker.category %} data-category="{{ marker.category | join: ' ' }}"{% endif %}>
-				<img src="{{ marker.icon | default: '/img/adwaita-icons/actions/mark-location.svg' }}" slot="icon" width="32" height="32" loading="lazy" decoding="async" />
-				<div slot="popup">
-					<h4>{{ marker.title | default: marker.space }}</h4>
-					{% if marker.description %}<div>{{ marker.description }}</div>{% endif %}
-					{% if marker.location.url %}
-						<a href="{{ marker.location.url }}" class="inline-block btn btn-primary" rel="external noopener noreferrer" role="button">
-							{% include common/icon.html icon="map" height="16" width="16" %}
-							<span>View in Map App</span>
-						</a>
-					{% else %}
-						<a href="https://www.google.com/maps/?q={{ marker.latitude }},{{ marker.longitude }}" class="inline-block btn btn-primary" rel="external noopener noreferrer" role="button">
-							{% include common/icon.html icon="map" height="16" width="16" %}
-							<span>View in Map App</span>
-						</a>
-					{% endif %}
-					{% if marker.uuid %}
-						<br /><br />
-						<button type="button" is="share-button" url="https://whiskeyflatdays.com/map/#{{ marker.uuid }}" text="Check out {{ marker.title | escape_once }}" title="{{ marker.title | escape_once }} | Whiskey Flat Days Map" source="whiskey-flat-days" medium="social" content="map-marker" hidden="">
-							<svg width="16" height="16" aria-hidden="true">
-								<use xlink:href="{{ site.icons }}#share"></use>
-							</svg>
-							<span>Share</span>
-						</button>
-					{% endif %}
-				</div>
-			</leaflet-marker>
-		{% endif %}{% endfor %}
-		{% for marker in site.data.events %}
-			<leaflet-marker id="{{ marker.uuid }}" class="event-marker content-visibility-hidden" longitude="{{ marker.location.geo.longitude }}" latitude="{{ marker.location.geo.latitude }}" slot="markers" title="{{ marker.title | escape_once }}" data-end-date="{{ marker.endDate | date_to_xmlschema }}" data-start-date="{{ marker.startDate | date_to_xmlschema }}"{% if marker.category %} data-category="{{ marker.category }}"{% endif %} hidden="">
-				<img src="{{ marker.icon | default: '/img/markers/event.svg' }}" slot="icon" width="32" height="32" />
-				<div slot="popup" itemprop="subEvent" itemtype="https://schema.org/Event" itemscope="">
-					<meta itemprop="eventAttendanceMode" content="{{ marker.eventAttendanceMode | default: 'https://schema.org/OfflineEventAttendanceMode' }}" />
-					<meta itemprop="eventStatus" content="{{ marker.eventStatus | default: 'https://schema.org/EventScheduled' }}" />
-					<meta itemprop="url" content="{{ site.url }}/map/#{{ marker.uuid }}" />
-					<h3 class="center">
-						{% if marker.music %}<span class="emoji">🎶 </span>{% endif %}
-						<span itemprop="name">{{ marker.title | escape_once }}</span>
-					</h3>
-					{% if marker.image %}<img src="{{ marker.image }}" decoding="async" loading="lazy" itemprop="image" alt="{{ marker.title | escape_once }}" />{% endif %}
-					<div>
-						<time itemprop="startDate" datetime="{{ marker.startDate | date_to_xmlschema }}">{{ marker.startDate | date: '%a %r'}}</time>
-						<span>&mdash;</span>
-						<time itemprop="endDate" datetime="{{ marker.endDate |  date_to_xmlschema }}">{{ marker.endDate | date: '%a %r'}}</time>
-					</div>
-					{% if marker.offers %}<ul>{% for offer in marker.offers %}
-						<li class="offer offer-{{ offer.availability | default: 'InStock' }}" itemprop="offers" itemtype="https://schema.org/Offer" itemscope="">
-							<span class="offer-label" itemprop="name">{{ offer.name | default: "Admission" }}</span>:
-							<meta itemprop="priceCurrency" content="{{ offer.priceCurrency | default: 'USD' }}" />
-							<meta itemprop="availability" content="https://schema.org/{{ offer.availability | default: 'InStock' }}" />
-							<span>$</span><span itemprop="price">{{ offer.price }}</span>
-						</li>
-					{% endfor %}</ul>{% endif %}
-					<div itemprop="location" itemtype="https://schema.org/Place" itemscope="">
-						{% if marker.location.name %}<h4 class="center" itemprop="name">{{ marker.location.name }}</h4>{% endif %}
-						{% if marker.location.address %}
-							<address itemprop="address" itemtype="https://schema.org/PostalAddress" itemscope="">
-								{% if marker.location.address.streetAddress %}<div itemprop="streetAddress">{{ marker.location.address.streetAddress }}</div>{% endif %}
-								<div>
-									<span itemprop="addressLocality">{{ marker.location.address.addressLocality | default: 'Kernville' }}</span>,
-									<span itemprop="addressRegion">{{ marker.location.address.addressRegion | default: 'CA' }}</span>
-								</div>
-								<meta itemprop="addressCountry" content="{{ marker.location.address.addressCountry | default: 'US' }}" />
-								<meta itemprop="postalCode" content="{{ marker.location.address.postalCode | default: 93238 }}" />
-							</address>
-						{% endif %}
-						{% if marker.location.url %}
-							<br />
-							<a href="{{ marker.location.url }}" class="inline-block btn btn-primary" rel="external noopener noreferrer" role="button" itemprop="url">
-								{% include common/icon.html icon="map" height="16" width="16" %}
-								<span>View in Map App</span>
-							</a>
-						{% else %}
-							<br />
-							<!-- geo:35.760197,-118.426793;crs=wgs84;u=0 -->
-							<a href="https://www.google.com/maps/?q={{ marker.location.geo.latitude }},{{ marker.location.geo.longitude }}" class="inline-block btn btn-primary" rel="external noopener noreferrer" role="button" itemprop="url">
-								{% include common/icon.html icon="map" height="16" width="16" %}
-								<span>View in Map App</span>
-							</a>
-						{% endif %}
-						<div itemprop="geo" itemtype="https://schema.org/GeoCoordinates" itemscope="" hidden="">
-							<meta itemprop="latitude" content="{{ marker.location.geo.latitude }}" />
-							<meta itemprop="longitude" content="{{ marker.location.geo.longitude }}" />
-						</div>
-					</div>
-					{% if marker.description %}<div itemprop="description">{{ marker.description }}</div>{% endif %}
-					{% if marker.uuid %}
-						<button type="button" is="share-button" url="https://whiskeyflatdays.com/map/#{{ marker.uuid }}" text="Check out {{ marker.title | escape_once }}" title="{{ marker.title | escape_once }} | Whiskey Flat Days Map" source="whiskey-flat-days" medium="social" content="map-marker" hidden="">
-							<svg width="16" height="16" aria-hidden="true">
-								<use xlink:href="{{ site.icons }}#share"></use>
-							</svg>
-							<span>Share</span>
-						</button>
-					{% endif %}
-				</div>
-			</leaflet-marker>
-			{% if marker.geojson %}
-				<leaflet-geojson src="{{ marker.geojson.src }}" class="content-visibility-hidden" marker="{{ marker.uuid }}" color="{{ marker.geojson.color | default: '#3871EA' }}" hidden="" {% if marker.geojson.fill %}fill=""{% else %}stroke=""{% endif %}></leaflet-geojson>
-			{% endif %}
-		{% endfor %}
-		{% for path in site.data.paths %}
-			<leaflet-geojson id="{{ path.uuid }}" src="{{ path.src }}" color="{{ path.color }}" title="{{ path.title }}" stroke="" hidden=""></leaflet-geojson>
-		{% endfor %}{% endunless %}
-	</leaflet-map>
+	{% include map.html %}
 </main>
 {% unless site.data.mainEvent.eventStatus == 'EventCancelled' %}
-	<toast-message id="event-search-toast" backdrop="">
-		<form name="eventSearch" slot="content">
-			<fieldset class="no-border">
-				<legend>Search Events by Date &amp; Time</legend>
-				<label class="block card input-group" for="search-date">
-					{% include common/icon.html icon="calendar" %}
-					<span class="mobile-hidden">Day</span>
-					<select name="day" id="search-date" class="pretty-input" required="">
-						<option value="2020-02-14">Friday</option>
-						<option value="2020-02-15">Saturday</option>
-						<option value="2020-02-16">Sunday</option>
-						<option value="2020-02-17">Monday</option>
-					</select>
-				</label>
-				<label class="card input-group block" for="search-time">
-					{% include common/icon.html icon="clock" %}
-					<span class="mobile-hidden">Time</span>
-					<input type="time" name="time" id="search-time" class="pretty-input" min="08:00" max="20:00" placeholder="hh:mm" required="" />
-				</label>
-			</fieldset>
-			<div class="btns flex row nowrap">
-				<button type="submit" class="btn btn-accept btn-wide">
-					{% include common/icon.html icon="search" %}
-					<span class="mobile-hidden">Search</span>
-				</button>
-				<button type="reset" class="btn btn-reject btn-wide">
-					{% include common/icon.html icon="x" %}
-					<span class="mobile-hidden">Cancel</span>
-				</button>
-			</div>
-		</form>
-	</toast-message>
-	<toast-message id="business-search-toast" backdrop="">
-		<form name="businessSearch" slot="content">
-			<fieldset class="no-border">
-				<datalist id="business-categories">
-					<option value="Dining" />
-					<option value="Restaurant" />
-					<option value="Gas" />
-					<option value="Bar" />
-					<option value="Groceries" />
-					<option value="Other" />
-					<option value="Cafe" />
-					<option value="ATM" />
-				</datalist>
-				<legend>Search Businesses</legend>
-				<label for="search-business-category">
-					{% include common/icon.html icon="tag" %}
-					<span class="mobile-hidden">Category</span>
-				</label>
-				<input type="text" name="category" list="business-categories" placeholder="Category" id="search-business-category" class="background-inherit color-inherit no-border" autocomplete="off" required="" />
-			</fieldset>
-			<div class="btns flex row nowrap">
-				<button type="submit" class="btn btn-accept btn-wide">
-					{% include common/icon.html icon="search" %}
-					<span class="mobile-hidden">Search</span>
-				</button>
-				<button type="reset" class="btn btn-reject btn-wide">
-					{% include common/icon.html icon="x" %}
-					<span class="mobile-hidden">Cancel</span>
-				</button>
-			</div>
-		</form>
-	</toast-message>
-	<toast-message id="vendor-search-toast" backdrop="">
-		<form name="vendorSearch" slot="content">
-			<fieldset class="no-border">
-				<datalist id="vendor-categories">
-				</datalist>
-				<legend>Search Vendors</legend>
-				<label for="search-vendor-category">
-					{% include common/icon.html icon="tag" %}
-					<span class="mobile-hidden">Category</span>
-				</label>
-				<input type="text" name="category" list="vendor-categories" placeholder="Category" id="search-vendor-category" class="background-inherit color-inherit no-border" autocomplete="off" required="" />
-			</fieldset>
-			<div class="btns flex row nowrap">
-				<button type="submit" class="btn btn-accept btn-wide">
-					{% include common/icon.html icon="search" %}
-					<span class="mobile-hidden">Search</span>
-				</button>
-				<button type="reset" class="btn btn-reject btn-wide">
-					{% include common/icon.html icon="x" %}
-					<span class="mobile-hidden">Cancel</span>
-				</button>
-			</div>
-		</form>
-	</toast-message>
+	{% include event-search.html %}
+	{% include business-search.html %}
+	{% include vendor-search.html %}
 	<button type="button" id="search-btn" class="btn btn-primary fixed bottom left z-top shadow round" data-show="#event-search-toast" title="Search Events">
 		{% include common/icon.html icon="search" %}
 	</button>

@@ -1,29 +1,30 @@
 import { createCustomElement } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
 import { site, icons, mapSelector } from './consts.js';
 
-export async function stateHandler({ state }) {
-	const { uuid = null, longitude = NaN, latitude = NaN, title = null, body = null } = state || {};
-	if (typeof uuid === 'string') {
-		const map = await getMap();
-		await map.ready;
-		const marker = document.getElementById(uuid);
+export function filterEventNamesDatalist() {
+	const datalist = document.getElementById('events-list');
 
-		if (marker instanceof HTMLElement) {
-			map.center = marker;
-			marker.hidden = false;
-			document.title = `${title} | ${site.title}`;
-			map.center = marker;
-			marker.open = true;
-		}
-	} else if (! (Number.isNaN(longitude) || Number.isNaN(latitude))) {
-		const marker = await createMarker({longitude, latitude, title, id: `${latitude},${longitude}`, body});
-		const map = await getMap();
-		map.center = marker;
-		marker.open = true;
-	} else if (location.pathname.startsWith('/map')) {
-		await customElements.whenDefined('leaflet-marker');
-		document.querySelectorAll('leaflet-marker').forEach(el => el.open = false);
+	if (datalist instanceof HTMLElement) {
+		const opts = new Set();
+
+		[...datalist.options].forEach(opt => {
+			opts.add(opt.value);
+			opt.remove();
+		});
+
+		opts.forEach(opt => {
+			const el = document.createElement('option');
+			el.value = opt;
+			datalist.append(el);
+		});
 	}
+}
+
+export function isOnGoing() {
+	const start = new Date('2020-02-14T08:00');
+	const end = new Date('2020-02-17T16:00');
+	const now = new Date();
+	return (now > start && now < end);
 }
 
 export async function searchLocationMarker(url = new URL(location.href)) {
@@ -36,14 +37,13 @@ export async function searchLocationMarker(url = new URL(location.href)) {
 		} else if (url.searchParams.get('coords').startsWith('geo:')) {
 			const [latitude = null, longitude = null] = url.searchParams.get('coords').replace('geo:', '').split(',', 2).map(parseFloat);
 			const loc = new URL(location.pathname, location.origin);
-			loc.hash = `#${latitude},${longitude}`;
+			location.hash = `#${latitude},${longitude}`;
 			history.replaceState({
 				latitude,
 				longitude,
 				title: `${url.searchParams.get('title') || 'Location'}`,
 				body: `Location: ${latitude}, ${longitude}`,
 			}, `${url.searchParams.get('title') || 'Location'} | ${site.title}`, loc.href);
-			stateHandler(history);
 		} else if (url.searchParams.get('coords').startsWith('https://')) {
 			// On Android, URL & text are shared in same field
 			return new URL(url.searchParams.get('coords').split(' ', 1)[0]);
@@ -51,24 +51,6 @@ export async function searchLocationMarker(url = new URL(location.href)) {
 	}
 
 	return false;
-}
-
-export async function setLocationMarker({latitude = NaN, longitude = NaN, title = 'Location'} = {}) {
-	if (! (Number.isNaN(latitude) || Number.isNaN(longitude))) {
-		const url = new URL(location.pathname, location.origin);
-		url.hash = `#${latitude},${longitude}`;
-		document.title = `${title} | ${site.title}`;
-		history.pushState({
-			latitude,
-			longitude,
-			title,
-			body: `Location: ${latitude}, ${longitude}`,
-		}, document.title, url.href);
-		stateHandler(history);
-		return true;
-	} else {
-		return false;
-	}
 }
 
 export async function createMarker({

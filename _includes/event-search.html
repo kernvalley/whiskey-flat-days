@@ -1,0 +1,32 @@
+<toast-message id="event-search-toast" backdrop="">
+	<form name="eventSearch" slot="content">
+		<fieldset class="no-border">
+			<legend>Search Events by Date &amp; Time</legend>
+			<label class="block card input-group" for="search-date">
+				{% include common/icon.html icon="calendar" %}
+				<span class="mobile-hidden">Day</span>
+				<select name="day" id="search-date" class="pretty-input" required="">
+					<option value="2020-02-14">Friday</option>
+					<option value="2020-02-15">Saturday</option>
+					<option value="2020-02-16">Sunday</option>
+					<option value="2020-02-17">Monday</option>
+				</select>
+			</label>
+			<label class="card input-group block" for="search-time">
+				{% include common/icon.html icon="clock" %}
+				<span class="mobile-hidden">Time</span>
+				<input type="time" name="time" id="search-time" class="pretty-input" min="08:00" max="20:00" placeholder="hh:mm" required="" />
+			</label>
+		</fieldset>
+		<div class="btns flex row nowrap">
+			<button type="submit" class="btn btn-accept btn-wide">
+				{% include common/icon.html icon="search" %}
+				<span class="mobile-hidden">Search</span>
+			</button>
+			<button type="reset" class="btn btn-reject btn-wide">
+				{% include common/icon.html icon="x" %}
+				<span class="mobile-hidden">Cancel</span>
+			</button>
+		</div>
+	</form>
+</toast-message>
