@@ -1,0 +1,24 @@
+<toast-message id="vendor-search-toast" backdrop="">
+	<form name="vendorSearch" slot="content">
+		<fieldset class="no-border">
+			<datalist id="vendor-categories">
+			</datalist>
+			<legend>Search Vendors</legend>
+			<label for="search-vendor-category">
+				{% include common/icon.html icon="tag" %}
+				<span class="mobile-hidden">Category</span>
+			</label>
+			<input type="text" name="category" list="vendor-categories" placeholder="Category" id="search-vendor-category" class="background-inherit color-inherit no-border" autocomplete="off" required="" />
+		</fieldset>
+		<div class="btns flex row nowrap">
+			<button type="submit" class="btn btn-accept btn-wide">
+				{% include common/icon.html icon="search" %}
+				<span class="mobile-hidden">Search</span>
+			</button>
+			<button type="reset" class="btn btn-reject btn-wide">
+				{% include common/icon.html icon="x" %}
+				<span class="mobile-hidden">Cancel</span>
+			</button>
+		</div>
+	</form>
+</toast-message>

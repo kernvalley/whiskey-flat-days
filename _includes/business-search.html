@@ -1,0 +1,32 @@
+<toast-message id="business-search-toast" backdrop="">
+	<form name="businessSearch" slot="content">
+		<fieldset class="no-border">
+			<datalist id="business-categories">
+				<option value="Dining" />
+				<option value="Restaurant" />
+				<option value="Gas" />
+				<option value="Bar" />
+				<option value="Groceries" />
+				<option value="Other" />
+				<option value="Cafe" />
+				<option value="ATM" />
+			</datalist>
+			<legend>Search Businesses</legend>
+			<label for="search-business-category">
+				{% include common/icon.html icon="tag" %}
+				<span class="mobile-hidden">Category</span>
+			</label>
+			<input type="text" name="category" list="business-categories" placeholder="Category" id="search-business-category" class="background-inherit color-inherit no-border" autocomplete="off" required="" />
+		</fieldset>
+		<div class="btns flex row nowrap">
+			<button type="submit" class="btn btn-accept btn-wide">
+				{% include common/icon.html icon="search" %}
+				<span class="mobile-hidden">Search</span>
+			</button>
+			<button type="reset" class="btn btn-reject btn-wide">
+				{% include common/icon.html icon="x" %}
+				<span class="mobile-hidden">Cancel</span>
+			</button>
+		</div>
+	</form>
+</toast-message>

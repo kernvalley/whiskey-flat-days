@@ -1,8 +1,6 @@
-import { loaded, wait, $ } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
-import { site } from './consts.js';
-import { getMap, createMarker } from './functions.js';
+import { $ } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
 
-export function  searchDateTimeRange({from = new Date('2020-02-14T11:00'), hours = 2} = {}) {
+export function  searchDateTimeRange({ from = new Date('2020-02-14T11:00'), hours = 2 } = {}) {
 	if (! (from instanceof Date)) {
 		from = new Date(from) || new Date();
 	}
@@ -39,90 +37,6 @@ export async function eventSearchHandler(event) {
 	}
 
 	toast.close();
-}
-
-export async function hashChange() {
-	if (! location.pathname.startsWith('/map')) {
-		return;
-	} else if (location.hash === '') {
-		document.title = `Map | ${site.title}`;
-		history.replaceState({
-			title: 'Map',
-			latitude: NaN,
-			longitude: NaN,
-			uuid: null,
-		}, document.title, location.href);
-
-		$('leaflet-marker[open]').attr({open: false});
-	} else if (! location.hash.includes(',')) {
-		$('leaflet-geojson').hide();
-		$('leaflet-marker').close();
-
-		const marker = document.getElementById(location.hash.substr(1));
-
-		if (marker instanceof HTMLElement) {
-			const map = marker.parentElement;
-
-			if (marker.title !== '') {
-				document.title = `${marker.title} |${site.title}`;
-			} else {
-				document.title = `Map | ${site.title}`;
-			}
-
-			switch(marker.tagName.toLowerCase()) {
-				case 'leaflet-marker':
-					history.replaceState({
-						latitude: marker.latitude,
-						longitude: marker.longitude,
-						uuid: location.hash.substr(1),
-						title: marker.title,
-					}, document.title, location.href);
-
-					(async () => {
-						map.center = {latitude: marker.latitude, longitude: marker.longitude};
-						map.scrollIntoView({behavior: 'smooth', block: 'start'});
-						const geojson = map.querySelector(`leaflet-geojson[marker="${marker.id}"]`);
-						await Promise.all([marker.ready, map.ready, loaded()]);
-						await wait(100);
-						marker.hidden = false;
-						marker.open = true;
-
-						if (geojson instanceof HTMLElement) {
-							geojson.hidden = false;
-						}
-					})();
-					break;
-
-				case 'leaflet-geojson':
-					map.scrollIntoView({behavior: 'smooth', block: 'start'});
-					marker.hidden = false;
-					break;
-			}
-		}
-	} else if (location.hash.includes(',')) {
-		const [latitude = NaN, longitude = NaN] = location.hash.substr(1).split(',').map(parseFloat);
-		const map = await getMap();
-		await $('#my-location-marker', map).remove();
-		const marker = await createMarker({
-			latitude,
-			longitude,
-			size: 42,
-			body: 'Marked Location',
-			id: 'my-location-marker',
-		});
-
-		document.title = `Marked Location | ${site.title}`;
-		history.replaceState({
-			longitude,
-			latitude,
-			uuid: null,
-			title: document.title,
-		}, document.title, location.href);
-		map.center = {latitude, longitude};
-		map.scrollIntoView({behavior: 'smooth', block: 'start'});
-		await wait(200);
-		marker.open = true;
-	}
 }
 
 export async function businessCategorySearch(event) {
