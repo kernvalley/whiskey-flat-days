@@ -14,12 +14,12 @@ tags:
 - old west
 - festival
 ---
-<article class="card shadow">
+<article>
 	<header>
-		<div class="card shadow" itemprop="about" itemtype="https://schema.org/{{ site.data.mainEvent['@type'] | default: 'Event' }}" itemscope="">
+		<div itemprop="about" itemtype="https://schema.org/{{ site.data.mainEvent['@type'] | default: 'Event' }}" itemscope="">
 			<h2 class="center" itemprop="name">{{ site.data.mainEvent.name }}</h2>
 			<meta itemprop="url" content="{{ site.data.mainEvent.url }}" />
-			<div itemprop="description">{{ site.data.mainEvent.description }}</div>
+			<div class="center" itemprop="description">{{ site.data.mainEvent.description }}</div>
 			<meta itemprop="image" content="{{ site.data.mainEvent.image.first.url }}" />
 			<div class="event-dates center">
 				<time itemprop="startDate" datetime="{{ site.data.mainEvent.startDate }}">{{ site.data.mainEvent.startDate | date: "%b %d, %Y" }}</time>

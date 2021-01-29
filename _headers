@@ -2,12 +2,16 @@
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
   X-XSS-Protection: 1; mode=block
+  Link: </css/index.min.css>; rel=preload; as=style; referrerpolicy=no-referrrer;
+  Link: </js/index.min.js>; rel=preload; as=script; referrerpolicy=no-referrrer;
   Content-Security-Policy: default-src 'self'; img-src * blob: data:; script-src 'self' https://cdn.kernvalley.us https://unpkg.com/ https://www.google-analytics.com https://www.googletagmanager.com https://cdn.polyfill.io/v3/polyfill.min.js; style-src 'self' https://cdn.kernvalley.us https://unpkg.com/; connect-src 'self' https://cdn.kernvalley.us https://api.kernvalley.us https://apps.kernvalley.us https://api.github.com/users/ https://api.openweathermap.org/data/2.5/weather https://www.google-analytics.com/ https://www.googletagmanager.com/gtag/; font-src https://cdn.kernvalley.us; media-src *; frame-src https://www.youtube-nocookie.com; form-action 'self'; manifest-src 'self'; worker-src 'self'; reflected-xss block; upgrade-insecure-requests; block-all-mixed-content; disown-opener;
 
 /:placeholder/
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
   X-XSS-Protection: 1; mode=block
+  Link: </css/index.min.css>; rel=preload; as=style; referrerpolicy=no-referrrer;
+  Link: </js/index.min.js>; rel=preload; as=script; referrerpolicy=no-referrrer;
   Content-Security-Policy: default-src 'self'; img-src * blob: data:; script-src 'self' https://cdn.kernvalley.us https://unpkg.com/ https://www.google-analytics.com https://www.googletagmanager.com https://cdn.polyfill.io/v3/polyfill.min.js; style-src 'self' https://cdn.kernvalley.us https://unpkg.com/; connect-src 'self' https://cdn.kernvalley.us https://api.kernvalley.us https://apps.kernvalley.us https://api.github.com/users/ https://api.openweathermap.org/data/2.5/weather https://www.google-analytics.com/ https://www.googletagmanager.com/gtag/; font-src https://cdn.kernvalley.us; media-src *; frame-src https://www.youtube-nocookie.com; form-action 'self'; manifest-src 'self'; worker-src 'self'; reflected-xss block; upgrade-insecure-requests; block-all-mixed-content; disown-opener;
 
 /reset
@@ -16,8 +20,8 @@
 
 /service-worker.js
   Content-Security-Policy: default-src 'self'; connect-src *; script-src 'self' https://cdn.kernvalley.us/service-worker.js;
-  Link: </sw-config.js> rel=preload; as=script
-  Link: <https://cdn.kernvalley.us/service-worker.js> rel=preload; as=script
+  Link: </sw-config.js>; rel=preload; as=script
+  Link: <https://cdn.kernvalley.us/service-worker.js>; rel=preload; as=script
 
 /*
   X-Content-Type-Options: nosniff
