@@ -14,26 +14,28 @@ const config = {
 		'https://cdn.kernvalley.us/img/markers.svg',
 	].map(path => new URL(path, location.origin).href),
 	stale: [
-		'/css/index.min.css',
+		/* Scripts */
 		'/js/index.min.js',
-		'/img/icons.svg',
-		/* Other HTML */
-
-		/* JS, `customElements`, etc. */
 		'https://cdn.kernvalley.us/components/leaflet/map.min.js',
+
+		/* Custom Element Templates */
 		'https://cdn.kernvalley.us/components/toast-message.html',
 		'https://cdn.kernvalley.us/components/pwa/prompt.html',
 		'https://cdn.kernvalley.us/components/leaflet/map.html',
 		'https://cdn.kernvalley.us/components/weather/current.html',
+		'https://cdn.kernvalley.us/components/notification/html-notification.html',
 
 		/* CSS */
+		'/css/index.min.css',
 		'https://unpkg.com/leaflet@1.7.1/dist/leaflet.css',
 		'https://cdn.kernvalley.us/components/toast-message.css',
 		'https://cdn.kernvalley.us/components/pwa/prompt.css',
 		'https://cdn.kernvalley.us/components/leaflet/map.css',
 		'https://cdn.kernvalley.us/components/weather/current.css',
+		'https://cdn.kernvalley.us/components/notification/html-notification.css',
 
 		/* Images & Icons */
+		'/img/icons.svg',
 		'/img/apple-touch-icon.png',
 		'/img/icon-192.png',
 		'/img/favicon.svg',
@@ -41,8 +43,6 @@ const config = {
 		'https://cdn.kernvalley.us/img/logos/chrome.svg',
 		'https://cdn.kernvalley.us/img/keep-kern-clean.svg',
 		'https://cdn.kernvalley.us/img/logos/play-badge.svg',
-
-		/* Map Icons */
 		'/img/octicons/info.svg',
 		'/img/adwaita-icons/status/avatar-default.svg',
 
@@ -61,10 +61,10 @@ const config = {
 		'https://maps.wikimedia.org/osm-intl/',
 		'https://cdn.kernvalley.us/img/',
 		/https:\/\/\w+\.githubusercontent\.com\/u\/*/,
-		new URL('/paths/', location.origin).href,
 		new URL('/img/raster/', location.origin).href,
 	],
 	allowedFresh: [
+		new URL('/paths/', location.origin).href,
 		'https://api.openweathermap.org/data/',
 		'https://api.github.com/users/',
 	],
