@@ -1,30 +1,32 @@
-- href: "https://cdn.kernvalley.us/components/github/user.html"
+- href: https://cdn.kernvalley.us/components/weather/current.html
   as: fetch
   type: text/html
   referrerPolicy: no-referrer
   crossOrigin: anonymous
-- href: "https://cdn.kernvalley.us/components/github/user.css"
+- href: https://cdn.kernvalley.us/components/weather/current.css
   as: style
   type: text/css
   referrerPolicy: no-referrer
   crossOrigin: anonymous
-- href: "https://cdn.kernvalley.us/components/weather-current.html"
+- href: https://cdn.kernvalley.us/components/ad/block.css
+  as: style
+  type: text/css
+  referrerPolicy: no-referrer
+  crossOrigin: anonymous
+- href: https://cdn.kernvalley.us/components/ad/block.html
   as: fetch
   type: text/html
   referrerPolicy: no-referrer
   crossOrigin: anonymous
-- href: "https://cdn.kernvalley.us/components/weather-current.css"
-  as: style
-  type: text/css
-  referrerPolicy: no-referrer
-  crossOrigin: anonymous
-- href: "https://cdn.kernvalley.us/components/ad/block.css"
-  as: style
-  type: text/css
-  referrerPolicy: no-referrer
-  crossOrigin: anonymous
-- href: "https://cdn.kernvalley.us/components/ad/block.html"
+- href: https://cdn.kernvalley.us/components/github/user.html
   as: fetch
   type: text/html
   referrerPolicy: no-referrer
   crossOrigin: anonymous
+  importance: low
+- href: https://cdn.kernvalley.us/components/github/user.css
+  as: style
+  type: text/css
+  referrerPolicy: no-referrer
+  crossOrigin: anonymous
+  importance: low

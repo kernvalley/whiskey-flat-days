@@ -1,12 +1,9 @@
-- href: "https://cdn.kernvalley.us"
+- href: https://api.github.com
   referrerPolicy: no-referrer
   crossOrigin: anonymous
-- href: "https://api.github.com"
+- href: https://i.imgur.com
   referrerPolicy: no-referrer
   crossOrigin: anonymous
-- href: "https://i.imgur.com"
-  referrerPolicy: no-referrer
-  crossOrigin: anonymous
-- href: "https://api.openweathermap.org/"
+- href: https://api.openweathermap.org
   referrerPolicy: no-referrer
   crossOrigin: anonymous
