@@ -57,16 +57,15 @@ const config = {
 		/* Other */
 	].map(path => new URL(path, location.origin).href),
 	allowed: [
-		'https://secure.gravatar.com/avatar/',
 		'https://i.imgur.com/',
 		'https://maps.wikimedia.org/osm-intl/',
 		'https://cdn.kernvalley.us/img/',
+		/https:\/\/\w+\.githubusercontent\.com\/u\/*/,
 		new URL('/paths/', location.origin).href,
 		new URL('/img/raster/', location.origin).href,
 	],
 	allowedFresh: [
 		'https://api.openweathermap.org/data/',
 		'https://api.github.com/users/',
-		/https:\/\/\w+\.githubusercontent\.com\/u\/*/,
 	],
 };

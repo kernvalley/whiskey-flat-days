@@ -5,47 +5,47 @@ pinned: true
 index: true
 description: The Homepage for Whiskey Flat Days, held on Presidents' Day Weekend in Kernville, CA
 tags:
-- whiskey flat days
-- whiskey flats
-- events
-- kernville
-- rodeo
-- encampment
-- old west
-- festival
+  - whiskey flat days
+  - whiskey flats
+  - events
+  - kernville
+  - rodeo
+  - encampment
+  - old west
+  - festival
 ---
 <article>
-	<header>
-		<div itemprop="about" itemtype="https://schema.org/{{ site.data.mainEvent['@type'] | default: 'Event' }}" itemscope="">
-			<h2 class="center" itemprop="name">{{ site.data.mainEvent.name }}</h2>
-			<meta itemprop="url" content="{{ site.data.mainEvent.url }}" />
-			<div class="center" itemprop="description">{{ site.data.mainEvent.description }}</div>
-			<meta itemprop="image" content="{{ site.data.mainEvent.image.first.url }}" />
-			<div class="event-dates center">
-				<time itemprop="startDate" datetime="{{ site.data.mainEvent.startDate }}">{{ site.data.mainEvent.startDate | date: "%b %d, %Y" }}</time>
-				<span>&mdash;</span>
-				<time itemprop="endDate" datetime="{{ site.data.mainEvent.endDate }}">{{ site.data.mainEvent.endDate| date: "%b %d, %Y" }}</time>
+	<header itemprop="about" itemtype="https://schema.org/{{ site.data.mainEvent['@type'] | default: 'Event' }}" itemscope="">
+		<h2 class="center" itemprop="name">{{ site.data.mainEvent.name }}</h2>
+		<meta itemprop="url" content="{{ site.data.mainEvent.url }}" />
+		<div class="center" itemprop="description">{{ site.data.mainEvent.description }}</div>
+		<meta itemprop="image" content="{{ site.data.mainEvent.image.first.url }}" />
+		<div class="event-dates center">
+			<time itemprop="startDate" datetime="{{ site.data.mainEvent.startDate }}">{{ site.data.mainEvent.startDate | date: "%b %d, %Y" }}</time>
+			<span>&mdash;</span>
+			<time itemprop="endDate" datetime="{{ site.data.mainEvent.endDate }}">{{ site.data.mainEvent.endDate| date: "%b %d, %Y" }}</time>
+		</div>
+		<meta itemprop="eventAttendanceMode" content="{{ site.data.mainEvent.eventAttendanceMode | default: 'OfflineEventAttendanceMode' }}" />
+		<meta itemprop="eventStatus" content="{{ site.data.mainEvent.eventStatus | default: 'EventScheduled' }}" />
+		<div itemprop="organizer" itemtype="https://schema.org/{{ site.data.mainEvent.organizer['@type'] | default: 'Organization' }}" itemscope="" hidden="">
+			<meta itemprop="name" content="{{ site.data.mainEvent.organizer.name }}" />
+			<meta itemprop="url" content="{{ site.data.mainEvent.organizer.url }}" />
+		</div>
+		<address itemprop="location" itemtype="https://schema.org/{{ site.data.mainEvent.location['@type'] | default: 'Place' }}" itemscope="" hidden="">
+			<meta itemprop="name" content="{{ site.data.mainEvent.location.name }}" />
+			<!-- <meta itemprop="image" content="https://whiskeyflatdays.com/coach-800.jpg" /> -->
+			<div itemprop="address" itemtype="https://schema.org/PostalAddress" itemscope="" hidden="">
+				<meta itemprop="addressLocality" content="{{ site.data.mainEvent.location.address.addressLocality }}" />
+				<meta itemprop="addressRegion" content="{{ site.data.mainEvent.location.address.addressRegion }}" />
+				<meta itemprop="addressCountry" content="{{ site.data.mainEvent.location.address.addressCountry }}" />
+				<meta itemprop="postalCode" content="{{ site.data.mainEvent.location.address.postalCode }}" />
 			</div>
-			<meta itemprop="eventAttendanceMode" content="{{ site.data.mainEvent.eventAttendanceMode | default: 'OfflineEventAttendanceMode' }}" />
-			<meta itemprop="eventStatus" content="{{ site.data.mainEvent.eventStatus | default: 'EventScheduled' }}" />
-			<div itemprop="organizer" itemtype="https://schema.org/{{ site.data.mainEvent.organizer['@type'] | default: 'Organization' }}" itemscope="" hidden="">
-				<meta itemprop="name" content="{{ site.data.mainEvent.organizer.name }}" />
-				<meta itemprop="url" content="{{ site.data.mainEvent.organizer.url }}" />
+			<div itemprop="geo" itemtype="https://schema.org/GeoCoordinates" itemscope="" hidden="">
+				<meta itemprop="latitude" content="{{ site.data.mainEvent.location.geo.latitude }}" />
+				<meta itemprop="longitude" content="{{ site.data.mainEvent.location.geo.longitude }}" />
 			</div>
-			<address itemprop="location" itemtype="https://schema.org/{{ site.data.mainEvent.location['@type'] | default: 'Place' }}" itemscope="" hidden="">
-				<meta itemprop="name" content="{{ site.data.mainEvent.location.name }}" />
-				<!-- <meta itemprop="image" content="https://whiskeyflatdays.com/coach-800.jpg" /> -->
-				<div itemprop="address" itemtype="https://schema.org/PostalAddress" itemscope="" hidden="">
-					<meta itemprop="addressLocality" content="{{ site.data.mainEvent.location.address.addressLocality }}" />
-					<meta itemprop="addressRegion" content="{{ site.data.mainEvent.location.address.addressRegion }}" />
-					<meta itemprop="addressCountry" content="{{ site.data.mainEvent.location.address.addressCountry }}" />
-					<meta itemprop="postalCode" content="{{ site.data.mainEvent.location.address.postalCode }}" />
-				</div>
-				<div itemprop="geo" itemtype="https://schema.org/GeoCoordinates" itemscope="" hidden="">
-					<meta itemprop="latitude" content="{{ site.data.mainEvent.location.geo.latitude }}" />
-					<meta itemprop="longitude" content="{{ site.data.mainEvent.location.geo.longitude }}" />
-				</div>
-			</address>
-			{% include event-status.html event=site.data.mainEvent %}
+		</address>
 	</header>
+	<hr />
+	{% include event-status.html event=site.data.mainEvent %}
 </article>
