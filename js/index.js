@@ -56,46 +56,45 @@ if (typeof GA === 'string' && GA !== '') {
 	});
 }
 
-cookieStore.get({ name: 'visited' }).then(async cookie => {
-	if (new Date() < new Date('2021-02-18') && ! cookie) {
-		await Promise.allSettled([
-			ready(),
-			preload('https://cdn.kernvalley.us/components/notification/html-notification.html', { as: 'fetch', type: 'text/html' }),
-			preload('https://cdn.kernvalley.us/components/notification/html-notification.css', { as: 'style', type: 'text/css' }),
-			preload('/img/favicon.svg', { as: 'image', type: 'image/svg+xml' }),
-			preload('/img/adwaita-icons/status/dialog-warning.svg', { as: 'image', type: 'image/svg+xml' }),
-		]);
+if (location.pathname.startsWith('/map')) {
+	cookieStore.get({ name: 'visited' }).then(async cookie => {
+		if (new Date() < new Date('2021-02-18') && ! cookie) {
+			await Promise.allSettled([
+				ready(),
+				preload('https://cdn.kernvalley.us/components/notification/html-notification.html', { as: 'fetch', type: 'text/html' }),
+				preload('https://cdn.kernvalley.us/components/notification/html-notification.css', { as: 'style', type: 'text/css' }),
+				preload('/img/adwaita-icons/status/dialog-warning.svg', { as: 'image', type: 'image/svg+xml' }),
+			]);
 
-		new HTMLNotificationElement('WFD cancelled', {
-			body: 'Whiskey Flat Days has been cancelled for 2021 due to COVID-19 and the inability to obtain the necessary permits',
-			icon: '/img/favicon.svg',
-			badge: 'https://cdn.kernvalley.us/img/adwaita-icons/status/dialog-warning.svg',
-			requireInteraction: true,
-			data: {
-				cookie: {
-					name: 'visited',
-					value: 'yes',
-					secure: true,
-					expires: new Date('2021-02-18T00:00').getTime(),
+			new HTMLNotificationElement('WFD cancelled', {
+				body: 'Whiskey Flat Days has been cancelled for 2021 due to COVID-19 and the inability to obtain the necessary permits',
+				icon: '/img/favicon.svg',
+				badge: 'https://cdn.kernvalley.us/img/adwaita-icons/status/dialog-warning.svg',
+				requireInteraction: true,
+				data: {
+					cookie: {
+						name: 'visited',
+						value: 'yes',
+						secure: true,
+						expires: new Date('2021-02-18T00:00').getTime(),
+					}
+				},
+				actions:[{
+					title: 'Dismiss',
+					action: 'dismiss',
+					icon: 'https://cdn.kernvalley.us/img/octicons/x.svg',
+				}]
+			}).addEventListener('notificationclick', ({ action, target }) => {
+				switch(action) {
+					case 'dismiss':
+						cookieStore.set(target.data.cookie);
+						target.close();
+						break;
 				}
-			},
-			actions:[{
-				title: 'Dismiss',
-				action: 'dismiss',
-				icon: 'https://cdn.kernvalley.us/img/octicons/x.svg',
-			}]
-		}).addEventListener('notificationclick', ({ action, target }) => {
-			switch(action) {
-				case 'dismiss':
-					cookieStore.set(target.data.cookie);
-					target.close();
-					break;
-			}
-		});
-	}
-});
-
-if (location.pathname.startsWith('/events') && ('IntersectionObserver' in window)) {
+			});
+		}
+	});
+} else if (location.pathname.startsWith('/events') && ('IntersectionObserver' in window)) {
 	ready().then(() => {
 		$('.event-item').intersect(({ target, isIntersecting }) => {
 			if (isIntersecting) {
