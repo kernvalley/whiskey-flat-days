@@ -47,9 +47,9 @@ sidebar:
     description: The best things going on in the Valley
     image: https://cdn.kernvalley.us/img/branding/events.kernvalley.us.svg
     callToAction: See what's going on today.
-  - uuid: ad66057e-bd72-4534-bc8c-11cfc9b020b8
-    label: Schoeppner Carnival
-    description: Come and enjoy great adult and children's rides and games.
-    url: https://whiskeyflatdays.com/map/#1f0b29d1-8d2d-4a5f-9ffc-be1763360e39
-    callToAction: Click for location
-    layout: text
+  # - uuid: ad66057e-bd72-4534-bc8c-11cfc9b020b8
+  #   label: Schoeppner Carnival
+  #   description: Come and enjoy great adult and children's rides and games.
+  #   url: https://whiskeyflatdays.com/map/#1f0b29d1-8d2d-4a5f-9ffc-be1763360e39
+  #   callToAction: Click for location
+  #   layout: text
