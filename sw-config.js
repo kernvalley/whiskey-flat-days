@@ -57,6 +57,8 @@ const config = {
 		/* Other */
 	].map(path => new URL(path, location.origin).href),
 	allowed: [
+		'https://www.google-analytics.com/analytics.js',
+		'https://www.googletagmanager.com/gtag/js',
 		'https://i.imgur.com/',
 		'https://maps.wikimedia.org/osm-intl/',
 		'https://cdn.kernvalley.us/img/',
