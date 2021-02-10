@@ -10,17 +10,15 @@ sidebar:
     imageFit: cover
     imagePosition: center
     callToAction: Click to see your options
-    layout: card
-    theme: auto
-  - uuid: c180201e-e40b-49d1-a069-2b09b6e99800
-    label: Kern Valley Ads
-    url: https://ads.kernvalley.us/
-    image: https://cdn.kernvalley.us/img/branding/ads.kernvalley.us.svg
-    description: Advertise on local websites throughout the Kern River Valley
-    callToAction: Click here to get started!
-    layout: card
+  - uuid: 2f47c8dc-a3e4-4023-9126-e4214e55446b
+    title: KRV Guide App
+    label: Kern Valley Guide App
+    image: https://cdn.kernvalley.us/img/branding/guide.kernvalley.us.svg
+    description: Looking for the address of a new burger place? Tired of Google showing results from out-of-town?
+    callToAction: Use the KRV Guide App
+    url: https://guide.kernvalley.us
+    imageFit: contain
     campaign: wfd-ad
-    theme: auto
   - uuid: 091b2538-e3a9-422b-8a3a-e870fdf35d0e
     label: Kernville Chamber of Commerce
     url: https://gotokernville.com
@@ -41,15 +39,17 @@ sidebar:
     description: Skip the lines and head to Lake Isabella to try our famous Prime Rib
     callToAction: View Menu
     campaign: wfd-ad
-  - uuid: 430d5e5f-a4fd-448f-8557-5b6801a14a7d
-    label: Kern Valley Events
-    url: https://events.kernvalley.us/
-    description: The best things going on in the Valley
-    image: https://cdn.kernvalley.us/img/branding/events.kernvalley.us.svg
-    callToAction: See what's going on today.
   # - uuid: ad66057e-bd72-4534-bc8c-11cfc9b020b8
   #   label: Schoeppner Carnival
   #   description: Come and enjoy great adult and children's rides and games.
   #   url: https://whiskeyflatdays.com/map/#1f0b29d1-8d2d-4a5f-9ffc-be1763360e39
   #   callToAction: Click for location
   #   layout: text
+  - uuid: c180201e-e40b-49d1-a069-2b09b6e99800
+    label: Kern Valley Ads
+    url: https://ads.kernvalley.us/
+    image: https://cdn.kernvalley.us/img/branding/ads.kernvalley.us.svg
+    description: Advertise on local websites throughout the Kern River Valley
+    callToAction: Click here to get started!
+    imageFit: contain
+    campaign: wfd-ad
