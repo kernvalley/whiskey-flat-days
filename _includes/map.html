@@ -32,55 +32,69 @@
 			<h3 slot="popup">{{ town.name }}, CA</h3>
 		</leaflet-marker>
 	{% endfor %}
-	{% for business in site.data.places.businesses %}
-		{% if business.address.addressLocality == "Kernville" %}
-			{% include leaflet/local-business-marker.html business=business %}
+	{% for place in site.data.places.businesses %}
+		{% if place.address.addressLocality == "Kernville" and place.geo %}
+			{% include leaflet/local-business-marker.html business=place %}
+		{% elsif place.location.address.addressLocality == "Kernville" and place.location.geo %}
+			{% include leaflet/local-business-marker.html business=place %}
 		{% endif %}
 	{% endfor %}
-	{% for business in site.data.places.restuarants %}
-		{% if business.address.addressLocality == "Kernville" %}
-			{% include leaflet/restaurant-marker.html business=business %}
+	{% for place in site.data.places.restuarants %}
+		{% if place.address.addressLocality == "Kernville" and place.geo %}
+			{% include leaflet/restaurant-marker.html business=place %}
 		{% endif %}
 	{% endfor %}
-	{% for business in site.data.places.cafes %}
-		{% if business.address.addressLocality == "Kernville" %}
-			{% include leaflet/restaurant-marker.html business=business %}
+	{% for place in site.data.places.cafes %}
+		{% if place.address.addressLocality == "Kernville" and place.geo %}
+			{% include leaflet/restaurant-marker.html business=place %}
 		{% endif %}
 	{% endfor %}
-	{% for business in site.data.places.gas %}
-		{% include leaflet/local-business-marker.html business=business %}
-	{% endfor %}
-	{% for business in site.data.places.stores %}
-		{% if business.address.addressLocality == "Kernville" %}
-			{% include leaflet/local-business-marker.html business=business %}
+	{% for place in site.data.places.gas %}
+		{% if place.geo %}
+			{% include leaflet/local-business-marker.html business=place %}
 		{% endif %}
 	{% endfor %}
-	{% for business in site.data.places.bars %}
-		{% if business.address.addressLocality == "Kernville" %}
-			{% include leaflet/local-business-marker.html business=business %}
+	{% for place in site.data.places.stores %}
+		{% if place.address.addressLocality == "Kernville" and place.geo %}
+			{% include leaflet/local-business-marker.html business=place %}
 		{% endif %}
 	{% endfor %}
-	{% for business in site.data.places.financial %}
-		{% if business.address.addressLocality == "Kernville" %}
-			{% include leaflet/local-business-marker.html business=business %}
+	{% for place in site.data.places.bars %}
+		{% if place.address.addressLocality == "Kernville" and place.geo %}
+			{% include leaflet/local-business-marker.html business=place %}
 		{% endif %}
 	{% endfor %}
-	{% for business in site.data.places.civic %}
-		{% if business.address.addressLocality == "Kernville" %}
-			{% include leaflet/local-business-marker.html business=business %}
+	{% for place in site.data.places.financial %}
+		{% if place.address.addressLocality == "Kernville" and place.geo %}
+			{% include leaflet/local-business-marker.html business=place %}
 		{% endif %}
 	{% endfor %}
-	{% for business in site.data.places.campgrounds %}
-		{% include leaflet/local-business-marker.html business=business %}
+	{% for place in site.data.places.civic %}
+		{% if place.address.addressLocality == "Kernville" and place.geo %}
+			{% include leaflet/local-business-marker.html business=place %}
+		{% elsif place.location.address.addressLocality == "Kernville" and place.location.geo %}
+			{% include leaflet/local-business-marker.html business=place %}
+		{% endif %}
 	{% endfor %}
-	{% for business in site.data.places.lodging %}
-		{% include leaflet/local-business-marker.html business=business %}
+	{% for place in site.data.places.campgrounds %}
+		{% if place.geo or place.location.geo %}
+			{% include leaflet/local-business-marker.html business=place %}
+		{% endif %}
 	{% endfor %}
-	{% for business in site.data.places.landmarks %}
-		{% include leaflet/local-business-marker.html business=business %}
+	{% for place in site.data.places.lodging %}
+		{% if place.geo or place.location.geo %}
+			{% include leaflet/local-business-marker.html business=place %}
+		{% endif %}
 	{% endfor %}
-	{% for business in site.data.places.activities %}
-		{% include leaflet/local-business-marker.html business=business %}
+	{% for place in site.data.places.landmarks %}
+		{% if place.geo or place.location.geo %}
+			{% include leaflet/local-business-marker.html business=place %}
+		{% endif %}
+	{% endfor %}
+	{% for place in site.data.places.activities %}
+		{% if place.geo or place.location.geo %}
+			{% include leaflet/local-business-marker.html business=place %}
+		{% endif %}
 	{% endfor %}
 	{% unless site.data.mainEvent.eventStatus == 'EventCancelled' %}{% for marker in site.data.poi %}
 		<leaflet-marker class="poi-marker content-visibility-hidden" id="{{ marker.uuid }}" longitude="{{ marker.location.geo.longitude }}" latitude="{{ marker.location.geo.latitude }}" slot="markers" title="{{ marker.title | escape_once }}"{% if marker.category %} data-category="{{ marker.category }}"{% endif %}>
