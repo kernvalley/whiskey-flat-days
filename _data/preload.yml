@@ -18,15 +18,3 @@
   type: text/html
   referrerPolicy: no-referrer
   crossOrigin: anonymous
-- href: https://cdn.kernvalley.us/components/github/user.html
-  as: fetch
-  type: text/html
-  referrerPolicy: no-referrer
-  crossOrigin: anonymous
-  importance: low
-- href: https://cdn.kernvalley.us/components/github/user.css
-  as: style
-  type: text/css
-  referrerPolicy: no-referrer
-  crossOrigin: anonymous
-  importance: low

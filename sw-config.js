@@ -24,6 +24,7 @@ const config = {
 		'https://cdn.kernvalley.us/components/leaflet/map.html',
 		'https://cdn.kernvalley.us/components/weather/current.html',
 		'https://cdn.kernvalley.us/components/notification/html-notification.html',
+		'https://cdn.kernvalley.us/compoents/install/prompt.html',
 
 		/* CSS */
 		'/css/index.min.css',
@@ -33,6 +34,7 @@ const config = {
 		'https://cdn.kernvalley.us/components/leaflet/map.css',
 		'https://cdn.kernvalley.us/components/weather/current.css',
 		'https://cdn.kernvalley.us/components/notification/html-notification.css',
+		'https://cdn.kernvalley.us/compoents/install/prompt.css',
 
 		/* Images & Icons */
 		'/img/icons.svg',
@@ -64,10 +66,12 @@ const config = {
 		'https://cdn.kernvalley.us/img/',
 		/https:\/\/\w+\.githubusercontent\.com\/u\/*/,
 		new URL('/img/raster/', location.origin).href,
+		/\.(jpg|png|webp|svg|gif)$/,
 	],
 	allowedFresh: [
 		new URL('/paths/', location.origin).href,
 		'https://api.openweathermap.org/data/',
 		'https://api.github.com/users/',
+		/\.(html|css|js|json)$/,
 	],
 };
