@@ -55,7 +55,7 @@ if (typeof GA === 'string' && GA !== '') {
 				}
 			});
 		});
-	})
+	});
 }
 
 if (location.pathname.startsWith('/map')) {
