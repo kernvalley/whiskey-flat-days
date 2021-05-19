@@ -120,7 +120,7 @@ if (location.pathname.startsWith('/map')) {
 }
 
 Promise.all([
-	getCustomElement('install-prompt')
+	getCustomElement('install-prompt'),
 	ready(),
 ]).then(async ([HTMLInstallPromptElement]) => {
 	init();
