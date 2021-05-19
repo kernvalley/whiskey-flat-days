@@ -130,6 +130,7 @@ Promise.all([
 	if (location.pathname.startsWith('/map')) {
 		const now = new Date();
 		const current = isOnGoing();
+
 		if (location.hash === '') {
 			handlers.searchDateTimeRange({from: current ? new Date() : '2020-02-14T10:00'});
 		}
