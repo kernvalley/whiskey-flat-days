@@ -2,6 +2,7 @@
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
   X-XSS-Protection: 1; mode=block
+  Referrer-Policy: no-referrer
   Link: </css/index.min.css>; rel=preload; as=style; referrerpolicy=no-referrrer;
   Link: </js/index.min.js>; rel=preload; as=script; referrerpolicy=no-referrrer;
   Content-Security-Policy: default-src 'self'; img-src *; script-src 'self' cdn.kernvalley.us unpkg.com/ www.google-analytics.com www.googletagmanager.com cdn.polyfill.io/v3/polyfill.min.js; style-src 'self' cdn.kernvalley.us unpkg.com/; connect-src 'self' cdn.kernvalley.us api.kernvalley.us apps.kernvalley.us api.github.com/users/ api.openweathermap.org/data/2.5/weather www.google-analytics.com/ www.googletagmanager.com/gtag/; font-src cdn.kernvalley.us; media-src *; frame-src www.youtube-nocookie.com; form-action 'self'; manifest-src 'self'; worker-src 'self'; reflected-xss block; upgrade-insecure-requests; block-all-mixed-content; disown-opener;
@@ -10,16 +11,19 @@
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
   X-XSS-Protection: 1; mode=block
+  Referrer-Policy: no-referrer
   Feature-Policy: geolocation 'self';
   Link: </css/index.min.css>; rel=preload; as=style; referrerpolicy=no-referrrer;
   Link: </js/index.min.js>; rel=preload; as=script; referrerpolicy=no-referrrer;
   Content-Security-Policy: default-src 'self'; img-src *; script-src 'self' cdn.kernvalley.us unpkg.com/ www.google-analytics.com www.googletagmanager.com cdn.polyfill.io/v3/polyfill.min.js; style-src 'self' cdn.kernvalley.us unpkg.com/; connect-src 'self' cdn.kernvalley.us api.kernvalley.us apps.kernvalley.us api.github.com/users/ api.openweathermap.org/data/2.5/weather www.google-analytics.com/ www.googletagmanager.com/gtag/; font-src cdn.kernvalley.us; media-src *; frame-src www.youtube-nocookie.com; form-action 'self'; manifest-src 'self'; worker-src 'self'; reflected-xss block; upgrade-insecure-requests; block-all-mixed-content; disown-opener;
 
 /reset
+  Referrer-Policy: no-referrer
   Clear-Site-Data: "cache", "cookies", "storage"
   Content-Security-Policy: default-src 'self'; script-src 'self' cdn.kernvalley.us;
 
 /service-worker.js
+  Referrer-Policy: no-referrer
   Content-Security-Policy: default-src 'self'; connect-src *; script-src 'self' cdn.kernvalley.us/service-worker.js;
   Link: </sw-config.js>; rel=preload; as=script
   Link: <//cdn.kernvalley.us/service-worker.js>; rel=preload; as=script

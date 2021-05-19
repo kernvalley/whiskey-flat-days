@@ -1,4 +1,4 @@
-import { createCustomElement } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
+import { createCustomElement } from 'https://cdn.kernvalley.us/js/std-js/custom-elements.js';
 import { site, icons, mapSelector } from './consts.js';
 
 export function filterEventNamesDatalist() {

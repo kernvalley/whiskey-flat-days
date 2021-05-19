@@ -10,13 +10,15 @@ import 'https://cdn.kernvalley.us/components/not-supported.js';
 import 'https://cdn.kernvalley.us/components/ad/block.js';
 import 'https://cdn.kernvalley.us/components/weather/current.js';
 import 'https://cdn.kernvalley.us/components/github/user.js';
-import 'https://cdn.kernvalley.us/components/pwa/install.js';
+import 'https://cdn.kernvalley.us/components/install/prompt.js';
 import 'https://cdn.kernvalley.us/components/app/list-button.js';
 import 'https://cdn.kernvalley.us/components/app/stores.js';
 import { HTMLNotificationElement } from 'https://cdn.kernvalley.us/components/notification/html-notification.js';
 import { init } from 'https://cdn.kernvalley.us/js/std-js/data-handlers.js';
 import * as handlers from './handlers.js';
-import { $, ready } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
+import { $ } from 'https://cdn.kernvalley.us/js/std-js/esQuery.js';
+import { ready, loaded } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
+import { getCustomElement } from 'https://cdn.kernvalley.us/js/std-js/custom-elements.js';
 import { preload } from 'https://cdn.kernvalley.us/js/std-js/loader.js';
 import { importGa, externalHandler, telHandler, mailtoHandler } from 'https://cdn.kernvalley.us/js/std-js/google-analytics.js';
 import { searchLocationMarker, createMarker, isOnGoing,filterEventNamesDatalist } from './functions.js';
@@ -30,28 +32,28 @@ $(document.documentElement).toggleClass({
 });
 
 if (typeof GA === 'string' && GA !== '') {
-	requestIdleCallback(async () => {
-		importGa(GA).then(async ({ ga }) => {
-			ga('create', GA, 'auto');
-			ga('set', 'transport', 'beacon');
-			ga('send', 'pageview');
+	loaded().then(() => {
+		requestIdleCallback(async () => {
+			importGa(GA).then(async ({ ga }) => {
+				ga('create', GA, 'auto');
+				ga('set', 'transport', 'beacon');
+				ga('send', 'pageview');
 
-			await ready();
+				$('a[rel~="external"]').click(externalHandler, { passive: true, capture: true });
+				$('a[href^="tel:"]').click(telHandler, { passive: true, capture: true });
+				$('a[href^="mailto:"]').click(mailtoHandler, { passive: true, capture: true });
+			}).catch(console.error).finally(() => {
+				const url = new URL(location.href);
 
-			$('a[rel~="external"]').click(externalHandler, { passive: true, capture: true });
-			$('a[href^="tel:"]').click(telHandler, { passive: true, capture: true });
-			$('a[href^="mailto:"]').click(mailtoHandler, { passive: true, capture: true });
-		}).catch(console.error).finally(() => {
-			const url = new URL(location.href);
-
-			if (url.searchParams.has('utm_source')) {
-				url.searchParams.delete('utm_source');
-				url.searchParams.delete('utm_medium');
-				url.searchParams.delete('utm_campaign');
-				url.searchParams.delete('utm_term');
-				url.searchParams.delete('utm_content');
-				history.replaceState(history.state, document.title, url.href);
-			}
+				if (url.searchParams.has('utm_source')) {
+					url.searchParams.delete('utm_source');
+					url.searchParams.delete('utm_medium');
+					url.searchParams.delete('utm_campaign');
+					url.searchParams.delete('utm_term');
+					url.searchParams.delete('utm_content');
+					history.replaceState(history.state, document.title, url.href);
+				}
+			});
 		});
 	});
 }
@@ -118,13 +120,17 @@ if (location.pathname.startsWith('/map')) {
 }
 
 Promise.all([
+	getCustomElement('install-prompt'),
 	ready(),
-]).then(async () => {
-	init().catch(console.error);
+]).then(async ([HTMLInstallPromptElement]) => {
+	init();
+
+	$('#install-btn').click(() => new HTMLInstallPromptElement().show()).then($btns => $btns.unhide());
 
 	if (location.pathname.startsWith('/map')) {
 		const now = new Date();
 		const current = isOnGoing();
+
 		if (location.hash === '') {
 			handlers.searchDateTimeRange({from: current ? new Date() : '2020-02-14T10:00'});
 		}
