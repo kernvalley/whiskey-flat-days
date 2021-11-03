@@ -3,10 +3,10 @@
 name: Whiskey Flay Days
 description: 64th Annual Whiskey Flat Days | President's Day Weekend in Kernville, CA
 url: https://whiskeyflatdays.com
-startDate: 2021-02-12
-endDate: 2021-02-15
+startDate: 2022-02-18
+endDate: 2022-02-21
 eventAttendanceMode: OfflineEventAttendanceMode
-eventStatus: EventCancelled
+eventStatus: EventScheduled
 image:
   - "@type": ImageObject
     url: https://whiskeyflatdays.com/img/raster/coach-800.jpg

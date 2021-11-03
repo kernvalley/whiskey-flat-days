@@ -10,8 +10,8 @@
       addressRegion: CA
       postalCode: 93238
       addressCountry: US
-  startDate: 2020-02-14 16:00
-  endDate: 2020-02-14 18:00
+  startDate: 2022-02-18 16:00
+  endDate: 2022-02-18 18:00
   image: /img/raster/rodeo.jpg
   icon: /img/markers/activity.svg
   description: |-
@@ -20,14 +20,13 @@
 - uuid: e8df6782-d0e7-45e1-944e-d16f27ce019b
   title: Main Stage Street Dance
   music: true
-  startDate: 2020-02-14 17:00
-  endDate: 2020-02-14 20:00
+  startDate: 2022-02-18 17:00
+  endDate: 2022-02-18 20:00
   icon: /img/markers/music.svg
   # image:
   location:
-    name: Tobias Street in Kernville
+    name: Circle Park
     address:
-      streetAddress: Tobias Street
       addressLocality: Kernville
       addressRegion: CA
       addressCountry: US
@@ -35,23 +34,23 @@
     geo:
       latitude: 35.755721
       longitude: -118.425114
-  description: |-
-    Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Red Headed Strangers</span></span>
-- uuid: b3b97450-6102-4f02-9ed9-03dab08a848c
-  title: Whiskey Flat Days Parade
-  startDate: 2020-02-15 10:00
-  endDate: 2020-02-15 12:00
-  description: |-
-    <p>Grand Marshal: Mick Gleason Kern County 1<sup>st</sup> District Supervisior</p>
-    <p><b>Note</b>: Roads will be closed for parade</p>
-  image: /img/raster/parade.jpg
-  icon: /img/markers/activity.svg
-  location:
-    geo:
-      latitude: 35.755366
-      longitude: -118.423604
-    address:
-      addressLocality: Kernville
+  # description: |-
+  #   Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Red Headed Strangers</span></span>
+# - uuid: b3b97450-6102-4f02-9ed9-03dab08a848c
+#   title: Whiskey Flat Days Parade
+#   startDate: 2020-02-15 10:00
+#   endDate: 2020-02-15 12:00
+#   description: |-
+#     <p>Grand Marshal: Mick Gleason Kern County 1<sup>st</sup> District Supervisior</p>
+#     <p><b>Note</b>: Roads will be closed for parade</p>
+#   image: /img/raster/parade.jpg
+#   icon: /img/markers/activity.svg
+#   location:
+#     geo:
+#       latitude: 35.755366
+#       longitude: -118.423604
+#     address:
+#       addressLocality: Kernville
   # geojson:
   #   src: /paths/parade.geojson
   #   color: "#54EA38"
@@ -67,8 +66,8 @@
       addressRegion: CA
       postalCode: 93238
       addressCountry: US
-  startDate: 2020-02-16 13:00
-  endDate: 2020-02-16 15:00
+  startDate: 2022-02-19 12:00
+  endDate: 2022-02-19 15:00
   offers:
   - name: Adult
     price: 15
@@ -104,245 +103,245 @@
       <li>Sheep Riding</li>
       <li>...and more</li>
     </ul>
-- uuid: 17afcd60-29f1-4d3e-b40d-0f7070ce1891
-  title: Backflow - Main Stage
-  music: true
-  startDate: 2020-02-15 12:00
-  endDate: 2020-02-15 14:00
-  icon: /img/markers/music.svg
-  # image:
-  location:
-    name: Tobias Street in Kernville
-    address:
-      streetAddress: Tobias Street
-      addressLocality: Kernville
-      addressRegion: CA
-      addressCountry: US
-      postalCode: 93238
-    geo:
-      latitude: 35.755721
-      longitude: -118.425114
-  description: |-
-    Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Backflow</span></span>
-- uuid: 1ec57723-3979-4083-af56-3b04072aa367
-  title: Backflow - Main Stage
-  music: true
-  startDate: 2020-02-15 16:00
-  endDate: 2020-02-15 18:00
-  icon: /img/markers/music.svg
-  # image:
-  location:
-    name: Tobias Street in Kernville
-    address:
-      streetAddress: Tobias Street
-      addressLocality: Kernville
-      addressRegion: CA
-      addressCountry: US
-      postalCode: 93238
-    geo:
-      latitude: 35.755721
-      longitude: -118.425114
-  description: |-
-    Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Backflow</span></span>
-- uuid: c1f8133b-c326-467a-9a28-6a974b8266ba
-  title: Kern River Band - Main Stage
-  music: true
-  startDate: 2020-02-16 09:00
-  endDate: 2020-02-16 11:00
-  icon: /img/markers/music.svg
-  # image:
-  location:
-    name: Tobias Street in Kernville
-    address:
-      streetAddress: Tobias Street
-      addressLocality: Kernville
-      addressRegion: CA
-      addressCountry: US
-      postalCode: 93238
-    geo:
-      latitude: 35.755721
-      longitude: -118.425114
-  description: |-
-    Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Kern River Band</span></span>
-- uuid: 5ecd1605-ef72-4d7f-bfd5-61bf1cee67cb
-  title: Kern River Band - Main Stage
-  music: true
-  startDate: 2020-02-16 16:00
-  endDate: 2020-02-16 18:00
-  icon: /img/markers/music.svg
-  # image:
-  location:
-    name: Tobias Street in Kernville
-    address:
-      streetAddress: Tobias Street
-      addressLocality: Kernville
-      addressRegion: CA
-      addressCountry: US
-      postalCode: 93238
-    geo:
-      latitude: 35.755721
-      longitude: -118.425114
-  description: |-
-    Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Kern River Band</span></span>
-- uuid: ea262b89-22f4-4fb5-adaf-4f8780ee474d
-  title: Whiskey Flat Encampment
-  location:
-    name: Whiskey Flat Encampment
-    geo:
-      latitude: 35.760200
-      longitude: -118.423420
-    address:
-      addressLocality: Kernville
-      addressRegion: CA
-      postalCode: 93238
-      addressCountry: US
-  startDate: 2020-02-14 11:00
-  endDate: 2020-02-14 16:00
-  image: /img/raster/encampment.jpg
-  icon: /img/markers/activity.svg
-  description: |-
-    <h4>Cowboy and Mountain Men Encampment</h4>
-    <p>On Scodie Ave. across from the Rodeo Grounds. You'll see history and gunfights.</p>
-    <p>All day there will be a Wells Fargo station and eatery, chuck wagon cook'n and coffee,
-    a horse trader and livery.</p>
-    <p>There'll be horse shoe'n and horse doctor'n, the Whiskey Flats Saloon, and Justice of the Peace,
-    a saddle maker and leather craft, a bath house, beautifier and hygenist,
-    storytellers of the Old West, mining and sawmill demonstrations and a Civil War Confederate camp!</p>
-- uuid: 1864b0a6-f4f9-48e7-9e3a-abda565c21ca
-  title: Whiskey Flat Encampment
-  location:
-    name: Whiskey Flat Encampment
-    geo:
-      latitude: 35.760200
-      longitude: -118.423420
-    address:
-      addressLocality: Kernville
-      addressRegion: CA
-      postalCode: 93238
-      addressCountry: US
-  startDate: 2020-02-15 13:00
-  endDate: 2020-02-15 16:00
-  image: /img/raster/encampment.jpg
-  icon: /img/markers/activity.svg
-  description: |-
-    <h4>Cowboy and Mountain Men Encampment</h4>
-    <p>On Scodie Ave. across from the Rodeo Grounds. You'll see history and gunfights.</p>
-    <p>All day there will be a Wells Fargo station and eatery, chuck wagon cook'n and coffee,
-    a horse trader and livery.</p>
-    <p>There'll be horse shoe'n and horse doctor'n, the Whiskey Flats Saloon, and Justice of the Peace,
-    a saddle maker and leather craft, a bath house, beautifier and hygenist,
-    storytellers of the Old West, mining and sawmill demonstrations and a Civil War Confederate camp!</p>
-- uuid: 9b50b186-8647-43f3-949e-a33d83f55d09
-  title: Whiskey Flat Encampment Old West Church Service
-  location:
-    name: Whiskey Flat Encampment
-    geo:
-      latitude: 35.760200
-      longitude: -118.423420
-    address:
-      addressLocality: Kernville
-      addressRegion: CA
-      postalCode: 93238
-      addressCountry: US
-  startDate: 2020-02-16 10:00
-  endDate: 2020-02-16 11:30
-  image: /img/raster/encampment.jpg
-  icon: /img/markers/activity.svg
-  description: |-
-    <p>Service at the Whiskey Flat Days Encampment starts at 10:00 AM</p>
-- uuid: bde1727f-fc0f-453f-afbb-9329aa3fec32
-  title: '"First Heat" Frog Jumping Contents'
-  startDate: 2020-02-15 14:00
-  endDate: 2020-02-15 14:30
-  description: |-
-    <p>Held at the Green Stage on Piute Road. Come and bet on your favorite jumpin frog!</p>
-  location:
-    name: Tobias Street in Kernville
-    address:
-      streetAddress: Tobias Street
-      addressLocality: Kernville
-      addressRegion: CA
-      addressCountry: US
-      postalCode: 93238
-    geo:
-      latitude: 35.755721
-      longitude: -118.425114
-  icon: /img/markers/activity.svg
-- uuid: 640838f3-4a6e-424b-a9bc-2e33ae8e9d7d
-  title: '"Final Heat" Frog Jumping Contents'
-  startDate: 2020-02-16 11:00
-  endDate: 2020-02-16 11:30
-  description: |-
-    <p>Held at the Green Stage on Piute Road. Come and bet on your favorite jumpin frog!</p>
-  location:
-    name: Tobias Street in Kernville
-    address:
-      streetAddress: Tobias Street
-      addressLocality: Kernville
-      addressRegion: CA
-      addressCountry: US
-      postalCode: 93238
-    geo:
-      latitude: 35.755721
-      longitude: -118.425114
-  icon: /img/markers/activity.svg
-- uuid: f52e2469-b6eb-4088-96d8-a58b81d225cf
-  title: Whiskerino Contest
-  startDate: 2020-02-16 13:00
-  endDate: 2020-02-16 14:00
-  description: |-
-    <p>Sign-up starts at 11:00 AM</p>
-    <p>Judging starts at 1:30 PM</p>
-  location:
-    name: Tobias Street in Kernville
-    address:
-      streetAddress: Tobias Street
-      addressLocality: Kernville
-      addressRegion: CA
-      addressCountry: US
-      postalCode: 93238
-    geo:
-      latitude: 35.755721
-      longitude: -118.425114
-  icon: /img/markers/activity.svg
-- uuid: 796d7881-008a-4ce2-bdb1-efb916793eb5
-  title: Adult & child 1860's Costume Contest
-  startDate: 2020-02-16 12:00
-  endDate: 2020-02-16 13:00
-  description: |-
-    <p>Sign-up starts at 11:00 AM</p>
-    <p>Judging starts at 12:30 PM</p>
-  location:
-    name: Tobias Street in Kernville
-    address:
-      streetAddress: Tobias Street
-      addressLocality: Kernville
-      addressRegion: CA
-      addressCountry: US
-      postalCode: 93238
-    geo:
-      latitude: 35.755721
-      longitude: -118.425114
-  icon: /img/markers/activity.svg
-- uuid: caaa72d1-3ac0-4ffc-ab5e-ec6794aaa981
-  title: Pet Parade Contest
-  startDate: 2020-02-16 14:00
-  endDate: 2020-02-16 15:00
-  description: |-
-    <p>Sign-up starts at 11:00 AM</p>
-    <p>Judging starts at 2:30 PM</p>
-  location:
-    name: Tobias Street in Kernville
-    address:
-      streetAddress: Tobias Street
-      addressLocality: Kernville
-      addressRegion: CA
-      addressCountry: US
-      postalCode: 93238
-    geo:
-      latitude: 35.755721
-      longitude: -118.425114
-  icon: /img/markers/activity.svg
+# - uuid: 17afcd60-29f1-4d3e-b40d-0f7070ce1891
+#   title: Backflow - Main Stage
+#   music: true
+#   startDate: 2020-02-15 12:00
+#   endDate: 2020-02-15 14:00
+#   icon: /img/markers/music.svg
+#   # image:
+#   location:
+#     name: Tobias Street in Kernville
+#     address:
+#       streetAddress: Tobias Street
+#       addressLocality: Kernville
+#       addressRegion: CA
+#       addressCountry: US
+#       postalCode: 93238
+#     geo:
+#       latitude: 35.755721
+#       longitude: -118.425114
+#   description: |-
+#     Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Backflow</span></span>
+# - uuid: 1ec57723-3979-4083-af56-3b04072aa367
+#   title: Backflow - Main Stage
+#   music: true
+#   startDate: 2020-02-15 16:00
+#   endDate: 2020-02-15 18:00
+#   icon: /img/markers/music.svg
+#   # image:
+#   location:
+#     name: Tobias Street in Kernville
+#     address:
+#       streetAddress: Tobias Street
+#       addressLocality: Kernville
+#       addressRegion: CA
+#       addressCountry: US
+#       postalCode: 93238
+#     geo:
+#       latitude: 35.755721
+#       longitude: -118.425114
+#   description: |-
+#     Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Backflow</span></span>
+# - uuid: c1f8133b-c326-467a-9a28-6a974b8266ba
+#   title: Kern River Band - Main Stage
+#   music: true
+#   startDate: 2020-02-16 09:00
+#   endDate: 2020-02-16 11:00
+#   icon: /img/markers/music.svg
+#   # image:
+#   location:
+#     name: Tobias Street in Kernville
+#     address:
+#       streetAddress: Tobias Street
+#       addressLocality: Kernville
+#       addressRegion: CA
+#       addressCountry: US
+#       postalCode: 93238
+#     geo:
+#       latitude: 35.755721
+#       longitude: -118.425114
+#   description: |-
+#     Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Kern River Band</span></span>
+# - uuid: 5ecd1605-ef72-4d7f-bfd5-61bf1cee67cb
+#   title: Kern River Band - Main Stage
+#   music: true
+#   startDate: 2020-02-16 16:00
+#   endDate: 2020-02-16 18:00
+#   icon: /img/markers/music.svg
+#   # image:
+#   location:
+#     name: Tobias Street in Kernville
+#     address:
+#       streetAddress: Tobias Street
+#       addressLocality: Kernville
+#       addressRegion: CA
+#       addressCountry: US
+#       postalCode: 93238
+#     geo:
+#       latitude: 35.755721
+#       longitude: -118.425114
+#   description: |-
+#     Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Kern River Band</span></span>
+# - uuid: ea262b89-22f4-4fb5-adaf-4f8780ee474d
+#   title: Whiskey Flat Encampment
+#   location:
+#     name: Whiskey Flat Encampment
+#     geo:
+#       latitude: 35.760200
+#       longitude: -118.423420
+#     address:
+#       addressLocality: Kernville
+#       addressRegion: CA
+#       postalCode: 93238
+#       addressCountry: US
+#   startDate: 2020-02-14 11:00
+#   endDate: 2020-02-14 16:00
+#   image: /img/raster/encampment.jpg
+#   icon: /img/markers/activity.svg
+#   description: |-
+#     <h4>Cowboy and Mountain Men Encampment</h4>
+#     <p>On Scodie Ave. across from the Rodeo Grounds. You'll see history and gunfights.</p>
+#     <p>All day there will be a Wells Fargo station and eatery, chuck wagon cook'n and coffee,
+#     a horse trader and livery.</p>
+#     <p>There'll be horse shoe'n and horse doctor'n, the Whiskey Flats Saloon, and Justice of the Peace,
+#     a saddle maker and leather craft, a bath house, beautifier and hygenist,
+#     storytellers of the Old West, mining and sawmill demonstrations and a Civil War Confederate camp!</p>
+# - uuid: 1864b0a6-f4f9-48e7-9e3a-abda565c21ca
+#   title: Whiskey Flat Encampment
+#   location:
+#     name: Whiskey Flat Encampment
+#     geo:
+#       latitude: 35.760200
+#       longitude: -118.423420
+#     address:
+#       addressLocality: Kernville
+#       addressRegion: CA
+#       postalCode: 93238
+#       addressCountry: US
+#   startDate: 2020-02-15 13:00
+#   endDate: 2020-02-15 16:00
+#   image: /img/raster/encampment.jpg
+#   icon: /img/markers/activity.svg
+#   description: |-
+#     <h4>Cowboy and Mountain Men Encampment</h4>
+#     <p>On Scodie Ave. across from the Rodeo Grounds. You'll see history and gunfights.</p>
+#     <p>All day there will be a Wells Fargo station and eatery, chuck wagon cook'n and coffee,
+#     a horse trader and livery.</p>
+#     <p>There'll be horse shoe'n and horse doctor'n, the Whiskey Flats Saloon, and Justice of the Peace,
+#     a saddle maker and leather craft, a bath house, beautifier and hygenist,
+#     storytellers of the Old West, mining and sawmill demonstrations and a Civil War Confederate camp!</p>
+# - uuid: 9b50b186-8647-43f3-949e-a33d83f55d09
+#   title: Whiskey Flat Encampment Old West Church Service
+#   location:
+#     name: Whiskey Flat Encampment
+#     geo:
+#       latitude: 35.760200
+#       longitude: -118.423420
+#     address:
+#       addressLocality: Kernville
+#       addressRegion: CA
+#       postalCode: 93238
+#       addressCountry: US
+#   startDate: 2020-02-16 10:00
+#   endDate: 2020-02-16 11:30
+#   image: /img/raster/encampment.jpg
+#   icon: /img/markers/activity.svg
+#   description: |-
+#     <p>Service at the Whiskey Flat Days Encampment starts at 10:00 AM</p>
+# - uuid: bde1727f-fc0f-453f-afbb-9329aa3fec32
+#   title: '"First Heat" Frog Jumping Contents'
+#   startDate: 2020-02-15 14:00
+#   endDate: 2020-02-15 14:30
+#   description: |-
+#     <p>Held at the Green Stage on Piute Road. Come and bet on your favorite jumpin frog!</p>
+#   location:
+#     name: Tobias Street in Kernville
+#     address:
+#       streetAddress: Tobias Street
+#       addressLocality: Kernville
+#       addressRegion: CA
+#       addressCountry: US
+#       postalCode: 93238
+#     geo:
+#       latitude: 35.755721
+#       longitude: -118.425114
+#   icon: /img/markers/activity.svg
+# - uuid: 640838f3-4a6e-424b-a9bc-2e33ae8e9d7d
+#   title: '"Final Heat" Frog Jumping Contents'
+#   startDate: 2020-02-16 11:00
+#   endDate: 2020-02-16 11:30
+#   description: |-
+#     <p>Held at the Green Stage on Piute Road. Come and bet on your favorite jumpin frog!</p>
+#   location:
+#     name: Tobias Street in Kernville
+#     address:
+#       streetAddress: Tobias Street
+#       addressLocality: Kernville
+#       addressRegion: CA
+#       addressCountry: US
+#       postalCode: 93238
+#     geo:
+#       latitude: 35.755721
+#       longitude: -118.425114
+#   icon: /img/markers/activity.svg
+# - uuid: f52e2469-b6eb-4088-96d8-a58b81d225cf
+#   title: Whiskerino Contest
+#   startDate: 2020-02-16 13:00
+#   endDate: 2020-02-16 14:00
+#   description: |-
+#     <p>Sign-up starts at 11:00 AM</p>
+#     <p>Judging starts at 1:30 PM</p>
+#   location:
+#     name: Tobias Street in Kernville
+#     address:
+#       streetAddress: Tobias Street
+#       addressLocality: Kernville
+#       addressRegion: CA
+#       addressCountry: US
+#       postalCode: 93238
+#     geo:
+#       latitude: 35.755721
+#       longitude: -118.425114
+#   icon: /img/markers/activity.svg
+# - uuid: 796d7881-008a-4ce2-bdb1-efb916793eb5
+#   title: Adult & child 1860's Costume Contest
+#   startDate: 2020-02-16 12:00
+#   endDate: 2020-02-16 13:00
+#   description: |-
+#     <p>Sign-up starts at 11:00 AM</p>
+#     <p>Judging starts at 12:30 PM</p>
+#   location:
+#     name: Tobias Street in Kernville
+#     address:
+#       streetAddress: Tobias Street
+#       addressLocality: Kernville
+#       addressRegion: CA
+#       addressCountry: US
+#       postalCode: 93238
+#     geo:
+#       latitude: 35.755721
+#       longitude: -118.425114
+#   icon: /img/markers/activity.svg
+# - uuid: caaa72d1-3ac0-4ffc-ab5e-ec6794aaa981
+#   title: Pet Parade Contest
+#   startDate: 2020-02-16 14:00
+#   endDate: 2020-02-16 15:00
+#   description: |-
+#     <p>Sign-up starts at 11:00 AM</p>
+#     <p>Judging starts at 2:30 PM</p>
+#   location:
+#     name: Tobias Street in Kernville
+#     address:
+#       streetAddress: Tobias Street
+#       addressLocality: Kernville
+#       addressRegion: CA
+#       addressCountry: US
+#       postalCode: 93238
+#     geo:
+#       latitude: 35.755721
+#       longitude: -118.425114
+#   icon: /img/markers/activity.svg
 - uuid: f44131d1-2128-4d23-be86-2cc7d38e80ff
   title: Wild West Daze Rodeo
   location:
@@ -355,8 +354,8 @@
       addressRegion: CA
       postalCode: 93238
       addressCountry: US
-  startDate: 2020-02-15 13:00
-  endDate: 2020-02-15 15:00
+  startDate: 2022-02-20 12:00
+  endDate: 2022-02-20 15:00
   offers:
   - name: Adult
     price: 15
@@ -392,19 +391,18 @@
       <li>Sheep Riding</li>
       <li>...and more</li>
     </ul>
-- uuid: 233273c1-c22c-4ad5-94b3-dfd57766c107
-  startDate: 2020-02-16 15:00
-  endDate: 2020-02-16 15:15
-  title: Whiskey Flat Mayor Campaign Winner Announced
-  location:
-    name: Tobias Street in Kernville
-    address:
-      streetAddress: Tobias Street
-      addressLocality: Kernville
-      addressRegion: CA
-      addressCountry: US
-      postalCode: 93238
-    geo:
-      latitude: 35.755721
-      longitude: -118.425114
-
+# - uuid: 233273c1-c22c-4ad5-94b3-dfd57766c107
+#   startDate: 2020-02-16 15:00
+#   endDate: 2020-02-16 15:15
+#   title: Whiskey Flat Mayor Campaign Winner Announced
+#   location:
+#     name: Tobias Street in Kernville
+#     address:
+#       streetAddress: Tobias Street
+#       addressLocality: Kernville
+#       addressRegion: CA
+#       addressCountry: US
+#       postalCode: 93238
+#     geo:
+#       latitude: 35.755721
+#       longitude: -118.425114

@@ -9,3 +9,7 @@ export const site = {
 export const icons = {
 	markLocation: './img/adwaita-icons/actions/mark-location.svg',
 };
+
+export const startDate = new Date('2022-02-18T08:00:00');
+
+export const endDate = new Date('2022-02-21T18:00:00');
