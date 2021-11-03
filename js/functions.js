@@ -1,5 +1,5 @@
 import { createCustomElement } from 'https://cdn.kernvalley.us/js/std-js/custom-elements.js';
-import { site, icons, mapSelector } from './consts.js';
+import { site, icons, mapSelector, startDate, endDate } from './consts.js';
 
 export function filterEventNamesDatalist() {
 	const datalist = document.getElementById('events-list');
@@ -21,10 +21,8 @@ export function filterEventNamesDatalist() {
 }
 
 export function isOnGoing() {
-	const start = new Date('2020-02-14T08:00');
-	const end = new Date('2020-02-17T16:00');
 	const now = new Date();
-	return (now > start && now < end);
+	return (now > startDate && now < endDate);
 }
 
 export async function searchLocationMarker(url = new URL(location.href)) {

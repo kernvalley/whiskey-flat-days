@@ -1,4 +1,3 @@
-
 <leaflet-map center="{{ site.data.mainEvent.location.geo.latitude }},{{ site.data.mainEvent.location.geo.longitude }}" class="relative contain-content z-1" zoom="18" maxzoom="19" minzoom="15" crossorigin="annonymous" detectretina="detectretina" itemtype="https://schema.org/Event" itemscope="" zoomcontrol="" router="">
 	<meta itemprop="name" content="{{ site.data.mainEvent.name | escape }}" />
 	<meta itemprop="url" content="{{ site.data.mainEvent.url }}" />
@@ -96,7 +95,7 @@
 			{% include leaflet/local-business-marker.html business=place %}
 		{% endif %}
 	{% endfor %}
-	{% unless site.data.mainEvent.eventStatus == 'EventCancelled' %}{% for marker in site.data.poi %}
+	{% unless site.data.mainEvent.eventStatus == 'EventCancelled' %}{% comment %}{% for marker in site.data.poi %}
 		<leaflet-marker class="poi-marker content-visibility-hidden" id="{{ marker.uuid }}" longitude="{{ marker.location.geo.longitude }}" latitude="{{ marker.location.geo.latitude }}" slot="markers" title="{{ marker.title | escape_once }}"{% if marker.category %} data-category="{{ marker.category }}"{% endif %}>
 			<img src="{{ marker.icon | default: 'https://cdn.kernvalley.us/img/markers.svg#event' }}" slot="icon" width="32" height="32" loading="lazy" decoding="async" crossorigin="anonymous" referrerpolicy="no-referrer" />
 			<div slot="popup">
@@ -170,7 +169,7 @@
 				{% endif %}
 			</div>
 		</leaflet-marker>
-	{% endif %}{% endfor %}
+	{% endif %}{% endfor %}{% endcomment %}
 	{% for marker in site.data.events %}
 		<leaflet-marker id="{{ marker.uuid }}" class="event-marker content-visibility-hidden" longitude="{{ marker.location.geo.longitude }}" latitude="{{ marker.location.geo.latitude }}" slot="markers" title="{{ marker.title | escape_once }}" data-end-date="{{ marker.endDate | date_to_xmlschema }}" data-start-date="{{ marker.startDate | date_to_xmlschema }}"{% if marker.category %} data-category="{{ marker.category }}"{% endif %} hidden="">
 			<img src="{{ marker.icon | default: '/img/markers/event.svg' }}" slot="icon" width="32" height="32" />
