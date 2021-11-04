@@ -12,6 +12,6 @@
   "relation": ["delegate_permission/common.query_webapk"],
   "target": {
     "namespace": "web",
-    "site": "https://whiskeyflatdays.com/manifest.json"
+    "site": "https://whiskeyflatdays.com/webapp.webmanifest"
   }
 }]

@@ -13,15 +13,14 @@ import 'https://cdn.kernvalley.us/components/github/user.js';
 import 'https://cdn.kernvalley.us/components/install/prompt.js';
 import 'https://cdn.kernvalley.us/components/app/list-button.js';
 import 'https://cdn.kernvalley.us/components/app/stores.js';
-import { HTMLNotificationElement } from 'https://cdn.kernvalley.us/components/notification/html-notification.js';
 import { init } from 'https://cdn.kernvalley.us/js/std-js/data-handlers.js';
 import * as handlers from './handlers.js';
+import { shareInit } from 'https://cdn.kernvalley.us/js/std-js/data-share.js';
 import { $ } from 'https://cdn.kernvalley.us/js/std-js/esQuery.js';
 import { ready, loaded } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
 import { getCustomElement } from 'https://cdn.kernvalley.us/js/std-js/custom-elements.js';
-import { preload } from 'https://cdn.kernvalley.us/js/std-js/loader.js';
 import { importGa, externalHandler, telHandler, mailtoHandler } from 'https://cdn.kernvalley.us/js/std-js/google-analytics.js';
-import { searchLocationMarker, createMarker, isOnGoing,filterEventNamesDatalist } from './functions.js';
+import { searchLocationMarker, createMarker, isOnGoing, filterEventNamesDatalist } from './functions.js';
 import { GA } from './consts.js';
 
 $(document.documentElement).toggleClass({
@@ -30,6 +29,16 @@ $(document.documentElement).toggleClass({
 	'js': true,
 	'no-js': false,
 });
+
+if (navigator.canShare() && typeof customElements.get('share-button') === 'undefined') {
+	[...document.querySelectorAll('[is="share-button"]')].forEach(btn => {
+		btn.dataset.shareTitle = btn.getAttribute('sharetitle') || document.title;
+		btn.dataset.shareText = btn.getAttribute('text');
+		btn.dataset.shareUrl = btn.hasAttribute('url') ? new URL(btn.getAttribute('url') || '.', location.origin).href : location.href;
+		['sharetitle', 'text', 'url'].forEach(attr => btn.removeAttribute(attr));
+		shareInit(btn);
+	});
+}
 
 if (typeof GA === 'string' && GA !== '') {
 	loaded().then(() => {
@@ -58,45 +67,7 @@ if (typeof GA === 'string' && GA !== '') {
 	});
 }
 
-if (location.pathname.startsWith('/map')) {
-	cookieStore.get({ name: 'visited' }).then(async cookie => {
-		if (new Date() < new Date('2021-02-18') && ! cookie) {
-			await Promise.allSettled([
-				ready(),
-				preload('https://cdn.kernvalley.us/components/notification/html-notification.html', { as: 'fetch', type: 'text/html' }),
-				preload('https://cdn.kernvalley.us/components/notification/html-notification.css', { as: 'style', type: 'text/css' }),
-				preload('/img/adwaita-icons/status/dialog-warning.svg', { as: 'image', type: 'image/svg+xml' }),
-			]);
-
-			new HTMLNotificationElement('WFD cancelled', {
-				body: 'Whiskey Flat Days has been cancelled for 2021 due to COVID-19 and the inability to obtain the necessary permits',
-				icon: '/img/favicon.svg',
-				badge: 'https://cdn.kernvalley.us/img/adwaita-icons/status/dialog-warning.svg',
-				requireInteraction: true,
-				data: {
-					cookie: {
-						name: 'visited',
-						value: 'yes',
-						secure: true,
-						expires: new Date('2021-02-18T00:00').getTime(),
-					}
-				},
-				actions:[{
-					title: 'Dismiss',
-					action: 'dismiss',
-					icon: 'https://cdn.kernvalley.us/img/octicons/x.svg',
-				}]
-			}).addEventListener('notificationclick', ({ action, target }) => {
-				switch(action) {
-					case 'dismiss':
-						cookieStore.set(target.data.cookie);
-						target.close();
-						break;
-				}
-			});
-		}
-	});
-} else if (location.pathname.startsWith('/events') && ('IntersectionObserver' in window)) {
+if (location.pathname.startsWith('/events') && ('IntersectionObserver' in window)) {
 	ready().then(() => {
 		$('.event-item').intersect(({ target, isIntersecting }) => {
 			if (isIntersecting) {

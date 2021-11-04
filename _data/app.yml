@@ -1,6 +1,6 @@
 ---
-name: Whiskey Flat Days
-shortName: Whiskey Flats
+name: Whiskey Flat Days intersect
+shortName: Whiskey Flats Test
 version: 2.1.0-2021-01-17
 start_url: /
 display: standalone
@@ -99,4 +99,4 @@ related_applications:
   - platform: play
     id: com.whiskey_flats.twa
   - platform: webapp
-    url: https://whiskeyflatdays.com/manifest.json
+    url: https://whiskeyflatdays.com/webapp.webmanifest
