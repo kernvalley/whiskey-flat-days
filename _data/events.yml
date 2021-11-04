@@ -19,6 +19,7 @@
     boots as Whiskey Flat Days brings for the first time the MC/ATV Rodeo.</p>
 - uuid: e8df6782-d0e7-45e1-944e-d16f27ce019b
   title: Main Stage Street Dance
+  "@type": MusicEvent
   music: true
   startDate: 2022-02-18 17:00
   endDate: 2022-02-18 20:00
