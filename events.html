@@ -63,7 +63,7 @@ tags:
 	<hr />
 	{% include event-status.html event=site.data.mainEvent %}
 	{% unless site.data.mainEvent.eventStatus == 'EventCancelled' %}{% for event in events %}
-		<div id="{{ event.uuid }}" class="event-item grid contain-content content-visibility-auto" itemprop="subEvent" itemtype="https://schema.org/{{ event['@type'] default: 'Event' }}" itemscope="">
+		<div id="{{ event.uuid }}" class="event-item grid contain-content content-visibility-auto" itemprop="subEvent" itemtype="https://schema.org/{{ event['@type'] | default: 'Event' }}" itemscope="">
 			<meta itemprop="eventAttendanceMode" content="{{ marker.eventAttendanceMode | default: 'https://schema.org/OfflineEventAttendanceMode' }}" />
 			<meta itemprop="eventStatus" content="{{ marker.eventStatus | default: 'https://schema.org/EventScheduled' }}" />
 			<span class="event-image-container inline-block center">
