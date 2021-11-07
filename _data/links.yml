@@ -11,6 +11,14 @@ nav:
     href: /map/
     icon: map
     accessKey: m
+  - label: News
+    href: /news/
+    icon: link
+    accessKey: n
+  - label: Store
+    href: /store/
+    icon: link
+    accessKey: s
 footer:
   - label: KernValley.US
     href: https://kernvalley.us
