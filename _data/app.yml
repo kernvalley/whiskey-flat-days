@@ -10,50 +10,72 @@ theme:
   color: '#b70c0c'
   background: '#242424'
 shortcuts:
-- name: Events
-  url: /events/
-  description: List of events for Whiskey Flat Days
-  icons:
-    - src: /img/jumplist/events-192.png
+  - name: Events
+    url: /events/
+    description: List of events for Whiskey Flat Days
+    icons:
+      - src: /img/jumplist/events-192.png
+        type: image/png
+        sizes: 192x192
+      - src: /img/jumplist/events-144.png
+        type: image/png
+        sizes: 144x144
+      - src: /img/jumplist/events-96.png
+        type: image/png
+        sizes: 96x96
+      - src: /img/jumplist/events-72.png
+        type: image/png
+        sizes: 72x72
+      - src: /img/jumplist/events-48.png
+        type: image/png
+        sizes: 48x48
+      - src: /img/jumplist/events-36.png
+        type: image/png
+        sizes: 36x36
+  - name: Map
+    url: /map/
+    description: Map of vendors and events for Whiskey Flat Days
+    icons:
+    - src: /img/jumplist/map-192.png
       type: image/png
       sizes: 192x192
-    - src: /img/jumplist/events-144.png
+    - src: /img/jumplist/map-144.png
       type: image/png
       sizes: 144x144
-    - src: /img/jumplist/events-96.png
+    - src: /img/jumplist/map-96.png
       type: image/png
       sizes: 96x96
-    - src: /img/jumplist/events-72.png
+    - src: /img/jumplist/map-72.png
       type: image/png
       sizes: 72x72
-    - src: /img/jumplist/events-48.png
+    - src: /img/jumplist/map-48.png
       type: image/png
       sizes: 48x48
-    - src: /img/jumplist/events-36.png
+    - src: /img/jumplist/map-36.png
       type: image/png
       sizes: 36x36
-- name: Map
-  url: /map/
-  description: Map of vendors and events for Whiskey Flat Days
-  icons:
-  - src: /img/jumplist/map-192.png
-    type: image/png
-    sizes: 192x192
-  - src: /img/jumplist/map-144.png
-    type: image/png
-    sizes: 144x144
-  - src: /img/jumplist/map-96.png
-    type: image/png
-    sizes: 96x96
-  - src: /img/jumplist/map-72.png
-    type: image/png
-    sizes: 72x72
-  - src: /img/jumplist/map-48.png
-    type: image/png
-    sizes: 48x48
-  - src: /img/jumplist/map-36.png
-    type: image/png
-    sizes: 36x36
+  - name: News
+    url: /news/
+    description: Whiskey Flat Days news and announcements
+    icons:
+    - src: /img/jumplist/news-192.png
+      type: image/png
+      sizes: 192x192
+    - src: /img/jumplist/news-144.png
+      type: image/png
+      sizes: 144x144
+    - src: /img/jumplist/news-96.png
+      type: image/png
+      sizes: 96x96
+    - src: /img/jumplist/news-72.png
+      type: image/png
+      sizes: 72x72
+    - src: /img/jumplist/news-48.png
+      type: image/png
+      sizes: 48x48
+    - src: /img/jumplist/news-36.png
+      type: image/png
+      sizes: 36x36
 categories:
   - travel
   - navigation
