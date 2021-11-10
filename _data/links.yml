@@ -7,6 +7,10 @@ nav:
     href: /events/
     icon: calendar
     accessKey: e
+  - label: News
+    href: /news/
+    icon: megaphone
+    accessKey: n
   - label: Map
     href: /map/
     icon: map

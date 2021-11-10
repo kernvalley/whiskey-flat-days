@@ -1,7 +1,7 @@
 .event-item {
 	padding: 0.8em 1em;
 	margin-top: 0.6em;
-	border: 1px solid currentColor;
+	border: 1px solid #dadada;
 	border-radius: 6px;
 	grid-template-areas: "image title link" "image dates dates" "image location location";
 	grid-template-rows: auto;
@@ -52,4 +52,3 @@
 .event-item > .event-link {
 	grid-area: link;
 }
-

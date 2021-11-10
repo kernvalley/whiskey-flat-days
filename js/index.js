@@ -13,6 +13,8 @@ import 'https://cdn.kernvalley.us/components/github/user.js';
 import 'https://cdn.kernvalley.us/components/install/prompt.js';
 import 'https://cdn.kernvalley.us/components/app/list-button.js';
 import 'https://cdn.kernvalley.us/components/app/stores.js';
+import 'https://cdn.kernvalley.us/components/share-to-button/share-to-button.js';
+import 'https://cdn.kernvalley.us/components/disqus/comments.js';
 import { init } from 'https://cdn.kernvalley.us/js/std-js/data-handlers.js';
 import * as handlers from './handlers.js';
 import { shareInit } from 'https://cdn.kernvalley.us/js/std-js/data-share.js';

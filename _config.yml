@@ -17,7 +17,8 @@ tiles-config: /browserconfig.xml
 service_worker: '/service-worker.js'
 keep-kern-clean: true
 og-type: website
-description: "Map and events app for Whiskey Flat Days"
+disqus: whiskey-flat-days
+description: "Map, events, and news app for Whiskey Flat Days"
 thumbnail:
   url: https://i.imgur.com/Qnvw7I2l.jpg
 mobile-web-app-capable: true
@@ -58,6 +59,7 @@ defaults:
 - scope:
     path: _posts
   values:
+    no-header: true
     layout: post
     author:
       givenName: Chris
@@ -72,13 +74,14 @@ defaults:
       url: 'https://kernvalley.us'
       logo:
         url: 'https://kernvalley.us/img/icon-256.png'
-    permalink: /posts/:categories/:year/:month/:day/:title/
+    permalink: /news/:categories/:year/:month/:day/:title
     comments: true
     ads: false
     index: true
 - scope:
     path: _drafts
   values:
+    no-header: true
     layout: post
     author:
       givenName: Chris
@@ -92,7 +95,7 @@ defaults:
       url: 'https://kernvalley.us'
       logo:
               url: 'https://kernvalley.us/img/icon-256.png'
-    permalink: /posts/:categories/:year/:month/:day/:title/
+    permalink: /news/:categories/:year/:month/:day/:title
     comments: false
     ads: false
 plugins:
