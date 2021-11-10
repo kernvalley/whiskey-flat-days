@@ -23,7 +23,7 @@ const config = {
 		'https://cdn.kernvalley.us/components/pwa/prompt.html',
 		'https://cdn.kernvalley.us/components/leaflet/map.html',
 		'https://cdn.kernvalley.us/components/weather/current.html',
-		'https://cdn.kernvalley.us/compoents/install/prompt.html',
+		'https://cdn.kernvalley.us/components/install/prompt.html',
 		'https://cdn.kernvalley.us/components/share-to-button/share-to-button.html',
 
 		/* CSS */
@@ -33,7 +33,7 @@ const config = {
 		'https://cdn.kernvalley.us/components/pwa/prompt.css',
 		'https://cdn.kernvalley.us/components/leaflet/map.css',
 		'https://cdn.kernvalley.us/components/weather/current.css',
-		'https://cdn.kernvalley.us/compoents/install/prompt.css',
+		'https://cdn.kernvalley.us/components/install/prompt.css',
 		'https://cdn.kernvalley.us/components/share-to-button/share-to-button.css',
 
 		/* Images & Icons */

@@ -18,7 +18,7 @@ service_worker: '/service-worker.js'
 keep-kern-clean: true
 og-type: website
 disqus: whiskey-flat-days
-description: "Map and events app for Whiskey Flat Days"
+description: "Map, events, and news app for Whiskey Flat Days"
 thumbnail:
   url: https://i.imgur.com/Qnvw7I2l.jpg
 mobile-web-app-capable: true
@@ -73,7 +73,7 @@ defaults:
       url: 'https://kernvalley.us'
       logo:
         url: 'https://kernvalley.us/img/icon-256.png'
-    permalink: /news/:categories/:year/:month/:day/:title/
+    permalink: /news/:categories/:year/:month/:day/:title
     comments: true
     ads: false
     index: true
@@ -93,7 +93,7 @@ defaults:
       url: 'https://kernvalley.us'
       logo:
               url: 'https://kernvalley.us/img/icon-256.png'
-    permalink: /news/:categories/:year/:month/:day/:title/
+    permalink: /news/:categories/:year/:month/:day/:title
     comments: false
     ads: false
 plugins:

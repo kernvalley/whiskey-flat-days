@@ -1,10 +1,10 @@
 ---
 name: Whiskey Flat Days
-shortName: Whiskey Flats
-version: 2.1.0-2021-11-11
+shortName: WFD App
+version: 2.1.0-2021-11-10
 start_url: /
 display: standalone
-description: "Map and events app for Whiskey Flat Days"
+description: "Map, events, and news app for Whiskey Flat Days"
 icons-file: /img/icons.svg
 theme:
   color: '#b70c0c'
