@@ -1,10 +1,13 @@
 #nav {
 	font-size: 1.2em;
 	gap: 5px;
+	background-color: rgba(0, 0, 0, 0.8);
+	-webkit-backdrop-filter: blur(3px);
+	backdrop-filter: blur(3px);
 }
 
 #nav > a.nav-link {
-	line-height: var(--nav-height, 3rem);
+	line-height: calc(var(--nav-height, 3rem) - 1.3em);
 	vertical-align: middle;
 	text-align: center;
 	border-radius: 0;
@@ -25,11 +28,11 @@
 
 #nav > a.nav-link:hover, #nav > button:hover, #nav > button:focus,
 #nav > a.nav-link:focus {
-	background-color: rgba(0, 0, 0, 0.1);
+	background-color: var(--button-primary-hover-background);
 }
 
 #nav > a.nav-link.current-link, #nav > a.nav-link:active {
-	background-color: rgba(0, 0, 0, 0.2);
+	background-color: var(--button-primary-background);
 	border-color: #043469;
 	box-shadow: 0 0 0.3em rgba(0, 0, 0, 0.3) inset;
 }
@@ -41,4 +44,10 @@
 
 #install-btn svg.icon {
 	margin-bottom: 10px;
+}
+
+@media (max-width: 800px) {
+	#nav > a.nav-link {
+		line-height: var(--nav-height, 3rem);
+	}
 }

@@ -19,8 +19,8 @@
 
 @media (max-width: 800px) {
 	#main {
-		padding-left: 6px;
-		padding-right: 6px;
+		padding-left: 1em;
+		padding-right: 1em;
 	}
 
 	#main ad-block.float-left, #main ad-block.float-right {
