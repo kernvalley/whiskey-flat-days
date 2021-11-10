@@ -2,6 +2,7 @@
 @import url("https://cdn.kernvalley.us/css/core-css/theme/default/index.css");
 
 :root[data-theme], :root {
+	--header-height: 0;
 	--accent-color: #b70c0c;
 	--scrollbar-color: var(--accent-color);
 	--button-primary-background: var(--accent-color);

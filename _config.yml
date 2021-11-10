@@ -59,6 +59,7 @@ defaults:
 - scope:
     path: _posts
   values:
+    no-header: true
     layout: post
     author:
       givenName: Chris
@@ -80,6 +81,7 @@ defaults:
 - scope:
     path: _drafts
   values:
+    no-header: true
     layout: post
     author:
       givenName: Chris
