@@ -1,13 +1,13 @@
 ---
-name: Whiskey Flat Days intersect
-shortName: Whiskey Flats Test
-version: 2.1.0-2021-01-17
+name: Whiskey Flat Days
+shortName: Whiskey Flats
+version: 2.1.0-2021-11-11
 start_url: /
 display: standalone
 description: "Map and events app for Whiskey Flat Days"
 icons-file: /img/icons.svg
 theme:
-  color: '#007bff'
+  color: '#b70c0c'
   background: '#242424'
 shortcuts:
 - name: Events
@@ -100,3 +100,7 @@ related_applications:
     id: com.whiskey_flats.twa
   - platform: webapp
     url: https://whiskeyflatdays.com/webapp.webmanifest
+  # - platform: itunes
+  #   url: '#'
+  # - platform: windows
+  #   url: '#'

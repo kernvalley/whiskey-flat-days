@@ -1,6 +1,14 @@
 @import url("https://cdn.kernvalley.us/css/core-css/theme/properties.css");
 @import url("https://cdn.kernvalley.us/css/core-css/theme/default/index.css");
 
+:root[data-theme], :root {
+	--accent-color: #b70c0c;
+	--scrollbar-color: var(--accent-color);
+	--button-primary-background: var(--accent-color);
+	--button-primary-hover-background: #a20a0a;
+	--button-primary-active-background: #820606;
+}
+
 :root.js {
 	--map-width: 100%;
 	--map-height: calc(90vh - var(--nav-height, 4rem));

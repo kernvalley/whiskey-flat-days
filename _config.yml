@@ -46,7 +46,7 @@ social:
 #   url: /feed.rss
 #   type: application/rss+xml
 icons: '/img/icons.svg'
-theme-color: '#528ff9'
+theme-color: '#b70c0c'
 background-color: '#242424'
 # discus-identifier:
 google-analytics: UA-156441506-1
