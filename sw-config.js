@@ -24,6 +24,7 @@ const config = {
 		'https://cdn.kernvalley.us/components/leaflet/map.html',
 		'https://cdn.kernvalley.us/components/weather/current.html',
 		'https://cdn.kernvalley.us/compoents/install/prompt.html',
+		'https://cdn.kernvalley.us/components/share-to-button/share-to-button.html',
 
 		/* CSS */
 		'/css/index.min.css',
@@ -33,6 +34,7 @@ const config = {
 		'https://cdn.kernvalley.us/components/leaflet/map.css',
 		'https://cdn.kernvalley.us/components/weather/current.css',
 		'https://cdn.kernvalley.us/compoents/install/prompt.css',
+		'https://cdn.kernvalley.us/components/share-to-button/share-to-button.css',
 
 		/* Images & Icons */
 		'/img/icons.svg',

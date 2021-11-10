@@ -3,7 +3,7 @@
 		{% include common/icon.html icon="apps" fill="currentColor" height=22 width=22 %}
 	</button>
 <!-- 	<button type="button" class="display-mode-standalone" title="Go Back" data-action="back">{% include common/icon.html icon="go-previous" %}</button> -->
-	<button type="button" class="display-mode-standalone" title="Reload" data-action="reload">{% include common/icon.html icon="view-refresh" %}</button>
+	<!-- <button type="button" class="display-mode-standalone" title="Reload" data-action="reload">{% include common/icon.html icon="view-refresh" %}</button> -->
 	{% for link in site.data.links.nav %}
 		<a class="nav-link inline-block grow-1{% if link.href == page.url %} no-pointer-events current-link{% endif %}" href="{{ link.href }}" accesskey="{{ link.accessKey }}" title="{{ link.label }}">
 			<span class="mobile-hidden">{{ link.label }}</span>

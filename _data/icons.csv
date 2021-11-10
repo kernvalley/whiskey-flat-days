@@ -5,6 +5,7 @@ alert,img/octicons/alert.svg
 bell,img/octicons/bell.svg
 calendar,img/octicons/calendar.svg
 check,img/octicons/check.svg
+megaphone,img/octicons/megaphone.svg
 chevron-down,img/octicons/chevron-down.svg
 chevron-left,img/octicons/chevron-left.svg
 chevron-right,img/octicons/chevron-right.svg
@@ -65,3 +66,4 @@ public-share,img/adwaita-icons/places/folder-publicshare.svg
 avatar-default,img/adwaita-icons/status/avatar-default.svg
 apps,img/apps.svg
 screen-full,img/octicons/screen-full.svg
+creative-commons-by-sa,img/logos/creative-commons-by-sa.svg
