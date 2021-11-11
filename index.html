@@ -1,20 +1,20 @@
 ---
 title: News
 permalink: /news/
+pinned: true
 layout: default
 index: true
 no-header: true
 ---
-<div class="status-box info">
-	<h3 class="center">
-		{% include common/icon.html icon="megaphone" height="20" width="20" fill="currentColor" %}
-		<span>Coming Soon...</span>
-		{% include common/icon.html icon="megaphone" height="20" width="20" fill="currentColor" %}
-	</h3>
-	<p>News and announcements about Whiskey Flat Days.</p>
-</div>
-<section>
+<section class="grid" id="posts">
 	{% for post in site.posts %}
-		<a href="{{ post.url }}">{{ post.title }}</a>
+		<a href="{{ post.url }}" class="card shadow center post-preview">
+			<h3 class="post-title">{{ post.title }}</h3>
+			<div>
+				<span>Posted on</span>
+				<time class="post-date">{{ post.date | date: '%a, %b %e, %Y' }}</time>
+			</div>
+			<img src="{{ post.image | default: 'https://cdn.kernvalley.us/img/raster/missing-image.png' }}" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" width="250" alt="" />
+		</a>
 	{% endfor %}
 </section>
