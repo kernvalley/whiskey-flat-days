@@ -1,6 +1,14 @@
 ---
 title: News
 permalink: /news/
+deescription: News and announcements for Whiskey Flat Days
+tags:
+  - whiskey flat days
+  - whiskey flats
+  - kernville
+  - news
+  - festivals
+  - announcements
 pinned: true
 layout: default
 index: true
@@ -12,7 +20,7 @@ no-header: true
 			<h3 class="post-title">{{ post.title }}</h3>
 			<div>
 				<span>Posted on</span>
-				<time class="post-date">{{ post.date | date: '%a, %b %e, %Y' }}</time>
+				<time class="post-date" datetime="{{ post.date }}">{{ post.date | date: '%a, %b %e, %Y' }}</time>
 			</div>
 			<img src="{{ post.image | default: 'https://cdn.kernvalley.us/img/raster/missing-image.png' }}" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" width="250" alt="" />
 		</a>

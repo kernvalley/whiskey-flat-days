@@ -5,6 +5,10 @@
 	justify-content: space-evenly;
 }
 
+#posts .post-title {
+	margin-bottom: 2px;
+}
+
 article [itemprop~="articleBody"] {
 	column-count: auto;
 	column-width: 350px;
