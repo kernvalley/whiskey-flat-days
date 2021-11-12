@@ -123,6 +123,10 @@ button[is="share-button"] {
 	.mobile-hidden {
 		display: none;
 	}
+	
+	#main, #sidebar {
+		margin: 0 6px;
+	}
 }
 
 @media (min-width: 800px) {
