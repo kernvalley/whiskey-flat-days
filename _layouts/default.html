@@ -8,7 +8,7 @@ main-itemtype: Event
 ---
 {% unless page.no-header == true %}{% include header.html %}{% endunless %}
 {% unless page.no-nav == true %}{% include nav.html %}{% endunless %}
-<main id="main">{{ content }}</main>
+<main id="main" class="card shadow">{{ content }}</main>
 {% unless page.no-sidebar %}{% include sidebar.html recent-posts=layout.recent-posts pinned-posts=layout.pinned-posts %}{% endunless %}
 {% unless page.no-footer == true %}{% include common/footer.html keep-kern-clean=site.keep-kern-clean %}{% endunless %}
 {% unless page.no-share == true %}{% include common/share-button.html text=page.description %}{% endunless %}
