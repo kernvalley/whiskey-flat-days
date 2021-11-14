@@ -21,5 +21,5 @@ are nearly ready to go, but publishing them requires some fees to be listed on t
 respective app stores as well as the possibility of them being rejected by Microsoft
 or Apple.
 
-There are other things that I would like to add such as online bribes/donations
+There are other things that I would like to add such as online bribes (donations)
 for the may races, but that is up to the Kernville Chamber of Commerce.
