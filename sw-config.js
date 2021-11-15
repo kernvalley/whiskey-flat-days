@@ -9,7 +9,7 @@ const config = {
 	version: '{{ site.data.app.version | default: site.version }}',
 	fresh: [
 		'{{ site.pages | where: "pinned", true | map: "url" | join: "', '" }}',
-		'/manifest.json',
+		'/webapp.wwebmanifest',
 		'https://apps.kernvalley.us/apps.json',
 		'https://cdn.kernvalley.us/img/markers.svg',
 	].map(path => new URL(path, location.origin).href),

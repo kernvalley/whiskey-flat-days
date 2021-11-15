@@ -47,7 +47,7 @@ tags:
 			</div>
 		</address>
 		{% if site.data.mainEvent.organizer %}
-			<div class="center" itemprop="organizer" itemtype="https://schema.org/{{ site.data.mainEvent.orgaizer['@type'] | defalt: 'Organization' }}" itemscope="">
+			<div class="center" itemprop="organizer" itemtype="https://schema.org/{{ site.data.mainEvent.organizer['@type'] | default: 'Organization' }}" itemscope="">
 				<b>Organized by:</b>
 				{% if site.data.mainEvent.organizer.url %}
 					<a href="{{ site.data.mainEvent.organizer.url }}" itemprop="url" rel="noopener noreferrer external">
