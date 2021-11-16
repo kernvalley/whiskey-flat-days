@@ -1,0 +1,54 @@
+---
+title: News
+deescription: News and announcements for Whiskey Flat Days
+tags:
+  - whiskey flat days
+  - whiskey flats
+  - kernville
+  - news
+  - festivals
+  - announcements
+layout: default
+index: true
+pinned: true
+no-header: true
+---
+{% if paginator == null or pagination.total_posts == 0 %}
+	<div class="status-box info">
+		<h3 class="center">
+			{% include common/icon.html icon="megaphone" class="icon flip" height="16" width="16" fill="currentColor" %}
+			<span>Coming Soon &hellip;</span>
+			{% include common/icon.html icon="megaphone" height="16" width="16" fill="currentColor" %}
+		</h3>
+		<p>Come back later for the latest news and announcements for Whiskey Flat Days.</p>
+	</div>
+{% else %}
+	<section class="grid" id="posts">
+		{% for post in paginator.posts %}
+			<a href="{{ post.url }}" class="card shadow center post-preview" accesskey="{{ forloop.index }}">
+				<h3 class="post-title">{{ post.title }}</h3>
+				<div>
+					<span>Posted on</span>
+					<time class="post-date" datetime="{{ post.date }}">{{ post.date | date: '%a, %b %e, %Y' }}</time>
+				</div>
+				<img src="{{ post.image | default: 'https://cdn.kernvalley.us/img/raster/missing-image.png' }}" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" width="250" alt="" />
+			</a>
+		{% endfor %}
+	</section>
+	{% if paginator.total_pages != 1 %}
+		<div class="pagination-nav">
+			{% if paginator.previous_page %}
+				<a href="{{ paginator.previous_page_path }}" rel="prev" class="btn btn-primary color-alt decoration-none pagination" accesskey="[">
+					{% include common/icon.html icon="go-previous" height="16" width="16" fill="currentColor" %}
+					<span>Prev</span>
+				</a>
+			{% endif %}
+			{% if paginator.next_page %}
+				<a href="{{ paginator.next_page_path }}" rel="next" class="btn btn-primary color-alt decoration-none pagination" accesskey="]">
+					<span>Next</span>
+					{% include common/icon.html icon="go-next" height="16" width="16" fill="currentColor" %}
+				</a>
+			{% endif %}
+		</div>
+	{% endif %}
+{% endif %}

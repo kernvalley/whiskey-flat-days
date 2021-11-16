@@ -1,6 +1,0 @@
-article [itemprop~="articleBody"] {
-	column-count: auto;
-	column-width: 350px;
-	column-gap: 2em;
-	column-rule: 1px dotted currentColor;
-}

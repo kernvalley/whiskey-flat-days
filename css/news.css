@@ -1,0 +1,43 @@
+#posts.grid {
+	grid-template-columns: repeat(auto-fit, minmax(300px, 400px));
+	grid-template-rows: masonry;
+	gap: 1.2rem;
+	justify-content: space-evenly;
+}
+
+#posts .post-title {
+	margin-bottom: 2px;
+}
+
+.post-preview {
+	transform: none;
+	transition: transform 400ms ease-in-out;
+}
+
+.post-preview:hover, .post-preview:focus {
+	transform: scale(1.1) rotate(-3deg);
+}
+
+article [itemprop~="articleBody"] {
+	column-count: auto;
+	column-width: 350px;
+	column-gap: 2em;
+	column-rule: 1px dotted currentColor;
+}
+
+.pagination-nav {
+	padding: 1.2rem;
+}
+
+.btn.pagination {
+	text-decoration: none;
+	color: var(--alt-color, #fefefe);
+}
+
+#main .btn.pagination:visited, .btn.pagination:hover {
+	color: var(--alt-color, #fefefe);
+}
+
+.status-box .icon.flip {
+	transform: rotateY(.5turn);
+}
