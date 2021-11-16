@@ -13,6 +13,7 @@ author:
   sameAs:
     - https://twitter.com/shgysk8zer0
     - https://github.com/shgysk8zer0
+store_url: https://play.google.com/store/apps/details?id=com.whiskey_flats.twa
 ---
 Whiskey Flat Days is coming up in a few short months, and it's time for some updates
 here. That means there is a bit of a redesign in progress and new features in the works.
@@ -23,7 +24,7 @@ With the publishing of this post, there is now Whiskey Flat Days news being publ
 here. I'm hoping to cover anything important that takes place during the meetings
 leading up to Whiskey Flat Days as well as the happenings of the mayor races.
 
-There has been an <a href="https://play.google.com/store/apps/details?id=com.whiskey_flats.twa" rel="noopener noreferrer external">Android App {% include common/icon.html icon="link-external" %}</a>
+There has been an <a href="{{ page.store_url }}" rel="noopener noreferrer external">Android App {% include common/icon.html icon="link-external" height="16" width="16" fill="currentColor" %}</a>
 for about a year now, and there may be a Windows and iOS/Mac app coming soon. These new apps
 are nearly ready to go, but publishing them requires some fees to be listed on their
 respective app stores as well as the possibility of them being rejected by Microsoft
