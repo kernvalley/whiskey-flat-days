@@ -15,3 +15,12 @@ article [itemprop~="articleBody"] {
 	column-gap: 2em;
 	column-rule: 1px dotted currentColor;
 }
+
+.btn.pagination {
+	text-decoration: none;
+	color: var(--alt-color, #fefefe);
+}
+
+#main .btn.pagination:visited, .btn.pagination:hover {
+	color: var(--alt-color, #fefefe);
+}
