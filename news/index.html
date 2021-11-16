@@ -13,7 +13,7 @@ index: true
 pinned: true
 no-header: true
 ---
-{% if pagination.total_posts == 0 %}
+{% if paginator == null or pagination.total_posts == 0 %}
 	<div class="status-box info">
 		<h3 class="center">
 			{% include common/icon.html icon="megaphone" class="icon flip" height="16" width="16" fill="currentColor" %}
