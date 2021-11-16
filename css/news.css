@@ -9,6 +9,15 @@
 	margin-bottom: 2px;
 }
 
+.post-preview {
+	transform: none;
+	transition: transform 400ms ease-in-out;
+}
+
+.post-preview:hover, .post-preview:focus {
+	transform: scale(1.1) rotate(-3deg);
+}
+
 article [itemprop~="articleBody"] {
 	column-count: auto;
 	column-width: 350px;

@@ -26,13 +26,13 @@ no-header: true
 	{% endfor %}
 </section>
 {% if paginator.previous_page %}
-	<a href="{{ paginator.previous_page_path }}" rel="prev" class="btn btn-primary float-left color-alt decoration-none pagination" accesskey=",">
+	<a href="{{ paginator.previous_page_path }}" rel="prev" class="btn btn-primary float-left color-alt decoration-none pagination" accesskey="[">
 		{% include common/icon.html icon="go-previous" height="16" width="16" fill="currentColor" %}
 		<span>Prev</span>
 	</a>
 {% endif %}
 {% if paginator.next_page %}
-	<a href="{{ paginator.next_page_path }}" rel="next" class="btn btn-primary float-right color-alt decoration-none pagination" accesskey=".">
+	<a href="{{ paginator.next_page_path }}" rel="next" class="btn btn-primary float-right color-alt decoration-none pagination" accesskey="]">
 		<span>Next</span>
 		{% include common/icon.html icon="go-next" height="16" width="16" fill="currentColor" %}
 	</a>
