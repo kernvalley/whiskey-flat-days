@@ -1,0 +1,33 @@
+---
+title: News
+deescription: News and announcements for Whiskey Flat Days
+tags:
+  - whiskey flat days
+  - whiskey flats
+  - kernville
+  - news
+  - festivals
+  - announcements
+layout: default
+index: true
+pinned: true
+no-header: true
+---
+<section class="grid" id="posts">
+	{% for post in paginator.posts %}
+		<a href="{{ post.url }}" class="card shadow center post-preview">
+			<h3 class="post-title">{{ post.title }}</h3>
+			<div>
+				<span>Posted on</span>
+				<time class="post-date" datetime="{{ post.date }}">{{ post.date | date: '%a, %b %e, %Y' }}</time>
+			</div>
+			<img src="{{ post.image | default: 'https://cdn.kernvalley.us/img/raster/missing-image.png' }}" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" width="250" alt="" />
+		</a>
+	{% endfor %}
+</section>
+{% if paginator.previous_page %}
+	<a href="{{ paginator.previous_page_path }}" rel="prev">Previous</a>
+{% endif %}
+{% if paginator.next_page %}
+	<a href="{{ paginator.next_page_path }}" rel="next">Next</a>
+{% endif %}
