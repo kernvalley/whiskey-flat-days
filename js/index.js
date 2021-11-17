@@ -16,7 +16,7 @@ import 'https://cdn.kernvalley.us/components/app/stores.js';
 import 'https://cdn.kernvalley.us/components/share-to-button/share-to-button.js';
 import 'https://cdn.kernvalley.us/components/disqus/comments.js';
 import { init } from 'https://cdn.kernvalley.us/js/std-js/data-handlers.js';
-import * as handlers from './handlers.js';
+import { searchDateTimeRange, eventSearchHandler, businessCategorySearch } from './handlers.js';
 import { shareInit } from 'https://cdn.kernvalley.us/js/std-js/data-share.js';
 import { $ } from 'https://cdn.kernvalley.us/js/std-js/esQuery.js';
 import { ready, loaded } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
@@ -226,7 +226,7 @@ Promise.all([
 		$('#main').css({ padding: '4px' });
 
 		if (location.hash === '') {
-			handlers.searchDateTimeRange({from: current ? new Date() : '2021-02-18T10:00'});
+			searchDateTimeRange({from: current ? new Date() : '2021-02-18T10:00'});
 		}
 		const date = `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')}`;
 
@@ -234,8 +234,8 @@ Promise.all([
 			$('button[data-action="find-location"]').unhide();
 		}
 
-		$('form[name="eventSearch"]').submit(handlers.eventSearchHandler);
-		$('form[name="businessSearch"]').submit(handlers.businessCategorySearch);
+		$('form[name="eventSearch"]').submit(eventSearchHandler);
+		$('form[name="businessSearch"]').submit(businessCategorySearch);
 		$('toast-message > form').reset(({ target }) => target.closest('toast-message').close());
 
 		$('#search-time').attr({ min: '06:00', max: '20:00' });
