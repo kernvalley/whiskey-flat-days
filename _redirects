@@ -1,5 +1,6 @@
 https://whiskeyflat.netlify.com/*	https://whiskeyflatdays.com/:splat	301!
 http://whiskeyflat.netlify.com/*	https://whiskeyflatdays.com/:splat	301!
 /contact				https://contact.kernvalley.us?subject=Whiskey%20Flat%20Days
-/manifest.json  /webapp.webmanifest
-/news/* /news/?404=:splat 303
+/manifest.json  /webapp.webmanifest 301
+/news/*         /news/?404=:splat   303
+/maps/*         /map/:splat         301

@@ -2,7 +2,7 @@
 name: Whiskey Flat Days
 shortName: WFD App
 id: WhiskeyFlatDays
-version: 2.1.0-2021-11-10
+version: 2.1.0-2021-11-17
 start_url: /
 display: standalone
 description: "Map, events, and news app for Whiskey Flat Days"
@@ -79,11 +79,11 @@ shortcuts:
       sizes: 36x36
 protocol_handlers:
   - protocol: geo
-    url: /maps/?geo=%s
+    url: /map/?geo=%s
   - protocol: web+geo
-    url: /maps/geo=%s
+    url: /map/geo=%s
   - protocol: web+wfdplace
-    url: /maps/?place=%s
+    url: /map/?place=%s
   - protocol: web+wfdevent
     url: /events/?event=%s
 categories:
@@ -94,11 +94,12 @@ categories:
   - social
 features:
   - List of events and vendors for Whiskey Flat Days
+  - Shortcuts to Events, News, and Map pages
   - Searchable map containing markers for attractions, businesses, and vendors
   - Offline access on supported devices
-  - Jumplist / shortcuts to events and map pages
   - Easy sharing to Facebook, Twitter, text message, and any app installed on your device
   - Local weather so you know whether to pack sunscreen or an umbrella
+  - Handle `geo:`, `web+geo:`, `web+wfdplace:`, and `web+wfdevent:` protocols
 icons:
   - src: /img/favicon.svg
     type: image/svg+xml
