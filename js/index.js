@@ -16,7 +16,8 @@ import 'https://cdn.kernvalley.us/components/app/stores.js';
 import 'https://cdn.kernvalley.us/components/share-to-button/share-to-button.js';
 import 'https://cdn.kernvalley.us/components/disqus/comments.js';
 import { init } from 'https://cdn.kernvalley.us/js/std-js/data-handlers.js';
-import * as handlers from './handlers.js';
+import { URLPattern as URLPatternShim } from 'https://unpkg.com/urlpattern-polyfill@1.0.0-rc1/dist/index.modern.js';
+import { searchDateTimeRange, eventSearchHandler, businessCategorySearch } from './handlers.js';
 import { shareInit } from 'https://cdn.kernvalley.us/js/std-js/data-share.js';
 import { $ } from 'https://cdn.kernvalley.us/js/std-js/esQuery.js';
 import { ready, loaded } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
@@ -24,6 +25,22 @@ import { getCustomElement } from 'https://cdn.kernvalley.us/js/std-js/custom-ele
 import { importGa, externalHandler, telHandler, mailtoHandler } from 'https://cdn.kernvalley.us/js/std-js/google-analytics.js';
 import { searchLocationMarker, createMarker, isOnGoing, filterEventNamesDatalist } from './functions.js';
 import { GA } from './consts.js';
+
+if (! ('URLPattern' in globalThis)) {
+	globalThis.URLPattern = URLPatternShim;
+}
+
+const nullSubmit = event => {
+	event.preventDefault();
+	const dialog = event.target.closest('dialog, toast-message');
+	if (dialog instanceof HTMLElement) {
+		if (dialog.close instanceof Function) {
+			dialog.close;
+		} else if (dialog.open === true) {
+			dialog.open = false;
+		}
+	}
+};
 
 $(document.documentElement).toggleClass({
 	'no-dialog': document.createElement('dialog') instanceof HTMLUnknownElement,
@@ -94,20 +111,123 @@ if (location.pathname.startsWith('/events') && ('IntersectionObserver' in window
 
 Promise.all([
 	getCustomElement('install-prompt'),
+	new URL(location.href),
 	ready(),
-]).then(async ([HTMLInstallPromptElement]) => {
+]).then(async ([HTMLInstallPromptElement, url]) => {
 	init();
 
 	$('#install-btn').click(() => new HTMLInstallPromptElement().show()).then($btns => $btns.unhide());
 
-	if (location.pathname.startsWith('/map')) {
+	if (url.pathname.startsWith('/map')) {
+		if (url.searchParams.has('geo')) {
+			const geo = new URL(url.searchParams.get('geo'));
+			switch(geo.protocol) {
+				case 'geo:':
+				case 'web+geo:': {
+					try {
+						const { pathname: { groups: { latitude: lat = null, longitude: lng = null }}} = new URLPattern({
+							protocol: '{web\\+}?geo:',
+							pathname: ':latitude,:longitude',
+						}).exec(geo.href) || { pathname: { groups: { latitude: null, longitude: null }}};
+
+						const [latitude, longitude] = [parseFloat(lat), parseFloat(lng)];
+
+						if (! (Number.isNaN(latitude) || Number.isNaN(longitude))) {
+							url.searchParams.delete('geo');
+							url.hash = `#${latitude},${longitude}`;
+							location.hash = url.hash;
+							history.replaceState(history.state, document.title, url.href);
+							await Promise.all([
+								customElements.whenDefined('leaflet-map'),
+								customElements.whenDefined('leaflet-marker'),
+							]);
+							const map = document.querySelector('leaflet-map');
+							const icon = 'https://cdn.kernvalley.us/img/adwaita-icons/actions/mark-location.svg';
+							const title = 'Marked Location';
+							await map.ready;
+							map.setCenter({ latitude, longitude, title, icon });
+						} else {
+							url.searchParams.delete('geo');
+							history.replaceState(history.state, document.title, url.href);
+						}
+					} catch(err) {
+						console.error(err);
+					}
+					break;
+				}
+
+				case 'web+wfdplace:': {
+					try {
+						const { pathname: { groups: { identifier = null }}} = new URLPattern({
+							protocol: 'web\\+wfdplace:',
+							pathname: ':identifier',
+						}).exec(geo.href) || { pathname: { groups: { identifier: null }}};
+
+						if (typeof identifier === 'string' && identifier.length !== 0) {
+							const marker = document.getElementById(identifier);
+							url.searchParams.delete('geo');
+							console.log({ identifier, marker, url: url.href});
+							history.replaceState(history.state, document.title, url.href);
+
+							if (marker instanceof HTMLElement && marker.tagName === 'LEAFLET-MARKER') {
+								await Promise.all([
+									customElements.whenDefined('leaflet-map'),
+									customElements.whenDefined('leaflet-marker'),
+								]);
+
+								await marker.ready;
+								marker.open = true;
+							}
+						}
+					} catch(err) {
+						console.error(err);
+					}
+					break;
+				}
+
+				default:
+					console.error(`Unhandled URL protocol "${geo.protocol}"`);
+					url.searchParams.delete('geo');
+					history.replaceState(history.state, document.title, url.href);
+			}
+		} else if (url.searchParams.has('place')) {
+			try {
+				const { pathname: { groups: { identifier }}} = new URLPattern({
+					protocol: 'web\\+wfdplace:',
+					pathname: ':identifier',
+				}).exec(url.searchParams.get('place')) || { pathname: { groups: { identifier: null }}};
+
+				if (typeof identifier === 'string' && identifier.length !== 0) {
+					const marker = document.getElementById(identifier);
+					if (marker instanceof HTMLElement && marker.tagName === 'LEAFLET-MARKER') {
+						const map = marker.closest('leaflet-map');
+						await Promise.all([
+							customElements.whenDefined('leaflet-map'),
+							customElements.whenDefined('leaflet-marker'),
+						]);
+						await Promise.all([marker.ready, map.ready]);
+
+						url.searchParams.delete('place');
+						url.hash = `#${identifier}`;
+						history.replaceState(history.state, marker.title, url.href);
+						marker.hidden = false;
+						marker.open = true;
+					}
+				} else {
+					url.searchParams.remove('place');
+					history.replaceState(history.state, document.title, url.href);
+				}
+			} catch(err) {
+				console.error(err);
+			}
+		}
 		const now = new Date();
 		const current = isOnGoing();
-		
+
 		$('#main').css({ padding: '4px' });
 
 		if (location.hash === '') {
-			handlers.searchDateTimeRange({from: current ? new Date() : '2021-02-18T10:00'});
+			searchDateTimeRange({from: current ? new Date() : '2021-02-18T10:00'});
 		}
 		const date = `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')}`;
 
@@ -115,8 +235,8 @@ Promise.all([
 			$('button[data-action="find-location"]').unhide();
 		}
 
-		$('form[name="eventSearch"]').submit(handlers.eventSearchHandler);
-		$('form[name="businessSearch"]').submit(handlers.businessCategorySearch);
+		$('form[name="eventSearch"]').submit(eventSearchHandler);
+		$('form[name="businessSearch"]').submit(businessCategorySearch);
 		$('toast-message > form').reset(({ target }) => target.closest('toast-message').close());
 
 		$('#search-time').attr({ min: '06:00', max: '20:00' });
@@ -126,13 +246,40 @@ Promise.all([
 			max: '2021-02-20'
 		});
 
-		$('form[name="startDate"]').submit(handlers.startDateSearch);
-		$('form[name="startDate"], form[name="search"]').reset(handlers.searchReset);
-		$('form[name="search"]').submit(handlers.searchSubmit);
-		$('form[name="markerFilter"]').submit(handlers.filterMarkersSubmit);
+		$('form[name="startDate"]').submit(nullSubmit);
+		$('form[name="startDate"], form[name="search"]').reset(nullSubmit);
+		$('form[name="search"]').submit(nullSubmit);
+		$('form[name="markerFilter"]').submit(nullSubmit);
 
 		filterEventNamesDatalist();
 		searchLocationMarker();
+	} else if (url.pathname.startsWith('/events')) {
+		if (url.searchParams.has('event')) {
+			try {
+				const { pathname :{ groups: { identifier }}} = new URLPattern({
+					protocol: 'web\\+wfdevent:',
+					pathname: ':identifier',
+				}).exec(url.searchParams.get('event')) || { pathname: { groups: { identifier: null }}};
+
+				if (typeof identifier === 'string' && identifier.length !== 0) {
+					const el = document.getElementById(identifier);
+					if (el instanceof HTMLElement && el.hasAttribute('itemscope')) {
+						el.scrollIntoView({ behavior: 'smooth', block: 'end' });
+						url.searchParams.delete('event');
+						url.hash = `#${identifier}`;
+						document.title = el.querySelector('[itemprop="name"]').textContent;
+						history.replaceState(history.state, document.title, url.href);
+					}
+				} else {
+					url.searchParams.delete('event');
+					history.replaceState(history.state, document.title, url.href);
+				}
+			} catch(err) {
+				console.error(err);
+				url.searchParams.delete('event');
+				history.replaceState(history.state, document.title, url.href);
+			}
+		}
 	}
 
 	$('[data-action]').click(({ target }) => {
