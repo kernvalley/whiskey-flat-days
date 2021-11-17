@@ -82,9 +82,9 @@ protocol_handlers:
     url: /maps/?geo=%s
   - protocol: web+geo
     url: /maps/geo=%s
-  - protocol: web+wfd-place
+  - protocol: web+wfdplace
     url: /maps/?place=%s
-  - protocol: web+wfd-event
+  - protocol: web+wfdevent
     url: /events/?event=%s
 categories:
   - travel
