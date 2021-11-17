@@ -17,7 +17,8 @@ tags:
   - festival
 ---
 <article itemtype="https://schema.org/Article" itemscope="">
-	<header itemprop="about" itemtype="https://schema.org/{{ site.data.mainEvent['@type'] | default: 'Event' }}" itemscope="">
+	<header id="{{ site.data.mainEvent.identifier }}" itemprop="about" itemtype="https://schema.org/{{ site.data.mainEvent['@type'] | default: 'Event' }}" itemscope="">
+		<meta itemprop="identifier" content="{{ site.data.mainEvent.identifier }}" />
 		<h2 class="center" itemprop="name">{{ site.data.mainEvent.name }}</h2>
 		<meta itemprop="url" content="{{ site.data.mainEvent.url }}" />
 		<div class="center" itemprop="description">{{ site.data.mainEvent.description }}</div>
