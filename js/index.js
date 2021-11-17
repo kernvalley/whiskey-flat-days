@@ -16,6 +16,7 @@ import 'https://cdn.kernvalley.us/components/app/stores.js';
 import 'https://cdn.kernvalley.us/components/share-to-button/share-to-button.js';
 import 'https://cdn.kernvalley.us/components/disqus/comments.js';
 import { init } from 'https://cdn.kernvalley.us/js/std-js/data-handlers.js';
+import { URLPattern as URLPatternShim } from 'https://unpkg.com/urlpattern-polyfill@1.0.0-rc1/dist/index.modern.js';
 import { searchDateTimeRange, eventSearchHandler, businessCategorySearch } from './handlers.js';
 import { shareInit } from 'https://cdn.kernvalley.us/js/std-js/data-share.js';
 import { $ } from 'https://cdn.kernvalley.us/js/std-js/esQuery.js';
@@ -24,6 +25,10 @@ import { getCustomElement } from 'https://cdn.kernvalley.us/js/std-js/custom-ele
 import { importGa, externalHandler, telHandler, mailtoHandler } from 'https://cdn.kernvalley.us/js/std-js/google-analytics.js';
 import { searchLocationMarker, createMarker, isOnGoing, filterEventNamesDatalist } from './functions.js';
 import { GA } from './consts.js';
+
+if (! ('URLPattern' in globalThis)) {
+	globalThis.URLPattern = URLPatternShim;
+}
 
 const nullSubmit = event => {
 	event.preventDefault();
@@ -107,13 +112,9 @@ if (location.pathname.startsWith('/events') && ('IntersectionObserver' in window
 Promise.all([
 	getCustomElement('install-prompt'),
 	new URL(location.href),
-	('URLPattern' in globalThis) ? { URLPattern } : import('https://unpkg.com/urlpattern-polyfill@1.0.0-rc1/dist/index.modern.js'),
 	ready(),
-]).then(async ([HTMLInstallPromptElement, url, { URLPattern }]) => {
+]).then(async ([HTMLInstallPromptElement, url]) => {
 	init();
-	if (! ('URLPattern' in globalThis)) {
-		globalThis.URLPattern = URLPattern;
-	}
 
 	$('#install-btn').click(() => new HTMLInstallPromptElement().show()).then($btns => $btns.unhide());
 
