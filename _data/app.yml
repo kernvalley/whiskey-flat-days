@@ -81,7 +81,7 @@ protocol_handlers:
   - protocol: geo
     url: /map/?geo=%s
   - protocol: web+geo
-    url: /map/geo=%s
+    url: /map/?geo=%s
   - protocol: web+wfdplace
     url: /map/?place=%s
   - protocol: web+wfdevent
