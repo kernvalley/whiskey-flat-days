@@ -15,7 +15,8 @@ tags:
   - encampment
 ---
 {% assign events = site.data.events | sort: 'startDate' %}
-<div itemprop="about" itemtype="https://schema.org/{{ site.data.mainEvent['@type'] | default: 'Event' }}" itemscope="">
+<div id="{{ site.data.mainEvent.identifier }}" itemprop="about" itemtype="https://schema.org/{{ site.data.mainEvent['@type'] | default: 'Event' }}" itemscope="">
+	<meta itemprop="identifier" content="{{ site.data.mainEvent.identifier }}" />
 	<header>
 		<h2 class="center" itemprop="name">{{ site.data.mainEvent.name }}</h2>
 		<meta itemprop="url" content="{{ site.data.mainEvent.url }}" />
