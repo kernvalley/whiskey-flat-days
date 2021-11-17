@@ -25,6 +25,18 @@ import { importGa, externalHandler, telHandler, mailtoHandler } from 'https://cd
 import { searchLocationMarker, createMarker, isOnGoing, filterEventNamesDatalist } from './functions.js';
 import { GA } from './consts.js';
 
+const nullSubmit = event => {
+	event.preventDefault();
+	const dialog = event.target.closest('dialog, toast-message');
+	if (dialog instanceof HTMLElement) {
+		if (dialog.close instanceof Function) {
+			dialog.close;
+		} else if (dialog.open === true) {
+			dialog.open = false;
+		}
+	}
+};
+
 $(document.documentElement).toggleClass({
 	'no-dialog': document.createElement('dialog') instanceof HTMLUnknownElement,
 	'no-details': document.createElement('details') instanceof HTMLUnknownElement,
@@ -233,10 +245,10 @@ Promise.all([
 			max: '2021-02-20'
 		});
 
-		$('form[name="startDate"]').submit(handlers.startDateSearch);
-		$('form[name="startDate"], form[name="search"]').reset(handlers.searchReset);
-		$('form[name="search"]').submit(handlers.searchSubmit);
-		$('form[name="markerFilter"]').submit(handlers.filterMarkersSubmit);
+		$('form[name="startDate"]').submit(nullSubmit);
+		$('form[name="startDate"], form[name="search"]').reset(nullSubmit);
+		$('form[name="search"]').submit(nullSubmit);
+		$('form[name="markerFilter"]').submit(nullSubmit);
 
 		filterEventNamesDatalist();
 		searchLocationMarker();
