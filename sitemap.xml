@@ -4,7 +4,7 @@ index: false
 ---
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-	{% for post in site.posts limit: 10 %}{% if post.index %}
+	{% for post in site.posts limit: 10 %}{% if post.index and post.hidden != true %}
 	<url>
 		<loc>{{ post.url | absolute_url }}</loc>
 		{% if post.updated %}
