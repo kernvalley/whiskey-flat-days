@@ -43,9 +43,9 @@ social:
   twitter: kern_valley
   linkedin: company/kernvalley-us
   facebook: KernValley.us
-# feed:
-#   url: /feed.rss
-#   type: application/rss+xml
+feed:
+  url: /feed.rss
+  type: application/rss+xml
 icons: '/img/icons.svg'
 theme-color: '#b70c0c'
 background-color: '#242424'
