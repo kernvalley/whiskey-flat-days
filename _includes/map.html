@@ -1,4 +1,5 @@
 <leaflet-map center="{{ site.data.mainEvent.location.geo.latitude }},{{ site.data.mainEvent.location.geo.longitude }}" class="relative contain-content z-1" zoom="18" maxzoom="19" minzoom="15" crossorigin="annonymous" detectretina="detectretina" itemtype="https://schema.org/Event" itemscope="" zoomcontrol="" router="">
+	<meta itemprop="identifier" content="{{ site.data.mainEvent.identifier }}" />
 	<meta itemprop="name" content="{{ site.data.mainEvent.name | escape }}" />
 	<meta itemprop="url" content="{{ site.data.mainEvent.url }}" />
 	<meta itemprop="description" content="{{ site.data.mainEvent.description | escape }}" />
@@ -17,7 +18,7 @@
 		<div itemprop="address" itemtype="https://schema.org/PostalAddress" itemscope="" hidden="">
 			<meta itemprop="addressLocality" content="{{ site.data.mainEvent.location.address.addressLocality }}" />
 			<meta itemprop="addressRegion" content="{{ site.data.mainEvent.location.address.addressRegion }}" />
-			<meta itemprop="addressCountry" content="{{ site.data.mainEvent.location.address.addressCountry }}" />
+			<meta itemprop="addressCountry" content="{{ site.data.mainEvent.location.address.addressCountry | default: 'US' }}" />
 			<meta itemprop="postalCode" content="{{ site.data.mainEvent.location.address.postalCode }}" />
 		</div>
 		<div itemprop="geo" itemtype="https://schema.org/GeoCoordinates" itemscope="" hidden="">

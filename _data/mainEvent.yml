@@ -15,7 +15,7 @@ image:
     height: 534
     encodingFormat: image/jpeg
 location:
-  "type": City
+  "@type": City
   name: Kernville, CA
   address:
     "@type": PostalAddress
