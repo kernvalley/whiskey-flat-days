@@ -89,10 +89,14 @@ if (typeof GA === 'string' && GA !== '') {
 
 if ('serviceWorker' in navigator) {
 	navigator.serviceWorker.ready.then(async reg => {
-		if ('periodicSync' in reg && await navigator.permissions.query({ name: 'periodic-background-sync' })) {
-			reg.periodicSync.register('main-assets', { minInterval: 7 *  DAYS }).catch(console.error);
-			reg.periodicSync.register('pinned-pages', { minInterval: 2 * DAYS }).catch(console.error);
-			reg.periodicSync.register('recent-posts', { minInterval: DAYS }).catch(console.error);
+		if ('periodicSync' in reg && 'permissions' in navigator) {
+			const state = await navigator.permissions.query({ name: 'periodic-background-sync' });
+
+			if (state === 'granted') {
+				reg.periodicSync.register('main-assets', { minInterval: 7 *  DAYS }).catch(console.error);
+				reg.periodicSync.register('pinned-pages', { minInterval: 2 * DAYS }).catch(console.error);
+				reg.periodicSync.register('recent-posts', { minInterval: DAYS }).catch(console.error);
+			}
 		}
 	});
 }
