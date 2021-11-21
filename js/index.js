@@ -23,6 +23,7 @@ import { $ } from 'https://cdn.kernvalley.us/js/std-js/esQuery.js';
 import { ready, loaded } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
 import { getCustomElement } from 'https://cdn.kernvalley.us/js/std-js/custom-elements.js';
 import { importGa, externalHandler, telHandler, mailtoHandler } from 'https://cdn.kernvalley.us/js/std-js/google-analytics.js';
+import { DAYS } from 'https://cdn.kernvalley.us/js/std-js/date-consts.js';
 import { searchLocationMarker, createMarker, isOnGoing, filterEventNamesDatalist } from './functions.js';
 import { GA } from './consts.js';
 
@@ -83,6 +84,20 @@ if (typeof GA === 'string' && GA !== '') {
 				}
 			});
 		});
+	});
+}
+
+if ('serviceWorker' in navigator) {
+	navigator.serviceWorker.ready.then(async reg => {
+		if ('periodicSync' in reg && 'permissions' in navigator) {
+			const state = await navigator.permissions.query({ name: 'periodic-background-sync' });
+
+			if (state === 'granted') {
+				reg.periodicSync.register('main-assets', { minInterval: 7 *  DAYS }).catch(console.error);
+				reg.periodicSync.register('pinned-pages', { minInterval: 2 * DAYS }).catch(console.error);
+				reg.periodicSync.register('recent-posts', { minInterval: DAYS }).catch(console.error);
+			}
+		}
 	});
 }
 
