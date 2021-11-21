@@ -5,6 +5,20 @@ layout: null
 /* eslint no-unused-vars: 0*/
 'use strict';
 
+async function updateAssets(assets, { referrerPolicy = 'no-referrer' } = {}) {
+	if (Array.isArray(assets) && assets.length !== 0) {
+		const cache = await caches.open(config.version);
+		await Promise.allSettled(assets.filter(url => url.length !== 0).map(async url => {
+			const req = new Request(new URL(url, location.origin), { referrerPolicy: 'no-referrer' });
+			const resp = await fetch(req);
+
+			if (resp.ok) {
+				await cache.put(req, resp);
+			}
+		}));
+	}
+}
+
 const config = {
 	version: '{{ site.data.app.version | default: site.version }}',
 	fresh: [
@@ -74,4 +88,23 @@ const config = {
 		'https://api.github.com/users/',
 		/\.(html|css|js|json)$/,
 	],
+	periodicSync: {
+		'main-assets': {
+			minInterval: 86400000, // 1 Day
+			callback: () => updateAssets([
+				'/js/index.min.js',
+				'/css/index.min.css',
+				'/img/icons.svg',
+				'/webapp.webmanifest',
+			])
+		}, 'pinned-pages': {
+			minInterval: 86400000, // 1 Day
+			callback: () => updateAssets([
+				'{{ site.pages | where: "pinned", true | map: "url" | join: "', '" }}'
+			])
+		}, 'recent-posts': {
+			minInterval: 86400000, // 1 Day
+			callback: () => updateAssets(['{{ site.posts | map: "url" | join: "', '" }}'])
+		}
+	}
 };
