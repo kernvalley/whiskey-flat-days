@@ -1,9 +1,10 @@
 <header id="header" class="background-cover background-fixed contain-content">
-	<div id="main-event" class="event-card center" itemtype="https://schema.org/Event" itemscope="">
-		<meta aitemprop="url" content="{{ '/' | absolute_url }}" />
-		<h1 class="center font-title color-accent" itemprop="name">Whiskey Flat Days</h1>
+	<div id="main-event" class="event-card center color-alt" itemtype="https://schema.org/Event" itemscope="">
+		<meta itemprop="url" content="https://whiskeyflatdays.com" />
+		<h1 class="center font-title color-accent uppercase" itemprop="name">Whiskey Flat Days</h1>
 		<meta itemprop="alternateName" content="Whiskey Flats" />
 		<h2 class="center font-title color-accent">Saddle Tramps and Cowboy Camps</h2>
+		<b>Est. 1957</b>
 		<link itemprop="eventStatus" href="https://schema.org/EventScheduled" />
 		<link itemprop="eventAttendanceMode" href="https://schema.org/OfflineEventAttendanceMode" />
 		<div class="event-dates">
@@ -25,10 +26,11 @@
 				<meta itemprop="longitude" content="-118.424825" />
 			</div>
 		</div>
-		<div itemprop="organizer" itemtype="https://schema.org/Organization" itemscope="">
+		<div class="event-organizer" itemprop="organizer" itemtype="https://schema.org/Organization" itemscope="">
 			<b>Organized by:</b>
 			<a href="https://gotokernville.com" rel="noopener noreferrer external" itemprop="url">
-				<span itemprop="name">Kernville Chamber of Commerce</span>
+				<span itemprop="name" class="underline">Kernville Chamber of Commerce</span>
+				{% include common/icon.html icon="link-external" height="16" width="16" fill="currentColor" %}
 			</a>
 		</div>
 	</div>
