@@ -73,6 +73,7 @@ const config = {
 
 		/* Fonts */
 		'https://cdn.kernvalley.us/fonts/roboto.woff2',
+		'https://cdn.kernvalley.us/fonts/rye.woff2',
 		/* Other */
 	].map(path => new URL(path, location.origin).href),
 	allowed: [
