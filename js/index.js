@@ -16,11 +16,12 @@ import 'https://cdn.kernvalley.us/components/app/stores.js';
 import 'https://cdn.kernvalley.us/components/share-to-button/share-to-button.js';
 import 'https://cdn.kernvalley.us/components/disqus/comments.js';
 import { init } from 'https://cdn.kernvalley.us/js/std-js/data-handlers.js';
+import { debounce } from 'https://cdn.kernvalley.us/js/std-js/events.js';
 import { URLPattern as URLPatternShim } from 'https://unpkg.com/urlpattern-polyfill@1.0.0-rc1/dist/index.modern.js';
 import { searchDateTimeRange, eventSearchHandler, businessCategorySearch } from './handlers.js';
 import { shareInit } from 'https://cdn.kernvalley.us/js/std-js/data-share.js';
 import { $ } from 'https://cdn.kernvalley.us/js/std-js/esQuery.js';
-import { ready, loaded } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
+import { ready, loaded, css, on } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
 import { getCustomElement } from 'https://cdn.kernvalley.us/js/std-js/custom-elements.js';
 import { importGa, externalHandler, telHandler, mailtoHandler } from 'https://cdn.kernvalley.us/js/std-js/google-analytics.js';
 import { DAYS } from 'https://cdn.kernvalley.us/js/std-js/date-consts.js';
@@ -30,6 +31,12 @@ import { GA } from './consts.js';
 if (! ('URLPattern' in globalThis)) {
 	globalThis.URLPattern = URLPatternShim;
 }
+
+css(document.documentElement, { '--viewport-height': `${window.innerHeight}px`});
+
+on(window, 'resize', debounce(() => {
+	css(document.documentElement, { '--viewport-height': `${window.innerHeight}px`});
+}), { passive: true });
 
 const nullSubmit = event => {
 	event.preventDefault();

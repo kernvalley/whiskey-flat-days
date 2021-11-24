@@ -1,5 +1,6 @@
-<header id="header" class="background-cover background-fixed contain-content">
+<header id="header" class="background-cover contain-content">
 	<div id="main-event" class="event-card center color-alt" itemtype="https://schema.org/Event" itemscope="">
+		<meta itemprop="identifier" content="{{ site.data.mainEvent.identifier }}" />
 		<meta itemprop="url" content="https://whiskeyflatdays.com" />
 		<b class="font-title color-accent">64<sup>th</sup> annual</b>
 		<h1 class="center font-title color-accent uppercase event-title" itemprop="name">Whiskey Flat Days</h1>
@@ -8,8 +9,10 @@
 		<b>Est. 1957</b>
 		<link itemprop="eventStatus" href="https://schema.org/EventScheduled" />
 		<link itemprop="eventAttendanceMode" href="https://schema.org/OfflineEventAttendanceMode" />
+		<hr class="background-accent" />
 		<div class="event-dates">
 			<span>President's Day Weekend</span><br />
+			{% include common/icon.html icon="calendar" height="16" width="16" fill="currentColor" %}
 			<time itemprop="startDate" datetime="2022-02-18">Feb. 18</time>
 			<span>&mdash;</span>
 			<time itemprop="endDate" datetime="2022-02-21">Feb. 21, 2022</time>
@@ -17,6 +20,8 @@
 		<div itemprop="location" itemtype="https://schema.org/City" itemscope="">
 			<meta itemprop="name" content="Kernville, CA" />
 			<address itemprop="address" itemtype="https://scheme.org/PostalAddress" itemscope="">
+
+				{% include common/icon.html icon="mark-location" height="16" width="16" fill="currentColor" %}
 				<b itemprop="addressLocality">Kernville</b>,
 				<b itemprop="addressRegion">CA</b>
 				<meta itemprop="addressCountry" content="US" />
