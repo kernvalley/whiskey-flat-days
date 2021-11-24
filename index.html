@@ -16,7 +16,7 @@ tags:
   - festival
 ---
 <article itemtype="https://schema.org/Article" itemscope="">
-	<meta itemprop="about" itemref="main-event" itemscope="" />
+	<meta itemprop="about" itemref="main-event" itemtype="https://schema.org/{{ site.data.mainEvent['@type'] | default: 'Event' }}" itemscope="" />
 	{% include event-status.html event=site.data.mainEvent %}
 	<h2 itemprop="headline" class="center font-title color-accent">64<sup>th</sup> Annual Whiskey Flat Days</h2>
 	<section itemprop="text">

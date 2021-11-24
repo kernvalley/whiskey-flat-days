@@ -1,41 +1,57 @@
 <header id="header" class="background-cover contain-content">
-	<div id="main-event" class="event-card center color-alt" itemtype="https://schema.org/Event">
+	<div id="main-event" class="event-card center color-alt" itemid="{{ site.data.mainEvent.identifier }}" itemtype="https://schema.org/{{ site.data.mainEvent['@type'] | default: 'Event' }}">
 		<meta itemprop="identifier" content="{{ site.data.mainEvent.identifier }}" />
-		<meta itemprop="url" content="https://whiskeyflatdays.com" />
+		<meta itemprop="url" content="{{ site.data.mainEvent.url | default: '/' | absolute_url }}" />
+		<meta itemprop="description" content="{{ site.data.mainEvent.description | escape_once }}" />
 		<b class="font-title color-accent">64<sup>th</sup> Annual</b>
-		<h1 class="center font-title color-accent uppercase event-title" itemprop="name">Whiskey Flat Days</h1>
-		<meta itemprop="alternateName" content="Whiskey Flats" />
+		<h1 class="center font-title color-accent uppercase event-title" itemprop="name">{{ site.data.mainEvent.name }}</h1>
+		<meta itemprop="alternateName" content="{{ site.data.mainEvent.alternateName }}" />
 		<h2 class="center font-title color-accent">Saddle Tramps and Cowboy Camps</h2>
 		<b>Est. 1957</b>
-		<link itemprop="eventStatus" href="https://schema.org/EventScheduled" />
-		<link itemprop="eventAttendanceMode" href="https://schema.org/OfflineEventAttendanceMode" />
+		<link itemprop="eventStatus" href="https://schema.org/{{ site.data.mainEvent.eventStatus | default: 'EventScheduled'}}" />
+		<link itemprop="eventAttendanceMode" href="https://schema.org/{{ site.data.mainEvent.eventAttendanceMode | default: 'OfflineEventAttendanceMode'}}" />
 		<hr class="background-accent" />
 		<div class="event-dates">
 			<span>President's Day Weekend</span><br />
 			{% include common/icon.html icon="calendar" height="16" width="16" fill="currentColor" %}
-			<time itemprop="startDate" datetime="2022-02-18">Feb. 18</time>
-			<span>&mdash;</span>
-			<time itemprop="endDate" datetime="2022-02-21">Feb. 21, 2022</time>
+			<time itemprop="startDate" datetime="{{ site.data.mainEvent.startDate | date: '%F' }}">{{ site.data.mainEvent.startDate | date: '%b. %-d' }}</time>
+			{% if site.data.mainEvent.endDate %}
+				<span>&mdash;</span>
+				<time itemprop="endDate" datetime="{{ site.data.mainEvent.endDate | date: '%F' }}">{{ site.data.mainEvent.endDate | date: '%b. %-d, %Y' }}</time>
+			{% endif %}
 		</div>
-		<div itemprop="location" itemtype="https://schema.org/City" itemscope="">
-			<meta itemprop="name" content="Kernville, CA" />
-			<address itemprop="address" itemtype="https://schema.org/PostalAddress" itemscope="">
-
-				{% include common/icon.html icon="mark-location" height="16" width="16" fill="currentColor" %}
-				<b itemprop="addressLocality">Kernville</b>,
-				<b itemprop="addressRegion">CA</b>
-				<meta itemprop="addressCountry" content="US" />
-				<meta itemprop="postalCode" content="93238" />
-			</address>
-			<div itemprop="geo" itemtype="https://schema.org/GeoCoordinates" itemscope="" hidden="">
-				<meta itemprop="latitude" content="35.754960" />
-				<meta itemprop="longitude" content="-118.424825" />
+		{% if site.data.mainEvent.location %}
+			<div itemprop="location" itemtype="https://schema.org/{{ site.data.mainEvent.location['@type'] | default: 'City' }}" itemscope="">
+				<meta itemprop="name" content="{{ site.data.mainEvent.location.name }}" />
+				{% if site.data.mainEvent.location.address %}
+					<address itemprop="address" itemtype="https://schema.org/PostalAddress" itemscope="">
+						{% include common/icon.html icon="mark-location" height="16" width="16" fill="currentColor" %}
+						<b itemprop="addressLocality">{{ site.data.mainEvent.location.address.addressLocality }}</b>,
+						<b itemprop="addressRegion">{{ site.data.mainEvent.location.address.addressRegion }}</b>
+						<meta itemprop="addressCountry" content="{{ site.data.mainEvent.location.address.addressCountry | default: 'CA' }}" />
+						<meta itemprop="postalCode" content="{{ site.data.mainEvent.location.address.postalCode }}" />
+					</address>
+				{% endif %}
+				{% if site.data.mainEvent.location.geo %}
+					<div itemprop="geo" itemtype="https://schema.org/GeoCoordinates" itemscope="" hidden="">
+						<meta itemprop="latitude" content="{{ site.data.mainEvent.location.geo.latitude }}" />
+						<meta itemprop="longitude" content="{{ site.data.mainEvent.location.geo.longitude }}" />
+					</div>
+				{% endif %}
 			</div>
-		</div>
-		<div class="event-organizer" itemprop="organizer" itemtype="https://schema.org/Organization" itemscope="">
+		{% endif %}
+		{% if site.data.mainEvent.image %}{% for image in site.data.mainEvent.image %}
+			<div itemprop="image" itemtype="https://schema.org/{{ image['@type'] | default: 'ImageObject' }}" itemscope="" hidden="">
+				<meta itemprop="url" content="{{ image.url | escape_once }}" />
+				<meta itemprop="height" content="{{ image.height }}" />
+				<meta itemprop="width" content="{{ image.width }}" />
+				<meta itemprop="encodingFormat" content="{{ image.encodingFormat | default: 'image/jpeg' }}" />
+			</div>
+		{% endfor %}{% endif %}
+		<div class="event-organizer" itemprop="organizer" itemtype="https://schema.org/{{ site.data.mainEvent.organizer['@type'] | default: 'Organization' }}" itemscope="">
 			<b>Organized by:</b>
-			<a href="https://gotokernville.com" rel="noopener noreferrer external" itemprop="url">
-				<span itemprop="name" class="underline">Kernville Chamber of Commerce</span>
+			<a href="{{ site.data.mainEvent.organizer.url }}" rel="noopener noreferrer external" itemprop="url">
+				<span itemprop="name" class="underline">{{ site.data.mainEvent.organizer.name }}</span>
 				{% include common/icon.html icon="link-external" height="16" width="16" fill="currentColor" %}
 			</a>
 		</div>

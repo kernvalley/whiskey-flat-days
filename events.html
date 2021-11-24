@@ -19,7 +19,7 @@ tags:
 		<div id="event-list" class="event-list grid justify-center">
 			{% for event in events %}
 				<div id="{{ event.uuid }}" class="event-item grid contain-content content-visibility-auto shadow" itemtype="https://schema.org/{{ event['@type'] | default: 'Event' }}" itemscope="">
-					<meta itemprop="superEvent" itemref="main-event" itemscope="" />
+					<meta itemprop="superEvent" itemref="main-event" itemtype="https://schema.org/{{ site.data.mainEvent['@type'] | default: 'Event' }}" itemscope="" />
 					<meta itemprop="eventAttendanceMode" content="{{ marker.eventAttendanceMode | default: 'https://schema.org/OfflineEventAttendanceMode' }}" />
 					<meta itemprop="eventStatus" content="{{ marker.eventStatus | default: 'https://schema.org/EventScheduled' }}" />
 					<span class="event-image-container inline-block center">
