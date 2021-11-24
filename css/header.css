@@ -1,3 +1,37 @@
 #header {
-	display: none;
+	text-align: center;
+	background-image: url("/img/raster/kern-1280.jpg");
+	background-position: center;
+}
+
+@media (max-width: 320px) {
+	#header {
+		background-image: url("/img/raster/kern-320.jpg");
+	}
+}
+
+@media (min-width: 321px) and (max-width: 640px) {
+	#header {
+		background-image: url("/img/raster/kern-640.jpg");
+	}
+}
+
+#header .event-card {
+	display: inline-block;
+	padding: 1.2rem;
+	margin-top: 8vh;
+	border-radius: 6px;
+	background-color: rgba(0, 0, 0, 0.7);
+	backdrop-filter: blur(4px);
+	max-width: 95vw;
+	line-height: 1.5;
+}
+
+#header .event-title {
+	margin: 0.8rem 0;
+}
+
+#header .event-card .color-accent {
+	color: #cb7346;
+	text-shadow: 0 0 3px #6a2f10;
 }

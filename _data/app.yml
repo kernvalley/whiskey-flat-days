@@ -2,7 +2,7 @@
 name: Whiskey Flat Days
 shortName: WFD App
 id: WhiskeyFlatDays
-version: 2.2.0 2021-11-20
+version: 2.2.1
 start_url: /
 display: standalone
 description: "Map, events, and news app for Whiskey Flat Days"
@@ -129,11 +129,11 @@ screenshots:
     type: image/jpeg
 iarc_rating_id: b8d9a5d5-a0fe-4004-9193-a9c86c38eb29
 related_applications:
+  - platform: webapp
+    url: https://whiskeyflatdays.com/webapp.webmanifest
   - platform: play
     id: com.whiskey_flats.twa
     url: https://play.google.com/store/apps/details?id=com.whiskey_flats.twa
-  - platform: webapp
-    url: https://whiskeyflatdays.com/webapp.webmanifest
   # - platform: itunes
   #   url: '#'
   # - platform: windows

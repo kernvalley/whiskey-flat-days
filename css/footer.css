@@ -5,6 +5,13 @@
 	grid-area: footer;
 }
 
+app-stores {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+}
+
 .footer-links {
 	font-size: 1.3rem;
 }
