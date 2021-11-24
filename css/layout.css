@@ -10,10 +10,6 @@ weather-current {
 	margin: 0;
 }
 
-body.grid {
-	row-gap: 8px;
-}
-
 @media screen {
 	:root:not([data-layout]) > body.grid, :root[data-layout="default"] > body.grid {
 		grid-template-areas: "header header header" "nav nav nav" ". main sidebar" "footer footer footer";
