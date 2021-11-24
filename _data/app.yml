@@ -124,9 +124,15 @@ icons:
     type: image/png
     sizes: 16x16
 screenshots:
-  - src: 'https://i.imgur.com/Qnvw7I2l.jpg'
-    sizes: 640x266
-    type: image/jpeg
+  - src: /img/raster/pwa-1280.png
+    sizes: 1280x720
+    type: image/png
+  - src: /img/raster/pwa-640.png
+    sizes: 640x360
+    type: image/png
+  - src: /img/raster/pwa-320.png
+    sizes: 320x180
+    type: image/png
 iarc_rating_id: b8d9a5d5-a0fe-4004-9193-a9c86c38eb29
 related_applications:
   - platform: webapp

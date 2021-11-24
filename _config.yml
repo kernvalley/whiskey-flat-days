@@ -20,11 +20,14 @@ og-type: website
 disqus: whiskey-flat-days
 description: "Map, events, and news app for Whiskey Flat Days"
 thumbnail:
-  url: https://i.imgur.com/Qnvw7I2l.jpg
+  url: /img/raster/pwa-640.png
+  height: 360
+  width: 640
 mobile-web-app-capable: true
-canonical: 'https://whiskeyflatdays.com'
+canonical: https://whiskeyflatdays.com
 keywords:
-  - whiskey flat
+  - whiskey flat days
+  - whiskey flats
   - kernville
   - kern valley
   - kern river valley
@@ -99,42 +102,44 @@ defaults:
     comments: false
     ads: false
 plugins:
-- jekyll-gist
-- jekyll-youtube
-- jekyll-admin
-- jekyll-watch
-- jekyll-paginate
+  - jekyll-gist
+  - jekyll-youtube
+  - jekyll-admin
+  - jekyll-watch
+  - jekyll-paginate
 include:
-# Folders with dotfiles are ignored by default.
-- .well-known
-- _headers
-- _redirects
+  # Folders with dotfiles are ignored by default.
+  - .well-known
+  - _headers
+  - _redirects
 exclude:
-- ".gitkeep"
-- "*.rb"
-- "*.gemspec"
-- "*.php"
-- "*.sh"
-- "*.csv"
-- "*.sfd"
-- "*.ai"
-- "*.psd"
-- "*.sketch"
-- "*.yml"
-- "*.lock"
-- "*.log"
-- "*.config.js"
-- ".gitkeep"
-- docs/
-- "/*-theme.xml"
-- "/.github/"
-- Gemfile
-- node_modules/
-- palette.xml
-- README.md
-- LICENSE
-- "/img/octicons/*.md"
-- "/img/octicons/LICENSE"
-- "/img/octicons/script"
-- "/img/adwaita-icons/docs"
-- "/img/adwaita-icons/LICENSE"
+  - ".gitkeep"
+  - "*.rb"
+  - "*.gemspec"
+  - "*.php"
+  - "*.sh"
+  - "*.csv"
+  - "*.sfd"
+  - "*.ai"
+  - "*.psd"
+  - "*.sketch"
+  - "*.yml"
+  - "*.lock"
+  - "*.log"
+  - "*.config.js"
+  - ".gitkeep"
+  - docs/
+  - "/*-theme.xml"
+  - "/.github/"
+  - Gemfile
+  - node_modules/
+  - palette.xml
+  - README.md
+  - LICENSE
+  - package.json
+  - package-lock.json
+  - "/img/octicons/*.md"
+  - "/img/octicons/LICENSE"
+  - "/img/octicons/script"
+  - "/img/adwaita-icons/docs"
+  - "/img/adwaita-icons/LICENSE"
