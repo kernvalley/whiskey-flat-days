@@ -16,6 +16,16 @@
   referrerPolicy: no-referrer
   importance: high
   media: "(max-width: 320px)"
+- href: https://cdn.kernvalley.us/fonts/rye.woff2
+  as: font
+  type: font/woff2
+  importance: high
+  referrerPolicy: no-referrer
+- href: https://cdn.kernvalley.us/fonts/roboto.woff2
+  as: font
+  type: font/woff2
+  importance: high
+  referrerPolicy: no-referrer
 - href: https://cdn.kernvalley.us/components/weather/current.html
   as: fetch
   type: text/html

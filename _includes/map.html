@@ -1,31 +1,4 @@
-<leaflet-map center="{{ site.data.mainEvent.location.geo.latitude }},{{ site.data.mainEvent.location.geo.longitude }}" class="relative contain-content z-1" zoom="18" maxzoom="19" minzoom="15" crossorigin="annonymous" detectretina="detectretina" itemtype="https://schema.org/Event" itemscope="" zoomcontrol="" router="">
-	<meta itemprop="identifier" content="{{ site.data.mainEvent.identifier }}" />
-	<meta itemprop="name" content="{{ site.data.mainEvent.name | escape }}" />
-	<meta itemprop="url" content="{{ site.data.mainEvent.url }}" />
-	<meta itemprop="description" content="{{ site.data.mainEvent.description | escape }}" />
-	<meta itemprop="startDate" content="{{ site.data.mainEvent.startDate }}" />
-	<meta itemprop="endDate" content="{{ site.data.mainEvent.endDate }}" />
-	<meta itemprop="image" content="{{ site.data.mainEvent.image.first.url }}" />
-	<meta itemprop="eventAttendanceMode" content="{{ site.data.mainEvent.eventAttendanceMode | default: 'https://schema.org/OfflineEventAttendanceMode' }}" />
-	<meta itemprop="eventStatus" content="{{ site.data.mainEvent.eventStatus | default: 'https://schema.org/EventScheduled' }}" />
-	<div itemprop="organizer" itemtype="https://schema.org/{{ site.data.mainEvent.organizer['@type'] | default: 'Organization' }}" itemscope="" hidden="">
-		<meta itemprop="name" content="{{ site.data.mainEvent.organizer.name }}" />
-		<meta itemprop="url" content="{{ site.data.mainEvent.organizer.url }}" />
-	</div>
-	<address itemprop="location" itemtype="https://schema.org/{{ site.data.mainEvent.location['@type'] | default: 'Place' }}" itemscope="" hidden="">
-		<meta itemprop="name" content="{{ site.data.mainEvent.location.name }}" />
-		<meta itemprop="image" content="https://whiskeyflatdays.com/coach-800.jpg" />
-		<div itemprop="address" itemtype="https://schema.org/PostalAddress" itemscope="" hidden="">
-			<meta itemprop="addressLocality" content="{{ site.data.mainEvent.location.address.addressLocality }}" />
-			<meta itemprop="addressRegion" content="{{ site.data.mainEvent.location.address.addressRegion }}" />
-			<meta itemprop="addressCountry" content="{{ site.data.mainEvent.location.address.addressCountry | default: 'US' }}" />
-			<meta itemprop="postalCode" content="{{ site.data.mainEvent.location.address.postalCode }}" />
-		</div>
-		<div itemprop="geo" itemtype="https://schema.org/GeoCoordinates" itemscope="" hidden="">
-			<meta itemprop="longitude" content="{{ site.data.mainEvent.location.geo.latitude }}" />
-			<meta itemprop="latitude" content="{{ site.data.mainEvent.location.geo.longitude }}" />
-		</div>
-	</address>
+<leaflet-map center="{{ site.data.mainEvent.location.geo.latitude }},{{ site.data.mainEvent.location.geo.longitude }}" class="relative contain-content z-1" zoom="18" maxzoom="19" minzoom="15" crossorigin="anonymous" detectretina="detectretina" zoomcontrol="" router="">
 	{% for town in site.data.places.towns %}
 		<leaflet-marker slot="markers" latitude="{{ town.latitude }}" longitude="{{ town.longitude }}" title="{{ town.name | escape }}" id="{{ town.identifier }}">
 			<img slot="icon" src="https://cdn.kernvalley.us/img/markers.svg#city" width="30" height="30" crossorigin="anonymous" referrerpolicy="no-referrer" alt="" />
@@ -175,6 +148,7 @@
 		<leaflet-marker id="{{ marker.uuid }}" class="event-marker content-visibility-hidden" longitude="{{ marker.location.geo.longitude }}" latitude="{{ marker.location.geo.latitude }}" slot="markers" title="{{ marker.title | escape_once }}" data-end-date="{{ marker.endDate | date_to_xmlschema }}" data-start-date="{{ marker.startDate | date_to_xmlschema }}"{% if marker.category %} data-category="{{ marker.category }}"{% endif %} hidden="">
 			<img src="{{ marker.icon | default: '/img/markers/event.svg' }}" slot="icon" width="32" height="32" />
 			<div slot="popup" itemprop="subEvent" itemtype="https://schema.org/{{ marker['@type'] | default: 'Event' }}" itemscope="">
+				<meta itemprop="superEvent" itemref="main-event" itemscope="" />
 				<meta itemprop="eventAttendanceMode" content="{{ marker.eventAttendanceMode | default: 'https://schema.org/OfflineEventAttendanceMode' }}" />
 				<meta itemprop="eventStatus" content="{{ marker.eventStatus | default: 'https://schema.org/EventScheduled' }}" />
 				<meta itemprop="url" content="{{ site.url }}/map/#{{ marker.uuid }}" />
