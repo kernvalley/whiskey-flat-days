@@ -220,3 +220,6 @@
 		<leaflet-geojson id="{{ path.uuid }}" src="{{ path.src }}" color="{{ path.color }}" title="{{ path.title }}" stroke="" hidden=""></leaflet-geojson>
 	{% endfor %}{% endunless %}
 </leaflet-map>
+<button type="button" id="search-btn" class="btn btn-primary sticky bottom left z-top shadow round" data-show="#event-search-toast" title="Search Events">
+	{% include common/icon.html icon="search" %}
+</button>
