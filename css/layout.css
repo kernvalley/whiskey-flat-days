@@ -40,6 +40,10 @@ weather-current {
 	padding: 0.4em 1.4em;
 }
 
+.embed-container {
+	margin: 10px;
+}
+
 .browser-installs {
 	justify-content: space-around;
 }
