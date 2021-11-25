@@ -2,7 +2,7 @@
 name: Whiskey Flat Days
 shortName: WFD App
 id: WhiskeyFlatDays
-version: 2.2.1-b1
+version: 2.2.1-b2
 start_url: /
 display: standalone
 description: "Map, events, and news app for Whiskey Flat Days"
@@ -12,7 +12,7 @@ theme:
   background: '#242424'
 shortcuts:
   - name: Events
-    url: /events/
+    url: /events/?utm_source=shortcut&utm_medium=pwa#main
     description: List of events for Whiskey Flat Days
     icons:
       - src: /img/jumplist/events-192.png
@@ -34,7 +34,7 @@ shortcuts:
         type: image/png
         sizes: 36x36
   - name: Map
-    url: /map/
+    url: /map/?utm_source=shortcut&utm_medium=pwa#main
     description: Map of vendors and events for Whiskey Flat Days
     icons:
     - src: /img/jumplist/map-192.png
@@ -56,7 +56,7 @@ shortcuts:
       type: image/png
       sizes: 36x36
   - name: News
-    url: /news/
+    url: /news/?utm_source=shortcut&utm_medium=pwa#main
     description: Whiskey Flat Days news and announcements
     icons:
     - src: /img/jumplist/news-192.png

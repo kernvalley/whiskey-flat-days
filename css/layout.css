@@ -19,6 +19,13 @@ weather-current {
 	}
 }
 
+[data-columns="auto"] {
+	column-count: auto;
+	column-width: var(--column-width, 320px);
+	column-gap: var(--column-gap, 12px);
+	column-rule: 1px dashed currentColor;
+}
+
 @media (max-width: 800px) {
 	:root:not([data-layout]) > body.grid, :root[data-layout="default"] > body.grid, body.grid {
 		grid-template-areas: "header" "nav" "main" "sidebar" "footer";
@@ -121,7 +128,7 @@ button[is="share-button"] {
 	}
 
 	#main, #sidebar {
-		margin: 0 6px;
+		margin: 6px;
 	}
 }
 
