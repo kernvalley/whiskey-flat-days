@@ -5,6 +5,14 @@
 	--link-decoration: underline;
 }
 
+#vendor-applications {
+	gap: 12px;
+}
+
+.vendor-apps {
+	gap: 8px;
+}
+
 @media (min-width: 801px) {
 	#main ad-block:not(.floating) {
 		margin: 0.4em;

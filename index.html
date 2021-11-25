@@ -19,7 +19,7 @@ tags:
 	<meta itemprop="about" itemref="main-event" itemtype="https://schema.org/{{ site.data.mainEvent['@type'] | default: 'Event' }}" itemscope="" />
 	{% include event-status.html event=site.data.mainEvent %}
 	<h2 itemprop="headline" class="center font-title color-accent">64<sup>th</sup> Annual Whiskey Flat Days</h2>
-	<section itemprop="text">
+	<section itemprop="articleBody">
 		<p>One of the most popular Festivals in all of Southern California.  Just a short
 		3 hour drive from Los Angeles, you will find the quaint town of Kernville,
 		home to Whiskey Flat Days (50 miles east of Bakersfield on Hwy 178).  Whiskey
@@ -31,10 +31,129 @@ tags:
 		Flat Mayor Contest, Food & Craft Booths, Epitaph, Costume & Whiskerino Contests,
 		Line Dancing, Pet Parade, Blue Grass & Country Western Music, Art Show,
 		Gunfighter Skits, Kids Activities, Games, & much more!</p>
+		<div class="center">
+			{% include common/youtube.html id="qo4xbaeaNcU" title="WFD-2017" %}
+		</div>
 	</section>
-	<section class="center">
-		{% include common/youtube.html id="qo4xbaeaNcU" title="WFD-2017" %}
-		<br />
-		{% include common/youtube.html id="5qwCmd9i3WM" title="Encampment" %}
+	<section id="rodeo" itemprop="articleBody">
+		<h3 class="center font-title color-accent">Wild West Daze Rodeo</h3>
+		<h4>
+			<span>Brought to you by</span>
+			<a href="http://www.flyingurodeo.com/" rel="noopener noreferrer external">
+				<span>Cotton Rosser's Flying U Rodeo</span>
+				{% include common/icon.html icon="link-external" height="16" width="16" fill="currentColor" %}
+			</a>
+		</h4>
+		<div class="center">
+			{% include common/youtube.html id="9vuEEkfq7Oo" title="Wild West Daze Rodeo" %}
+		</div>
+		<p>Flying U Rodeo Presents Whiskey Flat Days Wild West Daze Rodeo-Ticket will
+			give entry to the rodeo for either Saturday or Sunday-Your choice.
+			Providing quality family entertainment for 61 years at Whiskey Flat Days!</p>
+		<p>Cotton Rosser is a name that has become synonymous with quality rodeo production.
+			After a ranch accident in 1956 abruptly ended a promising career as a rodeo contestant,
+			Cotton purchased the Flying U Rodeo Company. For the past several decades,
+			Cotton and his family have worked to make the Flying U one of the most
+			successful stock contracting firms in professional rodeo. Cotton has
+			long been known for his outstanding rodeo productions, including the
+			flamboyant opening ceremonies presented at the National Finals Rodeo,
+			the Houston Livestock Show and the Grand National Rodeo in San Francisc
+			 just to name a few. Rodeo is show business as far as he is concerned.
+			 According to Cotton, <q>You have to run the show, you can't let the
+				 show run you. If you don't keep the audience entertained they will go somewhere else.</q></p>
+		<h4>Featuring</h4>
+		<ul>
+			<li>Open Team Roping</li>
+			<li>Bull Riding</li>
+			<li>Hide Race</li>
+			<li>Open Barrel Race</li>
+			<li>Junior Barrel Race</li>
+			<li>Calf Scramble</li>
+			<li>Sheep Riding</li>
+			<li>...and more</li>
+		</ul>
+	</section>
+	<section id="encampment" itemprop="articleBody">
+		<h3 class="center font-title color-accent">Whiskey Flat Encampment</h3>
+		<h4>Cowboy and Mountain Men Encampment</h4>
+		<p>On Scodie Ave. across from the Rodeo Grounds. You'll see history and gunfights.</p>
+		<p>All day there will be a Wells Fargo station and eatery, chuck wagon cook'n and coffee, a horse trader and livery.</p>
+		<p>There'll be horse shoe'n and horse doctor'n, the Whiskey Flats Saloon, and Justice of the Peace,
+		a saddle maker and leather craft, a bath house, beautifier and hygenist,
+		 storytellers of the Old West, mining and sawmill demonstrations and a Civil War Confederate camp!</p>
+		<div class="center">
+			{% include common/youtube.html id="5qwCmd9i3WM" title="Encampment" %}
+		</div>
+	</section>
+	<section id="vendors">
+		<h3 class="center font-title color-accent">Vendors</h3>
+		<h4>Whiskey Flat Days Vendor Applications</h4>
+		<ol>
+			<li>Complete PDF Application</li>
+			<li>
+				<span>Email application to</span>
+				<a href="info@gotokernville.com?subject=WFD%20Vendor%20Application">
+					<span>info@gotokernville.com</span>
+					{% include common/icon.html icon="mail" height="16" width="16" fill="currentColor" %}
+				</a>
+			</li>
+			<li>Pay for all fees (<i>including deposit</i>)</li>
+		</ol>
+		<div class="status-box info">Spaces will not be reserved or guaranteed unless all fees are paid</div>
+		<hr />
+		<div id="vendor-applications" class="flex row wrap space-evenly">
+			<div class="card">
+				<h5 class="center font-title">Rodeo Ground Vendor Application</h5>
+				<div class="flex row wrap vendor-apps space-evenly">
+					<a class="btn btn-primary grow-1 center" href="https://8ebe3790-fe6d-4061-b298-92d0c3cea326.filesusr.com/ugd/0bde5a_c003440f53064df48eb2e2b09c6ea38a.pdf" rel="noopener noreferrer external" download="rodeo-vendor-application.pdf">
+						<span>Application</span>
+						{% include common/icon.html icon="file-pdf" height="16" width="16" fill="currentColor" %}
+					</a>
+					<a class="btn btn-primary grow-1 center" href="https://kernville-chamber-of-commerce-2.square.site/product/whiskey-flat-rodeo-arena-vendor/53?cs=true&cst=custom" rel="noopener noreferrer external">
+						<span>Pay Now</span>
+						{% include common/icon.html icon="link-external" height="16" width="16" fill="currentColor" %}
+					</a>
+				</div>
+			</div>
+			<div class="card">
+				<h5 class="center font-title">Craft/Commercial Vendor Application</h5>
+				<div class="flex row wrap vendor-apps space-evenly">
+					<a class="btn btn-primary grow-1 center" href="https://8ebe3790-fe6d-4061-b298-92d0c3cea326.filesusr.com/ugd/0bde5a_5fe4b9791cd2449d81156ef7da145080.pdf" rel="noopener noreferrer external" download="vendor-application.pdf">
+						<span>Application</span>
+						{% include common/icon.html icon="file-pdf" height="16" width="16" fill="currentColor" %}
+					</a>
+					<a class="btn btn-primary grow-1 center" href="https://kernville-chamber-of-commerce-2.square.site/product/whiskey-flat-craft-commercial-vendor/33?cs=true&cst=custom" rel="noopener noreferrer external">
+						<span>Pay Now</span>
+						{% include common/icon.html icon="link-external" height="16" width="16" fill="currentColor" %}
+					</a>
+				</div>
+			</div>
+			<div class="card">
+				<h5 class="center font-title">Non Profit Vendor Application</h5>
+				<div class="flex row wrap vendor-apps space-evenly">
+					<a class="btn btn-primary grow-1 center" href="https://8ebe3790-fe6d-4061-b298-92d0c3cea326.filesusr.com/ugd/0bde5a_b7ae61bafd0d4663add6c11a14a03cb8.pdf" rel="noopener noreferrer external" download="vendor-application.pdf">
+						<span>Application</span>
+						{% include common/icon.html icon="file-pdf" height="16" width="16" fill="currentColor" %}
+					</a>
+					<a class="btn btn-primary grow-1 center" href="https://kernville-chamber-of-commerce-2.square.site/product/whiskey-flat-non-profit-vendor/39?cs=true&cst=custom" rel="noopener noreferrer external">
+						<span>Pay Now</span>
+						{% include common/icon.html icon="link-external" height="16" width="16" fill="currentColor" %}
+					</a>
+				</div>
+			</div>
+			<div class="card">
+				<h5 class="center font-title">Food Vendor Application</h5>
+				<div class="flex row wrap vendor-apps space-evenly">
+					<a class="btn btn-primary grow-1 center" href="https://8ebe3790-fe6d-4061-b298-92d0c3cea326.filesusr.com/ugd/0bde5a_bf3b56f616e8407d9edc2f9229d5cfee.pdf" rel="noopener noreferrer external" download="vendor-application.pdf">
+						<span>Application</span>
+						{% include common/icon.html icon="file-pdf" height="16" width="16" fill="currentColor" %}
+					</a>
+					<a class="btn btn-primary grow-1 center" href="https://kernville-chamber-of-commerce-2.square.site/product/whiskey-flat-food-vendor/32?cs=true&cst=custom" rel="noopener noreferrer external">
+						<span>Pay Now</span>
+						{% include common/icon.html icon="link-external" height="16" width="16" fill="currentColor" %}
+					</a>
+				</div>
+			</div>
+		</div>
 	</section>
 </article>
