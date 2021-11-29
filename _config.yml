@@ -110,9 +110,9 @@ plugins:
 include:
   # Folders with dotfiles are ignored by default.
   - .well-known
-  - _headers
-  - _redirects
 exclude:
+  - CHANGELOG.md
+  - netlify.toml
   - ".gitkeep"
   - "*.rb"
   - "*.gemspec"
@@ -127,7 +127,6 @@ exclude:
   - "*.lock"
   - "*.log"
   - "*.config.js"
-  - ".gitkeep"
   - docs/
   - "/*-theme.xml"
   - "/.github/"
