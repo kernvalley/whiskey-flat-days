@@ -3,7 +3,7 @@ title: WFD App Updates
 date: 2021-11-29
 description: Changes, redesign, and new features coming to the Whiskey Flat Days App
 image: /img/raster/pwa-320.png
-itemtype: NewsArticle
+#itemtype: NewsArticle
 categories:
   - app
 author:
