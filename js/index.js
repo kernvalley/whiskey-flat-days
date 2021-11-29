@@ -25,7 +25,7 @@ import { ready, loaded, css, on } from 'https://cdn.kernvalley.us/js/std-js/dom.
 import { getCustomElement } from 'https://cdn.kernvalley.us/js/std-js/custom-elements.js';
 import { importGa, externalHandler, telHandler, mailtoHandler } from 'https://cdn.kernvalley.us/js/std-js/google-analytics.js';
 import { DAYS } from 'https://cdn.kernvalley.us/js/std-js/date-consts.js';
-import { searchLocationMarker, createMarker, isOnGoing, filterEventNamesDatalist } from './functions.js';
+import { searchLocationMarker, createMarker, isOnGoing, filterEventNamesDatalist, intersectCallback } from './functions.js';
 import { GA } from './consts.js';
 
 if (! ('URLPattern' in globalThis)) {
@@ -110,24 +110,11 @@ if ('serviceWorker' in navigator) {
 
 if (location.pathname.startsWith('/events') && ('IntersectionObserver' in window)) {
 	ready().then(() => {
-		$('.event-item').intersect(({ target, isIntersecting }) => {
-			if (isIntersecting) {
-				target.animate([{
-					transform: 'rotateX(-30deg) scale(0.85) translateY(3em)',
-					opacity: 0.3,
-				}, {
-					transform: 'none',
-					opacity: 1,
-				}], {
-					duration: 300,
-					easing: 'ease-in-out',
-				});
-
-				target.classList.remove('hidden');
-			} else {
-				target.classList.add('hidden');
-			}
-		});
+		$('.event-item').intersect(intersectCallback);
+	});
+} else if (location.pathname.startsWith('/news/') && ('IntersectionObserver' in window)) {
+	ready().then(() => {
+		$('.post-preview').intersect(intersectCallback);
 	});
 }
 
@@ -141,6 +128,10 @@ Promise.all([
 	$('#install-btn').click(() => new HTMLInstallPromptElement().show()).then($btns => $btns.unhide());
 
 	if (url.pathname.startsWith('/map')) {
+		if (! ['', '#', '#main'].includes(location.hash)) {
+			document.getElementById('main').scrollIntoView({ block: 'start', behavior: 'smooth' });
+		}
+
 		if (url.searchParams.has('geo')) {
 			const geo = new URL(url.searchParams.get('geo'));
 			switch(geo.protocol) {
@@ -249,7 +240,7 @@ Promise.all([
 		$('#main').css({ padding: '4px' });
 
 		if (location.hash === '') {
-			searchDateTimeRange({from: current ? new Date() : '2021-02-18T10:00'});
+			searchDateTimeRange({from: current ? new Date() : '2022-02-18T10:00'});
 		}
 		const date = `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')}`;
 
@@ -261,11 +252,11 @@ Promise.all([
 		$('form[name="businessSearch"]').submit(businessCategorySearch);
 		$('toast-message > form').reset(({ target }) => target.closest('toast-message').close());
 
-		$('#search-time').attr({ min: '06:00', max: '20:00' });
+		$('#search-time').attr({ min: '06:00', max: '21:00' });
 		$('#search-date').attr({
-			value: current ? date : '2021-02-18',
-			min: current ? date : '2021-02-18',
-			max: '2021-02-20'
+			value: current ? date : '2022-02-18',
+			min: current ? date : '2022-02-18',
+			max: '2022-02-20'
 		});
 
 		$('form[name="startDate"]').submit(nullSubmit);

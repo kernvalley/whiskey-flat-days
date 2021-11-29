@@ -1,6 +1,25 @@
 import { createCustomElement } from 'https://cdn.kernvalley.us/js/std-js/custom-elements.js';
 import { site, icons, mapSelector, startDate, endDate } from './consts.js';
 
+export function intersectCallback({ target, isIntersecting }) {
+	if (isIntersecting) {
+		target.animate([{
+			transform: 'rotateX(-30deg) scale(0.85) translateY(3em)',
+			opacity: 0.3,
+		}, {
+			transform: 'none',
+			opacity: 1,
+		}], {
+			duration: 300,
+			easing: 'ease-in-out',
+		});
+
+		target.classList.remove('hidden');
+	} else {
+		target.classList.add('hidden');
+	}
+}
+
 export function filterEventNamesDatalist() {
 	const datalist = document.getElementById('events-list');
 
