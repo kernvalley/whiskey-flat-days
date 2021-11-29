@@ -14,6 +14,10 @@
 	gap: 8px;
 }
 
+.share-btns .flex.wrap {
+	gap: 8px;
+}
+
 @media (min-width: 801px) {
 	#main ad-block:not(.floating) {
 		margin: 0.4em;
