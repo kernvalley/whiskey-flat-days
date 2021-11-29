@@ -1,10 +1,3 @@
----
-layout: default
-title: CHANGELOG
-description: List of changes
-robots: noindex
-permalink: /changelog/
----
 <!-- markdownlint-disable -->
 # Changelog
 All notable changes to this project will be documented in this file.
