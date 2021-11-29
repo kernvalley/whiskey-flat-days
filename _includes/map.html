@@ -12,7 +12,7 @@
 			{% include leaflet/local-business-marker.html business=place %}
 		{% endif %}
 	{% endfor %}
-	{% for place in site.data.places.restuarants %}
+	{% for place in site.data.places.restaurants %}
 		{% if place.address.addressLocality == "Kernville" and place.geo %}
 			{% include leaflet/restaurant-marker.html business=place %}
 		{% endif %}
