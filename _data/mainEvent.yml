@@ -27,7 +27,7 @@ location:
     "@type": GeoCoordinates
     latitude: 35.754960
     longitude: -118.424825
-sponsor: null
+sponsor: []
 organizer:
   "@type": Organization
   name: Kernville Chamber of Commerce
