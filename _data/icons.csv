@@ -1,6 +1,7 @@
 map,img/map.svg
 home,img/octicons/home.svg
 eye,img/octicons/eye.svg
+spotify,img/logos/spotify.svg
 alert,img/octicons/alert.svg
 bell,img/octicons/bell.svg
 calendar,img/octicons/calendar.svg
@@ -10,6 +11,7 @@ chevron-down,img/octicons/chevron-down.svg
 chevron-left,img/octicons/chevron-left.svg
 chevron-right,img/octicons/chevron-right.svg
 chevron-up,img/octicons/chevron-up.svg
+mail-unread,img/adwaita-icons/status/mail-unread.svg
 clippy,img/octicons/clippy.svg
 file-pdf,img/octicons/file-pdf.svg
 clock,img/octicons/clock.svg

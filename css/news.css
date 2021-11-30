@@ -31,6 +31,12 @@
 	color: var(--alt-color, #fefefe);
 }
 
+.author-by-line {
+	display: inline-flex;
+	flex-direction: row;
+	gap: 8px;
+}
+
 .status-box .icon.flip {
 	transform: rotateY(.5turn);
 }
