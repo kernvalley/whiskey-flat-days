@@ -34,7 +34,8 @@
 .author-by-line {
 	display: inline-flex;
 	flex-direction: row;
-	gap: 8px;
+	flex-wrap: wrap;
+	gap: 2px;
 }
 
 .status-box .icon.flip {

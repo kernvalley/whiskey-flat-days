@@ -6,6 +6,9 @@ image: /img/raster/pwa-320.png
 #itemtype: NewsArticle
 categories:
   - app
+tags:
+  - WFD App
+  - updates
 author:
   "@type": Person
   givenName: Chris
@@ -16,7 +19,7 @@ author:
     url: https://kernvalley.us
   url: 'https://kernvalley.us'
   email: admin@kernvalley.us
-  gravatar: '43578597e449298f5488c2407c8a8ae5'
+  gravatar: 43578597e449298f5488c2407c8a8ae5
   sameAs:
     - https://twitter.com/kern_valley
     - https://github.com/kernvalley
@@ -50,7 +53,7 @@ respective app stores.
 - Online applications for vendors
 
 To advertise on the Whiskey Flat Days app, please visit
-<a href="https://ads.kernvalley.us/" rel="noopener noreferrer external">Kern Valley Ads {% include common/icon.html icon="link-external" height="16" width="16" fill="currentColor" %}</a>
+<a href="https://ads.kernvalley.us/" rel="noopener noreferrer external">Kern Valley Ads&nbsp;{% include common/icon.html icon="link-external" height="16" width="16" fill="currentColor" %}</a>
 
-To add your business to Whiskey Flat Days Map (as well as <a href="https://guide.kernvalley.us" rel="noopener noreferrer exteranl">KRV Guide {% include common/icon.html icon="link-external" height="16" width="16" fill="currentColor" %}</a>)
-please fill out the form at <a href="https://places.kernvalley.us" rel="noopener noreferrer external">KRV Places {% include common/icon.html icon="link-external" height="16" width="16" fill="currentColor" %}</a>
+To add your business to Whiskey Flat Days Map (as well as <a href="https://guide.kernvalley.us" rel="noopener noreferrer exteranl">KRV Guide&nbsp;{% include common/icon.html icon="link-external" height="16" width="16" fill="currentColor" %}</a>)
+please fill out the form at <a href="https://places.kernvalley.us" rel="noopener noreferrer external">KRV Places&nbsp;{% include common/icon.html icon="link-external" height="16" width="16" fill="currentColor" %}</a>

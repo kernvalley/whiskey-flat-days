@@ -24,13 +24,13 @@ pinned: true
 {% else %}
 	<section class="grid" id="posts">
 		{% for post in paginator.posts %}
-			<a href="{{ post.url }}" class="card shadow center post-preview" accesskey="{{ forloop.index }}">
-				<h3 class="post-title">{{ post.title }}</h3>
-				<div>
+			<a href="{{ post.url }}" class="card shadow center color-inherit post-preview" accesskey="{{ forloop.index }}">
+				<h3 class="post-title font-title color-accent">{{ post.title }}</h3>
+				<img src="{{ post.image | default: 'https://cdn.kernvalley.us/img/raster/missing-image.png' }}" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" width="250" alt="" />
+				<div class="color-default">
 					<span>Posted on</span>
 					<time class="post-date" datetime="{{ post.date }}">{{ post.date | date: '%a, %b %e, %Y' }}</time>
 				</div>
-				<img src="{{ post.image | default: 'https://cdn.kernvalley.us/img/raster/missing-image.png' }}" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" width="250" alt="" />
 			</a>
 		{% endfor %}
 	</section>
