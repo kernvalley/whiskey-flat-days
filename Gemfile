@@ -11,7 +11,7 @@ ruby RUBY_VERSION
 # Happy Jekylling!
 gem "jekyll", "4.2.1"
 # gem "jekyll-github-metadata", "~> 1.0"
-gem 'jekyll-gist', '~> 1.4', '>= 1.4.1'
+# gem 'jekyll-gist', '~> 1.4', '>= 1.4.1'
 gem 'jekyll-youtube', '~> 1.0'
 gem "jekyll-paginate", "~> 1.1"
 
