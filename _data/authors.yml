@@ -131,12 +131,12 @@ Chris:
       - https://twitter.com/shgysk8zer0
       - https://www.linkedin.com/in/chris-zuber-455346141/
       - https://github.com/shgysk8zer0
-    image:
-      "@type": ImageObject
-      url: https://secure.gravatar.com/avatar/43578597e449298f5488c2407c8a8ae5?s=32&d=mm
-      height: 32
-      width: 32
-      encodingFormat: image/jpeg
+    image: https://secure.gravatar.com/avatar/43578597e449298f5488c2407c8a8ae5?s=32&d=mm
+#      "@type": ImageObject
+#      url: https://secure.gravatar.com/avatar/43578597e449298f5488c2407c8a8ae5?s=32&d=mm
+#      height: 32
+#      width: 32
+#      encodingFormat: image/jpeg
     jobTitle: Owner
     memberOf:
       - *KernvilleChamber
