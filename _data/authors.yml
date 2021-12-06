@@ -25,7 +25,7 @@ Kernville: &Kernville
 KernValleyMuseum: &KernValleyMuseum
   "@context": https://schema.org
   "@type": Museum
-  identifier: 3c2f762c-23f5-4579-826e-85d51cad0249identifier: 3c2f762c-23f5-4579-826e-85d51cad0249
+  identifier: 3c2f762c-23f5-4579-826e-85d51cad0249
   "@context": https://schema.org
   "@type": Museum
   #url: https://kernvalleymuseum.org
