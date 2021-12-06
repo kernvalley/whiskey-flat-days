@@ -9,23 +9,7 @@ categories:
 tags:
   - WFD App
   - updates
-author:
-  "@type": Person
-  givenName: Chris
-  familyName: Zuber
-  worksFor:
-    "type": Organization
-    name: KernValley.US
-    url: https://kernvalley.us
-  url: 'https://kernvalley.us'
-  email: admin@kernvalley.us
-  gravatar: 43578597e449298f5488c2407c8a8ae5
-  sameAs:
-    - https://twitter.com/kern_valley
-    - https://github.com/kernvalley
-    - https://instagram.com/kernvalley_us/
-    - https://www.facebook.com/KernValley.us/
-    - https://www.linkedin.com/company/18644791/
+author: Chris
 store_url: https://play.google.com/store/apps/details?id=com.whiskey_flats.twa
 ---
 <div class="center"><img src="{{ page.image }}" width="320" height="180" loading="eager" referrerpolicy="no-referrer" decoding="async" alt="App Banner" itemprop="image" /></div>

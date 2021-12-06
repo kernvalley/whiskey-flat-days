@@ -22,6 +22,32 @@ Kernville: &Kernville
     addressCountry: US
     postalCode:
       - 93238
+KernValleyMuseum: &KernValleyMuseum
+  "@context": https://schema.org
+  "@type": Museum
+  identifier: 3c2f762c-23f5-4579-826e-85d51cad0249identifier: 3c2f762c-23f5-4579-826e-85d51cad0249
+  "@context": https://schema.org
+  "@type": Museum
+  #url: https://kernvalleymuseum.org
+  telephone: 760-376-6683
+  image:
+    - url: https://i.imgur.com/qEyWMUYm.jpg
+      "@type": ImageObject
+      width: 320
+      height: 240
+      encodingFormat: image/png
+  address:
+    "@type": PostalAddress
+    streetAddress: 49 Big Blue Road
+    addressLocality: Kernville
+    addressRegion: CA
+    postalCode: 93238
+  geo:
+    "@type": GeoCoordinates
+    latitude: 35.755170
+    longitude: -118.426782
+  sameAs:
+    - https://www.facebook.com/kernvalleymuseum/
 KernValley: &KernValley
   identifier: f8fe6bc9-1ed1-4ce7-9271-1ce73d81192b
   '@context': https://schema.org
@@ -96,21 +122,26 @@ Chris:
     "@context": https://schema.org
     "@type": Person
     name: Chris Zuber
-    givenName: Christopher
-    additionalName: Wayne
+    givenName: Chris
     familyName: Zuber
     birthDate: 1985-03-26
     email: admin@kernvalley.us
     sameAs:
+      - https://www.facebook.com/shgysk8zer0
       - https://twitter.com/shgysk8zer0
+      - https://www.linkedin.com/in/chris-zuber-455346141/
       - https://github.com/shgysk8zer0
     image:
       "@type": ImageObject
       url: https://secure.gravatar.com/avatar/43578597e449298f5488c2407c8a8ae5?s=32&d=mm
       height: 32
       width: 32
+      encodingFormat: image/jpeg
     jobTitle: Owner
     memberOf:
       - *KernvilleChamber
     worksFor: *KernValley
     homeLocation: *Kernville
+Natasha:
+  "@type": Person`
+  name: Natasha Grisez

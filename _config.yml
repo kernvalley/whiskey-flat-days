@@ -64,22 +64,7 @@ defaults:
   values:
     no-header: true
     layout: post
-    author:
-      '@type': Person
-      givenName: Chris
-      familyName: Zuber
-      gravatar: '43578597e449298f5488c2407c8a8ae5'
-      email: admin@kernvalley.us
-      worksFor:
-        '@type': Organization
-        url: https://kernvalley.us
-        name: KernValley.US
-      sameAs:
-        - https://twitter.com/kern_valley
-        - https://github.com/kernvalley
-        - https://instagram.com/kernvalley_us/
-        - https://www.facebook.com/KernValley.us/
-        - https://www.linkedin.com/company/18644791/
+    author: Chris
     publisher:
       name: 'KernValley.US'
       url: 'https://kernvalley.us'
@@ -94,22 +79,7 @@ defaults:
   values:
     no-header: true
     layout: post
-    author:
-      '@type': Person
-      givenName: Chris
-      familyName: Zuber
-      gravatar: '43578597e449298f5488c2407c8a8ae5'
-      email: admin@kernvalley.us
-      worksFor:
-        '@type': Organization
-        url: https://kernvalley.us
-        name: KernValley.US
-      sameAs:
-        - https://twitter.com/kern_valley
-        - https://github.com/kernvalley
-        - https://instagram.com/kernvalley_us/
-        - https://www.facebook.com/KernValley.us/
-        - https://www.linkedin.com/company/18644791/
+    author: Chris
     publisher:
       name: 'KernValley.US'
       url: 'https://kernvalley.us'
