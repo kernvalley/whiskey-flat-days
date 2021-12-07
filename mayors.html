@@ -2,30 +2,31 @@
 title: Mayor Race
 layout: default
 pinned: true
-index: true
+index: false
 permalink: /mayors/
 candidates:
   - name: Unknown
     identifier: 5936b2a3-9253-41c4-9554-e5e4f6fc6fc3
     image: null
-    donateLink: "#"
+    donateLink: "./#"
     faq: []
   - name: Unknown
     identifier: d4fc54b6-3bdf-43a1-b85f-0381777f7739
     image: null
-    donateLink: "#"
+    donateLink: "./#"
     faq: []
 ---
 <div class="flex row wrap space-evenly">
 	{% for candidate in page.candidates %}
-		<div id="{{ candidate.identifier }}" class="card shadow center mayor-candidate" itemtype="https://schema.org/Person" itemscope="">
+		<div id="{{ candidate.identifier }}" class="card center shadow center mayor-candidate" itemtype="https://schema.org/Person" itemscope="">
 			<h3 class="center mayor-name font-title color-accent" itemprop="name">{{ candidate.name }}</h3>
 			{% if condidate.image %}
-				<img src="{{ candidate.image }}" loading="lazy" decoding="async" crossorigin="anonymous" referrerpolicy="no-referrer" alt="{{ candidate.name }} image" itemprop="image" />
+				<img src="{{ candidate.image }}" class="mayor-img" loading="lazy" decoding="async" crossorigin="anonymous" referrerpolicy="no-referrer" alt="{{ candidate.name }} image" itemprop="image" />
 			{% else %}
 				{% include common/icon.html icon="avatar-default" height="96" width="96" class="mayor-img" fill="currentColor" %}
 			{% endif %}
-			<a href="{{ candidate.donateLink | default: '#' }}" class="btn btn-primary-outline" rel="noopener noreferrer external">
+			<br />
+			<a href="{{ candidate.donateLink | default: './#' }}" class="btn btn-outline btn-outline-primary" rel="noopener noreferrer external">
 				<span>Donate</span>
 				{% include common/icon.html icon="link-external" height="16" width="16" fill="currentColor" %}
 			</a>
