@@ -67,7 +67,7 @@ offers:
 <b class="block">{{ page.organizer.name }}</b>
 {% include common/same-as-links.html sameAs=page.organizer.sameAs email=page.organizer.email telephone=page.organizer.telephone url=page.organizer.url %}
 - - -
-<div class="center">{% include common/imgur.html url=page.imgur sizes="(max-width: 600px) 500px, 90%" %}</div>
+<div class="center">{% include common/imgur.html url=page.imgur sizes="(min-width: 600px) 500px, 90vw" %}</div>
 
 <div>
 Join us for our 64<sup>th</sup> Annual Whiskey Flat Days Kickoff Dinner with your choice of
@@ -83,4 +83,4 @@ Heights and meet the Whiskey Flat Days Mayor contenders.
 </div>
 
 <h3>Where</h3>
-<leaflet-map center="{{ page.location.geo.latitude }},{{ page.location.geo.longitude }}" controls="">{% include leaflet/local-business-marker.html business=page.location %}</leaflet-map>
+<leaflet-map class="article-map" center="{{ page.location.geo.latitude }},{{ page.location.geo.longitude }}" loading="lazy" controls="">{% include leaflet/local-business-marker.html business=page.location %}</leaflet-map>
