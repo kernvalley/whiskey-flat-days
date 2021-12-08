@@ -7,30 +7,12 @@
 @import url("https://cdn.kernvalley.us/css/core-css/class-rules.css");
 @import url("https://cdn.kernvalley.us/css/core-css/scrollbar.css");
 @import url("https://cdn.kernvalley.us/css/core-css/cdn-fonts.css");
-@import url("https://cdn.kernvalley.us/css/animate.css/animate.css");
-@import url("https://cdn.kernvalley.us/css/core-css/animations.css");
 @import url("https://cdn.kernvalley.us/css/core-css/display-mode.css");
+@import url("https://cdn.kernvalley.us/css/core-css/accordion.css");
+@import url("https://cdn.kernvalley.us/css/core-css/forms.css");
 @import url("./layout.css");
 @import url("./events.css");
 @import url("./contact.css");
-
-input[hidden] + label[for].btn-toggle {
-	background-color: var(--button-disabled-background);
-	margin: 0.3rem;
-	transition: background-color 300ms ease-in-out;
-}
-
-input[hidden]:checked + label[for].btn-toggle {
-	background-color: var(--button-background);
-}
-
-input[hidden]:not(:checked) + label[for].btn-toggle .when-checked {
-	display: none;
-}
-
-input[hidden]:checked + label[for].btn-toggle .when-unchecked {
-	display: none;
-}
 
 img.avatar {
 	vertical-align: middle;
@@ -57,6 +39,7 @@ img.avatar {
 .flex.row > .btn.btn-wide {
 	flex: 1 0 auto;
 	margin: 0 0.6em;
+	max-width: 200px;
 }
 
 input[type="time"] {

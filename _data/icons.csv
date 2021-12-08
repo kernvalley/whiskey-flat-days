@@ -34,6 +34,7 @@ link-external,img/octicons/link-external.svg
 lock,img/octicons/lock.svg
 mail,img/octicons/mail.svg
 note,img/octicons/note.svg
+mail-unread,img/octicons/mail-unread.svg
 organization,img/octicons/organization.svg
 person,img/octicons/person.svg
 pin,img/octicons/pin.svg
