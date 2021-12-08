@@ -83,4 +83,4 @@ Heights and meet the Whiskey Flat Days Mayor contenders.
 </div>
 
 <h3>Where</h3>
-<leaflet-map class="article-map" center="{{ page.location.geo.latitude }},{{ page.location.geo.longitude }}" loading="lazy" controls="">{% include leaflet/local-business-marker.html business=page.location %}</leaflet-map>
+<leaflet-map class="article-map" center="{{ page.location.geo.latitude }},{{ page.location.geo.longitude }}" loading="lazy" controls="">{% include leaflet/local-business-marker.html business=page.location open=true %}</leaflet-map>
