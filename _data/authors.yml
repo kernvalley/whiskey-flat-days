@@ -89,12 +89,6 @@ KernvilleChamber: &KernvilleChamber
     - https://www.facebook.com/KernvilleChamber/
     - https://instagram.com/explorekernville
     - https://www.youtube.com/channel/UCnFWyv5t6x4nnMzqlaPOlfQ
-  image:
-    - url: https://cdn.kernvalley.us/img/raster/missing-image.png
-      "@type": ImageObject
-      width: 640
-      height: 480
-      encodingFormat: image/png
   address:
     "@type": PostalAddress
     streetAddress: 11447 Kernville Rd.
