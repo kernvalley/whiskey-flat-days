@@ -12,6 +12,7 @@
 .post-preview {
 	transform: none;
 	transition: transform 400ms ease-in-out;
+	text-decoration: none;
 }
 
 .post-preview:hover, .post-preview:focus {
@@ -40,4 +41,8 @@
 
 .status-box .icon.flip {
 	transform: rotateY(.5turn);
+}
+
+article {
+	--map-height: 300px;
 }

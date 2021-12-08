@@ -26,7 +26,13 @@ pinned: true
 		{% for post in paginator.posts %}
 			<a href="{{ post.url }}" class="card shadow center color-inherit post-preview" accesskey="{{ forloop.index }}">
 				<h3 class="post-title font-title color-accent">{{ post.title }}</h3>
-				<img src="{{ post.image | default: 'https://cdn.kernvalley.us/img/raster/missing-image.png' }}" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" width="250" alt="" />
+				{% if post.imgur %}
+					{% include common/imgur.html url=post.imgur sizes="250px" width="250" %}
+				{% elsif post.image contains 'https://i.imgur.com/' %}
+					{% include common/imgur.html url=post.image sizes="250px" width="250" %}
+				{% else %}
+					<img src="{{ post.image | default: 'https://cdn.kernvalley.us/img/raster/missing-image.png' }}" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" width="250" alt="" />
+				{% endif %}
 				<div class="color-default">
 					<span>Posted on</span>
 					<time class="post-date" datetime="{{ post.date }}">{{ post.date | date: '%a, %b %e, %Y' }}</time>
