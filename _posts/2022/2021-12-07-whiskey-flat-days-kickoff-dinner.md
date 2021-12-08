@@ -67,7 +67,7 @@ offers:
 <b class="block">{{ page.organizer.name }}</b>
 {% include common/same-as-links.html sameAs=page.organizer.sameAs email=page.organizer.email telephone=page.organizer.telephone url=page.organizer.url %}
 - - -
-<div class="center">{% include common/imgur.html url=page.imgur sizes="(min-width: 600px) 500px, 90vw" %}</div>
+<div class="center">{% include common/imgur.html url=page.imgur class="post-img" sizes="(min-width: 600px) 500px, 90vw" %}</div>
 
 <div>
 Join us for our 64<sup>th</sup> Annual Whiskey Flat Days Kickoff Dinner with your choice of
