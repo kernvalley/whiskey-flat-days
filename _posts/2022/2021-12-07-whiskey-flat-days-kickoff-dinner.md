@@ -59,7 +59,7 @@ offers:
     url: https://kernville-chamber-of-commerce-2.square.site/product/64th-annual-whiskey-flat-days-kickoff-dinner/54
 ---
 <h3>What</h3>
-<h4>64<sup>th</sup> Annual Whiskey Flat Days Kickoff Dinner</h4>
+<h4>65<sup>th</sup> Annual Whiskey Flat Days Kickoff Dinner</h4>
 
 <h3>When</h3>
 <div><time datetime="{{ page.startDate | date: '%F' }}">{{ page.startDate | date: '%-I:%M %p' }}</time>&mdash;<time datetime="{{ page.endDate | date: '%F' }}">{{ page.endDate | date: '%-I:%M %p %b. %-d, %Y' }}</time></div>
@@ -70,7 +70,7 @@ offers:
 <div class="center">{% include common/imgur.html url=page.imgur class="post-img" sizes="(min-width: 600px) 500px, 90vw" %}</div>
 
 <div>
-Join us for our 64<sup>th</sup> Annual Whiskey Flat Days Kickoff Dinner with your choice of
+Join us for our 65<sup>th</sup> Annual Whiskey Flat Days Kickoff Dinner with your choice of
 Chicken or Tri Tip on January 7<sup>th</sup> 2022 at 6 pm at the Elks Lodge in Wofford
 Heights and meet the Whiskey Flat Days Mayor contenders.
 
