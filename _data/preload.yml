@@ -46,3 +46,8 @@
   type: text/html
   referrerPolicy: no-referrer
   crossOrigin: anonymous
+- href: https://cdn.kernvalley.us/components/window-controls.css
+  as: style
+  type: text/css
+  referrerPolicy: no-referrer
+  crossOrigin: anonymous

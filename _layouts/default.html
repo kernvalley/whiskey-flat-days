@@ -6,6 +6,7 @@ itemtype: 'https://schema.org/WebPage'
 layout: base
 main-itemtype: Event
 ---
+{% include window-controls.html %}
 {% unless page.no-header == true %}{% include header.html %}{% endunless %}
 {% unless page.no-nav == true %}{% include nav.html %}{% endunless %}
 <main id="main" class="card shadow">{{ content }}</main>

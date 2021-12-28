@@ -52,6 +52,7 @@ const config = {
 		'https://cdn.kernvalley.us/components/weather/current.css',
 		'https://cdn.kernvalley.us/components/install/prompt.css',
 		'https://cdn.kernvalley.us/components/share-to-button/share-to-button.css',
+		'https://cdn.kernvalley.us/components/window-controls.css',
 
 		/* Images & Icons */
 		'/img/icons.svg',

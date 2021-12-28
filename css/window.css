@@ -1,0 +1,35 @@
+.sticky.top {
+	top: env(titlebar-area-height, 1px);
+}
+
+window-controls {
+	z-index: 10;
+	position: fixed;
+}
+
+window-controls::part(container) {
+	background-color: var(--accent-color);
+}
+
+window-controls::part(titlebar) {
+	display: flex;
+	gap: 12px;
+	color: #fefefe;
+}
+
+window-controls a.disabled {
+	pointer-events: none;
+}
+
+window-controls button {
+	background: none;
+	border: none;
+	appearance: none;
+	color: inherit;
+}
+
+window-controls .spacer {
+	width: calc(100vw - 520px);
+	-webkit-app-region: drag;
+	app-region: grab;
+}
