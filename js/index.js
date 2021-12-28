@@ -15,6 +15,7 @@ import 'https://cdn.kernvalley.us/components/app/list-button.js';
 import 'https://cdn.kernvalley.us/components/app/stores.js';
 import 'https://cdn.kernvalley.us/components/share-to-button/share-to-button.js';
 import 'https://cdn.kernvalley.us/components/disqus/comments.js';
+import 'https://cdn.kernvalley.us/components/window-controls.js';
 import { init } from 'https://cdn.kernvalley.us/js/std-js/data-handlers.js';
 import { debounce } from 'https://cdn.kernvalley.us/js/std-js/events.js';
 import { URLPattern as URLPatternShim } from 'https://unpkg.com/urlpattern-polyfill@1.0.0-rc1/dist/index.modern.js';

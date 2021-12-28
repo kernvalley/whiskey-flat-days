@@ -1,0 +1,25 @@
+<window-controls>
+	<button type="button" is="app-list" id="app-menu" class="btn" title="Open KernValley.US Apps Menu" source="{{ site.data.ads.source }}" slot="titlebar" hidden="">
+		{% include common/icon.html icon="apps" fill="currentColor" height=30 width=30 class="window-icon icon" %}
+	</button>
+	<a href="/" class="window-controls{% if page.url == '/' %} disabled{% endif %}" slot="titlebar" hidden="">
+		<img src="/img/favicon.svg" class="window-icon" alt="WFD icon" width="28" height="32" loading="lazy" referrerpolicy="no-referrer" title="Whiskey Flat Days App"/>
+	</a>
+	<b slot="titlebar" hidden="">WFD&nbsp;App</b>
+	{% for link in site.data.links.nav %}
+		{% if link.href != '/' %}
+			<a href="{{ link.href }}" class="color-inherit window-control{% if link.href == page.url %} disabled{% endif %}" title="{{ link.label }}" slot="titlebar" hidden="">
+				{% include common/icon.html icon=link.icon height="24" width="24" fill="currentColor" class="window-icon icon" %}
+			</a>
+		{% endif %}
+	{% endfor %}
+	<span class="spacer" slot="titlebar" hidden=""></span>
+	{% if page.url == '/map/' %}
+		<button type="button" class="color-inherit" data-action="find-location" title="Mark my Location" slot="titlebar" hidden="">
+			{% include common/icon.html icon="find-location" fill="currentColor" height="24" width="24" class="window-icon icon" %}
+		</button>
+		<button type="button" class="color-inherit" data-full-screen="leaflet-map" title="Enter Fullscreen" slot="titlebar" hidden="">
+			{% include common/icon.html icon="screen-full" fill="currentColor" height="24" width="24" class="window-icon icon" %}
+		</button>
+	{% endif %}
+</window-controls>

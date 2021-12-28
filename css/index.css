@@ -13,6 +13,7 @@
 @import url("./layout.css");
 @import url("./events.css");
 @import url("./contact.css");
+@import url("./window.css");
 
 img.avatar {
 	vertical-align: middle;
