@@ -23,13 +23,13 @@ sidebar:
     url: https://guide.kernvalley.us
     imageFit: contain
     imagePosition: center
-  - uuid: 091b2538-e3a9-422b-8a3a-e870fdf35d0e
-    label: Kernville Chamber of Commerce
-    url: https://gotokernville.com
-    image: https://static.wixstatic.com/media/0bde5a_46eef97f403f4d139e53c4b843388c37~mv2.png/v1/fill/w_280,h_204,al_c,lg_1,q_85/0bde5a_4b395b6e386e4fd0874df10a5ac9a7f4_.png
-    layout: image
-    imageFit: contain
-    imagePosition: center
+  # - uuid: 091b2538-e3a9-422b-8a3a-e870fdf35d0e
+  #   label: Kernville Chamber of Commerce
+  #   url: https://gotokernville.com
+  #   image: https://static.wixstatic.com/media/0bde5a_46eef97f403f4d139e53c4b843388c37~mv2.png/v1/fill/w_280,h_204,al_c,lg_1,q_85/0bde5a_4b395b6e386e4fd0874df10a5ac9a7f4_.png
+  #   layout: image
+  #   imageFit: contain
+  #   imagePosition: center
   # - uuid: fd2e2c83-83a1-4469-bb55-0556f244d5a5
   #   label: Wild West Daze Rodeo
   #   url: https://whiskeyflatdays.com/map/#f44131d1-2128-4d23-be86-2cc7d38e80ff
