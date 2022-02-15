@@ -1,6 +1,5 @@
 ---
-name: Whiskey Flat Days Kickoff Dinner
-name: Whiskey Flat Days Kickoff Dinner
+title: Whiskey Flat Days Kickoff Dinner
 description: Join us at Elks Lodge and meet the Whiskey Flat Days Mayor contenders
 date: 2021-12-07
 author: KernvilleChamber
