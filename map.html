@@ -16,6 +16,11 @@ tags:
   - point of interest
   - map
   - festival
+scripts:
+  - src: https://cdn.kernvalley.us/components/leaflet/map.min.js
+    defer: true
+    crossOrigin: anonymous
+    referrerPolicy: no-referrer
 preconnect:
   - href: https://maps.wikimedia.org
     referrerPolicy: no-referrer
@@ -42,7 +47,7 @@ preload:
     referrerPolicy: no-referrer
     importance: high
 ---
-<main id="main" class="contain-content">
+<section class="contain-content">
 	{% include not-supported.html %}
 	<div class="flex row" hidden="">
 		<button type="button" class="btn btn-primary" data-show="#event-search-toast">
@@ -55,7 +60,7 @@ preload:
 		</button>
 	</div>
 	{% include map.html %}
-</main>
+</section>
 {% unless site.data.mainEvent.eventStatus == 'EventCancelled' %}
 	{% include event-search.html %}
 	{% include business-search.html %}
