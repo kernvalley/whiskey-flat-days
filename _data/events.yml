@@ -11,12 +11,27 @@
       postalCode: 93238
       addressCountry: US
   startDate: 2022-02-18 16:00
-  endDate: 2022-02-18 18:00
-  image: /img/raster/rodeo.jpg
+  endDate: 2022-02-18 20:00
+  # image: /img/raster/rodeo.jpg
   icon: /img/markers/activity.svg
   description: |-
-    <p>Dust off your boots and hats or, in this case, your helment and motorcycle
-    boots as Whiskey Flat Days brings for the first time the MC/ATV Rodeo.</p>
+    <h4>Schedule</h4>
+    <ul>
+     <li><b>3:00</b> Contestant Gate Opens</li>
+     <li><b>3:00 - 5:00</b> Sign-Ups</li>
+     <li><b>4:00 - 5:00</b> Practice Barrel Racing</li>
+     <li><b>5:30</b> Mandatory Riders Meeting</li>
+     <li><b>6:00</b> National Anthem</li>
+    </ul>
+    <h4>Events</h4>
+    <ul>
+       <li>MC Barrel Racing</li>
+       <li>Quad Barrel Racing</li>
+       <li>MC Barrel Roll</li>
+       <li>Quad Hide Races</li>
+       <li>Pony Express Relay</li>
+       <li>Harley Davidson Barrel Race</li>
+    </ul>
 - uuid: e8df6782-d0e7-45e1-944e-d16f27ce019b
   title: Street Dance - Main Stage
   "@type": MusicEvent
