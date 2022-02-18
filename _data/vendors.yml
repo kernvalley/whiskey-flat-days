@@ -444,11 +444,11 @@
 #   space: a27
 #   latitude: 35.7547401
 #   longitude: -118.4247984
-# - uuid: d5058e06-16fd-420a-afbf-0a0db6723d45
-#   title: Sophia's Kitchen
-#   description: Corn Dogs, Carne Asada, Fries, Nachos
-#   latitude: 35.7532951
-#   longitude: -118.4247512
+- uuid: d5058e06-16fd-420a-afbf-0a0db6723d45
+  title: Sophia's Kitchen
+  description: Corn Dogs, Carne Asada, Fries, Nachos
+  latitude: 35.7532951
+  longitude: -118.4247512
 # - uuid: d8a566bd-3a9f-47de-9e1a-4bbd84ddffbb
 #   title: Amazing Bounce
 #   latitude: 35.7531535
@@ -471,10 +471,10 @@
 #   description: Pastrami Sandwiches
 #   latitude: 35.755154
 #   longitude: -118.4249156
-# - uuid: b2d2cd8e-d3cb-4b7d-a94f-912bd711b38e
-#   title: Fazackerley's Fudge
-#   latitude: 35.7534056
-#   longitude: -118.4246701
+- uuid: b2d2cd8e-d3cb-4b7d-a94f-912bd711b38e
+  title: Fazackerley's Fudge
+  latitude: 35.75339969
+  longitude: 118.42461333
 # - uuid: 19e011d4-c1c3-4eee-9f88-116b6a300b3a
 #   title: Ricardo's Grill
 #   latitude: 35.7544945
@@ -487,8 +487,49 @@
 #   title: Rotary Club - KRV
 #   latitude: 35.7550727
 #   longitude: -118.425014
-# - uuid: 37705446-5f14-40a8-9aee-02bdfb7d7ffb
-#   title: Kern River Valley Elks BBQ
-#   latitude: 35.7553479
-#   longitude: -118.4252904
-#
+- uuid: 37705446-5f14-40a8-9aee-02bdfb7d7ffbF
+  title: Kern River Valley Elks BBQ
+  latitude: 35.7553479
+  longitude: -118.4252904
+- uuid: f6ffded4-8a99-414e-9617-b96af1ff0a49
+  title: Hawaiian Shaved Ice
+  latitude: 35.75346935
+  longitude: -118.42447386
+- uuid: 1e3696d0-08a6-4c85-ac20-0d6c303084a6
+  title: Poppi's Pastrami & More
+  latitude: 35.75342581
+  longitude: -118.42452734
+- uuid: 3b9a48e0-d7e2-412d-a7af-8b4f97e3203c
+  title:
+- uuid: 912ff89f-3fb2-4f65-9353-1b70df0482c2
+  title: Lumpia Lady
+  latitude: 35.75345194
+  longitude: -118.4245704
+- uuid: 627b3cc2-f546-407a-88e1-0febd2acbab9
+  title: Dickey's Barbeque Pit
+  latitude: 35.75346935
+  longitude: -118.42445224
+- uuid: 9facbab3-06b6-462e-b667-63ee1baf8194
+  title: Bob Powers Books
+  latitude: 35.75527165
+  longitude: -118.42499994
+- uuid: 9b03a0db-ea69-4385-8fb8-13edef59d459
+  title: Flapjack Jackie
+  latitude: 35.75534711
+  longitude: -118.42499221
+- uuid: 088dd50c-4c25-4273-9c2c-d26f2be51faf
+  title: Strength of Shadow
+  latitude: 35.75532762
+  longitude: -118.42478936
+- uuid: 7c5c53eb-58c5-4b51-a8d3-a18f3a69a92a
+  title: Dust 2 Dust
+  latitude: 35.75529155
+  longitude: -118.42486919
+- uuid: dd46668b-2a59-4f3c-b52c-7ce8bce0fce0
+  title: Barbie Museum
+  latitude: 35.75355900829612
+  longitude: -118.42470568180345
+- uuid: 58d8b9e7-4c12-433d-9477-55f2743bf9ae
+  title: C&D Sk8 Shop
+  latitude: 35.75355900829612
+  longitude: -118.42470568180345,
