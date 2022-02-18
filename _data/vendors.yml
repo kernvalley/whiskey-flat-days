@@ -528,10 +528,10 @@
 #   title: Fazackerley's Fudge
 #   latitude: 35.7534056
 #   longitude: -118.4246701
-# - uuid: 19e011d4-c1c3-4eee-9f88-116b6a300b3a
-#   title: Ricardo's Grill
-#   latitude: 35.7544945
-#   longitude: -118.4253634
+- uuid: 19e011d4-c1c3-4eee-9f88-116b6a300b3a
+  title: Ricardo's Grill
+  latitude: 35.7544945
+  longitude: -118.4253634
 # - uuid: 64b1ce20-5022-4578-8aa2-882b94156caf
 #   title: Schroeder's Kettle Corn
 #   latitude: 35.7546047
@@ -544,4 +544,13 @@
 #   title: Kern River Valley Elks BBQ
 #   latitude: 35.7553479
 #   longitude: -118.4252904
-#
+- uuid: 7ad441d6-ed5e-43e4-b0d7-e2dfc484f7c5
+  space: c40
+  title: White Blanket Taco Trailer
+  latitude: 35.75514354
+  longitude: 118.42473733
+- uuid: edf88e91-779f-47fb-a9e7-444ced9ca336
+  space: c33
+  title: California Redwood Signs
+  latitude: 35.75544993,
+  longitude: -118.42477602,
