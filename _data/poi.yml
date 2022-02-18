@@ -22,41 +22,48 @@
       latitude: 35.755220
       longitude: -118.425045
   icon: /img/markers/shopping.svg
-# - uuid: f94a7c6a-afc8-4e68-acb0-4ea93d910c97
-#   title: Outhouses
-#   location:
-#     geo:
-#       latitude: 35.7546709
-#       longitude: -118.4235427
-#   icon: /img/markers/outhouse.svg
-# - uuid: e98386b5-97e6-4144-b467-b2c1c6c4eb15
-#   title: Outhouses
-#   location:
-#     geo:
-#       latitude: 35.7531129
-#       longitude: -118.4249145
-#   icon: /img/markers/outhouse.svg
-# - uuid: fa5c0e6b-09fa-4ccc-9928-2e66b2df2b9d
-#   title: Outhouses
-#   location:
-#     geo:
-#       latitude: 35.75586
-#       longitude: -118.4254629
-#   icon: /img/markers/outhouse.svg
-# - uuid: bc57e443-c180-4534-bca7-c94b18ba2a15
-#   title: Outhouses
-#   location:
-#     geo:
-#       latitude: 35.7546709
-#       longitude: -118.4235427
-#   icon: /img/markers/outhouse.svg
-# - uuid: d1fd3f48-9526-4e55-b53d-3027fdb02b1c
-#   title: Outhouses
-#   location:
-#     geo:
-#       latitude: 35.7615506
-#       longitude: -118.4251894
-#   icon: /img/markers/outhouse.svg
+- uuid: f94a7c6a-afc8-4e68-acb0-4ea93d910c97
+  title: Outhouses
+  location:
+    geo:
+      latitude: 35.7546709
+      longitude: -118.4235427
+  icon: /img/markers/outhouse.svg
+- uuid: e98386b5-97e6-4144-b467-b2c1c6c4eb15
+  title: Outhouses
+  location:
+    geo:
+      latitude: 35.7531129
+      longitude: -118.4249145
+  icon: /img/markers/outhouse.svg
+- uuid: fa5c0e6b-09fa-4ccc-9928-2e66b2df2b9d
+  title: Outhouses
+  location:
+    geo:
+      latitude: 35.75586
+      longitude: -118.4254629
+  icon: /img/markers/outhouse.svg
+- uuid: bc57e443-c180-4534-bca7-c94b18ba2a15
+  title: Outhouses
+  location:
+    geo:
+      latitude: 35.7546709
+      longitude: -118.4235427
+  icon: /img/markers/outhouse.svg
+- uuid: d1fd3f48-9526-4e55-b53d-3027fdb02b1c
+  title: Outhouses
+  location:
+    geo:
+      latitude: 35.7615506
+      longitude: -118.4251894
+  icon: /img/markers/outhouse.svg
+- uuid: a5cb59dc-344e-43ff-b7c6-0b7adfd43042
+  title: Outhouses
+  location:
+    geo:
+      latitude: 35.75492939563758
+      longitude: -118.42744077681473
+  icon: img/markers/outhouse.svg
 # - uuid: 6f8ff7be-e425-4dc2-95eb-2cce1a2472f6
 #   title: Regional Transit Stop
 #   telephone: 1-800-323-2396

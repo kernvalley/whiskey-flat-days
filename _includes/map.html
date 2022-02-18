@@ -79,7 +79,7 @@
 				{% if marker.telephone %}
 					<div>
 						<a href="tel:+{{ marker.telephone }}">
-							{% include common/icon.html icon="call-start"  height="16" width="16" %}
+							{% include common/icon.html icon="call-start"  height="16" width="16" fill="currentColor" %}
 							<span itemprop="telephone">{{ marker.telephone }}</span>
 						</a>
 					</div>
@@ -87,28 +87,28 @@
 				{% if marker.url %}
 					<div>
 						<a href="{{ marker.url }}" rel="external noopener noreferrer">
-							{% include common/icon.html icon="globe"  height="16" width="16" %}
+							{% include common/icon.html icon="globe"  height="16" width="16" fill="currentColor" %}
 							<span itemprop="url">{{ marker.url | replace: 'https://', '' | replace: 'http://', '' | replace: 'www.', '' }}</span>
 						</a>
 					</div>
 				{% endif %}
 				{% if marker.location.url %}
 					<a href="{{ marker.location.url }}" class="inline-block btn btn-primary" rel="external noopener noreferrer" role="button">
-						{% include common/icon.html icon="map" height="16" width="16" %}
+						{% include common/icon.html icon="map" height="16" width="16" fill="currentColor" %}
 						<span>View in Map App</span>
 					</a>
 				{% else %}
 					<!-- geo:35.760197,-118.426793;crs=wgs84;u=0 -->
 					<a href="https://www.google.com/maps/?q={{ marker.location.geo.latitude }},{{ marker.location.geo.longitude }}" class="inline-block btn btn-primary" rel="external noopener noreferrer" role="button">
-						{% include common/icon.html icon="map" height="16" width="16" %}
+						{% include common/icon.html icon="map" height="16" width="16" fill="currentColor" %}
 						<span>View in Map App</span>
 					</a>
 				{% endif %}
 				{% if marker.uuid %}
 					<br />
 					<button type="button" is="share-button" url="https://whiskeyflatdays.com/map/#{{ marker.uuid }}" text="Check out {{ marker.title | escape_once }}" title="{{ marker.title | escape_once }} | Whiskey Flat Days Map" source="whiskey-flat-days" medium="social" content="map-marker" hidden="">
-						<svg width="16" height="16" aria-hidden="true">
-							<use xlink:href="{{ site.icons }}#share"></use>
+						<svg width="16" height="16" aria-hidden="true" fill="currentColor">
+							<use xlink:href="{{ site.icons }}#public-share"></use>
 						</svg>
 						<span>Share</span>
 					</button>
@@ -123,20 +123,20 @@
 				{% if marker.description %}<div>{{ marker.description }}</div>{% endif %}
 				{% if marker.location.url %}
 					<a href="{{ marker.location.url }}" class="inline-block btn btn-primary" rel="external noopener noreferrer" role="button">
-						{% include common/icon.html icon="map" height="16" width="16" %}
+						{% include common/icon.html icon="map" height="16" width="16" fill="currentColor" %}
 						<span>View in Map App</span>
 					</a>
 				{% else %}
 					<a href="https://www.google.com/maps/?q={{ marker.latitude }},{{ marker.longitude }}" class="inline-block btn btn-primary" rel="external noopener noreferrer" role="button">
-						{% include common/icon.html icon="map" height="16" width="16" %}
+						{% include common/icon.html icon="map" height="16" width="16" fill="currentColor" %}
 						<span>View in Map App</span>
 					</a>
 				{% endif %}
 				{% if marker.uuid %}
 					<br /><br />
 					<button type="button" is="share-button" url="https://whiskeyflatdays.com/map/#{{ marker.uuid }}" text="Check out {{ marker.title | escape_once }}" title="{{ marker.title | escape_once }} | Whiskey Flat Days Map" source="whiskey-flat-days" medium="social" content="map-marker" hidden="">
-						<svg width="16" height="16" aria-hidden="true">
-							<use xlink:href="{{ site.icons }}#share"></use>
+						<svg width="16" height="16" aria-hidden="true" fill="currentColor">
+							<use xlink:href="{{ site.icons }}#public-share"></use>
 						</svg>
 						<span>Share</span>
 					</button>
@@ -186,13 +186,13 @@
 					{% if marker.location.url %}
 						<br />
 						<a href="{{ marker.location.url }}" class="inline-block btn btn-primary" rel="external noopener noreferrer" role="button" itemprop="url">
-							{% include common/icon.html icon="map" height="16" width="16" %}
+							{% include common/icon.html icon="map" height="16" width="16" fill="currentColor" %}
 							<span>View in Map App</span>
 						</a>
 					{% else %}
 						<br />
 						<a href="https://www.google.com/maps/?q={{ marker.location.geo.latitude }},{{ marker.location.geo.longitude }}" class="inline-block btn btn-primary" rel="external noopener noreferrer" role="button" itemprop="url">
-							{% include common/icon.html icon="map" height="16" width="16" %}
+							{% include common/icon.html icon="map" height="16" width="16" fill="currentColor" %}
 							<span>View in Map App</span>
 						</a>
 					{% endif %}
@@ -204,8 +204,8 @@
 				{% if marker.description %}<div itemprop="description">{{ marker.description }}</div>{% endif %}
 				{% if marker.uuid %}
 					<button type="button" is="share-button" url="https://whiskeyflatdays.com/map/#{{ marker.uuid }}" text="Check out {{ marker.title | escape_once }}" title="{{ marker.title | escape_once }} | Whiskey Flat Days Map" source="whiskey-flat-days" medium="social" content="map-marker" hidden="">
-						<svg width="16" height="16" aria-hidden="true">
-							<use xlink:href="{{ site.icons }}#share"></use>
+						<svg width="16" height="16" aria-hidden="true" fill="currentColor">
+							<use xlink:href="{{ site.icons }}#public-share"></use>
 						</svg>
 						<span>Share</span>
 					</button>
@@ -221,5 +221,5 @@
 	{% endfor %}{% endunless %}
 </leaflet-map>
 <button type="button" id="search-btn" class="btn btn-primary sticky bottom left z-top shadow round" data-show="#event-search-toast" title="Search Events">
-	{% include common/icon.html icon="search" %}
+	{% include common/icon.html icon="search" fill="currentColor" %}
 </button>

@@ -1,9 +1,9 @@
 ---
-# - uuid: your-vendor-name
-#   space: b65
-#   title: Your Vendor Name
-#   latitude: 35.7533507
-#   longitude: -118.4252625
+- uuid: your-vendor-name
+  space: b65
+  title: Homies Tacos
+  latitude: 35.7533507
+  longitude: -118.4252625
 #   description: |-
 #       For $40, you can include a custom description here. Descriptions may
 #       be 400 characters in length and include one image, e.g. as a coupon
@@ -21,18 +21,20 @@
 #   space: b62
 #   latitude: 35.753409
 #   longitude: -118.4252852
-# - uuid: 4860d6e6-183b-472d-b6d8-6e60de8d6562
-#   space: b61
-#   latitude: 35.7534569
-#   longitude: -118.4252805
+- uuid: 4860d6e6-183b-472d-b6d8-6e60de8d6562
+  space: b61
+  title: Eddy Out Tap House & Grill
+  latitude: 35.7534569
+  longitude: -118.4252805
 # - uuid: 81bdbdac-6a36-4028-8163-631fab7bd06a
 #   space: b60
 #   latitude: 35.7534244
 #   longitude: -118.4253117
-# - uuid: 9bf09249-3df7-4595-999d-9f6022641e2c
-#   space: b58
-#   latitude: 35.7535265
-#   longitude: -118.4253703
+- uuid: 9bf09249-3df7-4595-999d-9f6022641e2c
+  space: b58
+  title: Grumpy Bear Retreat
+  latitude: 35.7535265
+  longitude: -118.4253703
 # - uuid: 1c9f0734-34f1-41c3-8d53-f610c7ffb8de
 #   space: b59
 #   latitude: 35.7534792
@@ -77,10 +79,11 @@
 #   space: b49
 #   latitude: 35.7537543
 #   longitude: -118.4253903
-# - uuid: a71a71b5-e98a-44b2-aaa4-4e6c98a26224
-#   space: b47
-#   latitude: 35.7540265
-#   longitude: -118.4253732
+- uuid: a71a71b5-e98a-44b2-aaa4-4e6c98a26224
+  space: b47
+  title: Soldiers for Jesus
+  latitude: 35.7540265
+  longitude: -118.4253732
 # - uuid: 0e9f9544-70db-4a33-8bf5-49ec3d7c1857
 #   space: b46
 #   latitude: 35.7540583
@@ -89,14 +92,16 @@
 #   space: b44
 #   latitude: 35.754099
 #   longitude: -118.4253071
-# - uuid: e61ccf8e-6b7b-45bf-86d8-767071962289
-#   space: b45
-#   latitude: 35.7540912
-#   longitude: -118.4253776
-# - uuid: 3b3db32c-56c1-4620-a583-d03c4e1b32a0
-#   space: b42
-#   latitude: 35.7541588
-#   longitude: -118.4253709
+- uuid: e61ccf8e-6b7b-45bf-86d8-767071962289
+  space: b45
+  title: Kern Valley Search & Rescue
+  latitude: 35.7540912
+  longitude: -118.4253776
+- uuid: 3b3db32c-56c1-4620-a583-d03c4e1b32a0
+  space: b42
+  title: Livaj Jewelry
+  latitude: 35.7541588
+  longitude: -118.4253709
 # - uuid: 473ef53e-f9aa-436d-81ca-b2868501f11b
 #   space: b43
 #   latitude: 35.7541578
@@ -105,23 +110,25 @@
 #   space: b40
 #   latitude: 35.754194
 #   longitude: -118.4253353
-# - uuid: c4300085-358a-4f62-998b-cf7f15724a85
-#   space: b39
-#   latitude: 35.7542002
-#   longitude: -118.4253121
-# - uuid: 4e5d5a28-b1fe-410b-972c-0aebc78c35df
-#   title: Fish & Chips
-#   space: b41
-#   latitude: 35.7541784
-#   longitude: -118.42529
+- uuid: c4300085-358a-4f62-998b-cf7f15724a85
+  space: b39
+  title: Wounded Heros Fund
+  latitude: 35.7542002
+  longitude: -118.4253121
+- uuid: 4e5d5a28-b1fe-410b-972c-0aebc78c35df
+  title: TCM International
+  space: b41
+  latitude: 35.7541784
+  longitude: -118.42529
 # - uuid: eccfe87f-8f82-4e0a-8a7d-28e7f6b2816f
 #   space: b38
 #   latitude: 35.7542521
 #   longitude: -118.4253036
-# - uuid: 89072235-76c4-43b5-aa41-93a4339a2f88
-#   space: b37
-#   latitude: 35.7543114
-#   longitude: -118.425299
+- uuid: 89072235-76c4-43b5-aa41-93a4339a2f88
+  space: b37
+  title: Jerky Hut
+  latitude: 35.7543114
+  longitude: -118.425299
 # - uuid: 2c0d11af-65b0-4900-8a07-7a8b8d59e7f1
 #   space: b36
 #   latitude: 35.7543434
@@ -130,30 +137,35 @@
 #   space: b35
 #   latitude: 35.7543456
 #   longitude: -118.4252395
-# - uuid: 40e02552-0d9e-4593-9fb0-976ac727ffef
-#   space: a30
-#   latitude: 35.7543591
-#   longitude: -118.425106
+- uuid: 40e02552-0d9e-4593-9fb0-976ac727ffef
+  space: a30
+  title: Kern County Firefighters Local 1301
+  latitude: 35.7543591
+  longitude: -118.425106
 # - uuid: b1d8651b-6e9c-4a5a-8da5-76f945d0ea38
 #   space: a31
 #   latitude: 35.7543407
 #   longitude: -118.4251085
-# - uuid: 1d6fe256-aae0-46c0-be25-d5e6c0a8fd83
-#   space: a32
-#   latitude: 35.754299
-#   longitude: -118.4251429
-# - uuid: 4c65893a-e7a0-4642-8979-6704f6690f89
-#   space: a33
-#   latitude: 35.7542816
-#   longitude: -118.425147
-# - uuid: e677090b-26e5-480a-84d3-f51842a1f72e
-#   space: a34
-#   latitude: 35.7542711
-#   longitude: -118.4251802
-# - uuid: 2c34632d-2964-4fb7-8fbe-4a17740269fc
-#   space: a35
-#   latitude: 35.7542306
-#   longitude: -118.4251778
+- uuid: 1d6fe256-aae0-46c0-be25-d5e6c0a8fd83
+  space: a32
+  title: CHP
+  latitude: 35.754299
+  longitude: -118.4251429
+- uuid: 4c65893a-e7a0-4642-8979-6704f6690f89
+  space: a33
+  title: KRV Chamber of Commerce
+  latitude: 35.7542816
+  longitude: -118.425147
+- uuid: e677090b-26e5-480a-84d3-f51842a1f72e
+  space: a34
+  title: Thru the Garden Window
+  latitude: 35.7542711
+  longitude: -118.4251802
+- uuid: 2c34632d-2964-4fb7-8fbe-4a17740269fc
+  space: a35
+  title: International Treasures
+  latitude: 35.7542306
+  longitude: -118.4251778
 # - uuid: 8edee844-9564-4d49-aa05-1d7570f01980
 #   space: a36
 #   latitude: 35.7542055
@@ -162,90 +174,103 @@
 #   space: a37
 #   latitude: 35.7541045
 #   longitude: -118.4252165
-# - uuid: fe6d997f-5ce3-496f-bd69-aca1952fcbc7
-#   space: a38
-#   latitude: 35.7540737
-#   longitude: -118.4252447
-# - uuid: d8da4f3a-1ddb-4a45-a704-2148f0455231
-#   space: a39
-#   latitude: 35.7540468
-#   longitude: -118.4252014
-# - uuid: ebecc319-b4ca-4815-aeb9-5a3c3da47834
-#   space: a40
-#   latitude: 35.7540007
-#   longitude: -118.4252119
-# - uuid: d8bab79c-919f-47c9-93f0-cfebdcc62a52
-#   space: a41
-#   latitude: 35.7539596
-#   longitude: -118.4252752
+- uuid: fe6d997f-5ce3-496f-bd69-aca1952fcbc7
+  space: a38
+  title: One Spade Youth
+  latitude: 35.7540737
+  longitude: -118.4252447
+- uuid: d8da4f3a-1ddb-4a45-a704-2148f0455231
+  space: a39
+  title: Back Country Horsemen
+  latitude: 35.7540468
+  longitude: -118.4252014
+- uuid: ebecc319-b4ca-4815-aeb9-5a3c3da47834
+  space: a40
+  title: Knights of Columbus
+  latitude: 35.7540007
+  longitude: -118.4252119
+- uuid: d8bab79c-919f-47c9-93f0-cfebdcc62a52
+  space: a41
+  title: International Boutique
+  latitude: 35.7539596
+  longitude: -118.4252752
 # - uuid: 523c867a-7993-460c-aa3d-78b3cb054f49
 #   space: a42
 #   latitude: 35.7539661
 #   longitude: -118.4252812
-# - uuid: e42f353e-afba-49b0-9f3d-72aa1b15ed08
-#   space: a43
-#   latitude: 35.7539206
-#   longitude: -118.4252541
-# - uuid: 76ad51e3-afb6-46af-bc46-f5817d6f6187
-#   space: a44
-#   latitude: 35.7538976
-#   longitude: -118.4252532
+- uuid: e42f353e-afba-49b0-9f3d-72aa1b15ed08
+  space: a43
+  title: Vision Team
+  latitude: 35.7539206
+  longitude: -118.4252541
+- uuid: 76ad51e3-afb6-46af-bc46-f5817d6f6187
+  space: a44
+  title: Myriad Group
+  latitude: 35.7538976
+  longitude: -118.4252532
 # - uuid: afaf5a80-e841-4af5-ab91-e0931db5929f
 #   space: a45
 #   latitude: 35.7538407
 #   longitude: -118.4252758
-# - uuid: b9c2b83d-982d-4b9f-a3de-9cb45cef04e4
-#   title: Lemonade Stand
-#   space: b34
-#   latitude: 35.7548411
-#   longitude: -118.4249732
-# - uuid: 7966bb80-0564-4005-951c-ad7549054ea8
-#   space: b33
-#   latitude: 35.7547993
-#   longitude: -118.424944
+- uuid: b9c2b83d-982d-4b9f-a3de-9cb45cef04e4
+  title: Lemonade Stand
+  space: b34
+  latitude: 35.7548411
+  longitude: -118.4249732
+- uuid: 7966bb80-0564-4005-951c-ad7549054ea8
+  space: b33
+  title: Skye Purses
+  latitude: 35.7547993
+  longitude: -118.424944
 # - uuid: fa7a76d4-320c-47d1-b857-4be54d4b0a71
 #   space: b32
 #   latitude: 35.754753
 #   longitude: -118.4248856
-# - uuid: b8fbf123-b1f4-44e8-9a60-49cb5f1d2515
-#   space: b31
-#   latitude: 35.7548117
-#   longitude: -118.4248667
+- uuid: b8fbf123-b1f4-44e8-9a60-49cb5f1d2515
+  space: b31
+  title: Desert Farm Creations / Hippie Karma
+  latitude: 35.7548117
+  longitude: -118.4248667
 # - uuid: fdf48f0f-358b-4138-a8b2-0145d28e3f11
 #   space: b30
 #   latitude: 35.7548341
 #   longitude: -118.424877
-# - uuid: 6ed85f21-6a52-4a95-86d8-1a637c46aa9c
-#   space: b29
-#   latitude: 35.7548498
-#   longitude: -118.4247733
-# - uuid: d70d855d-4bee-44ae-80e6-e1afa84e3c81
-#   space: b28
-#   latitude: 35.754861
-#   longitude: -118.4247782
-# - uuid: 9cc9181b-a1db-419b-9f2e-344e94c6f80c
-#   title: Strength of Shadow
-#   space: b27
-#   latitude: 35.7549106
-#   longitude: -118.424759
+- uuid: 6ed85f21-6a52-4a95-86d8-1a637c46aa9c
+  space: b29
+  title: Sopon Jewelry
+  latitude: 35.7548498
+  longitude: -118.4247733
+- uuid: d70d855d-4bee-44ae-80e6-e1afa84e3c81
+  space: b28
+  title: Bug and Graci
+  latitude: 35.754861
+  longitude: -118.4247782
+- uuid: 9cc9181b-a1db-419b-9f2e-344e94c6f80c
+  title: Helping Hands & Heels
+  space: b27
+  latitude: 35.7549106
+  longitude: -118.424759
 # - uuid: 265de11f-f92b-42ad-b618-28dd16950b7b
 #   space: b26
 #   latitude: 35.7549251
 #   longitude: -118.4246907
-# - uuid: 7bf0aaef-a10c-407b-99d1-7da5b270df59
-#   space: b25
-#   comment: uncertain
-#   latitude: 35.7549204
-#   longitude: -118.4247117
-# - uuid: 410c0b06-0810-4eab-9476-b3c7d5ebad24
-#   space: b24
-#   comment: uncertain
-#   latitude: 35.7549563
-#   longitude: -118.4246775
-# - uuid: 7fcaf13e-05d8-40cf-b128-dde1706d8605
-#   space: b23
-#   latitude: 35.7549708
-#   longitude: -118.42462
+- uuid: 7bf0aaef-a10c-407b-99d1-7da5b270df59
+  space: b25
+  title: Crystalyn Creations
+  comment: uncertain
+  latitude: 35.7549204
+  longitude: -118.4247117
+- uuid: 410c0b06-0810-4eab-9476-b3c7d5ebad24
+  space: b24
+  title: Kern Valley Motercycle Club
+  comment: uncertain
+  latitude: 35.7549563
+  longitude: -118.4246775
+- uuid: 7fcaf13e-05d8-40cf-b128-dde1706d8605
+  space: b23
+  title: American Legion
+  latitude: 35.7549708
+  longitude: -118.42462
 # - uuid: 5700206e-efbf-4a75-82b1-f8c68f75d830
 #   space: b22
 #   comment: given as duplicate of b23
@@ -255,27 +280,30 @@
 #   space: b21
 #   latitude: 35.754988
 #   longitude: -118.424534
-# - uuid: bb112cc4-8df4-4a89-9abc-06c1acc0c692
-#   space: b20
-#   title: Old West Kettle Korn
-#   latitude: 35.7550004
-#   longitude: -118.4245107
+- uuid: bb112cc4-8df4-4a89-9abc-06c1acc0c692
+  space: b20
+  title: Old West Kettle Korn
+  latitude: 35.7550004
+  longitude: -118.4245107
 # - uuid: 6884ac65-1e69-4b19-83d9-077abd83db5b
 #   space: b19
 #   latitude: 35.7551228
 #   longitude: -118.4243113
-# - uuid: 310e634f-f70d-4f8b-8770-e879f7a1c8d7
-#   space: b18
-#   latitude: 35.7551534
-#   longitude: -118.4242749
-# - uuid: c3edf5d6-bed8-4bcc-a292-e8d1b6e8434c
-#   space: b17
-#   latitude: 35.7551369
-#   longitude: -118.424237
-# - uuid: 3b22b678-a1d2-4e95-9ddc-f0b3a4d4fe8c
-#   space: b16
-#   latitude: 35.7551673
-#   longitude: -118.4241733
+- uuid: 310e634f-f70d-4f8b-8770-e879f7a1c8d7
+  space: b18
+  title: World Designs Inc
+  latitude: 35.7551534
+  longitude: -118.4242749
+- uuid: c3edf5d6-bed8-4bcc-a292-e8d1b6e8434c
+  space: b17
+  title: Mediacom
+  latitude: 35.7551369
+  longitude: -118.424237
+- uuid: 3b22b678-a1d2-4e95-9ddc-f0b3a4d4fe8c
+  space: b16
+  title: Mia Belle Candles
+  latitude: 35.7551673
+  longitude: -118.4241733
 # - uuid: d7f9b7ab-585b-4a08-890c-571cdfecb685
 #   space: b15
 #   latitude: 35.7551671
@@ -284,26 +312,30 @@
 #   space: b14
 #   latitude: 35.755184
 #   longitude: -118.4241379
-# - uuid: 6496f089-3d25-48e0-9dfa-c364df1ea74e
-#   space: b13
-#   latitude: 35.7551838
-#   longitude: -118.4241071
-# - uuid: eb84242e-9eff-4e53-9131-898221e0e085
-#   space: b12
-#   latitude: 35.755157
-#   longitude: -118.424066
+- uuid: 6496f089-3d25-48e0-9dfa-c364df1ea74e
+  space: b13
+  title: Bittle's Up
+  latitude: 35.7551838
+  longitude: -118.4241071
+- uuid: eb84242e-9eff-4e53-9131-898221e0e085
+  space: b12
+  title: Hillbilly Flannel Co
+  latitude: 35.755157
+  longitude: -118.424066
 # - uuid: 8828f3ba-96db-4856-af62-867ae81d12c1
 #   space: b12
 #   latitude: 35.7551984
 #   longitude: -118.4240298
-# - uuid: 8828f3ba-96db-4856-af62-867ae81d12c1
-#   space: b11
-#   latitude: 35.7551984
-#   longitude: -118.4240298
-# - uuid: d1613ead-805b-40e4-80ba-be35442ebad9
-#   space: b10
-#   latitude: 35.755208
-#   longitude: -118.4239925
+- uuid: 8828f3ba-96db-4856-af62-867ae81d12c1
+  space: b11
+  title: Touch of Fantasy
+  latitude: 35.7551984
+  longitude: -118.4240298
+- uuid: d1613ead-805b-40e4-80ba-be35442ebad9
+  space: b10
+  title: Stockdale Solar
+  latitude: 35.755208
+  longitude: -118.4239925
 # - uuid: a872ae13-4642-4f3a-8f9f-70330b1cbedb
 #   space: b9
 #   latitude: 35.7552118
@@ -316,122 +348,142 @@
 #   space: b7
 #   latitude: 35.7552177
 #   longitude: -118.4238535
-# - uuid: 60ad908d-fe0a-44f2-b7c3-b48b975e5a37
-#   space: b6
-#   latitude: 35.7552189
-#   longitude: -118.4238264
-# - uuid: d9c0cb3f-fad3-48f4-b9f1-69f4658146c8
-#   space: b5
-#   latitude: 35.7552299
-#   longitude: -118.4237957
-# - uuid: 118a17d6-44ec-4fb5-aac4-db72e40a0562
-#   space: b4
-#   latitude: 35.7552191
-#   longitude: -118.4237954
-# - uuid: 1c1b143b-8e76-4057-923f-0817143e3562
-#   space: b3
-#   latitude: 35.7552492
-#   longitude: -118.4237373
+- uuid: 60ad908d-fe0a-44f2-b7c3-b48b975e5a37
+  space: b6
+  title: Music Boxes & Things
+  latitude: 35.7552189
+  longitude: -118.4238264
+- uuid: d9c0cb3f-fad3-48f4-b9f1-69f4658146c8
+  space: b5
+  title: Scoundrel's Sweets & Suds
+  latitude: 35.7552299
+  longitude: -118.4237957
+- uuid: 118a17d6-44ec-4fb5-aac4-db72e40a0562
+  space: b4
+  title: Drinkin Class Clothing
+  latitude: 35.7552191
+  longitude: -118.4237954
+- uuid: 1c1b143b-8e76-4057-923f-0817143e3562
+  space: b3
+  title: iToyz
+  latitude: 35.7552492
+  longitude: -118.4237373
 # - uuid: 5fa94ac6-732d-4fc2-9dd6-bb9d9ec76cd7
 #   space: b2
 #   latitude: 35.7552341
 #   longitude: -118.4237342
-# - uuid: c6a52ec8-4c13-4a5b-8132-c44d9042ba24
-#   space: b1
-#   latitude: 35.7552127
-#   longitude: -118.4236747
-# - uuid: 3ce967ef-bdf4-4747-ae72-18ee1ff760cf
-#   title: Ewings Smoker Trailer
-#   space: a1
-#   latitude: 35.7550998
-#   longitude: -118.4236322
+- uuid: c6a52ec8-4c13-4a5b-8132-c44d9042ba24
+  space: b1
+  title: Tutu's Catering
+  latitude: 35.7552127
+  longitude: -118.4236747
+- uuid: 3ce967ef-bdf4-4747-ae72-18ee1ff760cf
+  title: The Bug Dash
+  space: a1
+  latitude: 35.7550998
+  longitude: -118.4236322
 # - uuid: 108c9215-c1c2-4e00-bc46-098a9076f51d
 #   space: a2
 #   latitude: 35.7551329
 #   longitude: -118.4237272
-# - uuid: 2792ff6c-431f-427a-9a67-09893a049d49
-#   space: a3
-#   comment: given as Aaa3
-#   latitude: 35.755129
-#   longitude: -118.4237284
-# - uuid: f4472d79-effc-4419-924d-466d681e9548
-#   space: a4
-#   latitude: 35.7551375
-#   longitude: -118.4237358
-# - uuid: dbb1f5af-f3fa-482e-b62d-101d52021cd4
-#   space: a5
-#   latitude: 35.7551331
-#   longitude: -118.423804
-# - uuid: c647e36b-1a1d-40f5-884f-db2ca1c037f9
-#   space: a6
-#   latitude: 35.7551403
-#   longitude: -118.4238553
-# - uuid: ffc35563-4597-4aad-9b71-9b5ab3a49046
-#   space: a7
-#   latitude: 35.7551198
-#   longitude: -118.4238911
-# - uuid: d5f0cf64-3949-46f0-8292-c9af05786d40
-#   space: a10
-#   comment: skipped over driveway
-#   latitude: 35.7550933
-#   longitude: -118.4240099
-# - uuid: 4ce1c8cf-ae9a-4562-9909-c3c7c48b27e4
-#   space: a11
-#   latitude: 35.7550919
-#   longitude: -118.4240387
+- uuid: 2792ff6c-431f-427a-9a67-09893a049d49
+  space: Victoriana Bath Garden
+  comment: given as Aaa3
+  latitude: 35.755129
+  longitude: -118.4237284
+- uuid: f4472d79-effc-4419-924d-466d681e9548
+  space: a4
+  title: Viben Trees & A P Rustic Creations
+  latitude: 35.7551375
+  longitude: -118.4237358
+- uuid: dbb1f5af-f3fa-482e-b62d-101d52021cd4
+  space: a5
+  title: Quest by Magdalena
+  latitude: 35.7551331
+  longitude: -118.423804
+- uuid: c647e36b-1a1d-40f5-884f-db2ca1c037f9
+  space: a6
+  title: Katerina's Natural
+  latitude: 35.7551403
+  longitude: -118.4238553
+- uuid: ffc35563-4597-4aad-9b71-9b5ab3a49046
+  space: a7
+  title: A-Z Foundation
+  latitude: 35.7551198
+  longitude: -118.4238911
+- uuid: d5f0cf64-3949-46f0-8292-c9af05786d40
+  space: a10
+  title: Whiskey & Rebellion
+  comment: skipped over driveway
+  latitude: 35.7550933
+  longitude: -118.4240099
+- uuid: 4ce1c8cf-ae9a-4562-9909-c3c7c48b27e4
+  space: a11
+  title: Shay's Showroom
+  latitude: 35.7550919
+  longitude: -118.4240387
 # - uuid: c41271c1-596a-408c-947b-1969e1b04123
 #   space: a12
 #   latitude: 35.7551052
 #   longitude: -118.4241102
-# - uuid: c8cfdd85-6285-45c8-b046-06b29e0eddf8
-#   space: a13
-#   latitude: 35.7550907
-#   longitude: -118.4241074
+- uuid: c8cfdd85-6285-45c8-b046-06b29e0eddf8
+  space: a13
+  title: Apodaca Services
+  latitude: 35.7550907
+  longitude: -118.4241074
 # - uuid: 4d34cce6-1e95-4de4-a909-4f6de7b956c7
 #   space: a14
 #   latitude: 35.7550781
 #   longitude: -118.4241578
-# - uuid: 6263e444-460e-4c8d-9d82-3836c06310d0
-#   title: Bliss Cookie Dough
-#   space: a15
-#   latitude: 35.7550415
-#   longitude: -118.4241824
-# - uuid: fd1fd227-7757-45fe-ba31-662b4f5a77e4
-#   space: a16
-#   latitude: 35.7550416
-#   longitude: -118.424243
+- uuid: 6263e444-460e-4c8d-9d82-3836c06310d0
+  title: Paul's Products
+  space: a15
+  latitude: 35.7550415
+  longitude: -118.4241824
+- uuid: fd1fd227-7757-45fe-ba31-662b4f5a77e4
+  space: a16
+  title: T-Shirt on Wheels
+  latitude: 35.7550416
+  longitude: -118.424243
 # - uuid: 1f375957-0b29-4e84-a466-8217aa539a97
 #   space: a17
 #   latitude: 35.7550473
 #   longitude: -118.4242821
-# - uuid: 1899bea4-1ed7-430e-9ca2-284687aa1f4d
-#   space: a18
-#   latitude: 35.7549373
-#   longitude: -118.4244971
-# - uuid: 4ee649b8-4342-4698-9fec-1788b4a0455b
-#   space: a19
-#   latitude: 35.7549553
-#   longitude: -118.424531
-# - uuid: 55025ae7-617c-477f-8049-8f5aa4b7b8ab
-#   space: a20
-#   latitude: 35.7549388
-#   longitude: -118.4245023
-# - uuid: b7cb500d-d7b8-4988-9947-3d3e93f361dd
-#   space: a21
-#   latitude: 35.7549005
-#   longitude: -118.424582
-# - uuid: 6a1d3361-ccdd-4e42-9f0c-7d2656f2aec9
-#   space: a22
-#   latitude: 35.7548194
-#   longitude: -118.42465
-# - uuid: 94d8672c-6a05-41d2-8f17-5e3f508f43f0
-#   space: a23
-#   latitude: 35.7548235
-#   longitude: -118.4247092
-# - uuid: 900ea326-d7b4-490c-8416-7997e3ad17c8
-#   space: a24
-#   latitude: 35.7548142
-#   longitude: -118.424712
+- uuid: 1899bea4-1ed7-430e-9ca2-284687aa1f4d
+  space: a18
+  title: Primo's Gourmet Food
+  latitude: 35.7549373
+  longitude: -118.4244971
+- uuid: 4ee649b8-4342-4698-9fec-1788b4a0455b
+  space: a19
+  title: Saw Dust Creations
+  latitude: 35.7549553
+  longitude: -118.424531
+- uuid: 55025ae7-617c-477f-8049-8f5aa4b7b8ab
+  space: a20
+  title: America's Job/Employer's Training Resource
+  latitude: 35.7549388
+  longitude: -118.4245023
+- uuid: b7cb500d-d7b8-4988-9947-3d3e93f361dd
+  space: a21
+  title: Cutco Cutlery
+  latitude: 35.7549005
+  longitude: -118.424582
+- uuid: 6a1d3361-ccdd-4e42-9f0c-7d2656f2aec9
+  space: a22
+  title: Karl's Woodcraft
+  latitude: 35.7548194
+  longitude: -118.42465
+- uuid: 94d8672c-6a05-41d2-8f17-5e3f508f43f0
+  space: a23
+  title: The Lilypad Project
+  latitude: 35.7548235
+  longitude: -118.4247092
+- uuid: 900ea326-d7b4-490c-8416-7997e3ad17c8
+  space: a24
+  title: A Little Bit of Everything
+  latitude: 35.7548142
+  longitude: -118.424712
 # - uuid: b58af6b4-6821-4642-84ff-ddea11ceeb77
 #   space: a25
 #   latitude: 35.7547719
@@ -440,19 +492,20 @@
 #   space: a26
 #   latitude: 35.7547402
 #   longitude: -118.4247905
-# - uuid: 65aa8c75-f7d8-4b2a-84d9-a4795b931eb8
-#   space: a27
-#   latitude: 35.7547401
-#   longitude: -118.4247984
+- uuid: 65aa8c75-f7d8-4b2a-84d9-a4795b931eb8
+  space: a27
+  title: Kern River Knives
+  latitude: 35.7547401
+  longitude: -118.4247984
 - uuid: d5058e06-16fd-420a-afbf-0a0db6723d45
   title: Sophia's Kitchen
   description: Corn Dogs, Carne Asada, Fries, Nachos
   latitude: 35.7532951
   longitude: -118.4247512
-# - uuid: d8a566bd-3a9f-47de-9e1a-4bbd84ddffbb
-#   title: Amazing Bounce
-#   latitude: 35.7531535
-#   longitude: -118.4242464
+- uuid: d8a566bd-3a9f-47de-9e1a-4bbd84ddffbb
+  title: Amazing Bounce
+  latitude: 35.7531535
+  longitude: -118.4242464
 # - uuid: acf92fef-b170-48a3-bd02-4b60de26e4cf
 #   title: India Gourmet
 #   latitude: 35.7534044
@@ -466,19 +519,19 @@
 #   title: Keepers of the Kern
 #   latitude: 35.7555522
 #   longitude: -118.4237333
-# - uuid: 513acf33-9dc1-442b-81be-b440230b2f5c
-#   title: Sweet Adelines
-#   description: Pastrami Sandwiches
-#   latitude: 35.755154
-#   longitude: -118.4249156
+- uuid: 513acf33-9dc1-442b-81be-b440230b2f5c
+  title: Sweet Adelines
+  description: Pastrami Sandwiches
+  latitude: 35.755154
+  longitude: -118.4249156
 - uuid: b2d2cd8e-d3cb-4b7d-a94f-912bd711b38e
   title: Fazackerley's Fudge
-  latitude: 35.75339969
-  longitude: 118.42461333
-# - uuid: 19e011d4-c1c3-4eee-9f88-116b6a300b3a
-#   title: Ricardo's Grill
-#   latitude: 35.7544945
-#   longitude: -118.4253634
+  latitude: 35.7534056
+  longitude: -118.4246701
+- uuid: 19e011d4-c1c3-4eee-9f88-116b6a300b3a
+  title: Ricardo's Grill
+  latitude: 35.7544945
+  longitude: -118.4253634
 # - uuid: 64b1ce20-5022-4578-8aa2-882b94156caf
 #   title: Schroeder's Kettle Corn
 #   latitude: 35.7546047
@@ -487,49 +540,13 @@
 #   title: Rotary Club - KRV
 #   latitude: 35.7550727
 #   longitude: -118.425014
-- uuid: 37705446-5f14-40a8-9aee-02bdfb7d7ffbF
-  title: Kern River Valley Elks BBQ
-  latitude: 35.7553479
-  longitude: -118.4252904
-- uuid: f6ffded4-8a99-414e-9617-b96af1ff0a49
-  title: Hawaiian Shaved Ice
-  latitude: 35.75346935
-  longitude: -118.42447386
-- uuid: 1e3696d0-08a6-4c85-ac20-0d6c303084a6
-  title: Poppi's Pastrami & More
-  latitude: 35.75342581
-  longitude: -118.42452734
-- uuid: 3b9a48e0-d7e2-412d-a7af-8b4f97e3203c
-  title:
-- uuid: 912ff89f-3fb2-4f65-9353-1b70df0482c2
-  title: Lumpia Lady
-  latitude: 35.75345194
-  longitude: -118.4245704
-- uuid: 627b3cc2-f546-407a-88e1-0febd2acbab9
-  title: Dickey's Barbeque Pit
-  latitude: 35.75346935
-  longitude: -118.42445224
-- uuid: 9facbab3-06b6-462e-b667-63ee1baf8194
-  title: Bob Powers Books
-  latitude: 35.75527165
-  longitude: -118.42499994
-- uuid: 9b03a0db-ea69-4385-8fb8-13edef59d459
-  title: Flapjack Jackie
-  latitude: 35.75534711
-  longitude: -118.42499221
-- uuid: 088dd50c-4c25-4273-9c2c-d26f2be51faf
-  title: Strength of Shadow
-  latitude: 35.75532762
-  longitude: -118.42478936
-- uuid: 7c5c53eb-58c5-4b51-a8d3-a18f3a69a92a
-  title: Dust 2 Dust
-  latitude: 35.75529155
-  longitude: -118.42486919
-- uuid: dd46668b-2a59-4f3c-b52c-7ce8bce0fce0
-  title: Barbie Museum
-  latitude: 35.75355900829612
-  longitude: -118.42470568180345
-- uuid: 58d8b9e7-4c12-433d-9477-55f2743bf9ae
-  title: C&D Sk8 Shop
-  latitude: 35.75355900829612
-  longitude: -118.42470568180345,
+- uuid: 7ad441d6-ed5e-43e4-b0d7-e2dfc484f7c5
+  space: c40
+  title: White Blanket Taco Trailer
+  latitude: 35.75514354
+  longitude: 118.42473733
+- uuid: edf88e91-779f-47fb-a9e7-444ced9ca336
+  space: c33
+  title: California Redwood Signs
+  latitude: 35.75544993
+  longitude: -118.42477602
