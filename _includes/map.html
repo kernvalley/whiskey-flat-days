@@ -94,7 +94,7 @@
 				{% endif %}
 				{% if marker.location.url %}
 					<a href="{{ marker.location.url }}" class="inline-block btn btn-primary" rel="external noopener noreferrer" role="button">
-						{% include common/icon.html icon="map" height="16" width="16" %}
+						{% include common/icon.html icon="map" height="16" width="16" fill="currentColor" %}
 						<span>View in Map App</span>
 					</a>
 				{% else %}
@@ -107,8 +107,8 @@
 				{% if marker.uuid %}
 					<br />
 					<button type="button" is="share-button" url="https://whiskeyflatdays.com/map/#{{ marker.uuid }}" text="Check out {{ marker.title | escape_once }}" title="{{ marker.title | escape_once }} | Whiskey Flat Days Map" source="whiskey-flat-days" medium="social" content="map-marker" hidden="">
-						<svg width="16" height="16" aria-hidden="true">
-							<use xlink:href="{{ site.icons }}#share"></use>
+						<svg width="16" height="16" aria-hidden="true" fill="currentColor">
+							<use xlink:href="{{ site.icons }}#public-share"></use>
 						</svg>
 						<span>Share</span>
 					</button>
@@ -135,8 +135,8 @@
 				{% if marker.uuid %}
 					<br /><br />
 					<button type="button" is="share-button" url="https://whiskeyflatdays.com/map/#{{ marker.uuid }}" text="Check out {{ marker.title | escape_once }}" title="{{ marker.title | escape_once }} | Whiskey Flat Days Map" source="whiskey-flat-days" medium="social" content="map-marker" hidden="">
-						<svg width="16" height="16" aria-hidden="true">
-							<use xlink:href="{{ site.icons }}#share"></use>
+						<svg width="16" height="16" aria-hidden="true" fill="currentColor">
+							<use xlink:href="{{ site.icons }}#public-share"></use>
 						</svg>
 						<span>Share</span>
 					</button>
@@ -204,8 +204,8 @@
 				{% if marker.description %}<div itemprop="description">{{ marker.description }}</div>{% endif %}
 				{% if marker.uuid %}
 					<button type="button" is="share-button" url="https://whiskeyflatdays.com/map/#{{ marker.uuid }}" text="Check out {{ marker.title | escape_once }}" title="{{ marker.title | escape_once }} | Whiskey Flat Days Map" source="whiskey-flat-days" medium="social" content="map-marker" hidden="">
-						<svg width="16" height="16" aria-hidden="true">
-							<use xlink:href="{{ site.icons }}#share"></use>
+						<svg width="16" height="16" aria-hidden="true" fill="currentColor">
+							<use xlink:href="{{ site.icons }}#public-share"></use>
 						</svg>
 						<span>Share</span>
 					</button>

@@ -268,7 +268,7 @@
   longitude: -118.4246775
 - uuid: 7fcaf13e-05d8-40cf-b128-dde1706d8605
   space: b23
-  American Legion
+  title: American Legion
   latitude: 35.7549708
   longitude: -118.42462
 # - uuid: 5700206e-efbf-4a75-82b1-f8c68f75d830
@@ -481,9 +481,9 @@
   longitude: -118.4247092
 - uuid: 900ea326-d7b4-490c-8416-7997e3ad17c8
   space: a24
-    title: A Little Bit of Everything
-#   latitude: 35.7548142
-#   longitude: -118.424712
+  title: A Little Bit of Everything
+  latitude: 35.7548142
+  longitude: -118.424712
 # - uuid: b58af6b4-6821-4642-84ff-ddea11ceeb77
 #   space: a25
 #   latitude: 35.7547719
