@@ -50,20 +50,20 @@
       latitude: 35.7546709
       longitude: -118.4235427
   icon: /img/markers/outhouse.svg
-# - uuid: d1fd3f48-9526-4e55-b53d-3027fdb02b1c
-#   title: Outhouses
-#   location:
-#     geo:
-#       latitude: 35.7615506
-#       longitude: -118.4251894
-#   icon: /img/markers/outhouse.svg
+- uuid: d1fd3f48-9526-4e55-b53d-3027fdb02b1c
+  title: Outhouses
+  location:
+    geo:
+      latitude: 35.7615506
+      longitude: -118.4251894
+  icon: /img/markers/outhouse.svg
 - uuid: a5cb59dc-344e-43ff-b7c6-0b7adfd43042
   title: Outhouses
   location:
     geo:
       latitude: 35.75492939563758
       longitude: -118.42744077681473
-    icon: img/markers/outhouse.svg
+  icon: img/markers/outhouse.svg
 # - uuid: 6f8ff7be-e425-4dc2-95eb-2cce1a2472f6
 #   title: Regional Transit Stop
 #   telephone: 1-800-323-2396
