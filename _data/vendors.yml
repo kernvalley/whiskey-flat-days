@@ -548,7 +548,7 @@
   space: c40
   title: White Blanket Taco Trailer
   latitude: 35.75514354
-  longitude: 118.42473733
+  longitude: -118.42473733
 - uuid: edf88e91-779f-47fb-a9e7-444ced9ca336
   space: c33
   title: California Redwood Signs
@@ -557,4 +557,20 @@
 - uuid: 9ee4903d-9a46-4879-8607-afa78dea2538
   title: Lightning McGene and Tiff Mator
   latitude: 35.75548714
-  longitude: 35.75548714
+  longitude: -118.42494597
+- uuid: d8e05153-9da1-45ec-8510-e7eb7322a5fd
+  title: Flapjack Jackie
+  latitude: 35.75534711
+  longitude: -118.42499221
+- uuid: 187e3bb0-1063-4240-99ec-7dfb318eb8c4
+  title: Bob Powers Books
+  latitude: 35.75527165
+  longitude: -118.42499994
+- uuid: 09836e67-f7e5-42da-80c6-d31db1270d80
+  title: Strength of Shadow
+  latitude: 35.75532762
+  longitude: -118.42478936
+- uuid: f9312b31-a4c9-4262-82dd-27cba6efae11
+  title: Dust 2 Dust
+  latitude: 35.75529155
+  longitude: -118.42486919
