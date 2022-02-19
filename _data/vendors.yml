@@ -1,5 +1,5 @@
 ---
-- uuid: your-vendor-name
+- uuid: 7923bf34-c695-4c0d-946f-0d77594d622a
   space: b65
   title: Homies Tacos
   latitude: 35.7533507
@@ -28,7 +28,8 @@
   latitude: 35.7534569
   longitude: -118.4252805
   description: |-
-    <h4>Come try our Poke Bowl</h4>
+    <h5>Eddy Out has a booth in town!</h5>
+    <blockquote>We're selling Poke Bowls and Elote Bowls! Let's raise some money for the fireworks! We're at the booth from 9am&mdash;6pm Sat. &amp; Sun.</blockquote>
     <img src="https://i.imgur.com/Cu9Qthnm.jpg" height="320" width="240" loading="lazy" decoding="async" crossorigin="anonymous" referrerpolicy="no-referrer" alt="Poke Bowl" />
 # - uuid: 81bdbdac-6a36-4028-8163-631fab7bd06a
 #   space: b60
