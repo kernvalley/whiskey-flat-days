@@ -27,6 +27,9 @@
   title: Eddy Out Tap House & Grill
   latitude: 35.7534569
   longitude: -118.4252805
+  description: |-
+    <h4>Come try our Poke Bowl</h4>
+    <img src="https://i.imgur.com/Cu9Qthnm.jpg" height="320" width="240" loading="lazy" decoding="async" crossorigin="anonymous" referrerpolicy="no-referrer" alt="Poke Bowl" />
 # - uuid: 81bdbdac-6a36-4028-8163-631fab7bd06a
 #   space: b60
 #   latitude: 35.7534244
@@ -551,3 +554,7 @@
   title: California Redwood Signs
   latitude: 35.75544993
   longitude: -118.42477602
+- uuid: 9ee4903d-9a46-4879-8607-afa78dea2538
+  title: Lightning McGene and Tiff Mator
+  latitude: 35.75548714
+  longitude: 35.75548714
