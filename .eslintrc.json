@@ -38,7 +38,7 @@
       "launchQueue": "readonly",
       "cookieStore": "readonly",
       "showOpenFilePicker": "readonly",
-      "showSaveFilePicker": "readonly"
+      "showSaveFilePicker": "readonly",
       "globalThis": "readonly",
       "URLPattern": "readonly"
     }
