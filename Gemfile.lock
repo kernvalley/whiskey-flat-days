@@ -5,7 +5,7 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     backports (3.19.0)
     colorator (1.1.0)
-    concurrent-ruby (1.1.9)
+    concurrent-ruby (1.1.10)
     em-websocket (0.5.3)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0)
@@ -34,7 +34,7 @@ GEM
       jekyll (>= 3.7, < 5.0)
       sinatra (~> 1.4)
       sinatra-contrib (~> 1.4)
-    jekyll-avatar (0.7.0)
+    jekyll-avatar (0.8.0)
       jekyll (>= 3.0, < 5.0)
     jekyll-paginate (1.1.0)
     jekyll-sass-converter (2.2.0)
@@ -43,7 +43,7 @@ GEM
       listen (~> 3.0)
     jekyll-youtube (1.0.0)
       jekyll
-    kramdown (2.3.1)
+    kramdown (2.3.2)
       rexml
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
@@ -55,7 +55,7 @@ GEM
     multi_json (1.15.0)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
-    public_suffix (4.0.6)
+    public_suffix (4.0.7)
     rack (1.6.13)
     rack-protection (1.5.5)
       rack
@@ -91,7 +91,7 @@ PLATFORMS
 DEPENDENCIES
   jekyll (= 4.2.2)
   jekyll-admin (~> 0.11.0)
-  jekyll-avatar (~> 0.7.0)
+  jekyll-avatar (~> 0.8.0)
   jekyll-paginate (~> 1.1)
   jekyll-watch (~> 2.2)
   jekyll-youtube (~> 1.0)
