@@ -47,6 +47,10 @@ input[type="time"] {
 	max-width: 10ch;
 }
 
+iframe:not([frameborder]) {
+	border: none;
+}
+
 
 :root {
 	background-color: #aeaeae;
