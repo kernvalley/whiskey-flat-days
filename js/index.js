@@ -128,7 +128,8 @@ Promise.all([
 ]).then(async ([HTMLInstallPromptElement, url]) => {
 	init();
 
-	on('#install-btn', 'click', () => new HTMLInstallPromptElement().show()).then($btns => $btns.unhide());
+	on('#install-btn', 'click', () => new HTMLInstallPromptElement().show());
+	attr('#install-btn', { hidden: false });
 
 	if (url.pathname.startsWith('/map')) {
 		if (! ['', '#', '#main'].includes(location.hash)) {
@@ -351,7 +352,6 @@ Promise.all([
 			}
 		});
 	}, {
-		delay: 5000,
 		priority: 'background',
 	});
 });
