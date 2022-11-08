@@ -71,6 +71,7 @@ defaults:
       logo:
         url: 'https://kernvalley.us/img/icon-256.png'
     permalink: /news/:categories/:year/:month/:day/:title
+    referrer: origin
     comments: true
     ads: false
     index: true
