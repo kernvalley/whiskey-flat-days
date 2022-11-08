@@ -12,15 +12,19 @@ import 'https://cdn.kernvalley.us/components/app/list-button.js';
 import 'https://cdn.kernvalley.us/components/app/stores.js';
 import 'https://cdn.kernvalley.us/components/share-to-button/share-to-button.js';
 import 'https://cdn.kernvalley.us/components/disqus/comments.js';
-import 'https://cdn.kernvalley.us/components/youtube/player.js';
+// import 'https://cdn.kernvalley.us/components/youtube/player.js';
 import 'https://cdn.kernvalley.us/components/window-controls.js';
 import { init } from 'https://cdn.kernvalley.us/js/std-js/data-handlers.js';
 import { debounce } from 'https://cdn.kernvalley.us/js/std-js/events.js';
 import { URLPattern as URLPatternShim } from 'https://unpkg.com/urlpattern-polyfill@1.0.0-rc1/dist/index.modern.js';
-import { searchDateTimeRange, eventSearchHandler, businessCategorySearch } from './handlers.js';
+import {
+	searchDateTimeRange, eventSearchHandler, businessCategorySearch,
+} from './handlers.js';
 import { shareInit } from 'https://cdn.kernvalley.us/js/std-js/data-share.js';
-import { $ } from 'https://cdn.kernvalley.us/js/std-js/esQuery.js';
-import { ready, loaded, css, on } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
+// import { $ } from 'https://cdn.kernvalley.us/js/std-js/esQuery.js';
+import {
+	ready, loaded, css, on, toggleClass, intersect, attr, create,
+} from 'https://cdn.kernvalley.us/js/std-js/dom.js';
 import { getCustomElement } from 'https://cdn.kernvalley.us/js/std-js/custom-elements.js';
 import { importGa, externalHandler, telHandler, mailtoHandler } from 'https://cdn.kernvalley.us/js/std-js/google-analytics.js';
 import { DAYS } from 'https://cdn.kernvalley.us/js/std-js/date-consts.js';
@@ -49,7 +53,7 @@ const nullSubmit = event => {
 	}
 };
 
-$(document.documentElement).toggleClass({
+toggleClass(document.documentElement, {
 	'no-dialog': document.createElement('dialog') instanceof HTMLUnknownElement,
 	'no-details': document.createElement('details') instanceof HTMLUnknownElement,
 	'js': true,
@@ -74,9 +78,9 @@ if (typeof GA === 'string' && GA !== '') {
 				ga('set', 'transport', 'beacon');
 				ga('send', 'pageview');
 
-				$('a[rel~="external"]').click(externalHandler, { passive: true, capture: true });
-				$('a[href^="tel:"]').click(telHandler, { passive: true, capture: true });
-				$('a[href^="mailto:"]').click(mailtoHandler, { passive: true, capture: true });
+				on('a[rel~="external"]', 'click', externalHandler, { passive: true, capture: true });
+				on('a[href^="tel:"]', 'click', telHandler, { passive: true, capture: true });
+				on('a[href^="mailto:"]', 'click', mailtoHandler, { passive: true, capture: true });
 			}).catch(console.error).finally(() => {
 				const url = new URL(location.href);
 
@@ -109,11 +113,11 @@ if ('serviceWorker' in navigator) {
 
 if (location.pathname.startsWith('/events') && ('IntersectionObserver' in window)) {
 	ready().then(() => {
-		$('.event-item').intersect(intersectCallback);
+		intersect('.event-item', intersectCallback);
 	});
 } else if (location.pathname.startsWith('/news/') && ('IntersectionObserver' in window)) {
 	ready().then(() => {
-		$('.post-preview').intersect(intersectCallback);
+		intersect('.post-preview', intersectCallback);
 	});
 }
 
@@ -124,7 +128,7 @@ Promise.all([
 ]).then(async ([HTMLInstallPromptElement, url]) => {
 	init();
 
-	$('#install-btn').click(() => new HTMLInstallPromptElement().show()).then($btns => $btns.unhide());
+	on('#install-btn', 'click', () => new HTMLInstallPromptElement().show()).then($btns => $btns.unhide());
 
 	if (url.pathname.startsWith('/map')) {
 		if (! ['', '#', '#main'].includes(location.hash)) {
@@ -236,7 +240,7 @@ Promise.all([
 		const now = new Date();
 		const current = isOnGoing();
 
-		$('#main').css({ padding: '4px' });
+		css('#main', { padding: '4px' });
 
 		if (location.hash === '') {
 			searchDateTimeRange({from: current ? new Date() : '2022-02-18T10:00'});
@@ -244,24 +248,24 @@ Promise.all([
 		const date = `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')}`;
 
 		if ('geolocation' in navigator) {
-			$('button[data-action="find-location"]').unhide();
+			attr('button[data-action="find-location"]', { hidden: false });
 		}
 
-		$('form[name="eventSearch"]').submit(eventSearchHandler);
-		$('form[name="businessSearch"]').submit(businessCategorySearch);
-		$('toast-message > form').reset(({ target }) => target.closest('toast-message').close());
+		on('form[name="eventSearch"]', 'submit', eventSearchHandler);
+		on('form[name="businessSearch"]', 'submit', businessCategorySearch);
+		on('toast-message > form', 'reset', ({ target }) => target.closest('toast-message').close());
 
-		$('#search-time').attr({ min: '06:00', max: '21:00' });
-		$('#search-date').attr({
-			value: current ? date : '2022-02-18',
-			min: current ? date : '2022-02-18',
-			max: '2022-02-20'
+		attr('#search-time', { min: '06:00', max: '21:00' });
+		attr('#search-date', {
+			value: current ? date : '2023-02-17',
+			min: current ? date : '2023-02-17',
+			max: '2023-02-20'
 		});
 
-		$('form[name="startDate"]').submit(nullSubmit);
-		$('form[name="startDate"], form[name="search"]').reset(nullSubmit);
-		$('form[name="search"]').submit(nullSubmit);
-		$('form[name="markerFilter"]').submit(nullSubmit);
+		on('form[name="startDate"]', nullSubmit);
+		on('form[name="startDate"], form[name="search"]','reset', nullSubmit);
+		on('form[name="search"]', 'submit', nullSubmit);
+		on('form[name="markerFilter"]', 'submit', nullSubmit);
 
 		filterEventNamesDatalist();
 		searchLocationMarker();
@@ -294,7 +298,7 @@ Promise.all([
 		}
 	}
 
-	$('[data-action]').click(({ target }) => {
+	on('[data-action]', 'click', ({ target }) => {
 		const { action } = target.closest('[data-action]').dataset;
 		switch (action.toLowerCase()) {
 			case 'reload':
@@ -325,5 +329,29 @@ Promise.all([
 			default:
 				throw new Error(`Unknown click action: ${action}`);
 		}
+	});
+
+	globalThis.scheduler.postTask(() => {
+		intersect('[data-video]', ({ target, isIntersecting }, observer) => {
+			if (isIntersecting) {
+				const { video, width = '560', height = '315', title = '' } = target.dataset;
+				const iframe = create('iframe', {
+					src: new URL(`./${video}`, 'https://www.youtube-nocookie.com/embed/').href,
+					allow: ['accelerometer', 'encrypted-media', 'gyroscope', 'picture-in-picture'].join(';'),
+					sandbox: ['allow-scripts', 'allow-popups', 'allow-same-origin', 'allow-presentation'].join(' '),
+					referrerpolicy: 'origin',
+					title,
+					height,
+					width,
+					style: { border: 'none' },
+				});
+
+				target.replaceChildren(iframe);
+				observer.unobserve(target);
+			}
+		});
+	}, {
+		delay: 5000,
+		priority: 'background',
 	});
 });
