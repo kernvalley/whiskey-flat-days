@@ -1,4 +1,4 @@
-import { $ } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
+import { each, attr } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
 
 export function  searchDateTimeRange({ from = new Date('2020-02-14T11:00'), hours = 2 } = {}) {
 	if (! (from instanceof Date)) {
@@ -47,11 +47,11 @@ export async function businessCategorySearch(event) {
 	const category = data.get('category').toLowerCase();
 
 	if (typeof category === 'string' && category !== '') {
-		$('leaflet-marker.business-marker[data-category]').forEach(marker => {
+		each('leaflet-marker.business-marker[data-category]', marker => {
 			marker.hidden = !marker.dataset.category.toLowerCase().includes(category);
 		});
 	} else {
-		$('leaflet-marker.business-marker').unhide();
+		attr('leaflet-marker.business-marker', { hidden: false });
 	}
 
 	if (toast instanceof HTMLElement) {
