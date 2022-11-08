@@ -338,13 +338,14 @@ Promise.all([
 				const { video, width = '560', height = '315', title = '' } = target.dataset;
 				const iframe = create('iframe', {
 					src: new URL(`./${video}`, 'https://www.youtube-nocookie.com/embed/').href,
-					allow: ['accelerometer', 'encrypted-media', 'gyroscope', 'picture-in-picture'].join(';'),
+					allow: ['accelerometer', 'encrypted-media', 'gyroscope', 'picture-in-picture', 'fullscreen'].join(';'),
+					fetchpriority: 'low',
 					sandbox: ['allow-scripts', 'allow-popups', 'allow-same-origin', 'allow-presentation'].join(' '),
 					referrerpolicy: 'origin',
+					frameborder: 0,
 					title,
 					height,
 					width,
-					style: { border: 'none' },
 				});
 
 				target.replaceChildren(iframe);
