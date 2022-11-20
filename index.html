@@ -111,7 +111,7 @@ apps:
 		<div id="vendor-applications" class="flex row wrap space-evenly">
 			{% assign now = 'now' | date_to_xmlschema %}
 			{% assign deadlineXML = page.apps.deadline | date_to_xmlschema %}
-			{% assign pastDeadline = now > page.deadlineXML %}
+			{% assign pastDeadline = now > deadlineXML %}
 			<div class="card grow-1">
 				<h5 class="center font-title">Rodeo Ground Vendor Application</h5>
 				<div class="flex row wrap vendor-apps space-evenly">
