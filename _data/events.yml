@@ -158,7 +158,7 @@
   title: Music - Main Stage
   music: true
   startDate: 2023-02-19 13:00
-  endDate: 2023-02-19 18:00
+  endDate: 2023-02-19 15:00
   icon: /img/markers/music.svg
   # image:
   location:
@@ -420,7 +420,7 @@
     </ul>
 - uuid: 233273c1-c22c-4ad5-94b3-dfd57766c107
   startDate: 2023-02-19 15:00
-  endDate: 2023-02-19 15:15
+  endDate: 2023-02-19 16:00
   title: Whiskey Flat Mayor Campaign Winner Announced
   location:
     name: Tobias Street in Kernville
