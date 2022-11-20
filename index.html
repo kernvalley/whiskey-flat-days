@@ -15,6 +15,7 @@ tags:
   - old west
   - festival
 apps:
+  deadline: 2022-12-30 17:00
   craft: https://www.officialwhiskeyflatdays.com/_files/ugd/0bde5a_834d3decbe8b47919657c2b6e81c2ed0.pdf
   food: https://www.officialwhiskeyflatdays.com/_files/ugd/0bde5a_5e45b210b4794416a168c0faacc5c221.pdf
   nonProfit: https://www.officialwhiskeyflatdays.com/_files/ugd/0bde5a_ced6c3f71d3547b99d9685cb634fe1e6.pdf
@@ -102,17 +103,22 @@ apps:
 			</li>
 			<li>Pay for all fees (<i>including deposit</i>)</li>
 		</ol>
-		<div class="status-box info">Spaces will not be reserved or guaranteed unless all fees are paid</div>
+		<div class="status-box info">
+			<p>Spaces will not be reserved or guaranteed unless all fees are paid</p>
+			<p>Application Deadline is <time datetime="{{ page.apps.deadline | date: date_to_xmlschema }}">{{ page.apps.deadline | date: '%a %b %-d, %Y'}}</time></p>
+		</div>
 		<hr />
 		<div id="vendor-applications" class="flex row wrap space-evenly">
+			{% assign now = 'now' | date_to_xmlschema %}
+			{% assign pastDeadline = now > page.apps.deadline %}
 			<div class="card grow-1">
 				<h5 class="center font-title">Rodeo Ground Vendor Application</h5>
 				<div class="flex row wrap vendor-apps space-evenly">
-					<a class="btn btn-primary grow-1 center" href="{{ page.apps.rodeo }}" rel="noopener noreferrer external" download="rodeo-vendor-application.pdf">
+					<a class="btn btn-primary grow-1 center{% if pastDeadline %} disabled{% endif %}" href="{{ page.apps.rodeo }}" rel="noopener noreferrer external" download="rodeo-vendor-application.pdf">
 						<span>Application</span>
 						{% include common/icon.html icon="file-pdf" height="16" width="16" fill="currentColor" %}
 					</a>
-					<a class="btn btn-primary grow-1 center" href="mailto:info@gotokernville.com?subject=WFD%20Rodeo%20Vendor%20Application">
+					<a class="btn btn-primary grow-1 center{% if pastDeadline %} disabled{% endif %}" href="mailto:info@gotokernville.com?subject=WFD%20Rodeo%20Vendor%20Application">
 						<span>Pay Now</span>
 						{% include common/icon.html icon="link-external" height="16" width="16" fill="currentColor" %}
 					</a>
@@ -121,11 +127,11 @@ apps:
 			<div class="card grow-1">
 				<h5 class="center font-title">Craft/Commercial Vendor Application</h5>
 				<div class="flex row wrap vendor-apps space-evenly">
-					<a class="btn btn-primary grow-1 center" href="{{ page.apps.craft }}" rel="noopener noreferrer external" download="vendor-application.pdf">
+					<a class="btn btn-primary grow-1 center{% if pastDeadline %} disabled{% endif %}" href="{{ page.apps.craft }}" rel="noopener noreferrer external" download="vendor-application.pdf">
 						<span>Application</span>
 						{% include common/icon.html icon="file-pdf" height="16" width="16" fill="currentColor" %}
 					</a>
-					<a class="btn btn-primary grow-1 center" href="mailto:info@gotokernville.com?subject=WFD%20Craft%20Vendor%20Application">
+					<a class="btn btn-primary grow-1 center{% if pastDeadline %} disabled{% endif %}" href="mailto:info@gotokernville.com?subject=WFD%20Craft%20Vendor%20Application">
 						<span>Pay Now</span>
 						{% include common/icon.html icon="link-external" height="16" width="16" fill="currentColor" %}
 					</a>
@@ -134,11 +140,11 @@ apps:
 			<div class="card grow-1">
 				<h5 class="center font-title">Non Profit Vendor Application</h5>
 				<div class="flex row wrap vendor-apps space-evenly">
-					<a class="btn btn-primary grow-1 center" href="{{ page.apps.nonProfit }}" rel="noopener noreferrer external" download="vendor-application.pdf">
+					<a class="btn btn-primary grow-1 center{% if pastDeadline %} disabled{% endif %}" href="{{ page.apps.nonProfit }}" rel="noopener noreferrer external" download="vendor-application.pdf">
 						<span>Application</span>
 						{% include common/icon.html icon="file-pdf" height="16" width="16" fill="currentColor" %}
 					</a>
-					<a class="btn btn-primary grow-1 center" href="mailto:info@gotokernville.com?subject=WFD%20Non-Profit%20Vendor%20Application">
+					<a class="btn btn-primary grow-1 center{% if pastDeadline %} disabled{% endif %}" href="mailto:info@gotokernville.com?subject=WFD%20Non-Profit%20Vendor%20Application">
 						<span>Pay Now</span>
 						{% include common/icon.html icon="link-external" height="16" width="16" fill="currentColor" %}
 					</a>
