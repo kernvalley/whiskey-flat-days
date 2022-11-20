@@ -10,8 +10,8 @@
       addressRegion: CA
       postalCode: 93238
       addressCountry: US
-  startDate: 2022-02-18 16:00
-  endDate: 2022-02-18 20:00
+  startDate: 2023-02-17 18:00
+  endDate: 2023-02-17 20:00
   # image: /img/raster/rodeo.jpg
   icon: /img/markers/activity.svg
   description: |-
@@ -36,8 +36,8 @@
   title: Street Dance - Main Stage
   "@type": MusicEvent
   music: true
-  startDate: 2022-02-18 17:00
-  endDate: 2022-02-18 20:00
+  startDate: 2023-02-17 17:00
+  endDate: 2023-02-17 20:00
   icon: /img/markers/music.svg
   # image:
   location:
@@ -50,14 +50,16 @@
     geo:
       latitude: 35.755721
       longitude: -118.425114
+    # Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">The Rivals</span></span>
   description: |-
-    Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">The Rivals</span></span>
+    No details available yet
 - uuid: b3b97450-6102-4f02-9ed9-03dab08a848c
   title: Whiskey Flat Days Parade
-  startDate: 2022-02-19 10:00
-  endDate: 2022-02-19 12:00
+  startDate: 2023-02-18 10:00
+  endDate: 2023-02-18 12:00
+    # <p>Grand Marshal: Lanny and Cheryl Borthick</p>
   description: |-
-    <p>Grand Marshal: Lanny and Cheryl Borthick</p>
+    <p>Grand Marshal: Unknown.</p>
     <p><b>Note</b>: Roads will be closed for parade</p>
   image: /img/raster/parade.jpg
   icon: /img/markers/activity.svg
@@ -82,28 +84,19 @@
       addressRegion: CA
       postalCode: 93238
       addressCountry: US
-  startDate: 2022-02-19 12:00
-  endDate: 2022-02-19 15:00
+  startDate: 2023-02-18 13:00
+  endDate: 2023-02-18 16:00
   offers:
   - name: Adult
-    price: 15
-  - name: Adult pre-sale
-    availability: PreSale
-    price: 12
-  - name: Senior
+    price: 20
+  - name: Child (6-12)
     availability: InStoreOnly
     price: 10
-  - name: Senior pre-sale
-    availability: PreSale
-    price: 7
-  - name: Child (7-12)
-    availability: InStoreOnly
-    price: 10
-  - name: Child pre-sale
-    availability: PreSale
-    price: 7
   - name: Child (0-6)
     price: 0
+    availability: InStoreOnly
+  - name: Parking
+    price: 5
     availability: InStoreOnly
   image: /img/raster/rodeo.jpg
   icon: /img/markers/activity.svg
@@ -120,10 +113,10 @@
       <li>...and more</li>
     </ul>
 - uuid: 17afcd60-29f1-4d3e-b40d-0f7070ce1891
-  title: Kern River Band - Main Stage
+  title: Music - Main Stage
   music: true
-  startDate: 2022-02-19 12:00
-  endDate: 2022-02-19 14:00
+  startDate: 2023-02-18 12:00
+  endDate: 2023-02-18 14:00
   icon: /img/markers/music.svg
   # image:
   location:
@@ -137,13 +130,14 @@
     geo:
       latitude: 35.755721
       longitude: -118.425114
+    # Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Kern River Band</span></span>
   description: |-
-    Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Kern River Band</span></span>
+    To be announced
 - uuid: 1ec57723-3979-4083-af56-3b04072aa367
-  title: Kern River Band - Main Stage
+  title: Music - Main Stage
   music: true
-  startDate: 2022-02-19 16:00
-  endDate: 2022-02-19 18:00
+  startDate: 2023-02-18 16:00
+  endDate: 2023-02-18 18:00
   icon: /img/markers/music.svg
   # image:
   location:
@@ -157,13 +151,14 @@
     geo:
       latitude: 35.755721
       longitude: -118.425114
+    # Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Kern River Band</span></span>
   description: |-
-    Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Kern River Band</span></span>
+    To be announced
 - uuid: c1f8133b-c326-467a-9a28-6a974b8266ba
-  title: The Soda Crackers - Main Stage
+  title: Music - Main Stage
   music: true
-  startDate: 2022-02-20 13:00
-  endDate: 2022-02-20 15:00
+  startDate: 2023-02-19 13:00
+  endDate: 2023-02-19 18:00
   icon: /img/markers/music.svg
   # image:
   location:
@@ -177,28 +172,29 @@
     geo:
       latitude: 35.755721
       longitude: -118.425114
+    # Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">The Soda Crackers</span></span>
   description: |-
-    Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">The Soda Crackers</span></span>
-- uuid: 5ecd1605-ef72-4d7f-bfd5-61bf1cee67cb
-  title: Slideways - Main Stage
-  music: true
-  startDate: 2022-02-20 16:00
-  endDate: 2022-02-20 18:00
-  icon: /img/markers/music.svg
+    To be announced
+# - uuid: 5ecd1605-ef72-4d7f-bfd5-61bf1cee67cb
+#   title: Slideways - Main Stage
+#   music: true
+#   startDate: 2022-02-20 16:00
+#   endDate: 2022-02-20 18:00
+#   icon: /img/markers/music.svg
   # image:
-  location:
-    name: Tobias Street in Kernville
-    address:
-      streetAddress: Tobias Street
-      addressLocality: Kernville
-      addressRegion: CA
-      addressCountry: US
-      postalCode: 93238
-    geo:
-      latitude: 35.755721
-      longitude: -118.425114
-  description: |-
-    Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Slideways</span></span>
+#   location:
+#     name: Tobias Street in Kernville
+#     address:
+#       streetAddress: Tobias Street
+#       addressLocality: Kernville
+#       addressRegion: CA
+#       addressCountry: US
+#       postalCode: 93238
+#     geo:
+#       latitude: 35.755721
+#       longitude: -118.425114
+#   description: |-
+#     Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Slideways</span></span>
 - uuid: ea262b89-22f4-4fb5-adaf-4f8780ee474d
   title: Whiskey Flat Encampment
   location:
@@ -211,8 +207,8 @@
       addressRegion: CA
       postalCode: 93238
       addressCountry: US
-  startDate: 2022-02-18 11:00
-  endDate: 2022-02-18 16:00
+  startDate: 2023-02-17 11:00
+  endDate: 2023-02-17 16:00
   image: /img/raster/encampment.jpg
   icon: /img/markers/activity.svg
   description: |-
@@ -235,8 +231,8 @@
       addressRegion: CA
       postalCode: 93238
       addressCountry: US
-  startDate: 2022-02-19 13:00
-  endDate: 2022-02-19 16:00
+  startDate: 2023-02-18 13:00
+  endDate: 2023-02-18 16:00
   image: /img/raster/encampment.jpg
   icon: /img/markers/activity.svg
   description: |-
@@ -259,8 +255,8 @@
       addressRegion: CA
       postalCode: 93238
       addressCountry: US
-  startDate: 2022-02-20 10:00
-  endDate: 2022-02-20 11:30
+  startDate: 2023-02-19 10:00
+  endDate: 2023-02-19 11:30
   image: /img/raster/encampment.jpg
   icon: /img/markers/activity.svg
   description: |-
@@ -303,8 +299,8 @@
 #   icon: /img/markers/activity.svg
 - uuid: f52e2469-b6eb-4088-96d8-a58b81d225cf
   title: Whiskerino Contest
-  startDate: 2022-02-20 13:00
-  endDate: 2022-02-20 14:00
+  startDate: 2023-02-19 13:00
+  endDate: 2023-02-19 14:00
   description: |-
     <p>Sign-up starts at 1:00 PM</p>
     <p>Judging starts at 1:30 PM</p>
@@ -341,8 +337,8 @@
 #   icon: /img/markers/activity.svg
 - uuid: caaa72d1-3ac0-4ffc-ab5e-ec6794aaa981
   title: Pet Parade Contest
-  startDate: 2022-02-20 14:00
-  endDate: 2021-02-20 15:00
+  startDate: 2023-02-19 14:00
+  endDate: 2023-02-19 15:00
   description: |-
     <p>Sign-up starts at 2:00 PM</p>
     <p>Judging starts at 2:30 PM</p>
@@ -370,28 +366,19 @@
       addressRegion: CA
       postalCode: 93238
       addressCountry: US
-  startDate: 2022-02-20 12:00
-  endDate: 2022-02-20 15:00
+  startDate: 2023-02-19 12:00
+  endDate: 2023-02-19 15:00
   offers:
   - name: Adult
-    price: 15
-  - name: Adult pre-sale
-    availability: PreSale
-    price: 12
-  - name: Senior
+    price: 20
+  - name: Child (6-12)
     availability: InStoreOnly
     price: 10
-  - name: Senior pre-sale
-    availability: PreSale
-    price: 7
-  - name: Child (7-12)
-    availability: InStoreOnly
-    price: 10
-  - name: Child pre-sale
-    availability: PreSale
-    price: 7
   - name: Child (0-6)
     price: 0
+    availability: InStoreOnly
+  - name: Parking
+    price: 5
     availability: InStoreOnly
   image: /img/raster/rodeo.jpg
   icon: /img/markers/activity.svg
@@ -408,8 +395,8 @@
       <li>...and more</li>
     </ul>
 - uuid: 233273c1-c22c-4ad5-94b3-dfd57766c107
-  startDate: 2022-02-20 15:00
-  endDate: 2022-02-20 15:15
+  startDate: 2023-02-19 15:00
+  endDate: 2023-02-19 15:15
   title: Whiskey Flat Mayor Campaign Winner Announced
   location:
     name: Tobias Street in Kernville
