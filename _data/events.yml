@@ -92,7 +92,7 @@
   - name: Child (6-12)
     availability: InStoreOnly
     price: 10
-  - name: Child (0-6)
+  - name: Child (0-5)
     price: 0
     availability: InStoreOnly
   - name: Parking
@@ -398,7 +398,7 @@
   - name: Child (6-12)
     availability: InStoreOnly
     price: 10
-  - name: Child (0-6)
+  - name: Child (0-5)
     price: 0
     availability: InStoreOnly
   - name: Parking
