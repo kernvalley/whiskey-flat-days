@@ -243,6 +243,30 @@
     <p>There'll be horse shoe'n and horse doctor'n, the Whiskey Flats Saloon, and Justice of the Peace,
     a saddle maker and leather craft, a bath house, beautifier and hygenist,
     storytellers of the Old West, mining and sawmill demonstrations and a Civil War Confederate camp!</p>
+- uuid: 7e7fd420-1706-476f-bf4f-375d2f331e60
+  title: Whiskey Flat Encampment
+  location:
+    name: Whiskey Flat Encampment
+    geo:
+      latitude: 35.760200
+      longitude: -118.423420
+    address:
+      addressLocality: Kernville
+      addressRegion: CA
+      postalCode: 93238
+      addressCountry: US
+  startDate: 2023-02-19 08:00
+  endDate: 2023-02-19 10:00
+  image: /img/raster/encampment.jpg
+  icon: /img/markers/activity.svg
+  description: |-
+    <h4>Cowboy and Mountain Men Encampment</h4>
+    <p>On Scodie Ave. across from the Rodeo Grounds. You'll see history and gunfights.</p>
+    <p>All day there will be a Wells Fargo station and eatery, chuck wagon cook'n and coffee,
+    a horse trader and livery.</p>
+    <p>There'll be horse shoe'n and horse doctor'n, the Whiskey Flats Saloon, and Justice of the Peace,
+    a saddle maker and leather craft, a bath house, beautifier and hygenist,
+    storytellers of the Old West, mining and sawmill demonstrations and a Civil War Confederate camp!</p>
 - uuid: 9b50b186-8647-43f3-949e-a33d83f55d09
   title: Whiskey Flat Encampment Old West Church Service
   location:
