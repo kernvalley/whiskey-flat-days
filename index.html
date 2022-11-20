@@ -14,6 +14,11 @@ tags:
   - encampment
   - old west
   - festival
+apps:
+  craft: https://www.officialwhiskeyflatdays.com/_files/ugd/0bde5a_834d3decbe8b47919657c2b6e81c2ed0.pdf
+  food: https://www.officialwhiskeyflatdays.com/_files/ugd/0bde5a_5e45b210b4794416a168c0faacc5c221.pdf
+  nonProfit: https://www.officialwhiskeyflatdays.com/_files/ugd/0bde5a_ced6c3f71d3547b99d9685cb634fe1e6.pdf
+  rodeo: https://www.officialwhiskeyflatdays.com/_files/ugd/0bde5a_0bdabc6ca00d4646b2f43a9b0ce3df2a.pdf
 ---
 <article itemtype="https://schema.org/Article" itemscope="">
 	<meta itemprop="about" itemref="main-event" itemtype="https://schema.org/{{ site.data.mainEvent['@type'] | default: 'Event' }}" itemscope="" />
@@ -103,11 +108,11 @@ tags:
 			<div class="card grow-1">
 				<h5 class="center font-title">Rodeo Ground Vendor Application</h5>
 				<div class="flex row wrap vendor-apps space-evenly">
-					<a class="btn btn-primary grow-1 center" href="https://8ebe3790-fe6d-4061-b298-92d0c3cea326.filesusr.com/ugd/0bde5a_c003440f53064df48eb2e2b09c6ea38a.pdf" rel="noopener noreferrer external" download="rodeo-vendor-application.pdf">
+					<a class="btn btn-primary grow-1 center" href="{{ page.apps.rodeo }}" rel="noopener noreferrer external" download="rodeo-vendor-application.pdf">
 						<span>Application</span>
 						{% include common/icon.html icon="file-pdf" height="16" width="16" fill="currentColor" %}
 					</a>
-					<a class="btn btn-primary grow-1 center" href="https://kernville-chamber-of-commerce-2.square.site/product/whiskey-flat-rodeo-arena-vendor/53?cs=true&cst=custom" rel="noopener noreferrer external">
+					<a class="btn btn-primary grow-1 center" href="mailto:info@gotokernville.com?subject=WFD%20Rodeo%20Vendor%20Application">
 						<span>Pay Now</span>
 						{% include common/icon.html icon="link-external" height="16" width="16" fill="currentColor" %}
 					</a>
@@ -116,11 +121,11 @@ tags:
 			<div class="card grow-1">
 				<h5 class="center font-title">Craft/Commercial Vendor Application</h5>
 				<div class="flex row wrap vendor-apps space-evenly">
-					<a class="btn btn-primary grow-1 center" href="https://8ebe3790-fe6d-4061-b298-92d0c3cea326.filesusr.com/ugd/0bde5a_5fe4b9791cd2449d81156ef7da145080.pdf" rel="noopener noreferrer external" download="vendor-application.pdf">
+					<a class="btn btn-primary grow-1 center" href="{{ page.apps.craft }}" rel="noopener noreferrer external" download="vendor-application.pdf">
 						<span>Application</span>
 						{% include common/icon.html icon="file-pdf" height="16" width="16" fill="currentColor" %}
 					</a>
-					<a class="btn btn-primary grow-1 center" href="https://kernville-chamber-of-commerce-2.square.site/product/whiskey-flat-craft-commercial-vendor/33?cs=true&cst=custom" rel="noopener noreferrer external">
+					<a class="btn btn-primary grow-1 center" href="mailto:info@gotokernville.com?subject=WFD%20Craft%20Vendor%20Application">
 						<span>Pay Now</span>
 						{% include common/icon.html icon="link-external" height="16" width="16" fill="currentColor" %}
 					</a>
@@ -129,11 +134,11 @@ tags:
 			<div class="card grow-1">
 				<h5 class="center font-title">Non Profit Vendor Application</h5>
 				<div class="flex row wrap vendor-apps space-evenly">
-					<a class="btn btn-primary grow-1 center" href="https://8ebe3790-fe6d-4061-b298-92d0c3cea326.filesusr.com/ugd/0bde5a_b7ae61bafd0d4663add6c11a14a03cb8.pdf" rel="noopener noreferrer external" download="vendor-application.pdf">
+					<a class="btn btn-primary grow-1 center" href="{{ page.apps.nonProfit }}" rel="noopener noreferrer external" download="vendor-application.pdf">
 						<span>Application</span>
 						{% include common/icon.html icon="file-pdf" height="16" width="16" fill="currentColor" %}
 					</a>
-					<a class="btn btn-primary grow-1 center" href="https://kernville-chamber-of-commerce-2.square.site/product/whiskey-flat-non-profit-vendor/39?cs=true&cst=custom" rel="noopener noreferrer external">
+					<a class="btn btn-primary grow-1 center" href="mailto:info@gotokernville.com?subject=WFD%20Non-Profit%20Vendor%20Application">
 						<span>Pay Now</span>
 						{% include common/icon.html icon="link-external" height="16" width="16" fill="currentColor" %}
 					</a>
@@ -142,11 +147,11 @@ tags:
 			<div class="card grow-1">
 				<h5 class="center font-title">Food Vendor Application</h5>
 				<div class="flex row wrap vendor-apps space-evenly">
-					<a class="btn btn-primary grow-1 center" href="https://8ebe3790-fe6d-4061-b298-92d0c3cea326.filesusr.com/ugd/0bde5a_bf3b56f616e8407d9edc2f9229d5cfee.pdf" rel="noopener noreferrer external" download="vendor-application.pdf">
+					<a class="btn btn-primary grow-1 center" href="{{ page.apps.food }}" rel="noopener noreferrer external" download="vendor-application.pdf">
 						<span>Application</span>
 						{% include common/icon.html icon="file-pdf" height="16" width="16" fill="currentColor" %}
 					</a>
-					<a class="btn btn-primary grow-1 center" href="https://kernville-chamber-of-commerce-2.square.site/product/whiskey-flat-food-vendor/32?cs=true&cst=custom" rel="noopener noreferrer external">
+					<a class="btn btn-primary grow-1 center" href="mailto:info@gotokernville.com?subject=WFD%w0Food%20Vendor%20Application">
 						<span>Pay Now</span>
 						{% include common/icon.html icon="link-external" height="16" width="16" fill="currentColor" %}
 					</a>
