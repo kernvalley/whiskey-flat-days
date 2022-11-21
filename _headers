@@ -27,6 +27,11 @@
   Content-Security-Policy: 'none'
   TK: N
 
+/img/*
+  Access-Control-Allow-Origin: *
+  Content-Security-Policy: 'none'
+  TK: N
+
 /service-worker.js
   Referrer-Policy: no-referrer
   Content-Security-Policy: default-src 'self'; connect-src *; script-src 'self' cdn.kernvalley.us/service-worker.js;
