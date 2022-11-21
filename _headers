@@ -21,6 +21,11 @@
   Referrer-Policy: no-referrer
   Clear-Site-Data: "cache", "cookies", "storage"
   Content-Security-Policy: default-src 'self'; script-src 'self' cdn.kernvalley.us;
+  
+/events.json
+  Access-Control-Alllow-Origin: *
+  Content-Security-Policy: 'none'
+  TK: N
 
 /service-worker.js
   Referrer-Policy: no-referrer
