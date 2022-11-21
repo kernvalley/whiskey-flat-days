@@ -23,7 +23,7 @@
   Content-Security-Policy: default-src 'self'; script-src 'self' cdn.kernvalley.us;
   
 /events.json
-  Access-Control-Alllow-Origin: *
+  Access-Control-Allow-Origin: *
   Content-Security-Policy: 'none'
   TK: N
 
