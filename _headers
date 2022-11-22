@@ -22,6 +22,11 @@
   Clear-Site-Data: "cache", "cookies", "storage"
   Content-Security-Policy: default-src 'self'; script-src 'self' cdn.kernvalley.us;
   
+/embed/
+  Referrer-Policy: no-referrer
+  X-Frame-Options: ALLOW
+  Content-Security-Policy: default-src 'none'; style-src 'self' cdn.kernvalley.us/components/wfd/events.css; script-src 'self' cdn.kernvalley.us/components/wfd/events.html; font-src cdn.kernvalley.us/fonts/; Cross-Origin-Embedder-Policy: unsafe-none;  upgrade-insecure-requests; block-all-mixed-content; disown-opener;
+
 /events.json
   Access-Control-Allow-Origin: *
   Content-Security-Policy: 'none'
