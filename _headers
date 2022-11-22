@@ -26,6 +26,9 @@
   Referrer-Policy: no-referrer
   X-Frame-Options: ALLOW
   Content-Security-Policy: default-src 'none'; img-src 'self' *; style-src 'self' cdn.kernvalley.us/components/wfd/events.css; script-src 'self' cdn.kernvalley.us/components/wfd/events.min.js; font-src cdn.kernvalley.us/fonts/; connect-src 'self' whiskeyflatdays.com/events.json cdn.kernvalley.us/components/wfd/events.html; Cross-Origin-Embedder-Policy: unsafe-none; frame-ancestors *;  upgrade-insecure-requests; block-all-mixed-content; disown-opener;
+  Link: <//cdn.kernvalley.us/components/wfd/events.html>; rel=preload; as=fetch; type=text/html; crossorigin=anonymous; referrerpolicy=no-referrer;
+  Link: <//cdn.kernvalley.us/components/wfd/events.html>; rel=preload; as=style; type=text/css; crossorigin=anonymous; referrerpolicy=no-referrer;
+  Link: </events.json>; rel=preload; as=fetch; type=application/json; referrerpolicy=no-referrer;
 
 /events.json
   Access-Control-Allow-Origin: *
@@ -40,8 +43,8 @@
 /service-worker.js
   Referrer-Policy: no-referrer
   Content-Security-Policy: default-src 'self'; connect-src *; script-src 'self' cdn.kernvalley.us/service-worker.js;
-  Link: </sw-config.js>; rel=preload; as=script
-  Link: <//cdn.kernvalley.us/service-worker.js>; rel=preload; as=script
+  Link: </sw-config.js>; rel=preload; as=script;
+  Link: <//cdn.kernvalley.us/service-worker.js>; rel=preload; as=script;
 
 /*
   X-Content-Type-Options: nosniff
