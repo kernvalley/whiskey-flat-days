@@ -3,7 +3,7 @@ customElements.whenDefined('wfd-events').then(() => {
 	const params = new URLSearchParams(location.search);
 	const events = new WFDEvents();
 
-	if (params.has('souce')) {
+	if (params.has('source')) {
 		events.source = params.get('source');
 	}
 
