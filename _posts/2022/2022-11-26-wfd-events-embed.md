@@ -48,36 +48,39 @@ There are various attributes / properties / params that may be used. Rather than
 detail these every time, here is what they all are up-front. Just adapt these to
 the context of where they are used.
 
-<table class="themed-table">
-  <thead>
-    <tr>
-      <th>Attribute</th>
-      <th>Values</th>
-      <th>Description</th>
-      <th>Default</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>source</code></td>
-      <td>String</td>
-      <td>Sets <code>utm_source</code> URL param</td>
-      <td>None</td>
-    </tr>
-    <tr>
-      <td><code>theme</code></td>
-      <td><code>"auto"</code>, <code>"darK"</code>, <code>"light"</code></td>
-      <td>Sets the theme of the component</td>
-      <td><code>"auto"</code></td>
-    </tr>
-    <tr>
-      <td><code>images</code></td>
-      <td>Boolean</td>
-      <td>Toggles using images for events</td>
-      <td><code>false</code></td>
-    </tr>
-  </tbody>
-</table>
+<details class="accordion">
+  <summary>Attribute List</summary>
+  <table class="themed-table">
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Values</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>source</code></td>
+        <td>String</td>
+        <td>Sets <code>utm_source</code> URL param</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td><code>theme</code></td>
+        <td><code>"auto"</code>, <code>"darK"</code>, <code>"light"</code></td>
+        <td>Sets the theme of the component</td>
+        <td><code>"auto"</code></td>
+      </tr>
+      <tr>
+        <td><code>images</code></td>
+        <td>Boolean</td>
+        <td>Toggles using images for events</td>
+        <td><code>false</code></td>
+      </tr>
+    </tbody>
+  </table>
+</details>
 
 ## Embedding on your Site
 
