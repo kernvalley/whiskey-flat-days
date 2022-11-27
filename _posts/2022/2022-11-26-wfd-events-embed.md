@@ -109,7 +109,7 @@ makes it so your page styles do not affect the component unless you do so
 deliberately.
 
 ```css
-/* Style <wfd-events> itself
+/* Style <wfd-events> itself */
 wfd-events {
   background-color: var(--primary-background);
   color: var(--primary-color);

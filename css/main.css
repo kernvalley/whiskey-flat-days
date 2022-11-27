@@ -57,3 +57,7 @@ leaflet-map::part(popup) {
 article p:first-letter {
 	margin-left: 2em;
 }
+
+.highlighter-rouge:not(.language-plaintext) {
+	color: #242424;
+}
