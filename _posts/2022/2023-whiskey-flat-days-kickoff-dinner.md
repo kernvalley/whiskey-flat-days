@@ -69,7 +69,9 @@ Heights and meet the Whiskey Flat Days Mayor contenders.
 {% include common/icon.html icon="link-external" height="16" width="16" fill="currentColor" %}
 </a>
 </div>
+
 <br />
+
 <div class="flex row wrap space-evenly">
 <div class="center card shadow inline-block">
 <h4>Where</h4>
