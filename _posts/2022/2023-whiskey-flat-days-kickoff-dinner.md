@@ -63,6 +63,13 @@ Join us for our 66<sup>th</sup> Annual Whiskey Flat Days Kickoff Dinner with you
 Chicken or Tri Tip on January 6<sup>th</sup> 2023 at the Elks Lodge in Wofford
 Heights and meet the Whiskey Flat Days Mayor contenders.
 
+<div class="center">
+<a href="https://kernville-chamber-of-commerce-2.square.site/product/66th-annual-whiskey-flat-days-kickoff-dinner/54?cs=true&cst=custom" rel="noopener noreferrer" class="btn btn-primary btn-big">
+<span>Reserve Now</span>
+{% include common/icon.html icon="link-external" height="16" width="16" fill="currentColor" %}
+</a>
+</div>
+
 <div class="flex row wrap space-evenly">
 
 <div class="center card shadow inline-block">
@@ -73,7 +80,7 @@ Heights and meet the Whiskey Flat Days Mayor contenders.
 
 <div class="center card shadow inline-block">
 <h4>When</h4>
-<date datetime="2023-01-06T17:00">5 PM on Jan. 6, 2023</date>
+<date datetime="2023-01-06T17:00">Jan. 6, 2023 at 5:00 PM</date>
 <div>
 
 </div>
