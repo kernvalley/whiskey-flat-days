@@ -23,13 +23,14 @@ import {
 import { shareInit } from 'https://cdn.kernvalley.us/js/std-js/data-share.js';
 // import { $ } from 'https://cdn.kernvalley.us/js/std-js/esQuery.js';
 import {
-	ready, loaded, css, on, toggleClass, intersect, attr, create,
+	ready, loaded, css, on, toggleClass, intersect, attr,
 } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
 import { getCustomElement } from 'https://cdn.kernvalley.us/js/std-js/custom-elements.js';
 import { importGa, externalHandler, telHandler, mailtoHandler } from 'https://cdn.kernvalley.us/js/std-js/google-analytics.js';
 import { DAYS } from 'https://cdn.kernvalley.us/js/std-js/date-consts.js';
 import { searchLocationMarker, createMarker, isOnGoing, filterEventNamesDatalist, intersectCallback } from './functions.js';
 import { GA } from './consts.js';
+import { createYouTubeEmbed } from 'https://cdn.kernvalley.us/js/std-js/youtube.js';
 
 if (! ('URLPattern' in globalThis)) {
 	globalThis.URLPattern = URLPatternShim;
@@ -336,16 +337,12 @@ Promise.all([
 		intersect('[data-video]', ({ target, isIntersecting }, observer) => {
 			if (isIntersecting) {
 				const { video, width = '560', height = '315', title = '' } = target.dataset;
-				const iframe = create('iframe', {
-					src: new URL(`./${video}`, 'https://www.youtube-nocookie.com/embed/').href,
-					allow: ['accelerometer', 'encrypted-media', 'gyroscope', 'picture-in-picture', 'fullscreen'].join(';'),
-					fetchpriority: 'low',
-					sandbox: ['allow-scripts', 'allow-popups', 'allow-same-origin', 'allow-presentation'].join(' '),
-					referrerpolicy: 'origin',
-					frameborder: 0,
+				const iframe = createYouTubeEmbed(video, {
+					fetchPriority: 'high',
+					height: parseInt(height),
+					width: parseInt(width),
+					loading: 'eager',
 					title,
-					height,
-					width,
 				});
 
 				target.replaceChildren(iframe);
