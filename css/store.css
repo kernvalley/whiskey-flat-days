@@ -54,7 +54,7 @@
 	}
 
 	.product-listing {
-		grid-template-areas: "name" "img" "description" "offer" "seller" " share";
+		grid-template-areas: "name" "img" "description" "offer" "seller" "share";
 		grid-template-rows: 3rem auto 1fr 2rem;
 		grid-template-columns: 1fr;
 	}
