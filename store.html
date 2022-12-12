@@ -34,7 +34,7 @@ stylesheets:
 					</button>
 				</div>
 			</div>
-			<div class="product-seller" itemprop="manufacturer" itemtype="https://schema.org/{{ item['@type'] | default: 'Organization' }}" itemscope="">
+			<div class="product-seller" itemprop="manufacturer" itemtype="https://schema.org/{{ item.manufacturer['@type'] | default: 'LocalBusiness' }}" itemscope="">
 				<span>Sold By:</span>
 				{% if item.manufacturer.url %}
 					<a itemprop="url" href="{{ item.manufacturer.url }}" rel="noopener noreferrer external">
