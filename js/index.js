@@ -23,7 +23,7 @@ import {
 import { shareInit } from 'https://cdn.kernvalley.us/js/std-js/data-share.js';
 // import { $ } from 'https://cdn.kernvalley.us/js/std-js/esQuery.js';
 import {
-	ready, loaded, css, on, toggleClass, intersect, attr, create
+	ready, loaded, css, on, toggleClass, intersect, attr,
 } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
 import { getCustomElement } from 'https://cdn.kernvalley.us/js/std-js/custom-elements.js';
 import { importGa, externalHandler, telHandler, mailtoHandler } from 'https://cdn.kernvalley.us/js/std-js/google-analytics.js';
