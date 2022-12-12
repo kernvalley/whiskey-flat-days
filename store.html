@@ -47,7 +47,10 @@ stylesheets:
 			</div>
 		</div>
 		<div class="center">
-			<button class="btn btn-primary btn-big share-btn" type="button" is="share-button" sharetitle="{{ item.name | xml_escape }}" text="{{ item.description | xml_escape }}" url="{{ page.url }}#{{ item['@identifier'] }}" disabled="">Share</button>
+			<button class="btn btn-primary btn-big share-btn" type="button" is="share-button" sharetitle="{{ item.name | xml_escape }}" text="{{ item.description | xml_escape }}" url="{{ page.url }}#{{ item['@identifier'] }}" disabled="">
+				{% include common/icon.html icon="public-share" height="24" width="24" fill="currentColor" %}
+				<span>Share</span>
+			</button>
 		</div>
 	{% endfor %}
 </section>
