@@ -1,0 +1,45 @@
+---
+layout: default
+title: Store
+description: Buy souveneirs from KRV Vendors
+permalink: /store/
+pinned: true
+index: true
+tags:
+  - store
+  - whiskey flat days
+  - kernville
+stylesheets:
+  - href: /css/store.css
+    media: all
+    referrerPolicy: no-referrer
+---
+<section id="product-list" class="grid">
+	{% for item in site.data.store.products %}
+		<div id="{{ item['@identifier'] }}" class="product-listing card shadow" itemtype="https://scheme.org/Product" itemscope="">
+			<img itemprop="image" class="product-img" src="{{ item.image }}" loading="lazy" decoding="async" fetchpriority="auto" crossorigin="anonymous" referrerpolicy="no-referrer" />
+			<h3 itemprop="name" class="product-name">{{ item.name }}</h3>
+			<p itemprop="description" class="product-description">{{ item.description }}</p>
+			<div class="flex row product-offer">
+				<b class="product-price">
+					<span class="price-currency">$</span>
+					<span class="price-value" itemprop="price">{{ item.offers[0].price }}</span>
+				</b>
+				<div class="center" itemprop="offers" itemtype="https://schema.org/Offer" itemtype="">
+					<button type="button" class="btn btn-primary add-to-cart" data-product="{{ item['@identifier'] }}" data-offer="{{ item.offers[0]['@identifier'] }}">Add to Cart</button>
+				</div>
+			</div>
+			<div class="product-seller" itemprop="manufacturer" itemtype="https://schema.org/{{ item['@type'] | default: 'Organization' }}" itemscope="">
+				<span>Sold By:</span>
+				{% if item.manufacturer.url %}
+					<a itemprop="url" href="{{ item.manufacturer.url }}" rel="noopener noreferrer external">
+						<span itemprop="name" class="seller-name">{{ item.manufacturer.name }}</span>
+						{% include common/icon.html icon="link-external" height="16" width="16" fill="currentColor" %}
+					</a>
+				{% else %}
+					<span itemprop="name" class="seller-name">{{ item.manufacturer.name }}</span>
+				{% endif %}
+			</div>
+		</div>
+	{% endfor %}
+</section>

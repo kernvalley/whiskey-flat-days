@@ -1,0 +1,20 @@
+---
+Acme: &Acme
+  "@itemtype": Organization
+  "@context": https://schema.org
+  "@identifier": 267a6510-e509-4382-b8c0-d2b6b4d1a922
+  url: https://store.kernvalley.us
+  name: Acme Inc.
+products:
+  - name: Kernville Thing
+    "@itemtype": Product
+    "@context": https://schema.org
+    "@identifier": ebb94c1b-c1e9-42e0-9ae0-424f170d5a42
+    description: A thing that's for sale
+    image: https://cdn.kernvalley.us/img/raster/missing-image.png
+    manufacturer: *Acme
+    offers:
+      - identifier: ba9bb27f-0aee-420d-b527-0e3720bb274a
+        "@itemtype": Offer
+        price: 18.99
+        priceCurrency: USD

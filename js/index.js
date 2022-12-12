@@ -23,7 +23,7 @@ import {
 import { shareInit } from 'https://cdn.kernvalley.us/js/std-js/data-share.js';
 // import { $ } from 'https://cdn.kernvalley.us/js/std-js/esQuery.js';
 import {
-	ready, loaded, css, on, toggleClass, intersect, attr,
+	ready, loaded, css, on, toggleClass, intersect, attr, create
 } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
 import { getCustomElement } from 'https://cdn.kernvalley.us/js/std-js/custom-elements.js';
 import { importGa, externalHandler, telHandler, mailtoHandler } from 'https://cdn.kernvalley.us/js/std-js/google-analytics.js';
@@ -31,6 +31,7 @@ import { DAYS } from 'https://cdn.kernvalley.us/js/std-js/date-consts.js';
 import { searchLocationMarker, createMarker, isOnGoing, filterEventNamesDatalist, intersectCallback } from './functions.js';
 import { GA } from './consts.js';
 import { createYouTubeEmbed } from 'https://cdn.kernvalley.us/js/std-js/youtube.js';
+import './store.js';
 
 if (! ('URLPattern' in globalThis)) {
 	globalThis.URLPattern = URLPatternShim;
@@ -299,6 +300,31 @@ Promise.all([
 			}
 		}
 	}
+
+	on('button.add-to-cart','click', () => {
+		const dialog = create('dialog', {
+			children: [
+				create('p', {
+					classList: ['status-box','info'],
+					text: 'WFD Store is in demo mode. Purchases are currently not enabled.'
+				}),
+				create('div', {
+					classList: ['center'],
+					children: [
+						create('button', {
+							classList: ['btn', 'btn-reject'],
+							text: 'Close',
+							events: { click: ({ target }) => target.closest('dialog').close() },
+						})
+					]
+				})
+			],
+			events: { close: ({ target }) => target.remove() },
+		});
+
+		document.body.append(dialog);
+		dialog.showModal();
+	});
 
 	on('[data-action]', 'click', ({ target }) => {
 		const { action } = target.closest('[data-action]').dataset;
