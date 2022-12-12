@@ -28,7 +28,10 @@ stylesheets:
 					<span class="price-value" itemprop="price">{{ item.offers[0].price }}</span>
 				</b>
 				<div class="center">
-					<button type="button" class="btn btn-primary add-to-cart" data-product="{{ item['@identifier'] }}" data-offer="{{ item.offers[0]['@identifier'] }}">Add to Cart</button>
+					<button type="button" class="btn btn-primary add-to-cart" data-product="{{ item['@identifier'] }}" data-offer="{{ item.offers[0]['@identifier'] }}">
+						{% include common/icon.html icon="cart" height="16" width="16" fill="currentColor" %}
+						<span>Add to Cart</span>
+					</button>
 				</div>
 			</div>
 			<div class="product-seller" itemprop="manufacturer" itemtype="https://schema.org/{{ item['@type'] | default: 'Organization' }}" itemscope="">
