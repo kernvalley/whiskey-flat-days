@@ -28,7 +28,7 @@ stylesheets:
 					<span class="price-value" itemprop="price">{{ item.offers[0].price }}</span>
 				</b>
 				<div class="center">
-					<button type="button" class="btn btn-primary add-to-cart" data-product="{{ item['@identifier'] }}" data-offer="{{ item.offers[0]['@identifier'] }}"{% if item.itemAvailablility %} disabled=""{% endif %>
+					<button type="button" class="btn btn-primary add-to-cart" data-product="{{ item['@identifier'] }}" data-offer="{{ item.offers[0]['@identifier'] }}"{% if item.itemAvailablility %} disabled=""{% endif %}>
 						{% include common/icon.html icon="cart" height="16" width="16" fill="currentColor" %}
 						<span>Add to Cart</span>
 					</button>
