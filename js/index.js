@@ -121,6 +121,10 @@ if (location.pathname.startsWith('/events') && ('IntersectionObserver' in window
 	ready().then(() => {
 		intersect('.post-preview', intersectCallback);
 	});
+} else if (location.pathname === '/store/') {
+	ready().then(() => {
+		intersect('.product-listing', intersectCallback);
+	});
 }
 
 Promise.all([
