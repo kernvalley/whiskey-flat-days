@@ -46,5 +46,8 @@ stylesheets:
 				{% endif %}
 			</div>
 		</div>
+		<div class="center">
+			<button class="btn btn-primary btn-big share-btn" type="button" is="share-button" sharetitle="{{ item.name | xml_escape }}" text="{{ item.description | xml_escape }}" url="{{ page.url }}#{{ item['@identifier'] }}" disabled="">Share</button>
+		</div>
 	{% endfor %}
 </section>
