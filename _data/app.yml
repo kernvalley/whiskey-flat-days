@@ -2,7 +2,7 @@
 name: Whiskey Flat Days
 shortName: WFD App
 id: WhiskeyFlatDays
-version: 2.2.2-2022-12-12T17:42
+version: 2.2.2-2022-12-12T17:45
 start_url: /?utm_source=homescreen&utm_medium=pwa
 display: standalone
 description: "Map, events, and news app for Whiskey Flat Days"
