@@ -55,9 +55,3 @@
 		grid-template-columns: 1fr;
 	}
 }
-
-@media (prefers-color-scheme: light) {
-	.product-listing .product-name {
-		color: var(--accent-color);
-	}
-}

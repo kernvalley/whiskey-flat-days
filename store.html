@@ -17,7 +17,7 @@ stylesheets:
 ---
 <h2 class="center font-title section-heading">Whiskey Flat Days Store</h2>
 <div class="status-box info">
-	<h3 class="center">Coming Soon</h3>
+	<h3 class="center font-title section-heading">Coming Soon</h3>
 	<p>The WFD App is adding an online store for local vendors to be able to
 		sell their goods to a wide audience of interested people. It will also
 		provide visitors of WhiskeyFlatDays.com the ability to purchase souvenirs,
@@ -26,7 +26,7 @@ stylesheets:
 <section id="product-list" class="grid">
 	{% for item in site.data.store.products %}
 		<div id="{{ item['@identifier'] }}" class="product-listing card shadow" itemtype="https://schema.org/{{ item['@type'] | default: 'Product' }}" itemscope="">
-			<h3 itemprop="name" class="product-name font-title">{{ item.name }}</h3>
+			<h3 itemprop="name" class="product-name font-title section-heading">{{ item.name }}</h3>
 			<img itemprop="image" class="product-img cursor-pointer" src="{{ item.image }}" loading="lazy" decoding="async" fetchpriority="auto" crossorigin="anonymous" referrerpolicy="no-referrer" />
 			<p itemprop="description" class="product-description">{{ item.description }}</p>
 			<div class="flex row product-offer"  itemprop="offers" itemtype="https://schema.org/Offer" itemscope="">
