@@ -23,9 +23,8 @@ stylesheets:
 			<p itemprop="description" class="product-description">{{ item.description }}</p>
 			<div class="flex row product-offer"  itemprop="offers" itemtype="https://schema.org/Offer" itemscope="">
 				<b class="product-price">
-					<span class="price-currency">$</span>
 					<meta itemprop="priceCurrency" content="USD" />
-					<span class="price-value" itemprop="price">{{ item.offers[0].price }}</span>
+					<span class="price-currency">$</span><span class="price-value" itemprop="price">{{ item.offers[0].price }}</span>
 				</b>
 				<div class="center">
 					<button type="button" class="btn btn-primary add-to-cart" data-product="{{ item['@identifier'] }}" data-offer="{{ item.offers[0]['@identifier'] }}"{% if item.itemAvailablility %} disabled=""{% endif %}>
