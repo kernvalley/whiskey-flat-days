@@ -22,6 +22,7 @@ pinned: true
 		<p>Come back later for the latest news and announcements for Whiskey Flat Days.</p>
 	</div>
 {% else %}
+	<h2 class="center font-title">Whiskey Flat Days News</h2>
 	<section class="grid" id="posts">
 		{% for post in paginator.posts %}
 			<a href="{{ post.url }}" class="card shadow center color-inherit post-preview" accesskey="{{ forloop.index }}">

@@ -15,6 +15,14 @@ stylesheets:
     media: all
     referrerPolicy: no-referrer
 ---
+<h2 class="center font-title">Whiskey Flat Days Store</h2>
+<div class="status-box info">
+	<h3 class="center">Coming Soon</h3>
+	<p>The WFD App is adding an online store for local vendors to be able to
+		sell their goods to a wide audience of interested people. It will also
+		provide visitors of WhiskeyFlatDays.com the ability to purchase souvenirs,
+		clothing, etc. before, during, and after Whiskey Flat Days weekend.</p>
+</div>
 <section id="product-list" class="grid">
 	{% for item in site.data.store.products %}
 		<div id="{{ item['@identifier'] }}" class="product-listing card shadow" itemtype="https://schema.org/{{ item['@type'] | default: 'Product' }}" itemscope="">
