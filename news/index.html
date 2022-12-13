@@ -26,7 +26,7 @@ pinned: true
 	<section class="grid" id="posts">
 		{% for post in paginator.posts %}
 			<a href="{{ post.url }}" class="card shadow center color-inherit post-preview" accesskey="{{ forloop.index }}">
-				<h3 class="post-title font-title color-accent">{{ post.title }}</h3>
+				<h3 class="post-title font-title section-heading">{{ post.title }}</h3>
 				{% if post.imgur %}
 					{% include common/imgur.html url=post.imgur class="post-preview-img" sizes="250px" width="250" %}
 				{% elsif post.image contains 'https://i.imgur.com/' %}
