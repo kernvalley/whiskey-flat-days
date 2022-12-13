@@ -31,6 +31,7 @@ import { DAYS } from 'https://cdn.kernvalley.us/js/std-js/date-consts.js';
 import { searchLocationMarker, createMarker, isOnGoing, filterEventNamesDatalist, intersectCallback } from './functions.js';
 import { GA } from './consts.js';
 import { createYouTubeEmbed } from 'https://cdn.kernvalley.us/js/std-js/youtube.js';
+import './store.js';
 
 if (! ('URLPattern' in globalThis)) {
 	globalThis.URLPattern = URLPatternShim;
@@ -119,6 +120,10 @@ if (location.pathname.startsWith('/events') && ('IntersectionObserver' in window
 } else if (location.pathname.startsWith('/news/') && ('IntersectionObserver' in window)) {
 	ready().then(() => {
 		intersect('.post-preview', intersectCallback);
+	});
+} else if (location.pathname === '/store/') {
+	ready().then(() => {
+		intersect('.product-listing', intersectCallback);
 	});
 }
 

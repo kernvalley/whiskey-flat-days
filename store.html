@@ -1,0 +1,57 @@
+---
+layout: default
+title: Store
+description: Buy locally made souvenirs from KRV Vendors
+permalink: /store/
+pinned: true
+index: true
+tags:
+  - store
+  - souvenir
+  - whiskey flat days
+  - kernville
+stylesheets:
+  - href: /css/store.css
+    media: all
+    referrerPolicy: no-referrer
+---
+<h2 class="center font-title section-heading">Whiskey Flat Days Store</h2>
+<div class="status-box info">
+	<h3 class="center font-title section-heading">Coming Soon</h3>
+	<p>The WFD App is adding an online store for local vendors to be able to
+		sell their goods to a wide audience of interested people. It will also
+		provide visitors of WhiskeyFlatDays.com the ability to purchase souvenirs,
+		clothing, etc. before, during, and after Whiskey Flat Days weekend.</p>
+</div>
+<section id="product-list" class="grid">
+	{% for item in site.data.store.products %}
+		<div id="{{ item['@identifier'] }}" class="product-listing card shadow" itemtype="https://schema.org/{{ item['@type'] | default: 'Product' }}" itemscope="">
+			<h3 itemprop="name" class="product-name font-title section-heading">{{ item.name }}</h3>
+			<img itemprop="image" class="product-img cursor-pointer" src="{{ item.image }}" loading="lazy" decoding="async" fetchpriority="auto" crossorigin="anonymous" referrerpolicy="no-referrer" />
+			<p itemprop="description" class="product-description">{{ item.description }}</p>
+			<div class="flex row product-offer"  itemprop="offers" itemtype="https://schema.org/Offer" itemscope="">
+				<b class="product-price">
+					<meta itemprop="priceCurrency" content="USD" />
+					<span class="price-currency">$</span><span class="price-value" itemprop="price">{{ item.offers[0].price }}</span>
+				</b>
+				<div class="center">
+					<button type="button" class="btn btn-primary add-to-cart" data-product="{{ item['@identifier'] }}" data-offer="{{ item.offers[0]['@identifier'] }}"{% if item.itemAvailablility %} disabled=""{% endif %}>
+						{% include common/icon.html icon="cart" height="16" width="16" fill="currentColor" %}
+						<span>Add to Cart</span>
+					</button>
+				</div>
+			</div>
+			<div class="product-seller" itemprop="manufacturer" itemtype="https://schema.org/{{ item.manufacturer['@type'] | default: 'LocalBusiness' }}" itemscope="">
+				<span>Sold By:</span>
+				{% if item.manufacturer.url %}
+					<a itemprop="url" href="{{ item.manufacturer.url }}" rel="noopener noreferrer external">
+						<span itemprop="name" class="seller-name">{{ item.manufacturer.name }}</span>
+						{% include common/icon.html icon="link-external" height="16" width="16" fill="currentColor" %}
+					</a>
+				{% else %}
+					<span itemprop="name" class="seller-name">{{ item.manufacturer.name }}</span>
+				{% endif %}
+			</div>
+		</div>
+	{% endfor %}
+</section>

@@ -61,3 +61,9 @@ article p:first-letter {
 .highlighter-rouge:not(.language-plaintext) {
 	color: #242424;
 }
+
+@media (prefers-color-scheme: light) {
+	.section-heading {
+		color: var(--accent-color);
+	}
+}
