@@ -10,7 +10,7 @@
 	grid-template-areas: "img name"
 	"img description"
 	"img offer"
-	"seller .";
+	"seller seller";
 	grid-template-rows: 3rem 6rem 2rem 2rem;
 	grid-template-columns: 12rem auto;
 	gap: 5px;
