@@ -13,7 +13,7 @@ tags:
   - rodeo
   - encampment
 ---
-<h2 class="center font-title">Whiskey Flat Days Events</h2>
+<h2 class="center font-title section-heading">Whiskey Flat Days Events</h2>
 {% assign events = site.data.events | sort: 'startDate' %}
 	{% include event-status.html event=site.data.mainEvent %}
 	{% unless site.data.mainEvent.eventStatus == 'EventCancelled' %}
