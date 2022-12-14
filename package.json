@@ -2,7 +2,7 @@
   "name": "whiskey-flat-days",
   "version": "2.2.2",
   "private": true,
-  "description": "Map and events app for Whiskey Flat Days",
+  "description": "Map, events, store, and news app for Whiskey Flat Days",
   "config": {
     "icons": "./_data/icons.csv",
     "serve": {

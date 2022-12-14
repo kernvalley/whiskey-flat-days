@@ -45,6 +45,7 @@ const config = {
 
 		/* CSS */
 		'/css/index.min.css',
+		'/css/store.css',
 		'https://unpkg.com/leaflet@1.8.0/dist/leaflet.css',
 		'https://cdn.kernvalley.us/components/toast-message.css',
 		'https://cdn.kernvalley.us/components/pwa/prompt.css',

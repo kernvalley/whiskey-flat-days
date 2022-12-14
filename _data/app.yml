@@ -5,7 +5,7 @@ id: WhiskeyFlatDays
 version: 2.2.2-2022-12-12T17:45
 start_url: /?utm_source=homescreen&utm_medium=pwa
 display: standalone
-description: "Map, events, and news app for Whiskey Flat Days"
+description: "Map, events, store, and news app for Whiskey Flat Days"
 icons-file: /img/icons.svg
 theme:
   color: '#b70c0c'
@@ -53,6 +53,28 @@ shortcuts:
       type: image/png
       sizes: 48x48
     - src: /img/jumplist/map-36.png
+      type: image/png
+      sizes: 36x36
+  - name: Store
+    url: /store/?utm_source=homescreen&utm_medium=pwa#main
+    description: Whiskey Flat Days Store
+    icons:
+    - src: /img/jumplist/store-192.png
+      type: image/png
+      sizes: 192x192
+    - src: /img/jumplist/store-144.png
+      type: image/png
+      sizes: 144x144
+    - src: /img/jumplist/store-96.png
+      type: image/png
+      sizes: 96x96
+    - src: /img/jumplist/store-72.png
+      type: image/png
+      sizes: 72x72
+    - src: /img/jumplist/store-48.png
+      type: image/png
+      sizes: 48x48
+    - src: /img/jumplist/store-36.png
       type: image/png
       sizes: 36x36
   - name: News
