@@ -62,6 +62,15 @@ article p:first-letter {
 	color: #242424;
 }
 
+.spoiler {
+	cursor: pointer;
+	border-radius: 4px;
+}
+
+.spoiler:not(.revealed) {
+	background-color: currentColor;
+}
+
 @media (prefers-color-scheme: light) {
 	.section-heading {
 		color: var(--accent-color);
