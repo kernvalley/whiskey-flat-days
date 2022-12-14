@@ -1,5 +1,5 @@
 # [Whiskey Flat Days App](https://whiskeyflatdays.com)
-Map and events app for Whiskey Flat Days
+Map, events, store, and news app for Whiskey Flat Days
 
 <!-- [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=kernvalley/whiskey-flat-days)](https://dependabot.com) -->
 [![Node CI](https://github.com/kernvalley/whiskey-flat-days/workflows/Node%20CI/badge.svg)](https://github.com/kernvalley/whiskey-flat-days/actions)
