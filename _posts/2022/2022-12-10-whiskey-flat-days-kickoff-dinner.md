@@ -75,7 +75,7 @@ Heights and meet the Whiskey Flat Days Mayor contenders.
 <div class="center card shadow inline-block">
 <h4>Where</h4>
 <h5>{{ page.location.name }}</h5>
-<iframe referrerpolicy="no-referrer" sandbox="allow-scripts" src="https://maps.kernvalley.us/embed?markers=towns%7Cbusinesses#b56155ea-ddfe-40ea-99b0-4e64c87f86f0" width="350" height="300" frameborder="0"></iframe>
+<iframe referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin" allow="fullscreen" allowfullscreen="true" src="https://maps.kernvalley.us/embed?markers=towns%7Cbusinesses&amp;fullscreen#b56155ea-ddfe-40ea-99b0-4e64c87f86f0" width="350" height="300" frameborder="0"></iframe>
 </div>
 
 <div class="center card shadow inline-block">

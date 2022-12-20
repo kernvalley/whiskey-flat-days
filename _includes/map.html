@@ -1,4 +1,4 @@
-<leaflet-map center="{{ site.data.mainEvent.location.geo.latitude }},{{ site.data.mainEvent.location.geo.longitude }}" class="relative contain-content z-1" zoom="18" maxzoom="19" minzoom="15" crossorigin="anonymous" detectretina="detectretina" zoomcontrol="" router="">
+<leaflet-map center="{{ site.data.mainEvent.location.geo.latitude }},{{ site.data.mainEvent.location.geo.longitude }}" class="relative contain-content z-1" zoom="18" maxzoom="19" minzoom="15" crossorigin="anonymous" detectretina="detectretina" zoomcontrol="" router="" allowfullscreen="" allowlocate="">
 	{% for town in site.data.places.towns %}
 		<leaflet-marker slot="markers" latitude="{{ town.latitude }}" longitude="{{ town.longitude }}" title="{{ town.name | escape }}" id="{{ town.identifier }}">
 			<img slot="icon" src="https://cdn.kernvalley.us/img/markers.svg#city" width="30" height="30" crossorigin="anonymous" referrerpolicy="no-referrer" alt="" />

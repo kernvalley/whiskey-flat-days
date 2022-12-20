@@ -12,15 +12,6 @@
 		</a>
 	{% endfor %}
 	<span class="grow-4"></span>
-	{% if page.url == '/map/' %}
-		<button type="button" data-full-screen="leaflet-map" title="Enter Fullscreen">
-			{% include common/icon.html icon="screen-full" %}
-		</button>
-		<button type="button" data-action="find-location" title="Use my Location" accesskey="f" hidden="">
-			{% include common/icon.html icon="find-location" %}
-			<span class="mobile-hidden">Find my Location</span>
-		</button>
-	{% endif %}
 	{% if site.service_worker %}
 		<button is="pwa-install" id="install-btn" src="{{ site.service_worker }}" scope="/" title="Install Web App" reloadonupdate="" accesskey="i" hidden="">
 			{% include common/icon.html icon="system-software-install" height=22 width=22 fill="currentColor" %}
