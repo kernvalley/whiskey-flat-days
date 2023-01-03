@@ -42,7 +42,7 @@ export async function handler(event) {
 				try {
 					const Stripe = require('stripe');
 					const items = [];
-					const stripe = Stripe(typeof process.env.STRIPE_SECRET);
+					const stripe = Stripe(process.env.STRIPE_SECRET);
 					const paymentIntent = await stripe.paymentIntents.create({
 						amount: await calculateOrderAmount(items),
 						currency: 'usd',
