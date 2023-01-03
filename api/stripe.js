@@ -40,9 +40,8 @@ export async function handler(event) {
 		case 'POST':
 			if (typeof process.env.STRIPE_SECRET === 'string') {
 				try {
-					const Stripe = require('stripe');
 					const items = [];
-					const stripe = Stripe(process.env.STRIPE_SECRET);
+					const stripe = require('stripe')(process.env.STRIPE_SECRET);
 					const paymentIntent = await stripe.paymentIntents.create({
 						amount: await calculateOrderAmount(items),
 						currency: 'usd',
@@ -62,6 +61,8 @@ export async function handler(event) {
 					};
 				} catch(err) {
 					console.error(err);
+					const { message, line, file }  =err;
+
 					return {
 						statusCode: 500,
 						headers: { 'Content-Type': 'application/json' },
@@ -69,7 +70,7 @@ export async function handler(event) {
 							error: {
 								message: 'An unknown error occured',
 								status: 500,
-								error: err.message,
+								err: { message, line, file },
 							},
 						})
 					};
