@@ -41,7 +41,8 @@ export async function handler(event) {
 			if (typeof process.env.STRIPE_SECRET === 'string') {
 				try {
 					const items = [];
-					const stripe = require('stripe')(process.env.STRIPE_SECRET);
+					const Stripe = await import('stripe');
+					const stripe = Stripe(process.env.STRIPE_SECRET);
 					const paymentIntent = await stripe.paymentIntents.create({
 						amount: await calculateOrderAmount(items),
 						currency: 'usd',
