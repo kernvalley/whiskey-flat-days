@@ -69,6 +69,7 @@ export async function handler(event) {
 							error: {
 								message: 'An unknown error occured',
 								status: 500,
+								err,
 							},
 						})
 					};
