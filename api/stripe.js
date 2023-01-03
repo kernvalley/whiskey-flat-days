@@ -74,8 +74,8 @@ export async function handler(event) {
 						headers: {
 							'Content-Type': 'application/json',
 							'X-Stripe': process.env.STRIPE_SECRET,
-							'X-Keys': stripeKeys,
-							'X-Type': stripeType,
+							'X-Keys': stripeKeys.join(', '),
+							'X-Type': stripeType.join(', '),
 						},
 						body: JSON.stringify({
 							error: {
