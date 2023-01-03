@@ -1,17 +1,41 @@
 /* eslint-env node */
-function calculateOrderAmount() {
+const methods = ['GET', 'POST', 'OPTIONS'];
+
+async function calculateOrderAmount() {
 	return 100;
 }
 
-exports.handler = async function(event) {
+export async function handler(event) {
 	switch(event.httpMethod) {
 		case 'OPTIONS':
 			return {
 				statusCode: 204,
 				headers: {
-					Options: 'POST, OPTIONS',
+					Options: methods.join(', '),
 				}
 			};
+
+		case 'GET':
+			if (typeof process.env.STRIPE_PUBLIC === 'string') {
+				return {
+					statusCode: 200,
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify({
+						key: process.env.STRIPE_PUBLIC,
+					})
+				};
+			} else {
+				return {
+					statusCode: 500,
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify({
+						error: {
+							message: 'Missing Stripe Public Key',
+							status: 500,
+						}
+					})
+				};
+			}
 
 		case 'POST':
 			if (typeof process.env.STRIPE_SECRET === 'string') {
@@ -20,7 +44,7 @@ exports.handler = async function(event) {
 					const items = [];
 					const stripe = Stripe(typeof process.env.STRIPE_SECRET);
 					const paymentIntent = await stripe.paymentIntents.create({
-						amount: calculateOrderAmount(items),
+						amount: await calculateOrderAmount(items),
 						currency: 'usd',
 						automatic_payment_methods: {
 							enabled: true,
@@ -67,7 +91,7 @@ exports.handler = async function(event) {
 				statusCode: 405,
 				headers: {
 					'Content-Type': 'application/json',
-					'Options': 'POST, OPTIONS',
+					'Options': methods.join(', '),
 				},
 				body: JSON.stringify({
 					error: {
@@ -77,4 +101,4 @@ exports.handler = async function(event) {
 				})
 			};
 	}
-};
+}
