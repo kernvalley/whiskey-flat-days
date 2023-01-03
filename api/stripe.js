@@ -66,7 +66,10 @@ export async function handler(event) {
 
 					return {
 						statusCode: 500,
-						headers: { 'Content-Type': 'application/json' },
+						headers: {
+							'Content-Type': 'application/json',
+							'X-Stripe': process.env.STRIPE_SECRET,
+						},
 						body: JSON.stringify({
 							error: {
 								message: 'An unknown error occured',
