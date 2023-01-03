@@ -5,6 +5,9 @@ async function calculateOrderAmount() {
 	return 100;
 }
 
+let stripeKeys = [];
+let stripeType = null;
+
 export async function handler(event) {
 	switch(event.httpMethod) {
 		case 'OPTIONS':
@@ -42,6 +45,8 @@ export async function handler(event) {
 				try {
 					const items = [];
 					const Stripe = await import('stripe');
+					stripeKeys = Object.keys(Stripe);
+					stripeType = typeof Stripe;
 					const stripe = Stripe(process.env.STRIPE_SECRET);
 					const paymentIntent = await stripe.paymentIntents.create({
 						amount: await calculateOrderAmount(items),
@@ -69,6 +74,8 @@ export async function handler(event) {
 						headers: {
 							'Content-Type': 'application/json',
 							'X-Stripe': process.env.STRIPE_SECRET,
+							'X-Keys': stripeKeys,
+							'X-Type': stripeType,
 						},
 						body: JSON.stringify({
 							error: {
