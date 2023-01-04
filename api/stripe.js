@@ -44,7 +44,7 @@ export async function handler(event) {
 			if (typeof process.env.STRIPE_SECRET === 'string') {
 				try {
 					const items = [];
-					const Stripe = await import('stripe');
+					const { Stripe } = await import('stripe');
 					stripeKeys = Object.keys(Stripe);
 					stripeType = typeof Stripe;
 					const stripe = Stripe(process.env.STRIPE_SECRET);
