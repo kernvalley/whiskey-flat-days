@@ -8,7 +8,7 @@
     "serve": {
       "domain": "localhost",
       "path": "./",
-      "port": 8000
+      "port": 4000
     },
     "dir": {
       "css": "css/",
