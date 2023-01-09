@@ -45,6 +45,7 @@
     "preinstall": "npm run git:submodules",
     "postinstall": "npm run build",
     "preversion": "npm test",
+    "create:lock": "npm i --package-lock-only --ignore-scripts",
     "git:fetch": "git fetch --prune --tags",
     "git:submodules": "if [ -f '.gitmodules' ]; then git submodule update --init --recursive; fi",
     "lint": "npm run lint:js && npm run lint:css && npm run lint:html",
