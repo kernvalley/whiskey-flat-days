@@ -5,4 +5,7 @@
   command = "npm run build && npm run build:site"
   functions = "api"
 [dev]
-  command = "bundle exec jekyll build --drafts --unpublished --future --profile --trace --strict_front_matter"
+  base = "./"
+  publish = "./_site"
+  command = "npm run serve:dev"
+  targetPort = 4000

@@ -5,7 +5,7 @@ async function calculateOrderAmount() {
 	return 100;
 }
 
-export async function handler(event) {
+exports.handler = async function handler(event) {
 	switch(event.httpMethod) {
 		case 'OPTIONS':
 			return {
@@ -38,9 +38,22 @@ export async function handler(event) {
 			}
 
 		case 'POST':
-			if (typeof process.env.STRIPE_SECRET === 'string') {
+			console.log(event.headers['content-type']);
+			if (event.headers['content-type'] !== 'application/json') {
+				return {
+					statusCode: 400,
+					error: {
+						message: 'Not JSON',
+						status: 400,
+					}
+				};
+			} else if (typeof process.env.STRIPE_SECRET === 'string') {
 				try {
-					const items = [];
+					const items = JSON.parse(event.body);
+
+					if (! Array.isArray(items) || items.length === 0) {
+						throw new TypeError('Expected an array of items');
+					}
 					const { Stripe } = await import('stripe');
 					const stripe = Stripe(process.env.STRIPE_SECRET);
 					const paymentIntent = await stripe.paymentIntents.create({
@@ -100,4 +113,4 @@ export async function handler(event) {
 				})
 			};
 	}
-}
+};
