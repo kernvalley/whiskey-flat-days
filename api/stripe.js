@@ -1,8 +1,8 @@
 /* eslint-env node */
 const methods = ['GET', 'POST', 'OPTIONS'];
 
-async function calculateOrderAmount() {
-	return 100;
+async function calculateOrderAmount(items) {
+	return 100 * items.length;
 }
 
 exports.handler = async function handler(event) {
@@ -54,6 +54,7 @@ exports.handler = async function handler(event) {
 					if (! Array.isArray(items) || items.length === 0) {
 						throw new TypeError('Expected an array of items');
 					}
+
 					const { Stripe } = await import('stripe');
 					const stripe = Stripe(process.env.STRIPE_SECRET);
 					const paymentIntent = await stripe.paymentIntents.create({
