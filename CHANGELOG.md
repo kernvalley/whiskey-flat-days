@@ -7,7 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v2.3.0] - 2023-01-09
+
 ### Changed
+- Update to node v18.13.0
 - Updated theme and various design details
 - Add `"webapp"` platform to manifest
 - Use `<app-stores>` to dynamically generate list of apps (not installed?)
@@ -19,7 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Correctly set event status
 
-##[v2.1.0]
+## [v2.1.0]
 
 ### Added
 - Notice that Whiskey Flat Days 2021 has been cancelled
