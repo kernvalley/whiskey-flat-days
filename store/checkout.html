@@ -1,0 +1,23 @@
+---
+title: Checkout
+permalink: /store/checkout
+layout: default
+robots: no-follow, no-index
+description: Checkout Page for WhiskeyFlatDays Store
+scripts:
+  - src: https://js.stripe.com/v3/
+    defer: true
+    crossOrigin: anonymous
+    referrerPolicy: no-referrer
+  - src: /js/store.js
+    type: module
+---
+<form id="payment-form">
+	<!-- https://stripe.com/docs/payments/card-element -->
+	<!-- https://stripe.com/docs/payments/quickstart -->
+	<div id="card-element" data-stripe-element="linkAuthentication"><!--Stripe.js injects the Card Element--></div>
+	<button type="submit" class="btn btn-accept">
+		<span id="button-text">Pay now</span>
+	</button>
+	<p id="card-error" role="alert"></p>
+</form>
