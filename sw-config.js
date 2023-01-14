@@ -54,6 +54,7 @@ const config = {
 		'https://cdn.kernvalley.us/components/install/prompt.css',
 		'https://cdn.kernvalley.us/components/share-to-button/share-to-button.css',
 		'https://cdn.kernvalley.us/components/window-controls.css',
+		'https://cdn.kernvalley.us/components/stripe/payment-form.css',
 
 		/* Images & Icons */
 		'/img/icons.svg',
@@ -77,6 +78,7 @@ const config = {
 		'https://cdn.kernvalley.us/fonts/roboto.woff2',
 		'https://cdn.kernvalley.us/fonts/rye.woff2',
 		/* Other */
+		'/store/products.json',
 	].map(path => new URL(path, location.origin).href),
 	allowed: [
 		'https://www.google-analytics.com/analytics.js',

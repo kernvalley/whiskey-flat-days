@@ -2,11 +2,14 @@ import { HTMLStripePaymentFormElement } from 'https://cdn.kernvalley.us/componen
 import { on, create, enable, disable, value } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
 import { getStripeKey, getSecret } from './stripe.js';
 import { getJSON } from 'https://cdn.kernvalley.us/js/std-js/http.js';
+import { createImage } from 'https://cdn.kernvalley.us/js/std-js/elements.js';
 import { Cart } from './Cart.js';
+
+const getProducts = (() => getJSON('/store/products.json')).once();
 
 async function getCart() {
 	const [products, cart] = await Promise.all([
-		getJSON('/store/products.json'),
+		getProducts(),
 		new Cart().getAll(),
 	]);
 
@@ -126,20 +129,117 @@ if (location.pathname.startsWith('/store/checkout')) {
 
 			const clientSecret = await getSecret(req.details);
 			const form = new HTMLStripePaymentFormElement(key, clientSecret, req);
+			form.append(
+				create('header', {
+					slot: 'header',
+					classList: ['center'],
+					children: [
+						createImage('/img/favicon.svg', {
+							height: 96,
+							width: 96,
+							styles: { border: '1px solid currentColor', 'border-radius': '50%', padding: '0.3em' },
+						}),
+						create('h2', {
+							text: 'WhiskeyFlatDays.com Store Checkout',
+						}),
+						document.createElement('br'),
+					]
+				}),
+				create('footer', {
+					slot: 'footer',
+					children: [
+						create('a', {
+							role: 'button',
+							classList: ['btn', 'btn-primary'],
+							href: '/store/cart',
+							text: 'Back to Cart',
+						}),
+					]
+				}),
+			);
 			document.getElementById('main').append(form);
 		});
 	}
-} else if(location.pathname.startsWith('/store')) {
+} else if (location.pathname.startsWith('/store/cart')) {
+	const cart = new Cart();
+	Promise.all([
+		getProducts(),
+		cart.getAll(),
+	]).then(([products, items]) => {
+		document.getElementById('cart-container').append(...items.map(({ id, quantity, offer }) => {
+			const product = products.find(({ '@identifier': identifier }) => id === identifier);
+
+			if (typeof product === 'object') {
+				const price = typeof offer === 'string'
+					? product.offers
+						.find(({ '@identifier': id }) => id === offer).price
+					: product.offers[0].price;
+				return create('div', {
+					classList: ['card', 'shadow', 'cart-item-listing'],
+					dataset: { id, offer, quantity, price },
+					children: [
+						create('h3', { text: product.name }),
+						create('div', {
+							children: [
+								create('b', { text: 'Price: ' }),
+								create('span', { text: '$' + price.toFixed(2) })
+							]
+						}),
+						create('div', {
+							children: [
+								create('b', { text: 'Quantity: ' }),
+								create('span', { text: quantity.toString() })
+							]
+						}),
+						create('div', {
+							children: [
+								create('b', { text: 'Total: ' }),
+								create('span', { text: '$' + (price * quantity).toFixed(2) })
+							]
+						}),
+						create('div', {
+							classList: ['flex', 'row', 'cart-btns', 'space-evenly'],
+							children: [
+								create('button', {
+									classList: ['btn', 'btn-reject'],
+									dataset: { id },
+									text: 'Remove',
+									events: {
+										click: async ({ currentTarget }) => {
+											await cart.remove(currentTarget.dataset.id);
+											currentTarget.closest('.cart-item-listing').remove();
+										}
+									}
+								})
+							]
+						}),
+					]
+				});
+			} else {
+				return '';
+			}
+		}));
+	});
+} else if(location.pathname === '/store/') {
 	const cart = new Cart();
 
 	cart.getAll().then(items => {
-		items.forEach(({ id, quantity }) => {
-			try {
-				value(`#${id} input[name="quantity"]`, quantity);
-			} catch(err) {
-				console.error(err);
-			}
-		});
+		if (items.length !== 0) {
+			document.getElementById('checkout-btn').classList.remove('disabled');
+
+			items.forEach(({ id, quantity }) => {
+				try {
+					value(`#${CSS.escape(id)} input[name="quantity"]`, quantity);
+				} catch(err) {
+					console.error(err);
+				}
+			});
+		}
+	});
+
+	on([cart], {
+		emptied: () => document.getElementById('checkout-btn').classList.add('disabled'),
+		update: () => cart.getAll().then(items => document.getElementById('checkout-btn').classList.toggle('disabled', items.length === 0)),
 	});
 
 	on('.cart-form', 'submit', async event => {

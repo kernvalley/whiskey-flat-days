@@ -43,8 +43,8 @@ export class Cart extends EventTarget {
 		return Promise.resolve();
 	}
 
-	async getQueryString() {
-		const cart = await this.getAll();
+	async getQueryString({ signal } = {}) {
+		const cart = await this.getAll({ signal });
 
 		return cart.map(({ id, quantity = 1, offer }) => {
 			if (typeof id !== 'string') {
@@ -101,7 +101,7 @@ export class Cart extends EventTarget {
 		this.dispatchEvent(new Event('emptied'));
 	}
 
-	async remove(item, { signal }) {
+	async remove(item, { signal } = {}) {
 		await this.ready;
 		const { key } = protectedData.get(this);
 		const items = await this.getAll({ key, signal });
