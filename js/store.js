@@ -147,12 +147,19 @@ if (location.pathname.startsWith('/store/checkout')) {
 				}),
 				create('footer', {
 					slot: 'footer',
+					classList: ['card', 'flex', 'row', 'space-evenly'],
 					children: [
 						create('a', {
 							role: 'button',
 							classList: ['btn', 'btn-primary'],
 							href: '/store/cart',
 							text: 'Back to Cart',
+						}),
+						create('a', {
+							role: 'button',
+							classList: ['btn', 'btn-primary'],
+							href: '/store/',
+							text: 'Back to Store',
 						}),
 					]
 				}),
