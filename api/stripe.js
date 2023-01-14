@@ -49,7 +49,6 @@ exports.handler = async function handler(event) {
 			}
 
 		case 'POST':
-			console.log(event.headers['content-type']);
 			if (event.headers['content-type'] !== 'application/json') {
 				return {
 					statusCode: 400,
