@@ -5,6 +5,10 @@
 	gap: 12px;
 }
 
+.cart-qty-input {
+	width: 2rem;
+}
+
 .product-listing {
 	display: grid;
 	grid-template-areas: "img name"

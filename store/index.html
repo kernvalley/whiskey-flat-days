@@ -27,12 +27,16 @@ stylesheets:
 <section id="product-list" class="grid">
 	{% for item in site.data.store.products %}
 		{% assign offer = item.offers[0] %}
-		<div id="{{ item['@identifier'] }}" class="product-listing card shadow" data-availability="{{ offer.availability | default: 'OutOfStock' }}" itemtype="https://schema.org/{{ item['@type'] | default: 'Product' }}" itemscope="">
+		<form id="{{ item['@identifier'] }}" class="product-listing card shadow cart-form" data-availability="{{ offer.availability | default: 'OutOfStock' }}" itemtype="https://schema.org/{{ item['@type'] | default: 'Product' }}" itemscope="">
+			<input type="hidden" name="id" value="{{ item['@identifier'] }}" required="" />
+			<input type="hidden" name="offer" value="{{ offer['@identifier'] }}" required="" />
 			<h3 itemprop="name" class="product-name font-title section-heading">{{ item.name }}</h3>
 			<img itemprop="image" class="product-img cursor-pointer" src="{{ item.image }}" loading="lazy" decoding="async" fetchpriority="auto" crossorigin="anonymous" referrerpolicy="no-referrer" />
 			<p itemprop="description" class="product-description">{{ item.description }}</p>
 			<div class="flex row product-offer"  itemprop="offers" itemtype="https://schema.org/Offer" itemscope="">
 				<b class="product-price">
+					<label for="{{ item['@identifier'] }}-qty">Quantity:</label>
+					<input name="quantity" id="{{ item['@identifier'] }}-qty" type="number" min="0" max="5" value="1" class="cart-qty-input" />
 					<meta itemprop="priceCurrency" content="{{ offer.priceCurrency | default: 'USD' }}" />
 					<meta itemprop="availability" content="{{ offer.availability | default: 'OutOfStock' }} ">
 					<span class="price-currency">$</span><span class="price-value" itemprop="price">{{ offer.price }}</span>
@@ -40,7 +44,7 @@ stylesheets:
 				<div class="center">
 					{% case offer.availability %}
 						{% when 'InStock' %}
-							<button type="button" class="btn btn-primary add-to-cart" data-product="{{ item['@identifier'] }}" data-offer="{{ offer['@identifier'] }}">
+							<button type="submit" class="btn btn-primary add-to-cart" data-product="{{ item['@identifier'] }}" data-offer="{{ offer['@identifier'] }}">
 								{% include common/icon.html icon="cart" height="16" width="16" fill="currentColor" %}
 								<span>Add to Cart</span>
 							</button>
@@ -68,6 +72,6 @@ stylesheets:
 					<span itemprop="name" class="seller-name">{{ item.manufacturer.name }}</span>
 				{% endif %}
 			</div>
-		</div>
+		</form>
 	{% endfor %}
 </section>

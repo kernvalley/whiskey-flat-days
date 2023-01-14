@@ -1,22 +1,40 @@
 import { HTMLStripePaymentFormElement } from 'https://cdn.kernvalley.us/components/stripe/payment-form.js';
-import { on, create } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
+import { on, create, enable, disable, value } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
 import { getStripeKey, getSecret } from './stripe.js';
 import { getJSON } from 'https://cdn.kernvalley.us/js/std-js/http.js';
+import { Cart } from './Cart.js';
 
 async function getCart() {
-	const items = await getJSON('/store/products.json');
-	return items.filter((_, i, arr) => Math.random() > 0.5 || i + 1 === arr.length)
-		.map(item => {
-			const qty = Math.max(1, Math.round(Math.random() * 3));
+	const [products, cart] = await Promise.all([
+		getJSON('/store/products.json'),
+		new Cart().getAll(),
+	]);
+
+	return cart.map(({ id, quantity }) => {
+		const product = products.find(({ '@identifier': product }) => product === id);
+
+		if (typeof product === 'object') {
 			return {
-				label: `${item.name} x ${qty}`,
-				identifier: item['@identifier'],
+				label: `${product.name} [x${quantity}]`,
 				amount: {
-					value: item.offers[0].price * qty,
+					value: quantity * product.offers[0].price,
 					currency: 'USD',
 				}
 			};
-		});
+		}
+	});
+	// return items.filter((_, i, arr) => Math.random() > 0.5 || i + 1 === arr.length)
+	// 	.map(item => {
+	// 		const qty = Math.max(1, Math.round(Math.random() * 3));
+	// 		return {
+	// 			label: `${item.name} x ${qty}`,
+	// 			identifier: item['@identifier'],
+	// 			amount: {
+	// 				value: item.offers[0].price * qty,
+	// 				currency: 'USD',
+	// 			}
+	// 		};
+	// 	});
 }
 
 function toCurrency(num) {
@@ -111,30 +129,36 @@ if (location.pathname.startsWith('/store/checkout')) {
 			document.getElementById('main').append(form);
 		});
 	}
-} else {
-	on('button.add-to-cart','click', () => {
-		const dialog = create('dialog', {
-			events: { close: ({ target }) => target.remove() },
-			children: [
-				create('p', {
-					classList: ['status-box','info'],
-					text: 'WFD Store is in demo mode. Purchases are currently not enabled.'
-				}),
-				create('div', {
-					classList: ['center'],
-					children: [
-						create('button', {
-							classList: ['btn', 'btn-reject'],
-							text: 'Close',
-							events: { click: ({ target }) => target.closest('dialog').close() },
-						})
-					]
-				})
-			],
-		});
+} else if(location.pathname.startsWith('/store')) {
+	const cart = new Cart();
 
-		document.body.append(dialog);
-		dialog.showModal();
+	cart.getAll().then(items => {
+		items.forEach(({ id, quantity }) => {
+			try {
+				value(`#${id} input[name="quantity"]`, quantity);
+			} catch(err) {
+				console.error(err);
+			}
+		});
+	});
+
+	on('.cart-form', 'submit', async event => {
+		event.preventDefault();
+
+		try {
+			const data = new FormData(event.target);
+			disable(event.target.querySelectorAll('button, input'));
+
+			await cart.add({
+				id: data.get('id'),
+				quantity: parseInt(data.get('quantity')),
+				offer: data.get('offer'),
+			});
+		} catch(err) {
+			console.error(err);
+		} finally {
+			enable(event.target.querySelectorAll('button, input'));
+		}
 	});
 
 	on('.product-listing .product-img', 'click', ({ target }) => {
