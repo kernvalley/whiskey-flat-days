@@ -25,26 +25,22 @@ stylesheets:
 	<p>Learn more <a href="/news/app/2022/12/13/wfd-store" class="btn btn-primary">here</a>
 </div>
 <section id="product-list" class="grid">
-	{% for item in site.data.store.products %}
+	<!--{% for item in site.data.store.products %}
 		{% assign offer = item.offers[0] %}
-		<form id="{{ item['@identifier'] }}" class="product-listing card shadow cart-form" data-availability="{{ offer.availability | default: 'OutOfStock' }}" itemtype="https://schema.org/{{ item['@type'] | default: 'Product' }}" itemscope="">
-			<input type="hidden" name="id" value="{{ item['@identifier'] }}" required="" />
-			<input type="hidden" name="offer" value="{{ offer['@identifier'] }}" required="" />
+		<div id="{{ item['@identifier'] }}" class="product-listing card shadow cursor-pointer" data-availability="{{ offer.availability | default: 'OutOfStock' }}" itemtype="https://schema.org/{{ item['@type'] | default: 'Product' }}" itemscope="">
 			<h3 itemprop="name" class="product-name font-title section-heading">{{ item.name }}</h3>
 			<img itemprop="image" class="product-img cursor-pointer" src="{{ item.image }}" loading="lazy" decoding="async" fetchpriority="auto" crossorigin="anonymous" referrerpolicy="no-referrer" />
 			<p itemprop="description" class="product-description">{{ item.description }}</p>
-			<div class="flex row product-offer"  itemprop="offers" itemtype="https://schema.org/Offer" itemscope="">
+			<div class="flex row product-offer" itemprop="offers" itemtype="https://schema.org/Offer" itemscope="">
 				<b class="product-price">
-					<label for="{{ item['@identifier'] }}-qty">Quantity:</label>
-					<input name="quantity" id="{{ item['@identifier'] }}-qty" type="number" min="0" max="5" value="1" class="cart-qty-input" />
 					<meta itemprop="priceCurrency" content="{{ offer.priceCurrency | default: 'USD' }}" />
 					<meta itemprop="availability" content="{{ offer.availability | default: 'OutOfStock' }} ">
 					<span class="price-currency">$</span><span class="price-value" itemprop="price">{{ offer.price }}</span>
 				</b>
-				<div class="center">
+				<div class="center" hidden="">
 					{% case offer.availability %}
 						{% when 'InStock' %}
-							<button type="submit" class="btn btn-primary add-to-cart" data-product="{{ item['@identifier'] }}" data-offer="{{ offer['@identifier'] }}">
+							<button type="button" class="btn btn-primary add-to-cart" data-product="{{ item['@identifier'] }}" data-offer="{{ offer['@identifier'] }}">
 								{% include common/icon.html icon="cart" height="16" width="16" fill="currentColor" %}
 								<span>Add to Cart</span>
 							</button>
@@ -72,11 +68,63 @@ stylesheets:
 					<span itemprop="name" class="seller-name">{{ item.manufacturer.name }}</span>
 				{% endif %}
 			</div>
-		</form>
-	{% endfor %}
+		</div>
+	{% endfor %}-->
 </section>
 <div class="flex row space-around">
-	<a href="/store/cart" role="button" class="btn btn-primary disabled" id="checkout-btn">
+	<a href="/store/cart" role="button" class="btn btn-primary" id="checkout-btn">
 		<span>Continue to Checkout</span>
 	</a>
 </div>
+<template id="item-preview-template">
+	<div class="product-listing card shadow cursor-pointer" data-availability="" itemtype="" itemscope="">
+		<h3 itemprop="name" class="product-name font-title section-heading"></h3>
+		<img itemprop="image" class="product-img cursor-pointer" src="" loading="lazy" decoding="async" fetchpriority="auto" crossorigin="anonymous" referrerpolicy="no-referrer">
+		<p itemprop="description" class="product-description"></p>
+		<div class="flex row product-offer" itemprop="offers" itemtype="https://schema.org/Offer" itemscope="">
+			<b class="product-price">
+				<meta itemprop="availability" content="">
+				<span class="price-currency" itemprop="priceCurrency" content="">$</span><span class="price-value" itemprop="price"></span>
+			</b>
+		</div>
+		<div class="product-seller" itemprop="manufacturer" itemtype="https://schema.org/LocalBusiness" itemscope="">
+			<span>Sold By:</span>
+			<a href="" itemprop="url">
+				<span itemprop="name" class="seller-name"></span>
+			</a>
+		</div>
+	</div>
+</template>
+<template id="item-details-template">
+	<div class="item-details" itemtype="https://schema.org/Product" itemscope="">
+		<button type="button" class="close-btn no-border">
+			{% include common/icon.html icon="x" height=16 width=16 fill="currentColor" %}
+		</button>
+		<h3 itemprop="name"></h3>
+		<div></div>
+		<img src="" itemprop="image" alt="" loading="lazy" height="" width="" decoding="lazy" referrerpolicy="no-referrer" />
+		<blockquote itemprop="description"></blockquote>
+		<form>
+			<input type="hidden" name="id" required="" />
+			<div>
+				<label for="item-qty">Quantity</label>
+				<input type="number" id="item-qty" name="quantity" min="1" max="5" value="1" placeholder="##" />
+			</div>
+			<div>
+				<label for="item-offers">Offers</label>
+				<select name="offer" id="item-offers"></select>
+			</div>
+			<div class="item-details-btns flex space-evenly">
+				<button type="submit" class="btn btn-accept">
+					<span>Add to Cart</button>
+				</button>
+				<button type="button" class="btn btn-reject close-btn">
+					<span>Close</span>
+				</button>
+				<button type="button" class="btn btn-primary" data-title="" data-url="" data-text="">
+					<span>Share</span>
+				</button>
+			</div>
+		</form>
+	</div>
+</template>

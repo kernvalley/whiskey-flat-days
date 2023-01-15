@@ -1,4 +1,5 @@
 export const KEY= 'cart';
+const priority = 'background';
 
 async function set(cart, { key = KEY, signal } = {}) {
 	if (! Array.isArray(cart)) {
@@ -10,6 +11,7 @@ async function set(cart, { key = KEY, signal } = {}) {
 			localStorage.setItem(key, JSON.stringify(cart));
 		}, {
 			signal,
+			priority,
 		});
 	}
 }
@@ -26,6 +28,7 @@ async function get({ key = KEY, signal } = {}) {
 			}
 		}, {
 			signal,
+			priority,
 		});
 	}
 }
@@ -59,10 +62,20 @@ export class Cart extends EventTarget {
 		}).join('|');
 	}
 
+	async has(id, { signal } = {}) {
+		const item = await this.get(id, { signal });
+		return typeof item === 'object' && ! Object.is(item, null);
+	}
+
 	async getAll({ signal } = {}) {
 		await this.ready;
 		const { key } = protectedData.get(this);
 		return get({ key, signal });
+	}
+
+	async get(id, { signal } = {}) {
+		const items = await this.getAll({ signal });
+		return items.find(item => item.id === id);
 	}
 
 	async add({ id, quantity = 1, offer }, { signal } = {}) {
@@ -111,6 +124,9 @@ export class Cart extends EventTarget {
 		if (start > filtered) {
 			await set(filtered,{ key, signal });
 			this.dispatchEvent(new CustomEvent('itemremoved', { detail: item }));
+			this.dispatchEvent(new CustomEvent('update', {
+				detail: { newValue: filtered, oldValue: items }
+			}));
 		}
 	}
 }

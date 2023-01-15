@@ -5,6 +5,11 @@
 	gap: 12px;
 }
 
+a.btn[role="button"] {
+	text-decoration: none;
+	color: var(--button-color);
+}
+
 .cart-qty-input {
 	width: 2rem;
 }
@@ -13,8 +18,8 @@
 	display: grid;
 	grid-template-areas: "img name"
 	"img description"
-	"img offer"
-	"seller seller";
+	"img description"
+	"seller offer";
 	grid-template-rows: 3rem 6rem 2rem 2rem;
 	grid-template-columns: 12rem auto;
 	gap: 5px;

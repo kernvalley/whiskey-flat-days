@@ -1,43 +1,156 @@
 import { HTMLStripePaymentFormElement } from 'https://cdn.kernvalley.us/components/stripe/payment-form.js';
-import { on, create, enable, disable, value } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
+import { on, create, value, text, attr, data, disable } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
 import { getStripeKey, getSecret } from './stripe.js';
 import { getJSON } from 'https://cdn.kernvalley.us/js/std-js/http.js';
 import { createImage } from 'https://cdn.kernvalley.us/js/std-js/elements.js';
 import { Cart } from './Cart.js';
+import { getDeferred } from 'https://cdn.kernvalley.us/js/std-js/promises.js';
 
+const currency = 'USD';
+const taxRate = 0.0725;
 const getProducts = (() => getJSON('/store/products.json')).once();
 
-async function getCart() {
-	const [products, cart] = await Promise.all([
-		getProducts(),
-		new Cart().getAll(),
+async function calculateCardFee(req) {
+	return toCurrency(getTotal(req) * 0.03 + 0.35);
+}
+
+async function calculateTaxes(req) {
+	return toCurrency(getTotal(req) * taxRate);
+}
+
+async function calculateShipping() {
+	return 0;
+}
+
+async function loadStoreItems({ signal } = {}) {
+	const params = new URLSearchParams(location.search);
+	const tmp = document.getElementById('item-preview-template').content;
+	const products = params.has('seller')
+		? await getSellerProducts(params.get('seller'),{ signal })
+		: await getProducts();
+
+	document.getElementById('product-list').append(...products.map(product => {
+		console.log(product);
+		const base = tmp.cloneNode(true).querySelector('.product-listing');
+		const sellerURL = new URL(location.pathname, location.origin);
+		const itemtype = new URL(product['@type' || 'Product'], base['@context'] || 'https://schema.org');
+
+		sellerURL.searchParams.set('seller', product.manufacturer['@identifier']);
+		base.id = product['@identifier'];
+		attr(base, { itemtype });
+		text('.product-name[itemprop="name"]', product.name, { base });
+		text('[itemprop="description"]', product.description, { base });
+		attr('[itemprop="image"]', { src: product.image }, { base });
+		text('.product-seller [itemprop="name"]', product.manufacturer.name, { base });
+		attr('.product-seller [itemprop="url"]', { href: sellerURL }, { base });
+		text('[itemprop="price"]', product.offers[0].price, { base });
+
+		on(base, 'click', async ({ target, currentTarget }) => {
+			if (! (target.closest('img, a, button') instanceof HTMLElement)) {
+				console.log({ target, currentTarget });
+				event.preventDefault();
+				await showProductDetails(currentTarget.id);
+			}
+		});
+
+		return base;
+	}));
+}
+
+async function getProductDetails(id, { signal } = {}) {
+	const url = new URL('/api/products', document.baseURI);
+	url.searchParams.set('id', id);
+	return getJSON(url, { signal });
+}
+
+async function getSellerProducts(seller, { signal } = {}) {
+	const url = new URL('/api/products', document.baseURI);
+	url.searchParams.set('seller', seller);
+	return getJSON(url, { signal });
+}
+
+async function showProductDetails(id, { signal } = {}) {
+	const cart = new Cart();
+	const previous = location.href;
+	const [product, { quantity = 1 } = {}] = await Promise.all([
+		getProductDetails(id, { signal }),
+		cart.get(id, { signal }),
 	]);
 
-	return cart.map(({ id, quantity }) => {
-		const product = products.find(({ '@identifier': product }) => product === id);
+	const { resolve, promise } = getDeferred();
+	const tmp = document.getElementById('item-details-template').content.cloneNode(true);
+	const shareURL = new URL(location.href);
+	shareURL.hash = `#${id}`;
+	text('[itemprop="name"]', product.name, { base: tmp });
+	text('[itemprop="description"]', product.description, { base: tmp });
+	on(tmp.querySelector('form'), 'submit', async event => {
+		event.preventDefault();
+		try {
+			const data = new FormData(event.target);
+			await cart.add({
+				id: data.get('id'),
+				quantity: parseInt(data.get('quantity')),
+				offer: data.get('offer'),
+			});
 
-		if (typeof product === 'object') {
-			return {
-				label: `${product.name} [x${quantity}]`,
-				amount: {
-					value: quantity * product.offers[0].price,
-					currency: 'USD',
-				}
-			};
+			event.target.closest('dialog').close();
+		} catch(err) {
+			console.error(err);
 		}
 	});
-	// return items.filter((_, i, arr) => Math.random() > 0.5 || i + 1 === arr.length)
-	// 	.map(item => {
-	// 		const qty = Math.max(1, Math.round(Math.random() * 3));
-	// 		return {
-	// 			label: `${item.name} x ${qty}`,
-	// 			identifier: item['@identifier'],
-	// 			amount: {
-	// 				value: item.offers[0].price * qty,
-	// 				currency: 'USD',
-	// 			}
-	// 		};
-	// 	});
+
+	value('[name="id"]', id, { base: tmp });
+	value('[name="quantity"]', quantity, { base: tmp });
+
+	attr('[itemprop="image"]',{
+		src: product.image,
+	}, { base: tmp });
+
+	on(tmp.querySelectorAll('.close-btn'), 'click', ({ target }) => {
+		target.closest('dialog').close();
+	});
+
+	if (navigator.share instanceof Function) {
+		data('[data-title][data-url]', {
+			title: product.name,
+			url: shareURL,
+			text: product.description,
+		}, { base: tmp });
+
+		on(tmp.querySelector('[data-title][data-url]'), 'click', ({ currentTarget }) => {
+			const { title, url, text } = currentTarget.dataset;
+			navigator.share({ title, url, text });
+		}, { base: tmp });
+	} else {
+		disable('[data-title][data-url]', { base: tmp });
+	}
+
+	tmp.querySelector('select[name="offer"]').append(
+		...product.offers.map(({ '@identifier': value, name = 'Offering', price, availability = 'InStock' }) => create('option', {
+			value, text: `${name} [$${price}]`, disabled: availability !== 'InStock',
+		}))
+	);
+
+	const dialog = create('dialog', {
+		events: { close: ({ target }) => {
+			target.remove();
+			history.replaceState(history.state, document.title, previous);
+			resolve();
+		}},
+		children: [...tmp.children],
+	});
+
+	document.body.append(dialog);
+	history.replaceState(history.state, document.title, shareURL.href);
+	dialog.showModal();
+	await promise;
+}
+
+async function getCart({ signal } = {}) {
+	const cart = new Cart();
+	const url = new URL('/api/paymentRequest', document.baseURI);
+	url.searchParams.set('query', await cart.getQueryString({ signal }));
+	return await getJSON(url, { signal });
 }
 
 function toCurrency(num) {
@@ -91,23 +204,17 @@ if (location.pathname.startsWith('/store/checkout')) {
 					displayItems,
 					modifiers: {
 						additionalDisplayItems: [{
-							label: 'Discount',
+							label: 'Taxes',
 							amount: {
-								value: -1.99,
-								currency: 'USD',
+								value: await calculateTaxes({ displayItems }),
+								currency,
 							}
 						}, {
 							label: 'Shipping',
 							amount: {
-								value: 1.46,
-								currency: 'USD',
-							}
-						}, {
-							label: 'Taxes',
-							amount: {
-								value: toCurrency(getTotal({ displayItems }) * 0.0725),
-								currency: 'USD',
-							}
+								value: await calculateShipping({ displayItems }),
+								currency,
+							},
 						}]
 					}
 				},
@@ -122,8 +229,8 @@ if (location.pathname.startsWith('/store/checkout')) {
 			req.details.modifiers.additionalDisplayItems.push({
 				label: 'Processing Fee',
 				amount: {
-					value: toCurrency(getTotal(req.details) * 0.03 + 0.35),
-					currency: 'USD',
+					value: await calculateCardFee(req),
+					currency,
 				}
 			});
 
@@ -228,68 +335,34 @@ if (location.pathname.startsWith('/store/checkout')) {
 		}));
 	});
 } else if(location.pathname === '/store/') {
-	const cart = new Cart();
-
-	cart.getAll().then(items => {
-		if (items.length !== 0) {
-			document.getElementById('checkout-btn').classList.remove('disabled');
-
-			items.forEach(({ id, quantity }) => {
-				try {
-					value(`#${CSS.escape(id)} input[name="quantity"]`, quantity);
-				} catch(err) {
-					console.error(err);
-				}
+	loadStoreItems().then(() => {
+		on('.product-listing .product-img', 'click', ({ target }) => {
+			const dialog = create('dialog', {
+				events: { close: ({ target }) => target.remove() },
+				children: [
+					create('div', {
+						classList: ['center'],
+						children: [target.cloneNode()],
+					}),
+					create('div', {
+						classList: ['center'],
+						children: [
+							create('button', {
+								classList: ['btn', 'btn-reject'],
+								text: 'Close',
+								events: { click: ({ target }) => target.closest('dialog').close() },
+							}),
+						]
+					})
+				],
 			});
-		}
-	});
 
-	on([cart], {
-		emptied: () => document.getElementById('checkout-btn').classList.add('disabled'),
-		update: () => cart.getAll().then(items => document.getElementById('checkout-btn').classList.toggle('disabled', items.length === 0)),
-	});
-
-	on('.cart-form', 'submit', async event => {
-		event.preventDefault();
-
-		try {
-			const data = new FormData(event.target);
-			disable(event.target.querySelectorAll('button, input'));
-
-			await cart.add({
-				id: data.get('id'),
-				quantity: parseInt(data.get('quantity')),
-				offer: data.get('offer'),
-			});
-		} catch(err) {
-			console.error(err);
-		} finally {
-			enable(event.target.querySelectorAll('button, input'));
-		}
-	});
-
-	on('.product-listing .product-img', 'click', ({ target }) => {
-		const dialog = create('dialog', {
-			events: { close: ({ target }) => target.remove() },
-			children: [
-				create('div', {
-					classList: ['center'],
-					children: [target.cloneNode()],
-				}),
-				create('div', {
-					classList: ['center'],
-					children: [
-						create('button', {
-							classList: ['btn', 'btn-reject'],
-							text: 'Close',
-							events: { click: ({ target }) => target.closest('dialog').close() },
-						}),
-					]
-				})
-			],
+			document.body.append(dialog);
+			dialog.showModal();
 		});
 
-		document.body.append(dialog);
-		dialog.showModal();
+		if (location.hash.length === 37) {
+			showProductDetails(location.hash.substr(1));
+		}
 	});
 }

@@ -29,6 +29,28 @@ exports.handler = async function(event) {
 							})
 						};
 					}
+				} else if ('seller' in event.queryStringParameters) {
+					const seller = event.queryStringParameters.seller;
+					const products = await getProducts(item => item.manufacturer['@identifier'] === seller);
+
+					if (Array.isArray(products) && products.length !== 0) {
+						return {
+							statusCode: 200,
+							headers,
+							body: JSON.stringify(products),
+						};
+					} else {
+						return {
+							statusCode: 404,
+							headers,
+							body: JSON.stringify({
+								error: {
+									message: `No results for seller "${seller}"`,
+									status: 404,
+								}
+							}),
+						};
+					}
 				} else {
 					const products = await getProducts();
 
