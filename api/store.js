@@ -63,7 +63,7 @@ async function createDisplayItems(query, { signal, currency = 'USD' } = {}) {
 
 				if (typeof value === 'number' && ! Number.isNaN(value) && value > 0) {
 					return {
-						label,
+						label: quantity === 1 ? label : `${label} [x${quantity}]`,
 						amount: {
 							value: parseFloat((value * quantity).toFixed(2)),
 							currency,

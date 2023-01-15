@@ -6,25 +6,7 @@ import { createImage } from 'https://cdn.kernvalley.us/js/std-js/elements.js';
 import { Cart } from './Cart.js';
 import { getDeferred } from 'https://cdn.kernvalley.us/js/std-js/promises.js';
 
-const currency = 'USD';
-const taxRate = 0.0725;
-const stripeRate = 0.03;
-const stripeFlatCharge = 0.35;
 const getProducts = (() => getJSON('/store/products.json')).once();
-
-async function calculateCardFee(req) {
-	const total = getTotal(req.details);
-	const fee = toCurrency((total * stripeRate) + stripeFlatCharge);
-	return fee;
-}
-
-async function calculateTaxes(req) {
-	return toCurrency(getTotal(req) * taxRate);
-}
-
-async function calculateShipping() {
-	return 0;
-}
 
 async function loadStoreItems({ signal } = {}) {
 	const params = new URLSearchParams(location.search);
@@ -34,7 +16,6 @@ async function loadStoreItems({ signal } = {}) {
 		: await getProducts();
 
 	document.getElementById('product-list').append(...products.map(product => {
-		console.log(product);
 		const base = tmp.cloneNode(true).querySelector('.product-listing');
 		const sellerURL = new URL(location.pathname, location.origin);
 		const itemtype = new URL(product['@type' || 'Product'], base['@context'] || 'https://schema.org');
@@ -84,6 +65,7 @@ async function showProductDetails(id, { signal } = {}) {
 	const { resolve, promise } = getDeferred();
 	const tmp = document.getElementById('item-details-template').content.cloneNode(true);
 	const shareURL = new URL(location.href);
+
 	shareURL.hash = `#${id}`;
 	text('[itemprop="name"]', product.name, { base: tmp });
 	text('[itemprop="description"]', product.description, { base: tmp });
@@ -150,22 +132,11 @@ async function showProductDetails(id, { signal } = {}) {
 	await promise;
 }
 
-async function getCart({ signal } = {}) {
+async function getPaymentRequest({ signal } = {}) {
 	const cart = new Cart();
 	const url = new URL('/api/paymentRequest', document.baseURI);
 	url.searchParams.set('query', await cart.getQueryString({ signal }));
 	return await getJSON(url, { signal });
-}
-
-function toCurrency(num) {
-	return parseFloat(num.toFixed(2));
-}
-
-function getTotal({ displayItems = [], modifiers: { additionalDisplayItems = [] } = {}}) {
-	const total = [...displayItems, ...additionalDisplayItems]
-		.reduce((total, { amount: { value = 0 } = {}}) => total + value, 0);
-
-	return toCurrency(total);
 }
 
 if (location.pathname.startsWith('/store/checkout')) {
@@ -200,46 +171,12 @@ if (location.pathname.startsWith('/store/checkout')) {
 		}
 	} else {
 		Promise.all([
-			getCart(),
+			getPaymentRequest(),
 			getStripeKey(),
-		]).then(async ([displayItems, key]) => {
-			const req = {
-				details: {
-					displayItems,
-					modifiers: {
-						additionalDisplayItems: [{
-							label: 'Taxes',
-							amount: {
-								value: await calculateTaxes({ displayItems }),
-								currency,
-							}
-						}, {
-							label: 'Shipping',
-							amount: {
-								value: await calculateShipping({ displayItems }),
-								currency,
-							},
-						}]
-					}
-				},
-				options: {
-					requestShipping: true,
-				},
-				config: {
-					layout: 'accordion',
-				}
-			};
-
-			req.details.modifiers.additionalDisplayItems.push({
-				label: 'Processing Fee',
-				amount: {
-					value: await calculateCardFee(req),
-					currency,
-				}
-			});
-
+		]).then(async ([req, key]) => {
 			const clientSecret = await getSecret(req.details);
 			const form = new HTMLStripePaymentFormElement(key, clientSecret, req);
+
 			form.append(
 				create('header', {
 					slot: 'header',
