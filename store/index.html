@@ -25,6 +25,7 @@ stylesheets:
 	<p>Learn more <a href="/news/app/2022/12/13/wfd-store" class="btn btn-primary">here</a>
 </div>
 <section id="product-list" class="grid"></section>
+<br />
 <div class="flex row space-around">
 	<a href="/store/cart" role="button" class="btn btn-primary" id="checkout-btn">
 		<span>Continue to Checkout</span>
@@ -33,7 +34,7 @@ stylesheets:
 <template id="item-preview-template">
 	<div class="product-listing card shadow cursor-pointer" data-availability="" itemtype="" itemscope="">
 		<h3 itemprop="name" class="product-name font-title section-heading"></h3>
-		<img itemprop="image" class="product-img cursor-pointer" src="" loading="lazy" decoding="async" fetchpriority="auto" crossorigin="anonymous" referrerpolicy="no-referrer">
+		<img itemprop="image" class="product-img" src="" loading="lazy" decoding="async" fetchpriority="auto" crossorigin="anonymous" referrerpolicy="no-referrer">
 		<p itemprop="description" class="product-description"></p>
 		<div class="flex row product-offer" itemprop="offers" itemtype="https://schema.org/Offer" itemscope="">
 			<b class="product-price">
@@ -50,35 +51,71 @@ stylesheets:
 	</div>
 </template>
 <template id="item-details-template">
-	<div class="item-details" itemtype="https://schema.org/Product" itemscope="">
-		<button type="button" class="close-btn no-border">
+	<div class="item-details grid" itemtype="https://schema.org/Product" itemscope="">
+		<button type="button" class="btn btn-reject close-btn close-btn">
 			{% include common/icon.html icon="x" height=16 width=16 fill="currentColor" %}
 		</button>
-		<h3 itemprop="name"></h3>
+		<h3 class="item-details-name" itemprop="name"></h3>
 		<div></div>
-		<img src="" itemprop="image" alt="" loading="lazy" height="" width="" decoding="lazy" referrerpolicy="no-referrer" />
-		<blockquote itemprop="description"></blockquote>
-		<form>
+		<img src="" class="item-details-image" itemprop="image" alt="" loading="lazy" height="" width="" decoding="lazy" referrerpolicy="no-referrer" />
+		<p class="item-details-description" itemprop="description"></p>
+		<form class="item-details-form">
 			<input type="hidden" name="id" required="" />
 			<div>
 				<label for="item-qty">Quantity</label>
 				<input type="number" id="item-qty" name="quantity" min="1" max="5" value="1" placeholder="##" />
 			</div>
-			<div>
+			<div hidden="">
 				<label for="item-offers">Offers</label>
 				<select name="offer" id="item-offers" required=""></select>
 			</div>
-			<div class="item-details-btns flex space-evenly">
-				<button type="submit" class="btn btn-accept">
+			<div class="item-details-btns center">
+				<button type="submit" class="btn btn-accept grow-2">
+					{% include common/icon.html icon="cart" width=18 height=18 fill="currentColor" %}
 					<span>Add to Cart</button>
 				</button>
-				<button type="button" class="btn btn-reject close-btn">
-					<span>Close</span>
-				</button>
-				<button type="button" class="btn btn-primary" data-title="" data-url="" data-text="">
-					<span>Share</span>
-				</button>
+				<br />
+				<div class="flex row wrap space-evenly">
+					<br />
+					<button type="button" class="btn btn-reject close-btn">
+						{% include common/icon.html icon="x" width=18 height=18 fill="currentColor" %}
+						<span>Close</span>
+					</button>
+					<button type="button" class="btn btn-primary" data-title="" data-url="" data-text="">
+						{% include common/icon.html icon="public-share" width=18 height=18 fill="currentColor" %}
+						<span>Share</span>
+					</button>
+				</div>
 			</div>
 		</form>
+		<div class="item-details-seller" itemprop="manufacturer" itemscope="https://schema.org/LocalBusiness" itemscope="">
+			<h4 itemprop="name" class="seller-name"></h4>
+			<div class="seller-contact">
+				<a href="tel:" itemprop="telephone" class="block">
+					{% include common/icon.html icon="call-start" width=16 height=16 fill="currentColor" %}
+					<span class="link-text">555-555-5555</span>
+				</a>
+				<a href="mailto:" itemprop="email" class="block">
+					{% include common/icon.html icon="link-external" width=16 height=16 fill="currentColor" %}
+					<span class="link-text">user@example.com</span>
+				</a>
+				<a href="https://" itemprop="url" rel="noreferrer noopener external" class="block">
+					{% include common/icon.html icon="mail" height=16 width=16 fill="currentColor" %}
+					<span class="link-text">example.com</span>
+				</a>
+			</div>
+			<div class="seller-same-as">
+				<a href="https://www.facebook.com" itemprop="sameAs" rel="noreferrer noopener external" title="Facebook">
+					{% include common/icon.html icon="facebook" height="24" width="24" %}
+				</a>
+				<a href="https://www.instagram.com" itemprop="sameAs" rel="noreferrer noopener external" title="Instagram">
+					<!-- {% include common/icon.html icon="facebook" height="24" width="24" %} -->
+					<img src="https://cdn.kernvalley.us/img/logos/instagram.svg" width="24" height="24" loading="lazy" decoding="async" referrerpolicy="no-referrer" crossorigin="anonymous" alt="" />
+				</a>
+				<a href="https://twitter.com" itemprop="sameAs" rel="noreferrer noopener external" title="Twitter">
+					{% include common/icon.html icon="twitter" height="24" width="24" %}
+				</a>
+			</div>
+		</div>
 	</div>
 </template>

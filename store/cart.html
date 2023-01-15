@@ -4,13 +4,26 @@ layout: default
 permalink: /store/cart
 robots: nofollow,noindex
 description: Inventory in Cart for WhiskeyFlatDays.com Store
+pinned: true
+index: false
+tags:
+  - store
+  - souvenir
+  - whiskey flat days
+  - kernville
+stylesheets:
+  - href: /css/store.css
+    media: all
+    referrerPolicy: no-referrer
 ---
-<section id="cart-container"></section>
+<section id="cart-container" class="grid cart-review"></section>
 <div class="cart-btns flex row wrap space-evenly">
-	<a href="/store/checkout" role="button" class="btn btn-primary">
-		<span>Checkout</span>
-	</a>
-	<a href="/store/" class="btn btn-primary">
+	<a href="/store/" class="btn btn-primary" accesskey=",">
+		{% include common/icon.html icon="go-previous" height=18 width=18 fill="currentColor" %}
 		<span>Back to Shopping</span>
+	</a>
+	<a href="/store/checkout" role="button" class="btn btn-primary" accesskey=".">
+		<span>Continue to Checkout</span>
+		{% include common/icon.html icon="go-next" height=18 width=18 fill="currentColor" %}
 	</a>
 </div>

@@ -1,3 +1,55 @@
+#cart-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(450px, 22rem));
+	justify-content: center;
+	gap: 12px;
+	margin: 18px;
+}
+
+#cart-container .cart-item-listing {
+	display: grid;
+	gap: 10px;
+	grid-template-areas: "image name"
+	"image description"
+	"details details"
+	"btns btns";
+	grid-template-columns: 202px 1fr;
+	grid-template-rows: 3rem calc(202px - 3rem) auto auto;
+}
+
+#cart-container .cart-item-name {
+	grid-area: name;
+}
+
+#cart-container .cart-item-image {
+	grid-area: image;
+	border-radius: 6px;
+	object-fit: cover;
+	width: 202px;
+	height: 202px;
+}
+
+#cart-container .cart-item-description {
+	grid-area: description;
+}
+
+#cart-container .cart-item-details {
+	grid-area: details;
+	justify-content: space-evenly;
+	align-items: flex-start;
+	vertical-align: top;
+	padding: 6px;
+}
+
+#cart-container input[type="number"] {
+	width: 3em;
+	border: none;
+}
+
+#cart-container .cart-btns {
+	grid-area: btns;
+}
+
 #product-list {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(450px, 22rem));
@@ -5,9 +57,45 @@
 	gap: 12px;
 }
 
-a.btn[role="button"] {
+.item-details {
+	grid-template-areas: "name close"
+		"image image"
+		"description description"
+		"form form"
+		"seller seller";
+	grid-template-columns: 1fr 2em;
+	gap: 8px;
+	max-width: 350px;
+}
+
+.item-details .close-btn {
+	grid-area: close;
+}
+
+.item-details .item-details-name {
+	grid-area: name;
+}
+
+.item-details .item-details-image {
+	grid-area: image;
+}
+
+.item-details .item-details-description {
+	grid-area: description;
+}
+
+.item-details .item-details-form {
+	grid-area: form;
+	line-height: 2;
+}
+
+.item-details .item-details-seller {
+	grid-area: seller;
+}
+
+a.btn[role="button"]:not(.disabled) {
 	text-decoration: none;
-	color: var(--button-color);
+	color: var(--button-primary-color);
 }
 
 .cart-qty-input {
@@ -64,3 +152,22 @@ a.btn[role="button"] {
 		grid-template-columns: 1fr;
 	}
 }
+
+@media (max-width: 500px) {
+	#cart-container {
+		grid-template-columns: repeat(auto-fit, 100%);
+		max-width: 100%;
+	}
+
+	#cart-container .cart-item-listing {
+		grid-template-areas: "name" "image" "description" "details" "btns";
+		grid-template-columns: auto;
+		grid-template-rows: 3rem 1fr auto;
+	}
+
+	#cart-container .cart-item-image {
+		width: 100%;
+		height: auto;
+	}
+}
+

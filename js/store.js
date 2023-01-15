@@ -1,9 +1,11 @@
 import { HTMLStripePaymentFormElement } from 'https://cdn.kernvalley.us/components/stripe/payment-form.js';
-import { on, create, value, text, attr, data, disable } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
+import { on, create, value, text, attr, data, disable, each } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
 import { getStripeKey, getSecret } from './stripe.js';
 import { getJSON } from 'https://cdn.kernvalley.us/js/std-js/http.js';
 import { createImage } from 'https://cdn.kernvalley.us/js/std-js/elements.js';
 import { Cart } from './Cart.js';
+import { clamp } from 'https://cdn.kernvalley.us/js/std-js/math.js';
+import { confirm } from 'https://cdn.kernvalley.us/js/std-js/asyncDialog.js';
 import { getDeferred } from 'https://cdn.kernvalley.us/js/std-js/promises.js';
 
 const getProducts = (() => getJSON('/store/products.json')).once();
@@ -31,8 +33,7 @@ async function loadStoreItems({ signal } = {}) {
 		text('[itemprop="price"]', product.offers[0].price, { base });
 
 		on(base, 'click', async ({ target, currentTarget }) => {
-			if (! (target.closest('img, a, button') instanceof HTMLElement)) {
-				console.log({ target, currentTarget });
+			if (! (target.closest('a, button, summary') instanceof HTMLElement)) {
 				event.preventDefault();
 				await showProductDetails(currentTarget.id);
 			}
@@ -63,14 +64,56 @@ async function showProductDetails(id, { signal } = {}) {
 	]);
 
 	const { resolve, promise } = getDeferred();
+	const seller = product.manufacturer;
 	const tmp = document.getElementById('item-details-template').content.cloneNode(true);
 	const shareURL = new URL(location.href);
 
 	shareURL.hash = `#${id}`;
-	text('[itemprop="name"]', product.name, { base: tmp });
+	text('.item-details-name[itemprop="name"]', product.name, { base: tmp });
 	text('[itemprop="description"]', product.description, { base: tmp });
+	text('.seller-name[itemprop="name"]', seller.name, { base: tmp });
+
+	if (Array.isArray(seller.sameAs)) {
+		each(tmp.querySelectorAll('[itemprop="sameAs"]'), el => {
+			const link = seller.sameAs.find(url => url.startsWith(el.href));
+
+			if (typeof link === 'string') {
+				el.href = link;
+			} else {
+				el.remove();
+			}
+		});
+	} else {
+		each(tmp.querySelectorAll('[itemprop="sameAs"]'), el => el.remove());
+	}
+
+	if (typeof seller.url === 'string') {
+		const el = tmp.querySelector('[itemprop="url"]');
+		el.href = seller.url;
+		text('.link-text', new URL(seller.url).hostname, { base: el });
+	} else {
+		tmp.querySelector('[itemprop="url"]').remove();
+	}
+
+	if (typeof seller.email === 'string') {
+		const el = tmp.querySelector('[itemprop="email"]');
+		el.href = `mailto:${seller.email}`;
+		text('.link-text', seller.email, { base: el });
+	} else {
+		tmp.querySelector('[itemprop="email"]').remove();
+	}
+
+	if (typeof seller.telephone === 'string') {
+		const el = tmp.querySelector('[itemprop="telephone"]');
+		el.href = `tel:${seller.telephone}`;
+		text('.link-text', seller.telephone.replace('+1-',''), { base: el });
+	} else {
+		tmp.querySelector('[itemprop="telephone"]').remove();
+	}
+
 	on(tmp.querySelector('form'), 'submit', async event => {
 		event.preventDefault();
+
 		try {
 			const data = new FormData(event.target);
 			await cart.add({
@@ -80,6 +123,10 @@ async function showProductDetails(id, { signal } = {}) {
 			});
 
 			event.target.closest('dialog').close();
+
+			if (await confirm('Continue to Checkout Page')) {
+				location.href = '/store/cart';
+			}
 		} catch(err) {
 			console.error(err);
 		}
@@ -233,23 +280,49 @@ if (location.pathname.startsWith('/store/checkout')) {
 					classList: ['card', 'shadow', 'cart-item-listing'],
 					dataset: { id, offer, quantity, price },
 					children: [
-						create('h3', { text: product.name }),
+						create('h3', { text: product.name, classList: ['cart-item-name'] }),
+						createImage(product.image, { loading: 'lazy', classList: ['cart-item-image'] }),
+						create('p', { text: product.description, classList: ['cart-item-description'] }),
 						create('div', {
+							classList: ['cart-item-details', 'flex','row', 'wrap'],
 							children: [
-								create('b', { text: 'Price: ' }),
-								create('span', { text: '$' + price.toFixed(2) })
-							]
-						}),
-						create('div', {
-							children: [
-								create('b', { text: 'Quantity: ' }),
-								create('span', { text: quantity.toString() })
-							]
-						}),
-						create('div', {
-							children: [
-								create('b', { text: 'Total: ' }),
-								create('span', { text: '$' + (price * quantity).toFixed(2) })
+								create('div', {
+									classList: ['cart-item-price'],
+									children: [
+										create('b', { text: 'Price: ' }),
+										create('span', { text: '$' + price.toFixed(2) })
+									]
+								}),
+								create('label', {
+									children: [
+										create('b', { text: 'Quantity: ' }),
+										create('input', {
+											dataset: { id, offer },
+											value: quantity,
+											type: 'number',
+											required: true,
+											min: 0,
+											max: 5,
+											events: {
+												change: async ({ target }) => {
+													const item = {
+														id: target.dataset.id,
+														quantity: clamp(target.min, target.valueAsNumber, target.max),
+														offer: target.dataset.offer,
+													};
+
+													await cart.add(item);
+												}
+											}
+										})
+									]
+								}),
+								create('div', {
+									children: [
+										create('b', { text: 'Total: ' }),
+										create('span', { text: '$' + (price * quantity).toFixed(2) })
+									]
+								}),
 							]
 						}),
 						create('div', {
@@ -277,31 +350,6 @@ if (location.pathname.startsWith('/store/checkout')) {
 	});
 } else if(location.pathname === '/store/') {
 	loadStoreItems().then(() => {
-		on('.product-listing .product-img', 'click', ({ target }) => {
-			const dialog = create('dialog', {
-				events: { close: ({ target }) => target.remove() },
-				children: [
-					create('div', {
-						classList: ['center'],
-						children: [target.cloneNode()],
-					}),
-					create('div', {
-						classList: ['center'],
-						children: [
-							create('button', {
-								classList: ['btn', 'btn-reject'],
-								text: 'Close',
-								events: { click: ({ target }) => target.closest('dialog').close() },
-							}),
-						]
-					})
-				],
-			});
-
-			document.body.append(dialog);
-			dialog.showModal();
-		});
-
 		if (location.hash.length === 37) {
 			showProductDetails(location.hash.substr(1));
 		}
