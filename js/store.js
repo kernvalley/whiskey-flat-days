@@ -8,10 +8,14 @@ import { getDeferred } from 'https://cdn.kernvalley.us/js/std-js/promises.js';
 
 const currency = 'USD';
 const taxRate = 0.0725;
+const stripeRate = 0.03;
+const stripeFlatCharge = 0.35;
 const getProducts = (() => getJSON('/store/products.json')).once();
 
 async function calculateCardFee(req) {
-	return toCurrency(getTotal(req) * 0.03 + 0.35);
+	const total = getTotal(req.details);
+	const fee = toCurrency((total * stripeRate) + stripeFlatCharge);
+	return fee;
 }
 
 async function calculateTaxes(req) {
