@@ -135,10 +135,10 @@
 
 .item-details {
 	grid-template-areas: "name close"
-		"image image"
-		"description description"
-		"seller seller"
-		"form form";
+	"image image"
+	"description description"
+	"seller seller"
+	"form form";
 	grid-template-columns: 1fr 2em;
 	gap: 8px;
 	max-width: 350px;
