@@ -16,21 +16,25 @@ stylesheets:
     referrerPolicy: no-referrer
 ---
 <h2 class="center font-title section-heading">Whiskey Flat Days Store</h2>
-<div class="status-box info">
+<!--<div class="status-box info">
 	<h3 class="center font-title section-heading">Coming Soon</h3>
 	<p>The WFD App is adding an online store for local vendors to be able to
 		sell their goods to a wide audience of interested people. It will also
 		provide visitors of WhiskeyFlatDays.com the ability to purchase souvenirs,
 		clothing, etc. before, during, and after Whiskey Flat Days weekend.</p>
 	<p>Learn more <a href="/news/app/2022/12/13/wfd-store" class="btn btn-primary">here</a>
-</div>
-<section id="product-list" class="grid"></section>
+</div>-->
+<section id="product-container"></div>
+	<div id="product-list" class="grid"></div>
+</section>
 <br />
 <div class="flex row space-around">
 	<button type="button" class="btn btn-primary" id="checkout-btn">
 		<span>Continue to Checkout</span>
 	</button>
 </div>
+<main id="main">
+</main>
 <template id="item-preview-template">
 	<div class="product-listing card shadow cursor-pointer" data-availability="" itemtype="" itemscope="">
 		<h3 itemprop="name" class="product-name font-title section-heading"></h3>
@@ -59,6 +63,15 @@ stylesheets:
 		<div></div>
 		<img src="" class="item-details-image" itemprop="image" alt="" loading="lazy" height="" width="" decoding="lazy" referrerpolicy="no-referrer" />
 		<p class="item-details-description" itemprop="description"></p>
+		<div class="item-details-seller" itemprop="manufacturer" itemscope="https://schema.org/LocalBusiness" itemscope="">
+			<h4>
+				<b>Sold By</b>
+				<a class="seller-link color-inherit">
+					<span itemprop="name" class="seller-name"></span>
+					{% include common/icon.html icon="link" height=16 width=16 fill="currentColor" %}
+				</a>
+			</h4>
+		</div>
 		<form class="item-details-form">
 			<input type="hidden" name="id" required="" />
 			<div>
@@ -88,34 +101,41 @@ stylesheets:
 				</div>
 			</div>
 		</form>
-		<div class="item-details-seller" itemprop="manufacturer" itemscope="https://schema.org/LocalBusiness" itemscope="">
-			<h4 itemprop="name" class="seller-name"></h4>
-			<div class="seller-contact">
-				<a href="tel:" itemprop="telephone" class="block">
-					{% include common/icon.html icon="call-start" width=16 height=16 fill="currentColor" %}
-					<span class="link-text">555-555-5555</span>
-				</a>
-				<a href="mailto:" itemprop="email" class="block">
-					{% include common/icon.html icon="link-external" width=16 height=16 fill="currentColor" %}
-					<span class="link-text">user@example.com</span>
-				</a>
-				<a href="https://" itemprop="url" rel="noreferrer noopener external" class="block">
-					{% include common/icon.html icon="mail" height=16 width=16 fill="currentColor" %}
-					<span class="link-text">example.com</span>
-				</a>
-			</div>
-			<div class="seller-same-as">
-				<a href="https://www.facebook.com" itemprop="sameAs" rel="noreferrer noopener external" title="Facebook">
-					{% include common/icon.html icon="facebook" height="24" width="24" %}
-				</a>
-				<a href="https://www.instagram.com" itemprop="sameAs" rel="noreferrer noopener external" title="Instagram">
-					<!-- {% include common/icon.html icon="facebook" height="24" width="24" %} -->
-					<img src="https://cdn.kernvalley.us/img/logos/instagram.svg" width="24" height="24" loading="lazy" decoding="async" referrerpolicy="no-referrer" crossorigin="anonymous" alt="" />
-				</a>
-				<a href="https://twitter.com" itemprop="sameAs" rel="noreferrer noopener external" title="Twitter">
-					{% include common/icon.html icon="twitter" height="24" width="24" %}
-				</a>
-			</div>
-		</div>
 	</div>
+</template>
+<template id="seller-template">
+	<header class="item-details-seller grid" itemprop="manufacturer" itemscope="https://schema.org/LocalBusiness" itemscope="">
+		<img src="https://cdn.kernvalley.us/img/raster/missing-image.png" class="seller-img" loading="lazy" crossoigin="anonymous" referrerpolicy="no-referrer" width="200" itemprop="image" alt="" />
+		<h2 itemprop="name" class="seller-name"></h2>
+		<p itemprop="description" class="seller-description">No description available.</p>
+		<div class="seller-contact">
+			<a href="tel:" itemprop="telephone" class="block color-inherit">
+				{% include common/icon.html icon="call-start" width=16 height=16 fill="currentColor" %}
+				<span class="link-text">555-555-5555</span>
+			</a>
+			<a href="mailto:" itemprop="email" class="block color-inherit">
+				{% include common/icon.html icon="link-external" width=16 height=16 fill="currentColor" %}
+				<span class="link-text">user@example.com</span>
+			</a>
+			<a href="https://" itemprop="url" rel="noreferrer noopener external" class="block color-inherit">
+				{% include common/icon.html icon="mail" height=16 width=16 fill="currentColor" %}
+				<span class="link-text">example.com</span>
+			</a>
+		</div>
+		<div class="seller-same-as">
+			<a href="https://www.facebook.com" itemprop="sameAs" rel="noreferrer noopener external" title="Facebook">
+				{% include common/icon.html icon="facebook" height="24" width="24" %}
+			</a>
+			<a href="https://www.instagram.com" itemprop="sameAs" rel="noreferrer noopener external" title="Instagram">
+				<!-- {% include common/icon.html icon="facebook" height="24" width="24" %} -->
+				<img src="https://cdn.kernvalley.us/img/logos/instagram.svg" class="icon" width="24" height="24" loading="lazy" decoding="async" referrerpolicy="no-referrer" crossorigin="anonymous" alt="" />
+			</a>
+			<a href="https://twitter.com" itemprop="sameAs" rel="noreferrer noopener external" title="Twitter">
+				{% include common/icon.html icon="twitter" height="24" width="24" %}
+			</a>
+		</div>
+		<div class="seller-details">
+		</div>
+		<div class="clearfix"></div>
+	</header>
 </template>

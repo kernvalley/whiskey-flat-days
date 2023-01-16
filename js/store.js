@@ -9,10 +9,15 @@ import { getDeferred } from 'https://cdn.kernvalley.us/js/std-js/promises.js';
 
 const getProducts = (() => getJSON('/store/products.json')).once();
 
+function getItemType({ '@type': type = 'Thing', '@context': context = 'https://schema.org' }) {
+	return new URL(type, context).href;
+}
+
 async function loadStoreItems({ signal } = {}) {
 	const params = new URLSearchParams(location.search);
+	const hasSeller = params.has('seller');
 	const tmp = document.getElementById('item-preview-template').content;
-	const products = params.has('seller')
+	const products = hasSeller
 		? await getSellerProducts(params.get('seller'),{ signal })
 		: await getProducts();
 
@@ -40,6 +45,74 @@ async function loadStoreItems({ signal } = {}) {
 
 		return base;
 	}));
+
+	if (hasSeller) {
+		document.getElementById('product-container').prepend(await getSeller(products[0].manufacturer));
+	}
+}
+
+async function getSeller(seller) {
+	const tmp = document.getElementById('seller-template').content.cloneNode(true);
+	const base = tmp.querySelector('.item-details-seller');
+	document.title = `${seller.name} | Whiskey Flat Days`;
+	base.id = seller['@identifier'];
+	attr(base, { itemtype: getItemType(seller) });
+	text('[itemprop="name"]', seller.name, { base: tmp });
+	document.querySelector('#nav .current-link').classList.remove('current-link', 'no-pointer-events');
+
+	if (typeof seller.description === 'string') {
+		text('[itemprop="description"]', seller.descrition, { base: tmp });
+	}
+
+	if (Array.isArray(seller.sameAs)) {
+		each(tmp.querySelectorAll('[itemprop="sameAs"]'), el => {
+			const link = seller.sameAs.find(url => url.startsWith(el.href));
+
+			if (typeof link === 'string') {
+				el.href = link;
+			} else {
+				el.remove();
+			}
+		});
+	} else {
+		each(tmp.querySelectorAll('[itemprop="sameAs"]'), el => el.remove());
+	}
+
+	if (typeof seller.url === 'string') {
+		const el = tmp.querySelector('[itemprop="url"]');
+		el.href = seller.url;
+		text('.link-text', new URL(seller.url).hostname, { base: el });
+	} else {
+		tmp.querySelector('[itemprop="url"]').remove();
+	}
+
+	if (typeof seller.image === 'string') {
+		attr('.seller-image', { src: seller.image }, { base });
+	} else if (typeof seller.image === 'object' && ! Object.is(seller.image, null)) {
+		attr('.seller-image', {
+			src: seller.image.url,
+			width: seller.image.width,
+			height: seller.image.height,
+		}, { base });
+	}
+
+	if (typeof seller.email === 'string') {
+		const el = tmp.querySelector('[itemprop="email"]');
+		el.href = `mailto:${seller.email}`;
+		text('.link-text', seller.email, { base: el });
+	} else {
+		tmp.querySelector('[itemprop="email"]').remove();
+	}
+
+	if (typeof seller.telephone === 'string') {
+		const el = tmp.querySelector('[itemprop="telephone"]');
+		el.href = `tel:${seller.telephone}`;
+		text('.link-text', seller.telephone.replace('+1-',''), { base: el });
+	} else {
+		tmp.querySelector('[itemprop="telephone"]').remove();
+	}
+
+	return tmp;
 }
 
 async function getProductDetails(id, { signal } = {}) {
@@ -66,11 +139,14 @@ async function showProductDetails(id, { signal } = {}) {
 	const seller = product.manufacturer;
 	const tmp = document.getElementById('item-details-template').content.cloneNode(true);
 	const shareURL = new URL(location.href);
+	const sellerLink = new URL(location.pathname, location.origin);
+	sellerLink.searchParams.set('seller', seller['@identifier']);
 
 	shareURL.hash = `#${id}`;
 	text('.item-details-name[itemprop="name"]', product.name, { base: tmp });
 	text('[itemprop="description"]', product.description, { base: tmp });
 	text('.seller-name[itemprop="name"]', seller.name, { base: tmp });
+	attr('.seller-link', { href: sellerLink }, { base: tmp });
 
 	if (Array.isArray(seller.sameAs)) {
 		each(tmp.querySelectorAll('[itemprop="sameAs"]'), el => {
@@ -84,30 +160,6 @@ async function showProductDetails(id, { signal } = {}) {
 		});
 	} else {
 		each(tmp.querySelectorAll('[itemprop="sameAs"]'), el => el.remove());
-	}
-
-	if (typeof seller.url === 'string') {
-		const el = tmp.querySelector('[itemprop="url"]');
-		el.href = seller.url;
-		text('.link-text', new URL(seller.url).hostname, { base: el });
-	} else {
-		tmp.querySelector('[itemprop="url"]').remove();
-	}
-
-	if (typeof seller.email === 'string') {
-		const el = tmp.querySelector('[itemprop="email"]');
-		el.href = `mailto:${seller.email}`;
-		text('.link-text', seller.email, { base: el });
-	} else {
-		tmp.querySelector('[itemprop="email"]').remove();
-	}
-
-	if (typeof seller.telephone === 'string') {
-		const el = tmp.querySelector('[itemprop="telephone"]');
-		el.href = `tel:${seller.telephone}`;
-		text('.link-text', seller.telephone.replace('+1-',''), { base: el });
-	} else {
-		tmp.querySelector('[itemprop="telephone"]').remove();
 	}
 
 	on(tmp.querySelector('form'), 'submit', async event => {
@@ -198,6 +250,18 @@ async function reviewCart(cart, { signal } = {}) {
 		}},
 		classList: ['cart-dialog'],
 		children: [
+			create('div', {
+				classList: ['float', 'top', 'clearfix'],
+				children: [
+					create('button', {
+						type: 'button',
+						classList: ['btn', 'btn-reject', 'float-right'],
+						events: { click: ({ target }) => target.closest('dialog').close() },
+						text: 'X',
+						title: 'Close',
+					})
+				]
+			}),
 			create('section', {
 				id: 'cart-container',
 				classList: ['grid', 'cart-review'],
@@ -279,7 +343,7 @@ async function reviewCart(cart, { signal } = {}) {
 					} else {
 						return '';
 					}
-				})
+				}),
 			}),
 			create('div', {
 				classList: ['cart-btns', 'flex', 'row', 'wrap', 'space-evenly'],
