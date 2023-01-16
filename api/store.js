@@ -2,8 +2,8 @@
 const PRODUCTS_FILE = './_data/store.yml';
 const allowedAvailibility = ['InStock'];
 
-function isAvailable({ offers: { availability = 'InStock' }}) {
-	return allowedAvailibility.includes(availability);
+function isAvailable({ offers }) {
+	return offers.some(({ availability }) => allowedAvailibility.includes(availability));
 }
 
 async function getProducts(query = null, { signal } = {}) {
