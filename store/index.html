@@ -16,58 +16,135 @@ stylesheets:
     referrerPolicy: no-referrer
 ---
 <h2 class="center font-title section-heading">Whiskey Flat Days Store</h2>
-<div class="status-box info">
+<!--<div class="status-box info">
 	<h3 class="center font-title section-heading">Coming Soon</h3>
 	<p>The WFD App is adding an online store for local vendors to be able to
 		sell their goods to a wide audience of interested people. It will also
 		provide visitors of WhiskeyFlatDays.com the ability to purchase souvenirs,
 		clothing, etc. before, during, and after Whiskey Flat Days weekend.</p>
 	<p>Learn more <a href="/news/app/2022/12/13/wfd-store" class="btn btn-primary">here</a>
+</div>-->
+<section id="product-container"></div>
+	<div id="product-list" class="grid"></div>
+</section>
+<br />
+<div class="flex row space-around">
+	<button type="button" class="btn btn-primary" id="checkout-btn">
+		<span>Continue to Checkout</span>
+	</button>
 </div>
-<section id="product-list" class="grid">
-	{% for item in site.data.store.products %}
-		{% assign offer = item.offers[0] %}
-		<div id="{{ item['@identifier'] }}" class="product-listing card shadow" data-availability="{{ offer.availability | default: 'OutOfStock' }}" itemtype="https://schema.org/{{ item['@type'] | default: 'Product' }}" itemscope="">
-			<h3 itemprop="name" class="product-name font-title section-heading">{{ item.name }}</h3>
-			<img itemprop="image" class="product-img cursor-pointer" src="{{ item.image }}" loading="lazy" decoding="async" fetchpriority="auto" crossorigin="anonymous" referrerpolicy="no-referrer" />
-			<p itemprop="description" class="product-description">{{ item.description }}</p>
-			<div class="flex row product-offer"  itemprop="offers" itemtype="https://schema.org/Offer" itemscope="">
-				<b class="product-price">
-					<meta itemprop="priceCurrency" content="{{ offer.priceCurrency | default: 'USD' }}" />
-					<meta itemprop="availability" content="{{ offer.availability | default: 'OutOfStock' }} ">
-					<span class="price-currency">$</span><span class="price-value" itemprop="price">{{ offer.price }}</span>
-				</b>
-				<div class="center">
-					{% case offer.availability %}
-						{% when 'InStock' %}
-							<button type="button" class="btn btn-primary add-to-cart" data-product="{{ item['@identifier'] }}" data-offer="{{ offer['@identifier'] }}">
-								{% include common/icon.html icon="cart" height="16" width="16" fill="currentColor" %}
-								<span>Add to Cart</span>
-							</button>
-						{% when 'OutOfStock' %}
-							<button type="button" class="btn btn-primary add-to-cart" disabled="">
-								{% include common/icon.html icon="cart" height="16" width="16" fill="currentColor" %}
-								<span>Out of Stock</span>
-							</button>
-						{% when 'SoldOut' %}
-							<button type="button" class="btn btn-primary add-to-cart" disabled="">
-								{% include common/icon.html icon="cart" height="16" width="16" fill="currentColor" %}
-								<span>Sold Out</span>
-							</button>
-					{% endcase %}
+<template id="item-preview-template">
+	<div class="product-listing card shadow cursor-pointer" data-availability="" itemtype="" itemscope="">
+		<h3 itemprop="name" class="product-name font-title section-heading"></h3>
+		<img itemprop="image" class="product-img" src="" loading="lazy" decoding="async" fetchpriority="auto" crossorigin="anonymous" referrerpolicy="no-referrer">
+		<p itemprop="description" class="product-description"></p>
+		<div class="flex row product-offer" itemprop="offers" itemtype="https://schema.org/Offer" itemscope="">
+			<b class="product-price">
+				<span itemprop="availability" content="">In Stock</span>
+				<span class="price-currency" itemprop="priceCurrency" content="">$</span><span class="price-value" itemprop="price"></span>
+			</b>
+		</div>
+		<div class="product-seller" itemprop="manufacturer" itemtype="https://schema.org/LocalBusiness" itemscope="">
+			<span>Sold By:</span>
+			<a href="" itemprop="url">
+				<span itemprop="name" class="seller-name"></span>
+			</a>
+		</div>
+	</div>
+</template>
+<template id="item-details-template">
+	<div class="item-details grid" itemtype="https://schema.org/Product" itemscope="">
+		<button type="button" class="btn btn-reject close-btn close-btn">
+			{% include common/icon.html icon="x" height=16 width=16 fill="currentColor" %}
+		</button>
+		<h3 class="item-details-name" itemprop="name"></h3>
+		<div></div>
+		<img src="" class="item-details-image" itemprop="image" alt="" loading="lazy" height="" width="" decoding="lazy" referrerpolicy="no-referrer" />
+		<p class="item-details-description" itemprop="description"></p>
+		<div class="item-details-seller" itemprop="manufacturer" itemscope="https://schema.org/LocalBusiness" itemscope="">
+			<h4>
+				<b>Sold By</b>
+				<a class="seller-link color-inherit">
+					<span itemprop="name" class="seller-name"></span>
+					{% include common/icon.html icon="link" height=16 width=16 fill="currentColor" %}
+				</a>
+			</h4>
+		</div>
+		<form class="item-details-form">
+			<input type="hidden" name="id" required="" />
+			<div class="item-details-availability">
+				<div>
+					<b>Availability:</b>
+					<span itemprop="availability" content="">Out of Stock</span>
+				</div>
+				<div class="item-details-price" itemprop="offers" itemtype="https://schema.org/Offer">
+					<b>Price:</b>
+					<meta itemprop="priceCurrency" content="USD" .>
+					<span class="currency-symbol">$</span><span itemprop="price">0.00</span>
 				</div>
 			</div>
-			<div class="product-seller" itemprop="manufacturer" itemtype="https://schema.org/{{ item.manufacturer['@type'] | default: 'LocalBusiness' }}" itemscope="">
-				<span>Sold By:</span>
-				{% if item.manufacturer.url %}
-					<a itemprop="url" href="{{ item.manufacturer.url }}" rel="noopener noreferrer external">
-						<span itemprop="name" class="seller-name">{{ item.manufacturer.name }}</span>
-						{% include common/icon.html icon="link-external" height="16" width="16" fill="currentColor" %}
-					</a>
-				{% else %}
-					<span itemprop="name" class="seller-name">{{ item.manufacturer.name }}</span>
-				{% endif %}
+			<div>
+				<label for="item-qty">Quantity</label>
+				<input type="number" id="item-qty" name="quantity" min="1" max="5" value="1" placeholder="##" />
 			</div>
+			<div hidden="">
+				<label for="item-offers">Offers</label>
+				<select name="offer" id="item-offers" required=""></select>
+			</div>
+			<div class="item-details-btns center">
+				<button type="submit" class="btn btn-accept grow-2">
+					{% include common/icon.html icon="cart" width=18 height=18 fill="currentColor" %}
+					<span>Add to Cart</button>
+				</button>
+				<br />
+				<div class="flex row wrap space-evenly">
+					<br />
+					<button type="button" class="btn btn-reject close-btn">
+						{% include common/icon.html icon="x" width=18 height=18 fill="currentColor" %}
+						<span>Close</span>
+					</button>
+					<button type="button" class="btn btn-primary" data-title="" data-url="" data-text="">
+						{% include common/icon.html icon="public-share" width=18 height=18 fill="currentColor" %}
+						<span>Share</span>
+					</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</template>
+<template id="seller-template">
+	<header class="item-details-seller grid card shadow" itemprop="manufacturer" itemscope="https://schema.org/LocalBusiness" itemscope="">
+		<img src="https://cdn.kernvalley.us/img/raster/missing-image.png" class="seller-img" loading="lazy" crossoigin="anonymous" referrerpolicy="no-referrer" width="200" itemprop="image" alt="" />
+		<h2 itemprop="name" class="seller-name"></h2>
+		<p itemprop="description" class="seller-description">No description available.</p>
+		<div class="seller-contact">
+			<a href="tel:" itemprop="telephone" class="block color-inherit">
+				{% include common/icon.html icon="call-start" width=16 height=16 fill="currentColor" %}
+				<span class="link-text">555-555-5555</span>
+			</a>
+			<a href="mailto:" itemprop="email" class="block color-inherit">
+				{% include common/icon.html icon="link-external" width=16 height=16 fill="currentColor" %}
+				<span class="link-text">user@example.com</span>
+			</a>
+			<a href="https://" itemprop="url" rel="noreferrer noopener external" class="block color-inherit">
+				{% include common/icon.html icon="mail" height=16 width=16 fill="currentColor" %}
+				<span class="link-text">example.com</span>
+			</a>
 		</div>
-	{% endfor %}
-</section>
+		<div class="seller-same-as">
+			<a href="https://www.facebook.com" itemprop="sameAs" rel="noreferrer noopener external" title="Facebook">
+				{% include common/icon.html icon="facebook" height="24" width="24" %}
+			</a>
+			<a href="https://www.instagram.com" itemprop="sameAs" rel="noreferrer noopener external" title="Instagram">
+				<!-- {% include common/icon.html icon="facebook" height="24" width="24" %} -->
+				<img src="https://cdn.kernvalley.us/img/logos/instagram.svg" class="icon" width="24" height="24" loading="lazy" decoding="async" referrerpolicy="no-referrer" crossorigin="anonymous" alt="" />
+			</a>
+			<a href="https://twitter.com" itemprop="sameAs" rel="noreferrer noopener external" title="Twitter">
+				{% include common/icon.html icon="twitter" height="24" width="24" %}
+			</a>
+		</div>
+		<div class="seller-details">
+		</div>
+		<div class="clearfix"></div>
+	</header>
+</template>

@@ -9,3 +9,5 @@
   publish = "./_site"
   command = "npm run serve:dev"
   targetPort = 4000
+[functions]
+  included_files = ["_data/*.yml"]

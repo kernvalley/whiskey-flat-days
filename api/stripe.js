@@ -1,8 +1,19 @@
 /* eslint-env node */
 const methods = ['GET', 'POST', 'OPTIONS'];
 
-async function calculateOrderAmount(items) {
-	return 100 * items.length;
+function toCurrency(num) {
+	return parseFloat(num.toFixed(2));
+}
+
+function getTotal({ displayItems = [], modifiers: { additionalDisplayItems = [] } = {}}) {
+	const total = [...displayItems, ...additionalDisplayItems]
+		.reduce((total, { amount: { value = 0 } = {}}) => total + value, 0);
+
+	return toCurrency(total);
+}
+
+async function calculateOrderAmount(req) {
+	return parseInt(getTotal(req) * 100);
 }
 
 exports.handler = async function handler(event) {
@@ -38,7 +49,6 @@ exports.handler = async function handler(event) {
 			}
 
 		case 'POST':
-			console.log(event.headers['content-type']);
 			if (event.headers['content-type'] !== 'application/json') {
 				return {
 					statusCode: 400,
@@ -49,16 +59,24 @@ exports.handler = async function handler(event) {
 				};
 			} else if (typeof process.env.STRIPE_SECRET === 'string') {
 				try {
-					const items = JSON.parse(event.body);
+					const req = JSON.parse(event.body);
 
-					if (! Array.isArray(items) || items.length === 0) {
+					if (
+						typeof req === 'object'
+						&& ! Object.is(req, null)
+						&& 'displayItems' in req
+						&& (
+							! Array.isArray(req.displayItems)
+							|| req.displayItems.length === 0
+						)
+					) {
 						throw new TypeError('Expected an array of items');
 					}
 
 					const { Stripe } = await import('stripe');
 					const stripe = Stripe(process.env.STRIPE_SECRET);
 					const paymentIntent = await stripe.paymentIntents.create({
-						amount: await calculateOrderAmount(items),
+						amount: await calculateOrderAmount(req),
 						currency: 'usd',
 						automatic_payment_methods: {
 							enabled: true,
