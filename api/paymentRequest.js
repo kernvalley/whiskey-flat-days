@@ -1,8 +1,8 @@
 /* eslint-env node */
 const headers = { 'Content-Type': 'application/json' };
 const methods = ['GET'];
-const stripeRate = 0.03;
-const stripeFlatCharge = 0.35;
+const stripeRate = 0.029;
+const stripeFlatCharge = 0.3;
 const taxRate = 0.0725;
 const currency = 'USD';
 

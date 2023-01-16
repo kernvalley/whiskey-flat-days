@@ -1,5 +1,10 @@
 /* eslint-env node */
 const PRODUCTS_FILE = './_data/store.yml';
+const allowedAvailibility = ['InStock'];
+
+function isAvailable({ offers: { availability = 'InStock' }}) {
+	return allowedAvailibility.includes(availability);
+}
 
 async function getProducts(query = null, { signal } = {}) {
 	const { readYAML } = require('./files.js');
@@ -53,7 +58,7 @@ async function createDisplayItems(query, { signal, currency = 'USD' } = {}) {
 
 		const products = await getProducts(items.map(({ item }) => item), { signal });
 
-		return products.map(product => {
+		return products.filter(isAvailable).map(product => {
 			const label = product.name;
 			const identifier = product['@identifier'];
 			const { quantity, offer } = items.find(({ item }) => item === identifier);
