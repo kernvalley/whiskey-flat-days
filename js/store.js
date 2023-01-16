@@ -388,6 +388,8 @@ if (location.pathname.startsWith('/store/checkout')) {
 		//@TODO verify payment_intent_client_secret
 		switch(params.get('redirect_status')) {
 			case 'succeeded': {
+				new Cart().empty();
+
 				const dialog = create('dialog', {
 					children:[
 						create('h2', { text: 'Payment Successful' }),
@@ -417,7 +419,12 @@ if (location.pathname.startsWith('/store/checkout')) {
 			getStripeKey(),
 		]).then(async ([req, key]) => {
 			const clientSecret = await getSecret(req.details);
-			const form = new HTMLStripePaymentFormElement(key, clientSecret, req);
+			const form = new HTMLStripePaymentFormElement(key, clientSecret, {
+				...req,
+				config: {
+					returnURL: new URL(location.pathname, location.origin).href,
+				}
+			});
 
 			form.append(
 				create('header', {
