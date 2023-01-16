@@ -6,6 +6,14 @@ import { createImage } from 'https://cdn.kernvalley.us/js/std-js/elements.js';
 import { Cart } from './Cart.js';
 import { clamp } from 'https://cdn.kernvalley.us/js/std-js/math.js';
 import { getDeferred } from 'https://cdn.kernvalley.us/js/std-js/promises.js';
+import { Availability } from './consts.js';
+const allowedAvailabilities = ['InStock', 'OnlineOnly', 'PreOrder', 'PreSale'];
+
+const isAvailable = product => product.offers
+	.some(({ availability }) => typeof availability !== 'string' || allowedAvailabilities.includes(allowedAvailabilities));
+
+const getAvailability = (product, index = 0) => Availability[product.offers[index].availability] || 'In Stock';
+const getPrice = (product, index = 0) => product.offers[index].price.toFixed(2);
 
 const getProducts = (() => getJSON('/store/products.json')).once();
 
@@ -34,7 +42,10 @@ async function loadStoreItems({ signal } = {}) {
 		attr('[itemprop="image"]', { src: product.image }, { base });
 		text('.product-seller [itemprop="name"]', product.manufacturer.name, { base });
 		attr('.product-seller [itemprop="url"]', { href: sellerURL }, { base });
-		text('[itemprop="price"]', product.offers[0].price, { base });
+		text('[itemprop="price"]', getPrice(product), { base });
+		text('[itemprop="availability"]', getAvailability(product), { base });
+		attr('[itemprop="availability"]', { content: product.offers[0].availability || 'InStock' }, { base });
+		data(base, { availability: product.offers[0].availability });
 
 		on(base, 'click', async ({ target, currentTarget }) => {
 			if (! (target.closest('a, button, summary') instanceof HTMLElement)) {
@@ -147,6 +158,10 @@ async function showProductDetails(id, { signal } = {}) {
 	text('[itemprop="description"]', product.description, { base: tmp });
 	text('.seller-name[itemprop="name"]', seller.name, { base: tmp });
 	attr('.seller-link', { href: sellerLink }, { base: tmp });
+	text('[itemprop="price"]', getPrice(product), { base: tmp });
+	text('[itemprop="availability"]', getAvailability(product), { base: tmp });
+	attr('[itemprop="availability"]', { content: product.offers[0].availability }, { base: tmp });
+	tmp.querySelector('button[type="submit"]').disabled = ! isAvailable(product);
 
 	if (Array.isArray(seller.sameAs)) {
 		each(tmp.querySelectorAll('[itemprop="sameAs"]'), el => {

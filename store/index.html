@@ -40,7 +40,7 @@ stylesheets:
 		<p itemprop="description" class="product-description"></p>
 		<div class="flex row product-offer" itemprop="offers" itemtype="https://schema.org/Offer" itemscope="">
 			<b class="product-price">
-				<meta itemprop="availability" content="">
+				<span itemprop="availability" content="">In Stock</span>
 				<span class="price-currency" itemprop="priceCurrency" content="">$</span><span class="price-value" itemprop="price"></span>
 			</b>
 		</div>
@@ -72,6 +72,17 @@ stylesheets:
 		</div>
 		<form class="item-details-form">
 			<input type="hidden" name="id" required="" />
+			<div class="item-details-availability">
+				<div>
+					<b>Availability:</b>
+					<span itemprop="availability" content="">Out of Stock</span>
+				</div>
+				<div class="item-details-price" itemprop="offers" itemtype="https://schema.org/Offer">
+					<b>Price:</b>
+					<meta itemprop="priceCurrency" content="USD" .>
+					<span class="currency-symbol">$</span><span itemprop="price">0.00</span>
+				</div>
+			</div>
 			<div>
 				<label for="item-qty">Quantity</label>
 				<input type="number" id="item-qty" name="quantity" min="1" max="5" value="1" placeholder="##" />
