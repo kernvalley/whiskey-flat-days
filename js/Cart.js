@@ -79,8 +79,6 @@ export class Cart extends EventTarget {
 	}
 
 	async add({ id, quantity = 1, offer }, { signal } = {}) {
-		let event;
-
 		if (typeof id !== 'string') {
 			throw new TypeError('Product id must be a string');
 		} else if (! Number.isSafeInteger(quantity)) {
@@ -90,20 +88,18 @@ export class Cart extends EventTarget {
 		} else {
 			await this.ready;
 			const { key } = protectedData.get(this);
-			const items = await this.getAll({ key, signal });
-			const current = items.find(item => item.id === id && item.offer === offer);
+			const oldValue = await this.getAll({ key, signal });
+			const newValue = globalThis.structuredClone(oldValue);
+			const current = oldValue.find(item => item.id === id && item.offer === offer);
 
 			if (typeof current ==='object' && ! Object.is(current, null)) {
-				const oldValue = {...current };
 				current.quantity = quantity;
-				event = new CustomEvent('update', { detail: { oldValue, newValue: current }});
 			} else {
-				items.push({ id, quantity, offer });
-				event = new CustomEvent('update', { detail: { oldValue: null, newValue: current }});
+				newValue.push({ id, quantity, offer });
 			}
 
-			await set(items, { key, signal });
-			this.dispatchEvent(event);
+			await set(newValue, { key, signal });
+			this.dispatchEvent(new CustomEvent('update', { detail: { newValue, oldValue }}));
 		}
 	}
 
@@ -121,7 +117,7 @@ export class Cart extends EventTarget {
 		const start = items.length;
 		const filtered = [...items.filter(({ id }) => id !== item)];
 
-		if (start > filtered) {
+		if (start > filtered.length) {
 			await set(filtered,{ key, signal });
 			this.dispatchEvent(new CustomEvent('itemremoved', { detail: item }));
 			this.dispatchEvent(new CustomEvent('update', {

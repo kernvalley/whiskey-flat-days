@@ -5,7 +5,6 @@ import { getJSON } from 'https://cdn.kernvalley.us/js/std-js/http.js';
 import { createImage } from 'https://cdn.kernvalley.us/js/std-js/elements.js';
 import { Cart } from './Cart.js';
 import { clamp } from 'https://cdn.kernvalley.us/js/std-js/math.js';
-import { confirm } from 'https://cdn.kernvalley.us/js/std-js/asyncDialog.js';
 import { getDeferred } from 'https://cdn.kernvalley.us/js/std-js/promises.js';
 
 const getProducts = (() => getJSON('/store/products.json')).once();
@@ -124,9 +123,7 @@ async function showProductDetails(id, { signal } = {}) {
 
 			event.target.closest('dialog').close();
 
-			if (await confirm('Continue to Checkout Page')) {
-				location.href = '/store/cart';
-			}
+			await reviewCart(cart);
 		} catch(err) {
 			console.error(err);
 		}
@@ -184,6 +181,136 @@ async function getPaymentRequest({ signal } = {}) {
 	const url = new URL('/api/paymentRequest', document.baseURI);
 	url.searchParams.set('query', await cart.getQueryString({ signal }));
 	return await getJSON(url, { signal });
+}
+
+async function reviewCart(cart) {
+	const [products, items] = await Promise.all([
+		getProducts(),
+		cart.getAll(),
+	]);
+
+	const { resolve, promise } = getDeferred();
+
+	const dialog = create('dialog', {
+		events: { close: ({ target }) => {
+			target.remove();
+			resolve();
+		}},
+		classList: ['cart-dialog'],
+		children: [
+			create('section', {
+				id: 'cart-container',
+				classList: ['grid', 'cart-review'],
+				children: items.map(({ id, quantity, offer }) => {
+					const product = products.find(({ '@identifier': identifier }) => id === identifier);
+
+					if (typeof product === 'object') {
+						const price = typeof offer === 'string'
+							? product.offers
+								.find(({ '@identifier': id }) => id === offer).price
+							: product.offers[0].price;
+						return create('div', {
+							classList: ['card', 'shadow', 'cart-item-listing'],
+							dataset: { id, offer, quantity, price },
+							children: [
+								create('h3', { text: product.name, classList: ['cart-item-name'] }),
+								createImage(product.image, { loading: 'lazy', classList: ['cart-item-image'] }),
+								create('p', { text: product.description, classList: ['cart-item-description'] }),
+								create('div', {
+									classList: ['cart-item-details', 'flex','row', 'wrap'],
+									children: [
+										create('div', {
+											classList: ['cart-item-price'],
+											children: [
+												create('b', { text: 'Price: ' }),
+												create('span', { text: '$' + price.toFixed(2) })
+											]
+										}),
+										create('label', {
+											children: [
+												create('b', { text: 'Quantity: ' }),
+												create('input', {
+													dataset: { id, offer },
+													value: quantity,
+													type: 'number',
+													required: true,
+													min: 0,
+													max: 5,
+													events: {
+														change: async ({ target }) => {
+															const item = {
+																id: target.dataset.id,
+																quantity: clamp(target.min, target.valueAsNumber, target.max),
+																offer: target.dataset.offer,
+															};
+
+															await cart.add(item);
+														}
+													}
+												})
+											]
+										}),
+										create('div', {
+											children: [
+												create('b', { text: 'Total: ' }),
+												create('span', { text: '$' + (price * quantity).toFixed(2) })
+											]
+										}),
+									]
+								}),
+								create('div', {
+									classList: ['flex', 'row', 'cart-btns', 'space-evenly'],
+									children: [
+										create('button', {
+											classList: ['btn', 'btn-reject'],
+											dataset: { id },
+											text: 'Remove',
+											events: {
+												click: async ({ currentTarget }) => {
+													await cart.remove(currentTarget.dataset.id);
+													currentTarget.closest('.cart-item-listing').remove();
+												}
+											}
+										})
+									]
+								}),
+							]
+						});
+					} else {
+						return '';
+					}
+				})
+			}),
+			create('div', {
+				classList: ['cart-btns', 'flex', 'row', 'wrap', 'space-evenly'],
+				children: [
+					create('button', {
+						type: 'button',
+						classList: ['btn', 'btn-primary'],
+						events: { click: ({ target }) => target.closest('dialog').close() },
+						text: 'Back to Shopping',
+					}),
+					create('a', {
+						href: '/store/checkout',
+						role: 'button',
+						classList: items.length === 0
+							? ['btn', 'btn-primary', 'checkout-btn', 'disabled']
+							: ['btn', 'btn-primary', 'checkout-btn'],
+						text: 'Continue to Checkout',
+					})
+				]
+			}),
+		]
+	});
+
+	on(cart, 'update', ({ detail }) => {
+		document.querySelector('.checkout-btn').classList.toggle('disabled', detail.newValue.length === 0);
+	});
+
+	document.body.append(dialog);
+	dialog.showModal();
+
+	return promise;
 }
 
 if (location.pathname.startsWith('/store/checkout')) {
@@ -244,12 +371,6 @@ if (location.pathname.startsWith('/store/checkout')) {
 					slot: 'footer',
 					classList: ['card', 'flex', 'row', 'space-evenly'],
 					children: [
-						create('a', {
-							role: 'button',
-							classList: ['btn', 'btn-primary'],
-							href: '/store/cart',
-							text: 'Back to Cart',
-						}),
 						create('a', {
 							role: 'button',
 							classList: ['btn', 'btn-primary'],
@@ -350,6 +471,8 @@ if (location.pathname.startsWith('/store/checkout')) {
 	});
 } else if(location.pathname === '/store/') {
 	loadStoreItems().then(() => {
+		on('#checkout-btn', 'click', () => reviewCart(new Cart()));
+
 		if (location.hash.length === 37) {
 			showProductDetails(location.hash.substr(1));
 		}

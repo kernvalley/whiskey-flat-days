@@ -1,3 +1,7 @@
+.cart-dialog {
+	width: 95vw;
+}
+
 #cart-container {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(450px, 22rem));
