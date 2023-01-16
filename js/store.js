@@ -72,7 +72,7 @@ async function getSeller(seller) {
 	document.querySelector('#nav .current-link').classList.remove('current-link', 'no-pointer-events');
 
 	if (typeof seller.description === 'string') {
-		text('[itemprop="description"]', seller.descrition, { base: tmp });
+		text('[itemprop="description"]', seller.description, { base: tmp });
 	}
 
 	if (Array.isArray(seller.sameAs)) {
