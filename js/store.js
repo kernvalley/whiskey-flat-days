@@ -183,13 +183,13 @@ async function getPaymentRequest({ signal } = {}) {
 	return await getJSON(url, { signal });
 }
 
-async function reviewCart(cart) {
+async function reviewCart(cart, { signal } = {}) {
 	const [products, items] = await Promise.all([
-		getProducts(),
-		cart.getAll(),
+		getProducts({ signal }),
+		cart.getAll({ signal }),
 	]);
 
-	const { resolve, promise } = getDeferred();
+	const { resolve, promise } = getDeferred({ signal });
 
 	const dialog = create('dialog', {
 		events: { close: ({ target }) => {
@@ -309,6 +309,10 @@ async function reviewCart(cart) {
 
 	document.body.append(dialog);
 	dialog.showModal();
+
+	if (signal instanceof AbortSignal) {
+		signal.addEventListener('abort', () => dialog.close(), { once: true });
+	}
 
 	return promise;
 }
