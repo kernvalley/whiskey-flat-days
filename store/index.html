@@ -14,6 +14,11 @@ stylesheets:
   - href: /css/store.css
     media: all
     referrerPolicy: no-referrer
+productCategories:
+  - param: magent
+    label: Magnets
+  - param: ornament
+    label: Ornaments
 ---
 <h2 class="center font-title section-heading">Whiskey Flat Days Store</h2>
 <!--<div class="status-box info">
@@ -24,6 +29,36 @@ stylesheets:
 		clothing, etc. before, during, and after Whiskey Flat Days weekend.</p>
 	<p>Learn more <a href="/news/app/2022/12/13/wfd-store" class="btn btn-primary">here</a>
 </div>-->
+<form id="store-filter">
+	<fieldset class="card shadow">
+		<legend>Search Items</legend>
+		<div class="form-group">
+			<label class="input-label" for="search-seller">Vendors</label>
+			<select name="seller" id="search-seller" class="input">
+				<option value="">All Vendors</option>
+				{% for seller in site.data.store %}
+					{% if seller[0] != 'products' %}
+						<option class="capitalize" value="{{ seller[1]['@identifier'] }}">{{ seller[1].name }}</option>
+					{% endif %}
+				{% endfor %}
+			</select>
+		</div>
+		<div class="form-group">
+			<label class="input-label" for="search-category">Category</label>
+			<select name="category" id="search-category" class="input">
+				<option value="">All Categories</option>
+				{% for category in page.productCategories %}
+					<option value="{{ category.param }}" class="capitalize">{{ category.label }}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</fieldset>
+	<br />
+	<button type="submit" class="btn btn-accept">
+		{% include common/icon.html icon="search" height=18 width=18 fill="currentColor" %}
+		<span>Search</span>
+	</button>
+</form>
 <section id="product-container"></div>
 	<div id="product-list" class="grid"></div>
 </section>

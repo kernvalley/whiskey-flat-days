@@ -21,13 +21,21 @@ function getItemType({ '@type': type = 'Thing', '@context': context = 'https://s
 	return new URL(type, context).href;
 }
 
+function filterCategory(category) {
+	return ({ category: categories = [] } = {}) => categories.includes(category);
+}
+
 async function loadStoreItems({ signal } = {}) {
 	const params = new URLSearchParams(location.search);
 	const hasSeller = params.has('seller');
 	const tmp = document.getElementById('item-preview-template').content;
-	const products = hasSeller
-		? await getSellerProducts(params.get('seller'),{ signal })
-		: await getProducts();
+	const products = await (hasSeller
+		? getSellerProducts(params.get('seller'), { signal })
+		: getProducts()
+	).then(products => params.has('category')
+		? products.filter(filterCategory(params.get('category')))
+		: products
+	);
 
 	document.getElementById('product-list').append(...products.map(product => {
 		const base = tmp.cloneNode(true).querySelector('.product-listing');
@@ -57,7 +65,7 @@ async function loadStoreItems({ signal } = {}) {
 		return base;
 	}));
 
-	if (hasSeller) {
+	if (hasSeller && products.length !== 0) {
 		document.getElementById('product-container').prepend(await getSeller(products[0].manufacturer));
 	}
 }
@@ -561,7 +569,38 @@ if (location.pathname.startsWith('/store/checkout')) {
 	});
 } else if(location.pathname === '/store/') {
 	loadStoreItems().then(() => {
+		const params = new URLSearchParams(location.search);
+
+		if (params.has('seller')) {
+			document.getElementById('search-seller').value = params.get('seller');
+		}
+
+		if (params.has('category')) {
+			document.getElementById('search-category').value = params.get('category');
+		}
 		on('#checkout-btn', 'click', () => reviewCart(new Cart()));
+
+		on('#store-filter', 'submit', event => {
+			event.preventDefault();
+			const data = new FormData(event.target);
+			const seller = data.get('seller');
+			const category = data.get('category');
+			const url = new URL(location.pathname, location.origin);
+
+			if (typeof seller === 'string' && seller.length !== 0) {
+				url.searchParams.set('seller', seller);
+			} else {
+				url.searchParams.delete('seller');
+			}
+
+			if (typeof category === 'string' && category.length !== 0) {
+				url.searchParams.set('category', category);
+			} else {
+				url.searchParams.delete('category');
+			}
+
+			location.href = url.href;
+		});
 
 		if (location.hash.length === 37) {
 			showProductDetails(location.hash.substr(1));
