@@ -113,17 +113,13 @@ if ('serviceWorker' in navigator) {
 	});
 }
 
-if (location.pathname.startsWith('/events') && ('IntersectionObserver' in window)) {
+if (location.pathname.startsWith('/events') && ('IntersectionObserver' in globalThis)) {
 	ready().then(() => {
 		intersect('.event-item', intersectCallback);
 	});
-} else if (location.pathname.startsWith('/news/') && ('IntersectionObserver' in window)) {
+} else if (location.pathname.startsWith('/news/') && ('IntersectionObserver' in globalThis)) {
 	ready().then(() => {
 		intersect('.post-preview', intersectCallback);
-	});
-} else if (location.pathname === '/store/') {
-	ready().then(() => {
-		intersect('.product-listing', intersectCallback);
 	});
 }
 
