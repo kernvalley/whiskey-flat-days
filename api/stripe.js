@@ -1,6 +1,6 @@
 /* eslint-env node */
 const methods = ['GET', 'POST', 'OPTIONS'];
-const collection = 'checkout';
+const collection = 'orders';
 
 function toCurrency(num) {
 	return parseFloat(num.toFixed(2));
