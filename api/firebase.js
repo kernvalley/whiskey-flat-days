@@ -6,27 +6,31 @@ function getTimestamp(ts = Date.now(), ns = 0) {
 	return new Timestamp(Math.floor(ts / 1000), ns);
 }
 
-function getApp({ envKey = ENV_KEY } = {}) {
+function getApp({ envKey = ENV_KEY, name = 'temp-' + Date.now() } = {}) {
 	if (typeof process.env[envKey] !== 'string') {
-		throw new Error('No Service Account set in `process.env`');
+		throw new Error(`No Service Account set in \`process.env[${envKey}]\``);
 	} else {
 		const { initializeApp, cert } = require('firebase-admin/app');
 		const serviceAccount = JSON.parse(process.env[envKey]);
 		const app = initializeApp({
 			credential: cert(serviceAccount),
-		}, 'temp-' + Date.now());
+		}, name);
 
 		return app;
 	}
 }
 
-function getCollection(collection, { envKey = ENV_KEY } = {}) {
+function getDB({ envKey = ENV_KEY, name }) {
+	const app = getApp({ envKey, name });
+	const { getFirestore } = require('firebase-admin/firestore');
+	return getFirestore(app);
+}
+
+function getCollection(collection, { envKey = ENV_KEY, name } = {}) {
 	if (typeof collection !== 'string') {
 		throw new TypeError('Invalid collection');
 	} else {
-		const app = getApp(envKey);
-		const { getFirestore } = require('firebase-admin/firestore');
-		const db = getFirestore(app);
+		const db = getDB({ envKey, name });
 		return db.collection(collection);
 	}
 }
@@ -37,5 +41,6 @@ async function loggedIn() {
 
 module.exports.getTimestamp = getTimestamp;
 module.exports.getApp = getApp;
+module.exports.getDB = getDB;
 module.exports.getCollection = getCollection;
 module.exports.loggedIn = loggedIn;
