@@ -571,13 +571,6 @@ if (location.pathname.startsWith('/store/checkout')) {
 	loadStoreItems().then(() => {
 		const params = new URLSearchParams(location.search);
 
-		if (params.has('seller')) {
-			document.getElementById('search-seller').value = params.get('seller');
-		}
-
-		if (params.has('category')) {
-			document.getElementById('search-category').value = params.get('category');
-		}
 		on('#checkout-btn', 'click', () => reviewCart(new Cart()));
 
 		on('#store-filter', 'submit', event => {
@@ -601,6 +594,14 @@ if (location.pathname.startsWith('/store/checkout')) {
 
 			location.href = url.href;
 		});
+
+		if (params.has('seller')) {
+			document.getElementById('search-seller').value = params.get('seller');
+		}
+
+		if (params.has('category')) {
+			document.getElementById('search-category').value = params.get('category');
+		}
 
 		if (location.hash.length === 37) {
 			showProductDetails(location.hash.substr(1));
