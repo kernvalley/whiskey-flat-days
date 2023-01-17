@@ -29,10 +29,12 @@ products:
     image: https://i.imgur.com/FGNAf9K.jpg
     description: Watch for Falling Cow Magnet
     manufacturer: *KrazyDazey
+    category:
+      - magnet
     offers:
       - "@identifier": 8d832bdc-9468-4916-abb8-f126355fcbae
         "@type": Offer
-        availability: InStock
+        availability: OutOfStock
         price: 6.99
         priceCurrency: USD
   - name: Tubing Down the Kern River
@@ -41,6 +43,8 @@ products:
     "@identifier": 44bcd60c-0018-4074-a94f-1cb988df73f0
     image: https://i.imgur.com/uFeduJb.jpg
     description: Tubing Down the Kern River Magnet
+    category:
+      - magnet
     manufacturer: *KrazyDazey
     offers:
       - "@identifier": 808b3654-09c8-495c-8921-9800ba06e59a
@@ -54,6 +58,8 @@ products:
     "@identifier": 734785c7-bbff-484c-8eeb-892438663d67
     image: https://i.imgur.com/ziFOcd0.jpg
     description: Tubing Down the Kern River Magnet
+    category:
+      - magnet
     manufacturer: *KrazyDazey
     offers:
       - "@identifier": 758b76b4-6ff0-4720-aa2a-5b85f0faa826
@@ -67,6 +73,8 @@ products:
     "@identifier": 5d909064-a7d7-4129-a24c-215deb915a44
     image: https://i.imgur.com/OlA59BP.jpg
     description: A Whiskey Flats Keychain
+    category:
+      - keychain
     manufacturer: *KrazyDazey
     offers:
       - "@identifier": 6cf1df5d-0d6b-4d68-9362-39a3f2e33c8e
@@ -80,6 +88,8 @@ products:
     "@identifier": eacccb7d-1410-4626-8520-d261c3ea3dbf
     image: https://i.imgur.com/tKpM1rK.jpg
     description: Tubing Down the Kern River Magnet
+    category:
+      - magnet
     manufacturer: *KrazyDazey
     offers:
       - "@identifier": 48ab6101-a0b2-4f3e-a340-946f30eec611
@@ -93,6 +103,8 @@ products:
     "@identifier": 23e86dfc-f6f2-4251-92d2-09fdb58af65d
     image: https://i.imgur.com/Utv5EP8.jpg
     description: Kernville Magnet
+    category:
+      - magnet
     manufacturer: *SawDuzz
     offers:
       - "@identifier": 08afe8be-7b3e-42d7-9a77-f7bda55b40cf
@@ -106,6 +118,8 @@ products:
     "@identifier": 97062a2d-576d-4d97-b8fc-6c2edb690c42
     image: https://i.imgur.com/Lpian0C.jpg
     description: A Wooden Bear Magnet
+    category:
+      - magnet
     manufacturer: *SawDuzz
     offers:
       - "@identifier": e88477a1-50e1-41eb-be67-d2a0a3873558
@@ -119,6 +133,8 @@ products:
     "@identifier": 0f6b5b5c-4467-4718-88f9-094c358fdd0b
     image: https://i.imgur.com/sqmrc0F.jpg
     description: A wooden ornament of mountains with Kernville text.
+    category:
+      - ornament
     manufacturer: *SawDuzz
     offers:
       - "@identifier": 97c8daa4-51ae-43a2-93b8-818dd79d037c
@@ -132,6 +148,8 @@ products:
     "@identifier": 0fca30e5-f38a-440c-9a72-ca3fa0b45b6c
     image: https://i.imgur.com/0yE3Mx3.jpg
     description: A wooden ornament of a fish with Kernville text.
+    category:
+      - ornament
     manufacturer: *SawDuzz
     offers:
       - "@identifier": c0fd7ad0-6be6-48dd-8b7c-1b4d9947b519
