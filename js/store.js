@@ -13,7 +13,7 @@ import { intersectCallback } from './functions.js';
 const allowedAvailabilities = ['InStock', 'OnlineOnly', 'PreOrder', 'PreSale'];
 
 const isAvailable = product => product.offers
-	.some(({ availability }) => typeof availability !== 'string' || allowedAvailabilities.includes(allowedAvailabilities));
+	.some(({ availability }) => typeof availability !== 'string' || allowedAvailabilities.includes(availability));
 
 const getAvailability = (product, index = 0) => Availability[product.offers[index].availability] || 'In Stock';
 const getPrice = (product, index = 0) => product.offers[index].price.toFixed(2);
@@ -173,6 +173,10 @@ async function showProductDetails(id, { signal } = {}) {
 	text('[itemprop="availability"]', getAvailability(product), { base: tmp });
 	attr('[itemprop="availability"]', { content: product.offers[0].availability }, { base: tmp });
 	tmp.querySelector('button[type="submit"]').disabled = ! isAvailable(product);
+	console.log({
+		product: product['@identifier'],
+		available: isAvailable(product),
+	});
 
 	if (Array.isArray(seller.sameAs)) {
 		each(tmp.querySelectorAll('[itemprop="sameAs"]'), el => {
@@ -484,92 +488,6 @@ if (location.pathname.startsWith('/store/checkout')) {
 			document.getElementById('main').append(form);
 		});
 	}
-} else if (location.pathname.startsWith('/store/cart')) {
-	const cart = new Cart();
-	Promise.all([
-		getProducts(),
-		cart.getAll(),
-	]).then(([products, items]) => {
-		document.getElementById('cart-container').append(...items.map(({ id, quantity, offer }) => {
-			const product = products.find(({ '@identifier': identifier }) => id === identifier);
-
-			if (typeof product === 'object') {
-				const price = typeof offer === 'string'
-					? product.offers
-						.find(({ '@identifier': id }) => id === offer).price
-					: product.offers[0].price;
-				return create('div', {
-					classList: ['card', 'shadow', 'cart-item-listing'],
-					dataset: { id, offer, quantity, price },
-					children: [
-						create('h3', { text: product.name, classList: ['cart-item-name'] }),
-						createImage(product.image, { loading: 'lazy', classList: ['cart-item-image'] }),
-						create('p', { text: product.description, classList: ['cart-item-description'] }),
-						create('div', {
-							classList: ['cart-item-details', 'flex','row', 'wrap'],
-							children: [
-								create('div', {
-									classList: ['cart-item-price'],
-									children: [
-										create('b', { text: 'Price: ' }),
-										create('span', { text: '$' + price.toFixed(2) })
-									]
-								}),
-								create('label', {
-									children: [
-										create('b', { text: 'Quantity: ' }),
-										create('input', {
-											dataset: { id, offer },
-											value: quantity,
-											type: 'number',
-											required: true,
-											min: 0,
-											max: 5,
-											events: {
-												change: async ({ target }) => {
-													const item = {
-														id: target.dataset.id,
-														quantity: clamp(target.min, target.valueAsNumber, target.max),
-														offer: target.dataset.offer,
-													};
-
-													await cart.add(item);
-												}
-											}
-										})
-									]
-								}),
-								create('div', {
-									children: [
-										create('b', { text: 'Total: ' }),
-										create('span', { text: '$' + (price * quantity).toFixed(2) })
-									]
-								}),
-							]
-						}),
-						create('div', {
-							classList: ['flex', 'row', 'cart-btns', 'space-evenly'],
-							children: [
-								create('button', {
-									classList: ['btn', 'btn-reject'],
-									dataset: { id },
-									text: 'Remove',
-									events: {
-										click: async ({ currentTarget }) => {
-											await cart.remove(currentTarget.dataset.id);
-											currentTarget.closest('.cart-item-listing').remove();
-										}
-									}
-								})
-							]
-						}),
-					]
-				});
-			} else {
-				return '';
-			}
-		}));
-	});
 } else if(location.pathname === '/store/') {
 	loadStoreItems().then(() => {
 		const params = new URLSearchParams(location.search);
