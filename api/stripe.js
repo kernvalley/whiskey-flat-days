@@ -1,5 +1,6 @@
 /* eslint-env node */
 const methods = ['GET', 'POST', 'OPTIONS'];
+const collection = 'checkout';
 
 function toCurrency(num) {
 	return parseFloat(num.toFixed(2));
@@ -14,6 +15,60 @@ function getTotal({ displayItems = [], modifiers: { additionalDisplayItems = [] 
 
 async function calculateOrderAmount(req) {
 	return parseInt(getTotal(req) * 100);
+}
+
+async function createOrder({
+	details: {
+		id,
+		displayItems = [],
+		total: {
+			label,
+			amount: { value: total = NaN, currency = 'USD' },
+		},
+		modifiers: {
+			additionalDisplayItems = []
+		}
+	},
+	options: {
+		requestShipping = false,
+	} = {},
+}) {
+
+	if (typeof id !== 'string') {
+		throw new TypeError('Missing or invalid `clientSecret` / `details.id`');
+	} else if (! Array.isArray(displayItems) || displayItems.length === 0) {
+		throw new TypeError('Invalid `displayItems`');
+	} else if (typeof total !== 'number' || Number.isNaN(total) || total <= 0) {
+		throw new TypeError('Invalid `total.amount.value`');
+	} else if (! Array.isArray(additionalDisplayItems)) {
+		throw new TypeError('`additionalDisplayItems` must be an array');
+	} else if (typeof label !== 'string') {
+		throw new TypeError('Invalid or missing `total.label`');
+	} else if (currency !== 'USD') {
+		throw new Error('Only USD is a supported as a currency');
+	} else {
+		const { getCollection, getTimestamp } = require('./firebase.js');
+		const db = getCollection(collection);
+
+		await db.doc(id).set({
+			paymentRequest: {
+				details: {
+					id,
+					displayItems,
+					modifiers: { additionalDisplayItems },
+					total: { label, amount: { value: total, currency }},
+				},
+				options: {
+					requestShipping,
+				},
+			},
+			created: getTimestamp(),
+			updated: getTimestamp(),
+			email: null,
+			dev: process.env.CONTEXT !== 'production',
+			status: 'pending',
+		});
+	}
 }
 
 exports.handler = async function handler(event) {
@@ -83,6 +138,15 @@ exports.handler = async function handler(event) {
 						},
 					});
 
+
+					req.id = paymentIntent.client_secret;
+					req.total = { label: 'Total', amount: {
+						value: getTotal(req),
+						currency: 'USD',
+					}};
+
+					await createOrder({ details: req, options: { requestShipping: true } });
+
 					return {
 						statusCode: 200,
 						headers: { 'Content-Type': 'application/json' },
@@ -91,6 +155,7 @@ exports.handler = async function handler(event) {
 						})
 					};
 				} catch(err) {
+					console.error(err);
 					return {
 						statusCode: 500,
 						headers: {

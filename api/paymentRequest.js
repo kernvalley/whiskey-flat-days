@@ -82,6 +82,14 @@ exports.handler = async function(event) {
 						}
 					});
 
+					req.details.total = {
+						label: 'Total',
+						amount: {
+							value: getTotal(req),
+							currency,
+						}
+					};
+
 					return {
 						statusCode: 200,
 						headers,
