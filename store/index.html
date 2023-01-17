@@ -29,8 +29,8 @@ productCategories:
 		clothing, etc. before, during, and after Whiskey Flat Days weekend.</p>
 	<p>Learn more <a href="/news/app/2022/12/13/wfd-store" class="btn btn-primary">here</a>
 </div>-->
-<form id="store-filter">
-	<fieldset class="card shadow">
+<form id="store-filter" class="card shadow">
+	<fieldset>
 		<legend>Search Items</legend>
 		<div class="form-group">
 			<label class="input-label" for="search-seller">Vendors</label>
@@ -54,10 +54,16 @@ productCategories:
 		</div>
 	</fieldset>
 	<br />
-	<button type="submit" class="btn btn-accept">
-		{% include common/icon.html icon="search" height=18 width=18 fill="currentColor" %}
-		<span>Search</span>
-	</button>
+	<div class="search-btns">
+		<button type="submit" class="btn btn-accept">
+			{% include common/icon.html icon="search" height=18 width=18 fill="currentColor" %}
+			<span>Search</span>
+		</button>
+		<button type="reset" class="btn btn-reject">
+			{% include common/icon.html icon="x" height=18 width=18 fill="currentColor" %}
+			<span>Clear</span>
+		</button>
+	</div>
 </form>
 <section id="product-container"></div>
 	<div id="product-list" class="grid"></div>
