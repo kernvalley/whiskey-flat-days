@@ -1,5 +1,7 @@
 import { HTMLStripePaymentFormElement } from 'https://cdn.kernvalley.us/components/stripe/payment-form.js';
-import { on, create, value, text, attr, data, disable, each } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
+import {
+	on, create, value, text, attr, data, disable, each, intersect,
+} from 'https://cdn.kernvalley.us/js/std-js/dom.js';
 import { getStripeKey, getSecret } from './stripe.js';
 import { getJSON } from 'https://cdn.kernvalley.us/js/std-js/http.js';
 import { createImage } from 'https://cdn.kernvalley.us/js/std-js/elements.js';
@@ -7,6 +9,7 @@ import { Cart } from './Cart.js';
 import { clamp } from 'https://cdn.kernvalley.us/js/std-js/math.js';
 import { getDeferred } from 'https://cdn.kernvalley.us/js/std-js/promises.js';
 import { Availability } from './consts.js';
+import { intersectCallback } from './functions.js';
 const allowedAvailabilities = ['InStock', 'OnlineOnly', 'PreOrder', 'PreSale'];
 
 const isAvailable = product => product.offers
@@ -594,6 +597,10 @@ if (location.pathname.startsWith('/store/checkout')) {
 
 			location.href = url.href;
 		});
+
+		if ('IntersectionObeserver' in globalThis) {
+			intersect('.product-listing', intersectCallback);
+		}
 
 		if (params.has('seller')) {
 			document.getElementById('search-seller').value = params.get('seller');
