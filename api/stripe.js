@@ -17,7 +17,7 @@ async function calculateOrderAmount(req) {
 	return parseInt(getTotal(req) * 100);
 }
 
-async function createOrder({
+async function createOrder({ client_secret: clientSecret }, {
 	details: {
 		id,
 		displayItems = [],
@@ -33,9 +33,10 @@ async function createOrder({
 		requestShipping = false,
 	} = {},
 }) {
-
-	if (typeof id !== 'string') {
-		throw new TypeError('Missing or invalid `clientSecret` / `details.id`');
+	if (typeof clientSecret !== 'string') {
+		throw new TypeError('`clientSecret` must be a string');
+	} else if (typeof id !== 'string') {
+		throw new TypeError('Missing or invalid `id`');
 	} else if (! Array.isArray(displayItems) || displayItems.length === 0) {
 		throw new TypeError('Invalid `displayItems`');
 	} else if (typeof total !== 'number' || Number.isNaN(total) || total <= 0) {
@@ -46,11 +47,12 @@ async function createOrder({
 		throw new TypeError('Invalid or missing `total.label`');
 	} else if (currency !== 'USD') {
 		throw new Error('Only USD is a supported as a currency');
-	} else {
+	} else if (process.env.CONTEXT === 'production') {
+		// Only save orders in production
 		const { getCollection, getTimestamp } = require('./firebase.js');
 		const db = getCollection(collection);
 
-		await db.doc(id).set({
+		await db.doc(clientSecret).set({
 			paymentRequest: {
 				details: {
 					id,
@@ -71,6 +73,28 @@ async function createOrder({
 	}
 }
 
+async function getOrder(id) {
+	if (typeof id !== 'string') {
+		throw new TypeError('id must be a string');
+	} else if (typeof process.env.STRIPE_SECRET !== 'string') {
+		throw new TypeError('Missing or invalid Stripe secret');
+	} else {
+		const { getCollection } = require('./firebase.js');
+		const db = await getCollection(collection);
+		const doc = await db.doc(id).get();
+
+		if (doc.exists) {
+			const { Stripe } = await import('stripe');
+			const stripe = Stripe(process.env.STRIPE_SECRET);
+			const order = doc.data();
+			const paymentIntent = await stripe.paymentIntents.retrieve(order.paymentRequest.details.id);
+			return { paymentIntent, order };
+		} else {
+			throw new Error(`Invalid order "${id}"`);
+		}
+	}
+}
+
 exports.handler = async function handler(event) {
 	switch(event.httpMethod) {
 		case 'OPTIONS':
@@ -82,15 +106,7 @@ exports.handler = async function handler(event) {
 			};
 
 		case 'GET':
-			if (typeof process.env.STRIPE_PUBLIC === 'string') {
-				return {
-					statusCode: 200,
-					headers: { 'Content-Type': 'application/json' },
-					body: JSON.stringify({
-						key: process.env.STRIPE_PUBLIC,
-					})
-				};
-			} else {
+			if (typeof process.env.STRIPE_PUBLIC !== 'string') {
 				return {
 					statusCode: 500,
 					headers: { 'Content-Type': 'application/json' },
@@ -99,6 +115,21 @@ exports.handler = async function handler(event) {
 							message: 'Missing Stripe Public Key',
 							status: 500,
 						}
+					})
+				};
+			} else if (typeof event.queryStringParameters.order === 'string') {
+				const { paymentIntent, order } = await getOrder(event.queryStringParameters.order);
+				return {
+					statusCode: 200,
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify({ paymentIntent, order }),
+				};
+			} else {
+				return {
+					statusCode: 200,
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify({
+						key: process.env.STRIPE_PUBLIC,
 					})
 				};
 			}
@@ -138,14 +169,13 @@ exports.handler = async function handler(event) {
 						},
 					});
 
-
-					req.id = paymentIntent.client_secret;
+					req.id = paymentIntent.id;
 					req.total = { label: 'Total', amount: {
 						value: getTotal(req),
 						currency: 'USD',
 					}};
 
-					await createOrder({ details: req, options: { requestShipping: true } });
+					await createOrder(paymentIntent, { details: req, options: { requestShipping: true } });
 
 					return {
 						statusCode: 200,
