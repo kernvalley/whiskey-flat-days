@@ -598,7 +598,7 @@ if (location.pathname.startsWith('/store/checkout')) {
 			location.href = url.href;
 		});
 
-		if ('IntersectionObeserver' in globalThis) {
+		if ('IntersectionObserver' in globalThis) {
 			intersect('.product-listing', intersectCallback);
 		}
 
