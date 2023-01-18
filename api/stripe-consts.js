@@ -5,7 +5,7 @@ const taxRate = 0.0725;
 const currency = 'USD';
 const collection = 'orders';
 const productsFile = './_data/store.yml';
-const allowedAvailibility = ['InStock', 'PreOrder','PreSale', 'OnlineOnly'];
+const allowedAvailibility = ['InStock', 'PreOrder','PreSale', 'OnlineOnly', 'LimitedAvailability'];
 
 exports.stripeRate = stripeRate;
 exports.stripeFlatCharge = stripeFlatCharge;
