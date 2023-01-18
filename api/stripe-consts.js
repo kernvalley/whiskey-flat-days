@@ -1,6 +1,16 @@
 /* eslint-env node */
-export const headers = { 'Content-Type': 'application/json' };
-export const stripeRate = 0.029;
-export const stripeFlatCharge = 0.3;
-export const taxRate = 0.0725;
-export const currency = 'USD';
+const stripeRate = 0.029;
+const stripeFlatCharge = 0.3;
+const taxRate = 0.0725;
+const currency = 'USD';
+const collection = 'orders';
+const productsFile = './_data/store.yml';
+const allowedAvailibility = ['InStock', 'PreOrder','PreSale', 'OnlineOnly'];
+
+exports.stripeRate = stripeRate;
+exports.stripeFlatCharge = stripeFlatCharge;
+exports.taxRate = taxRate;
+exports.currency = currency;
+exports.collection = collection;
+exports.productsFile = productsFile;
+exports.allowedAvailibility = allowedAvailibility;
