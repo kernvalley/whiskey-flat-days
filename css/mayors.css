@@ -1,6 +1,7 @@
 #candidates {
 	gap: 8px;
 }
+
 #candidates .mayor-candidate {
 	flex-basis: 420px;
 	flex-grow: 0;
