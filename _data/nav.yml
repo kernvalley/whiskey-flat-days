@@ -10,3 +10,6 @@
   url: /map/
   icon: map
   accessKey: m
+- label: Mayors
+  url: /mayors/
+  icon: person

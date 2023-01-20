@@ -1,0 +1,19 @@
+#candidates {
+	gap: 8px;
+}
+
+#candidates .mayor-candidate {
+	flex-basis: 420px;
+	flex-grow: 0;
+	flex-shrink: 1;
+}
+
+.mayor-candidate .mayor-race-event-description {
+	max-width: 400px;
+}
+
+.mayor-candidate .mayor-race-event:not(:last-of-type) {
+	margin-bottom: 8px;
+	padding-bottom: 18px;
+	border-bottom: 2px dashed #dadada;
+}

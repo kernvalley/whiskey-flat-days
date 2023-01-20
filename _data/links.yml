@@ -15,6 +15,10 @@ nav:
     href: /news/
     icon: megaphone
     accessKey: n
+  - label: Mayors
+    href: /mayors/
+    icon: person
+    accessKey: r
   - label: Map
     href: /map/
     icon: map

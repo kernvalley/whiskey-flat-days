@@ -1,36 +1,69 @@
 ---
 title: Mayor Race
 layout: default
-pinned: false
-index: false
-robots: noindex,nofollow
+description: These are your Whiskey Flat Days Mayor candidates
+pinned: true
+index: true
+robots: index,follow
 permalink: /mayors/
-candidates:
-  - name: Unknown
-    identifier: 5936b2a3-9253-41c4-9554-e5e4f6fc6fc3
-    image: null
-    donateLink: "#"
-    faq: []
-  - name: Unknown
-    identifier: d4fc54b6-3bdf-43a1-b85f-0381777f7739
-    image: null
-    donateLink: "#"
-    faq: []
+tags:
+  - whiskey flat days
+  - whiskey flats
+  - mayors
+  - mayor race
+  - events
 ---
-<div class="flex row wrap space-evenly">
-	{% for candidate in page.candidates %}
-		<div id="{{ candidate.identifier }}" class="card shadow center mayor-candidate" itemtype="https://schema.org/Person" itemscope="">
-			<h3 class="center mayor-name font-title color-accent" itemprop="name">{{ candidate.name }}</h3>
-			{% if condidate.image %}
-				<img src="{{ candidate.image }}" loading="lazy" decoding="async" crossorigin="anonymous" referrerpolicy="no-referrer" alt="{{ candidate.name }} image" itemprop="image" />
-			{% else %}
-				{% include common/icon.html icon="avatar-default" height="96" width="96" class="mayor-img" fill="currentColor" %}
-			{% endif %}
-			<a href="{{ candidate.donateLink | default: '#' }}" class="btn btn-primary-outline" rel="noopener noreferrer external">
-				<span>Donate</span>
-				{% include common/icon.html icon="link-external" height="16" width="16" fill="currentColor" %}
-			</a>
-			{% include common/faq.html faq=page.faq summmary="About" %}
-		</div>
-	{% endfor %}
-</div>
+<section id="mayor-race">
+	<h2 class="center font-title section-heading">Whiskey Flat Days Mayor Race</h2>
+	<div id="candidates" class="flex row wrap space-evenly">
+		{% for candidate in site.data.mayors %}
+			<div id="{{ candidate.identifier }}" class="card shadow mayor-candidate" itemtype="https://schema.org/Person" itemscope="">
+				<h3 class="center mayor-name font-title section-heading">{{ candidate.names | join: ' & ' }}</h3>
+				<div class="race-events">
+					<h4 class="center">Events</h4>
+					{% for event in candidate.events %}
+						<div class="mayor-race-event" itemtype="https://schema.org/Event" itemscope="">
+							{% if event.name %}
+								<h4 class="mayor-race-event-name" itemprop="name">{{ event.name }}</h4>
+							{% endif %}
+							<div class="mayor-race-event-times">
+								{% include common/icon.html icon="calendar" height="16" width="16" fill="currentColor" %}
+								<time itemprop="startDate" class="mayor-race-event-start" datetime="{{ event.startDate | date_to_xmlschema }}">
+									<b class="event-day">{{ event.startDate | date: '%a, %x' }}</b>
+									{{ event.startDate | date: '%-I:%M %p'}}
+								</time>
+								{% if event.endDate %}
+									<span>&mdash;</span>
+									<time itemprop="endDate" class="mayor-race-event-end" datetime="{{ event.endDate | date_to_xmlschema }}">{{ event.endDate | date: '%-I:%M %p'}}</time>
+								{% endif %}
+							</div>
+							<p class="mayor-race-event-description">
+								{% include common/icon.html icon="megaphone" height="16" width="16" fill="currentColor" %}
+								<span itemprop="description">{{ event.description }}</span>
+							</p>
+							<address class="inline-block mayor-race-event-location" itemprop="location" itemtype="https://schema.org/{{ event.location['@type'] | default: 'Place' }}" itemscope="">
+								{% include common/icon.html icon="mark-location" height="16" width="16" fill="currentColor" %}
+								{% if event.location.name %}<b itemprop="name">{{ event.location.name }}</b>,{% endif %}
+								{% if event.location.address %}
+									<span class="inline-address inline-block" itemprop="address" itemtype="https://schema.org/PostalAddress" itemscope="">
+										{% if event.location.address.streetAddress %}<span itemprop="streetAddress">{{ event.location.address.streetAddress }}</span>,{% endif %}
+										<span class="locality" itemprop="addressLocality">{{ event.location.address.addressLocality | default: 'Kernville' }}</span>
+										<meta itemprop="addressRegion" content="{{ event.location.address.addressRegion | default: 'CA' }}" />
+										<meta itemprop="addressCountry" content="{{ event.location.address.addressCountry | default: 'US' }}" />
+										<meta itemprop="postalCode" content="{{ event.location.address.postalCode | default: '93238' }}" />
+									</span>
+								{% endif %}
+								{% if event.location.geo %}
+									<div itemprop="geo" itemtype="https://schema.org/GeoCoordinates" itemscope="" hidden="">
+										<meta itemprop="latitude" content="{{ event.location.geo.latitude }}" />
+										<meta itemprop="longitude" content="{{ event.location.geo.longitude }}" />
+									</div>
+								{% endif %}
+							</address>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+</section>
