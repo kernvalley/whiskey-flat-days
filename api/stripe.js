@@ -1,99 +1,7 @@
 /* eslint-env node */
 const methods = ['GET', 'POST', 'OPTIONS'];
-const collection = 'orders';
+const { getTotal, createOrder, calculateOrderAmount } = require('./stripe-utils.js');
 
-function toCurrency(num) {
-	return parseFloat(num.toFixed(2));
-}
-
-function getTotal({ displayItems = [], modifiers: { additionalDisplayItems = [] } = {}}) {
-	const total = [...displayItems, ...additionalDisplayItems]
-		.reduce((total, { amount: { value = 0 } = {}}) => total + value, 0);
-
-	return toCurrency(total);
-}
-
-async function calculateOrderAmount(req) {
-	return parseInt(getTotal(req) * 100);
-}
-
-async function createOrder({ client_secret: clientSecret }, {
-	details: {
-		id,
-		displayItems = [],
-		total: {
-			label,
-			amount: { value: total = NaN, currency = 'USD' },
-		},
-		modifiers: {
-			additionalDisplayItems = []
-		}
-	},
-	options: {
-		requestShipping = false,
-	} = {},
-}) {
-	if (typeof clientSecret !== 'string') {
-		throw new TypeError('`clientSecret` must be a string');
-	} else if (typeof id !== 'string') {
-		throw new TypeError('Missing or invalid `id`');
-	} else if (! Array.isArray(displayItems) || displayItems.length === 0) {
-		throw new TypeError('Invalid `displayItems`');
-	} else if (typeof total !== 'number' || Number.isNaN(total) || total <= 0) {
-		throw new TypeError('Invalid `total.amount.value`');
-	} else if (! Array.isArray(additionalDisplayItems)) {
-		throw new TypeError('`additionalDisplayItems` must be an array');
-	} else if (typeof label !== 'string') {
-		throw new TypeError('Invalid or missing `total.label`');
-	} else if (currency !== 'USD') {
-		throw new Error('Only USD is a supported as a currency');
-	} else if (process.env.CONTEXT === 'production') {
-		// Only save orders in production
-		const { getCollection, getTimestamp } = require('./firebase.js');
-		const db = getCollection(collection);
-
-		await db.doc(clientSecret).set({
-			paymentRequest: {
-				details: {
-					id,
-					displayItems,
-					modifiers: { additionalDisplayItems },
-					total: { label, amount: { value: total, currency }},
-				},
-				options: {
-					requestShipping,
-				},
-			},
-			created: getTimestamp(),
-			updated: getTimestamp(),
-			email: null,
-			dev: process.env.CONTEXT !== 'production',
-			status: 'pending',
-		});
-	}
-}
-
-async function getOrder(id) {
-	if (typeof id !== 'string') {
-		throw new TypeError('id must be a string');
-	} else if (typeof process.env.STRIPE_SECRET !== 'string') {
-		throw new TypeError('Missing or invalid Stripe secret');
-	} else {
-		const { getCollection } = require('./firebase.js');
-		const db = await getCollection(collection);
-		const doc = await db.doc(id).get();
-
-		if (doc.exists) {
-			const { Stripe } = await import('stripe');
-			const stripe = Stripe(process.env.STRIPE_SECRET);
-			const order = doc.data();
-			const paymentIntent = await stripe.paymentIntents.retrieve(order.paymentRequest.details.id);
-			return { paymentIntent, order };
-		} else {
-			throw new Error(`Invalid order "${id}"`);
-		}
-	}
-}
 
 exports.handler = async function handler(event) {
 	switch(event.httpMethod) {
@@ -116,13 +24,6 @@ exports.handler = async function handler(event) {
 							status: 500,
 						}
 					})
-				};
-			} else if (typeof event.queryStringParameters.order === 'string') {
-				const { paymentIntent, order } = await getOrder(event.queryStringParameters.order);
-				return {
-					statusCode: 200,
-					headers: { 'Content-Type': 'application/json' },
-					body: JSON.stringify({ paymentIntent, order }),
 				};
 			} else {
 				return {

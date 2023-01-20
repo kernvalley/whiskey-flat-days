@@ -3,7 +3,7 @@ import {
 	on, create, value, text, attr, data, disable, each, intersect,
 } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
 import { getStripeKey, getSecret } from './stripe.js';
-import { getJSON } from 'https://cdn.kernvalley.us/js/std-js/http.js';
+import { getJSON, postJSON } from 'https://cdn.kernvalley.us/js/std-js/http.js';
 import { createImage } from 'https://cdn.kernvalley.us/js/std-js/elements.js';
 import { Cart } from './Cart.js';
 import { clamp } from 'https://cdn.kernvalley.us/js/std-js/math.js';
@@ -532,4 +532,9 @@ if (location.pathname.startsWith('/store/checkout')) {
 			showProductDetails(location.hash.substr(1));
 		}
 	});
+}
+
+export async function createPaymentRequest(cart, { signal } = {}) {
+	const body = await cart.getAll({ signal });
+	const data = await postJSON('/api/paymentRequest', { body });
 }

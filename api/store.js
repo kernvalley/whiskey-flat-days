@@ -43,6 +43,15 @@ async function getSellers(query = null, { signal } = {}) {
 	}
 }
 
+async function loadFromCart(cart, { signal } = {}) {
+	if (! Array.isArray(cart) || cart.length === 0) {
+		throw new TypeError('Invalid cart');
+	} else {
+		const products = await getProducts(cart.map(({ id }) => id, { signal }));
+		return products;
+	}
+}
+
 async function createDisplayItems(query, { signal, currency = 'USD' } = {}) {
 	if (typeof query !== 'string') {
 		throw new TypeError('query must be a string');
@@ -99,3 +108,4 @@ async function createDisplayItems(query, { signal, currency = 'USD' } = {}) {
 exports.getProducts = getProducts;
 exports.getSellers = getSellers;
 exports.createDisplayItems = createDisplayItems;
+exports.loadFromCart = loadFromCart;
