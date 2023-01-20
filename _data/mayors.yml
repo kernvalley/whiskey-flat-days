@@ -1,0 +1,87 @@
+- identifier: 13950f1c-dd47-4d53-99e6-6a321c73273e
+  names:
+  - Fill It Up Fill
+  - Two Stroke Terri
+  events:
+    - name: Bingo
+      startDate: 2023-01-22T13:00
+      description: $25 per ticket. 10 games each. Bribes, Raffles, & lots of fun!
+      location:
+        name: Eagles Lodge
+        address:
+          streetAddress: 12251 CA-178
+          addressLocality: Mt. Mesa
+          postalCode: 93240
+    - name: Karaoke Night
+      startDate: 2023-01-28T18:00
+      description: Bribes and good times. Bring the kiddos too!
+      location:
+        name: Eagles Lodge
+        address:
+          streetAddress: 12251 CA-178
+          addressLocality: Mt. Mesa
+          postalCode: 93240
+    # - name: Super Bowl Party
+    #   startDate: 2023-02-12
+- identifier: 67ff0959-1fe8-456b-a964-bf64836e88fe
+  names:
+  - Rescue Robbie
+  - Grand Marshal Gary
+  events:
+    - name: Cheryl's Diner Anniversary
+      description: Join us to celebrate. Free bribe with purchase.
+      startDate: 2023-01-20T17:00
+      endDate: 2023-01-20T19:30
+      location:
+        '@type': Restaurant
+        name: Cheryl's Diner
+        address:
+          '@type': PostalAddress
+          streetAddress: 123 Some St.
+          addressLocality: Kernville
+    - name: Silent Auction
+      description: VIP access includes early access, appetizers, & private cash bar. VIP tickets $10
+      startDate: 2023-01-20T17:00
+      endDate: 2023-01-20T19:30
+      location:
+        name: Ewings on the Kern
+        address:
+          streetAddress: 125 Buena Vista Dr.
+          addressLocality: 93238
+    - name: IDK
+      description: Bribes, raffles, & fun.
+      startDate: 2023-02-03T09:00
+      endDate: 2023-02-03T12:00
+      location:
+        name: Old Isabella Coffee Company
+        address:
+          streetAddress: 5104 Lake Isabella Blvd. Suite D
+          addressLocality: Lake Isabella
+          postalCode: 93240
+    - name: Poker Night
+      description: $100 buy in, $20 extra chip, multiple rebuys.
+      startDate: 2023-02-03T17:00
+      location:
+        name: Kernville Saloon
+        address:
+          streetAddress: 22 Tobias St.
+          addressLocality: Kernville
+    # - name: Paint Night
+    #   description: Let's paint! Also, bribes, raffles, & fun! Tickets $40 - Contact us to reserve your spot.
+    - name: Scavenger Hunt
+      description: Tickets $20 - Cash Prize! Contact us to reserve your spot!
+      startDate: 2023-02-08T09:00
+      endDate: 2023-02-08T12:00
+      location:
+        name: Big Blue Bear
+        address:
+          streetAddress: 101 Piute Dr.
+          addressLocality: Kernville
+    - name: Super Bowl
+      description: Football, pool, 50/50, bribes, & raffles.
+      startDate: 2023-02-12T13:00
+      location:
+        name: Sportsman's Inn
+        address:
+          streetAddress: 11123 Kernville Rd.
+          addressLocality: Kernville
