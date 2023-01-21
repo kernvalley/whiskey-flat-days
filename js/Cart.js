@@ -90,7 +90,7 @@ export class Cart extends EventTarget {
 			const { key } = protectedData.get(this);
 			const oldValue = await this.getAll({ key, signal });
 			const newValue = globalThis.structuredClone(oldValue);
-			const current = oldValue.find(item => item.id === id && item.offer === offer);
+			const current = newValue.find(item => item.id === id && item.offer === offer);
 
 			if (typeof current ==='object' && ! Object.is(current, null)) {
 				current.quantity = quantity;

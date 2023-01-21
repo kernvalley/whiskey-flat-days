@@ -7,10 +7,10 @@ const { currency } = require('./stripe-consts.js');
 
 async function getDisplayItems(cart, { signal } = {}) {
 	const { getProducts } = require('./store.js');
-	const products = await getProducts(cart.map(({ item }) => item, { signal }));
+	const products = await getProducts(cart.map(({ id }) => id, { signal }));
 
 	return products.map(product => {
-		const { quantity = 1, offer } = cart.find(({ item }) => product['@identifier'] === item);
+		const { quantity = 1, offer } = cart.find(({ id }) => product['@identifier'] === id);
 
 		if (! Number.isInteger(quantity) || quantity < 1) {
 			throw new HTTPError(`Invalid quantity for ${product.name}`);

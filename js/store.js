@@ -2,7 +2,7 @@ import { HTMLStripePaymentFormElement } from 'https://cdn.kernvalley.us/componen
 import {
 	on, create, value, text, attr, data, disable, each, intersect,
 } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
-import { getStripeKey, getSecret } from './stripe.js';
+import { getStripeKey } from './stripe.js';
 import { getJSON, postJSON } from 'https://cdn.kernvalley.us/js/std-js/http.js';
 import { createImage } from 'https://cdn.kernvalley.us/js/std-js/elements.js';
 import { Cart } from './Cart.js';
@@ -152,7 +152,7 @@ async function getSellerProducts(seller, { signal } = {}) {
 async function showProductDetails(id, { signal } = {}) {
 	const cart = new Cart();
 	const previous = location.href;
-	const [product, { quantity = 1 } = {}] = await Promise.all([
+	const [product, { quantity = 1, offer } = {}] = await Promise.all([
 		getProductDetails(id, { signal }),
 		cart.get(id, { signal }),
 	]);
@@ -170,6 +170,13 @@ async function showProductDetails(id, { signal } = {}) {
 	text('.seller-name[itemprop="name"]', seller.name, { base: tmp });
 	attr('.seller-link', { href: sellerLink }, { base: tmp });
 	text('[itemprop="price"]', getPrice(product), { base: tmp });
+	data('#item-qty', { id, offer }, { base: tmp });
+	on(tmp.querySelector('#item-qty'), 'change', async ({ target }) => {
+		const { id, offer } = target.dataset;
+		const quantity = target.valueAsNumber;
+		console.log({ id, offer, quantity });
+		await cart.add({ id, quantity, offer });
+	});
 	text('[itemprop="availability"]', getAvailability(product), { base: tmp });
 	attr('[itemprop="availability"]', { content: product.offers[0].availability }, { base: tmp });
 	tmp.querySelector('button[type="submit"]').disabled = ! isAvailable(product);
@@ -261,8 +268,8 @@ async function showProductDetails(id, { signal } = {}) {
 async function getPaymentRequest({ signal } = {}) {
 	const cart = new Cart();
 	const url = new URL('/api/paymentRequest', document.baseURI);
-	url.searchParams.set('query', await cart.getQueryString({ signal }));
-	return await getJSON(url, { signal });
+	const body = await cart.getAll({ signal });
+	return await postJSON(url, { body, signal });
 }
 
 async function reviewCart(cart, { signal } = {}) {
@@ -447,10 +454,9 @@ if (location.pathname.startsWith('/store/checkout')) {
 		Promise.all([
 			getPaymentRequest(),
 			getStripeKey(),
-		]).then(async ([req, key]) => {
-			const clientSecret = await getSecret(req.details);
-			const form = new HTMLStripePaymentFormElement(key, clientSecret, {
-				...req,
+		]).then(async ([{ paymentRequest, paymentIntent }, key]) => {
+			const form = new HTMLStripePaymentFormElement(key, paymentIntent, {
+				...paymentRequest,
 				config: {
 					returnURL: new URL(location.pathname, location.origin).href,
 				}
@@ -532,9 +538,4 @@ if (location.pathname.startsWith('/store/checkout')) {
 			showProductDetails(location.hash.substr(1));
 		}
 	});
-}
-
-export async function createPaymentRequest(cart, { signal } = {}) {
-	const body = await cart.getAll({ signal });
-	const data = await postJSON('/api/paymentRequest', { body });
 }

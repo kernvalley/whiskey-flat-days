@@ -98,21 +98,6 @@ async function getSellers(query = null, { signal } = {}) {
 	}
 }
 
-function parseQuery(query) {
-	if (typeof query !== 'string') {
-		throw new TypeError('query must be a string');
-	} else {
-		return query.split('|').map(section => {
-			const [item, quantity = 1, offer = null] = section.split(':');
-			return {
-				item,
-				quantity: Math.max(1, parseInt(quantity)),
-				offer,
-			};
-		});
-	}
-}
-
 async function createOrder({ client_secret: clientSecret }, {
 	details: {
 		id,
