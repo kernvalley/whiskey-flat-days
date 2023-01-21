@@ -37,6 +37,7 @@ products:
         availability: OutOfStock
         price: 6.99
         priceCurrency: USD
+        seller: *KrazyDazey
   - name: Tubing Down the Kern River
     "@context": https://schema.org
     "@type": Product
@@ -52,6 +53,7 @@ products:
         availability: OutOfStock
         price: 6.99
         priceCurrency: USD
+        seller: *KrazyDazey
   - name: Kern River Rafting
     "@context": https://schema.org
     "@type": Product
@@ -67,6 +69,7 @@ products:
         availability: OutOfStock
         price: 6.99
         priceCurrency: USD
+        seller: *KrazyDazey
   - name: Whiskey Flats Keychain
     "@context": https://schema.org
     "@type": Product
@@ -82,6 +85,7 @@ products:
         availability: OutOfStock
         price: 6.99
         priceCurrency: USD
+        seller: *KrazyDazey
   - name: Kern River Rafting Keychain
     "@context": https://schema.org
     "@type": Product
@@ -97,6 +101,7 @@ products:
         availability: OutOfStock
         price: 6.99
         priceCurrency: USD
+        seller: *KrazyDazey
   - name: Kernville Magnet
     "@context": https://schema.org
     "@type": Product
@@ -112,6 +117,7 @@ products:
         availability: OutOfStock
         price: 12.99
         priceCurrency: USD
+        seller: *SawDuzz
   - name: Kernville Bear Magnet
     "@context": https://schema.org
     "@type": Product
@@ -127,6 +133,7 @@ products:
         availability: OutOfStock
         price: 12.99
         priceCurrency: USD
+        seller: *SawDuzz
   - name: Kernville Ornament
     "@context": https://schema.org
     "@type": Product
@@ -142,6 +149,7 @@ products:
         availability: OutOfStock
         price: 12.99
         priceCurrency: USD
+        seller: *SawDuzz
   - name: Fishing Ornament
     "@context": https://schema.org
     "@type": Product
@@ -157,3 +165,4 @@ products:
         availability: OutOfStock
         price: 12.99
         priceCurrency: USD
+        seller: *SawDuzz
