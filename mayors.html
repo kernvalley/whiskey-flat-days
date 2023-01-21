@@ -17,11 +17,12 @@ tags:
 	<h2 class="center font-title section-heading">Whiskey Flat Days Mayor Race</h2>
 	<div id="candidates" class="flex row wrap space-evenly">
 		{% for candidate in site.data.mayors %}
-			<div id="{{ candidate.identifier }}" class="card shadow mayor-candidate" itemtype="https://schema.org/Person" itemscope="">
+			<div id="{{ candidate.identifier }}" class="card shadow mayor-candidate">
 				<h3 class="center mayor-name font-title section-heading">{{ candidate.names | join: ' & ' }}</h3>
 				<div class="race-events">
 					<h4 class="center">Events</h4>
 					{% for event in candidate.events %}
+						<meta itemprop="image" content="https://cdn.kernvalley.us/img/raster/missing-image.png" />
 						<div class="mayor-race-event" itemtype="https://schema.org/Event" itemscope="">
 							{% if event.name %}
 								<h4 class="mayor-race-event-name" itemprop="name">{{ event.name }}</h4>
