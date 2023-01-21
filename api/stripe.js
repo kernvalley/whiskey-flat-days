@@ -60,7 +60,7 @@ exports.handler = async function handler(event) {
 						throw new TypeError('Expected an array of items');
 					}
 
-					const { Stripe } = await import('stripe');
+					const Stripe = require('stripe');
 					const stripe = Stripe(process.env.STRIPE_SECRET);
 					const paymentIntent = await stripe.paymentIntents.create({
 						amount: await calculateOrderAmount(req),

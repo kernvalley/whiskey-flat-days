@@ -47,7 +47,7 @@ async function createPaymentIntent(total) {
 	} else if (typeof total !== 'number' || Number.isNaN(total) || total <= 0) {
 		throw new TypeError('Invalid total for order');
 	} else {
-		const { Stripe } = await import('stripe');
+		const Stripe = require('stripe');
 		const stripe = Stripe(process.env.STRIPE_SECRET);
 		const paymentIntent = await stripe.paymentIntents.create({
 			amount: Math.round(total * 100),
@@ -165,7 +165,7 @@ async function getOrder(id) {
 		const doc = await db.doc(id).get();
 
 		if (doc.exists) {
-			const { Stripe } = await import('stripe');
+			const Stripe = require('stripe');
 			const stripe = Stripe(process.env.STRIPE_SECRET);
 			const order = doc.data();
 			const paymentIntent = await stripe.paymentIntents.retrieve(order.paymentRequest.details.id);
