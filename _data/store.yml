@@ -34,7 +34,7 @@ products:
     offers:
       - "@identifier": 8d832bdc-9468-4916-abb8-f126355fcbae
         "@type": Offer
-        availability: OutOfStock
+        availability: InStock
         price: 6.99
         priceCurrency: USD
         seller: *KrazyDazey
