@@ -1,32 +1,24 @@
 /* eslint-env node */
 const headers = { 'Content-Type': 'application/json' };
+const { HTTPError } = require('./http-error.js');
 
 exports.handler = async function(event) {
-	switch(event.httpMethod) {
-		case 'GET':
-			try {
+	try {
+		switch(event.httpMethod) {
+			case 'GET': {
 				const { getSellers } = require('./store.js');
 
 				if ('id' in event.queryStringParameters) {
 					const query = event.queryStringParameters.id.split('|');
 					const seller = await getSellers(query.length === 1 ? query[0] : query);
 
-					if (typeof seller === 'object' && ! Object.is(seller, null)) {
+					if (typeof seller !== 'object' || Object.is(seller, null)) {
+						throw new HTTPError(`Could not find seller with id "${event.queryStringParameters.id}"`, { status: 404 });
+					} else {
 						return {
 							statusCode: 200,
 							headers,
 							body: JSON.stringify(seller),
-						};
-					} else {
-						return {
-							statusCode: 404,
-							headers,
-							body: JSON.stringify({
-								error: {
-									message: `Could not find seller with id "${event.queryStringParameters.id}"`,
-									status: 404,
-								}
-							})
 						};
 					}
 				} else {
@@ -38,30 +30,27 @@ exports.handler = async function(event) {
 						body: JSON.stringify(sellers),
 					};
 				}
-			} catch(err) {
-				console.error(err);
-				return {
-					statusCode: 500,
-					headers,
-					body: JSON.stringify({
-						error: {
-							message: 'Error reading file',
-							status: 500,
-						}
-					})
-				};
 			}
 
-		default:
+			default:
+				throw new HTTPError(`Unsupported HTTP Method: ${event.httpMethod}`, { status: 405 });
+		}
+	} catch(err) {
+		console.error(err);
+
+		if (err instanceof HTTPError) {
+			return err.send({ Options: 'GET' });
+		} else {
 			return {
-				statusCode: 400,
+				statusCode: 500,
 				headers,
 				body: JSON.stringify({
 					error: {
-						message: 'Invalid request type',
-						error: 400,
+						message: 'An unknown error occured',
+						status: 500
 					}
 				})
 			};
+		}
 	}
 };

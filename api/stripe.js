@@ -1,20 +1,7 @@
 /* eslint-env node */
 const methods = ['GET', 'POST', 'OPTIONS'];
+const { getTotal, createOrder, calculateOrderAmount } = require('./stripe-utils.js');
 
-function toCurrency(num) {
-	return parseFloat(num.toFixed(2));
-}
-
-function getTotal({ displayItems = [], modifiers: { additionalDisplayItems = [] } = {}}) {
-	const total = [...displayItems, ...additionalDisplayItems]
-		.reduce((total, { amount: { value = 0 } = {}}) => total + value, 0);
-
-	return toCurrency(total);
-}
-
-async function calculateOrderAmount(req) {
-	return parseInt(getTotal(req) * 100);
-}
 
 exports.handler = async function handler(event) {
 	switch(event.httpMethod) {
@@ -27,15 +14,7 @@ exports.handler = async function handler(event) {
 			};
 
 		case 'GET':
-			if (typeof process.env.STRIPE_PUBLIC === 'string') {
-				return {
-					statusCode: 200,
-					headers: { 'Content-Type': 'application/json' },
-					body: JSON.stringify({
-						key: process.env.STRIPE_PUBLIC,
-					})
-				};
-			} else {
+			if (typeof process.env.STRIPE_PUBLIC !== 'string') {
 				return {
 					statusCode: 500,
 					headers: { 'Content-Type': 'application/json' },
@@ -44,6 +23,14 @@ exports.handler = async function handler(event) {
 							message: 'Missing Stripe Public Key',
 							status: 500,
 						}
+					})
+				};
+			} else {
+				return {
+					statusCode: 200,
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify({
+						key: process.env.STRIPE_PUBLIC,
 					})
 				};
 			}
@@ -83,6 +70,14 @@ exports.handler = async function handler(event) {
 						},
 					});
 
+					req.id = paymentIntent.id;
+					req.total = { label: 'Total', amount: {
+						value: getTotal(req),
+						currency: 'USD',
+					}};
+
+					await createOrder(paymentIntent, { details: req, options: { requestShipping: true } });
+
 					return {
 						statusCode: 200,
 						headers: { 'Content-Type': 'application/json' },
@@ -91,6 +86,7 @@ exports.handler = async function handler(event) {
 						})
 					};
 				} catch(err) {
+					console.error(err);
 					return {
 						statusCode: 500,
 						headers: {

@@ -1,6 +1,6 @@
 /* eslint-env node */
 const PRODUCTS_FILE = './_data/store.yml';
-const allowedAvailibility = ['InStock'];
+const { allowedAvailibility } = require('./stripe-consts.js');
 
 function isAvailable({ offers }) {
 	return offers.some(({ availability }) => allowedAvailibility.includes(availability));
@@ -40,6 +40,15 @@ async function getSellers(query = null, { signal } = {}) {
 		return sellers.filter(query);
 	} else {
 		return sellers;
+	}
+}
+
+async function loadFromCart(cart, { signal } = {}) {
+	if (! Array.isArray(cart) || cart.length === 0) {
+		throw new TypeError('Invalid cart');
+	} else {
+		const products = await getProducts(cart.map(({ id }) => id, { signal }));
+		return products;
 	}
 }
 
@@ -99,3 +108,4 @@ async function createDisplayItems(query, { signal, currency = 'USD' } = {}) {
 exports.getProducts = getProducts;
 exports.getSellers = getSellers;
 exports.createDisplayItems = createDisplayItems;
+exports.loadFromCart = loadFromCart;

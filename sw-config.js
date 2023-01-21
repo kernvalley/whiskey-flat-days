@@ -29,6 +29,8 @@ const config = {
 		'/webapp.webmanifest',
 		'https://apps.kernvalley.us/apps.json',
 		'https://cdn.kernvalley.us/img/markers.svg',
+		/* Other */
+		'/store/products.json',
 	].map(path => new URL(path, location.origin).href),
 	stale: [
 		/* Scripts */
@@ -77,8 +79,6 @@ const config = {
 		/* Fonts */
 		'https://cdn.kernvalley.us/fonts/roboto.woff2',
 		'https://cdn.kernvalley.us/fonts/rye.woff2',
-		/* Other */
-		'/store/products.json',
 	].map(path => new URL(path, location.origin).href),
 	allowed: [
 		'https://www.google-analytics.com/analytics.js',
