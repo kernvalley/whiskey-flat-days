@@ -17,7 +17,6 @@ function getTotal({
 		} = {},
 	} = {},
 } = {}) {
-	console.log({ displayItems, additionalDisplayItems });
 	const total = [...displayItems, ...additionalDisplayItems]
 		.reduce((total, { amount: { value = 0 } = {}}) => total + value, 0);
 
@@ -40,6 +39,26 @@ async function calculateShipping() {
 
 function isAvailable({ offers }) {
 	return offers.some(({ availability }) => allowedAvailibility.includes(availability));
+}
+
+async function createPaymentIntent(total) {
+	if (typeof process.env.STRIPE_SECRET !== 'string') {
+		throw new Error('Missing Stripe secret');
+	} else if (typeof total !== 'number' || Number.isNaN(total) || total <= 0) {
+		throw new TypeError('Invalid total for order');
+	} else {
+		const { Stripe } = await import('stripe');
+		const stripe = Stripe(process.env.STRIPE_SECRET);
+		const paymentIntent = await stripe.paymentIntents.create({
+			amount: Math.round(total * 100),
+			currency: 'usd',
+			automatic_payment_methods: {
+				enabled: true,
+			},
+		});
+
+		return paymentIntent;
+	}
 }
 
 async function getProducts(query = null, { signal } = {}) {
@@ -94,50 +113,6 @@ function parseQuery(query) {
 	}
 }
 
-async function createDisplayItems(query, { signal, currency = 'USD' } = {}) {
-	if (typeof query !== 'string') {
-		throw new TypeError('query must be a string');
-	} else {
-		const products = await parseQuery(query, { signal });
-
-		return products.map(product => {
-			const label = product.name;
-			const identifier = product['@identifier'];
-			const { quantity, offer } = items.find(({ item }) => item === identifier);
-
-			if (typeof offer === 'string') {
-				const { price: value } = product.offers.find(({ '@identifier': id }) => id === offer);
-
-				if (typeof value === 'number' && ! Number.isNaN(value) && value > 0) {
-					return {
-						label: quantity === 1 ? label : `${label} [x${quantity}]`,
-						amount: {
-							value: parseFloat((value * quantity).toFixed(2)),
-							currency,
-						}
-					};
-				} else {
-					throw new Error(`Could not find offer "${offer}" for product "${identifier}"`);
-				}
-			} else {
-				const { price: value } = product.offers[0];
-
-				if (typeof value === 'number' && ! Number.isNaN(value) && value > 0) {
-					return {
-						label,
-						amount: {
-							value: parseFloat((value * quantity).toFixed(2)),
-							currency,
-						}
-					};
-				} else {
-					throw new Error(`Could not find offer "${offer}" for product "${identifier}"`);
-				}
-			}
-		});
-	}
-}
-
 async function createOrder({ client_secret: clientSecret }, {
 	details: {
 		id,
@@ -168,7 +143,7 @@ async function createOrder({ client_secret: clientSecret }, {
 		throw new TypeError('Invalid or missing `total.label`');
 	} else if (currency !== 'USD') {
 		throw new Error('Only USD is a supported as a currency');
-	} else if (process.env.CONTEXT === 'production') {
+	} else {
 		// Only save orders in production
 		const { getCollection, getTimestamp } = require('./firebase.js');
 		const db = getCollection(collection);
@@ -224,6 +199,6 @@ exports.calculateShipping = calculateShipping;
 exports.isAvailable = isAvailable;
 exports.getProducts = getProducts;
 exports.getSellers = getSellers;
-exports.createDisplayItems = createDisplayItems;
 exports.createOrder = createOrder;
 exports.getOrder = getOrder;
+exports.createPaymentIntent = createPaymentIntent;

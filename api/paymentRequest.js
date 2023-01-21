@@ -71,8 +71,6 @@ async function getPaymentRequest(displayItems) {
 			}
 		});
 
-		console.log({ paymentRequest: req });
-
 		req.details.total = {
 			label: 'Total',
 			amount: {
@@ -161,10 +159,14 @@ exports.handler = async function(event) {
 					} else {
 						const displayItems = await getDisplayItems(items);
 						const paymentRequest = await getPaymentRequest(displayItems);
+						const { createPaymentIntent, createOrder } = require('./stripe-utils.js');
+						const paymentIntent = await createPaymentIntent(paymentRequest.details.total.amount.value);
+						paymentRequest.details.id = paymentIntent.id;
+						await createOrder(paymentIntent, paymentRequest);
 						return {
 							statusCode: 200,
 							headers,
-							body: JSON.stringify(paymentRequest),
+							body: JSON.stringify({ paymentRequest, paymentIntent: paymentIntent.client_secret }),
 						};
 					}
 				}
