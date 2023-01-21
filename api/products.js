@@ -1,10 +1,11 @@
 /* eslint-env node */
 const headers = { 'Content-Type': 'application/json' };
+const  { HTTPError } = require('./http-error.js');
 
 exports.handler = async function(event) {
-	switch(event.httpMethod) {
-		case 'GET':
-			try {
+	try {
+		switch(event.httpMethod) {
+			case 'GET': {
 				const { getProducts } = require('./store.js');
 
 				if ('id' in event.queryStringParameters) {
@@ -18,16 +19,7 @@ exports.handler = async function(event) {
 							body: JSON.stringify(product),
 						};
 					} else {
-						return {
-							statusCode: 404,
-							headers,
-							body: JSON.stringify({
-								error: {
-									message: `Could not find product with id "${event.queryStringParameters.id}"`,
-									status: 404,
-								}
-							})
-						};
+						throw new HTTPError(`Could not find product with id "${event.queryStringParameters.id}"`, { status: 404 });
 					}
 				} else if ('seller' in event.queryStringParameters) {
 					const seller = event.queryStringParameters.seller;
@@ -40,16 +32,7 @@ exports.handler = async function(event) {
 							body: JSON.stringify(products),
 						};
 					} else {
-						return {
-							statusCode: 404,
-							headers,
-							body: JSON.stringify({
-								error: {
-									message: `No results for seller "${seller}"`,
-									status: 404,
-								}
-							}),
-						};
+						throw new HTTPError(`No results for seller "${seller}"`, { status: 404 });
 					}
 				} else {
 					const products = await getProducts();
@@ -60,30 +43,26 @@ exports.handler = async function(event) {
 						body: JSON.stringify(products),
 					};
 				}
-			} catch(err) {
-				console.error(err);
-				return {
-					statusCode: 500,
-					headers,
-					body: JSON.stringify({
-						error: {
-							message: 'Error reading file',
-							status: 500,
-						}
-					})
-				};
 			}
 
-		default:
+			default:
+				throw new HTTPError(`Unsupported HTTP Method: ${event.httpMethod}`, { status: 405 });
+		}
+	} catch(err) {
+		console.error(err);
+		if (err instanceof HTTPError) {
+			return err.send();
+		} else {
 			return {
-				statusCode: 400,
+				statusCode: 500,
 				headers,
 				body: JSON.stringify({
 					error: {
-						message: 'Invalid request type',
-						error: 400,
+						message: 'An unknown error occured',
+						status: 500,
 					}
 				})
 			};
+		}
 	}
 };

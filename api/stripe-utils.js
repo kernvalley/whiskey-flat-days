@@ -9,7 +9,15 @@ function toCurrency(num) {
 	return parseFloat(num.toFixed(2));
 }
 
-function getTotal({ displayItems = [], modifiers: { additionalDisplayItems = [] } = {}}) {
+function getTotal({
+	details: {
+		displayItems = [],
+		modifiers: {
+			additionalDisplayItems = [],
+		} = {},
+	} = {},
+} = {}) {
+	console.log({ displayItems, additionalDisplayItems });
 	const total = [...displayItems, ...additionalDisplayItems]
 		.reduce((total, { amount: { value = 0 } = {}}) => total + value, 0);
 
@@ -17,7 +25,7 @@ function getTotal({ displayItems = [], modifiers: { additionalDisplayItems = [] 
 }
 
 async function calculateCardFee(req) {
-	const total = getTotal(req.details);
+	const total = getTotal(req);
 	const fee = toCurrency((total * stripeRate) + stripeFlatCharge);
 	return fee;
 }

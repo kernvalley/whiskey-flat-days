@@ -1,6 +1,6 @@
 /* eslint-env node */
 const PRODUCTS_FILE = './_data/store.yml';
-const allowedAvailibility = ['InStock'];
+const { allowedAvailibility } = require('./stripe-consts.js');
 
 function isAvailable({ offers }) {
 	return offers.some(({ availability }) => allowedAvailibility.includes(availability));
