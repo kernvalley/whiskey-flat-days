@@ -184,7 +184,7 @@ exports.handler = async function(event) {
 				headers,
 				body: JSON.stringify({
 					error: {
-						message: 'An unknown error occured',
+						message: err.message,//'An unknown error occured',
 						status: 500,
 					}
 				}),
