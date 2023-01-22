@@ -20,7 +20,8 @@ tags:
 			<div id="{{ candidate.identifier }}" class="card shadow mayor-candidate">
 				<h3 class="center mayor-name font-title section-heading">{{ candidate.names | join: ' & ' }}</h3>
 				{% if candidate.sameAs %}
-					<div class="mayor-socail">
+					<div class="mayor-social">
+						<h4 class="section-heading">Connect</h4>
 						{% include common/same-as-links sameAs=candidate.sameAs %}
 					</div>
 				{% endif %}
