@@ -265,11 +265,20 @@ async function showProductDetails(id, { signal } = {}) {
 	await promise;
 }
 
-async function getPaymentRequest({ signal } = {}) {
-	const cart = new Cart();
+async function createPaymentRequest(cart = new Cart(), { signal } = {}) {
 	const url = new URL('/api/paymentRequest', document.baseURI);
 	const body = await cart.getAll({ signal });
 	return await postJSON(url, { body, signal });
+}
+
+async function getPaymentRequest({ signal } = {}) {
+	const params = new URLSearchParams(location.search);
+
+	if (params.has('token')) {
+		const url = new URL('/api/paymentRequest', document.baseURI);
+		url.searchParams.set('id', params.get('token'));
+		return await getJSON(url, { signal });
+	}
 }
 
 async function reviewCart(cart, { signal } = {}) {
@@ -391,13 +400,26 @@ async function reviewCart(cart, { signal } = {}) {
 						events: { click: ({ target }) => target.closest('dialog').close() },
 						text: 'Back to Shopping',
 					}),
-					create('a', {
-						href: '/store/checkout',
-						role: 'button',
+					create('button', {
+						type: 'button',
 						classList: items.length === 0
 							? ['btn', 'btn-primary', 'checkout-btn', 'disabled']
 							: ['btn', 'btn-primary', 'checkout-btn'],
 						text: 'Continue to Checkout',
+						events: {
+							click: async ({ currentTarget }) => {
+								try {
+									currentTarget.disabled = true;
+									const { paymentIntent } = await createPaymentRequest();
+									const url = new URL('/store/checkout', document.baseURI);
+									url.searchParams.set('token', paymentIntent);
+									location.href = url.href;
+								} catch(err) {
+									currentTarget.disabled = false;
+									console.error(err);
+								}
+							}
+						}
 					})
 				]
 			}),
@@ -450,12 +472,12 @@ if (location.pathname.startsWith('/store/checkout')) {
 				break;
 			}
 		}
-	} else {
+	} else if (location.search.includes('token=')) {
 		Promise.all([
 			getPaymentRequest(),
 			getStripeKey(),
 		]).then(async ([{ paymentRequest, paymentIntent }, key]) => {
-			const form = new HTMLStripePaymentFormElement(key, paymentIntent, {
+			const form = new HTMLStripePaymentFormElement(key, paymentIntent.client_secret, {
 				...paymentRequest,
 				config: {
 					returnURL: new URL(location.pathname, location.origin).href,

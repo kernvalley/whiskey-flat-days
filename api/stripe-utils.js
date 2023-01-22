@@ -167,9 +167,9 @@ async function getOrder(id) {
 		if (doc.exists) {
 			const Stripe = require('stripe');
 			const stripe = Stripe(process.env.STRIPE_SECRET);
-			const order = doc.data();
-			const paymentIntent = await stripe.paymentIntents.retrieve(order.paymentRequest.details.id);
-			return { paymentIntent, order };
+			const { paymentRequest } = doc.data();
+			const paymentIntent = await stripe.paymentIntents.retrieve(paymentRequest.details.id);
+			return { paymentIntent, paymentRequest };
 		} else {
 			throw new Error(`Invalid order "${id}"`);
 		}
