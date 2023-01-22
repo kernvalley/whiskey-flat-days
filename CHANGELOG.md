@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v2.3.1] - 2023-01-21
+
+### Added
+- Create actual WFD Mayors page with events
+
+### Changed
+- Updated Store to be (basically) fully functional
+
+### Fixed
+- Checkout no longer creates duplicate orders
+
 ## [v2.3.0] - 2023-01-09
 
 ### Changed
