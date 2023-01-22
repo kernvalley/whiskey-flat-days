@@ -22,8 +22,8 @@ tags:
 				<div class="race-events">
 					<h4 class="center">Events</h4>
 					{% for event in candidate.events %}
-						<meta itemprop="image" content="https://cdn.kernvalley.us/img/raster/missing-image.png" />
 						<div class="mayor-race-event" itemtype="https://schema.org/Event" itemscope="">
+							<meta itemprop="image" content="https://cdn.kernvalley.us/img/raster/missing-image.png" />
 							{% if event.name %}
 								<h4 class="mayor-race-event-name" itemprop="name">{{ event.name }}</h4>
 							{% endif %}
