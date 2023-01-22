@@ -37,7 +37,7 @@
         name: Cheryl's Diner
         address:
           '@type': PostalAddress
-          streetAddress: 123 Some St.
+          streetAddress: 11030 Kernville Rd.
           addressLocality: Kernville
     - name: Silent Auction
       description: VIP access includes early access, appetizers, & private cash bar. VIP tickets $10
