@@ -1,7 +1,9 @@
 - identifier: 13950f1c-dd47-4d53-99e6-6a321c73273e
   names:
-  - Fill It Up Fill
-  - Two Stroke Terri
+    - Fill It Up Fill
+    - Two Stroke Terri
+  sameAs:
+    - https://www.facebook.com/profile.php?id=100088699077155
   events:
     - name: Bingo
       startDate: 2023-01-22T13:00
@@ -21,12 +23,22 @@
           streetAddress: 12251 CA-178
           addressLocality: Mt. Mesa
           postalCode: 93240
-    # - name: Super Bowl Party
-    #   startDate: 2023-02-12
+    - name: Super Bowl Party
+      startDate: 2023-02-12T14:30
+      description: Featuring music by Cody Cates
+      location:
+        name: Dick Weed's
+        address:
+          streetAddress: Suhre St.
+          addressLocality: Lake Isabella
+          postalCode: 93240
+
 - identifier: 67ff0959-1fe8-456b-a964-bf64836e88fe
   names:
-  - Rescue Robbie
-  - Grand Marshal Gary
+    - Rescue Robbie
+    - Grand Marshal Gary
+  sameAs:
+    - https://www.facebook.com/groups/464869662314440/
   events:
     - name: Cheryl's Diner Anniversary
       description: Join us to celebrate. Free bribe with purchase.
