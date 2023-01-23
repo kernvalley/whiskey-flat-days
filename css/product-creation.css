@@ -1,0 +1,32 @@
+:root {
+	min-height: 100vh;
+}
+body {
+	display: grid;
+	grid-template-areas: "header" "msg" "." "controls" "footer";
+	grid-template-rows: 3rem auto minmax(30vh, 1fr) auto auto;
+	gap: 12px;
+}
+
+#header {
+	grid-area: header;
+}
+
+#msg {
+	grid-area: msg;
+}
+
+#controls {
+	grid-area: controls;
+}
+
+#product {
+	width: 95vw;
+	max-width: 100%;
+}
+
+#products {
+	margin: 0;
+	padding: 0;
+	height: 3rem;
+}
