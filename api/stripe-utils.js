@@ -33,15 +33,55 @@ async function calculateTaxes(req) {
 	return toCurrency(getTotal(req) * taxRate);
 }
 
-async function calculateShipping() {
-	return 0;
+async function calculateShipping(cart, { signal } = {}) {
+	if (!Array.isArray(cart) || cart.length === 0) {
+		return 0;
+	} else {
+		const { getProducts } = require('./store.js');
+		const products = await getProducts(
+			cart.map(({ id }) => id),
+			{ signal }
+		);
+
+		const shipping = cart.reduce((total, { id: item, offer, quantity = 1, shipping }) => {
+			const product = products.find(({ '@identifier': id }) => id === item);
+			const offers = typeof offer === 'string'
+				? product.offers.find(({ '@identifier': id }) => id === offer)
+				: offers[0];
+
+			if (typeof offers !== 'object') {
+				throw new TypeError('Missing offer');
+			} else if (! Array.isArray(offers.shippingDetails) || offers.shippingDetails.length === 0) {
+				return total;
+			} else if (typeof shipping === 'string') {
+				const { shippingRate: { value = 0 }} = offers.shippingDetails.find(
+					({ '@identifier': id }) => id === shipping
+				);
+
+				return total + (value * quantity);
+			} else {
+				const { shippingRate: { value = 0}} = offers.shippingDetails[0];
+				return total + (value * quantity);
+			}
+		}, 0);
+
+		return Math.max(0, shipping);
+	}
 }
 
 function isAvailable({ offers }) {
 	return offers.some(({ availability }) => allowedAvailibility.includes(availability));
 }
 
-async function createPaymentIntent(total) {
+async function createPaymentIntent({
+	details: {
+		total: {
+			amount: {
+				value: total,
+			}
+		}
+	}
+}) {
 	if (typeof process.env.STRIPE_SECRET !== 'string') {
 		throw new Error('Missing Stripe secret');
 	} else if (typeof total !== 'number' || Number.isNaN(total) || total <= 0) {
