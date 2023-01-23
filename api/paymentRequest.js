@@ -2,8 +2,11 @@
 const methods = ['GET'];
 const headers = { 'Content-Type': 'application/json' };
 const { HTTPError } = require('./http-error.js');
-const { calculateShipping, calculateCardFee, calculateTaxes, getTotal } = require('./stripe-utils.js');
+const { status } = require('./http-status.js');
 const { currency } = require('./stripe-consts.js');
+const {
+	calculateShipping, calculateCardFee, calculateTaxes, getTotal,
+} = require('./stripe-utils.js');
 
 async function createDisplayItems(cart, { signal } = {}) {
 	const { getProducts } = require('./store.js');
@@ -54,7 +57,7 @@ async function createPaymentRequest(items, { signal } = {}) {
 					}, {
 						label: 'Shipping',
 						amount: {
-							value: await calculateShipping({ displayItems }),
+							value: await calculateShipping(items),
 							currency,
 						},
 					}]
@@ -90,32 +93,32 @@ exports.handler = async function(event) {
 		switch(event.httpMethod) {
 			case 'GET':
 				if (typeof event.queryStringParameters.id !== 'string') {
-					throw new HTTPError('Missing required id param', { status: 400 });
+					throw new HTTPError('Missing required id param', { status: status.BAD_REQUEST });
 				} else {
 					const { getOrder } = require('./stripe-utils.js');
 					const { paymentRequest, paymentIntent } = await getOrder(event.queryStringParameters.id);
 					return {
-						statusCode: 200,
+						statusCode: status.OK,
 						headers,
 						body: JSON.stringify({ paymentRequest, paymentIntent }),
 					};
 				}
 			case 'POST':
 				if (event.headers['content-type'].toLowerCase() !== 'application/json') {
-					throw new HTTPError('Body must be JSON', { status: 400 });
+					throw new HTTPError('Body must be JSON', { status: status.BAD_REQUEST });
 				} else {
 					const items = JSON.parse(event.body);
 
 					if (! Array.isArray(items) || items.length === 0) {
-						throw new HTTPError('Invalid request body', { status: 400 });
+						throw new HTTPError('Invalid request body', { status: status.BAD_REQUEST });
 					} else {
 						const paymentRequest = await createPaymentRequest(items);
 						const { createPaymentIntent, createOrder } = require('./stripe-utils.js');
-						const paymentIntent = await createPaymentIntent(paymentRequest.details.total.amount.value);
+						const paymentIntent = await createPaymentIntent(paymentRequest);
 						paymentRequest.details.id = paymentIntent.id;
 						await createOrder(paymentIntent, paymentRequest);
 						return {
-							statusCode: 200,
+							statusCode: status.OK,
 							headers,
 							body: JSON.stringify({ paymentRequest, paymentIntent: paymentIntent.client_secret }),
 						};
@@ -123,7 +126,9 @@ exports.handler = async function(event) {
 				}
 
 			default:
-				throw new HTTPError(`Unsupported HTTP Method: ${event.httpMethod}`, { status: 405 });
+				throw new HTTPError(`Unsupported HTTP Method: ${event.httpMethod}`, {
+					status: status.METHOD_NOT_ALLOWED,
+				});
 		}
 	} catch(err) {
 		console.error(err);
@@ -132,12 +137,12 @@ exports.handler = async function(event) {
 			return err.send({ Options: methods.join(',')});
 		} else {
 			return {
-				statusCode: 500,
+				statusCode: status.INTERNAL_SERVER_ERROR,
 				headers,
 				body: JSON.stringify({
 					error: {
 						message: 'An unknown error occured',
-						status: 500,
+						status: status.INTERNAL_SERVER_ERROR,
 					}
 				}),
 			};
