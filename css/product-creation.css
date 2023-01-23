@@ -1,6 +1,7 @@
 :root {
 	min-height: 100vh;
 }
+
 body {
 	display: grid;
 	grid-template-areas: "header" "msg" "." "controls" "footer";
