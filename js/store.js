@@ -8,6 +8,7 @@ import { createImage } from 'https://cdn.kernvalley.us/js/std-js/elements.js';
 import { Cart } from './Cart.js';
 import { clamp } from 'https://cdn.kernvalley.us/js/std-js/math.js';
 import { getDeferred } from 'https://cdn.kernvalley.us/js/std-js/promises.js';
+import { useSVG } from 'https://cdn.kernvalley.us/js/std-js/svg.js';
 import { Availability } from './consts.js';
 import { intersectCallback } from './functions.js';
 const allowedAvailabilities = ['InStock', 'OnlineOnly', 'PreOrder', 'PreSale'];
@@ -69,7 +70,7 @@ async function loadStoreItems({ signal } = {}) {
 	}));
 
 	if (hasSeller && products.length !== 0) {
-		document.getElementById('product-container').prepend(await getSeller(products[0].manufacturer));
+		document.getElementById('vendor-profile').append(await getSeller(products[0].manufacturer));
 	}
 }
 
@@ -180,10 +181,6 @@ async function showProductDetails(id, { signal } = {}) {
 	text('[itemprop="availability"]', getAvailability(product), { base: tmp });
 	attr('[itemprop="availability"]', { content: product.offers[0].availability }, { base: tmp });
 	tmp.querySelector('button[type="submit"]').disabled = ! isAvailable(product);
-	console.log({
-		product: product['@identifier'],
-		available: isAvailable(product),
-	});
 
 	if (Array.isArray(seller.sameAs)) {
 		each(tmp.querySelectorAll('[itemprop="sameAs"]'), el => {
@@ -544,6 +541,8 @@ if (location.pathname.startsWith('/store/checkout')) {
 			location.href = url.href;
 		});
 
+		on('#store-filter', 'reset', ({ target }) => target.closest('dialog').close());
+
 		if ('IntersectionObserver' in globalThis) {
 			intersect('.product-listing', intersectCallback);
 		}
@@ -559,5 +558,18 @@ if (location.pathname.startsWith('/store/checkout')) {
 		if (location.hash.length === 37) {
 			showProductDetails(location.hash.substr(1));
 		}
+
+		document.body.append(create('button', {
+			type: 'button',
+			id: 'store-search-btn',
+			title: 'Search Store',
+			classList: ['btn', 'btn-primary', 'shadow-dark', 'no-border', 'round', 'fixed', 'bottom', 'left', 'z-4'],
+			children: [
+				useSVG('search', { height: 20, width: 20, fill: 'currentColor', classList: ['icon'] })
+			],
+			events: {
+				click: () => document.getElementById('store-search-dialog').showModal(),
+			}
+		}));
 	});
 }
