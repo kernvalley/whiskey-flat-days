@@ -193,6 +193,7 @@ a.btn[role="button"]:not(.disabled) {
 .product-listing .product-name {
 	grid-area: name;
 	text-align: center;
+	font-size: 1.03rem;
 }
 
 .product-listing .product-img {
