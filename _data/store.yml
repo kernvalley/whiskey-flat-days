@@ -54,6 +54,13 @@ products:
         price: 6.99
         priceCurrency: USD
         seller: *KrazyDazey
+        # shippingDetails:
+        #   - "@type": OfferShippingDetails
+        #     "@identifier": ba364c0b-ffa1-46e5-ac44-ebb889509f62
+        #     shippingRate:
+        #       "@type": MonetaryAmount
+        #       value: 1.50
+        #       currency: USD
   - name: Kern River Rafting
     "@context": https://schema.org
     "@type": Product
