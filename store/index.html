@@ -17,54 +17,61 @@ stylesheets:
 productCategories:
   - param: magnet
     label: Magnets
+  - param: keychain
+    label: Keychains
   - param: ornament
     label: Ornaments
 ---
-<h2 class="center font-title section-heading">Whiskey Flat Days Store</h2>
-<!--<div class="status-box info">
-	<h3 class="center font-title section-heading">Coming Soon</h3>
-	<p>The WFD App is adding an online store for local vendors to be able to
-		sell their goods to a wide audience of interested people. It will also
-		provide visitors of WhiskeyFlatDays.com the ability to purchase souvenirs,
-		clothing, etc. before, during, and after Whiskey Flat Days weekend.</p>
-	<p>Learn more <a href="/news/app/2022/12/13/wfd-store" class="btn btn-primary">here</a>
-</div>-->
-<form id="store-filter" class="card shadow">
-	<fieldset class="no-border">
-		<legend>Search Items</legend>
-		<div class="form-group">
-			<label class="input-label" for="search-seller">Vendors</label>
-			<select name="seller" id="search-seller" class="input">
-				<option value="">All Vendors</option>
-				{% for seller in site.data.store %}
-					{% if seller[0] != 'products' %}
-						<option class="capitalize" value="{{ seller[1]['@identifier'] }}">{{ seller[1].name }}</option>
-					{% endif %}
-				{% endfor %}
-			</select>
+<header id="store-header">
+	<h2 class="center font-title section-heading">Whiskey Flat Days Store</h2>
+	<!--<div class="status-box info">
+		<h3 class="center font-title section-heading">Coming Soon</h3>
+		<p>The WFD App is adding an online store for local vendors to be able to
+			sell their goods to a wide audience of interested people. It will also
+			provide visitors of WhiskeyFlatDays.com the ability to purchase souvenirs,
+			clothing, etc. before, during, and after Whiskey Flat Days weekend.</p>
+		<p>Learn more <a href="/news/app/2022/12/13/wfd-store" class="btn btn-primary">here</a>
+	</div>-->
+	<div id="vendor-profile"></div>
+</header>
+<dialog id="store-search-dialog">
+	<form id="store-filter" class="card shadow">
+		<fieldset class="no-border">
+			<legend>Search Items</legend>
+			<div class="form-group">
+				<label class="input-label" for="search-seller">Vendors</label>
+				<select name="seller" id="search-seller" class="input">
+					<option value="">All Vendors</option>
+					{% for seller in site.data.store %}
+						{% if seller[0] != 'products' %}
+							<option class="capitalize" value="{{ seller[1]['@identifier'] }}">{{ seller[1].name }}</option>
+						{% endif %}
+					{% endfor %}
+				</select>
+			</div>
+			<div class="form-group">
+				<label class="input-label" for="search-category">Category</label>
+				<select name="category" id="search-category" class="input">
+					<option value="">All Categories</option>
+					{% for category in page.productCategories %}
+						<option value="{{ category.param }}" class="capitalize">{{ category.label }}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</fieldset>
+		<br />
+		<div class="search-btns">
+			<button type="submit" class="btn btn-accept">
+				{% include common/icon.html icon="search" height=18 width=18 fill="currentColor" %}
+				<span>Search</span>
+			</button>
+			<button type="reset" class="btn btn-reject">
+				{% include common/icon.html icon="x" height=18 width=18 fill="currentColor" %}
+				<span>Clear</span>
+			</button>
 		</div>
-		<div class="form-group">
-			<label class="input-label" for="search-category">Category</label>
-			<select name="category" id="search-category" class="input">
-				<option value="">All Categories</option>
-				{% for category in page.productCategories %}
-					<option value="{{ category.param }}" class="capitalize">{{ category.label }}</option>
-				{% endfor %}
-			</select>
-		</div>
-	</fieldset>
-	<br />
-	<div class="search-btns">
-		<button type="submit" class="btn btn-accept">
-			{% include common/icon.html icon="search" height=18 width=18 fill="currentColor" %}
-			<span>Search</span>
-		</button>
-		<button type="reset" class="btn btn-reject">
-			{% include common/icon.html icon="x" height=18 width=18 fill="currentColor" %}
-			<span>Clear</span>
-		</button>
-	</div>
-</form>
+	</form>
+</dialog>
 <section id="product-container"></div>
 	<div id="product-list" class="grid"></div>
 </section>

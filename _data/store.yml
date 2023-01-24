@@ -98,9 +98,9 @@ products:
     "@type": Product
     "@identifier": eacccb7d-1410-4626-8520-d261c3ea3dbf
     image: https://i.imgur.com/tKpM1rK.jpg
-    description: Tubing Down the Kern River Magnet
+    description: Tubing Down the Kern River Keychain
     category:
-      - magnet
+      - keychain
     manufacturer: *KrazyDazey
     offers:
       - "@identifier": 48ab6101-a0b2-4f3e-a340-946f30eec611

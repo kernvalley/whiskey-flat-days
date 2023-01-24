@@ -187,6 +187,7 @@ a.btn[role="button"]:not(.disabled) {
 	grid-template-rows: 3rem 6rem 2rem 2rem;
 	grid-template-columns: 12rem auto;
 	gap: 5px;
+	padding: 1rem;
 }
 
 .product-listing .product-name {
@@ -215,6 +216,14 @@ a.btn[role="button"]:not(.disabled) {
 
 .product-listing .product-seller {
 	grid-area: seller;
+	margin: 6px 0;
+}
+
+#store-search-btn {
+	bottom: 1rem;
+	left: 1rem;
+	font-size: 1.5rem;
+	padding: 0.8rem;
 }
 
 @media (max-width: 800px) {
