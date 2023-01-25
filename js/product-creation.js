@@ -2,17 +2,26 @@ import { create, on, remove } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
 import { save } from 'https://cdn.kernvalley.us/js/std-js/filesystem.js';
 import { createImage } from 'https://cdn.kernvalley.us/js/std-js/elements.js';
 import { getDeferred } from 'https://cdn.kernvalley.us/js/std-js/promises.js';
+import { confirm } from 'https://cdn.kernvalley.us/js/std-js/asyncDialog.js';
+
 let products = [];
 
-async function getProductsFile({ name = 'products.json', type = 'application/json', signal } = {}) {
-	return scheduler.postTask(() => new File([JSON.stringify(products, null, 4)], name, { type }), {
-		priority: 'background',
-		signal,
-	});
+async function getProductsFile({
+	name = 'products.json',
+	type = 'application/json',
+	signal,
+} = {}) {
+	return scheduler.postTask(
+		() => new File([JSON.stringify(products, null, 4)], name, { type }), {
+			priority: 'background',
+			signal,
+		}
+	);
 }
 
 async function encodeFile(file, { signal } = {}) {
 	const { resolve, reject, promise } = getDeferred();
+
 	if (! (file instanceof File)) {
 		reject(new TypeError('Not a file'));
 	} else if (signal instanceof AbortSignal && signal.aborted) {
@@ -67,14 +76,21 @@ on('#product', 'submit', async event => {
 on('#download', 'click', async ({ currentTarget }) => {
 	try {
 		currentTarget.disabled = true;
+
 		if (! Array.isArray(products) || products.length === 0) {
 			throw new Error('No products added yet');
 		} else {
 			const file = await getProductsFile();
 			await save(file);
+
+			if (await confirm('Clear all saved products on page?')) {
+				remove('#products > li');
+				products = [];
+			}
 		}
 	} catch(err) {
 		const { resolve, promise } = getDeferred();
+
 		const dialog = create('dialog', {
 			events: {
 				close: ({ target }) => {
@@ -99,11 +115,21 @@ on('#download', 'click', async ({ currentTarget }) => {
 	}
 });
 
-on('#clear', 'click', () => remove('#products > li'));
+on('#clear', 'click', async () => {
+	if (await confirm('Clear all saved products?')) {
+		remove('#products > li');
+		products = [];
+	}
+});
 
 on('#product', 'reset', ({ target }) => {
 	target.closest('dialog').close();
-	const img = createImage('https://cdn.kernvalley.us/img/raster/missing-image.png',{ referrerPolicy: 'no-referrer', crossorigin: 'anonymous' });
+
+	const img = createImage('https://cdn.kernvalley.us/img/raster/missing-image.png',{
+		referrerPolicy: 'no-referrer',
+		crossorigin: 'anonymous',
+	});
+
 	document.getElementById('img-preview').replaceChildren(img);
 });
 
