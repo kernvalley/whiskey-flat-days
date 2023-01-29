@@ -6,6 +6,19 @@ export const site = {
 	markerIconBaseUri: document.baseURI,
 };
 
+export const firebase = {
+	publicKey: ' AIzaSyAbQ03V1HOJtzN8tV2M2MYZf_z25TKoeIU ',
+	config: {
+		apiKey: 'AIzaSyAbQ03V1HOJtzN8tV2M2MYZf_z25TKoeIU',
+		authDomain: 'wfd-store.firebaseapp.com',
+		projectId: 'wfd-store',
+		storageBucket: 'wfd-store.appspot.com',
+		messagingSenderId: '977491889748',
+		appId: '1:977491889748:web:9986879b4e598b0d3527c1',
+	}
+};
+
+
 export const icons = {
 	markLocation: './img/adwaita-icons/actions/mark-location.svg',
 };
