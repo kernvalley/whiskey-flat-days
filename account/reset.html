@@ -1,0 +1,28 @@
+---
+layout: default
+title: Password Reset
+permalink: /account/reset
+scripts:
+  - src: /js/auth.js
+    type: module
+    referrerPolicy: no-referrer
+---
+<form id="password-reset">
+	<fieldset class="no-border">
+		<legend>Reset Password</legend>
+		<div class="form-group">
+			<label for="reset-email" class="input-label required">
+				<span>Email Address</span>
+			</label>
+			<input type="email" name="email" id="reset-email" class="input" placeholder="user@example.com" autocomplete="email" required="" />
+		</div>
+	</fieldset>
+	<div class="flex row space-evenly">
+		<button type="submit" class="btn btn-accept">
+			<span>Reset Password</span>
+		</button>
+		<button type="reset" class="btn btn-reject">
+			<span>Clear Form</button>
+		</button>
+	</div>
+</form>

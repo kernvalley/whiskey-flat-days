@@ -1,0 +1,34 @@
+---
+layout: default
+title: User Login
+permalink: /account/login
+scripts:
+  - src: /js/auth.js
+    type: module
+    referrerPolicy: no-referrer
+---
+<form id="login">
+	<fieldset class="no-border">
+		<legend>Sign-In</legend>
+		<div class="form-group">
+			<label for="login-email" class="input-label required">
+				<span>Email Address</span>
+			</label>
+			<input type="email" name="email" id="login-email" class="input" placeholder="user@example.com" autocomplete="email" required="" />
+		</div>
+		<div class="form-group">
+			<label for="login-password" class="input-label required">
+				<span>Password</span>
+			</label>
+			<input type="password" name="password" id="login-password" class="input" placeholder="********" minlength="8" autocomplete="current-password" required="" />
+		</div>
+	</fieldset>
+	<div class="flex row space-evenly">
+		<button type="submit" class="btn btn-accept">
+			<span>Sign-in</span>
+		</button>
+		<button type="reset" class="btn btn-reject">
+			<span>Clear Form</span>
+		</button>
+	</div>
+</form>
