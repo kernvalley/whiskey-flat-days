@@ -1,6 +1,8 @@
-https://whiskeyflat.netlify.com/*	https://whiskeyflatdays.com/:splat	301!
-http://whiskeyflat.netlify.com/*	https://whiskeyflatdays.com/:splat	301!
-/contact				https://contact.kernvalley.us?subject=Whiskey%20Flat%20Days
-/manifest.json  /webapp.webmanifest        301
-/maps/*         /map/:splat                301
-/api/*          /.netlify/functions/:splat 200
+https://whiskeyflat.netlify.com/*         https://whiskeyflatdays.com/:splat  301!
+http://whiskeyflat.netlify.com/*          https://whiskeyflatdays.com/:splat  301!
+/contact                                  https://contact.kernvalley.us?subject=Whiskey%20Flat%20Days
+/manifest.json                            /webapp.webmanifest                 301
+/maps/*                                   /map/:splat                         301
+/api/*                                    /.netlify/functions/:splat          200
+/.well-known/change-password email=:email /account/reset?email=:email         307!
+/.well-known/change-password              /account/reset                      307!
