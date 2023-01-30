@@ -40,6 +40,7 @@ switch(url.pathname) {
 		break;
 
 	case '/account/reset':
+	case '/.well-known/change-password':
 		if (url.searchParams.has('email')) {
 			document.getElementById('reset-email').value = url.searchParams.get('email');
 		}
