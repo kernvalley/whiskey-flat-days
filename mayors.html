@@ -28,7 +28,7 @@ tags:
 				{% endif %}
 				<div class="race-events">
 					<h4 class="center underline section-heading">Events</h4>
-					{% assign events = candidate.events | where_exp: 'event', 'event.endDate >= now' | sort: 'startDate' %}
+					{% assign events = candidate.events | where_exp: 'event', 'event.startDate >= now' | sort: 'startDate' %}
 					{% for event in events %}
 						<div class="mayor-race-event" itemtype="https://schema.org/Event" itemscope="">
 							<meta itemprop="image" content="https://cdn.kernvalley.us/img/raster/missing-image.png" />
