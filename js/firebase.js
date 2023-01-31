@@ -112,7 +112,10 @@ export async function getCollection(name) {
 }
 
 export async function getDocuments(name) {
-	return getDocs(await getCollection(name));
+	const results = [];
+	const docs = await getDocs(await getCollection(name));
+	docs.forEach(doc => results.push(doc.data()));
+	return results;
 }
 
 export async function getDocument(store, id) {
@@ -133,14 +136,12 @@ export async function setDocument(store, id, data) {
 }
 
 export async function addDocument(store, data) {
-	return await addDoc(getCollection(store),data);
+	return await addDoc(getCollection(store), data);
 }
 
 export const getProducts = (async () => {
-	const products = [];
 	const sellers = await getSellers();
-	const docs = await getDocuments('products');
-	docs.forEach(doc => products.push(doc.data()));
+	const products = await getDocuments('products');
 
 	return products.map(product => {
 		if (typeof product.manufacturer === 'string') {
@@ -201,10 +202,7 @@ export async function createProduct(product) {
 }
 
 export const getSellers = (async () => {
-	const sellers = [];
-	const docs = await getDocuments('sellers');
-	docs.forEach(doc => sellers.push(doc.data()));
-	return sellers;
+	return await getDocuments('sellers');
 }).once();
 
 export const getSeller = id => getDocument('sellers', id);
