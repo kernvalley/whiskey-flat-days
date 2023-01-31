@@ -13,6 +13,7 @@ tags:
   - mayor race
   - events
 ---
+{% assign now = 'now' | date_to_xmlschema %}
 <section id="mayor-race">
 	<h2 class="center font-title section-heading">Whiskey Flat Days Mayor Contest</h2>
 	<div id="candidates" class="flex row wrap space-evenly">
@@ -27,7 +28,8 @@ tags:
 				{% endif %}
 				<div class="race-events">
 					<h4 class="center underline section-heading">Events</h4>
-					{% for event in candidate.events %}
+					{% assign events = candidate.events | where_exp: 'event', 'event.endDate >= now' | sort: 'startDate' %}
+					{% for event in events %}
 						<div class="mayor-race-event" itemtype="https://schema.org/Event" itemscope="">
 							<meta itemprop="image" content="https://cdn.kernvalley.us/img/raster/missing-image.png" />
 							{% if event.name %}
