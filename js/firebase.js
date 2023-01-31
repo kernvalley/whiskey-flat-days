@@ -138,9 +138,25 @@ export async function addDocument(store, data) {
 
 export const getProducts = (async () => {
 	const products = [];
+	const sellers = await getSellers();
 	const docs = await getDocuments('products');
 	docs.forEach(doc => products.push(doc.data()));
-	return products;
+
+	return products.map(product => {
+		if (typeof product.manufacturer === 'string') {
+			product.manufacturer = sellers.find(({ '@identifier': id }) => id === product.manufacturer);
+		}
+
+		product.offers = product.offers.map(offer => {
+			if (typeof offer.seller === 'string') {
+				offer.seller = product.manufacturer;
+			}
+
+			return offer;
+		});
+
+		return product;
+	});
 }).once();
 
 export async function uploadFile(bucket, file, { name } = {}) {

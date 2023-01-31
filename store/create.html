@@ -39,6 +39,12 @@ index: false
 		<dialog id="add-dialog" class="card shadow">
 			<form id="product">
 				<fieldset class="no-border">
+					<div class="form-group">
+						<label for="product-seller" class="input-label required">Seller</label>
+						<select name="manufacturer" id="product-seller" class="input" required="">
+							<option value="">Who are you?</label>
+						</select>
+					</div>
 					<input type="hidden" name="@context" value="https://schema.org" required="" />
 					<input type="hidden" name="@type" value="Product" required="" />
 					<legend>Add a Product</legend>

@@ -11,6 +11,7 @@ import { getDeferred } from 'https://cdn.kernvalley.us/js/std-js/promises.js';
 import { useSVG } from 'https://cdn.kernvalley.us/js/std-js/svg.js';
 import { Availability } from './consts.js';
 import { intersectCallback } from './functions.js';
+import { getProducts } from './firebase.js';
 const allowedAvailabilities = ['InStock', 'OnlineOnly', 'PreOrder', 'PreSale'];
 
 const isAvailable = product => product.offers
@@ -19,7 +20,7 @@ const isAvailable = product => product.offers
 const getAvailability = (product, index = 0) => Availability[product.offers[index].availability] || 'In Stock';
 const getPrice = (product, index = 0) => product.offers[index].price.toFixed(2);
 
-const getProducts = (() => getJSON('/store/products.json')).once();
+// const getProducts = (() => getJSON('/store/products.json')).once();
 
 function getItemType({ '@type': type = 'Thing', '@context': context = 'https://schema.org' }) {
 	return new URL(type, context).href;

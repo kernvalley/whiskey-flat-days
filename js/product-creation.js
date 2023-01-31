@@ -3,10 +3,16 @@ import { save } from 'https://cdn.kernvalley.us/js/std-js/filesystem.js';
 import { createImage } from 'https://cdn.kernvalley.us/js/std-js/elements.js';
 import { getDeferred } from 'https://cdn.kernvalley.us/js/std-js/promises.js';
 import { confirm } from 'https://cdn.kernvalley.us/js/std-js/asyncDialog.js';
-import { whenLoggedIn, createProduct, uploadFile, getFileURL} from './firebase.js';
+import { whenLoggedIn, createProduct, uploadFile, getFileURL, getSellers } from './firebase.js';
 import { firebase } from './consts.js';
+import { createOption } from 'https://cdn.kernvalley.us/js/std-js/elements.js';
 
 let products = [];
+
+getSellers().then(sellers => {
+	const opts = sellers.map(({ '@identifier': value, name: label }) => createOption({ label, value }));
+	document.getElementById('product-seller').append(...opts);
+});
 
 async function getProductsFile({
 	name = 'products.json',
@@ -48,6 +54,9 @@ on('#product', 'submit', async event => {
 	const img = data.get('image');
 	const name = `/wfd-store/products/${crypto.randomUUID()}`;
 	await uploadFile(firebase.bucket, img, { name });
+	const sellers = await getSellers();
+	const sellerID = data.get('manufacturer');
+	const seller = sellers.find(({ '@identifier': id }) => id === sellerID);
 
 	const product = {
 		'@context': data.get('@context'),
@@ -57,11 +66,13 @@ on('#product', 'submit', async event => {
 		description: data.get('description'),
 		image: await getFileURL(firebase.bucket, name),
 		category: data.getAll('category'),
+		manufacturer: seller,
 		offers: [{
 			'@type': 'Offer',
 			'@identifier': crypto.randomUUID(),
 			price: parseFloat(data.get('price')),
 			priceCurrency: 'USD',
+			seller,
 			'shippingDetails': [{
 				'@type': 'OfferShippingDetails',
 				'@identifier': crypto.randomUUID(),
