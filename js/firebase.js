@@ -14,6 +14,8 @@ import {
 	onAuthStateChanged, updateProfile, sendPasswordResetEmail,
 } from 'https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js';
 
+import { getStorage, ref, getDownloadURL, uploadBytes } from 'https://www.gstatic.com/firebasejs/9.16.0/firebase-storage.js';
+
 export const loadFirebase = (async () => {
 	return new initializeApp(firebase.config);
 }).once();
@@ -22,6 +24,14 @@ export const getAuthentication = (async () => {
 	const app = await loadFirebase();
 	return await getAuth(app);
 }).once();
+
+export async function loadStorage(bucket) {
+	if (typeof bucket !== 'string') {
+		throw new TypeError('invlalid bucket');
+	} else {
+		return await getStorage(await loadFirebase(), bucket);
+	}
+}
 
 export async function getCurrentUser() {
 	const auth = await getAuthentication();
@@ -55,6 +65,30 @@ export async function login(email, password) {
 export async function logOut() {
 	const auth = await getAuthentication();
 	return await signOut(auth);
+}
+
+export async function onAuthenticationChanged(...args) {
+	return onAuthStateChanged(await getAuthentication(), ...args);
+}
+
+export async function whenAuthenticationChanged() {
+	return await new Promise(resolve => onAuthenticationChanged(user => resolve(user)));
+}
+
+export async function whenLoggedIn() {
+	return await new Promise(resolve => {
+		getCurrentUser().then(user => {
+			if (typeof user === 'object' && ! Object.is(user, null)) {
+				resolve(user);
+			} else {
+				onAuthenticationChanged(user => {
+					if (typeof user === 'object' && ! Object.is(user, null)) {
+						resolve(user);
+					}
+				});
+			}
+		});
+	});
 }
 
 export async function resetPassword(email) {
@@ -109,6 +143,33 @@ export const getProducts = (async () => {
 	return products;
 }).once();
 
+export async function uploadFile(bucket, file, { name } = {}) {
+	if (typeof bucket !== 'string') {
+		throw new TypeError('bucket must be a string');
+	} else if (! (file instanceof File)) {
+		throw new TypeError('Not a file');
+	} else {
+		const storage = await loadStorage(bucket);
+		const fileRef = typeof name === 'string' ? ref(storage, name) : ref(storage, file.name);
+
+		return await uploadBytes(fileRef, file, {
+			contentType: file.type,
+		});
+	}
+}
+
+export async function getFileURL(bucket, file) {
+	if (typeof bucket !== 'string') {
+		throw new TypeError('bucket must be a string');
+	} else if (typeof file !== 'string') {
+		throw new TypeError('file must be a string');
+	} else {
+		const storage = await loadStorage(bucket);
+		const fileRef = ref(storage, file);
+		return await getDownloadURL(fileRef);
+	}
+}
+
 export const getProduct = id => getDocument('products', id);
 
 export async function createProduct(product) {
@@ -119,7 +180,7 @@ export async function createProduct(product) {
 	} else if (typeof product['@identifier'] !== 'string') {
 		throw new TypeError('Invalid product object');
 	} else {
-		await setDocument('products', product['@identifier'], product);
+		return await setDocument('products', product['@identifier'], product);
 	}
 }
 
@@ -131,5 +192,3 @@ export const getSellers = (async () => {
 }).once();
 
 export const getSeller = id => getDocument('sellers', id);
-
-export { onAuthStateChanged };

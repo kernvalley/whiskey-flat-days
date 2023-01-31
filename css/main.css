@@ -62,6 +62,20 @@ article p:first-letter {
 	color: #242424;
 }
 
+.user-form .btn-big.grow-1 {
+	font-size: 1.1rem;
+	max-width: 250px;
+	padding: 0.8em;
+}
+
+.user-form a.btn {
+	text-decoration: none;
+}
+
+.user-form a.btn:hover {
+	color: var(--button-primary-color);
+}
+
 .spoiler {
 	cursor: pointer;
 	border-radius: 4px;

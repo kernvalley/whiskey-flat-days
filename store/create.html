@@ -89,19 +89,32 @@ index: false
 				</div>
 			</form>
 		</dialog>
-		<div id="controls" class="flex row space-evenly">
-			<button type="button" class="btn btn-primary" data-show-modal="#add-dialog" accesskey="+">
-				{% include common/icon.html icon="plus" height=18 width=18 fill="currentColor" %}
-				<span>Add Item</span>
-			</button>
-			<button type="button" id="download" class="btn btn-accept" accesskey="d">
-				{% include common/icon.html icon="cloud-download" height=18 width=18 fill="currentColor" %}
-				<span>Save Products File</span>
-			</button>
-			<button type="button" id="clear" class="btn btn-reject" accesskey="x">
-				{% include common/icon.html icon="trashcan" height=18 width=18 fill="currentColor" %}
-				<span>Clear All</span>
-			</button>
+		<div id="controls">
+			<div id="account-links" class="flex row space-evenly">
+				<a href="/account/register?redirect=/store/create" role="button" class="btn btn-primary">
+					{% include common/icon.html icon="plus" height=18 width=18 fill="currentColor" %}
+					<span>Register</span>
+				</a>
+				<a href="/account/login?redirect=/store/create" role="button" class="btn btn-primary">
+					{% include common/icon.html icon="sign-in" height=18 width=18 fill="currentColor" %}
+					<span>Login</span>
+				</a>
+			</div>
+			<br />
+			<div class="flex row wrap space-evenly">
+				<button type="button" class="btn btn-primary" data-show-modal="#add-dialog" accesskey="+" disabled="">
+					{% include common/icon.html icon="plus" height=18 width=18 fill="currentColor" %}
+					<span>Add Item</span>
+				</button>
+				<button type="button" id="download" class="btn btn-accept" accesskey="d" disabled="">
+					{% include common/icon.html icon="cloud-download" height=18 width=18 fill="currentColor" %}
+					<span>Save Products File</span>
+				</button>
+				<button type="button" id="clear" class="btn btn-reject" accesskey="x" disabled="">
+					{% include common/icon.html icon="trashcan" height=18 width=18 fill="currentColor" %}
+					<span>Clear All</span>
+				</button>
+			</div>
 		</div>
 		{% include common/footer.html %}
 	</body>

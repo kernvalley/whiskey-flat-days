@@ -1,7 +1,26 @@
-import { on } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
+import { on, each } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
 import { md5 } from 'https://cdn.kernvalley.us/js/std-js/hash.js';
 import { register, login, resetPassword } from './firebase.js';
+
 const url = new URL(location.href);
+
+if (url.searchParams.has('redirect')) {
+	each('.user-form a.btn', el => {
+		const href = new URL(el.href, document.baseURI);
+		href.searchParams.set('redirect', url.searchParams.get('redirect'));
+		el.href = href;
+	});
+}
+
+function redirect(url) {
+	if (! (url instanceof URL)) {
+		return redirect(new URL(url, document.baseURI));
+	} else if (url.origin !== location.origin) {
+		throw new Error(`${url.origin} not allowed for redirects`);
+	} else {
+		location.href = url.href;
+	}
+}
 
 switch(url.pathname) {
 	case '/account/register':
@@ -16,27 +35,30 @@ switch(url.pathname) {
 			console.log({ user });
 			
 			if (url.searchParams.has('redirect')) {
-				location.href = new URL(url.searchParams.get('redirect'), document.baseURI).href;
+				redirect(url.searchParams.get('redirect'));
 			} else {
-				location.href = new URL('/', document.baseURI).href;
+				redirect('/');
 			}
 		});
+
 		break;
 
 	case '/account/login':
 		on('#login', 'submit', async event => {
 			event.preventDefault();
 			const data = new FormData(event.target);
+
 			const user = await login(data.get('email'), data.get('password'));
 			
 			console.log({ user });
 			
 			if (url.searchParams.has('redirect')) {
-				location.href = new URL(url.searchParams.get('redirect'), document.baseURI).href;
+				redirect(url.searchParams.get('redirect'));
 			} else {
-				location.href = new URL('/', document.baseURI).href;
+				redirect('/');
 			}
 		});
+
 		break;
 
 	case '/account/reset':
@@ -53,10 +75,11 @@ switch(url.pathname) {
 			
 			
 			if (url.searchParams.has('redirect')) {
-				location.href = new URL(url.searchParams.get('redirect'), document.baseURI).href;
+				redirect(url.searchParams.get('redirect'));
 			} else {
-				location.href = new URL('/', document.baseURI).href;
+				redirect('/');
 			}
 		});
+
 		break;
 }

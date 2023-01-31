@@ -7,22 +7,34 @@ scripts:
     type: module
     referrerPolicy: no-referrer
 ---
-<form id="password-reset">
+<form id="password-reset" class="user-form">
 	<fieldset class="no-border">
 		<legend>Reset Password</legend>
 		<div class="form-group">
 			<label for="reset-email" class="input-label required">
+				{% include common/icon.html icon="mail-unread" height=18 width=18 fill="currentColor" %}
 				<span>Email Address</span>
 			</label>
 			<input type="email" name="email" id="reset-email" class="input" placeholder="user@example.com" autocomplete="email" required="" />
 		</div>
 	</fieldset>
-	<div class="flex row space-evenly">
-		<button type="submit" class="btn btn-accept">
-			<span>Reset Password</span>
-		</button>
-		<button type="reset" class="btn btn-reject">
-			<span>Clear Form</button>
-		</button>
+	<div>
+		<div class="flex row space-evenly">
+			<button type="submit" class="btn btn-accept btn-big grow-1">
+				{% include common/icon.html icon="check" height=18 width=18 fill="currentColor" %}
+				<span>Reset Password</span>
+			</button>
+		</div>
+		<br />
+		<div class="flex row wrap space-evenly">
+			<button type="reset" class="btn btn-reject">
+				{% include common/icon.html icon="x" height=18 width=18 fill="currentColor" %}
+				<span>Clear Form</button>
+			</button>
+			<a href="/account/login" role="button" class="btn btn-primary">
+				{% include common/icon.html icon="sign-in" height=18 width=18 fill="currentColor" %}
+				<span>Login</span>
+			</a>
+		</div>
 	</div>
 </form>

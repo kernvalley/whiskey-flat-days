@@ -1,8 +1,10 @@
-import { create, on, remove } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
+import { create, on, remove, enable } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
 import { save } from 'https://cdn.kernvalley.us/js/std-js/filesystem.js';
 import { createImage } from 'https://cdn.kernvalley.us/js/std-js/elements.js';
 import { getDeferred } from 'https://cdn.kernvalley.us/js/std-js/promises.js';
 import { confirm } from 'https://cdn.kernvalley.us/js/std-js/asyncDialog.js';
+import { whenLoggedIn, createProduct, uploadFile, getFileURL} from './firebase.js';
+import { firebase } from './consts.js';
 
 let products = [];
 
@@ -43,13 +45,17 @@ async function encodeFile(file, { signal } = {}) {
 on('#product', 'submit', async event => {
 	event.preventDefault();
 	const data = new FormData(event.target);
+	const img = data.get('image');
+	const name = `/wfd-store/products/${crypto.randomUUID()}`;
+	await uploadFile(firebase.bucket, img, { name });
+
 	const product = {
 		'@context': data.get('@context'),
 		'@type': data.get('@type'),
 		'@identifier': crypto.randomUUID(),
 		name: data.get('name'),
 		description: data.get('description'),
-		image: await encodeFile(data.get('image')),
+		image: await getFileURL(firebase.bucket, name),
 		category: data.getAll('category'),
 		offers: [{
 			'@type': 'Offer',
@@ -67,6 +73,9 @@ on('#product', 'submit', async event => {
 			}]
 		}]
 	};
+
+	const result = await createProduct(product);
+	console.log({ result });
 
 	products.push(product);
 	document.getElementById('products').append(create('li', { text: data.get('name') }));
@@ -122,6 +131,8 @@ on('#clear', 'click', async () => {
 	}
 });
 
+
+
 on('#product', 'reset', ({ target }) => {
 	target.closest('dialog').close();
 
@@ -133,18 +144,24 @@ on('#product', 'reset', ({ target }) => {
 	document.getElementById('img-preview').replaceChildren(img);
 });
 
-on('#product-image', 'change', async ({ target }) => {
-	if (target.validity.valid && target.files.length === 1) {
-		const src = await encodeFile(target.files[0]);
-		const img = createImage(src, { crossOrigin: 'anonymous', referrerPolicy: 'no-referrer' });
-		document.getElementById('img-preview').replaceChildren(img);
-	}
-});
+scheduler.postTask(async () => {
+	const user = await whenLoggedIn();
+	console.log(user);
+	enable('#controls button.btn');
 
-on('[data-show-modal]', 'click', ({ currentTarget }) => {
-	document.querySelector(currentTarget.dataset.showModal).showModal();
-});
+	on('#product-image', 'change', async ({ target }) => {
+		if (target.validity.valid && target.files.length === 1) {
+			const src = await encodeFile(target.files[0]);
+			const img = createImage(src, { crossOrigin: 'anonymous', referrerPolicy: 'no-referrer' });
+			document.getElementById('img-preview').replaceChildren(img);
+		}
+	});
 
-on('[data-close]', 'click', ({ currentTarget }) => {
-	document.querySelector(currentTarget.dataset.close).close();
+	on('[data-show-modal]', 'click', ({ currentTarget }) => {
+		document.querySelector(currentTarget.dataset.showModal).showModal();
+	});
+
+	on('[data-close]', 'click', ({ currentTarget }) => {
+		document.querySelector(currentTarget.dataset.close).close();
+	});
 });
