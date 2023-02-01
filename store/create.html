@@ -79,6 +79,9 @@ index: false
 						<input type="number" name="price" id="product-price" class="input" placeholder="#.##" min="1" step="0.01" autocomplete="off" required="" />
 					</div>
 					<div class="form-group">
+						<label for="product-availability" class="input-label required">Availability</label>
+						<select name="availability" id="product-availability" class="input" required=""></select>
+					<div class="form-group">
 						<label for="product-shipping" class="input-label required">Shipping Cost</label>
 						<input type="number" name="shipping" id="product-shipping" class="input" placeholder="#.##" min="0" step="0.01" value="0" autocomplete="off" required="" />
 					</div>
@@ -111,14 +114,6 @@ index: false
 				<button type="button" class="btn btn-primary" data-show-modal="#add-dialog" accesskey="+" disabled="">
 					{% include common/icon.html icon="plus" height=18 width=18 fill="currentColor" %}
 					<span>Add Item</span>
-				</button>
-				<button type="button" id="download" class="btn btn-accept" accesskey="d" disabled="">
-					{% include common/icon.html icon="cloud-download" height=18 width=18 fill="currentColor" %}
-					<span>Save Products File</span>
-				</button>
-				<button type="button" id="clear" class="btn btn-reject" accesskey="x" disabled="">
-					{% include common/icon.html icon="trashcan" height=18 width=18 fill="currentColor" %}
-					<span>Clear All</span>
 				</button>
 			</div>
 		</div>
