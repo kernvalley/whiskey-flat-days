@@ -1,9 +1,12 @@
 import { on, enable } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
 import { createImage } from 'https://cdn.kernvalley.us/js/std-js/elements.js';
 import { getDeferred } from 'https://cdn.kernvalley.us/js/std-js/promises.js';
+// import { debounce } from 'https://cdn.kernvalley.us/js/std-js/utility.js';
 import { whenLoggedIn, uploadFile, getFileURL, getSellers, createProduct } from './firebase.js';
 import { firebase, Availability } from './consts.js';
 import { createOption } from 'https://cdn.kernvalley.us/js/std-js/elements.js';
+
+const invalidAvailabilities = ['Discontinued', 'InStoreOnly'];
 
 async function encodeFile(file, { signal } = {}) {
 	const { resolve, reject, promise } = getDeferred();
@@ -32,7 +35,8 @@ getSellers().then(sellers => {
 });
 
 document.getElementById('product-availability').append(
-	...Object.entries(Availability).map(([value, label]) => createOption({ label, value }))
+	...Object.entries(Availability)
+		.map(([value, label]) => createOption({ label, value, disabled: invalidAvailabilities.includes(value) }))
 );
 
 scheduler.postTask(async () => {
@@ -112,6 +116,31 @@ scheduler.postTask(async () => {
 
 	on('[data-close]', 'click', ({ currentTarget }) => {
 		document.querySelector(currentTarget.dataset.close).close();
+	});
+
+	on('[data-hint]', 'click', ({ currentTarget }) => {
+		const hint = document.querySelector(currentTarget.dataset.hint);
+
+		if (hint.hidden) {
+			hint.hidden = false;
+			setTimeout(() => hint.hidden = true, 5000);
+		} else {
+			hint.hidden = true;
+		}
+	});
+
+	on('[data-error-message]', 'change', ({ currentTarget }) => {
+		if (! currentTarget.validity.valid) {
+			const hint = document.querySelector(currentTarget.dataset.errorMessage);
+			hint.hidden = false;
+			setTimeout(() => hint.hidden = true, 5000);
+		}
+	});
+
+	on('[data-error-message]', 'invalid', ({ currentTarget }) => {
+		const hint = document.querySelector(currentTarget.dataset.errorMessage);
+		hint.hidden = false;
+		setTimeout(() => hint.hidden = true, 5000);
 	});
 
 	enable('#controls button.btn');
