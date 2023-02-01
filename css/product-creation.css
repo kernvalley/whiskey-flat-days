@@ -31,3 +31,7 @@ body {
 	padding: 0;
 	height: 3rem;
 }
+
+.status-box.info:not([hidden]) {
+	margin: 0.8rem;
+}

@@ -14,6 +14,8 @@ import {
 	onAuthStateChanged, updateProfile, sendPasswordResetEmail,
 } from 'https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js';
 
+import { getStorage, ref, getDownloadURL, uploadBytes } from 'https://www.gstatic.com/firebasejs/9.16.0/firebase-storage.js';
+
 export const loadFirebase = (async () => {
 	return new initializeApp(firebase.config);
 }).once();
@@ -22,6 +24,14 @@ export const getAuthentication = (async () => {
 	const app = await loadFirebase();
 	return await getAuth(app);
 }).once();
+
+export async function loadStorage(bucket) {
+	if (typeof bucket !== 'string') {
+		throw new TypeError('invlalid bucket');
+	} else {
+		return await getStorage(await loadFirebase(), bucket);
+	}
+}
 
 export async function getCurrentUser() {
 	const auth = await getAuthentication();
@@ -57,6 +67,30 @@ export async function logOut() {
 	return await signOut(auth);
 }
 
+export async function onAuthenticationChanged(...args) {
+	return onAuthStateChanged(await getAuthentication(), ...args);
+}
+
+export async function whenAuthenticationChanged() {
+	return await new Promise(resolve => onAuthenticationChanged(user => resolve(user)));
+}
+
+export async function whenLoggedIn() {
+	return await new Promise(resolve => {
+		getCurrentUser().then(user => {
+			if (typeof user === 'object' && ! Object.is(user, null)) {
+				resolve(user);
+			} else {
+				onAuthenticationChanged(user => {
+					if (typeof user === 'object' && ! Object.is(user, null)) {
+						resolve(user);
+					}
+				});
+			}
+		});
+	});
+}
+
 export async function resetPassword(email) {
 	if (await isLoggedIn()) {
 		throw new DOMException('User is signed in');
@@ -78,7 +112,10 @@ export async function getCollection(name) {
 }
 
 export async function getDocuments(name) {
-	return getDocs(await getCollection(name));
+	const results = [];
+	const docs = await getDocs(await getCollection(name));
+	docs.forEach(doc => results.push(doc.data()));
+	return results;
 }
 
 export async function getDocument(store, id) {
@@ -99,15 +136,56 @@ export async function setDocument(store, id, data) {
 }
 
 export async function addDocument(store, data) {
-	return await addDoc(getCollection(store),data);
+	return await addDoc(getCollection(store), data);
 }
 
 export const getProducts = (async () => {
-	const products = [];
-	const docs = await getDocuments('products');
-	docs.forEach(doc => products.push(doc.data()));
-	return products;
+	const sellers = await getSellers();
+	const products = await getDocuments('products');
+
+	return products.map(product => {
+		if (typeof product.manufacturer === 'string') {
+			product.manufacturer = sellers.find(({ '@identifier': id }) => id === product.manufacturer);
+		}
+
+		product.offers = product.offers.map(offer => {
+			if (typeof offer.seller === 'string') {
+				offer.seller = product.manufacturer;
+			}
+
+			return offer;
+		});
+
+		return product;
+	});
 }).once();
+
+export async function uploadFile(bucket, file, { name } = {}) {
+	if (typeof bucket !== 'string') {
+		throw new TypeError('bucket must be a string');
+	} else if (! (file instanceof File)) {
+		throw new TypeError('Not a file');
+	} else {
+		const storage = await loadStorage(bucket);
+		const fileRef = typeof name === 'string' ? ref(storage, name) : ref(storage, file.name);
+
+		return await uploadBytes(fileRef, file, {
+			contentType: file.type,
+		});
+	}
+}
+
+export async function getFileURL(bucket, file) {
+	if (typeof bucket !== 'string') {
+		throw new TypeError('bucket must be a string');
+	} else if (typeof file !== 'string') {
+		throw new TypeError('file must be a string');
+	} else {
+		const storage = await loadStorage(bucket);
+		const fileRef = ref(storage, file);
+		return await getDownloadURL(fileRef);
+	}
+}
 
 export const getProduct = id => getDocument('products', id);
 
@@ -119,17 +197,12 @@ export async function createProduct(product) {
 	} else if (typeof product['@identifier'] !== 'string') {
 		throw new TypeError('Invalid product object');
 	} else {
-		await setDocument('products', product['@identifier'], product);
+		return await setDocument('products', product['@identifier'], product);
 	}
 }
 
 export const getSellers = (async () => {
-	const sellers = [];
-	const docs = await getDocuments('sellers');
-	docs.forEach(doc => sellers.push(doc.data()));
-	return sellers;
+	return await getDocuments('sellers');
 }).once();
 
 export const getSeller = id => getDocument('sellers', id);
-
-export { onAuthStateChanged };
