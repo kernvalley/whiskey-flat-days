@@ -2,7 +2,9 @@ import { on, enable } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
 import { createImage } from 'https://cdn.kernvalley.us/js/std-js/elements.js';
 import { getDeferred } from 'https://cdn.kernvalley.us/js/std-js/promises.js';
 // import { debounce } from 'https://cdn.kernvalley.us/js/std-js/utility.js';
-import { whenLoggedIn, uploadFile, getFileURL, getSellers, createProduct } from './firebase.js';
+import {
+	whenLoggedIn, uploadFile, getFileURL, getSellers, createProduct, getCurrentUser,
+} from './firebase.js';
 import { firebase, Availability } from './consts.js';
 import { createOption } from 'https://cdn.kernvalley.us/js/std-js/elements.js';
 
@@ -45,44 +47,55 @@ scheduler.postTask(async () => {
 	on('#product', 'submit', async event => {
 		event.preventDefault();
 		const data = new FormData(event.target);
-		const img = data.get('image');
-		const name = `/wfd-store/products/${crypto.randomUUID()}`;
-		await uploadFile(firebase.bucket, img, { name });
-		const sellers = await getSellers();
-		const sellerID = data.get('manufacturer');
-		const seller = sellers.find(({ '@identifier': id }) => id === sellerID);
+		const user = await getCurrentUser();
 
-		const product = {
-			'@context': data.get('@context'),
-			'@type': data.get('@type'),
-			'@identifier': crypto.randomUUID(),
-			name: data.get('name'),
-			description: data.get('description'),
-			image: await getFileURL(firebase.bucket, name),
-			category: data.getAll('category'),
-			manufacturer: seller,
-			offers: [{
-				'@type': 'Offer',
+		if (typeof user === 'object' & ! Object.is(user, null)) {
+			const img = data.get('image');
+			const name = `/wfd-store/products/${crypto.randomUUID()}`;
+			await uploadFile(firebase.bucket, img, { name });
+			const sellers = await getSellers();
+			const sellerID = data.get('manufacturer');
+			const seller = sellers.find(({ '@identifier': id }) => id === sellerID);
+
+			seller.member = [{
+				'@type': 'Person',
+				'@identifier': user.uid,
+				name: user.displayName,
+				email: user.email,
+			}];
+
+			const product = {
+				'@context': data.get('@context'),
+				'@type': data.get('@type'),
 				'@identifier': crypto.randomUUID(),
-				price: parseFloat(data.get('price')),
-				priceCurrency: 'USD',
-				availability: data.get('availability'),
-				seller,
-				'shippingDetails': [{
-					'@type': 'OfferShippingDetails',
+				name: data.get('name'),
+				description: data.get('description'),
+				image: await getFileURL(firebase.bucket, name),
+				category: data.getAll('category'),
+				manufacturer: seller,
+				offers: [{
+					'@type': 'Offer',
 					'@identifier': crypto.randomUUID(),
-					shippingRate: {
-						'@type': 'MonetaryAmount',
-						value: parseFloat(data.get('shipping')),
-						currency: 'USD',
-					}
+					price: parseFloat(data.get('price')),
+					priceCurrency: 'USD',
+					availability: data.get('availability'),
+					seller,
+					'shippingDetails': [{
+						'@type': 'OfferShippingDetails',
+						'@identifier': crypto.randomUUID(),
+						shippingRate: {
+							'@type': 'MonetaryAmount',
+							value: parseFloat(data.get('shipping')),
+							currency: 'USD',
+						}
+					}]
 				}]
-			}]
-		};
+			};
 
-		const result = await createProduct(product);
-		console.log({ result });
-		event.target.reset();
+			const result = await createProduct(product);
+			console.log({ result });
+			event.target.reset();
+		}
 	});
 
 	on('#product', 'reset', ({ target }) => {

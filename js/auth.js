@@ -31,7 +31,11 @@ switch(url.pathname) {
 			const photoURL = new URL(hash, 'https://secure.gravatar.com/avatar/');
 			photoURL.searchParams.set('s', 256);
 			photoURL.searchParams.set('d', 'mm');
-			const user = await register(data.get('email'), data.get('password'), { photoURL });
+
+			const user = await register(data.get('email'), data.get('password'), {
+				photoURL: photoURL.href,
+				displayName: data.get('displayName'),
+			});
 			console.log({ user });
 			
 			if (url.searchParams.has('redirect')) {

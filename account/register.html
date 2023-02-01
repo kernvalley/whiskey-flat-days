@@ -11,6 +11,13 @@ scripts:
 	<fieldset class="no-border">
 		<legend>Register</legend>
 		<div class="form-group">
+			<label for="reg-name" class="input-label required">
+				{% include common/icon.html icon="avatar-default" height=18 width=18 fill="currentColor" %}
+				<span>Name</span>
+			</label>
+			<input type="text" name="displayName" id="reg-name" class="input" placeholder="Name" autocomplte="name" required="" />
+		</div>
+		<div class="form-group">
 			<label for="reg-email" class="input-label required">
 				{% include common/icon.html icon="mail-unread" height=18 width=18 fill="currentColor" %}
 				<span>Email Address</span>
