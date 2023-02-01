@@ -113,11 +113,10 @@ scheduler.postTask(async () => {
 		if (target.files.length === 1) {
 			try {
 				const file = target.files[0];
-				console.log({ file });
 
 				if (! ['image/jpeg', 'image/png'].includes(file.type.toLowerCase())) {
 					target.setCustomValidity(`Invalid file type: ${file.type}`);
-				} else if (file.size > 102400) {
+				} else if (file.size > 160 * 1024) {
 					target.setCustomValidity('File size too large');
 				} else if (file.size === 0) {
 					target.setCustomValidity('Appears to be an empty file');
@@ -132,9 +131,9 @@ scheduler.postTask(async () => {
 
 					await img.decode();
 
-					if (! between(400, img.naturalWidth, 640)) {
+					if (! between(320, img.naturalWidth, 640)) {
 						target.setCustomValidity(`Image is an invalid width: ${img.naturalWidth}`);
-					} else if(! between(400, img.naturalHeight, 480)) {
+					} else if(! between(240, img.naturalHeight, 480)) {
 						target.setCustomValidity(`Image is an invalid height: ${img.naturalHeight}`);
 					} else {
 						target.setCustomValidity('');
