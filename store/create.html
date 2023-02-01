@@ -39,6 +39,7 @@ index: false
 
 				</p>
 				<p>You may click on the {% include common/icon.html icon="info" height="18" width="18" fill="currentColor" %} icons for the fields to get more infomation.</p>
+				<p>If your images are too large, you can use this <a href="https://imagecompressor.com/" rel="noopener noreferrer external" target="_blank" class="link underline">free online tool {% include common/icon.html icon="link-external" height="18" width="18" fill="currentColor" %}</a> to resize them to 640x480.</p>
 			</div>
 		</div>
 		<dialog id="add-dialog" class="card shadow">
@@ -96,7 +97,10 @@ index: false
 								{% include common/icon.html icon="info" width=18 height=18 fill="currentColor" %}
 							</button>
 						</label>
-						<div class="status-box info" id="image-hint" hidden="">Please select a 4:3 image of reasonable size.</div>
+						<div class="status-box info" id="image-hint" hidden="">
+							<p>Please select a 4:3 image of reasonable size (640x480 100kB).</p>
+							<p>You may use <a href="https://imagecompressor.com/" rel="noopener noreferrer external" target="_blank" class="link underline">this free tool {% include common/icon.html icon="link-external" height="18" width="18" fill="currentColor" %}</a> to resize them</p>
+						</div>
 						<input type="file" name="image" id="product-image" class="input" accept="image/jpeg,image/png" data-error-message="#image-hint" required="" />
 						<br />
 						<div id="img-preview" class="center">

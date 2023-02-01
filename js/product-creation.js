@@ -1,6 +1,7 @@
 import { on, enable } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
 import { createImage } from 'https://cdn.kernvalley.us/js/std-js/elements.js';
 import { getDeferred } from 'https://cdn.kernvalley.us/js/std-js/promises.js';
+import { between } from 'https://cdn.kernvalley.us/js/std-js/math.js';
 // import { debounce } from 'https://cdn.kernvalley.us/js/std-js/utility.js';
 import {
 	whenLoggedIn, uploadFile, getFileURL, getSellers, createProduct, getCurrentUser,
@@ -109,16 +110,42 @@ scheduler.postTask(async () => {
 	});
 
 	on('#product-image', 'change', async ({ target }) => {
-		if (target.validity.valid && target.files.length === 1) {
-			const src = await encodeFile(target.files[0]);
-			const img = createImage(src, {
-				crossOrigin: 'anonymous',
-				referrerPolicy: 'no-referrer',
-			});
+		if (target.files.length === 1) {
+			try {
+				const file = target.files[0];
+				console.log({ file });
 
-			document.getElementById('img-preview').replaceChildren(img);
-			await img.decode();
-			// @TODO verify image size
+				if (! ['image/jpeg', 'image/png'].includes(file.type.toLowerCase())) {
+					target.setCustomValidity(`Invalid file type: ${file.type}`);
+				} else if (file.size > 102400) {
+					target.setCustomValidity('File size too large');
+				} else if (file.size === 0) {
+					target.setCustomValidity('Appears to be an empty file');
+				} else {
+					const src = await encodeFile(file);
+					const img = createImage(src, {
+						crossOrigin: 'anonymous',
+						referrerPolicy: 'no-referrer',
+					});
+
+					document.getElementById('img-preview').replaceChildren(img);
+
+					await img.decode();
+
+					if (! between(400, img.naturalWidth, 640)) {
+						target.setCustomValidity(`Image is an invalid width: ${img.naturalWidth}`);
+					} else if(! between(400, img.naturalHeight, 480)) {
+						target.setCustomValidity(`Image is an invalid height: ${img.naturalHeight}`);
+					} else {
+						target.setCustomValidity('');
+					}
+				}
+				// @TODO verify image size
+
+			} catch(err) {
+				console.error(err);
+				target.setCustomValidity('An error occurred processing the image');
+			}
 		}
 	});
 
@@ -142,17 +169,19 @@ scheduler.postTask(async () => {
 	});
 
 	on('[data-error-message]', 'change', ({ currentTarget }) => {
-		if (! currentTarget.validity.valid) {
-			const hint = document.querySelector(currentTarget.dataset.errorMessage);
-			hint.hidden = false;
-			setTimeout(() => hint.hidden = true, 5000);
-		}
+		setTimeout(() => currentTarget.reportValidity(), 500);
 	});
 
 	on('[data-error-message]', 'invalid', ({ currentTarget }) => {
 		const hint = document.querySelector(currentTarget.dataset.errorMessage);
-		hint.hidden = false;
-		setTimeout(() => hint.hidden = true, 5000);
+		console.log({ hint, currentTarget });
+
+		if (currentTarget.validity.valid) {
+			hint.hidden = true;
+		} else {
+			hint.hidden = false;
+			setTimeout(() => hint.hidden = true, 5000);
+		}
 	});
 
 	enable('#controls button.btn');
