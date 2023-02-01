@@ -92,8 +92,7 @@ scheduler.postTask(async () => {
 				}]
 			};
 
-			const result = await createProduct(product);
-			console.log({ result });
+			await createProduct(product);
 			event.target.reset();
 		}
 	});
