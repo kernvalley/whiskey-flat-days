@@ -2,6 +2,18 @@ source: wfd-app
 medium: web
 campaign: wfd-ad
 sidebar:
+  - uuid: 547d0f51-4065-4407-b985-e9e8de6e2f15
+    label: Kern Valley Shuttle
+    layout: stack
+    url: tel:+1-760-223-2938
+    image: https://i.imgur.com/yPxoVxqm.jpg
+    description: $5 per person anywhere in Kernville. (760) 223-2938
+    callToAction: Need a Ride? Call Now!
+    imageFit: contain
+    imagePosition: center
+    background: "#40516e"
+    color: "#fefefe"
+    linkColor: "#fefefe"
   - uuid: 87873b5a-dad1-4d07-9b17-e24747793f94
     label: Kernville Cowork
     url: https://www.kernvillecowork.com/en
