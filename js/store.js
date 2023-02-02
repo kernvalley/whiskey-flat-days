@@ -11,7 +11,7 @@ import { getDeferred } from 'https://cdn.kernvalley.us/js/std-js/promises.js';
 import { useSVG } from 'https://cdn.kernvalley.us/js/std-js/svg.js';
 import { Availability } from './consts.js';
 import { intersectCallback } from './functions.js';
-// import { getProducts } from './firebase.js';
+import { getProducts, getSellerProducts, getProduct } from './firebase.js';
 const allowedAvailabilities = ['InStock', 'OnlineOnly', 'PreOrder', 'PreSale'];
 
 const isAvailable = product => product.offers
@@ -20,7 +20,7 @@ const isAvailable = product => product.offers
 const getAvailability = (product, index = 0) => Availability[product.offers[index].availability] || 'In Stock';
 const getPrice = (product, index = 0) => product.offers[index].price.toFixed(2);
 
-const getProducts = (() => getJSON('/store/products.json')).once();
+// const getProducts = (() => getJSON('/store/products.json')).once();
 
 function getItemType({ '@type': type = 'Thing', '@context': context = 'https://schema.org' }) {
 	return new URL(type, context).href;
@@ -139,23 +139,23 @@ async function getSeller(seller) {
 	return tmp;
 }
 
-async function getProductDetails(id, { signal } = {}) {
-	const url = new URL('/api/products', document.baseURI);
-	url.searchParams.set('id', id);
-	return getJSON(url, { signal });
-}
+// async function getProductDetails(id, { signal } = {}) {
+// 	const url = new URL('/api/products', document.baseURI);
+// 	url.searchParams.set('id', id);
+// 	return getJSON(url, { signal });
+// }
 
-async function getSellerProducts(seller, { signal } = {}) {
-	const url = new URL('/api/products', document.baseURI);
-	url.searchParams.set('seller', seller);
-	return getJSON(url, { signal });
-}
+// async function getSellerProducts(seller, { signal } = {}) {
+// 	const url = new URL('/api/products', document.baseURI);
+// 	url.searchParams.set('seller', seller);
+// 	return getJSON(url, { signal });
+// }
 
 async function showProductDetails(id, { signal } = {}) {
 	const cart = new Cart();
 	const previous = location.href;
 	const [product, { quantity = 1, offer } = {}] = await Promise.all([
-		getProductDetails(id, { signal }),
+		getProduct(id),
 		cart.get(id, { signal }),
 	]);
 
@@ -281,7 +281,7 @@ async function getPaymentRequest({ signal } = {}) {
 
 async function reviewCart(cart, { signal } = {}) {
 	const [products, items] = await Promise.all([
-		getProducts({ signal }),
+		getProducts(),
 		cart.getAll({ signal }),
 	]);
 

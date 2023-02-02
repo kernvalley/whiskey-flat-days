@@ -6,24 +6,37 @@ exports.handler = async function(event) {
 	try {
 		switch(event.httpMethod) {
 			case 'GET': {
-				const { getProducts } = require('./store.js');
-
 				if ('id' in event.queryStringParameters) {
 					const query = event.queryStringParameters.id.split('|');
-					const product = await getProducts(query.length === 1 ? query[0] : query);
 
-					if (typeof product === 'object' && ! Object.is(product, null)) {
+					if (query.length === 1) {
+						const { getProduct } = require('./firebase.js');
+						const product = await getProduct(query[0]);
 						return {
 							statusCode: 200,
-							headers,
-							body: JSON.stringify(product),
+							headers: { 'Content-Type': 'application/json' },
+							body: JSON.stringify([product]),
 						};
 					} else {
-						throw new HTTPError(`Could not find product with id "${event.queryStringParameters.id}"`, { status: 404 });
+						const { getProducts } = require('./firebase.js');
+						const products = await getProducts(...query);
+
+						if (products.length === 0) {
+							throw new HTTPError('Not found', { status: 404 });
+						} else {
+							return {
+								statusCode: 200,
+								headers: { 'Content-Type': 'application/json' },
+								body: JSON.stringify(products),
+							};
+						}
 					}
 				} else if ('seller' in event.queryStringParameters) {
 					const seller = event.queryStringParameters.seller;
-					const products = await getProducts(item => item.manufacturer['@identifier'] === seller);
+					// @TODO Update to query instead of filtering
+					const { getProducts } = require('./firebase.js');
+
+					const products = await getProducts().then(products => products.filter(item => item.manufacturer['@identifier'] === seller));
 
 					if (Array.isArray(products) && products.length !== 0) {
 						return {
@@ -35,6 +48,7 @@ exports.handler = async function(event) {
 						throw new HTTPError(`No results for seller "${seller}"`, { status: 404 });
 					}
 				} else {
+					const { getProducts } = require('./firebase.js');
 					const products = await getProducts();
 
 					return {

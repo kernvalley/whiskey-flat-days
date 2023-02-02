@@ -1,6 +1,12 @@
 /* eslint-env node */
 const ENV_KEY = 'FIREBASE_CERT';
 
+function toArray(items) {
+	const results = [];
+	items.forEach(item => results.push(item));
+	return results;
+}
+
 function getTimestamp(ts = Date.now(), ns = 0) {
 	const { Timestamp } = require('firebase-admin/firestore');
 	return new Timestamp(Math.floor(ts / 1000), ns);
@@ -35,12 +41,72 @@ function getCollection(collection, { envKey = ENV_KEY, name } = {}) {
 	}
 }
 
-async function loggedIn() {
-	return true;
+async function getDocument(collection, id) {
+	const ref = getCollection(collection).doc(id);
+	const doc = await ref.get();
+
+	if (!doc.exists) {
+		throw new Error(`${id} not found in ${collection}`);
+	} else {
+		return doc.data();
+	}
 }
+
+async function getProducts(...ids) {
+	const collection = getCollection('products');
+
+	if (ids.length === 0) {
+		const results = await collection.get();
+
+		if (results.empty) {
+			return [];
+		} else {
+			return Promise.all(toArray(results).map(doc => doc.data()));
+		}
+	} else {
+		const results = await collection.where('@identifier', 'in', ids).get();
+
+		if (results.empty) {
+			return [];
+		} else {
+			return Promise.all(toArray(results).map(doc => doc.data()));
+		}
+	}
+}
+
+const getProduct = async id => await getDocument('products', id);
+
+async function getSellers(...ids) {
+	const collection = getCollection('sellers');
+
+	if (ids.length === 0) {
+		const results = await collection.get();
+
+		if (results.empty) {
+			return [];
+		} else {
+			return Promise.all(toArray(results).map(doc => doc.data()));
+		}
+	} else {
+		const results = await collection.where('@identifier', 'in', ids).get();
+
+		if (results.empty) {
+			return [];
+		} else {
+			return Promise.all(toArray(results).map(doc => doc.data()));
+		}
+	}
+}
+
+const getSeller = async id => await getDocument('sellers', id);
 
 module.exports.getTimestamp = getTimestamp;
 module.exports.getApp = getApp;
 module.exports.getDB = getDB;
 module.exports.getCollection = getCollection;
-module.exports.loggedIn = loggedIn;
+module.exports.getDocument = getDocument;
+module.exports.getProducts = getProducts;
+module.exports.getProduct = getProduct;
+module.exports.getSellers = getSellers;
+module.exports.getSeller = getSeller;
+module.exports.loggedIn = async () => true;

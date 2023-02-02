@@ -102,22 +102,26 @@ async function createPaymentIntent({
 }
 
 async function getProducts(query = null, { signal } = {}) {
-	const { readYAML } = require('./files.js');
-	const { products } = await readYAML(productsFile, { signal });
+	const { getCollection } = require('./firebase.js');
+	const collection = getCollection('products');
+	const results = await collection.get();
+	return Promise.all(results.map(doc => doc.data()));
+	// const { readYAML } = require('./files.js');
+	// const { products } = await readYAML(productsFile, { signal });
 
-	if (! Array.isArray(products)) {
-		throw new Error('Products file did not parse as an array');
-	}
+	// if (! Array.isArray(products)) {
+	// 	throw new Error('Products file did not parse as an array');
+	// }
 
-	if (Array.isArray(query)) {
-		return products.filter(({ '@identifier': id }) => query.includes(id));
-	} else if(typeof query === 'string') {
-		return products.find(({ '@identifier': id }) => id === query);
-	} else if (query instanceof Function) {
-		return products.filter(query);
-	} else {
-		return products;
-	}
+	// if (Array.isArray(query)) {
+	// 	return products.filter(({ '@identifier': id }) => query.includes(id));
+	// } else if(typeof query === 'string') {
+	// 	return products.find(({ '@identifier': id }) => id === query);
+	// } else if (query instanceof Function) {
+	// 	return products.filter(query);
+	// } else {
+	// 	return products;
+	// }
 }
 
 async function getSellers(query = null, { signal } = {}) {

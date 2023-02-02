@@ -175,19 +175,12 @@ export async function uploadFile(bucket, file, { name } = {}) {
 	}
 }
 
-export async function getFileURL(bucket, file) {
-	if (typeof bucket !== 'string') {
-		throw new TypeError('bucket must be a string');
-	} else if (typeof file !== 'string') {
-		throw new TypeError('file must be a string');
-	} else {
-		const storage = await loadStorage(bucket);
-		const fileRef = ref(storage, file);
-		return await getDownloadURL(fileRef);
-	}
-}
-
 export const getProduct = id => getDocument('products', id);
+
+export async function getSellerProducts(id) {
+	const products = await getProducts();
+	return products.filter(({ manufacturer }) => manufacturer['@identifier'] === id);
+}
 
 export async function createProduct(product) {
 	if (! await isLoggedIn()) {
@@ -206,3 +199,15 @@ export const getSellers = (async () => {
 }).once();
 
 export const getSeller = id => getDocument('sellers', id);
+
+export async function getFileURL(bucket, file) {
+	if (typeof bucket !== 'string') {
+		throw new TypeError('bucket must be a string');
+	} else if (typeof file !== 'string') {
+		throw new TypeError('file must be a string');
+	} else {
+		const storage = await loadStorage(bucket);
+		const fileRef = ref(storage, file);
+		return await getDownloadURL(fileRef);
+	}
+}
