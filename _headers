@@ -5,7 +5,7 @@
   Referrer-Policy: no-referrer
   Link: </css/index.min.css>; rel=preload; as=style; referrerpolicy=no-referrrer;
   Link: </js/index.min.js>; rel=preload; as=script; referrerpolicy=no-referrrer;
-  Content-Security-Policy: default-src 'self'; img-src *; script-src 'self' cdn.kernvalley.us unpkg.com/ www.google-analytics.com www.googletagmanager.com cdn.polyfill.io/v3/polyfill.min.js; style-src 'self' cdn.kernvalley.us unpkg.com/; connect-src 'self' cdn.kernvalley.us store.kernvalley.us apps.kernvalley.us api.github.com/users/ api.openweathermap.org/data/2.5/weather www.google-analytics.com/ www.googletagmanager.com/gtag/; font-src cdn.kernvalley.us; media-src *; frame-src www.youtube-nocookie.com; form-action 'self'; manifest-src 'self'; worker-src 'self'; reflected-xss block; upgrade-insecure-requests; block-all-mixed-content; disown-opener;
+  Content-Security-Policy: default-src 'self'; img-src *; script-src 'self' cdn.kernvalley.us unpkg.com/ www.google-analytics.com www.googletagmanager.com cdn.polyfill.io/v3/polyfill.min.js; style-src 'self' cdn.kernvalley.us unpkg.com/; connect-src 'self' cdn.kernvalley.us store.kernvalley.us apps.kernvalley.us ads.kernvalley.us/api/ api.github.com/users/ api.openweathermap.org/data/2.5/weather www.google-analytics.com/ www.googletagmanager.com/gtag/; font-src cdn.kernvalley.us; media-src *; frame-src www.youtube-nocookie.com; form-action 'self'; manifest-src 'self'; worker-src 'self'; reflected-xss block; upgrade-insecure-requests; block-all-mixed-content; disown-opener;
 
 /:placeholder/
   X-Content-Type-Options: nosniff
@@ -15,7 +15,7 @@
   Feature-Policy: geolocation 'self';
   Link: </css/index.min.css>; rel=preload; as=style; referrerpolicy=no-referrrer;
   Link: </js/index.min.js>; rel=preload; as=script; referrerpolicy=no-referrrer;
-  Content-Security-Policy: default-src 'self'; img-src *; script-src 'self' cdn.kernvalley.us unpkg.com/ www.google-analytics.com www.googletagmanager.com cdn.polyfill.io/v3/polyfill.min.js js.stripe.com/v3/ www.gstatic.com/firebasejs/; style-src 'self' cdn.kernvalley.us unpkg.com/; connect-src 'self' cdn.kernvalley.us store.kernvalley.us apps.kernvalley.us api.github.com/users/ api.openweathermap.org/data/2.5/weather www.google-analytics.com/ www.googletagmanager.com/gtag/ firestore.googleapis.com; font-src cdn.kernvalley.us; media-src *; frame-src www.youtube-nocookie.com maps.kernvalley.us/embed js.stripe.com/v3/; form-action 'self'; manifest-src 'self'; worker-src 'self'; reflected-xss block; upgrade-insecure-requests; block-all-mixed-content; disown-opener;
+  Content-Security-Policy: default-src 'self'; img-src *; script-src 'self' cdn.kernvalley.us unpkg.com/ www.google-analytics.com www.googletagmanager.com cdn.polyfill.io/v3/polyfill.min.js js.stripe.com/v3/ www.gstatic.com/firebasejs/; style-src 'self' cdn.kernvalley.us unpkg.com/; connect-src 'self' cdn.kernvalley.us store.kernvalley.us apps.kernvalley.us ads.kernvalley.us/api/ api.github.com/users/ api.openweathermap.org/data/2.5/weather www.google-analytics.com/ www.googletagmanager.com/gtag/ firestore.googleapis.com; font-src cdn.kernvalley.us; media-src *; frame-src www.youtube-nocookie.com maps.kernvalley.us/embed js.stripe.com/v3/; form-action 'self'; manifest-src 'self'; worker-src 'self'; reflected-xss block; upgrade-insecure-requests; block-all-mixed-content; disown-opener;
 
 /reset
   Referrer-Policy: no-referrer
