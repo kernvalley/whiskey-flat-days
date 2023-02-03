@@ -2,8 +2,8 @@
 	{% include common/weather.html appId=site.data.weather.appid postalCode=site.data.weather.postalCode theme=site.data.weather.theme %}
 	<hr />
 	{% if page.ads.sidebar %}{% for ad in page.ads.sidebar %}
-		{% include common/ad.html ad=ad content="sidebar"%}
+		{% include krv-ad.html ad=ad content="sidebar"%}
 	{% endfor %}{% else %}{% for ad in site.data.ads.sidebar %}
-		{% include common/ad.html ad=ad content="sidebar" %}
+		{% include krv-ad.html ad=ad content="sidebar" %}
 	{% endfor %}{% endif %}
 </aside>
