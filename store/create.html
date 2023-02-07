@@ -4,7 +4,7 @@ permalink: /store/create
 index: false
 ---
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" data-theme="default">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -21,7 +21,6 @@ index: false
 		<link rel="stylesheet" href="https://cdn.kernvalley.us/css/core-css/rem.css" referrerpolicy="no-referrer" crossorigin="anonymous" />
 		<link rel="stylesheet" href="https://cdn.kernvalley.us/css/core-css/scrollbar.css" referrerpolicy="no-referrer" crossorigin="anonymous" />
 		<link rel="stylesheet" href="https://cdn.kernvalley.us/css/core-css/cdn-fonts.css" referrerpolicy="no-referrer" crossorigin="anonymous" />
-		<link rel="stylesheet" href="https://cdn.kernvalley.us/css/core-css/theme/default/index.css" referrerpolicy="no-referrer" crossorigin="anonymous" />
 		<link rel="stylesheet" href="/css/product-creation.css" referrerpolicy="no-referrer" />
 		<link rel="stylesheet" href="/css/vars.css" referrerpolicy="no-referrer" />
 		<link rel="stylesheet" href="/css/footer.css" referrerpolicy="no-referrer" />
@@ -38,8 +37,7 @@ index: false
 					<a href="/account/login" class="link underline">login</a> or <a href="/account/reregister" class="link underline">register</a>. Once signed in, the <q>Add Item</q> button will be enabled.
 
 				</p>
-				<p>You may click on the {% include common/icon.html icon="info" height="18" width="18" fill="currentColor" %} icons for the fields to get more infomation.</p>
-				<p>If your images are too large, you can use this <a href="https://squoosh.app/" rel="noopener noreferrer external" target="_blank" class="link underline">free online tool {% include common/icon.html icon="link-external" height="18" width="18" fill="currentColor" %}</a> to resize them to 640x480.</p>
+				<p>You may click on the {% include common/icon.html icon="info" height="18" width="18" fill="currentColor" %} icons for the fields to get more information.</p>
 			</div>
 		</div>
 		<dialog id="add-dialog" class="card shadow">
@@ -98,8 +96,7 @@ index: false
 							</button>
 						</label>
 						<div class="status-box info" id="image-hint" hidden="">
-							<p>Please select a 4:3 image of reasonable size (640x480 160kB).</p>
-							<p>You may use <a href="https://squoosh.app/" rel="noopener noreferrer external" target="_blank" class="link underline">this free tool {% include common/icon.html icon="link-external" height="18" width="18" fill="currentColor" %}</a> to resize them</p>
+							<p>Please select a 4:3 image of the product as a JPEG or PNG.</p>
 						</div>
 						<input type="file" name="image" id="product-image" class="input" accept="image/jpeg,image/png" data-error-message="#image-hint" required="" />
 						<br />
