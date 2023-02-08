@@ -1,0 +1,102 @@
+<form id="{{ include.name | default: 'store-builder' }}" name="{{ include.name | default: 'store-builder' }}">
+	<fieldset class="no-border">
+		<input type="hidden" name="@context" value="https://schema.org" />
+		<div class="form-group">
+			<label for="store-name" class="input-label required">
+				<span>Name</span>
+			</label>
+			<input name="name" type="text" id="store-name" class="input" placeholder="Store Name" autocomplete="off" required="" />
+		</div>
+		<div class="form-group">
+			<label for="store-type" class="input-label required">Seller Type</label>
+			<select name="@type" class="input" required="">
+				<option value="ClothingStore" label="Clothing Store"></option>
+				<option value="ConvenienceStore" label="Convenience Store"></option>
+				<option value="GroceryStore" label="Grocery Store"></option>
+				<option value="HardwareStore" label="Hardware Store"></option>
+				<option value="PetStore" label="Pet Store"></option>
+				<option value="BikeStore" label="Bike Store"></option>
+				<option value="JewelryStore" label="Jewelry Store"></option>
+				<option value="HobbyStore" label="Hobby Store"></option>
+				<option value="OutletStore" label="Outlet Store"></option>
+				<option value="Florist" label="Florist"></option>
+				<option value="LocalBusiness" label="Other/Not Listed"></option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="store-description" class="input-label required">
+				<span>Description</span>
+			</label>
+			<input name="description" type="text" id="store-description" class="input" placeholder="Store Description" autocomplete="off" required="" />
+		</div>
+		<div class="form-group">
+			<label for="store-logo" class="input-label required">
+				<span>Logo</span>
+				{% include common/icon.html icon="file-media" height="18" width="18" %}
+			</label>
+			<input name="logo" type="file" accept="image/jpeg,image/png" id="store-logo" class="input" />
+		</div>
+		<div class="form-group">
+			<label for="store-email" class="input-label required">
+				<span>Email Address</span>
+				{% include common/icon.html icon="mail" height="18" width="18" %}
+			</label>
+			<input name="email" type="email" id="store-email" class="input" placeholder="user@example.com" autocomplete="off" required="" />
+		</div>
+		<div class="form-group">
+			<label for="store-phone" class="input-label required">
+				<span>Phone Number</span>
+				{% include common/icon.html icon="call-start" height="18" width="18" %}
+			</label>
+			<input name="telephone" type="tel" id="store-phone" class="input" placeholder="555-555-5555" autocomplete="off" required="" />
+		</div>
+		<div class="form-group">
+			<label for="store-url" class="input-label">
+				<span>Website</span>
+				{% include common/icon.html icon="link-external" height="18" width="18" %}
+			</label>
+			<input name="url" type="url" id="store-url" class="input" placeholder="https://example.com" autocomplete="off" />
+		</div>
+		<details id="store-socials">
+			<summary>Social Networks</summary>
+			<div class="form-group">
+				<label for="store-facebook" class="input-label required">
+					<span>Facebook</span>
+					{% include common/icon.html icon="facebook" height="18" width="18" %}
+				</label>
+				<input name="sameAs" type="text" id="store-facebook" class="input" placeholder="https://www.facebook.com/********/" autocomplete="off" />
+			</div>
+			<div class="form-group">
+				<label for="store-twitter" class="input-label required">
+					<span>Twitter</span>
+					{% include common/icon.html icon="twitter" height="18" width="18" %}
+				</label>
+				<input name="sameAs" type="text" id="store-twitter" class="input" placeholder="https://.twitter.com/********/" autocomplete="off" />
+			</div>
+			<div class="form-group">
+				<label for="store-ig" class="input-label required">
+					<span>Instagram</span>
+					<img src="https://cdn.kernvalley.us/img/logos/instagram.svg" class="icon" height="18" width="18" loading="lazy" decoding="async" crossorigin="anonymous" referrerpolicy="no-referrer" alt="" />
+				</label>
+				<input name="sameAs" type="text" id="store-ig" class="input" placeholder="https://instragram.com/********/" autocomplete="off" />
+			</div>
+			<div class="form-group">
+				<label for="store-linkedin" class="input-label required">
+					<span>LinkedIn</span>
+					{% include common/icon.html icon="linkedin" height="18" width="18" %}
+				</label>
+				<input name="sameAs" type="text" id="store-linkedin" class="input" placeholder="https://linkedin.com/********/" autocomplete="off" />
+			</div>
+		</details>
+	</fieldset>
+	<div class="flex row space-evenly">
+		<button type="submit" class="btn btn-accept">
+			{% include common/icon.html icon="check" height=18 width=18 fill="currentColor" %}
+			<span>Add</span>
+		</button>
+		<button type="reset" class="btn btn-reject" data-close="#add-dialog">
+			{% include common/icon.html icon="x" height=18 width=18 fill="currentColor" %}
+			<span>Close</span>
+		</button>
+	</div>
+</form>
