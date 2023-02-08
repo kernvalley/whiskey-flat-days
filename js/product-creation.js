@@ -1,7 +1,6 @@
 import { on, enable } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
 import { createImage } from 'https://cdn.kernvalley.us/js/std-js/elements.js';
-import { getDeferred } from 'https://cdn.kernvalley.us/js/std-js/promises.js';
-import { between } from 'https://cdn.kernvalley.us/js/std-js/math.js';
+import { fileToCanvas, canvasToFile } from 'https://cdn.kernvalley.us/js/std-js/img-utils.js';
 // import { debounce } from 'https://cdn.kernvalley.us/js/std-js/utility.js';
 import {
 	whenLoggedIn, uploadFile, getFileURL, getSellers, createProduct, getCurrentUser,
@@ -10,27 +9,6 @@ import { firebase, Availability } from './consts.js';
 import { createOption } from 'https://cdn.kernvalley.us/js/std-js/elements.js';
 
 const invalidAvailabilities = ['Discontinued', 'InStoreOnly'];
-
-async function encodeFile(file, { signal } = {}) {
-	const { resolve, reject, promise } = getDeferred();
-
-	if (! (file instanceof File)) {
-		reject(new TypeError('Not a file'));
-	} else if (signal instanceof AbortSignal && signal.aborted) {
-		reject(signal.reason);
-	} else {
-		const reader = new FileReader();
-		reader.readAsDataURL(file);
-		reader.addEventListener('load', ({ target: { result }}) => resolve(result), { signal });
-		reader.addEventListener('error', reject, { signal });
-
-		if (signal instanceof AbortSignal) {
-			signal.addEventListener('abort', ({ target }) => reject(target.reason), { once: true });
-		}
-	}
-
-	return promise;
-}
 
 getSellers().then(sellers => {
 	const opts = sellers.map(({ '@identifier': value, name: label }) => createOption({ label, value }));
@@ -51,8 +29,9 @@ scheduler.postTask(async () => {
 		const user = await getCurrentUser();
 
 		if (typeof user === 'object' & ! Object.is(user, null)) {
-			const img = data.get('image');
-			const name = `/wfd-store/products/${crypto.randomUUID()}`;
+			const canvas = document.getElementById('preview-canvas');
+			const img = await canvasToFile(canvas, { name: crypto.randomUUID() });
+			const name = `/wfd-store/products/${img.name}`;
 			await uploadFile(firebase.bucket, img, { name });
 			const sellers = await getSellers();
 			const sellerID = data.get('manufacturer');
@@ -106,6 +85,12 @@ scheduler.postTask(async () => {
 			crossorigin: 'anonymous',
 		});
 
+		const canvas = document.getElementById('preview-canvas');
+
+		if (canvas instanceof HTMLCanvasElement) {
+			URL.revokeObjectURL(canvas.dataset.blob);
+		}
+
 		document.getElementById('img-preview').replaceChildren(img);
 	});
 
@@ -113,34 +98,17 @@ scheduler.postTask(async () => {
 		if (target.files.length === 1) {
 			try {
 				const file = target.files[0];
+				const canvas = await fileToCanvas(file, { height: 480 });
+				const container = document.getElementById('img-preview');
+				const current = container.querySelector('canvas');
+				canvas.id = 'preview-canvas';
 
-				if (! ['image/jpeg', 'image/png'].includes(file.type.toLowerCase())) {
-					target.setCustomValidity(`Invalid file type: ${file.type}`);
-				} else if (file.size > 160 * 1024) {
-					target.setCustomValidity('File size too large');
-				} else if (file.size === 0) {
-					target.setCustomValidity('Appears to be an empty file');
+				if (current instanceof HTMLCanvasElement) {
+					URL.revokeObjectURL(current.dataset.blob);
+					current.replaceWith(canvas);
 				} else {
-					const src = await encodeFile(file);
-					const img = createImage(src, {
-						crossOrigin: 'anonymous',
-						referrerPolicy: 'no-referrer',
-					});
-
-					document.getElementById('img-preview').replaceChildren(img);
-
-					await img.decode();
-
-					if (! between(320, img.naturalWidth, 640)) {
-						target.setCustomValidity(`Image is an invalid width: ${img.naturalWidth}`);
-					} else if(! between(240, img.naturalHeight, 480)) {
-						target.setCustomValidity(`Image is an invalid height: ${img.naturalHeight}`);
-					} else {
-						target.setCustomValidity('');
-					}
+					container.replaceChildren(canvas);
 				}
-				// @TODO verify image size
-
 			} catch(err) {
 				console.error(err);
 				target.setCustomValidity('An error occurred processing the image');
