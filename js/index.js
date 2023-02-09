@@ -33,6 +33,7 @@ import { searchLocationMarker, createMarker, isOnGoing, filterEventNamesDatalist
 import { GA } from './consts.js';
 import { createYouTubeEmbed } from 'https://cdn.kernvalley.us/js/std-js/youtube.js';
 import './store.js';
+import './profile.js';
 
 if (! ('URLPattern' in globalThis)) {
 	globalThis.URLPattern = URLPatternShim;

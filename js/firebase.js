@@ -103,8 +103,13 @@ export async function resetPassword(email) {
 export const loadFirestore = (async () => {
 	const app = await loadFirebase();
 	const db = getFirestore(app);
-	await enableIndexedDbPersistence(db);
-	return db;
+	try {
+		await enableIndexedDbPersistence(db);
+	} catch(err) {
+		console.error(err);
+	} finally {
+		return db;
+	}
 }).once();
 
 export async function getCollection(name) {
@@ -189,6 +194,15 @@ export async function getFileURL(bucket, file) {
 
 export const getProduct = id => getDocument('products', id);
 
+export const getLoggedInSeller = async () => {
+	await whenLoggedIn();
+	const user = await getCurrentUser();
+
+	if (typeof user === 'object' && ! Object.is(user, null)) {
+		return await getDocument('sellers', user.uid);
+	}
+};
+
 export async function createProduct(product) {
 	if (! await isLoggedIn()) {
 		throw new Error('You must be logged in to create a product');
@@ -201,15 +215,15 @@ export async function createProduct(product) {
 	}
 }
 
-export async function createSeller(seller) {
-	/*if (! await isLoggedIn()) {
+export async function createSeller(seller, id) {
+	if (! await isLoggedIn()) {
 		throw new Error('You must be logged in');
-	} else */if (typeof seller !== 'object' || Object.is(seller, null)) {
+	} else if (typeof seller !== 'object' || Object.is(seller, null)) {
 		throw new TypeError('Invalid seller data');
 	} else if (typeof seller['@identifier'] !== 'string') {
 		throw new TypeError('Invalid seller object');
 	} else {
-		return await setDocument('sellers', seller['@identifier'], seller);
+		return await setDocument('sellers', id || seller['@identifier'], seller);
 	}
 }
 

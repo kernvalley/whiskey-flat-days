@@ -4,9 +4,10 @@ layout: default
 permalink: /store/profile
 index: false
 robots: noindex
-scripts:
-  - src: /js/profile.js
-    type: module
-    referrerPolicy: no-referrer
 ---
-{% include forms/vendor-profile.html name="vendor-profile" %}
+<div id="loading-container" class="center">
+	{% include common/icon.html icon="spinner" height="92" width="92" fill="currentColor" class="spinner" %}
+</div>
+<div id="form-container" hidden="">
+	{% include forms/vendor-profile.html name="vendor-profile" %}
+</div>
