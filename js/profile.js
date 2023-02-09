@@ -68,7 +68,7 @@ if (url.pathname === '/store/profile') {
 				employee: [user.uid],
 			};
 
-			const result = await createSeller(seller, user.uid);
+			await createSeller(seller, user.uid);
 
 			if (url.searchParams.has('redirect')) {
 				redirect(url.searchParams.get('redirect'));
