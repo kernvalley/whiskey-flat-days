@@ -3,7 +3,7 @@ import { md5 } from 'https://cdn.kernvalley.us/js/std-js/hash.js';
 import { showDialog } from 'https://cdn.kernvalley.us/js/std-js/error-handler.js';
 import { isObject } from 'https://cdn.kernvalley.us/js/std-js/utility.js';
 import { register, login, resetPassword, whenLoggedIn } from './firebase.js';
-
+import { redirect } from './functions.js';
 const url = new URL(location.href);
 
 if (url.searchParams.has('redirect')) {
@@ -12,16 +12,6 @@ if (url.searchParams.has('redirect')) {
 		href.searchParams.set('redirect', url.searchParams.get('redirect'));
 		el.href = href;
 	});
-}
-
-function redirect(url) {
-	if (! (url instanceof URL)) {
-		return redirect(new URL(url, document.baseURI));
-	} else if (url.origin !== location.origin) {
-		throw new Error(`${url.origin} not allowed for redirects`);
-	} else {
-		location.href = url.href;
-	}
 }
 
 switch(url.pathname) {

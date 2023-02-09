@@ -1,21 +1,16 @@
 import { on, enable, animate, css, text } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
-import { createImage, createElement } from 'https://cdn.kernvalley.us/js/std-js/elements.js';
+import { createImage } from 'https://cdn.kernvalley.us/js/std-js/elements.js';
 import { fileToCanvas, canvasToFile } from 'https://cdn.kernvalley.us/js/std-js/img-utils.js';
 import { isObject } from 'https://cdn.kernvalley.us/js/std-js/utility.js';
 import { showDialog } from 'https://cdn.kernvalley.us/js/std-js/error-handler.js';
-// import { debounce } from 'https://cdn.kernvalley.us/js/std-js/utility.js';
-import {
-	whenLoggedIn, uploadFile, getFileURL, getSellers, createProduct, getCurrentUser,
-} from './firebase.js';
-import { firebase, Availability } from './consts.js';
 import { createOption } from 'https://cdn.kernvalley.us/js/std-js/elements.js';
+import {
+	uploadFile, getFileURL, createProduct, getCurrentUser, getLoggedInSeller,
+} from './firebase.js';
+import { redirect } from './functions.js';
+import { firebase, Availability } from './consts.js';
 
 const invalidAvailabilities = ['Discontinued', 'InStoreOnly'];
-
-getSellers().then(sellers => {
-	const opts = sellers.map(({ '@identifier': value, name: label }) => createOption({ label, value }));
-	document.getElementById('product-seller').append(...opts);
-});
 
 document.getElementById('product-availability').append(
 	...Object.entries(Availability)
@@ -23,49 +18,15 @@ document.getElementById('product-availability').append(
 );
 
 scheduler.postTask(async () => {
+	const seller = await getLoggedInSeller();
 
-	await whenLoggedIn();
+	if (! isObject(seller)) {
+		const url = new URL('/store/profile', location.origin);
+		url.searchParams.set('redirect', location.pathname);
+		redirect(url);
+	}
+
 	document.documentElement.classList.add('logged-in');
-
-	on('#store-builder', 'submit', async event => {
-		event.preventDefault();
-		const data = new FormData(event.target);
-		const user = await getCurrentUser();
-		if (! isObject(user)) {
-			throw new DOMException('You must be logged in for that');
-		}
-
-		const dialog = createElement('dialog', {
-			events: {
-				close: ({ target }) => target.remove(),
-				click: ({ currentTarget }) => currentTarget.close(),
-			},
-			children:[
-				createElement('pre', {
-					children: [
-						createElement('code', {
-							text: JSON.stringify({
-								'@context': data.get('@context'),
-								'@type': data.get('@type'),
-								'@identifier': crypto.randomUUID(),
-								name: data.get('name'),
-								description: data.get('description'),
-								logo: data.get('logo').name,
-								email: data.get('email'),
-								telephone: data.get('telephone'),
-								url: data.get('url'),
-								sameAs: data.getAll('sameAs'),
-								employee: [user.uid],
-							}, null, 4)
-						})
-					]
-				})
-			]
-		});
-
-		document.body.append(dialog);
-		dialog.showModal();
-	});
 
 	Promise.allSettled(animate('a.btn.login, a.btn.register', [
 		{ transform: 'none', opacity: 1 },
@@ -109,9 +70,6 @@ scheduler.postTask(async () => {
 				const img = await canvasToFile(canvas, { name: crypto.randomUUID() });
 				const name = `/wfd-store/products/${img.name}`;
 				await uploadFile(firebase.bucket, img, { name });
-				const sellers = await getSellers();
-				const sellerID = data.get('manufacturer');
-				const seller = sellers.find(({ '@identifier': id }) => id === sellerID);
 
 				seller.member = [{
 					'@type': 'Person',
@@ -233,6 +191,11 @@ scheduler.postTask(async () => {
 	enable('.show-create-dialog');
 	css('a.login, a.register', { 'pointer-events': 'none', 'text-decoration': 'none' });
 	text('#msg > .status-box', 'Click on the "+ Add Item" button to continue. After creating one item, click it again to create additional items.');
+
+	scheduler.postTask(() => document.getElementById('add-dialog').showModal(), {
+		delay: 2000,
+		priority: 'background',
+	});
 }).catch(err => {
 	showDialog(err, { signal: AbortSignal.timeout(5000), level: 'warn' });
 });

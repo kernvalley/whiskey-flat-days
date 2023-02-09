@@ -1,17 +1,5 @@
 <form id="{{ include.name | default: 'product' }}" name="{{ include.name | default: 'product' }}">
 	<fieldset class="no-border">
-		<div class="form-group">
-			<label for="product-seller" class="input-label required">
-				<span>Seller</span>
-				<button type="button" class="no-border no-background color-inherit" data-hint="#seller-hint" title="Help with selecting a seller">
-					{% include common/icon.html icon="info" width=18 height=18 fill="currentColor" %}
-				</button>
-			</label>
-			<div class="status-box info" id="seller-hint" hidden="">This is a temporary solution until sellers have accounts associated with their profiles. Please select one, or <a href="https://contact.kernvalley.us/?subject=WFD%20Seller" class="link underline" rel="noopener noferrer external">Contact KernValley.US {% include common/icon.html icon="link-external" height="18" width="18" fill="currentColor" %}</a> to be added.</div>
-			<select name="manufacturer" id="product-seller" class="input" data-error-message="#seller-hint" required="">
-				<option value="">Who are you?</label>
-			</select>
-		</div>
 		<input type="hidden" name="@context" value="https://schema.org" required="" />
 		<input type="hidden" name="@type" value="Product" required="" />
 		<legend>Add a Product</legend>
