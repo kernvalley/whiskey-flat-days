@@ -1,6 +1,16 @@
 import { createCustomElement } from 'https://cdn.kernvalley.us/js/std-js/custom-elements.js';
 import { site, icons, mapSelector, startDate, endDate } from './consts.js';
 
+export function redirect(url) {
+	if (! (url instanceof URL)) {
+		return redirect(new URL(url, document.baseURI));
+	} else if (url.origin !== location.origin) {
+		throw new Error(`${url.origin} not allowed for redirects`);
+	} else {
+		location.href = url.href;
+	}
+}
+
 export function intersectCallback({ target, isIntersecting }) {
 	if (isIntersecting) {
 		target.animate([{

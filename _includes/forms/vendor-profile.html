@@ -1,0 +1,127 @@
+<form id="{{ include.name | default: 'vendor-profile' }}" name="{{ include.name | default: 'vendor-profile' }}">
+	<fieldset class="no-border">
+		<div class="form-group">
+			<label for="vendor-name" class="input-label required">
+				{% include common/icon.html icon="organization" height="18" width="18" fill="currentColor" %}
+				<span>Name</span>
+			</label>
+			<input type="text" name="name" id="vendor-name" class="input" placeholder="Store Name" autocomplete="off" required="" />
+		</div>
+		<div class="form-group">
+			<label for="vendor-type" class="input-label required">
+				{% include common/icon.html icon="cart" height="18" width="18" fill="currentColor" %}
+				<span>Type of Seller</span>
+			</label>
+			<input type="hidden" name="@context" value="https://schema.org" />
+			<select name="@type" class="input" required="">
+				<option value="BeautySalon" label="Beauty Salon"></option>
+				<option value="BikeStore" label="Bike Store"></option>
+				<option value="ClothingStore" label="Clothing Store"></option>
+				<option value="ConvenienceStore" label="Convenience Store"></option>
+				<option value="Florist" label="Florist"></option>
+				<option value="GardenStore" label="Garden Store"></option>
+				<option value="GroceryStore" label="Grocery Store"></option>
+				<option value="HardwareStore" label="Hardware Store"></option>
+				<option value="HairSalon" label="Hair Salon"></option>
+				<option value="HealthAndBeautyBusiness" label="Health &amp; Beauty Store"></option>
+				<option value="HealthClub" label="Health Club"></option>
+				<option value="HobbyShop" label="Hobby Shop"></option>
+				<option value="HomeGoodsStore" label="Home Goods Store"></option>
+				<option value="JewelryStore" label="Jewelry Store"></option>
+				<option value="LiquorStore" label="Liquor Store"></option>
+				<option value="NailSalon" label="Nail Salon"></option>
+				<option value="PetStore" label="Pet Store"></option>
+				<option value="ShoeStore" label="Shoe Store"></option>
+				<option value="SportingGoodsStore" label="Sporting Goods Store"></option>
+				<option value=" TattooParlor" label="Tatoo Parlor"></option>
+				<option value="ToyStore" label="Toy Store"></option>
+				<option value="Store" label="Other Store"></option>
+				<option value="LocalBusiness" label="Other/Not Listed" selected=""></option>
+			</select>
+		</div>
+		<input type="hidden" name="@identifier" />
+		<div class="form-group">
+			<label for="vendor-desc" class="input-label required">
+				{% include common/icon.html icon="comment" height="18" width="18" fill="currentColor" %}
+				<span>Description</span>
+			</label>
+			<input type="text" name="description" id="vendor-desc" class="input" placeholder="Brief Description" autocomplete="off" required="" />
+		</div>
+		<div class="form-group">
+			<label for="vendor-image" class="input-label">
+				{% include common/icon.html icon="file-media" height="18" width="18" fill="currentColor" %}
+				<span>Image/Logo</span>
+			</label>
+			<input type="file" name="image" id="vendor-image" accept="image/jpeg,image/png,image/webp,image/svg+xml" class="input" autocomplete="off" />
+			<div class="center" id="img-preview">
+				<img src="https://cdn.kernvalley.us/img/raster/missing-image.png" height="320" width="480" crossorigin="anonymous" referrerpolicy="no-referrer" loading="lazy" decoding="async" alt="preview image" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="vendor-email" class="input-label required">
+				{% include common/icon.html icon="mail" height="18" width="18" fill="currentColor" %}
+				<span>Email Address</span>
+			</label>
+			<input type="email" name="email" id="vendor-email" class="input" placeholder="info@example.com" autocomplete="off" required="" />
+		</div>
+		<div class="form-group">
+			<label for="vendor-phone" class="input-label required">
+				{% include common/icon.html icon="call-start" height="18" width="18" fill="currentColor" %}
+				<span>Phone</span>
+			</label>
+			<input type="tel" name="telephone" id="vendor-phone" class="input" placeholder="555-555-5555" autocomplete="off" required="" />
+		</div>
+		<div class="form-group">
+			<label for="vendor-url" class="input-label">
+				{% include common/icon.html icon="link-external" height="18" width="18" fill="currentColor" %}
+				<span>Website</span>
+			</label>
+			<input type="url" name="url" id="vendor-url" class="input" placeholder="https://example.com" autocomplete="off" />
+		</div>
+		<div class="form-group">
+			<label for="vendor-facebook" class="input-label">
+				{% include common/icon.html icon="facebook" height="18" width="18" %}
+				<span>Facebook</span>
+			</label>
+			<input type="url" name="sameAs" id="vendor-facebook" class="input" data-origin="https://www.facebook.com" placeholder="https://www.facebook.com/******" autocomplete="off" />
+		</div>
+		<div class="form-group">
+			<label for="vendor-twitter" class="input-label">
+				{% include common/icon.html icon="twitter" height="18" width="18" %}
+				<span>Twitter</span>
+			</label>
+			<input type="url" name="sameAs" id="vendor-twitter" class="input" data-origin="https://twitter.com" placeholder="https://twitter.com/******" autocomplete="off" />
+		</div>
+		<div class="form-group">
+			<label for="vendor-ig" class="input-label">
+				<img src="https://cdn.kernvalley.us/img/logos/instagram.svg" height="18" width="18" crossorigin="anonymous" referrerpolicy="no-referrer" loading="lazy" decoding="async" fethpriority="auto" alt="" />
+				<span>Instagram</span>
+			</label>
+			<input type="url" name="sameAs" id="vendor-ig" class="input" data-origin="https://instagram.com" placeholder="https://instagram.com/******" autocomplete="off" />
+		</div>
+		<div class="form-group">
+			<label for="vendor-linkedin" class="input-label">
+				{% include common/icon.html icon="linkedin" height="18" width="18" %}
+				<span>LinkedIn</span>
+			</label>
+			<input type="url" name="sameAs" id="vendor-linkedin" class="input" data-origin="https://www.linkedin.com" placeholder="https://www.linkedin.com/******" autocomplete="off" />
+		</div>
+		<div class="form-group">
+			<label for="vendor-yelp" class="input-label">
+				{% include common/icon.html icon="yelp" height="18" width="18" %}
+				<span>Yelp</span>
+			</label>
+			<input type="url" name="sameAs" id="vendor-yelp" class="input" data-origin="https://wwww.yelp.com" placeholder="https://www.yelp.com/******" autocomplete="off" />
+		</div>
+	</fieldset>
+	<div class="flex row space-evenly">
+		<button type="submit" class="btn btn-accept">
+			{% include common/icon.html icon="check" height="18" width="18" fill="currentColor" %}
+			<span>Submit</span>
+		</button>
+		<button type="reset" class="btn btn-reject">
+			{% include common/icon.html icon="x" height="18" width="18" fill="currentColor" %}
+			<span>Cancel</span>
+		</button>
+	</div>
+</form>

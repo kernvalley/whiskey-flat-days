@@ -201,6 +201,18 @@ export async function createProduct(product) {
 	}
 }
 
+export async function createSeller(seller) {
+	/*if (! await isLoggedIn()) {
+		throw new Error('You must be logged in');
+	} else */if (typeof seller !== 'object' || Object.is(seller, null)) {
+		throw new TypeError('Invalid seller data');
+	} else if (typeof seller['@identifier'] !== 'string') {
+		throw new TypeError('Invalid seller object');
+	} else {
+		return await setDocument('sellers', seller['@identifier'], seller);
+	}
+}
+
 export const getSellers = (async () => {
 	return await getDocuments('sellers');
 }).once();
