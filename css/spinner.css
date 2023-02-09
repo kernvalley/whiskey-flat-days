@@ -1,0 +1,13 @@
+svg.spinner {
+	animation: loading-spinner 3s infinite linear;
+	max-width: 100vmin;
+	max-height: 100vmin;
+	width: 100%;
+	height: auto;
+}
+
+@keyframes loading-spinner {
+	to {
+		transform: rotate(1turn);
+	}
+}

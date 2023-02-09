@@ -1,0 +1,16 @@
+<svg version="1.1" viewBox="0 0 106.82 106.82" xmlns="http://www.w3.org/2000/svg">
+	<g transform="translate(-73.591 -148.34)">
+		<rect x="154.15" y="195.33" width="26.263" height="12.837" rx="6.9114" ry="6.4187" />
+		<rect transform="rotate(-30)" x="36.256" y="231.8" width="26.263" height="12.837" rx="6.9114" ry="6.4187" />
+		<rect transform="rotate(-60)" x="-84.075" y="204.44" width="26.263" height="12.837" rx="6.9114" ry="6.4187" opacity="0.0833" />
+		<rect transform="rotate(-90)" x="-174.6" y="120.58" width="26.263" height="12.837" rx="6.9114" ry="6.4187" opacity="0.16666" />
+		<rect transform="rotate(240)" x="-211.07" y="2.6915" width="26.263" height="12.837" rx="6.9114" ry="6.4187" opacity="0.25" />
+		<rect transform="rotate(210)" x="-183.71" y="-117.64" width="26.263" height="12.837" rx="6.9114" ry="6.4187" opacity="0.3333" />
+		<rect transform="scale(-1)" x="-99.854" y="-208.17" width="26.263" height="12.837" rx="6.9114" ry="6.4187" opacity="0.4166" />
+		<rect transform="rotate(150)" x="18.035" y="-244.64" width="26.263" height="12.837" rx="6.9114" ry="6.4187" opacity="0.5" />
+		<rect transform="rotate(120)" x="138.37" y="-217.28" width="26.263" height="12.837" rx="6.9114" ry="6.4187" opacity="0.5833" />
+		<rect transform="rotate(90)" x="228.9" y="-133.42" width="26.263" height="12.837" rx="6.9114" ry="6.4187" opacity="0.6666" />
+		<rect transform="rotate(60)" x="265.37" y="-15.529" width="26.263" height="12.837" rx="6.9114" ry="6.4187" opacity="0.75" />
+		<rect transform="rotate(30)" x="238.01" y="104.8" width="26.263" height="12.837" rx="6.9114" ry="6.4187" opacity="0.8333" />
+	</g>
+</svg>

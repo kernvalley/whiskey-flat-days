@@ -42,33 +42,40 @@ async function loadStoreItems({ signal } = {}) {
 		: products
 	);
 
-	document.getElementById('product-list').append(...products.map(product => {
-		const base = tmp.cloneNode(true).querySelector('.product-listing');
-		const sellerURL = new URL(location.pathname, location.origin);
-		const itemtype = new URL(product['@type' || 'Product'], base['@context'] || 'https://schema.org');
+	if (Array.isArray(products) && products.length !== 0) {
+		document.getElementById('product-list').replaceChildren(...products.map(product => {
+			const base = tmp.cloneNode(true).querySelector('.product-listing');
+			const sellerURL = new URL(location.pathname, location.origin);
+			const itemtype = new URL(product['@type' || 'Product'], base['@context'] || 'https://schema.org');
 
-		sellerURL.searchParams.set('seller', product.manufacturer['@identifier']);
-		base.id = product['@identifier'];
-		attr(base, { itemtype });
-		text('.product-name[itemprop="name"]', product.name, { base });
-		text('[itemprop="description"]', product.description, { base });
-		attr('[itemprop="image"]', { src: product.image }, { base });
-		text('.product-seller [itemprop="name"]', product.manufacturer.name, { base });
-		attr('.product-seller [itemprop="url"]', { href: sellerURL }, { base });
-		text('[itemprop="price"]', getPrice(product), { base });
-		text('[itemprop="availability"]', getAvailability(product), { base });
-		attr('[itemprop="availability"]', { content: product.offers[0].availability || 'InStock' }, { base });
-		data(base, { availability: product.offers[0].availability });
+			sellerURL.searchParams.set('seller', product.manufacturer['@identifier']);
+			base.id = product['@identifier'];
+			attr(base, { itemtype });
+			text('.product-name[itemprop="name"]', product.name, { base });
+			text('[itemprop="description"]', product.description, { base });
+			attr('[itemprop="image"]', { src: product.image }, { base });
+			text('.product-seller [itemprop="name"]', product.manufacturer.name, { base });
+			attr('.product-seller [itemprop="url"]', { href: sellerURL }, { base });
+			text('[itemprop="price"]', getPrice(product), { base });
+			text('[itemprop="availability"]', getAvailability(product), { base });
+			attr('[itemprop="availability"]', { content: product.offers[0].availability || 'InStock' }, { base });
+			data(base, { availability: product.offers[0].availability });
 
-		on(base, 'click', async ({ target, currentTarget }) => {
-			if (! (target.closest('a, button, summary') instanceof HTMLElement)) {
-				event.preventDefault();
-				await showProductDetails(currentTarget.id);
-			}
-		});
+			on(base, 'click', async ({ target, currentTarget }) => {
+				if (! (target.closest('a, button, summary') instanceof HTMLElement)) {
+					event.preventDefault();
+					await showProductDetails(currentTarget.id);
+				}
+			});
 
-		return base;
-	}));
+			return base;
+		}));
+	} else {
+		document.getElementById('product-list').replaceChildren(create('div', {
+			classList: ['status-box', 'info'],
+			text: 'No Products found. Try again later.',
+		}));
+	}
 
 	if (hasSeller && products.length !== 0) {
 		document.getElementById('vendor-profile').append(await getSeller(products[0].manufacturer));
