@@ -1,4 +1,4 @@
-import { on, ready } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
+import { on, ready, loaded } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
 import { resizeImageFile } from 'https://cdn.kernvalley.us/js/std-js/img-utils.js';
 import { isObject } from 'https://cdn.kernvalley.us/js/std-js/utility.js';
 import { createSeller, uploadFile, getFileURL, getCurrentUser, whenLoggedIn, getDocument } from './firebase.js';
@@ -10,14 +10,16 @@ const url = new URL(location.href);
 if (url.pathname === '/store/profile') {
 	const controller = new AbortController();
 
-	scheduler.postTask(() => {
-		const url = new URL('/account/login', location.origin);
-		url.searchParams.set('redirect', location.pathname);
-		redirect(url);
-	}, {
-		delay: 8000,
-		priority: 'background',
-		signal: controller.signal,
+	loaded().then(() => {
+		scheduler.postTask(() => {
+			const url = new URL('/account/login', location.origin);
+			url.searchParams.set('redirect', location.pathname);
+			redirect(url);
+		}, {
+			delay: 8000,
+			priority: 'background',
+			signal: controller.signal,
+		});
 	});
 
 	whenLoggedIn().then(async () => {

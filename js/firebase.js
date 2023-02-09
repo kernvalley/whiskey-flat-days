@@ -103,13 +103,8 @@ export async function resetPassword(email) {
 export const loadFirestore = (async () => {
 	const app = await loadFirebase();
 	const db = getFirestore(app);
-	try {
-		await enableIndexedDbPersistence(db);
-	} catch(err) {
-		console.error(err);
-	} finally {
-		return db;
-	}
+	await enableIndexedDbPersistence(db).catch(console.error);
+	return db;
 }).once();
 
 export async function getCollection(name) {
@@ -124,7 +119,7 @@ export async function getDocuments(name) {
 }
 
 export async function getDocument(store, id) {
-	const ref = doc(await getFirestore(), store, id);
+	const ref = doc(await loadFirestore(), store, id);
 	const snap = await getDoc(ref);
 
 	if (snap.exists()) {
