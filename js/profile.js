@@ -1,9 +1,12 @@
 import { on, ready, loaded } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
 import { resizeImageFile } from 'https://cdn.kernvalley.us/js/std-js/img-utils.js';
 import { isObject } from 'https://cdn.kernvalley.us/js/std-js/utility.js';
-import { createSeller, uploadFile, getFileURL, getCurrentUser, whenLoggedIn, getDocument } from './firebase.js';
+import { createSeller, uploadFile, getFileURL, getCurrentUser, whenLoggedIn, getLoggedInSeller } from './firebase.js';
+import { createImage } from 'https://cdn.kernvalley.us/js/std-js/elements.js';
 import { firebase } from './consts.js';
 import { redirect } from './functions.js';
+
+const MISSING_IMAGE = 'https://cdn.kernvalley.us/img/raster/missing-image.png';
 
 const url = new URL(location.href);
 
@@ -25,7 +28,7 @@ if (url.pathname === '/store/profile') {
 	whenLoggedIn().then(async () => {
 		controller.abort();
 		const user = await getCurrentUser();
-		const found = await getDocument('sellers', user.uid).catch(console.error);
+		const found = await getLoggedInSeller().catch(console.error);
 
 		if (isObject(found)) {
 			Object.entries(found).forEach(([name, value]) => {
@@ -38,7 +41,15 @@ if (url.pathname === '/store/profile') {
 							input.value = url.href;
 						}
 					});
-				} else if (! ['@context', 'image'].includes(name)) {
+				} else if (name === 'image' && typeof value === 'string' && value.length !== 0) {
+					document.getElementById('img-preview').replaceChildren(createImage(found.image, {
+						crossOrigin: 'anonymous',
+						referrerPolicy: 'no-referrer',
+						loading: 'lazy',
+						alt: `${found.name} logo`,
+						styles: { 'max-width': '100%', height: 'auto' },
+					}));
+				} else if (! ['@context'].includes(name)) {
 					const input = document.querySelector(`select[name="${name}"], input[name="${name}"]`);
 
 					if (input instanceof HTMLElement) {
@@ -51,17 +62,29 @@ if (url.pathname === '/store/profile') {
 		on('#vendor-profile', 'submit', async event => {
 			event.preventDefault();
 			const data = new FormData(event.target);
-			const logo = await resizeImageFile(data.get('image'), { type: 'image/png', height: 480 });
-			const fname = `/wfd-store/vendors/${data.get('@identifier')}.png`;
-			await uploadFile(firebase.bucket, logo, { name: fname });
+			const userSeller = await getLoggedInSeller();
+
+			const image = await (async file => {
+				if (file instanceof File && file.type.startsWith('image/')) {
+					const logo = await resizeImageFile(file, { type: 'image/png', height: 480 });
+					const fname = `/wfd-store/vendors/${data.get('@identifier')}.png`;
+					await uploadFile(firebase.bucket, logo, { name: fname });
+					return await getFileURL(firebase.bucket, fname);
+				} else if ('image' in userSeller) {
+					return userSeller.image;
+				} else {
+					return MISSING_IMAGE;
+				}
+			})(data.get('image'));
+
 			const seller = {
 				'@context': data.get('@context'),
 				'@type': data.get('@type'),
 				'@identifier': data.get('@identifier'),
-				name: data.get('name'),
-				description: data.get('description'),
-				image: await getFileURL(firebase.bucket, fname),
-				email: data.get('email'),
+				name: data.get('name') || userSeller.name,
+				description: data.get('description') || userSeller.description,
+				image: image,
+				email: data.get('email') || userSeller.email,
 				telephone: data.get('telephone'),
 				url: data.get('url'),
 				sameAs: data.getAll('sameAs').filter(l => typeof l === 'string' && l.length !== 0),

@@ -189,14 +189,14 @@ export async function getFileURL(bucket, file) {
 
 export const getProduct = id => getDocument('products', id);
 
-export const getLoggedInSeller = async () => {
+export const getLoggedInSeller = (async () => {
 	await whenLoggedIn();
 	const user = await getCurrentUser();
 
 	if (typeof user === 'object' && ! Object.is(user, null)) {
 		return await getDocument('sellers', user.uid);
 	}
-};
+}).once();
 
 export async function createProduct(product) {
 	if (! await isLoggedIn()) {
