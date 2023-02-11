@@ -3,9 +3,9 @@ import urlResolve from 'rollup-plugin-url-resolve';
 import {terser} from 'rollup-plugin-terser';
 
 export default {
-	input: 'js/index.js',
+	input: '_site/js/index.js',
 	output: {
-		file: 'js/index.min.js',
+		file: '_site/js/index.min.js',
 		format: 'iife',
 		sourcemap: true,
 	},
