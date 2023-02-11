@@ -4,6 +4,7 @@ import { fileToCanvas, canvasToFile } from 'https://cdn.kernvalley.us/js/std-js/
 import { isObject } from 'https://cdn.kernvalley.us/js/std-js/utility.js';
 import { showDialog } from 'https://cdn.kernvalley.us/js/std-js/error-handler.js';
 import { createOption } from 'https://cdn.kernvalley.us/js/std-js/elements.js';
+import { PAGES } from './pages.js';
 import {
 	uploadFile, getFileURL, createProduct, getCurrentUser, getLoggedInSeller,
 } from './firebase.js';
@@ -21,9 +22,7 @@ scheduler.postTask(async () => {
 	const seller = await getLoggedInSeller();
 
 	if (! isObject(seller)) {
-		const url = new URL('/store/profile', location.origin);
-		url.searchParams.set('redirect', location.pathname);
-		redirect(url);
+		redirect(PAGES.vendorProfile, { params: { redirect: location.pathname }});
 	}
 
 	document.documentElement.classList.add('logged-in');

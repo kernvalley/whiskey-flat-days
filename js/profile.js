@@ -5,24 +5,23 @@ import { createSeller, uploadFile, getFileURL, getCurrentUser, whenLoggedIn, get
 import { createImage } from 'https://cdn.kernvalley.us/js/std-js/elements.js';
 import { firebase } from './consts.js';
 import { redirect } from './functions.js';
+import { PAGES } from './pages.js';
 
 const MISSING_IMAGE = 'https://cdn.kernvalley.us/img/raster/missing-image.png';
 
 const url = new URL(location.href);
 
-if (url.pathname === '/store/profile') {
+if (url.pathname === PAGES.vendorProfile.url.pathname) {
 	const controller = new AbortController();
 
 	loaded().then(() => {
 		scheduler.postTask(() => {
-			const url = new URL('/account/login', location.origin);
-			url.searchParams.set('redirect', location.pathname);
-			redirect(url);
+			redirect(PAGES.login, { params: { redirect: location.pathname }});
 		}, {
 			delay: 8000,
 			priority: 'background',
 			signal: controller.signal,
-		});
+		}).catch();
 	});
 
 	whenLoggedIn().then(async () => {
@@ -96,7 +95,7 @@ if (url.pathname === '/store/profile') {
 			if (url.searchParams.has('redirect')) {
 				redirect(url.searchParams.get('redirect'));
 			} else {
-				redirect('/');
+				redirect(PAGES.home);
 			}
 		});
 

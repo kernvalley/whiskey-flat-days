@@ -26,7 +26,7 @@ tags:
 					<span class="event-image-container inline-block center">
 						<img src="{{ event.image | default: '/img/markers/activity.svg' }}" class="event-image fit-cover" itemprop="image" decoding="async" alt="{{ event.title | escape_once }} image" loading="lazy" />
 					</span>
-					<a href="/map/#{{ event.uuid }}" class="event-title">
+					<a href="{{ site.data.pages.map.url }}#{{ event.uuid }}" class="event-title">
 						<h3 class="center no-margins">
 							{% if event.music %}<span class="emoji">🎶 </span>{% endif %}
 							<span itemprop="name" class="font-title section-heading">{{ event.title }}</span>

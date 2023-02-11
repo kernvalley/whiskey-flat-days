@@ -1,6 +1,6 @@
 ---
 layout: null
-permalink: /store/create
+permalink: /vendor/products
 index: false
 ---
 <!DOCTYPE html>
@@ -12,6 +12,7 @@ index: false
 		<meta name="robots" content="noindex" />
 		<meta name="referrer" content="no-referrer" />
 		<meta name="theme-color" content="#b70c0c" />
+		<base href="/" />
 		<title>Add Items to WFD Store</title>
 		<script type="module" src="https://cdn.kernvalley.us/js/std-js/shims.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 		<script type="module" src="https://cdn.kernvalley.us/components/github/user.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -34,10 +35,10 @@ index: false
 		</header>
 		<div id="msg" class="center">
 			<div class="status-box info inline-block">
-				<p>This page is for creating products to list on the <a href="/store/" class="underline">WFD Store.</a></p>
+				<p>This page is for creating products to list on the <a href="{{ site.data.pages.store.url }}" class="underline">WFD Store.</a></p>
 				<p>
 					You will need an account on WhiskeyFlatDays.com to proceed. You may
-					<a href="/account/login?redirect={{ page.url }}" class="link underline login">login</a> or <a href="/account/register?redirect={{ page.url }}" class="link underline register">register</a>. Once signed in, the <q>Add Item</q> button will be enabled.
+					<a href="{{ site.data.pages.login.url }}?redirect={{ page.url }}" class="link underline login">login</a> or <a href="{{ site.data.pages.register.url }}?redirect={{ page.url }}" class="link underline register">register</a>. Once signed in, the <q>Add Item</q> button will be enabled.
 
 				</p>
 				<p>You may click on the {% include common/icon.html icon="info" height="18" width="18" fill="currentColor" %} icons for the fields to get more information.</p>
@@ -48,11 +49,11 @@ index: false
 		</dialog>
 		<div id="controls">
 			<div id="account-links" class="flex row space-evenly">
-				<a href="/account/register?redirect={{ page.url }}" role="button" class="btn btn-primary register">
+				<a href="{{ site.data.pages.register.url }}?redirect={{ page.url }}" role="button" class="btn btn-primary register">
 					{% include common/icon.html icon="plus" height=18 width=18 fill="currentColor" %}
 					<span>Register</span>
 				</a>
-				<a href="/account/login?redirect={{ page.url }}" role="button" class="btn btn-primary login">
+				<a href="{{ site.data.pages.login.url }}?redirect={{ page.url }}" role="button" class="btn btn-primary login">
 					{% include common/icon.html icon="sign-in" height=18 width=18 fill="currentColor" %}
 					<span>Login</span>
 				</a>

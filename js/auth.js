@@ -4,6 +4,7 @@ import { showDialog } from 'https://cdn.kernvalley.us/js/std-js/error-handler.js
 import { isObject } from 'https://cdn.kernvalley.us/js/std-js/utility.js';
 import { register, login, resetPassword, whenLoggedIn } from './firebase.js';
 import { redirect } from './functions.js';
+import { PAGES } from './pages.js';
 const url = new URL(location.href);
 
 if (url.searchParams.has('redirect')) {
@@ -15,12 +16,12 @@ if (url.searchParams.has('redirect')) {
 }
 
 switch(url.pathname) {
-	case '/account/register':
+	case PAGES.register.url.pathname:
 		whenLoggedIn().then(() => {
 			if (url.searchParams.has('redirect')) {
-				redirect(url.searchParams.get('redirect'));
+				redirect({ href: url.searchParams.get('redirect') });
 			} else {
-				redirect('/');
+				redirect(PAGES.home);
 			}
 		});
 
@@ -44,19 +45,19 @@ switch(url.pathname) {
 				if (url.searchParams.has('redirect')) {
 					redirect(url.searchParams.get('redirect'));
 				} else {
-					redirect('/');
+					redirect(PAGES.home);
 				}
 			}
 		});
 
 		break;
 
-	case '/account/login':
+	case PAGES.login.url.pathname:
 		whenLoggedIn().then(() => {
 			if (url.searchParams.has('redirect')) {
 				redirect(url.searchParams.get('redirect'));
 			} else {
-				redirect('/');
+				redirect(PAGES.home);
 			}
 		});
 
@@ -74,20 +75,20 @@ switch(url.pathname) {
 				if (url.searchParams.has('redirect')) {
 					redirect(url.searchParams.get('redirect'));
 				} else {
-					redirect('/');
+					redirect(PAGES.home);
 				}
 			}
 		});
 
 		break;
 
-	case '/account/reset':
+	case PAGES.resetPassword.url.pathname:
 	case '/.well-known/change-password':
 		whenLoggedIn().then(() => {
 			if (url.searchParams.has('redirect')) {
 				redirect(url.searchParams.get('redirect'));
 			} else {
-				redirect('/');
+				redirect(PAGES.home);
 			}
 		});
 
@@ -102,7 +103,7 @@ switch(url.pathname) {
 				if (url.searchParams.has('redirect')) {
 					redirect(url.searchParams.get('redirect'));
 				} else {
-					redirect('/');
+					redirect(PAGES.home);
 				}
 			}).catch(err => {
 				showDialog(err, { signal: AbortSignal.timeout(5000), level: 'warn' });

@@ -3,6 +3,9 @@ http://whiskeyflat.netlify.com/*          https://whiskeyflatdays.com/:splat  30
 /contact                                  https://contact.kernvalley.us?subject=Whiskey%20Flat%20Days
 /manifest.json                            /webapp.webmanifest                 301
 /maps/*                                   /map/:splat                         301
+/store/create                             /vendor/products
+/store/profile                            /vendor/profile
+/vendor/                                  /vendor/profile
 /api/*                                    /.netlify/functions/:splat          200
 /.well-known/change-password email=:email /account/reset?email=:email         307!
 /.well-known/change-password              /account/reset                      307!

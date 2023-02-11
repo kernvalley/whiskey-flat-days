@@ -10,7 +10,8 @@ import { clamp } from 'https://cdn.kernvalley.us/js/std-js/math.js';
 import { getDeferred } from 'https://cdn.kernvalley.us/js/std-js/promises.js';
 import { useSVG } from 'https://cdn.kernvalley.us/js/std-js/svg.js';
 import { Availability } from './consts.js';
-import { intersectCallback } from './functions.js';
+import { intersectCallback, redirect } from './functions.js';
+import { PAGES } from './pages.js';
 // import { getProducts } from './firebase.js';
 const allowedAvailabilities = ['InStock', 'OnlineOnly', 'PreOrder', 'PreSale'];
 
@@ -416,9 +417,7 @@ async function reviewCart(cart, { signal } = {}) {
 								try {
 									currentTarget.disabled = true;
 									const { paymentIntent } = await createPaymentRequest();
-									const url = new URL('/store/checkout', document.baseURI);
-									url.searchParams.set('token', paymentIntent);
-									location.href = url.href;
+									redirect(PAGES.checkout, { params: { token: paymentIntent }});
 								} catch(err) {
 									currentTarget.disabled = false;
 									console.error(err);
@@ -445,7 +444,7 @@ async function reviewCart(cart, { signal } = {}) {
 	return promise;
 }
 
-if (location.pathname.startsWith('/store/checkout')) {
+if (location.pathname.startsWith(PAGES.checkout.url.pathname)) {
 	const params = new URLSearchParams(location.search);
 
 	if (params.has('payment_intent_client_secret') && params.has('redirect_status')) {
@@ -462,7 +461,7 @@ if (location.pathname.startsWith('/store/checkout')) {
 							classList: ['center'],
 							children: [
 								create('a', {
-									href: '/',
+									href: PAGES.home.url.href,
 									role: 'button',
 									classList: ['btn', 'btn-primary'],
 									text: 'Continue',
@@ -512,7 +511,7 @@ if (location.pathname.startsWith('/store/checkout')) {
 						create('a', {
 							role: 'button',
 							classList: ['btn', 'btn-primary'],
-							href: '/store/',
+							href: PAGES.store.url.href,
 							text: 'Back to Store',
 						}),
 					]
@@ -521,7 +520,7 @@ if (location.pathname.startsWith('/store/checkout')) {
 			document.getElementById('main').append(form);
 		});
 	}
-} else if(location.pathname === '/store/') {
+} else if(location.pathname === PAGES.store.url.pathname) {
 	loadStoreItems().then(() => {
 		const params = new URLSearchParams(location.search);
 

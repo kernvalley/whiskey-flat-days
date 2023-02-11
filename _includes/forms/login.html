@@ -25,7 +25,7 @@
 		</div>
 		<br />
 		<div class="flex row wrap space-evenly">
-			<a href="/account/reset" role="button" class="btn btn-primary">
+			<a href="{{ site.data.pages.resetPassword.url }}" role="button" class="btn btn-primary">
 				{% include common/icon.html icon="info" height=18 width=18 fill="currentColor" %}
 				<span>Forgot Password</span>
 			</a>
@@ -33,7 +33,7 @@
 				{% include common/icon.html icon="x" height=18 width=18 fill="currentColor" %}
 				<span>Clear Form</span>
 			</button>
-			<a href="/account/register" role="button" class="btn btn-primary">
+			<a href="{{ site.data.pages.register.url }}" role="button" class="btn btn-primary">
 				{% include common/icon.html icon="plus" height=18 width=18 fill="currentColor" %}
 				<span>Register</span>
 			</a>

@@ -1,0 +1,39 @@
+home:
+  title: Home
+  url: /
+events:
+  title: Events
+  url: /events/
+map:
+  title: Map
+  url: /map/
+news:
+  title: News
+  url: /news/
+mayors:
+  title: Mayor Contest
+  url: /mayors/
+store:
+  title: Store
+  url: /store/
+checkout:
+  title: Checkout
+  url: /store/checkout
+login:
+  title: Login
+  url: /account/login
+register:
+  title: Register
+  url: /account/register
+resetPassword:
+  title: Reset Password
+  url: /account/reset
+vendorProfile:
+  title: Vendor Profile
+  url: /vendor/profile
+vendorProducts:
+  title: Manage Products
+  url: /vendor/products
+reset:
+  title: Web App Reset
+  url: /reset
