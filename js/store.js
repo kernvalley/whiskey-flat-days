@@ -10,7 +10,7 @@ import { clamp } from 'https://cdn.kernvalley.us/js/std-js/math.js';
 import { getDeferred } from 'https://cdn.kernvalley.us/js/std-js/promises.js';
 import { useSVG } from 'https://cdn.kernvalley.us/js/std-js/svg.js';
 import { Availability } from './consts.js';
-import { intersectCallback } from './functions.js';
+import { intersectCallback, redirect, getPages } from './functions.js';
 // import { getProducts } from './firebase.js';
 const allowedAvailabilities = ['InStock', 'OnlineOnly', 'PreOrder', 'PreSale'];
 
@@ -287,9 +287,10 @@ async function getPaymentRequest({ signal } = {}) {
 }
 
 async function reviewCart(cart, { signal } = {}) {
-	const [products, items] = await Promise.all([
+	const [products, items, pages] = await Promise.all([
 		getProducts({ signal }),
 		cart.getAll({ signal }),
+		getPages(),
 	]);
 
 	const { resolve, promise } = getDeferred({ signal });
@@ -416,9 +417,7 @@ async function reviewCart(cart, { signal } = {}) {
 								try {
 									currentTarget.disabled = true;
 									const { paymentIntent } = await createPaymentRequest();
-									const url = new URL('/store/checkout', document.baseURI);
-									url.searchParams.set('token', paymentIntent);
-									location.href = url.href;
+									redirect(pages.checkout, { params: paymentIntent });
 								} catch(err) {
 									currentTarget.disabled = false;
 									console.error(err);
@@ -481,7 +480,8 @@ if (location.pathname.startsWith('/store/checkout')) {
 		Promise.all([
 			getPaymentRequest(),
 			getStripeKey(),
-		]).then(async ([{ paymentRequest, paymentIntent }, key]) => {
+			getPages(),
+		]).then(async ([{ paymentRequest, paymentIntent }, key, pages]) => {
 			const form = new HTMLStripePaymentFormElement(key, paymentIntent.client_secret, {
 				...paymentRequest,
 				config: {
@@ -512,7 +512,7 @@ if (location.pathname.startsWith('/store/checkout')) {
 						create('a', {
 							role: 'button',
 							classList: ['btn', 'btn-primary'],
-							href: '/store/',
+							href: pages.store.url.href,
 							text: 'Back to Store',
 						}),
 					]

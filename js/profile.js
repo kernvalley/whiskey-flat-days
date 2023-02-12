@@ -4,7 +4,7 @@ import { isObject } from 'https://cdn.kernvalley.us/js/std-js/utility.js';
 import { createSeller, uploadFile, getFileURL, getCurrentUser, whenLoggedIn, getLoggedInSeller } from './firebase.js';
 import { createImage } from 'https://cdn.kernvalley.us/js/std-js/elements.js';
 import { firebase } from './consts.js';
-import { redirect } from './functions.js';
+import { redirect, getPages } from './functions.js';
 
 const MISSING_IMAGE = 'https://cdn.kernvalley.us/img/raster/missing-image.png';
 
@@ -14,10 +14,9 @@ if (url.pathname === '/store/profile') {
 	const controller = new AbortController();
 
 	loaded().then(() => {
-		scheduler.postTask(() => {
-			const url = new URL('/account/login', location.origin);
-			url.searchParams.set('redirect', location.pathname);
-			redirect(url);
+		scheduler.postTask(async () => {
+			const { login } = await getPages();
+			redirect(login, { redirect: location.pathname });
 		}, {
 			delay: 8000,
 			priority: 'background',
@@ -27,7 +26,10 @@ if (url.pathname === '/store/profile') {
 
 	whenLoggedIn().then(async () => {
 		controller.abort();
-		const user = await getCurrentUser();
+		const [{ home }, user] = await Promise.all([
+			getPages(),
+			getCurrentUser(),
+		]);
 		const found = await getLoggedInSeller().catch(console.error);
 
 		if (isObject(found)) {
@@ -96,7 +98,7 @@ if (url.pathname === '/store/profile') {
 			if (url.searchParams.has('redirect')) {
 				redirect(url.searchParams.get('redirect'));
 			} else {
-				redirect('/');
+				redirect(home);
 			}
 		});
 

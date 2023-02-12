@@ -29,7 +29,10 @@ import {
 import { getCustomElement } from 'https://cdn.kernvalley.us/js/std-js/custom-elements.js';
 import { importGa, externalHandler, telHandler, mailtoHandler } from 'https://cdn.kernvalley.us/js/std-js/google-analytics.js';
 import { DAYS } from 'https://cdn.kernvalley.us/js/std-js/date-consts.js';
-import { searchLocationMarker, createMarker, isOnGoing, filterEventNamesDatalist, intersectCallback } from './functions.js';
+import {
+	searchLocationMarker, createMarker, isOnGoing, filterEventNamesDatalist,
+	intersectCallback, getPages,
+} from './functions.js';
 import { GA } from './consts.js';
 import { createYouTubeEmbed } from 'https://cdn.kernvalley.us/js/std-js/youtube.js';
 import './store.js';
@@ -128,14 +131,15 @@ if (location.pathname.startsWith('/events') && ('IntersectionObserver' in global
 Promise.all([
 	getCustomElement('install-prompt'),
 	new URL(location.href),
+	getPages(),
 	ready(),
-]).then(async ([HTMLInstallPromptElement, url]) => {
+]).then(async ([HTMLInstallPromptElement, url, { events, map }]) => {
 	init();
 
 	on('#install-btn', 'click', () => new HTMLInstallPromptElement().show());
 	attr('#install-btn', { hidden: false });
 
-	if (url.pathname.startsWith('/map')) {
+	if (url.pathname.startsWith(map.url.pathname)) {
 		if (! ['', '#', '#main'].includes(location.hash)) {
 			document.getElementById('main').scrollIntoView({ block: 'start', behavior: 'smooth' });
 		}
@@ -274,7 +278,7 @@ Promise.all([
 
 		filterEventNamesDatalist();
 		searchLocationMarker();
-	} else if (url.pathname.startsWith('/events')) {
+	} else if (url.pathname.startsWith(events.url.pathname)) {
 		if (url.searchParams.has('event')) {
 			try {
 				const { pathname :{ groups: { identifier }}} = new URLPattern({

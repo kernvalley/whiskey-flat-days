@@ -1,13 +1,28 @@
 import { createCustomElement } from 'https://cdn.kernvalley.us/js/std-js/custom-elements.js';
+import { getJSON, navigateTo } from 'https://cdn.kernvalley.us/js/std-js/http.js';
+import { isObject } from 'https://cdn.kernvalley.us/js/std-js/utility.js';
 import { site, icons, mapSelector, startDate, endDate } from './consts.js';
 
-export function redirect(url) {
-	if (! (url instanceof URL)) {
-		return redirect(new URL(url, document.baseURI));
-	} else if (url.origin !== location.origin) {
-		throw new Error(`${url.origin} not allowed for redirects`);
-	} else {
-		location.href = url.href;
+const allowedOrigins = [];
+export const getPages = (async () => {
+	const pages = await getJSON('/pages.json');
+	return Object.fromEntries(
+		Object.entries(pages)
+			.map(([name, { url, ...rest }]) => [name, { url: new URL(url, document.baseURI), ...rest }])
+	);
+}).once();
+
+function isPage(thing) {
+	return isObject(thing) && thing.url instanceof URL;
+}
+
+export async function redirect(to, { redirect: redirectPath, utm, params = {}} = {}) {
+	if (isPage(to)) {
+		redirect(to.url, { redirect: redirectPath, utm, params });
+	} else if (typeof to === 'string') {
+		redirect(new URL(to, document.baseURI), { redirect: redirectPath, utm, params });
+	} else if (to instanceof URL) {
+		navigateTo(to, { params: { redirect: redirectPath, ...params }, utm, allowedOrigins });
 	}
 }
 

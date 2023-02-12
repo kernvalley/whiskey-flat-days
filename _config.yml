@@ -114,6 +114,7 @@ exclude:
   - "*.yml"
   - "*.lock"
   - "*.log"
+  - "tags.*"
   - "*.config.js"
   - docs/
   - "/*-theme.xml"
