@@ -2,11 +2,11 @@
 layout: default
 ---
 <div class="flex row wrap space-evenly">
-	<a href="/account/register" role="button" class="btn btn-primary">
+	<a href="{{ site.data.pages.register.url }}" role="button" class="btn btn-primary">
 		{% include common/icon.html icon="plus" height=18 width=18 fill="currentColor" %}
 		<span>Create an Account</span>
 	</a>
-	<a href="/account/login" role="button" class="btn btn-primary">
+	<a href="{{ site.data.pages.login.url }}" role="button" class="btn btn-primary">
 		{% include common/icon.html icon="sign-in" height=18 width=18 fill="currentColor" %}
 		<span>Login</span>
 	</a>

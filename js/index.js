@@ -29,10 +29,12 @@ import {
 import { getCustomElement } from 'https://cdn.kernvalley.us/js/std-js/custom-elements.js';
 import { importGa, externalHandler, telHandler, mailtoHandler } from 'https://cdn.kernvalley.us/js/std-js/google-analytics.js';
 import { DAYS } from 'https://cdn.kernvalley.us/js/std-js/date-consts.js';
-import { searchLocationMarker, createMarker, isOnGoing, filterEventNamesDatalist, intersectCallback } from './functions.js';
+import {
+	searchLocationMarker, createMarker, isOnGoing, filterEventNamesDatalist,
+	intersectCallback, getPages,
+} from './functions.js';
 import { GA } from './consts.js';
 import { createYouTubeEmbed } from 'https://cdn.kernvalley.us/js/std-js/youtube.js';
-import { PAGES } from './pages.js';
 import './store.js';
 import './profile.js';
 
@@ -116,11 +118,11 @@ if ('serviceWorker' in navigator) {
 	});
 }
 
-if (location.pathname.startsWith(PAGES.events.url.pathname) && ('IntersectionObserver' in globalThis)) {
+if (location.pathname.startsWith('/events') && ('IntersectionObserver' in globalThis)) {
 	ready().then(() => {
 		intersect('.event-item', intersectCallback);
 	});
-} else if (location.pathname.startsWith(PAGES.news.url.href1) && ('IntersectionObserver' in globalThis)) {
+} else if (location.pathname.startsWith('/news/') && ('IntersectionObserver' in globalThis)) {
 	ready().then(() => {
 		intersect('.post-preview', intersectCallback);
 	});
@@ -129,14 +131,15 @@ if (location.pathname.startsWith(PAGES.events.url.pathname) && ('IntersectionObs
 Promise.all([
 	getCustomElement('install-prompt'),
 	new URL(location.href),
+	getPages(),
 	ready(),
-]).then(async ([HTMLInstallPromptElement, url]) => {
+]).then(async ([HTMLInstallPromptElement, url, { events, map }]) => {
 	init();
 
 	on('#install-btn', 'click', () => new HTMLInstallPromptElement().show());
 	attr('#install-btn', { hidden: false });
 
-	if (url.pathname.startsWith(PAGES.map.url.pathname)) {
+	if (url.pathname.startsWith(map.url.pathname)) {
 		if (! ['', '#', '#main'].includes(location.hash)) {
 			document.getElementById('main').scrollIntoView({ block: 'start', behavior: 'smooth' });
 		}
@@ -249,7 +252,7 @@ Promise.all([
 		css('#main', { padding: '4px' });
 
 		if (location.hash === '') {
-			searchDateTimeRange({from: current ? new Date() : '2023-02-17T10:00'});
+			searchDateTimeRange({from: current ? new Date() : '2022-02-18T10:00'});
 		}
 		const date = `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')}`;
 
@@ -275,7 +278,7 @@ Promise.all([
 
 		filterEventNamesDatalist();
 		searchLocationMarker();
-	} else if (url.pathname.startsWith(PAGES.events.url.pathname)) {
+	} else if (url.pathname.startsWith(events.url.pathname)) {
 		if (url.searchParams.has('event')) {
 			try {
 				const { pathname :{ groups: { identifier }}} = new URLPattern({

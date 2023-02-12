@@ -1,37 +1,28 @@
 import { createCustomElement } from 'https://cdn.kernvalley.us/js/std-js/custom-elements.js';
-import { navigateTo } from 'https://cdn.kernvalley.us/js/std-js/http.js';
+import { getJSON, navigateTo } from 'https://cdn.kernvalley.us/js/std-js/http.js';
 import { isObject } from 'https://cdn.kernvalley.us/js/std-js/utility.js';
 import { site, icons, mapSelector, startDate, endDate } from './consts.js';
-import { PAGES } from './pages.js';
+
 const allowedOrigins = [];
+export const getPages = (async () => {
+	const pages = await getJSON('/pages.json');
+	return Object.fromEntries(
+		Object.entries(pages)
+			.map(([name, { url, ...rest }]) => [name, { url: new URL(url, document.baseURI), ...rest }])
+	);
+}).once();
 
 function isPage(thing) {
 	return isObject(thing) && thing.url instanceof URL;
 }
 
-export function redirect(page, { params, utm } = {}) {
-	if (isPage(page)) {
-		navigateTo(page.url, { params, utm, allowedOrigins });
-	} else if (typeof page === 'string') {
-		navigateTo(new URL(page, location.origin), { params, utm, allowedOrigins });
-	} else if (page instanceof URL) {
-		navigateTo(page, { params, utm, allowedOrigins });
-	}
-}
-
-export function resetApp({
-	redirect: redirectPath = PAGES.home.url.pathname,
-} = {}) {
-	if (isPage(redirectPath)) {
-		redirect(PAGES.reset, { params: { redirect: redirectPath.url.pathname }});
-	} else if (redirectPath instanceof URL && redirectPath.origin === location.origin) {
-		redirect(PAGES.reset, { params: { redirect: redirectPath.pathname }});
-	} else  if (typeof redirectPath === 'string' && redirectPath.startsWith('/')){
-		redirect(PAGES.reset, { params: { redirect: redirectPath }});
-	} else if (typeof redirectPath === 'undefined' || Object.is(redirectPath, null)) {
-		redirect(PAGES.reset);
-	} else {
-		throw new Error('Invalid redirect for PWA reset');
+export async function redirect(to, { redirect: redirectPath, utm, params = {}} = {}) {
+	if (isPage(to)) {
+		redirect(to.url, { redirect: redirectPath, utm, params });
+	} else if (typeof to === 'string') {
+		redirect(new URL(to, document.baseURI), { redirect: redirectPath, utm, params });
+	} else if (to instanceof URL) {
+		navigateTo(to, { params: { redirect: redirectPath, ...params }, utm, allowedOrigins });
 	}
 }
 
@@ -82,7 +73,7 @@ export async function searchLocationMarker(url = new URL(location.href)) {
 	if (! (url instanceof URL)) {
 		url = new URL(url);
 	}
-	if (url.pathname.startsWith(PAGES.map.url.href) && url.search !== '') {
+	if (url.pathname.startsWith('/map') && url.search !== '') {
 		if (! url.searchParams.has('coords')) {
 			return false;
 		} else if (url.searchParams.get('coords').startsWith('geo:')) {

@@ -10,8 +10,7 @@ import { clamp } from 'https://cdn.kernvalley.us/js/std-js/math.js';
 import { getDeferred } from 'https://cdn.kernvalley.us/js/std-js/promises.js';
 import { useSVG } from 'https://cdn.kernvalley.us/js/std-js/svg.js';
 import { Availability } from './consts.js';
-import { intersectCallback, redirect } from './functions.js';
-import { PAGES } from './pages.js';
+import { intersectCallback, redirect, getPages } from './functions.js';
 // import { getProducts } from './firebase.js';
 const allowedAvailabilities = ['InStock', 'OnlineOnly', 'PreOrder', 'PreSale'];
 
@@ -288,9 +287,10 @@ async function getPaymentRequest({ signal } = {}) {
 }
 
 async function reviewCart(cart, { signal } = {}) {
-	const [products, items] = await Promise.all([
+	const [products, items, pages] = await Promise.all([
 		getProducts({ signal }),
 		cart.getAll({ signal }),
+		getPages(),
 	]);
 
 	const { resolve, promise } = getDeferred({ signal });
@@ -417,7 +417,7 @@ async function reviewCart(cart, { signal } = {}) {
 								try {
 									currentTarget.disabled = true;
 									const { paymentIntent } = await createPaymentRequest();
-									redirect(PAGES.checkout, { params: { token: paymentIntent }});
+									redirect(pages.checkout, { params: paymentIntent });
 								} catch(err) {
 									currentTarget.disabled = false;
 									console.error(err);
@@ -444,7 +444,7 @@ async function reviewCart(cart, { signal } = {}) {
 	return promise;
 }
 
-if (location.pathname.startsWith(PAGES.checkout.url.pathname)) {
+if (location.pathname.startsWith('/store/checkout')) {
 	const params = new URLSearchParams(location.search);
 
 	if (params.has('payment_intent_client_secret') && params.has('redirect_status')) {
@@ -461,7 +461,7 @@ if (location.pathname.startsWith(PAGES.checkout.url.pathname)) {
 							classList: ['center'],
 							children: [
 								create('a', {
-									href: PAGES.home.url.href,
+									href: '/',
 									role: 'button',
 									classList: ['btn', 'btn-primary'],
 									text: 'Continue',
@@ -480,7 +480,8 @@ if (location.pathname.startsWith(PAGES.checkout.url.pathname)) {
 		Promise.all([
 			getPaymentRequest(),
 			getStripeKey(),
-		]).then(async ([{ paymentRequest, paymentIntent }, key]) => {
+			getPages(),
+		]).then(async ([{ paymentRequest, paymentIntent }, key, pages]) => {
 			const form = new HTMLStripePaymentFormElement(key, paymentIntent.client_secret, {
 				...paymentRequest,
 				config: {
@@ -511,7 +512,7 @@ if (location.pathname.startsWith(PAGES.checkout.url.pathname)) {
 						create('a', {
 							role: 'button',
 							classList: ['btn', 'btn-primary'],
-							href: PAGES.store.url.href,
+							href: pages.store.url.href,
 							text: 'Back to Store',
 						}),
 					]
@@ -520,7 +521,7 @@ if (location.pathname.startsWith(PAGES.checkout.url.pathname)) {
 			document.getElementById('main').append(form);
 		});
 	}
-} else if(location.pathname === PAGES.store.url.pathname) {
+} else if(location.pathname === '/store/') {
 	loadStoreItems().then(() => {
 		const params = new URLSearchParams(location.search);
 
