@@ -3,12 +3,7 @@ const { HTTPError } = require('./http-error.js');
 const { status } = require('./http-status.js');
 exports.handler = async function() {
 	try {
-		return {
-			statusCode: status.OK,
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify(process.env),
-		}
-		// throw new HTTPError('Not Implemented', { status: status.NOT_IMPLEMENTED });
+		throw new HTTPError('Not Implemented', { status: status.NOT_IMPLEMENTED });
 	} catch(err) {
 		console.log(err);
 
