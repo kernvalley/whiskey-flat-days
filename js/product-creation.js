@@ -1,6 +1,6 @@
 import { on, enable, animate, css, text } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
 import { createImage } from 'https://cdn.kernvalley.us/js/std-js/elements.js';
-import { fileToCanvas, canvasToFile } from 'https://cdn.kernvalley.us/js/std-js/img-utils.js';
+import { previewImgOnChange, resizeImageFile } from 'https://cdn.kernvalley.us/js/std-js/img-utils.js';
 import { isObject } from 'https://cdn.kernvalley.us/js/std-js/utility.js';
 import { showDialog } from 'https://cdn.kernvalley.us/js/std-js/error-handler.js';
 import { createOption } from 'https://cdn.kernvalley.us/js/std-js/elements.js';
@@ -66,9 +66,8 @@ scheduler.postTask(async () => {
 
 		if (isObject(user)) {
 			try {
-				const canvas = document.getElementById('preview-canvas');
-				const img = await canvasToFile(canvas, { name: crypto.randomUUID() });
-				const name = `/wfd-store/products/${img.name}`;
+				const img = await resizeImageFile(data.get('image'), { height: 480, type: 'image/jpeg', quality: 0.8 });
+				const name = `/wfd-store/products/${crypto.randomUUID()}.jpg`;
 				await uploadFile(firebase.bucket, img, { name });
 
 				seller.member = [{
@@ -131,26 +130,9 @@ scheduler.postTask(async () => {
 		document.getElementById('img-preview').replaceChildren(img);
 	});
 
-	on('#product-image', 'change', async ({ target }) => {
-		if (target.files.length === 1) {
-			try {
-				const file = target.files[0];
-				const canvas = await fileToCanvas(file, { height: 480 });
-				const container = document.getElementById('img-preview');
-				const current = container.querySelector('canvas');
-				canvas.id = 'preview-canvas';
-
-				if (current instanceof HTMLCanvasElement) {
-					URL.revokeObjectURL(current.dataset.blob);
-					current.replaceWith(canvas);
-				} else {
-					container.replaceChildren(canvas);
-				}
-			} catch(err) {
-				console.error(err);
-				target.setCustomValidity('An error occurred processing the image');
-			}
-		}
+	previewImgOnChange('#product-image', '#img-preview', {
+		height: 480,
+		classList: ['img-preview'],
 	});
 
 	on('[data-show-modal]', 'click', ({ currentTarget }) => {
