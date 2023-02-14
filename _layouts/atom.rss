@@ -1,0 +1,1 @@
+{% include atom.rss title=page.title description=page.description posts=site.posts url=page.url %}
