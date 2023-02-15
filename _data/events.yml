@@ -32,6 +32,21 @@
        <li>Pony Express Relay</li>
        <li>Harley Davidson Barrel Race</li>
     </ul>
+  offers:
+    - name: Adult
+      price: 12.09
+      availability: OnlineOnly
+      url: https://www.brownpapertickets.com/event/5690390
+    - name: Child (6-12)
+      availability: OnlineOnly
+      url: https://www.brownpapertickets.com/event/5690390
+      price: 6.79
+    - name: Child (0-5)
+      price: 0
+      availability: InStoreOnly
+    - name: Parking
+      price: 5
+      availability: InStoreOnly
 - uuid: e8df6782-d0e7-45e1-944e-d16f27ce019b
   title: Street Dance - Main Stage
   "@type": MusicEvent
@@ -88,20 +103,22 @@
   endDate: 2023-02-18 16:00
   offers:
   - name: Adult
-    price: 20
+    price: 22.69
+    availability: OnlineOnly
+    url: https://www.brownpapertickets.com/event/5690390
   - name: Child (6-12)
-    availability: InStoreOnly
-    price: 10
+    availability: OnlineOnly
+    price: 12.09
+    url: https://www.brownpapertickets.com/event/5690390
   - name: Child (0-5)
     price: 0
-    availability: InStoreOnly
+    availability: InStock
   - name: Parking
     price: 5
     availability: InStoreOnly
   image: /img/raster/rodeo.jpg
   icon: /img/markers/activity.svg
   description: |-
-    <p>Brought to you by <a href="http://www.flyingurodeo.com/" rel="noopener external">Cotton Rosser's Flying U Rodeo</a></p>
     <ul>
       <li>Open Team Roping</li>
       <li>Bull Riding</li>
@@ -394,20 +411,22 @@
   endDate: 2023-02-19 15:00
   offers:
   - name: Adult
-    price: 20
+    availability: OnlineOnly
+    price: 22.69
+    url: https://www.brownpapertickets.com/event/5690390
   - name: Child (6-12)
-    availability: InStoreOnly
-    price: 10
+    availability: OnlineOnly
+    price: 12.09
+    url: https://www.brownpapertickets.com/event/5690390
   - name: Child (0-5)
     price: 0
-    availability: InStoreOnly
+    availability: InStock
   - name: Parking
     price: 5
-    availability: InStoreOnly
+    availability: OnlineOnly
   image: /img/raster/rodeo.jpg
   icon: /img/markers/activity.svg
   description: |-
-    <p>Brought to you by <a href="http://www.flyingurodeo.com/" rel="noopener external">Cotton Rosser's Flying U Rodeo</a></p>
     <ul>
       <li>Open Team Roping</li>
       <li>Bull Riding</li>
