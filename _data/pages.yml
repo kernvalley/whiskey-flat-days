@@ -34,6 +34,9 @@ vendorProfile:
 vendorProducts:
   title: Manage Products
   url: /vendor/products
+privacy:
+  title: Privacy Policy
+  url: /privacy/
 reset:
   title: Web App Reset
   url: /reset

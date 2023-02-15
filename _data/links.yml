@@ -39,7 +39,7 @@ footer:
       - noopener
       - external
   - label: Privacy
-    href: https://kernvalley.us/privacy/
+    href: /privacy/
     icon: eye
     rel:
       - noreferrer
