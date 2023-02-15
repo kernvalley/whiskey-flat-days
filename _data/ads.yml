@@ -7,7 +7,9 @@ sidebar:
     layout: stack
     url: tel:+1-760-223-2938
     image: https://i.imgur.com/yPxoVxqm.jpg
-    description: $5 per person anywhere in Kernville. (760) 223-2938
+    description: |-
+      $5 per person anywhere in Kernville.
+      Call (760) 223-2938
     callToAction: Need a Ride? Call Now!
     imageFit: contain
     imagePosition: center
