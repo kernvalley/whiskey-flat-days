@@ -54,7 +54,7 @@ tags:
 										<span>$</span><span itemprop="price">{{ offer.price }}</span>
 									</a>
 								{% else %}
-									<button class="btn btn-default" disabled="">
+									<button class="btn btn-default" disabled="" itemtype="https://schema.org/Offer" itemprop="offers" itemscope="">
 										<span class="offer-label" itemprop="name">{{ offer.name | default: "Admission" }}</span>:
 										<meta itemprop="priceCurrency" content="{{ offer.priceCurrency | default: 'USD' }}" />
 										<meta itemprop="availability" content="https://schema.org/{{ offer.availability | default: 'InStock' }}" />
