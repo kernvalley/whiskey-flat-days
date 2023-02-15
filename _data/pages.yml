@@ -40,3 +40,6 @@ privacy:
 reset:
   title: Web App Reset
   url: /reset
+rodeoTickets:
+  title: Rodeo
+  url: https://www.brownpapertickets.com/event/5690390
