@@ -176,10 +176,6 @@
     "@type": MusicGroup
     name: Vince Galindo and Country Deluxe
   description: |-
-    Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Vince Galindo and Country Deluxe</span></span>performer:
-    "@type": MusicGroup
-    name: Vince Galindo and Country Deluxe
-  description: |-
     Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Vince Galindo and Country Deluxe</span></span>
 - uuid: c1f8133b-c326-467a-9a28-6a974b8266ba
   title: Music - Main Stage
