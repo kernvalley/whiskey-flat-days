@@ -65,9 +65,11 @@
     geo:
       latitude: 35.755721
       longitude: -118.425114
-    # Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">The Rivals</span></span>
+  performer:
+   "@type": MusicGroup
+   name: Sons of Bakersfield
   description: |-
-    No details available yet
+    Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Sons of Bakersfield</span></span>
 - uuid: b3b97450-6102-4f02-9ed9-03dab08a848c
   title: Whiskey Flat Days Parade
   startDate: 2023-02-18 10:00
@@ -147,9 +149,11 @@
     geo:
       latitude: 35.755721
       longitude: -118.425114
-    # Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Kern River Band</span></span>
+  performer:
+    "@type": MusicGroup
+    name: Vince Galindo and Country Deluxe
   description: |-
-    To be announced
+    Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Vince Galindo and Country Deluxe</span></span>
 - uuid: 1ec57723-3979-4083-af56-3b04072aa367
   title: Music - Main Stage
   music: true
@@ -168,9 +172,15 @@
     geo:
       latitude: 35.755721
       longitude: -118.425114
-    # Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Kern River Band</span></span>
+  performer:
+    "@type": MusicGroup
+    name: Vince Galindo and Country Deluxe
   description: |-
-    To be announced
+    Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Vince Galindo and Country Deluxe</span></span>performer:
+    "@type": MusicGroup
+    name: Vince Galindo and Country Deluxe
+  description: |-
+    Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Vince Galindo and Country Deluxe</span></span>
 - uuid: c1f8133b-c326-467a-9a28-6a974b8266ba
   title: Music - Main Stage
   music: true
@@ -189,9 +199,11 @@
     geo:
       latitude: 35.755721
       longitude: -118.425114
-    # Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">The Soda Crackers</span></span>
+   performer:
+    "@type": MusicGroup
+    name: Kern River Band
   description: |-
-    To be announced
+    Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Kern River Band</span></span>
 # - uuid: 5ecd1605-ef72-4d7f-bfd5-61bf1cee67cb
 #   title: Slideways - Main Stage
 #   music: true
