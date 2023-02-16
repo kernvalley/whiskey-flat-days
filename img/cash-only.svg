@@ -1,0 +1,9 @@
+<svg width="640" height="480" version="1.1" viewBox="0 0 169.33 127" xmlns="http://www.w3.org/2000/svg">
+ <rect width="169.33" height="127" fill="#500"/>
+ <rect x="9.8162" y="9.8162" width="149.7" height="107.37" fill="none" stroke="#fff" stroke-width="3.7573"/>
+ <g fill="#fefefe" text-align="center" text-anchor="middle" xml:space="preserve">
+        <text x="84.26178" y="37.837837" font-size="22.578px" font-weight="bold">Cash Only</text>
+        <text x="84.511368" y="67.775337" font-size="11.289px">Debit &amp; Credit Cards</text>
+        <text x="84.789734" y="91.126701" font-size="11.289px">Not Accepted</text>
+    </g>
+</svg>
