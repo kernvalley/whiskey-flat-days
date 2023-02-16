@@ -73,7 +73,8 @@
   startDate: 2023-02-18 10:00
   endDate: 2023-02-18 12:00
     # <p>Grand Marshal: Lanny and Cheryl Borthick</p>
-  description: <p>Grand Marshal: Unknown.</p>
+  description: |-
+    <p>Grand Marshal: Unknown.</p>
     <p><b>Note</b>: Roads will be closed for parade</p>
   image: /img/raster/parade.jpg
   icon: /img/markers/activity.svg
@@ -189,7 +190,7 @@
     geo:
       latitude: 35.755721
       longitude: -118.425114
-   performer:
+  performer:
     "@type": MusicGroup
     name: Kern River Band
   description: Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Kern River Band</span></span>
