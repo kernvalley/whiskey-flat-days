@@ -14,8 +14,7 @@
   endDate: 2023-02-17 20:00
   # image: /img/raster/rodeo.jpg
   icon: /img/markers/activity.svg
-  description: |-
-    <h4>Schedule</h4>
+  description: <h4>Schedule</h4>
     <ul>
      <li><b>3:00</b> Contestant Gate Opens</li>
      <li><b>3:00 - 5:00</b> Sign-Ups</li>
@@ -68,15 +67,13 @@
   performer:
    "@type": MusicGroup
    name: Sons of Bakersfield
-  description: |-
-    Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Sons of Bakersfield</span></span>
+  description: Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Sons of Bakersfield</span></span>
 - uuid: b3b97450-6102-4f02-9ed9-03dab08a848c
   title: Whiskey Flat Days Parade
   startDate: 2023-02-18 10:00
   endDate: 2023-02-18 12:00
     # <p>Grand Marshal: Lanny and Cheryl Borthick</p>
-  description: |-
-    <p>Grand Marshal: Unknown.</p>
+  description: <p>Grand Marshal: Unknown.</p>
     <p><b>Note</b>: Roads will be closed for parade</p>
   image: /img/raster/parade.jpg
   icon: /img/markers/activity.svg
@@ -120,8 +117,7 @@
     availability: InStoreOnly
   image: /img/raster/rodeo.jpg
   icon: /img/markers/activity.svg
-  description: |-
-    <ul>
+  description: <ul>
       <li>Open Team Roping</li>
       <li>Bull Riding</li>
       <li>Hide Race</li>
@@ -152,8 +148,7 @@
   performer:
     "@type": MusicGroup
     name: Vince Galindo and Country Deluxe
-  description: |-
-    Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Vince Galindo and Country Deluxe</span></span>
+  description: Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Vince Galindo and Country Deluxe</span></span>
 - uuid: 1ec57723-3979-4083-af56-3b04072aa367
   title: Music - Main Stage
   music: true
@@ -175,8 +170,7 @@
   performer:
     "@type": MusicGroup
     name: Vince Galindo and Country Deluxe
-  description: |-
-    Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Vince Galindo and Country Deluxe</span></span>
+  description: Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Vince Galindo and Country Deluxe</span></span>
 - uuid: c1f8133b-c326-467a-9a28-6a974b8266ba
   title: Music - Main Stage
   music: true
@@ -198,8 +192,7 @@
    performer:
     "@type": MusicGroup
     name: Kern River Band
-  description: |-
-    Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Kern River Band</span></span>
+  description: Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Kern River Band</span></span>
 # - uuid: 5ecd1605-ef72-4d7f-bfd5-61bf1cee67cb
 #   title: Slideways - Main Stage
 #   music: true
@@ -236,8 +229,7 @@
   endDate: 2023-02-17 16:00
   image: /img/raster/encampment.jpg
   icon: /img/markers/activity.svg
-  description: |-
-    <h4>Cowboy and Mountain Men Encampment</h4>
+  description: <h4>Cowboy and Mountain Men Encampment</h4>
     <p>On Scodie Ave. across from the Rodeo Grounds. You'll see history and gunfights.</p>
     <p>All day there will be a Wells Fargo station and eatery, chuck wagon cook'n and coffee,
     a horse trader and livery.</p>
@@ -260,8 +252,7 @@
   endDate: 2023-02-18 16:00
   image: /img/raster/encampment.jpg
   icon: /img/markers/activity.svg
-  description: |-
-    <h4>Cowboy and Mountain Men Encampment</h4>
+  description: <h4>Cowboy and Mountain Men Encampment</h4>
     <p>On Scodie Ave. across from the Rodeo Grounds. You'll see history and gunfights.</p>
     <p>All day there will be a Wells Fargo station and eatery, chuck wagon cook'n and coffee,
     a horse trader and livery.</p>
@@ -284,8 +275,7 @@
   endDate: 2023-02-19 10:00
   image: /img/raster/encampment.jpg
   icon: /img/markers/activity.svg
-  description: |-
-    <h4>Cowboy and Mountain Men Encampment</h4>
+  description: <h4>Cowboy and Mountain Men Encampment</h4>
     <p>On Scodie Ave. across from the Rodeo Grounds. You'll see history and gunfights.</p>
     <p>All day there will be a Wells Fargo station and eatery, chuck wagon cook'n and coffee,
     a horse trader and livery.</p>
@@ -308,8 +298,7 @@
   endDate: 2023-02-19 11:30
   image: /img/raster/encampment.jpg
   icon: /img/markers/activity.svg
-  description: |-
-    <p>Service at the Whiskey Flat Days Encampment starts at 10:00 AM</p>
+  description: <p>Service at the Whiskey Flat Days Encampment starts at 10:00 AM</p>
 # - uuid: bde1727f-fc0f-453f-afbb-9329aa3fec32
 #   title: '"First Heat" Frog Jumping Contents'
 #   startDate: 2020-02-15 14:00
@@ -350,8 +339,7 @@
   title: Whiskerino Contest
   startDate: 2023-02-19 13:00
   endDate: 2023-02-19 14:00
-  description: |-
-    <p>Sign-up starts at 1:00 PM</p>
+  description: <p>Sign-up starts at 1:00 PM</p>
     <p>Judging starts at 1:30 PM</p>
   location:
     name: Tobias Street in Kernville
@@ -388,8 +376,7 @@
   title: Pet Parade Contest
   startDate: 2023-02-19 14:00
   endDate: 2023-02-19 15:00
-  description: |-
-    <p>Sign-up starts at 2:00 PM</p>
+  description: <p>Sign-up starts at 2:00 PM</p>
     <p>Judging starts at 2:30 PM</p>
   location:
     name: Tobias Street in Kernville
@@ -434,8 +421,7 @@
     availability: OnlineOnly
   image: /img/raster/rodeo.jpg
   icon: /img/markers/activity.svg
-  description: |-
-    <ul>
+  description: <ul>
       <li>Open Team Roping</li>
       <li>Bull Riding</li>
       <li>Hide Race</li>
