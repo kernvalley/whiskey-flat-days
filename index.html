@@ -25,8 +25,14 @@ apps:
 	<meta itemprop="about" itemref="main-event" itemtype="https://schema.org/{{ site.data.mainEvent['@type'] | default: 'Event' }}" itemscope="" />
 	{% include event-status.html event=site.data.mainEvent %}
 	<h2 itemprop="headline" class="center font-title section-heading">66<sup>th</sup> Annual Whiskey Flat Days</h2>
-	<div class="status-box info">
-		Checkout the Events for <a href="{{ site.data.pages.mayors.url }}">the Whiskey Flat Mayor Contest</a>.
+	<div class="promoted-article card shadow">
+		<h3 class="center">
+			{% include common/icon.html icon="megaphone" height="18" width="18" fill="currentColor" %}
+			<span>Want to get the most out of your fun-filled weekend in Kernville?</span>
+		</h3>
+		<p>
+			Click <a href="/news/2023/02/16/wfd-guide">here {% include common/icon.html icon="link" height="18" width="18" fill="currentColor" %}</a> for some helpful tips to learn how to make the most of the weekend.
+		</p>
 	</div>
 	<br />
 	<section itemprop="articleBody">
