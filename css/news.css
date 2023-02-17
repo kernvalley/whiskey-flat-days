@@ -1,3 +1,7 @@
+article > footer {
+	margin-top: 1.85rem;
+}
+
 #posts.grid {
 	grid-template-columns: repeat(auto-fit, minmax(300px, 400px));
 	grid-template-rows: masonry;
