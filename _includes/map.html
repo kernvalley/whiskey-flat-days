@@ -1,4 +1,5 @@
-<leaflet-map center="{{ site.data.mainEvent.location.geo.latitude }},{{ site.data.mainEvent.location.geo.longitude }}" class="relative contain-content z-1" zoom="18" maxzoom="19" minzoom="15" crossorigin="anonymous" detectretina="detectretina" zoomcontrol="" router="" allowfullscreen="" allowlocate="">
+<leaflet-map center="{{ site.data.mainEvent.location.geo.latitude }},{{ site.data.mainEvent.location.geo.longitude }}" class="relative contain-content z-1" zoom="18" maxzoom="19" minzoom="15" crossorigin="anonymous" tilesrc="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" zoomcontrol="" router="" allowfullscreen="" allowlocate="">
+	<span slot="attribution">&copy; <a href="https://www.openstreetmap.org/copyright" rel="noopener noreferrer nofollow external">OpenStreetMap</a> contributors</span>
 	{% for town in site.data.places.towns %}
 		<leaflet-marker slot="markers" latitude="{{ town.latitude }}" longitude="{{ town.longitude }}" title="{{ town.name | escape }}" id="{{ town.identifier }}">
 			<img slot="icon" src="https://cdn.kernvalley.us/img/markers.svg#city" width="30" height="30" crossorigin="anonymous" referrerpolicy="no-referrer" alt="" />
@@ -116,7 +117,7 @@
 			</div>
 		</leaflet-marker>
 	{% endfor %}{% if page.vendors %}{% for marker in site.data.vendors %}{% if marker.title %}
-		<leaflet-marker id="{{ marker.uuid }}" class="vendor-marker content-visibility-hidden" data-space="{{ marker.space }}" data-title="{{ marker.title | default: marker.space }}" data-category="{{ marker.category | join: ' ' }}" longitude="{{ marker.longitude }}" latitude="{{ marker.latitude }}" minzoom="{{ marker.minZoom | default: '19' }}" slot="markers" title="{{ marker.title | escape_once }}"{% if marker.category %} data-category="{{ marker.category | join: ' ' }}"{% endif %}>
+		<leaflet-marker id="{{ marker.uuid }}" class="vendor-marker content-visibility-hidden" data-space="{{ marker.space }}" data-title="{{ marker.title | default: marker.space }}" data-category="{{ marker.category | join: ' ' }}" longitude="{{ marker.longitude }}" latitude="{{ marker.latitude }}" minzoom="{{ marker.minZoom | default: '18' }}" slot="markers" title="{{ marker.title | escape_once }}"{% if marker.category %} data-category="{{ marker.category | join: ' ' }}"{% endif %}>
 			<img src="{{ marker.icon | default: '/img/adwaita-icons/actions/mark-location.svg' }}" slot="icon" width="32" height="32" loading="lazy" decoding="async" />
 			<div slot="popup">
 				<h4>{{ marker.title | default: marker.space }}</h4>
