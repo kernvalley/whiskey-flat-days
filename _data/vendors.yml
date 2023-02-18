@@ -1,29 +1,33 @@
 ---
 - uuid: 990b2278-d601-4cd1-841d-e083955be810
   name: Poppi's Pastrami & More
-  latitude: 35.75364130922227
-  longitude: -118.42495948076251
+  latitude: 35.7534657
+  longitude: -118.4244718
 - uuid: 89a4af7e-dd21-4b9e-a40b-274b08e145f4
   title: Rainbow Catering
-  latitude: 35.75364130922227
-  longitude: -118.42495948076251
+  latitude: 35.7535572
+  longitude: -118.4244438
 - uuid: 7923bf34-c695-4c0d-946f-0d77594d622a
   space: b65
   title: Homies Tacos
-  latitude: 35.75364130922227
-  longitude: -118.42495948076251
+  latitude: 35.7534934
+  longitude: -118.424461
 - uuid: a38971f9-91c6-45b2-8664-14e818d7a877
   title: '"Just Chillin" Ice Cream'
-  latitude: 35.75364130922227
-  longitude: -118.42495948076251
+  latitude: 35.7536236
+  longitude: -118.4243942
 - uuid: 7bafed52-2a49-47f5-97fa-0ea4ab2a9394
   title: Kern River Ceviche Company
-  latitude: 35.753754498137354
-  longitude: -118.42519015073778
+  latitude: 35.7534884
+  longitude: -118.4244626
 - uuid: 0e8d575c-970b-4763-887c-cd8b0a1cbf15
   title: Chocolate Dipped Strawberries
-  latitude: 35.75496
-  longitude: -118.424825
+  latitude: 35.753473
+  longitude: -118.424469
+- uuid: 5f4ba261-8848-44e1-8605-19e6626b7c1a
+  title: Lumpia Lady
+  latitude: 35.7535352
+  longitude: -118.4244389
 #   description: |-
 #       For $40, you can include a custom description here. Descriptions may
 #       be 400 characters in length and include one image, e.g. as a coupon
