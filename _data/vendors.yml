@@ -621,8 +621,8 @@
   longitude: -118.42163086
 - uuid: e5f63abe-c637-4bff-8d68-b31bc0f45ce4
   title: Isabella Lake Fishing Derby
-  latitude: 35.75521070
-  longitude: -118.42546105
+  latitude: 35.7555018
+  longitude: -118.4251152
 - uuid: 33de747e-ca29-47fa-a319-5041302021ce
   title: Rotary Club KRV
   latitude: 35.75514976
@@ -646,8 +646,8 @@
   longitude: -118.42533231
 - uuid: b0c51497-6202-4e36-9abd-f28c776e8d0d
   title: Simply Jeri
-  latitude: 35.75517588
-  longitude: -118.42556834
+  latitude: 35.7551296
+  longitude: -118.4255241
 - uuid: ffe1fe76-10a0-460e-b803-e66ad8c3a77a
   title: Kelso Creek Farms
   latitude: 35.75516717
@@ -724,3 +724,12 @@
   title: Kassandra Ivy Jewelry
   latitude: 35.75528036
   longitude: -118.42509627
+- uuid: 8c3cc163-28a9-4605-8501-530ef3763f12
+  name: KRV Elks Tri Tip BBQ
+  latitude: 35.7559941
+  longitude: -118.4237948
+  icon: https://cdn.kernvalley.us/img/markers.svg#food
+- uuid: d74f9814-623c-475c-bf3a-b9c1f1397d8f
+  name: KV Motorcycle Club
+  latitude: 35.755414
+  longitude: -118.4240404
