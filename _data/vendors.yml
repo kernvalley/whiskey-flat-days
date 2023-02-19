@@ -23,31 +23,38 @@
   name: Poppi's Pastrami & More
   latitude: 35.7534657
   longitude: -118.4244718
+  icon: https://cdn.kernvalley.us/img/markers.svg#food
 - uuid: 89a4af7e-dd21-4b9e-a40b-274b08e145f4
   title: Rainbow Catering
   latitude: 35.7535572
   longitude: -118.4244438
+  icon: https://cdn.kernvalley.us/img/markers.svg#food
 - uuid: 7923bf34-c695-4c0d-946f-0d77594d622a
   space: b65
   title: Homies Tacos
   latitude: 35.7534934
   longitude: -118.424461
+  icon: https://cdn.kernvalley.us/img/markers.svg#food
 - uuid: a38971f9-91c6-45b2-8664-14e818d7a877
   title: '"Just Chillin" Ice Cream'
   latitude: 35.7536236
   longitude: -118.4243942
+  icon: https://cdn.kernvalley.us/img/markers.svg#food
 - uuid: 7bafed52-2a49-47f5-97fa-0ea4ab2a9394
   title: Kern River Ceviche Company
   latitude: 35.7534884
   longitude: -118.4244626
+  icon: https://cdn.kernvalley.us/img/markers.svg#food
 - uuid: 0e8d575c-970b-4763-887c-cd8b0a1cbf15
   title: Chocolate Dipped Strawberries
   latitude: 35.753473
   longitude: -118.424469
+  icon: https://cdn.kernvalley.us/img/markers.svg#food
 - uuid: 5f4ba261-8848-44e1-8605-19e6626b7c1a
   title: Lumpia Lady
   latitude: 35.7535352
   longitude: -118.4244389
+  icon: https://cdn.kernvalley.us/img/markers.svg#food
 #   description: |-
 #       For $40, you can include a custom description here. Descriptions may
 #       be 400 characters in length and include one image, e.g. as a coupon
@@ -620,8 +627,9 @@
   title: Rotary Club KRV
   latitude: 35.75514976
   longitude: -118.42514992
+  icon: https://cdn.kernvalley.us/img/markers.svg#food
 - uuid: cced92c1-1edc-493d-9893-7166e94ef098
-  title: old Isabella Coffee Co
+  title: Old Isabella Coffee Co
   latitude: 35.75542837
   longitude: 118.42163086
 - uuid: 50d70b7c-20d9-4cb5-b276-d8c6646306eb
