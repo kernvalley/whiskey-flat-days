@@ -576,6 +576,7 @@
   description: Pastrami Sandwiches
   latitude: 35.755154
   longitude: -118.4249156
+  icon: https://cdn.kernvalley.us/img/markers.svg#food
 # - uuid: 64b1ce20-5022-4578-8aa2-882b94156caf
 #   title: Schroeder's Kettle Corn
 #   latitude: 35.7546047
@@ -589,6 +590,7 @@
   title: White Blanket Taco Trailer
   latitude: 35.75514354
   longitude: -118.42473733
+  icon: https://cdn.kernvalley.us/img/markers.svg#food
 - uuid: edf88e91-779f-47fb-a9e7-444ced9ca336
   space: c33
   title: California Redwood Signs
