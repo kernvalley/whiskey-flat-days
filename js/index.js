@@ -31,7 +31,7 @@ import { importGa, externalHandler, telHandler, mailtoHandler } from 'https://cd
 import { DAYS } from 'https://cdn.kernvalley.us/js/std-js/date-consts.js';
 import {
 	searchLocationMarker, createMarker, isOnGoing, filterEventNamesDatalist,
-	intersectCallback, getPages,
+	intersectCallback, getPages, findNextEvent,
 } from './functions.js';
 import { GA } from './consts.js';
 import { createYouTubeEmbed } from 'https://cdn.kernvalley.us/js/std-js/youtube.js';
@@ -303,6 +303,17 @@ Promise.all([
 				console.error(err);
 				url.searchParams.delete('event');
 				history.replaceState(history.state, document.title, url.href);
+			}
+		} else if (location.hash.length  < 2) {
+			try {
+				const eventEl = findNextEvent(document.getElementById('main'));
+				
+				if (eventEl instanceof Element) {
+					eventEl.scrollIntoView({ behavior: 'smooth', block: 'end' });
+					location.hash = `#${eventEl.id}`;
+				}
+			} catch(err) {
+				console.error(err);
 			}
 		}
 	}

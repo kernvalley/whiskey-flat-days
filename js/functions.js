@@ -9,7 +9,7 @@ const allowedOrigins = [];
 export function findNextEvent({ base = document.body, type = 'Event' } = {}) {
 	const now = new Date();
 	const timeEl = find(
-		`$[itemtype="https://schema.org/${type}"] [itemprop="startDate"]`,
+		`[itemtype="https://schema.org/${type}"] [itemprop="startDate"]`,
 		({ dateTime }) => new Date(dateTime) > now,
 		{ base },
 	);
