@@ -304,12 +304,13 @@ Promise.all([
 				url.searchParams.delete('event');
 				history.replaceState(history.state, document.title, url.href);
 			}
-		} else {
+		} else if (location.hash.length  < 2) {
 			try {
 				const eventEl = findNextEvent(document.getElementById('main'));
 				
 				if (eventEl instanceof Element) {
 					eventEl.scrollIntoView({ behavior: 'smooth', block: 'end' });
+					location.hash = `#${eventEl.id}`;
 				}
 			} catch(err) {
 				console.error(err);
