@@ -1,9 +1,24 @@
 import { createCustomElement } from 'https://cdn.kernvalley.us/js/std-js/custom-elements.js';
 import { getJSON, navigateTo } from 'https://cdn.kernvalley.us/js/std-js/http.js';
 import { isObject } from 'https://cdn.kernvalley.us/js/std-js/utility.js';
+import { find } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
 import { site, icons, mapSelector, startDate, endDate } from './consts.js';
 
 const allowedOrigins = [];
+
+export function findNextEvent({ base = document.body, type = 'Event' } = {}) {
+	const now = new Date();
+	const timeEl = find(
+		`$[itemtype="https://schema.org/${type}"] [itemprop="startDate"]`,
+		({ dateTime }) => new Date(dateTime) > now,
+		{ base },
+	);
+
+	if (timeEl instanceof Element) {
+		return timeEl.closest('[itemtype="https://schema.org/Event"]');
+	}
+}
+
 export const getPages = (async () => {
 	const pages = await getJSON('/pages.json');
 	return Object.fromEntries(
