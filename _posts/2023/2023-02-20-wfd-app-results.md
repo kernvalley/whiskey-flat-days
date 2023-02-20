@@ -34,7 +34,7 @@ categories:
 - 12.6k unique users (+125% from 2022)
 - 65.8k page views (+112% from 2022)
 - 0.08% Bounce Rate [-43.87 % from 2022]
-- > 50 peak realtime users
+- &gt; 50 peak realtime users
 - Promotional KV Shuttle Article: 1,817 views
 - 1,094 clicks for rodeo tickets
 - 130 shares from within the app
