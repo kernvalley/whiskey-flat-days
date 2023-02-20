@@ -67,7 +67,7 @@ categories:
 - Average load time of 1.52 seconds on first visit, ~ instant after
 
 ## Content & Collecting Info
-- > 33,000 steps taken (~10 miles)
+- &gt; 33,000 steps taken (~10 miles)
 - 107 vendors listed
 - 207 photos/videos taken
 - 7 Articles written
