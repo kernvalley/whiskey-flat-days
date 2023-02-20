@@ -20,35 +20,15 @@ categories:
 ## Traffic Breakdown
 
 ### By Page
-| Page   | Views | % of Traffic |
-| ------ | ----- | ------------ |
-| Home   | 34.8k | 52.8%        |
-| Events | 14k   | 21.3%        |
-| Map    | 7.5k  | 11.4%        |
-| News   | 5.3k  | 8.1%         |
-| Mayors | 2.3k  | 3.5%         |
-| Store  | 1.7k  | 2.6%         |
-| Total  | 65.8k | 100%         |
+<table><thead><tr><th>Page</th><th>Views</th><th>% of Traffic</th></tr></thead><tbody><tr><td>Home</td><td>34.8k</td><td>52.8%</td></tr><tr><td>Events</td><td>14k</td><td>21.3%</td></tr><tr><td>Map</td><td>7.5k</td><td>11.4%</td></tr><tr><td>News</td><td>5.3k</td><td>8.1%</td></tr><tr><td>Mayors</td><td>2.3k</td><td>3.5%</td></tr><tr><td>Store</td><td>1.7k</td><td>2.6%</td></tr><tr><td>Total</td><td>65.8k</td><td>100%</td></tr></tbody></table>
 
 ### By Operating System / Device
 
-| Device  | Views | % of Traffic |
-| ------- | ----- | ------------ |
-| iOS     | 40k   | 61%          |
-| Android | 16k   | 25%          |
-| Windows | 6.4k  | 9.8%         |
-| Mac OS  | 2.2k  | 3.3%         |
-| Other   | 461   | 0.7%         |
+<table><thead><tr><th>Device</th><th>Views</th><th>% of Traffic</th></tr></thead><tbody><tr><td>iOS</td><td>40k</td><td>61%</td></tr><tr><td>Android</td><td>16k</td><td>25%</td></tr><tr><td>Windows</td><td>6.4k</td><td>9.8%</td></tr><tr><td>Mac OS</td><td>2.2k</td><td>3.3%</td></tr><tr><td>Other</td><td>461</td><td>0.7%</td></tr></tbody></table>
 
 ### By Source
 
-| Source   | Views | % of Traffic |
-| -------- | ----- | ------------ |
-| Search   | 9.3k  | 74%          |
-| Direct   | 2.3k  | 18%          |
-| Social   | 648   | 5%           |
-| Referral | 232   | 2%           |
-| Other    |       | 1%           |
+<table><thead><tr><th>Source</th><th>Views</th><th>% of Traffic</th></tr></thead><tbody><tr><td>Search</td><td>9.3k</td><td>74%</td></tr><tr><td>Direct</td><td>2.3k</td><td>18%</td></tr><tr><td>Social</td><td>648</td><td>5%</td></tr><tr><td>Referral</td><td>232</td><td>2%</td></tr><tr><td>Other</td><td></td><td>1%</td></tr></tbody></table>
 
 ## Google Analytics [Jan 21 - Feb 19 2023]
 - 12.6k unique users (+125% from 2022)
@@ -62,14 +42,7 @@ categories:
 - Generated 75 email clicks and 14 calls
 
 ## Ads
-| Advertiser       | Clicks | Impressions | CTR   |
-| -----------------| ------ | ----------- | ----- |
-| Paradise Cove    | 76     | 10.8k       | 0.70% |
-| KV Shuttle       | 53     | 14.2k       | 0.37% |
-| KRV Guide        | 37     | 11.7k       | 0.31% |
-| Kernville Cowork | 24     | 12.3k       | 0.20% |
-| KRV Ads          | 12     | 9.9k        | 0.12% |
-| Total            | 202    | 58.8k       | 0.31% |
+<table><thead><tr><th>Advertiser</th><th>Clicks</th><th>Impressions</th><th>CTR</th></tr></thead><tbody><tr><td>Paradise Cove</td><td>76</td><td>10.8k</td><td>0.70%</td></tr><tr><td>KV Shuttle</td><td>53</td><td>14.2k</td><td>0.37%</td></tr><tr><td>KRV Guide</td><td>37</td><td>11.7k</td><td>0.31%</td></tr><tr><td>Kernville Cowork</td><td>24</td><td>12.3k</td><td>0.20%</td></tr><tr><td>KRV Ads</td><td>12</td><td>9.9k</td><td>0.12%</td></tr><tr><td>Total</td><td>202</td><td>58.8k</td><td>0.31%</td></tr></tbody></table>
 
 ## SEO
 <div class="center">
