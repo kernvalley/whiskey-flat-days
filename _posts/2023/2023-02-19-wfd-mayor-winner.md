@@ -14,7 +14,7 @@ tags:
   - Whiskey Flats
   - Mayor Contest
   - Announcement
- categories:
+categories:
    - videos
 ---
 <div class="center">
