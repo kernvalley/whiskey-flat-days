@@ -172,6 +172,23 @@
     "@type": MusicGroup
     name: Vince Galindo and Country Deluxe
   description: Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Vince Galindo and Country Deluxe</span></span>
+- uuid: 501c238f-77da-47cd-96bd-dedefd891fc4
+  title: Costume Contest
+  startDate: 2023-02-19 12:00
+  endDate: 2023-02-19 13:00
+  description: Categories for children, men, and women.
+  # image:
+  location:
+    name: Tobias Street in Kernville
+    address:
+      streetAddress: Tobias Street
+      addressLocality: Kernville
+      addressRegion: CA
+      addressCountry: US
+      postalCode: 93238
+    geo:
+      latitude: 35.755721
+      longitude: -118.425114
 - uuid: c1f8133b-c326-467a-9a28-6a974b8266ba
   title: Music - Main Stage
   music: true
