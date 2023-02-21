@@ -1,5 +1,4 @@
 import 'https://cdn.kernvalley.us/js/std-js/deprefixer.js';
-import 'https://cdn.kernvalley.us/js/std-js/shims.js';
 import 'https://cdn.kernvalley.us/js/std-js/theme-cookie.js';
 import 'https://cdn.kernvalley.us/components/share-button.js';
 import 'https://cdn.kernvalley.us/components/current-year.js';
