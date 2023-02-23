@@ -35,7 +35,7 @@ tags:
 - **Mens**: RC Drake
 
 <h2 class="center font-title section-heading">
-  <a href="/map/#c1f8133b-c326-467a-9a28-6a974b8266ba" class="color-inherit">Whiskerino Contest {% include common/icon.html icon="link" height="20" width="20" fill="currentColor" %}</a>
+  <a href="/map/#f52e2469-b6eb-4088-96d8-a58b81d225cf" class="color-inherit">Whiskerino Contest {% include common/icon.html icon="link" height="20" width="20" fill="currentColor" %}</a>
 </h2>
 <div class="center">
   <img src="/img/raster/events/2023/whiskerino.jpg" width="637" height="480" loading="lazy" referrerpolicy="no-referrer" alt="Whiskerino Contest" />
