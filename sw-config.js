@@ -36,6 +36,7 @@ const config = {
 		/* Scripts */
 		'/js/index.min.js',
 		'https://cdn.kernvalley.us/js/shims.min.js',
+		'https://cdn.kernvalley.us/js/security.min.js',
 		'https://cdn.kernvalley.us/components/leaflet/map.min.js',
 
 		/* Custom Element Templates */
