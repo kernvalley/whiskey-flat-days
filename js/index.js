@@ -21,7 +21,6 @@ import {
 	searchDateTimeRange, eventSearchHandler, businessCategorySearch,
 } from './handlers.js';
 import { shareInit } from 'https://cdn.kernvalley.us/js/std-js/data-share.js';
-// import { $ } from 'https://cdn.kernvalley.us/js/std-js/esQuery.js';
 import {
 	ready, loaded, css, on, toggleClass, intersect, attr,
 } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
@@ -32,10 +31,14 @@ import {
 	searchLocationMarker, createMarker, isOnGoing, filterEventNamesDatalist,
 	intersectCallback, getPages, findNextEvent,
 } from './functions.js';
-import { GA } from './consts.js';
+import { getGooglePolicy, getDefaultPolicyWithDisqus } from 'https://cdn.kernvalley.us/js/std-js/trust-policies.js';
+import { createPolicy } from 'https://cdn.kernvalley.us/js/std-js/trust.js';
 import { createYouTubeEmbed } from 'https://cdn.kernvalley.us/js/std-js/youtube.js';
+import { GA } from './consts.js';
 import './store.js';
 import './profile.js';
+
+getDefaultPolicyWithDisqus();
 
 if (! ('URLPattern' in globalThis)) {
 	globalThis.URLPattern = URLPatternShim;
@@ -76,10 +79,10 @@ if (navigator.canShare() && typeof customElements.get('share-button') === 'undef
 	});
 }
 
-if (typeof GA === 'string' && GA !== '') {
-	loaded().then(() => {
+loaded().then(() => {
+	if (typeof GA === 'string' && GA !== '') {
 		requestIdleCallback(async () => {
-			importGa(GA).then(async ({ ga }) => {
+			importGa(GA, {}, { policy: getGooglePolicy() }).then(async ({ ga }) => {
 				ga('create', GA, 'auto');
 				ga('set', 'transport', 'beacon');
 				ga('send', 'pageview');
@@ -100,8 +103,11 @@ if (typeof GA === 'string' && GA !== '') {
 				}
 			});
 		});
-	});
-}
+	} else {
+		createPolicy('ga#script-url');
+		createPolicy('goog#htm');
+	}
+});
 
 if ('serviceWorker' in navigator) {
 	navigator.serviceWorker.ready.then(async reg => {
@@ -137,6 +143,26 @@ Promise.all([
 
 	on('#install-btn', 'click', () => new HTMLInstallPromptElement().show());
 	attr('#install-btn', { hidden: false });
+
+	globalThis.scheduler.postTask(() => {
+		intersect('[data-video]', ({ target, isIntersecting }, observer) => {
+			if (isIntersecting) {
+				const { video, width = '560', height = '315', title = '' } = target.dataset;
+				const iframe = createYouTubeEmbed(video, {
+					fetchPriority: 'high',
+					height: parseInt(height),
+					width: parseInt(width),
+					loading: 'eager',
+					title,
+				});
+
+				target.replaceChildren(iframe);
+				observer.unobserve(target);
+			}
+		});
+	}, {
+		priority: 'background',
+	});
 
 	if (url.pathname.startsWith(map.url.pathname)) {
 		if (! ['', '#', '#main'].includes(location.hash)) {
@@ -350,23 +376,4 @@ Promise.all([
 		}
 	});
 
-	globalThis.scheduler.postTask(() => {
-		intersect('[data-video]', ({ target, isIntersecting }, observer) => {
-			if (isIntersecting) {
-				const { video, width = '560', height = '315', title = '' } = target.dataset;
-				const iframe = createYouTubeEmbed(video, {
-					fetchPriority: 'high',
-					height: parseInt(height),
-					width: parseInt(width),
-					loading: 'eager',
-					title,
-				});
-
-				target.replaceChildren(iframe);
-				observer.unobserve(target);
-			}
-		});
-	}, {
-		priority: 'background',
-	});
 });
