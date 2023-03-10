@@ -1,0 +1,14 @@
+trusted:
+  - default
+  - empty#html
+  - empty#script
+  - sanitizer-raw#html
+  - purify-raw#html
+  - purify#html
+  - weather-current#html
+  - share-to-buttons#html
+  - pwa-install
+  - youtube#embed
+  - disqus#script-url
+  - ga#script-url
+  - goog#html
