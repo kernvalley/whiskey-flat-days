@@ -44,11 +44,13 @@ if (! ('URLPattern' in globalThis)) {
 	globalThis.URLPattern = URLPatternShim;
 }
 
-css(document.documentElement, { '--viewport-height': `${window.innerHeight}px`});
-
-on(window, 'resize', debounce(() => {
+if (! CSS.supports('height', '1dvh')) {
 	css(document.documentElement, { '--viewport-height': `${window.innerHeight}px`});
-}), { passive: true });
+
+	on(window, 'resize', debounce(() => {
+		css(document.documentElement, { '--viewport-height': `${window.innerHeight}px`});
+	}), { passive: true });
+}
 
 const nullSubmit = event => {
 	event.preventDefault();

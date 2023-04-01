@@ -2,12 +2,23 @@
 @import url("https://cdn.kernvalley.us/css/core-css/theme/default/index.css");
 
 :root[data-theme], :root {
-	--header-height: 0;
 	--accent-color: #b70c0c;
 	--scrollbar-color: var(--accent-color);
 	--button-primary-background: var(--accent-color);
 	--button-primary-hover-background: #a20a0a;
 	--button-primary-active-background: #820606;
+	--header-height: 100vh;
+	--viewport-height: var(--header-height);
+}
+
+:root[data-theme][data-layout="right-sidebar"] {
+	--header-height: 0;
+}
+
+@supports (height: 1dvh) {
+	:root[data-theme]:not([data-layout="right-sidebar"]), :root {
+		--header-height: 100dvh;
+	}
 }
 
 :root.js {
