@@ -1,4 +1,4 @@
-import { each, attr } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
+import { each, attr } from 'std-js/dom.js';
 
 export function  searchDateTimeRange({ from = new Date('2020-02-14T11:00'), hours = 2 } = {}) {
 	if (! (from instanceof Date)) {

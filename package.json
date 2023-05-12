@@ -2,6 +2,7 @@
   "name": "whiskey-flat-days",
   "version": "3.0.0",
   "private": true,
+  "type": "module",
   "description": "Map, events, store, and news app for Whiskey Flat Days",
   "config": {
     "icons": "./_data/icons.csv",
@@ -75,7 +76,7 @@
   "dependencies": {
     "eslint-plugin-frontmatter": "0.0.8",
     "firebase-admin": "^11.8.0",
-    "netlify-js-app": "^3.0.2",
+    "netlify-js-app": "^3.0.3",
     "stripe": "^12.4.0",
     "yaml": "^2.2.2"
   }
