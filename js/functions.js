@@ -1,7 +1,7 @@
-import { createCustomElement } from 'custom-elements';
-import { getJSON, navigateTo } from 'http';
-import { isObject } from 'utility';
-import { find } from 'dom';
+import { createCustomElement } from 'https://cdn.kernvalley.us/js/std-js/custom-elements.js';
+import { getJSON, navigateTo } from 'https://cdn.kernvalley.us/js/std-js/http.js';
+import { isObject } from 'https://cdn.kernvalley.us/js/std-js/utility.js';
+import { find } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
 import { site, icons, mapSelector, startDate, endDate } from './consts.js';
 
 const allowedOrigins = [];

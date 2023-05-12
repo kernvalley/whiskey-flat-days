@@ -1,47 +1,13 @@
+---
 nonce: c23ddb4e-a8ec-44f0-ad77-d1ac60938c7e
 imports:
-  # JS Modules
-  elements: https://cdn.kernvalley.us/js/std-js/elements.js
-  svg: https://cdn.kernvalley.us/js/std-js/svg.js
-  dom: https://cdn.kernvalley.us/js/std-js/dom.js
-  http: https://cdn.kernvalley.us/js/std-js/http.js
-  promises: https://cdn.kernvalley.us/js/std-js/promises.js
-  hash: https://cdn.kernvalley.us/js/std-js/hash.js
-  math: https://cdn.kernvalley.us/js/std-js/math.js
-  theme-cookie: https://cdn.kernvalley.us/js/std-js/theme-cookie.js
-  custom-elements: https://cdn.kernvalley.us/js/std-js/custom-elements.js
-  utility: https://cdn.kernvalley.us/js/std-js/utility.js
-  data-handlers: https://cdn.kernvalley.us/js/std-js/data-handlers.js
-  events: https://cdn.kernvalley.us/js/std-js/events.js
-  img-utils: https://cdn.kernvalley.us/js/std-js/img-utils.js
-  error-handler: https://cdn.kernvalley.us/js/std-js/error-handler.js
-  data-share: https://cdn.kernvalley.us/js/std-js/data-share.js
-  google-analytics: https://cdn.kernvalley.us/js/std-js/google-analytics.js
-  data-consts: https://cdn.kernvalley.us/js/std-js/date-consts.js
-  trust-policies: https://cdn.kernvalley.us/js/std-js/trust-policies.js
-  trust: https://cdn.kernvalley.us/js/std-js/trust.js
-  youtube: https://cdn.kernvalley.us/js/std-js/youtube.js
-
-  # Custom Elements
-  share-button: https://cdn.kernvalley.us/components/share-button.js
-  current-year: https://cdn.kernvalley.us/components/current-year.js
-  note-supported: https://cdn.kernvalley.us/components/not-supported.js
-  krv-ad: https://cdn.kernvalley.us/components/krv/ad.js
-  weather-current: https://cdn.kernvalley.us/components/weather/current.js
-  github-user: https://cdn.kernvalley.us/components/github/user.js
-  install-prompt: https://cdn.kernvalley.us/components/install/prompt.js
-  list-button: https://cdn.kernvalley.us/components/app/list-button.js
-  app-stores: https://cdn.kernvalley.us/components/app/stores.js
-  share-to-button: https://cdn.kernvalley.us/components/share-to-button/share-to-button.js
-  disqus-comments: https://cdn.kernvalley.us/components/disqus/comments.js
-  youtube-player:  https://cdn.kernvalley.us/components/youtube/player.js
-  window-controls: https://cdn.kernvalley.us/components/window-controls.js
-
-  # Firebase
-  firebase-app: https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js
-  firebase-firestore: https://www.gstatic.com/firebasejs/9.16.0/firebase-firestore.js
-  firebase-auth: https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js
-  firebase-storage: https://www.gstatic.com/firebasejs/9.16.0/firebase-storage.js
-
-  # Third-Party
-  url-pattern: https://unpkg.com/urlpattern-polyfill@1.0.0-rc1/dist/index.modern.js
+  'std-js/': https://cdn.kernvalley.us/js/std-js/
+  '@shgysk8zer0/kazoo/': https://unpkg.com/@shgysk8zer0/kazoo@0.0.5/
+  '@shgysk8zer0/konami': https://unpkg.com/@shgysk8zer0/konami/konami.js
+  '@shgysk8zer0/polyfills': https://unpkg.com/@shgysk8zer0/polyfills@0.0.5/all.min.js
+  '@shgysk8zer0/polyfills/': https://unpkg.com/@shgysk8zer0/polyfills/
+  '@shgysk8zer0/components/': https://cdn.kernvalley.us/components/
+  '@kernvalley/components/': https://cdn.kernvalley.us/components/krv/
+  'leaflet': https://unpkg.com/leaflet@1.9.3/dist/leaflet-src.esm.js
+  'firebase': https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js
+  'url-pattern': https://unpkg.com/urlpattern-polyfill@1.0.0-rc1/dist/index.modern.js

@@ -1,8 +1,9 @@
-import { on, enable, animate, css, text } from 'dom';
-import { createImage, createOption } from 'elements';
-import { previewImgOnChange, resizeImageFile } from 'img-utils';
-import { isObject } from 'utility';
-import { showDialog } from 'error-handler';
+import { on, enable, animate, css, text } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
+import { createImage } from 'https://cdn.kernvalley.us/js/std-js/elements.js';
+import { previewImgOnChange, resizeImageFile } from 'https://cdn.kernvalley.us/js/std-js/img-utils.js';
+import { isObject } from 'https://cdn.kernvalley.us/js/std-js/utility.js';
+import { showDialog } from 'https://cdn.kernvalley.us/js/std-js/error-handler.js';
+import { createOption } from 'https://cdn.kernvalley.us/js/std-js/elements.js';
 import {
 	uploadFile, getFileURL, createProduct, getCurrentUser, getLoggedInSeller,
 } from './firebase.js';

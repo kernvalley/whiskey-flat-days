@@ -1,7 +1,7 @@
-import { on, each } from 'doms';
-import { md5 } from 'hash';
-import { showDialog } from 'error-handler';
-import { isObject } from 'utility';
+import { on, each } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
+import { md5 } from 'https://cdn.kernvalley.us/js/std-js/hash.js';
+import { showDialog } from 'https://cdn.kernvalley.us/js/std-js/error-handler.js';
+import { isObject } from 'https://cdn.kernvalley.us/js/std-js/utility.js';
 import { register, login, resetPassword, whenLoggedIn } from './firebase.js';
 import { redirect, getPages } from './functions.js';
 const url = new URL(location.href);

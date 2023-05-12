@@ -1,10 +1,10 @@
 import { firebase } from './consts.js';
-import { initializeApp } from 'firebase-app';
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js';
 
 import {
 	getFirestore, collection, getDocs, getDoc, doc, addDoc, setDoc,
 	enableIndexedDbPersistence,
-} from 'firebase-firestore';
+} from 'https://www.gstatic.com/firebasejs/9.16.0/firebase-firestore.js';
 
 /**
  * @see https://firebase.google.com/docs/auth/web/manage-users?authuser=0
@@ -12,9 +12,9 @@ import {
 import {
 	getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut,
 	onAuthStateChanged, updateProfile, sendPasswordResetEmail,
-} from 'firebsee-auth';
+} from 'https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js';
 
-import { getStorage, ref, getDownloadURL, uploadBytes } from 'firebasee-storage';
+import { getStorage, ref, getDownloadURL, uploadBytes } from 'https://www.gstatic.com/firebasejs/9.16.0/firebase-storage.js';
 
 export const loadFirebase = (async () => {
 	return new initializeApp(firebase.config);
