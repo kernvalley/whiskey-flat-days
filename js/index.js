@@ -1,39 +1,37 @@
-import 'https://cdn.kernvalley.us/js/std-js/deprefixer.js';
-import 'https://cdn.kernvalley.us/js/std-js/theme-cookie.js';
-import 'https://cdn.kernvalley.us/components/share-button.js';
-import 'https://cdn.kernvalley.us/components/current-year.js';
-import 'https://cdn.kernvalley.us/components/not-supported.js';
-// import 'https://cdn.kernvalley.us/components/ad/block.js';
-import 'https://cdn.kernvalley.us/components/krv/ad.js';
-import 'https://cdn.kernvalley.us/components/weather/current.js';
-import 'https://cdn.kernvalley.us/components/github/user.js';
-import 'https://cdn.kernvalley.us/components/install/prompt.js';
-import 'https://cdn.kernvalley.us/components/app/list-button.js';
-import 'https://cdn.kernvalley.us/components/app/stores.js';
-import 'https://cdn.kernvalley.us/components/share-to-button/share-to-button.js';
-import 'https://cdn.kernvalley.us/components/disqus/comments.js';
-// import 'https://cdn.kernvalley.us/components/youtube/player.js';
-import 'https://cdn.kernvalley.us/components/window-controls.js';
-import { init } from 'https://cdn.kernvalley.us/js/std-js/data-handlers.js';
-import { debounce } from 'https://cdn.kernvalley.us/js/std-js/events.js';
-import { URLPattern as URLPatternShim } from 'https://unpkg.com/urlpattern-polyfill@1.0.0-rc1/dist/index.modern.js';
+import 'std-js/theme-cookie.js';
+import '@shgysk8zer0/components/share-button.js';
+import '@shgysk8zer0/components/current-year.js';
+import '@shgysk8zer0/components/not-supported.js';
+import '@kernvalley/components/ad.js';
+import '@shgysk8zer0/components/weather/current.js';
+import '@shgysk8zer0/components/github/user.js';
+import '@shgysk8zer0/components/install/prompt.js';
+import '@shgysk8zer0/components/app/list-button.js';
+import '@shgysk8zer0/components/app/stores.js';
+import '@shgysk8zer0/components/share-to-button/share-to-button.js';
+import '@shgysk8zer0/components/disqus/comments.js';
+// import '@shgysk8zer0/components/youtube/player.js';
+import '@shgysk8zer0/components/window-controls.js';
+import { init } from 'std-js/data-handlers.js';
+import { debounce } from 'std-js/events.js';
+import { URLPattern as URLPatternShim } from 'url-pattern';
 import {
 	searchDateTimeRange, eventSearchHandler, businessCategorySearch,
 } from './handlers.js';
-import { shareInit } from 'https://cdn.kernvalley.us/js/std-js/data-share.js';
+import { shareInit } from 'std-js/data-share.js';
 import {
 	ready, loaded, css, on, toggleClass, intersect, attr,
-} from 'https://cdn.kernvalley.us/js/std-js/dom.js';
-import { getCustomElement } from 'https://cdn.kernvalley.us/js/std-js/custom-elements.js';
-import { importGa, externalHandler, telHandler, mailtoHandler } from 'https://cdn.kernvalley.us/js/std-js/google-analytics.js';
-import { DAYS } from 'https://cdn.kernvalley.us/js/std-js/date-consts.js';
+} from 'std-js/dom.js';
+import { getCustomElement } from 'std-js/custom-elements.js';
+import { importGa, externalHandler, telHandler, mailtoHandler } from 'std-js/google-analytics.js';
+import { DAYS } from 'std-js/date-consts.js';
 import {
 	searchLocationMarker, createMarker, isOnGoing, filterEventNamesDatalist,
 	intersectCallback, getPages, findNextEvent,
 } from './functions.js';
-import { getGooglePolicy, getDefaultPolicyWithDisqus } from 'https://cdn.kernvalley.us/js/std-js/trust-policies.js';
-import { createPolicy } from 'https://cdn.kernvalley.us/js/std-js/trust.js';
-import { createYouTubeEmbed } from 'https://cdn.kernvalley.us/js/std-js/youtube.js';
+import { getGooglePolicy, getDefaultPolicyWithDisqus } from 'std-js/trust-policies.js';
+import { createPolicy } from 'std-js/trust.js';
+import { createYouTubeEmbed } from 'std-js/youtube.js';
 import { GA } from './consts.js';
 import './store.js';
 import './profile.js';
