@@ -1,14 +1,14 @@
 import { HTMLStripePaymentFormElement } from 'https://cdn.kernvalley.us/components/stripe/payment-form.js';
 import {
 	on, create, value, text, attr, data, disable, each, intersect,
-} from 'https://cdn.kernvalley.us/js/std-js/dom.js';
+} from 'dom';
 import { getStripeKey } from './stripe.js';
-import { getJSON, postJSON } from 'https://cdn.kernvalley.us/js/std-js/http.js';
-import { createImage } from 'https://cdn.kernvalley.us/js/std-js/elements.js';
+import { getJSON, postJSON } from 'http';
+import { createImage } from 'elements';
 import { Cart } from './Cart.js';
-import { clamp } from 'https://cdn.kernvalley.us/js/std-js/math.js';
-import { getDeferred } from 'https://cdn.kernvalley.us/js/std-js/promises.js';
-import { useSVG } from 'https://cdn.kernvalley.us/js/std-js/svg.js';
+import { clamp } from 'math';
+import { getDeferred } from 'promises';
+import { useSVG } from 'svg';
 import { Availability } from './consts.js';
 import { intersectCallback, redirect, getPages } from './functions.js';
 // import { getProducts } from './firebase.js';

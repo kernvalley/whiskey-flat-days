@@ -1,8 +1,8 @@
-import { on, ready, loaded } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
-import { resizeImageFile } from 'https://cdn.kernvalley.us/js/std-js/img-utils.js';
-import { isObject } from 'https://cdn.kernvalley.us/js/std-js/utility.js';
+import { on, ready, loaded } from 'dom';
+import { resizeImageFile } from 'img-utils';
+import { isObject } from 'utility';
 import { createSeller, uploadFile, getFileURL, getCurrentUser, whenLoggedIn, getLoggedInSeller } from './firebase.js';
-import { createImage } from 'https://cdn.kernvalley.us/js/std-js/elements.js';
+import { createImage } from 'elements';
 import { firebase } from './consts.js';
 import { redirect, getPages } from './functions.js';
 

@@ -1,4 +1,4 @@
-import { getJSON } from 'https://cdn.kernvalley.us/js/std-js/http.js';
+import { getJSON } from 'http';
 
 const ENDPOINT = '/api/stripe';
 
