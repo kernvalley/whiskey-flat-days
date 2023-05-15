@@ -1,4 +1,4 @@
-import 'std-js/theme-cookie.js';
+import '@shgysk8zer0/kazoo/theme-cookie.js';
 import '@shgysk8zer0/components/share-button.js';
 import '@shgysk8zer0/components/current-year.js';
 import '@shgysk8zer0/components/not-supported.js';
@@ -8,30 +8,30 @@ import '@shgysk8zer0/components/github/user.js';
 import '@shgysk8zer0/components/install/prompt.js';
 import '@shgysk8zer0/components/app/list-button.js';
 import '@shgysk8zer0/components/app/stores.js';
-import '@shgysk8zer0/components/share-to-button/share-to-button.js';
+import '@shgysk8zer0/components/button/share-to.js';
 import '@shgysk8zer0/components/disqus/comments.js';
 // import '@shgysk8zer0/components/youtube/player.js';
 import '@shgysk8zer0/components/window-controls.js';
-import { init } from 'std-js/data-handlers.js';
-import { debounce } from 'std-js/events.js';
+import { init } from '@shgysk8zer0/kazoo/data-handlers.js';
+import { debounce } from '@shgysk8zer0/kazoo/events.js';
 import { URLPattern as URLPatternShim } from 'url-pattern';
 import {
 	searchDateTimeRange, eventSearchHandler, businessCategorySearch,
 } from './handlers.js';
-import { shareInit } from 'std-js/data-share.js';
+import { shareInit } from '@shgysk8zer0/kazoo/data-share.js';
 import {
 	ready, loaded, css, on, toggleClass, intersect, attr,
-} from 'std-js/dom.js';
-import { getCustomElement } from 'std-js/custom-elements.js';
-import { importGa, externalHandler, telHandler, mailtoHandler } from 'std-js/google-analytics.js';
-import { DAYS } from 'std-js/date-consts.js';
+} from '@shgysk8zer0/kazoo/dom.js';
+import { getCustomElement } from '@shgysk8zer0/kazoo/custom-elements.js';
+import { importGa, externalHandler, telHandler, mailtoHandler } from '@shgysk8zer0/kazoo/google-analytics.js';
+import { DAYS } from '@shgysk8zer0/kazoo/date-consts.js';
 import {
 	searchLocationMarker, createMarker, isOnGoing, filterEventNamesDatalist,
 	intersectCallback, getPages, findNextEvent,
 } from './functions.js';
-import { getGooglePolicy, getDefaultPolicyWithDisqus } from 'std-js/trust-policies.js';
-import { createPolicy } from 'std-js/trust.js';
-import { createYouTubeEmbed } from 'std-js/youtube.js';
+import { getGooglePolicy, getDefaultPolicyWithDisqus } from '@shgysk8zer0/kazoo/trust-policies.js';
+import { createPolicy } from '@shgysk8zer0/kazoo/trust.js';
+import { createYouTubeEmbed } from '@shgysk8zer0/kazoo/youtube.js';
 import { GA } from './consts.js';
 import './store.js';
 import './profile.js';

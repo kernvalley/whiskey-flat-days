@@ -1,7 +1,7 @@
-import { on, each } from 'std-js/dom.js';
-import { md5 } from 'std-js/hash.js';
-import { showDialog } from 'std-js/error-handler.js';
-import { isObject } from 'std-js/utility.js';
+import { on, each } from '@shgysk8zer0/kazoo/dom.js';
+import { md5 } from '@shgysk8zer0/kazoo/hash.js';
+import { showDialog } from '@shgysk8zer0/kazoo/error-handler.js';
+import { isObject } from '@shgysk8zer0/kazoo/utility.js';
 import { register, login, resetPassword, whenLoggedIn } from './firebase.js';
 import { redirect, getPages } from './functions.js';
 const url = new URL(location.href);

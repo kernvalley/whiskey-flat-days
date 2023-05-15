@@ -1,4 +1,4 @@
-import { getJSON } from 'std-js/http.js';
+import { getJSON } from '@shgysk8zer0/kazoo/http.js';
 
 const ENDPOINT = '/api/stripe';
 
