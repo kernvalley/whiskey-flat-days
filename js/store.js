@@ -1,14 +1,14 @@
-import { HTMLStripePaymentFormElement } from 'https://cdn.kernvalley.us/components/stripe/payment-form.js';
+import { HTMLStripePaymentFormElement } from '@shgysk8zer0/components/stripe/payment-form.js';
 import {
-	on, create, value, text, attr, data, disable, each, intersect,
-} from 'https://cdn.kernvalley.us/js/std-js/dom.js';
+	on, value, text, attr, data, disable, each, intersect,
+} from '@shgysk8zer0/kazoo/dom.js';
 import { getStripeKey } from './stripe.js';
-import { getJSON, postJSON } from 'https://cdn.kernvalley.us/js/std-js/http.js';
-import { createImage } from 'https://cdn.kernvalley.us/js/std-js/elements.js';
+import { getJSON, postJSON } from '@shgysk8zer0/kazoo/http.js';
+import { createImage, createElement } from '@shgysk8zer0/kazoo/elements.js';
 import { Cart } from './Cart.js';
-import { clamp } from 'https://cdn.kernvalley.us/js/std-js/math.js';
-import { getDeferred } from 'https://cdn.kernvalley.us/js/std-js/promises.js';
-import { useSVG } from 'https://cdn.kernvalley.us/js/std-js/svg.js';
+import { clamp } from '@shgysk8zer0/kazoo/math.js';
+import { getDeferred } from '@shgysk8zer0/kazoo/promises.js';
+import { useSVG } from '@shgysk8zer0/kazoo/svg.js';
 import { Availability } from './consts.js';
 import { intersectCallback, redirect, getPages } from './functions.js';
 // import { getProducts } from './firebase.js';
@@ -71,7 +71,7 @@ async function loadStoreItems({ signal } = {}) {
 			return base;
 		}));
 	} else {
-		document.getElementById('product-list').replaceChildren(create('div', {
+		document.getElementById('product-list').replaceChildren(createElement('div', {
 			classList: ['status-box', 'info'],
 			text: 'No Products found. Try again later.',
 		}));
@@ -250,12 +250,12 @@ async function showProductDetails(id, { signal } = {}) {
 	}
 
 	tmp.querySelector('select[name="offer"]').append(
-		...product.offers.map(({ '@identifier': value, name = 'Offering', price, availability = 'InStock' }) => create('option', {
+		...product.offers.map(({ '@identifier': value, name = 'Offering', price, availability = 'InStock' }) => createElement('option', {
 			value, text: `${name} [$${price}]`, disabled: availability !== 'InStock',
 		}))
 	);
 
-	const dialog = create('dialog', {
+	const dialog = createElement('dialog', {
 		events: { close: ({ target }) => {
 			target.remove();
 			history.replaceState(history.state, document.title, previous);
@@ -295,17 +295,17 @@ async function reviewCart(cart, { signal } = {}) {
 
 	const { resolve, promise } = getDeferred({ signal });
 
-	const dialog = create('dialog', {
+	const dialog = createElement('dialog', {
 		events: { close: ({ target }) => {
 			target.remove();
 			resolve();
 		}},
 		classList: ['cart-dialog'],
 		children: [
-			create('div', {
+			createElement('div', {
 				classList: ['float', 'top', 'clearfix'],
 				children: [
-					create('button', {
+					createElement('button', {
 						type: 'button',
 						classList: ['btn', 'btn-reject', 'float-right'],
 						events: { click: ({ target }) => target.closest('dialog').close() },
@@ -314,7 +314,7 @@ async function reviewCart(cart, { signal } = {}) {
 					})
 				]
 			}),
-			create('section', {
+			createElement('section', {
 				id: 'cart-container',
 				classList: ['grid', 'cart-review'],
 				children: items.map(({ id, quantity, offer }) => {
@@ -325,27 +325,27 @@ async function reviewCart(cart, { signal } = {}) {
 							? product.offers
 								.find(({ '@identifier': id }) => id === offer).price
 							: product.offers[0].price;
-						return create('div', {
+						return createElement('div', {
 							classList: ['card', 'shadow', 'cart-item-listing'],
 							dataset: { id, offer, quantity, price },
 							children: [
-								create('h3', { text: product.name, classList: ['cart-item-name'] }),
+								createElement('h3', { text: product.name, classList: ['cart-item-name'] }),
 								createImage(product.image, { loading: 'lazy', classList: ['cart-item-image'] }),
-								create('p', { text: product.description, classList: ['cart-item-description'] }),
-								create('div', {
+								createElement('p', { text: product.description, classList: ['cart-item-description'] }),
+								createElement('div', {
 									classList: ['cart-item-details', 'flex','row', 'wrap'],
 									children: [
-										create('div', {
+										createElement('div', {
 											classList: ['cart-item-price'],
 											children: [
-												create('b', { text: 'Price: ' }),
-												create('span', { text: '$' + price.toFixed(2) })
+												createElement('b', { text: 'Price: ' }),
+												createElement('span', { text: '$' + price.toFixed(2) })
 											]
 										}),
-										create('label', {
+										createElement('label', {
 											children: [
-												create('b', { text: 'Quantity: ' }),
-												create('input', {
+												createElement('b', { text: 'Quantity: ' }),
+												createElement('input', {
 													dataset: { id, offer },
 													value: quantity,
 													type: 'number',
@@ -366,18 +366,18 @@ async function reviewCart(cart, { signal } = {}) {
 												})
 											]
 										}),
-										create('div', {
+										createElement('div', {
 											children: [
-												create('b', { text: 'Total: ' }),
-												create('span', { text: '$' + (price * quantity).toFixed(2) })
+												createElement('b', { text: 'Total: ' }),
+												createElement('span', { text: '$' + (price * quantity).toFixed(2) })
 											]
 										}),
 									]
 								}),
-								create('div', {
+								createElement('div', {
 									classList: ['flex', 'row', 'cart-btns', 'space-evenly'],
 									children: [
-										create('button', {
+										createElement('button', {
 											classList: ['btn', 'btn-reject'],
 											dataset: { id },
 											text: 'Remove',
@@ -397,16 +397,16 @@ async function reviewCart(cart, { signal } = {}) {
 					}
 				}),
 			}),
-			create('div', {
+			createElement('div', {
 				classList: ['cart-btns', 'flex', 'row', 'wrap', 'space-evenly'],
 				children: [
-					create('button', {
+					createElement('button', {
 						type: 'button',
 						classList: ['btn', 'btn-primary'],
 						events: { click: ({ target }) => target.closest('dialog').close() },
 						text: 'Back to Shopping',
 					}),
-					create('button', {
+					createElement('button', {
 						type: 'button',
 						classList: items.length === 0
 							? ['btn', 'btn-primary', 'checkout-btn', 'disabled']
@@ -453,14 +453,14 @@ if (location.pathname.startsWith('/store/checkout')) {
 			case 'succeeded': {
 				new Cart().empty();
 
-				const dialog = create('dialog', {
+				const dialog = createElement('dialog', {
 					children:[
-						create('h2', { text: 'Payment Successful' }),
-						create('p', { text: 'Continue to home page.' }),
-						create('div', {
+						createElement('h2', { text: 'Payment Successful' }),
+						createElement('p', { text: 'Continue to home page.' }),
+						createElement('div', {
 							classList: ['center'],
 							children: [
-								create('a', {
+								createElement('a', {
 									href: '/',
 									role: 'button',
 									classList: ['btn', 'btn-primary'],
@@ -490,7 +490,7 @@ if (location.pathname.startsWith('/store/checkout')) {
 			});
 
 			form.append(
-				create('header', {
+				createElement('header', {
 					slot: 'header',
 					classList: ['center'],
 					children: [
@@ -499,17 +499,17 @@ if (location.pathname.startsWith('/store/checkout')) {
 							width: 96,
 							styles: { border: '1px solid currentColor', 'border-radius': '50%', padding: '0.3em' },
 						}),
-						create('h2', {
+						createElement('h2', {
 							text: 'WhiskeyFlatDays.com Store Checkout',
 						}),
 						document.createElement('br'),
 					]
 				}),
-				create('footer', {
+				createElement('footer', {
 					slot: 'footer',
 					classList: ['card', 'flex', 'row', 'space-evenly'],
 					children: [
-						create('a', {
+						createElement('a', {
 							role: 'button',
 							classList: ['btn', 'btn-primary'],
 							href: pages.store.url.href,
@@ -567,7 +567,7 @@ if (location.pathname.startsWith('/store/checkout')) {
 			showProductDetails(location.hash.substr(1));
 		}
 
-		document.body.append(create('button', {
+		document.body.append(createElement('button', {
 			type: 'button',
 			id: 'store-search-btn',
 			title: 'Search Store',

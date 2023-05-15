@@ -1,7 +1,7 @@
-import { createCustomElement } from 'std-js/custom-elements.js';
-import { getJSON, navigateTo } from 'std-js/http.js';
-import { isObject } from 'std-js/utility.js';
-import { find } from 'std-js/dom.js';
+import { createCustomElement } from '@shgysk8zer0/kazoo/custom-elements.js';
+import { getJSON, navigateTo } from '@shgysk8zer0/kazoo/http.js';
+import { isObject } from '@shgysk8zer0/kazoo/utility.js';
+import { find } from '@shgysk8zer0/kazoo/dom.js';
 import { site, icons, mapSelector, startDate, endDate } from './consts.js';
 
 const allowedOrigins = [];
