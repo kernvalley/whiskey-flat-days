@@ -1,17 +1,4 @@
 import '@shgysk8zer0/kazoo/theme-cookie.js';
-import '@shgysk8zer0/components/share-button.js';
-import '@shgysk8zer0/components/current-year.js';
-import '@shgysk8zer0/components/not-supported.js';
-import '@kernvalley/components/ad.js';
-import '@shgysk8zer0/components/weather/current.js';
-import '@shgysk8zer0/components/github/user.js';
-import '@shgysk8zer0/components/install/prompt.js';
-import '@shgysk8zer0/components/app/list-button.js';
-import '@shgysk8zer0/components/app/stores.js';
-import '@shgysk8zer0/components/button/share-to.js';
-import '@shgysk8zer0/components/disqus/comments.js';
-// import '@shgysk8zer0/components/youtube/player.js';
-import '@shgysk8zer0/components/window-controls.js';
 import { init } from '@shgysk8zer0/kazoo/data-handlers.js';
 import { debounce } from '@shgysk8zer0/kazoo/events.js';
 import { URLPattern as URLPatternShim } from 'url-pattern';
@@ -33,6 +20,7 @@ import { getGooglePolicy, getDefaultPolicyWithDisqus } from '@shgysk8zer0/kazoo/
 import { createPolicy } from '@shgysk8zer0/kazoo/trust.js';
 import { createYouTubeEmbed } from '@shgysk8zer0/kazoo/youtube.js';
 import { GA } from './consts.js';
+import './components.js';
 import './store.js';
 import './profile.js';
 
@@ -104,8 +92,8 @@ loaded().then(() => {
 			});
 		});
 	} else {
-		createPolicy('ga#script-url');
-		createPolicy('goog#htm');
+		createPolicy('ga#script-url', {});
+		createPolicy('goog#htm', {});
 	}
 });
 

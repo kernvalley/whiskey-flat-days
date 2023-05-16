@@ -37,28 +37,10 @@ const config = {
 		'/js/index.min.js',
 		'https://unpkg.com/@shgysk8zer0/polyfills@0.0.6/all.min.js',
 		'https://unpkg.com/@shgysk8zer0/kazoo@0.0.12/harden.js',
-		'https://unpkg.com/@shgysk8zer0/components@0.0.5/leaflet/map.min.js',
-
-		/* Custom Element Templates */
-		'https://unpkg.com/@shgysk8zer0/components@0.0.5/toast-message.html',
-		'https://unpkg.com/@shgysk8zer0/components@0.0.5/pwa/prompt.html',
-		'https://unpkg.com/@shgysk8zer0/components@0.0.5/leaflet/map.html',
-		'https://unpkg.com/@shgysk8zer0/components@0.0.5/weather/current.html',
-		'https://unpkg.com/@shgysk8zer0/components@0.0.5/install/prompt.html',
-		'https://unpkg.com/@shgysk8zer0/components@0.0.5/share-to-button/share-to-button.html',
 
 		/* CSS */
 		'/css/index.min.css',
 		'/css/store.css',
-		'https://unpkg.com/leaflet@1.8.0/dist/leaflet.css',
-		'https://unpkg.com/@shgysk8zer0/components@0.0.5/toast-message.css',
-		'https://unpkg.com/@shgysk8zer0/components@0.0.5/pwa/prompt.css',
-		'https://unpkg.com/@shgysk8zer0/components@0.0.5/leaflet/map.css',
-		'https://unpkg.com/@shgysk8zer0/components@0.0.5/weather/current.css',
-		'https://unpkg.com/@shgysk8zer0/components@0.0.5/install/prompt.css',
-		'https://unpkg.com/@shgysk8zer0/components@0.0.5/share-to-button/share-to-button.css',
-		'https://unpkg.com/@shgysk8zer0/components@0.0.5/window-controls.css',
-		'https://unpkg.com/@shgysk8zer0/components@0.0.5/stripe/payment-form.css',
 
 		/* Images & Icons */
 		'/img/icons.svg',
