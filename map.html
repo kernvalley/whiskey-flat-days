@@ -17,7 +17,7 @@ tags:
   - map
   - festival
 scripts:
-  - src: https://cdn.kernvalley.us/components/leaflet/map.min.js
+  - src: https://unpkg.com/@shgysk8zer0/components@0.0.7/leaflet/map.min.js
     defer: true
     crossOrigin: anonymous
     referrerPolicy: no-referrer
@@ -26,26 +26,11 @@ preconnect:
     referrerPolicy: no-referrer
     crossOrigin: anonymous
 preload:
-  - href: https://unpkg.com/leaflet@1.9.3/dist/leaflet.css
-    as: style
-    referrerPolicy: no-referrer
-    crossOrigin: anonymous
-    integrity: sha512-mD70nAW2ThLsWH0zif8JPbfraZ8hbCtjQ+5RU1m4+ztZq6/MymyZeB55pWsi4YAX+73yvcaJyk61mzfYMvtm9w==
-  - href: https://cdn.kernvalley.us/components/leaflet/map.css
-    as: style
-    referrerPolicy: no-referrer
-    crossOrigin: anonymous
-  - href: https://cdn.kernvalley.us/components/leaflet/map.html
-    as: fetch
-    type: text/html
-    referrerPolicy: no-referrer
-    crossOrigin: anonymous
   - href: https://cdn.kernvalley.us/img/markers.svg
     as: image
     type: image/svg+xml
     crossOrigin: anonymous
     referrerPolicy: no-referrer
-    importance: high
 vendors: true
 ---
 <h2 class="center font-title section-heading">Whiskey Flat Days Map</h2>
