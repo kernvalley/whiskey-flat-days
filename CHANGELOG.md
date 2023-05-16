@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Make more use of `site.data.importmap.imports` in SW cached and creating `<script>`s
+
+### Removed
+- Delete `<link rel="preload">` config (using HTTP headers)
+
 ## [v3.0.0] - 2023-05-15
 
 ### Added

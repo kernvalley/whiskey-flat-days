@@ -9,10 +9,10 @@
   noModule: true
   defer: true
   integrity: sha384-xyhN4T4+9VPh8uXl6uWjGzsqwNXN9C2tla8b6zSrSqYlMFUoeCdoxiEJU0js+GNE
-- src: https://unpkg.com/@shgysk8zer0/polyfills@0.0.6/all.min.js
+- src: https://unpkg.com/@shgysk8zer0/polyfills@0.0.7/all.min.js
   crossOrigin: anonymous
   referrerPolicy: no-referrer
-  integrity: sha384-+w5kPRxX2eUBCWBihebtRVYd07okRu0tafLr8FzlveLhW7B62egCFccYxuFIF1KO
+  integrity: sha384-6D7++ok/uTOBioRnypzDxJYKgBEgNUmmnNO1ZKJAUyA21GK1vuHmOsoGswvTN157
   defer: true
 - src: https://unpkg.com/@shgysk8zer0/kazoo@0.0.12/harden.js
   crossOrigin: anonymous
