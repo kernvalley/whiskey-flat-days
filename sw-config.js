@@ -35,12 +35,20 @@ const config = {
 	stale: [
 		/* Scripts */
 		'/js/index.min.js',
-		'https://unpkg.com/@shgysk8zer0/polyfills@0.0.6/all.min.js',
-		'https://unpkg.com/@shgysk8zer0/kazoo@0.0.12/harden.js',
+		'{{ site.data.importmap.imports["@shgysk8zer0/polyfills"] }}',
+		'{{ site.data.importmap.imports["@shgysk8zer0/kazoo/"] }}harden.js',
+		'{{ site.data.importmap.imports["@shgysk8zer0/components/"] }}leaflet/map.min.js',
+
+		/* Custom Element Templates */
+		'{{ site.data.importmap.imports["@shgysk8zer0/components/"] }}/weather/current.html',
+		'{{ site.data.importmap.imports["@shgysk8zer0/components/"] }}/github/user.html',
 
 		/* CSS */
 		'/css/index.min.css',
 		'/css/store.css',
+		'{{ site.data.importmap.imports["@shgysk8zer0/components/"] }}weather/current.css',
+		'{{ site.data.importmap.imports["@shgysk8zer0/components/"] }}github/user.css',
+		'{{ site.data.importmap.imports["@shgysk8zer0/components/"] }}leaflet/map.css',
 
 		/* Images & Icons */
 		'/img/icons.svg',
