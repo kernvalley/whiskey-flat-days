@@ -5,7 +5,7 @@ import { importmap } from '@shgysk8zer0/importmap';
 
 export default getConfig('./js/index.js', {
 	plugins: [
-		rollupImport(importmap),
+		rollupImport('./_data/importmap.yml'),
 		rollupImportMeta({ baseURL: 'https://whiskeyflatdays.com/' }),
 	],
 	format: 'iife',
