@@ -7,7 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v3.0.1] - 2023-07-04
+
 ### Changed
+- Update several packages and config
 - Make more use of `site.data.importmap.imports` in SW cached and creating `<script>`s
 
 ### Removed

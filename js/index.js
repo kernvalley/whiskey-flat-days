@@ -1,7 +1,7 @@
 import '@shgysk8zer0/kazoo/theme-cookie.js';
 import { init } from '@shgysk8zer0/kazoo/data-handlers.js';
 import { debounce } from '@shgysk8zer0/kazoo/events.js';
-import { URLPattern as URLPatternShim } from 'url-pattern';
+import { URLPattern as URLPatternShim } from 'urlpattern-polyfill';
 import {
 	searchDateTimeRange, eventSearchHandler, businessCategorySearch,
 } from './handlers.js';
@@ -363,5 +363,4 @@ Promise.all([
 				throw new Error(`Unknown click action: ${action}`);
 		}
 	});
-
 });
