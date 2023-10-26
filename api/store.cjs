@@ -1,13 +1,13 @@
 /* eslint-env node */
 const PRODUCTS_FILE = './_data/store.yml';
-const { allowedAvailibility } = require('./stripe-consts.js');
+const { allowedAvailibility } = require('./stripe-consts.cjs');
 
 function isAvailable({ offers }) {
 	return offers.some(({ availability }) => allowedAvailibility.includes(availability));
 }
 
 async function getProducts(query = null, { signal } = {}) {
-	const { readYAML } = require('./files.js');
+	const { readYAML } = require('./files.cjs');
 	const { products } = await readYAML(PRODUCTS_FILE, { signal });
 
 	if (! Array.isArray(products)) {
@@ -26,7 +26,7 @@ async function getProducts(query = null, { signal } = {}) {
 }
 
 async function getSellers(query = null, { signal } = {}) {
-	const { readYAML } = require('./files.js');
+	const { readYAML } = require('./files.cjs');
 	const sellers = await readYAML(PRODUCTS_FILE, { signal }).then(result => {
 		delete result.products;
 		return Object.values(result);

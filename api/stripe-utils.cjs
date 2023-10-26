@@ -1,7 +1,7 @@
 /* eslint-env node */
 const {
 	stripeRate, stripeFlatCharge, taxRate, productsFile, allowedAvailibility,
-} = require('./stripe-consts.js');
+} = require('./stripe-consts.cjs');
 
 const collection = 'orders';
 
@@ -37,7 +37,7 @@ async function calculateShipping(cart, { signal } = {}) {
 	if (!Array.isArray(cart) || cart.length === 0) {
 		return 0;
 	} else {
-		const { getProducts } = require('./store.js');
+		const { getProducts } = require('./store.cjs');
 		const products = await getProducts(
 			cart.map(({ id }) => id),
 			{ signal }
@@ -102,7 +102,7 @@ async function createPaymentIntent({
 }
 
 async function getProducts(query = null, { signal } = {}) {
-	const { readYAML } = require('./files.js');
+	const { readYAML } = require('./files.cjs');
 	const { products } = await readYAML(productsFile, { signal });
 
 	if (! Array.isArray(products)) {
@@ -121,7 +121,7 @@ async function getProducts(query = null, { signal } = {}) {
 }
 
 async function getSellers(query = null, { signal } = {}) {
-	const { readYAML } = require('./files.js');
+	const { readYAML } = require('./files.cjs');
 	const sellers = await readYAML(productsFile, { signal }).then(result => {
 		delete result.products;
 		return Object.values(result);
@@ -170,7 +170,7 @@ async function createOrder({ client_secret: clientSecret }, {
 		throw new Error('Only USD is a supported as a currency');
 	} else {
 		// Only save orders in production
-		const { getCollection, getTimestamp } = require('./firebase.js');
+		const { getCollection, getTimestamp } = require('./firebase.cjs');
 		const db = getCollection(collection);
 
 		await db.doc(clientSecret).set({
@@ -200,7 +200,7 @@ async function getOrder(id) {
 	} else if (typeof process.env.STRIPE_SECRET !== 'string') {
 		throw new TypeError('Missing or invalid Stripe secret');
 	} else {
-		const { getCollection } = require('./firebase.js');
+		const { getCollection } = require('./firebase.cjs');
 		const db = await getCollection(collection);
 		const doc = await db.doc(id).get();
 
