@@ -1,6 +1,6 @@
 /* eslint-env node */
-const { HTTPError } = require('./http-error.js');
-const { status } = require('./http-status.js');
+const { HTTPError } = require('./http-error.cjs');
+const { status } = require('./http-status.cjs');
 exports.handler = async function() {
 	try {
 		throw new HTTPError('Not Implemented', { status: status.NOT_IMPLEMENTED });

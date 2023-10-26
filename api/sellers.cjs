@@ -1,12 +1,12 @@
 /* eslint-env node */
 const headers = { 'Content-Type': 'application/json' };
-const { HTTPError } = require('./http-error.js');
+const { HTTPError } = require('./http-error.cjs');
 
 exports.handler = async function(event) {
 	try {
 		switch(event.httpMethod) {
 			case 'GET': {
-				const { getSellers } = require('./store.js');
+				const { getSellers } = require('./store.cjs');
 
 				if ('id' in event.queryStringParameters) {
 					const query = event.queryStringParameters.id.split('|');
