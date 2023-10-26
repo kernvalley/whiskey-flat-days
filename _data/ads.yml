@@ -2,20 +2,29 @@ source: wfd-app
 medium: referral
 campaign: wfd-ad
 sidebar:
-  - uuid: 547d0f51-4065-4407-b985-e9e8de6e2f15
-    label: Kern Valley Shuttle
-    layout: stack
-    url: tel:+1-760-223-2938
-    image: https://i.imgur.com/yPxoVxqm.jpg
-    description: |-
-      $5 per person anywhere in Kernville.
-      Call (760) 223-2938
-    callToAction: Need a Ride? Call Now!
-    imageFit: contain
-    imagePosition: center
-    background: "#40516e"
-    color: "#fefefe"
-    linkColor: "#fefefe"
+  - uuid: 95f6bdf1-ea32-4988-9665-1e1638ba12b5
+    label: Whispering Pines Lodge
+    description: Don't miss your chance to stay just a short walk from Whiskey Flat Days. Limited rooms available – Book before it's too late!
+    callToAction: Reserve Now!
+    image: https://i.imgur.com/Iq0wmg1m.jpg
+    # image: 'https://lirp.cdn-website.com/3a93b179/dms3rep/multi/opt/4dae0266-5743-420f-8f08-34e4ea1752be+%281%29-2304w.jpg'
+    imageFit: cover
+    layout: card
+    url: https://pineskernville.com
+  # - uuid: 547d0f51-4065-4407-b985-e9e8de6e2f15
+  #   label: Kern Valley Shuttle
+  #   layout: stack
+  #   url: tel:+1-760-223-2938
+  #   image: https://i.imgur.com/yPxoVxqm.jpg
+  #   description: |-
+  #     $5 per person anywhere in Kernville.
+  #     Call (760) 223-2938
+  #   callToAction: Need a Ride? Call Now!
+  #   imageFit: contain
+  #   imagePosition: center
+  #   background: "#40516e"
+  #   color: "#fefefe"
+  #   linkColor: "#fefefe"
   - uuid: 87873b5a-dad1-4d07-9b17-e24747793f94
     label: Kernville Cowork
     url: https://www.kernvillecowork.com/en
