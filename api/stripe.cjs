@@ -1,6 +1,6 @@
 /* eslint-env node */
 const methods = ['GET', 'POST', 'OPTIONS'];
-const { getTotal, createOrder, calculateOrderAmount } = require('./stripe-utils.js');
+const { getTotal, createOrder, calculateOrderAmount } = require('./stripe-utils.cjs');
 
 
 exports.handler = async function handler(event) {

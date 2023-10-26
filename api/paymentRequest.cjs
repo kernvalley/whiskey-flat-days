@@ -1,15 +1,15 @@
 /* eslint-env node */
 const methods = ['GET'];
 const headers = { 'Content-Type': 'application/json' };
-const { HTTPError } = require('./http-error.js');
-const { status } = require('./http-status.js');
-const { currency } = require('./stripe-consts.js');
+const { HTTPError } = require('./http-error.cjs');
+const { status } = require('./http-status.cjs');
+const { currency } = require('./stripe-consts.cjs');
 const {
 	calculateShipping, calculateCardFee, calculateTaxes, getTotal,
-} = require('./stripe-utils.js');
+} = require('./stripe-utils.cjs');
 
 async function createDisplayItems(cart, { signal } = {}) {
-	const { getProducts } = require('./store.js');
+	const { getProducts } = require('./store.cjs');
 	const products = await getProducts(cart.map(({ id }) => id, { signal }));
 
 	return products.map(product => {
@@ -95,7 +95,7 @@ exports.handler = async function(event) {
 				if (typeof event.queryStringParameters.id !== 'string') {
 					throw new HTTPError('Missing required id param', { status: status.BAD_REQUEST });
 				} else {
-					const { getOrder } = require('./stripe-utils.js');
+					const { getOrder } = require('./stripe-utils.cjs');
 					const { paymentRequest, paymentIntent } = await getOrder(event.queryStringParameters.id);
 					return {
 						statusCode: status.OK,
@@ -113,7 +113,7 @@ exports.handler = async function(event) {
 						throw new HTTPError('Invalid request body', { status: status.BAD_REQUEST });
 					} else {
 						const paymentRequest = await createPaymentRequest(items);
-						const { createPaymentIntent, createOrder } = require('./stripe-utils.js');
+						const { createPaymentIntent, createOrder } = require('./stripe-utils.cjs');
 						const paymentIntent = await createPaymentIntent(paymentRequest);
 						paymentRequest.details.id = paymentIntent.id;
 						await createOrder(paymentIntent, paymentRequest);
