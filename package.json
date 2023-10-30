@@ -77,7 +77,7 @@
     "eslint-plugin-frontmatter": "0.0.8",
     "firebase-admin": "^11.11.0",
     "netlify-js-app": "^3.3.1",
-    "stripe": "^14.1.0",
+    "stripe": "^14.2.0",
     "yaml": "^2.3.3"
   }
 }
