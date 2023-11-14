@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Update all `api/.js` to be `api/*.cjs` (For Module/CommonJS issues)
+- Update dates and theme/slogan for 2024
+- Update vendor applications
 
 ## [v3.0.1] - 2023-07-04
 
