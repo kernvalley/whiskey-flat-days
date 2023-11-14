@@ -1,12 +1,12 @@
 "@context": htts://schema.org
-"@type": Event
+"@type": Festival
 name: Whiskey Flat Days
 alternateName: Whiskey Flats
-identifier: 74cdb80a-c4bc-422e-8426-f70f7ebdad74
-description: 66th Annual Whiskey Flat Days | President's Day Weekend in Kernville, CA
+identifier: 23cfc6cd-311d-4533-b505-0c46caf21251
+description: 67th Annual Whiskey Flat Days | President's Day Weekend in Kernville, CA
 url: https://whiskeyflatdays.com
-startDate: 2023-02-17
-endDate: 2023-02-20
+startDate: 2024-02-16
+endDate: 2024-02-19
 eventAttendanceMode: OfflineEventAttendanceMode
 eventStatus: EventScheduled
 image:
