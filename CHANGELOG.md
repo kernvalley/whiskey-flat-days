@@ -7,7 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v3.0.3] - 2024-01-13
+
+### Fixed
+- Fix mayor campaign slogan
+- Fix/update logo for GoFundMe mark
+
+## [v3.0.2] - 2024-01-13
+
+### Added
+- Create WF Mayor Profiles
+
 ### Changed
+- Build `/mayors/` based on `_mayors/*` candidates/data
 - Update all `api/.js` to be `api/*.cjs` (For Module/CommonJS issues)
 - Update dates and theme/slogan for 2024
 - Update vendor applications
