@@ -2,7 +2,7 @@
 title: "Powder Packin' Powers & Mad Miner Zuber"
 layout: mayor
 image: https://i.imgur.com/VizQE8b.jpg
-description: Building Better Prosoperity
+description: Building Better Prospects
 email: justin@kernvillecowork.com
 website: https://sierrashared.space/wfd-mayor-race-2024
 venmo: https://venmo.com/code?user_id=3973845534902076540
