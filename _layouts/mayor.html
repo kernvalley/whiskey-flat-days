@@ -1,0 +1,78 @@
+---
+theme: default
+layout: default
+---
+{% assign now = 'now' | date_to_xmlschema %}
+<article id="mayor-profile" itemtype="https://schema.org/Article" itemscope="">
+	<meta itemprop="headline" content="{{ page.title }}" />
+	<meta itemprop="image" content="{{ page.image }}" />
+	<header	id="mayor-profile-header" itemprop="about" itemtype="https://schema.org/Person" itemscope="">
+		<div class="center">
+			<h1 itemprop="name">{{ page.title }}</h1>
+			<img src="{{ page.image | default: 'https://cdn.kernvalley.us/img/raster/missing-image.png' }}" alt="{{ page.title }}" crossorigin="anonymous" referrerpolicy="no-referrer" itemprop="image" />
+		</div>
+		<div id="donations" class="donate-links card">
+			<h3>Donate via&hellip;</h3>
+			<div class="flex row wrap space-evenly mayor-contact-links">
+				{% if page.goFundMe %}
+					<a href="{{ page.goFundMe }}" target="_blank" class="btn btn-default donate-link" title="GoFundMe" rel="noopener noreferrer external">
+						{% include common/icon.html icon="gofundme" height="24" width="24" class="donate-icon" %}
+						<span>GoFundMe</span>
+					</a>
+				{% endif %}
+				{% if page.venmo %}
+					<a href="{{ page.venmo }}" target="_blank" class="btn btn-default donate-link" title="Venmo" rel="noopener noreferrer external">
+						{% include common/icon.html icon="venmo" height="24" width="24" class="donate-icon" %}
+						<span>Venmo</span>
+					</a>
+				{% endif %}
+				{% if page.payPal %}
+					<a href="{{ page.payPal }}" target="_blank" class="btn btn-default donate-link" title="PayPal" rel="noopener noreferrer external">
+						{% include common/icon.html icon="paypal" height="24" width="24" class="donate-icon" %}
+						<span>PayPal</span>
+					</a>
+				{% endif %}
+			</div>
+		</div>
+		<hr />
+		<div id="mayor-contact" class="card">
+			<h3>Contact Us</h3>
+			{% include common/same-as-links.html sameAs=page.sameAs url=page.website email=page.email %}
+		</div>
+	</header>
+	<section id="mayor-events">
+		<h3>Upcoming Events</h3>
+		{% if page.events %}
+			<div class="grid mayor-events">
+				{% for event in page.events %}
+					<div class="mayor-event card" itemtype="https://schema.org/Event" itemscope="">
+						<b class="mayor-event-name" itemprop="name">{{ event.name }}</b>
+						<div class="mayor-event-datetime">
+							<time itemprop="startDate" datetime="{{ event.startDate | date_to_xmlschema }}">
+								<b class="event-day">{{ event.startDate | date: '%a, %x' }}</b>
+								<span class="event-time">{{ event.startDate | date: '%-I:%M %p'}}</span>
+							</time>
+							{% if event.endDate %}
+								<span>&mdash;</span>
+								<time itemprop="endDate" datetime="{{ event.endDate | date_to_xmlschema }}">{{ event.endDate | date: '%-I:%M %p'}}</time>
+							{% endif %}
+						</div>
+						<p itemprop="mayor-event-description" itemprop="description">{{ event.description | default: 'No description given.' }}</p>
+						<address itemprop="location" itemtype="https://schema.org/Place" itemscope="">
+							<div class="venue-name bold" itemprop="name">{{ event.location.name }}</div>
+							<div itemprop="address" itemtype="https://schema.org/PostalAddress" itemscope="">
+								<div class="venue-street-address" itemprop="streetAddress">{{ event.location.streetAddress }}</div>
+								<div class="venue-locality">
+									<span itemprop="addressLocality">{{ event.location.addressLocality | default: 'kernville' }}</span>, <span itemprop="addressRegion">{{ event.location.addressRegion | default: 'CA' }}</span> <span itemprop="postalCode">{{ event.location.postalCode | default: 93238 }}</span>
+								</div>
+							</div>
+						</address>
+					</div>
+				{% endfor %}
+			</div>
+		{% else %}
+			<h3>No events planned just yet</h3>
+		{% endif %}
+	</section>
+	<section itemprop="articleBody">{{ content }}</section>
+</article>

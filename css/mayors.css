@@ -6,6 +6,12 @@
 	flex-basis: 420px;
 	flex-grow: 0;
 	flex-shrink: 1;
+	color: inherit;
+	text-decoration: none;
+}
+
+#mayor-profile .flex.mayor-contact-links {
+	gap: 1.3rem;
 }
 
 .mayor-candidate .mayor-race-event-description {
@@ -16,4 +22,13 @@
 	margin-bottom: 8px;
 	padding-bottom: 18px;
 	border-bottom: 2px dashed #dadada;
+}
+
+.donate-link {
+	text-decoration: none;
+	vertical-align: bottom;
+}
+
+.donate-link svg {
+	vertical-align: bottom;
 }
