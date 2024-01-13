@@ -16,6 +16,7 @@ chevron-left: img/octicons/chevron-left.svg
 chevron-right: img/octicons/chevron-right.svg
 chevron-up: img/octicons/chevron-up.svg
 mail-read: img/octicons/mail-read.svg
+mail-unread: img/octicons/mail.svg
 clippy: img/octicons/clippy.svg
 file-pdf: img/octicons/file-pdf.svg
 file-media: img/octicons/file-media.svg
@@ -62,6 +63,9 @@ facebook: img/logos/facebook.svg
 github: img/logos/mono/github.svg
 mark-github: img/octicons/mark-github.svg
 linkedin: img/logos/linkedin.svg
+gofundme: img/logos/gofundme-mark.svg
+venmo: img/logos/venmo.svg
+paypal: img/logos/paypal.svg
 twitter: img/logos/twitter.svg
 yelp: img/logos/mono/yelp.svg
 youtube: img/logos/mono/youtube.svg
