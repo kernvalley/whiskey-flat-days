@@ -2,7 +2,7 @@ author: Chris Zuber
 title: Whiskey Flat Days
 url: 'https://whiskeyflatdays.com'
 markdown: kramdown
-version: 3.0.3
+version: 3.0.4
 timezone: America/Los_Angeles
 lang: en
 dir: ltr
@@ -106,6 +106,8 @@ include:
 exclude:
   - CHANGELOG.md
   - netlify.toml
+  - "/api/*"
+  - "./netlify/"
   - ".gitkeep"
   - "*.rb"
   - "*.gemspec"

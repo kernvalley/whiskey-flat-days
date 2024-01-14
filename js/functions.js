@@ -3,6 +3,10 @@ import { getJSON, navigateTo } from '@shgysk8zer0/kazoo/http.js';
 import { isObject } from '@shgysk8zer0/kazoo/utility.js';
 import { find } from '@shgysk8zer0/kazoo/dom.js';
 import { site, icons, mapSelector, startDate, endDate } from './consts.js';
+import { createElement } from '@shgysk8zer0/kazoo/elements.js';
+import { createGoogleCalendar } from '@shgysk8zer0/kazoo/google/calendar.js';
+import { createXIcon } from '@shgysk8zer0/kazoo/icons.js';
+import { clamp } from '@shgysk8zer0/kazoo/math.js';
 
 const allowedOrigins = [];
 
@@ -236,4 +240,57 @@ export async function getShareButton({
 	share.textContent = textContent;
 
 	return share;
+}
+
+export async function showGoogleCalendarModal(calendarId, { showTabs = true } = {}) {
+	const { resolve, promise } = Promise.withResolvers();
+	const dialog = createElement('dialog', {
+		classList: ['no-border', 'background-none'],
+		events: {
+			close: ({ target }) => {
+				target.remove();
+				resolve();
+			},
+		},
+		styles: {
+			border: 'none',
+			background: 'transparent',
+		},
+		animation: {
+			keyframes: [
+				{ opacity: 0 },
+				{ opacity: 1 },
+			],
+			duration: 400,
+			easing: 'ease-out',
+			fill: 'both',
+		},
+		children: [
+			createElement('div', {
+				classList: ['clearfix'],
+				children: [
+					createElement('button', {
+						type: 'button',
+						title: 'Close',
+						classList: ['no-border', 'background-none', 'float-right'],
+						events: {
+							click: ({ target }) => target.closest('dialog').close(),
+						},
+						children: [createXIcon({ size: 24, fill: '#fafafa' })]
+					}),
+				]
+			}),
+			document.createElement('br'),
+			createGoogleCalendar(calendarId, {
+				showTabs,
+				showPrint: innerWidth > 800,
+				width: clamp(400, parseInt(innerWidth * 0.8), 600),
+				height: parseInt(innerHeight * 0.8),
+			}),
+		]
+	});
+
+	document.body.append(dialog);
+	dialog.showModal();
+	return promise;
 }

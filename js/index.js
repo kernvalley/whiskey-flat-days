@@ -14,7 +14,7 @@ import { importGa, externalHandler, telHandler, mailtoHandler } from '@shgysk8ze
 import { DAYS } from '@shgysk8zer0/kazoo/date-consts.js';
 import {
 	searchLocationMarker, createMarker, isOnGoing, filterEventNamesDatalist,
-	intersectCallback, getPages, findNextEvent,
+	intersectCallback, getPages, findNextEvent, showGoogleCalendarModal,
 } from './functions.js';
 import { getGooglePolicy, getDefaultPolicyWithDisqus } from '@shgysk8zer0/kazoo/trust-policies.js';
 import { createPolicy } from '@shgysk8zer0/kazoo/trust.js';
@@ -126,7 +126,7 @@ Promise.all([
 	new URL(location.href),
 	getPages(),
 	ready(),
-]).then(async ([HTMLInstallPromptElement, url, { events, map }]) => {
+]).then(async ([HTMLInstallPromptElement, url, { events, map, mayors }]) => {
 	init();
 
 	on('#install-btn', 'click', () => new HTMLInstallPromptElement().show());
@@ -329,6 +329,10 @@ Promise.all([
 				console.error(err);
 			}
 		}
+	} else if (location.pathname.startsWith(mayors.url.pathname)) {
+		on('[data-calendar-id]', 'click', ({ currentTarget }) => {
+			showGoogleCalendarModal(currentTarget.dataset.calendarId);
+		});
 	}
 
 	on('[data-action]', 'click', ({ target }) => {

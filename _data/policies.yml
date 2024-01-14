@@ -10,6 +10,7 @@ trusted:
   - github-user#html
   - weather-current#html
   - share-to-buttons#html
-  - youtube#embed
+  - youtube#script-url
+  - goog-cal#script-url
   - disqus#script-url
   - pwa-install
