@@ -35,10 +35,10 @@
     - name: Adult
       price: 12.09
       availability: OnlineOnly
-      url: https://www.brownpapertickets.com/event/5690390
+      url: https://www.brownpapertickets.com/event/6202689
     - name: Child (6-12)
       availability: OnlineOnly
-      url: https://www.brownpapertickets.com/event/5690390
+      url: https://www.brownpapertickets.com/event/6202689
       price: 6.79
     - name: Child (0-5)
       price: 0
@@ -105,11 +105,11 @@
   - name: Adult
     price: 22.69
     availability: OnlineOnly
-    url: https://www.brownpapertickets.com/event/5690390
+    url: https://www.brownpapertickets.com/event/6202689
   - name: Child (6-12)
     availability: OnlineOnly
     price: 12.09
-    url: https://www.brownpapertickets.com/event/5690390
+    url: https://www.brownpapertickets.com/event/6202689
   - name: Child (0-5)
     price: 0
     availability: InStock
@@ -426,11 +426,11 @@
   - name: Adult
     availability: OnlineOnly
     price: 22.69
-    url: https://www.brownpapertickets.com/event/5690390
+    url: https://www.brownpapertickets.com/event/6202689
   - name: Child (6-12)
     availability: OnlineOnly
     price: 12.09
-    url: https://www.brownpapertickets.com/event/5690390
+    url: https://www.brownpapertickets.com/event/6202689
   - name: Child (0-5)
     price: 0
     availability: InStock
