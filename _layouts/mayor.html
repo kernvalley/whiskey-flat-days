@@ -2,11 +2,16 @@
 theme: default
 layout: default
 ---
-{% assign now = 'now' | date_to_xmlschema %}
+
+{% if page.events %}
+	{% assign now = 'now' | date_to_xmlschema %}
+	{% assign upcomingEvents = page.events | where_exp: "event", "event.startDate > now" | sort: "startDate" %}
+{% endif %}
 <article id="mayor-profile" itemtype="https://schema.org/Article" itemscope="">
 	<meta itemprop="headline" content="{{ page.title }}" />
 	<meta itemprop="image" content="{{ page.image }}" />
-	<header	id="mayor-profile-header" itemprop="about" itemtype="https://schema.org/Person" itemscope="">
+	<span itemprop="about" itemtype="https://schema.org/Person" itemref="mayor-profile-header" itemscope="" hidden=""></span>
+	<header	id="mayor-profile-header" itemtype="https://schema.org/Person">
 		<div class="center">
 			<h1 itemprop="name">{{ page.title }}</h1>
 			<img src="{{ page.image | default: 'https://cdn.kernvalley.us/img/raster/missing-image.png' }}" alt="{{ page.title }}" crossorigin="anonymous" referrerpolicy="no-referrer" itemprop="image" />
@@ -41,13 +46,31 @@ layout: default
 		</div>
 	</header>
 	<section id="mayor-events">
-		<h3>Upcoming Events</h3>
-		{% if page.events %}
+		<h3 class="clearfix">
+			<span class="float-left">Upcoming Events</span>
+			{% if page.googleCalendar %}
+				<div class="center">
+					<button type="button" class="btn btn-primary btn-big float-right" title="Show full Calendar" data-calendar-id="{{ page.googleCalendar }}">
+						{% include common/icon.html icon="calendar" height="20" width="20" fill="currentColor" %}
+						<span>Show<span class="mobile-hidden"> Full</span> Cal<span class="mobile-hidden">endar</span></span>
+					</button>
+				</div>
+		</h3>
+		{% endif %}
+		{% if upcomingEvents %}
 			<div class="grid mayor-events">
-				{% for event in page.events %}
+				{% for event in upcomingEvents %}
 					<div class="mayor-event card" itemtype="https://schema.org/Event" itemscope="">
-						<b class="mayor-event-name" itemprop="name">{{ event.name }}</b>
+						<meta itemprop="image" content="{{ event.image | default: page.image }}" />
+						<meta itemprop="eventStatus" content="eventScheduled" />
+						<meta itemprop="eventAttendanceMode" content="OfflineEventAttendanceMode" />
+						<span itemprop="organizer" itemtype="https://schema.org/Person" itemref="mayor-profile-header" itemscope="" hidden=""></span>
+						<div class="center">
+							<strong class="mayor-event-name underline" itemprop="name">{{ event.name }}</strong>
+							<br /><br />
+						</div>
 						<div class="mayor-event-datetime">
+							{% include common/icon.html icon="calendar" height="16" width="16" fill="currentColor" %}
 							<time itemprop="startDate" datetime="{{ event.startDate | date_to_xmlschema }}">
 								<b class="event-day">{{ event.startDate | date: '%a, %x' }}</b>
 								<span class="event-time">{{ event.startDate | date: '%-I:%M %p'}}</span>
@@ -57,13 +80,19 @@ layout: default
 								<time itemprop="endDate" datetime="{{ event.endDate | date_to_xmlschema }}">{{ event.endDate | date: '%-I:%M %p'}}</time>
 							{% endif %}
 						</div>
-						<p itemprop="mayor-event-description" itemprop="description">{{ event.description | default: 'No description given.' }}</p>
+						<br />
+						<div class="mayor-event-description" itemprop="description">{{ event.description | default: 'No description given.' }}</div>
+						<br />
 						<address itemprop="location" itemtype="https://schema.org/Place" itemscope="">
-							<div class="venue-name bold" itemprop="name">{{ event.location.name }}</div>
+							<div class="venue-name bold">
+								{% include common/icon.html icon="mark-location" height="16" width="16" fill="currentColor" %}
+								<span itemprop="name">{{ event.location.name }}</span>
+							</div>
 							<div itemprop="address" itemtype="https://schema.org/PostalAddress" itemscope="">
 								<div class="venue-street-address" itemprop="streetAddress">{{ event.location.streetAddress }}</div>
 								<div class="venue-locality">
 									<span itemprop="addressLocality">{{ event.location.addressLocality | default: 'kernville' }}</span>, <span itemprop="addressRegion">{{ event.location.addressRegion | default: 'CA' }}</span> <span itemprop="postalCode">{{ event.location.postalCode | default: 93238 }}</span>
+									<meta itemprop="addressCountry" content="{{ event.location.addressCountry | default: 'USA' }}" />
 								</div>
 							</div>
 						</address>

@@ -7,18 +7,38 @@ email: justin@kernvillecowork.com
 website: https://sierrashared.space/wfd-mayor-race-2024
 venmo: https://venmo.com/code?user_id=3973845534902076540
 goFundMe: https://gofund.me/a6e25a41
+googleCalendar: c_bd602222a94d790e7b3b0e176929ac77eca94f4cbebc5447a5156840e902c3b6@group.calendar.google.com
 sameAs:
   - https://www.facebook.com/PowersAndZuber2024
 events:
+  - name: KRV & WFD History Reading at Library
+    description: Join Powder Packin' Powers as he reads from his grandpa's books to share some history of the Kern River Valley and Whiskey Flat Days
+    startDate: '2024-01-31 16:00:00'
+    endDate: '2024-01-31 16:30:00'
+    location:
+      name: KRV Library
+      streetAddress: 7054 Lake Isabella Blvd
+      addressLocality: Lake Isabella
+      addressRegion: CA
+      postalCode: 93240
   - name: The Big Game
     description: Come watch the Big Game with us!
-    startDate: 2024-02-11 10:00:00
+    startDate: '2024-02-11 10:00:00'
     location:
       name: Paradise Cove Lodge
       streetAddress: 10700 Highway 178
       addressLocality: Lake Isabella
       addressRegion: CA
       postalCode: 93240
+  - name: Valentine's Day Dinner
+    description: Details coming soon
+    startDate: '2024-02-14 17:00:00'
+    location:
+      name: Johnny McNally's Fairview Lodge
+      streetAddress: 7300 Kern River Hwy
+      addressLocality: Kernville
+      addressRegion: CA
+      postalCode: 93238
 ---
 ## Howdy, fine folks and future supporters!
 

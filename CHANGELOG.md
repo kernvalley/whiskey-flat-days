@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v3.0.4] - 2024-01-14
+
+### Added
+- Add Google Calendar embed (via `<button>` & `<iframe>`) to Mayor profiles
+- Sort & filter mayor events
+
+### Changed
+- Update importmap and script SRI, etc
+- Update Mayor event layout/styles
+
 ## [v3.0.3] - 2024-01-13
 
 ### Fixed

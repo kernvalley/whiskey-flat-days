@@ -32,3 +32,8 @@
 .donate-link svg {
 	vertical-align: bottom;
 }
+
+.grid.mayor-events {
+	grid-template-columns: repeat(auto-fit, minmax(350px, 420px));
+	gap: 1.2rem;
+}
