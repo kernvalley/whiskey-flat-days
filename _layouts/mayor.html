@@ -10,44 +10,81 @@ layout: default
 <article id="mayor-profile" itemtype="https://schema.org/Article" itemscope="">
 	<meta itemprop="headline" content="{{ page.title }}" />
 	<meta itemprop="image" content="{{ page.image }}" />
-	<span itemprop="about" itemtype="https://schema.org/Person" itemref="mayor-profile-header" itemscope="" hidden=""></span>
+	<span itemprop="about author" itemtype="https://schema.org/Person" itemref="mayor-profile-header" itemscope="" hidden=""></span>
 	<header	id="mayor-profile-header" itemtype="https://schema.org/Person">
 		<div class="center">
-			<h1 itemprop="name">{{ page.title }}</h1>
+			<h1 class="font-title section-heading" itemprop="name">{{ page.title }}</h1>
+			{% if page.memberOf %}
+				<span itemprop="memberOf" itemtype="{{ page.memberOf['@context'] | default: 'https://schema.org'}}/{{ page['@type'] | default: 'Organization' }}" itemref="mayor-profile-cause" itemscope="" hidden=""></span>
+				<h2 id="mayor-profile-cause" itemtype="{{ page.memberOf['@context'] | default: 'https://schema.org'}}/{{ page['@type'] | default: 'Organization' }}">
+					{% if page.memberOf.url %}
+						<a href="{{ page.memberOf.url }}" target="_blank" class="color-default" itemprop="url" rel="noreferrer noopener external">
+							<span>Supporting:</span>
+							<span class="bold" itemprop="name">{{ page.memberOf.name }}</span>
+							{% include common/icon.html icon="link-external" height="18" width="18" fill="currentColor" %}
+						</a>
+					{% else %}
+						<span>Supporting:</span>
+						<span class="bold" itemprop="name">{{ page.memberOf.name }}</span>
+					{% endif %}
+					{% if page.memberOf.nonprofitStatus %}
+						<link itemprop="nonprofitStatus" href="https://schema.org/{{ page.memberOf.nonprofitStatus }}" />
+					{% endif %}
+				</h2>
+			{% endif %}
 			<img src="{{ page.image | default: 'https://cdn.kernvalley.us/img/raster/missing-image.png' }}" alt="{{ page.title }}" crossorigin="anonymous" referrerpolicy="no-referrer" itemprop="image" />
 		</div>
-		<div id="donations" class="donate-links card">
-			<h3>Donate via&hellip;</h3>
+		<div id="donations" class="donate-links card" itemprop="seeks" itemtype="https://schema.org/Demand" itemscope="">
+			<meta itemprop="name" content="Donations" />
+			<h3 class="section-heading">Donate via&hellip;</h3>
 			<div class="flex row wrap space-evenly mayor-contact-links">
 				{% if page.goFundMe %}
-					<a href="{{ page.goFundMe }}" target="_blank" class="btn btn-default donate-link" title="GoFundMe" rel="noopener noreferrer external">
+					<a href="{{ page.goFundMe }}" target="_blank" class="btn btn-default donate-link" title="GoFundMe" rel="noopener noreferrer external" itemprop="potentialAction" itemtype="https://schema.org/DonateAction" itemscope="">
+						<span itemprop="recipient" itemtype="{{ page.memberOf['@context'] | default: 'https://schema.org'}}/{{ page['@type'] | default: 'Organization' }}" itemref="mayor-profile-cause" itemscope="" hidden=""></span>
+						<meta itemprop="name" content="Donate via GoFundMe" />
+						<meta itemprop="target url" content="{{ page.goFundMe }}" />
 						{% include common/icon.html icon="gofundme" height="24" width="24" class="donate-icon" %}
 						<span>GoFundMe</span>
 					</a>
 				{% endif %}
 				{% if page.venmo %}
-					<a href="{{ page.venmo }}" target="_blank" class="btn btn-default donate-link" title="Venmo" rel="noopener noreferrer external">
+					<a href="{{ page.venmo }}" target="_blank" class="btn btn-default donate-link" title="Venmo" rel="noopener noreferrer external" itemprop="potentialAction" itemtype="https://schema.org/DonateAction" itemscope="">
+						<span itemprop="recipient" itemtype="{{ page.memberOf['@context'] | default: 'https://schema.org'}}/{{ page['@type'] | default: 'Organization' }}" itemref="mayor-profile-cause" itemscope="" hidden=""></span>
+						<meta itemprop="name" content="Donate via Venmo" />
+						<meta itemprop="target url" content="{{ page.venmo }}" />
 						{% include common/icon.html icon="venmo" height="24" width="24" class="donate-icon" %}
 						<span>Venmo</span>
 					</a>
 				{% endif %}
 				{% if page.payPal %}
-					<a href="{{ page.payPal }}" target="_blank" class="btn btn-default donate-link" title="PayPal" rel="noopener noreferrer external">
+					<a href="{{ page.payPal }}" target="_blank" class="btn btn-default donate-link" title="PayPal" rel="noopener noreferrer external" itemprop="potentialAction" itemtype="https://schema.org/DonateAction" itemscope="">
+						<span itemprop="recipient" itemtype="{{ page.memberOf['@context'] | default: 'https://schema.org'}}/{{ page['@type'] | default: 'Organization' }}" itemref="mayor-profile-cause" itemscope="" hidden=""></span>
+						<meta itemprop="name" content="Donate via PayPal" />
+						<meta itemprop="target url" content="{{ page.payPal }}" />
 						{% include common/icon.html icon="paypal" height="24" width="24" class="donate-icon" %}
 						<span>PayPal</span>
+					</a>
+				{% endif %}
+				{% if page.webDonation %}
+					<a href="{{ page.webDonation }}" target="_blank" class="btn btn-default donate-link" title="Online Donation" rel="noopener noreferrer external" itemprop="potentialAction" itemtype="https://schema.org/DonateAction" itemscope="">
+						<span itemprop="recipient" itemtype="{{ page.memberOf['@context'] | default: 'https://schema.org'}}/{{ page['@type'] | default: 'Organization' }}" itemref="mayor-profile-cause" itemscope="" hidden=""></span>
+						<meta itemprop="name" content="Donate via Website" />
+						<meta itemprop="target url" content="{{ page.webDonation }}" />
+						{% include common/icon.html icon="link-external" height="24" width="24" class="donate-icon" %}
+						<span>Online Donation</span>
 					</a>
 				{% endif %}
 			</div>
 		</div>
 		<hr />
 		<div id="mayor-contact" class="card">
-			<h3>Contact Us</h3>
+			<h3 class="section-heading">Contact Us</h3>
 			{% include common/same-as-links.html sameAs=page.sameAs url=page.website email=page.email %}
 		</div>
 	</header>
 	<section id="mayor-events">
 		<h3 class="clearfix">
-			<span class="float-left">Upcoming Events</span>
+			<span class="float-left section-heading">Upcoming Events</span>
 			{% if page.googleCalendar %}
 				<div class="center">
 					<button type="button" class="btn btn-primary btn-big float-right" title="Show full Calendar" data-calendar-id="{{ page.googleCalendar }}">
@@ -58,47 +95,53 @@ layout: default
 		</h3>
 		{% endif %}
 		{% if upcomingEvents %}
-			<div class="grid mayor-events">
-				{% for event in upcomingEvents %}
-					<div class="mayor-event card" itemtype="https://schema.org/Event" itemscope="">
-						<meta itemprop="image" content="{{ event.image | default: page.image }}" />
-						<meta itemprop="eventStatus" content="eventScheduled" />
-						<meta itemprop="eventAttendanceMode" content="OfflineEventAttendanceMode" />
-						<span itemprop="organizer" itemtype="https://schema.org/Person" itemref="mayor-profile-header" itemscope="" hidden=""></span>
-						<div class="center">
-							<strong class="mayor-event-name underline" itemprop="name">{{ event.name }}</strong>
-							<br /><br />
-						</div>
-						<div class="mayor-event-datetime">
-							{% include common/icon.html icon="calendar" height="16" width="16" fill="currentColor" %}
-							<time itemprop="startDate" datetime="{{ event.startDate | date_to_xmlschema }}">
-								<b class="event-day">{{ event.startDate | date: '%a, %x' }}</b>
-								<span class="event-time">{{ event.startDate | date: '%-I:%M %p'}}</span>
-							</time>
-							{% if event.endDate %}
-								<span>&mdash;</span>
-								<time itemprop="endDate" datetime="{{ event.endDate | date_to_xmlschema }}">{{ event.endDate | date: '%-I:%M %p'}}</time>
-							{% endif %}
-						</div>
-						<br />
-						<div class="mayor-event-description" itemprop="description">{{ event.description | default: 'No description given.' }}</div>
-						<br />
-						<address itemprop="location" itemtype="https://schema.org/Place" itemscope="">
-							<div class="venue-name bold">
-								{% include common/icon.html icon="mark-location" height="16" width="16" fill="currentColor" %}
-								<span itemprop="name">{{ event.location.name }}</span>
+			<details open="">
+				<summary class="btn btn-primary full-width">
+					{% include common/icon.html icon="chevron-down" width="18" height="18" fill="currentColor" %}
+					<span>Toggle Events List</span>
+				</summary>
+				<div class="grid mayor-events">
+					{% for event in upcomingEvents %}
+						<div class="mayor-event card" itemprop="performerIn" itemtype="https://schema.org/{{ event['@type'] | default: 'Event' }}" itemscope="">
+							<meta itemprop="image" content="{{ event.image | default: page.image }}" />
+							<meta itemprop="eventStatus" content="eventScheduled" />
+							<meta itemprop="eventAttendanceMode" content="OfflineEventAttendanceMode" />
+							<span itemprop="organizer" itemtype="https://schema.org/Person" itemref="mayor-profile-header" itemscope="" hidden=""></span>
+							<div class="center">
+								<strong class="mayor-event-name underline" itemprop="name">{{ event.name }}</strong>
+								<br /><br />
 							</div>
-							<div itemprop="address" itemtype="https://schema.org/PostalAddress" itemscope="">
-								<div class="venue-street-address" itemprop="streetAddress">{{ event.location.streetAddress }}</div>
-								<div class="venue-locality">
-									<span itemprop="addressLocality">{{ event.location.addressLocality | default: 'kernville' }}</span>, <span itemprop="addressRegion">{{ event.location.addressRegion | default: 'CA' }}</span> <span itemprop="postalCode">{{ event.location.postalCode | default: 93238 }}</span>
-									<meta itemprop="addressCountry" content="{{ event.location.addressCountry | default: 'USA' }}" />
+							<div class="mayor-event-datetime">
+								{% include common/icon.html icon="calendar" height="16" width="16" fill="currentColor" %}
+								<time itemprop="startDate" datetime="{{ event.startDate | date_to_xmlschema }}">
+									<b class="event-day">{{ event.startDate | date: '%a, %x' }}</b>
+									<span class="event-time">{{ event.startDate | date: '%-I:%M %p'}}</span>
+								</time>
+								{% if event.endDate %}
+									<span>&mdash;</span>
+									<time itemprop="endDate" datetime="{{ event.endDate | date_to_xmlschema }}">{{ event.endDate | date: '%-I:%M %p'}}</time>
+								{% endif %}
+							</div>
+							<br />
+							<div class="mayor-event-description" itemprop="description">{{ event.description | default: 'No description given.' }}</div>
+							<br />
+							<address itemprop="location" itemtype="https://schema.org/{{ event.location['@type'] | default: 'Place' }}" itemscope="">
+								<div class="venue-name bold">
+									{% include common/icon.html icon="mark-location" height="16" width="16" fill="currentColor" %}
+									<span itemprop="name">{{ event.location.name }}</span>
 								</div>
-							</div>
-						</address>
-					</div>
-				{% endfor %}
-			</div>
+								<div itemprop="address" itemtype="https://schema.org/PostalAddress" itemscope="">
+									<div class="venue-street-address" itemprop="streetAddress">{{ event.location.streetAddress }}</div>
+									<div class="venue-locality">
+										<span itemprop="addressLocality">{{ event.location.addressLocality | default: 'kernville' }}</span>, <span itemprop="addressRegion">{{ event.location.addressRegion | default: 'CA' }}</span> <span itemprop="postalCode">{{ event.location.postalCode | default: 93238 }}</span>
+										<meta itemprop="addressCountry" content="{{ event.location.addressCountry | default: 'USA' }}" />
+									</div>
+								</div>
+							</address>
+						</div>
+					{% endfor %}
+				</div>
+			</details>
 		{% else %}
 			<h3>No events planned just yet</h3>
 		{% endif %}
