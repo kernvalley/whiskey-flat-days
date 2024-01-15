@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v3.0.5] - 2024-01-15
+
+### Added
+- List Mayor cause on profiles & mayor candidate list
+- Structured data for mayor profile donation links & events
+ 
+### Changed
+- Misc. mayor info updates
+- Misc. style updates
+
 ## [v3.0.4] - 2024-01-14
 
 ### Added

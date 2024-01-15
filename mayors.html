@@ -15,12 +15,25 @@ tags:
 ---
 <section id="mayor-race">
 	<h2 class="center font-title section-heading">Whiskey Flat Mayor Race</h2>
-	<div id="candidates" class="flex row wrap space-evenly">
-		{% for mayor in site.mayors %}
-			<a href="{{ mayor.url }}" class="card shadow mayor-candidate block">
-				<h3 class="center mayor-name font-title section-heading">{{ mayor.title }}</h3>
-				<img src="{{ mayor.image | default: 'https://cdn.kernvalley.us/img/raster/missing-image.png' }}" crossorigin="anonymous" referrerpolicy="no-referrer" loading="lazy" alt="{{ mayor.title }}" />
-			</a>
-		{% endfor %}
-	</div>
+	<p class="card">The Whiskey Flat Mayor race begins each year in January, before Whiskey Flat Days. Candidates collect "bribes" (donations) during this period. The winner, who raises the most funds by the event's Sunday culmination, becomes the "honorary mayor" for the year. Funds are split: 60% to the candidate's cause, 40% to the Kernville Chamber of Commerce, supporting their operations.</p>
+	<hr />
+	<div>
+		<h3 class="center">This Year's Whiskey Flat Mayor Candidates</h3>
+		<div id="candidates" class="flex row wrap space-evenly">
+			{% for mayor in site.mayors %}
+				<a href="{{ mayor.url }}" class="card mayor-candidate block section-heading">
+					<h3 class="center mayor-name font-title">
+						{% include common/icon.html icon="link" height="18" width="18" fill="currentColor" %}
+						<span>{{ mayor.title }}</span>
+					</h3>
+					<img src="{{ mayor.image | default: 'https://cdn.kernvalley.us/img/raster/missing-image.png' }}" crossorigin="anonymous" referrerpolicy="no-referrer" height="240" loading="lazy" alt="{{ mayor.title }}" />
+					{% if mayor.memberOf %}
+						<div class="mayor-cause">
+							<span>Supporting:</span>
+							<b>{{ mayor.memberOf.name }}</b>
+						</div>
+					{% endif %}
+				</a>
+			{% endfor %}
+		</div>
 </section>

@@ -3,6 +3,11 @@ title: "Powder Packin' Powers & Mad Miner Zuber"
 layout: mayor
 image: https://i.imgur.com/VizQE8b.jpg
 description: Building Better Prospects
+memberOf:
+  '@type': NGO
+  name: Sierra Shared Spaces
+  url: https://sierrashared.space
+  nonprofitStatus: Nonprofit501c3
 email: justin@kernvillecowork.com
 website: https://sierrashared.space/wfd-mayor-race-2024
 venmo: https://venmo.com/code?user_id=3973845534902076540
@@ -16,6 +21,7 @@ events:
     startDate: '2024-01-31 16:00:00'
     endDate: '2024-01-31 16:30:00'
     location:
+      '@type': Library
       name: KRV Library
       streetAddress: 7054 Lake Isabella Blvd
       addressLocality: Lake Isabella
@@ -25,6 +31,7 @@ events:
     description: Come watch the Big Game with us!
     startDate: '2024-02-11 10:00:00'
     location:
+      '@type': Restaurant
       name: Paradise Cove Lodge
       streetAddress: 10700 Highway 178
       addressLocality: Lake Isabella
@@ -34,6 +41,7 @@ events:
     description: Details coming soon
     startDate: '2024-02-14 17:00:00'
     location:
+      '@type': Restaurant
       name: Johnny McNally's Fairview Lodge
       streetAddress: 7300 Kern River Hwy
       addressLocality: Kernville

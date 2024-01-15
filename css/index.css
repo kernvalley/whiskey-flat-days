@@ -67,3 +67,14 @@ iframe:not([frameborder]) {
 		background-color: #202020;
 	}
 }
+
+details:has(summary.btn svg.icon) {
+	summary.btn svg.icon {
+		transform: none;
+		transition: transform 400ms linear;
+	}
+
+	&[open] summary.btn svg.icon {
+		transform: rotate(0.5turn);
+	}
+}

@@ -85,6 +85,10 @@ article p:first-letter {
 	background-color: currentColor;
 }
 
+.section-heading {
+	text-wrap: balance;
+}
+
 @media (prefers-color-scheme: light) {
 	.section-heading {
 		color: var(--accent-color);
