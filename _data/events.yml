@@ -99,8 +99,8 @@
       addressRegion: CA
       postalCode: 93238
       addressCountry: US
-  startDate: 2024-02-17 13:00
-  endDate: 2024-02-17 16:00
+  startDate: 2024-02-17 12:00
+  endDate: 2024-02-17 15:00
   offers:
   - name: Adult
     price: 22.69
