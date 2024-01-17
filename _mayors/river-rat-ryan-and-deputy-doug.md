@@ -1,7 +1,7 @@
 ---
 title: River Rat Ryan & Deputy Doug
 layout: mayor
-https://i.imgur.com/RGVxc4Al.jpg
+image: https://i.imgur.com/RGVxc4Al.jpg
 sameAs:
   - https://www.facebook.com/profile.php?id=61554942994471
 memberOf:
