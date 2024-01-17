@@ -16,6 +16,16 @@ googleCalendar: c_bd602222a94d790e7b3b0e176929ac77eca94f4cbebc5447a5156840e902c3
 sameAs:
   - https://www.facebook.com/PowersAndZuber2024
 events:
+  - name: Karaoke Night
+    description: Gather 'round, folks! Powder Packin' Powers & Mad Miner Zuber are throwin' a kari-oke night at the 178 Bar & Grill. Ain't no live band, got us a mite confused, but they got this contraption that plays tunes so ya'll can still be yellin' yer lungs out!
+    startDate: 2024-01-18 21:00
+    location:
+      '@type': BarOrPub
+      name: 178 Bar & Grill
+      streetAddress: 6107 Lake Isabella Blvd.
+      addressLocality: Lake Isabella
+      addressRegion: CA
+      postalCode: 93240
   - name: KRV & WFD History Reading at Library
     description: Join Powder Packin' Powers as he reads from his grandpa's books to share some history of the Kern River Valley and Whiskey Flat Days
     startDate: '2024-01-31 16:00:00'
