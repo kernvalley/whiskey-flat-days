@@ -17,6 +17,7 @@ sameAs:
   - https://www.facebook.com/PowersAndZuber2024
 events:
   - name: Karaoke Night
+    identifier: 3202fe9b-3c63-4b8a-ae26-b62a9f4ba94b
     description: Gather 'round, folks! Powder Packin' Powers & Mad Miner Zuber are throwin' a kari-oke night at the 178 Bar & Grill. Ain't no live band, got us a mite confused, but they got this contraption that plays tunes so ya'll can still be yellin' yer lungs out!
     startDate: 2024-01-18 21:00
     location:
@@ -27,6 +28,7 @@ events:
       addressRegion: CA
       postalCode: 93240
   - name: KRV & WFD History Reading at Library
+    identifier: 94df898d-d0c7-455c-af98-c32a0b37947e
     description: Join Powder Packin' Powers as he reads from his grandpa's books to share some history of the Kern River Valley and Whiskey Flat Days
     startDate: '2024-01-31 16:00:00'
     endDate: '2024-01-31 16:30:00'
@@ -38,6 +40,7 @@ events:
       addressRegion: CA
       postalCode: 93240
   - name: The Big Game
+    identifier: c2c51253-b3de-413d-b7e4-50789d1700f7
     description: Come watch the Big Game with us!
     startDate: '2024-02-11 10:00:00'
     location:
@@ -48,6 +51,7 @@ events:
       addressRegion: CA
       postalCode: 93240
   - name: Valentine's Day Dinner
+    identifier: f8df1ee4-bc30-4dbb-b52b-caf33ebe67b7
     description: Details coming soon
     startDate: '2024-02-14 17:00:00'
     location:

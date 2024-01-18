@@ -4,11 +4,13 @@ layout: default
 ---
 
 {% if page.events %}
-	{% assign now = 'now' | date_to_xmlschema %}
+	{% assign now = 'now' | date: "%Y-%m-%d %H:%M" %}
+	<!--{{ now }}-->
+	<!--{{ site.time }}-->
 	{% assign upcomingEvents = page.events | where_exp: "event", "event.startDate > now" | sort: "startDate" %}
 {% endif %}
 <article id="mayor-profile" itemtype="https://schema.org/Article" itemscope="">
-	<meta itemprop="headline" content="{{ page.title }}" />
+	<meta itemprop="headline" content="{{ page.title | xml_escape }}" />
 	<meta itemprop="image" content="{{ page.image }}" />
 	<span itemprop="about author" itemtype="https://schema.org/Person" itemref="mayor-profile-header" itemscope="" hidden=""></span>
 	<header	id="mayor-profile-header" itemtype="https://schema.org/Person">
@@ -100,9 +102,9 @@ layout: default
 					{% include common/icon.html icon="chevron-down" width="18" height="18" fill="currentColor" %}
 					<span>Toggle Events List</span>
 				</summary>
-				<div class="grid mayor-events">
+				<div id="mayor-events" class="grid mayor-events">
 					{% for event in upcomingEvents %}
-						<div class="mayor-event card" itemprop="performerIn" itemtype="https://schema.org/{{ event['@type'] | default: 'Event' }}" itemscope="">
+						<div id="{{ event.identifier }}" class="mayor-event card" itemprop="performerIn" itemtype="https://schema.org/{{ event['@type'] | default: 'Event' }}" itemscope="">
 							<meta itemprop="image" content="{{ event.image | default: page.image }}" />
 							<meta itemprop="eventStatus" content="eventScheduled" />
 							<meta itemprop="eventAttendanceMode" content="OfflineEventAttendanceMode" />
@@ -138,12 +140,15 @@ layout: default
 									</div>
 								</div>
 							</address>
+							<div class="center">
+								<button type="button" is="share-button" class="btn btn-primary event-share-btn" sharetitle="{{ event.name | xml_escape }}" text="{{ event.description | xml_escape }}" url="{{ page.url }}#{{ event.identifier }}" aria-label="Share {{ event.title | xml_escape }}" hidden="">Share Event</button>
+							</div>
 						</div>
 					{% endfor %}
 				</div>
 			</details>
 		{% else %}
-			<h3>No events planned just yet</h3>
+			<h3>No upcoming events available just yet</h3>
 		{% endif %}
 	</section>
 	<section itemprop="articleBody">{{ content }}</section>
