@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Add `/mayors/events.json`
 
+### Changed
+- Add missing CORS headers to `/mayors/events.json`
+
 ## [v3.0.5] - 2024-01-15
 
 ### Added
