@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Add `/mayors/events.json`
+- Add `/mayors/embed/` using `@kernvalley/wfd/mayor-events.js` / `<wfd-mayor-events>`
 
 ### Changed
 - Add missing CORS headers to `/mayors/events.json`

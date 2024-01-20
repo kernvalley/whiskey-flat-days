@@ -7,7 +7,7 @@
   Link: <https://unpkg.com/@shgysk8zer0/polyfills@0.3.0/all.min.js>; rel=preload; as=script; referrerpolicy=no-referrrer; crossorigin=anonymous;
   Link: <https://unpkg.com/@shgysk8zer0/kazoo@0.3.1/harden.js>; rel=preload; as=script; referrerpolicy=no-referrrer; crossorigin=anonymous;
   Link: </js/index.min.js>; rel=preload; as=script; referrerpolicy=no-referrrer;
-  Content-Security-Policy: default-src 'self'; img-src *; script-src 'self' unpkg.com/ www.google-analytics.com www.googletagmanager.com www.gstatic.com/firebasejs/ 'nonce-c23ddb4e-a8ec-44f0-ad77-d1ac60938c7e'; style-src 'self' cdn.kernvalley.us unpkg.com/ blob:; connect-src 'self' store.kernvalley.us apps.kernvalley.us ads.kernvalley.us/api/ api.github.com/users/ api.openweathermap.org/data/2.5/weather www.google-analytics.com/ www.googletagmanager.com/gtag/ firestore.googleapis.com  unpkg.com/@shgysk8zer0/ unpkg.com/@kernvalley/; font-src cdn.kernvalley.us; media-src *; frame-src www.youtube-nocookie.com; form-action 'self'; manifest-src 'self'; worker-src 'self'; reflected-xss block; upgrade-insecure-requests; block-all-mixed-content; disown-opener; trusted-types default empty#html empty#script sanitizer-raw#html purify-raw#html purify#html weather-current#html youtube#script-url pwa-install share-to-buttons#html github-user#html ga#script-url goog#html; require-trusted-types-for 'script';
+  Content-Security-Policy: default-src 'self'; img-src *; script-src 'self' unpkg.com/ www.google-analytics.com www.googletagmanager.com www.gstatic.com/firebasejs/ 'nonce-c23ddb4e-a8ec-44f0-ad77-d1ac60938c7e'; style-src 'self' cdn.kernvalley.us unpkg.com/ blob:; connect-src 'self' store.kernvalley.us apps.kernvalley.us ads.kernvalley.us/api/ api.github.com/users/ api.openweathermap.org/data/2.5/weather www.google-analytics.com/ www.googletagmanager.com/gtag/ firestore.googleapis.com  unpkg.com/@shgysk8zer0/ unpkg.com/@kernvalley/; font-src cdn.kernvalley.us; media-src *; frame-src www.youtube-nocookie.com 'self'; form-action 'self'; manifest-src 'self'; worker-src 'self'; reflected-xss block; upgrade-insecure-requests; block-all-mixed-content; disown-opener; trusted-types default empty#html empty#script sanitizer-raw#html purify-raw#html purify#html weather-current#html youtube#script-url pwa-install share-to-buttons#html github-user#html ga#script-url goog#html; require-trusted-types-for 'script';
 
 /:placeholder/
   X-Content-Type-Options: nosniff
@@ -42,6 +42,11 @@
   Content-Security-Policy: default-src: 'none'
   TK: N
 
+/mayors/embed/
+  Referrer-Policy: no-referrer
+  X-Frame-Options: ALLOW
+  Content-Security-Policy: default-src 'none'; img-src 'self' *; style-src 'self' unpkg.com/@shgysk8zer0/ unpkg.com/@kernvalley/ blob:; script-src 'self' unpkg.com/@shgysk8zer0/ unpkg.com/@kernvalley/; font-src cdn.kernvalley.us/fonts/; connect-src 'self' whiskeyflatdays.com/mayors/events.json; frame-ancestors *; upgrade-insecure-requests; block-all-mixed-content; disown-opener; trusted-types empty#html empty#script; require-trusted-types-for 'script';
+
 /mayors/events.json
   Content-Security-Policy: default-src 'none'
   Access-Control-Allow-Origin: *
@@ -59,3 +64,4 @@
 
 /*
   X-Content-Type-Options: nosniff
+
