@@ -35,7 +35,7 @@
   Link: <https://unpkg.com/@shgysk8zer0/polyfills@0.3.0/all.min.js> rel=preload; as=script; crossorigin=anonymous; referrerpolicy=no-referrer;
   Link: <https://unpkg.com/@shgysk8zer0/kazoo@0.3.1/harden.js> rel=preload; as=script; crossorigin=anonymous; referrerpolicy=no-referrer;
   Link: </events.json>; rel=preload; as=fetch; type=application/json; referrerpolicy=no-referrer;
-  Content-Security-Policy: default-src 'none'; img-src 'self' *; style-src 'self' unpkg.com/@shgysk8zer0/ unpkg.com/@kernvalley/ blob:; script-src 'self' unpkg.com/@shgysk8zer0/ unpkg.com/@kernvalley/ 'nonce-c23ddb4e-a8ec-44f0-ad77-d1ac60938c7e'; font-src cdn.kernvalley.us/fonts/; connect-src 'self' whiskeyflatdays.com/events.json unpkg.com/@shgysk8zer0/ unpkg.com/@kernvalley/; frame-ancestors *; upgrade-insecure-requests; block-all-mixed-content; disown-opener; trusted-types empty#html empty#script sanitizer-raw#html wfd-events#html; require-trusted-types-for 'script';
+  Content-Security-Policy: default-src 'none'; img-src 'self' *; style-src 'self' unpkg.com/@shgysk8zer0/ unpkg.com/@kernvalley/ blob:; script-src 'self' unpkg.com/@shgysk8zer0/ unpkg.com/@kernvalley/; font-src cdn.kernvalley.us/fonts/; connect-src 'self' whiskeyflatdays.com/events.json unpkg.com/@shgysk8zer0/ unpkg.com/@kernvalley/; frame-ancestors *; upgrade-insecure-requests; block-all-mixed-content; disown-opener; trusted-types empty#html empty#script sanitizer-raw#html wfd-events#html; require-trusted-types-for 'script';
 
 /events.json
   Access-Control-Allow-Origin: *
@@ -45,7 +45,7 @@
 /mayors/embed/
   Referrer-Policy: no-referrer
   X-Frame-Options: ALLOW
-  Content-Security-Policy: default-src 'none'; img-src 'self' *; style-src 'self' unpkg.com/@shgysk8zer0/ unpkg.com/@kernvalley/ blob:; script-src 'self' unpkg.com/@shgysk8zer0/ unpkg.com/@kernvalley/; font-src cdn.kernvalley.us/fonts/; connect-src 'self' whiskeyflatdays.com/mayors/events.json; frame-ancestors *; upgrade-insecure-requests; block-all-mixed-content; disown-opener; trusted-types empty#html empty#script; require-trusted-types-for 'script';
+  Content-Security-Policy: default-src 'none'; img-src 'self' *; style-src 'self' unpkg.com/@shgysk8zer0/ unpkg.com/@kernvalley/ blob:; script-src 'self' unpkg.com/@shgysk8zer0/ unpkg.com/@kernvalley/; font-src cdn.kernvalley.us/fonts/; connect-src 'self' whiskeyflatdays.com/mayors/events.json; frame-ancestors *; upgrade-insecure-requests; block-all-mixed-content; disown-opener; trusted-types empty#html empty#script sanitizer-raw#html; require-trusted-types-for 'script';
 
 /mayors/events.json
   Content-Security-Policy: default-src 'none'
@@ -64,4 +64,5 @@
 
 /*
   X-Content-Type-Options: nosniff
+
 

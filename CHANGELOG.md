@@ -7,12 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v3.0.6] - 2024-01-21
+
 ### Added
 - Add `/mayors/events.json`
-- Add `/mayors/embed/` using `@kernvalley/wfd/mayor-events.js` / `<wfd-mayor-events>`
+- Add `/mayors/embed/` using `@kernvalley/components/wfd/mayor-events.js` / `<wfd-mayor-events>`
 
 ### Changed
 - Add missing CORS headers to `/mayors/events.json`
+- Update `@kernvalley/components`
+- Update embed styles and directory structure
 
 ## [v3.0.5] - 2024-01-15
 
