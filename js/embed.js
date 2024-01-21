@@ -1,5 +1,4 @@
-customElements.whenDefined('wfd-events').then(() => {
-	const WFDEvents = customElements.get('wfd-events');
+customElements.whenDefined('wfd-events').then(WFDEvents => {
 	const params = new URLSearchParams(location.search);
 	const events = new WFDEvents();
 
@@ -9,13 +8,7 @@ customElements.whenDefined('wfd-events').then(() => {
 
 	if (params.has('theme')) {
 		events.theme = params.get('theme');
-
-		try {
-			document.querySelector('meta[name="color-scheme"]')
-				.setAttribute('content', params.get('theme'));
-		} catch(err) {
-			console.error(err);
-		}
+		document.documentElement.dataset.theme = params.get('theme');
 	}
 
 	events.images = params.has('images');
