@@ -39,6 +39,19 @@ events:
       addressLocality: Lake Isabella
       addressRegion: CA
       postalCode: 93240
+  - name: Bowling
+    identifier: 112d3178-dc16-4c4e-8d0f-e1283d73b64b
+    image: https://i.imgur.com/qce6Celm.jpg
+    description: Join yer next Whiskey Flat Mayors in knocking down some pins @ Mt Mesa Lanes
+    startDate: 2024-02-04 13:00
+    endDate: 2024-02-04- 15:00
+    location:
+      '@type': BowlingAlley
+      name: Mt Mesa Lanes
+      streetAddress: 4612 McCray Rd
+      addressLocality: Lake Isabella
+      addressRegion: CA
+      postalCode: 93240
   - name: The Big Game
     identifier: c2c51253-b3de-413d-b7e4-50789d1700f7
     description: Come watch the Big Game with us!

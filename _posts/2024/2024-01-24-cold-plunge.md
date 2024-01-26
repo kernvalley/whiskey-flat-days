@@ -17,7 +17,7 @@ tags:
   - cold-plunge
 author:
   name: Powder Packin' Powers
-  url: /mayors/powder-packin-powers-mad-miner-zuber
+  url: /mayors/powder-packin-powers-and-mad-miner-zuber
   gravatar: 1c56b4db267071c46d6d37de8772af52
   email: justin@kernvillecowork.com
   image: https://i.imgur.com/VizQE8bt.jpg
