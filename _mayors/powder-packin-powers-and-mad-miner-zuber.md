@@ -40,6 +40,18 @@ events:
       addressLocality: Lake Isabella
       addressRegion: CA
       postalCode: 93240
+  - name: Just Dance! Line Dancing
+    identifier: 066c0169-99f7-4b16-8efb-fa47208bdbca
+    description: Join us for a night of dancing and fundraising. $15 per person cover charge. Proceeds go to the Whiskey Flat Campaign.
+    startDate: 2024-02-03 18:00
+    startDate: 2024-02-03 22:00
+    url: https://facebook.com/events/s/just-dance/742538614477181/
+    location:
+      name: Kern River Valley Eagles
+      streetAddress: 12251 Hwy 18
+      addressLocality: Lake Isabella
+      addressRegion: CA
+      postalCode: 93240
   - name: Bowling
     identifier: 112d3178-dc16-4c4e-8d0f-e1283d73b64b
     image: https://i.imgur.com/qce6Celm.jpg
