@@ -1,6 +1,7 @@
 ---
 title: "Powder Packin' Powers & Mad Miner Zuber"
 layout: mayor
+year: 2024
 image: https://i.imgur.com/VizQE8b.jpg
 description: Building Better Prospects
 memberOf:
@@ -64,6 +65,18 @@ events:
       '@type': BowlingAlley
       name: Mt Mesa Lanes
       streetAddress: 4612 McCray Rd
+      addressLocality: Lake Isabella
+      addressRegion: CA
+      postalCode: 93240
+  - name: Poker Tournament
+    identifier: 957c8d94-16a6-4c28-ad05-99fc152b1de4
+    image: https://i.imgur.com/nDxhT5rl.png
+    startDate: 2024-02-10 16:00
+    description: More Info Coming Soon
+    url: https://m.facebook.com/events/3688657954748467
+    location:
+      name: Kern River Valley Eagles
+      streetAddress: 12251 Hwy 18
       addressLocality: Lake Isabella
       addressRegion: CA
       postalCode: 93240

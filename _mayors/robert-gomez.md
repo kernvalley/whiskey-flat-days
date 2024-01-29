@@ -1,6 +1,7 @@
 ---
 title: Galloping Gomez
 layout: mayor
+year: 2024
 website: https://www.tubatulabal.org/
 sameAs:
   - https://www.facebook.com/TubatulabalIndianTribe/
