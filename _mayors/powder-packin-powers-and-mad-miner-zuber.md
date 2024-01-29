@@ -1,6 +1,7 @@
 ---
 title: "Powder Packin' Powers & Mad Miner Zuber"
 layout: mayor
+year: 2024
 image: https://i.imgur.com/VizQE8b.jpg
 description: Building Better Prospects
 memberOf:
