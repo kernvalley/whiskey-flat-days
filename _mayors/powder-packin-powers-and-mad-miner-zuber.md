@@ -67,6 +67,18 @@ events:
       addressLocality: Lake Isabella
       addressRegion: CA
       postalCode: 93240
+  - name: Poker Tournament
+    identifier: 957c8d94-16a6-4c28-ad05-99fc152b1de4
+    image: https://i.imgur.com/nDxhT5rl.png
+    startDate: 2024-02-10 16:00
+    description: More Info Coming Soon
+    url: https://m.facebook.com/events/3688657954748467
+    location:
+      name: Kern River Valley Eagles
+      streetAddress: 12251 Hwy 18
+      addressLocality: Lake Isabella
+      addressRegion: CA
+      postalCode: 93240
   - name: The Big Game
     identifier: c2c51253-b3de-413d-b7e4-50789d1700f7
     description: Come watch the Big Game with us!
