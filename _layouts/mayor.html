@@ -110,7 +110,14 @@ layout: default
 							<meta itemprop="eventAttendanceMode" content="OfflineEventAttendanceMode" />
 							<span itemprop="organizer" itemtype="https://schema.org/Person" itemref="mayor-profile-header" itemscope="" hidden=""></span>
 							<div class="center">
-								<strong class="mayor-event-name underline" itemprop="name">{{ event.name }}</strong>
+								{% if event.url %}
+									<a href="{{ event.url }}" class="mayor-event-link color-inherit"  itemprop="url" target="_blank" rel="noreferrer noopener external">
+										{% include common/icon.html icon="link-external" height="18" width="18" fill="currentColor" %}
+										<strong class="mayor-event-name underline" itemprop="name">{{ event.name }}</strong>
+									</a>
+								{% else %}
+									<strong class="mayor-event-name underline" itemprop="name">{{ event.name }}</strong>
+									{% endif %}
 								<br /><br />
 							</div>
 							<div class="mayor-event-datetime">

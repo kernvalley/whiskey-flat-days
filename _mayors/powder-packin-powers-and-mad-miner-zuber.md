@@ -30,6 +30,8 @@ events:
   - name: KRV & WFD History Reading at Library
     identifier: 94df898d-d0c7-455c-af98-c32a0b37947e
     description: Join Powder Packin' Powers as he reads from his grandpa's books to share some history of the Kern River Valley and Whiskey Flat Days
+    url: https://m.facebook.com/events/1582776209164848
+    image: https://i.imgur.com/cQVZ7orl.png
     startDate: '2024-01-31 16:00:00'
     endDate: '2024-01-31 16:30:00'
     location:
@@ -39,10 +41,23 @@ events:
       addressLocality: Lake Isabella
       addressRegion: CA
       postalCode: 93240
+  - name: Just Dance! Line Dancing
+    identifier: 066c0169-99f7-4b16-8efb-fa47208bdbca
+    description: Join us for a night of dancing and fundraising. $15 per person cover charge. Proceeds go to the Whiskey Flat Campaign.
+    startDate: 2024-02-03 18:00
+    startDate: 2024-02-03 22:00
+    url: https://facebook.com/events/s/just-dance/742538614477181/
+    location:
+      name: Kern River Valley Eagles
+      streetAddress: 12251 Hwy 18
+      addressLocality: Lake Isabella
+      addressRegion: CA
+      postalCode: 93240
   - name: Bowling
     identifier: 112d3178-dc16-4c4e-8d0f-e1283d73b64b
-    image: https://i.imgur.com/qce6Celm.jpg
+    image: https://i.imgur.com/KfqtcS6l.png
     description: Join yer next Whiskey Flat Mayors in knocking down some pins @ Mt Mesa Lanes
+    url: https://m.facebook.com/events/1582776209164848
     startDate: 2024-02-04 13:00
     endDate: 2024-02-04- 15:00
     location:
