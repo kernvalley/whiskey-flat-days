@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v3.0.7] - 2024-01-29
+
+### Added
+- Add image to Whiskey Flat Mayor Events
+
+### Changed
+- Update `@kernvalley/components` to 1.1.4
+
 ## [v3.0.6] - 2024-01-21
 
 ### Added

@@ -118,8 +118,10 @@ layout: default
 								{% else %}
 									<strong class="mayor-event-name underline" itemprop="name">{{ event.name }}</strong>
 									{% endif %}
-								<br /><br />
 							</div>
+							<figure itemprop="image" itemtype="https://schema.org/ImageObject" itemscope="">
+								<img src="{{ event.image | default: page.image }}" class="mayor-event-image" width="640" alt="{{ event.name | xml_escape }} Event Image" loading="lazy" itemprop="url" decoding="async" referrerpolicy="no-referrer" crossorigin="anonymous" />
+							</figure>
 							<div class="mayor-event-datetime">
 								{% include common/icon.html icon="calendar" height="16" width="16" fill="currentColor" %}
 								<time itemprop="startDate" datetime="{{ event.startDate | date_to_xmlschema }}">
