@@ -26,5 +26,9 @@ customElements.whenDefined('wfd-mayor-events').then(HTMLWFDMayorEventsElement =>
 		events.showDescription = true;
 	}
 
+	if (params.has('image')) {
+		events.showImage =  true;
+	}
+
 	document.body.appendChild(events);
 });

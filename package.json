@@ -1,6 +1,6 @@
 {
   "name": "whiskey-flat-days",
-  "version": "3.0.6",
+  "version": "3.0.7",
   "private": true,
   "type": "module",
   "description": "Map, events, store, and news app for Whiskey Flat Days",
