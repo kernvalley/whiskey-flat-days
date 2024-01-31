@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [v3.0.7] - 2024-01-29
+## [v3.0.8] - 2024-01-29
 
 ### Added
 - Add image to Whiskey Flat Mayor Events
