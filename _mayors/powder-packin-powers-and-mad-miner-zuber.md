@@ -68,10 +68,24 @@ events:
       addressLocality: Lake Isabella
       addressRegion: CA
       postalCode: 93240
+  - name: Waffle Wednesday
+    identifier: dae01913-4653-4f38-8f6a-941199aa4fca
+    image: https://i.imgur.com/zVa3hdul.png
+    description: Come into the Kernville Cowork on the First Wednesday of the month for free Waffles, Coworking, and to learn more about the value of shared spaces.
+    #url: https://m.facebook.com/events/1582776209164848
+    startDate: 2024-02-06 09:00
+    endDate: 2024-02-06 17:00
+    location:
+      '@type': BowlingAlley
+      name: Kernville Cowork
+      streetAddress: 11113 Kernville Rd.
+      addressLocality: Kernville
+      addressRegion: CA
+      postalCode: 93238
   - name: Poker Tournament
     identifier: 957c8d94-16a6-4c28-ad05-99fc152b1de4
-    image: https://i.imgur.com/nDxhT5rl.png
-    startDate: 2024-02-10 16:00
+    image: https://i.imgur.com/KbVFRCll.png
+    startDate: 2024-02-09 16:00
     description: More Info Coming Soon
     url: https://m.facebook.com/events/3688657954748467
     location:
