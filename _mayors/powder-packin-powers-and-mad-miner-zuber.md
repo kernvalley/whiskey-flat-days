@@ -32,7 +32,7 @@ events:
     identifier: 94df898d-d0c7-455c-af98-c32a0b37947e
     description: Join Powder Packin' Powers as he reads from his grandpa's books to share some history of the Kern River Valley and Whiskey Flat Days
     url: https://m.facebook.com/events/1582776209164848
-    image: https://i.imgur.com/cQVZ7orl.png
+    image: https://i.imgur.com/cQVZ7orl.webp
     startDate: '2024-01-31 16:00:00'
     endDate: '2024-01-31 16:30:00'
     location:
@@ -48,6 +48,7 @@ events:
     startDate: 2024-02-03 18:00
     startDate: 2024-02-03 22:00
     url: https://facebook.com/events/s/just-dance/742538614477181/
+    image: https://i.imgur.com/Qc9xEbZl.webp
     location:
       name: Kern River Valley Eagles
       streetAddress: 12251 Hwy 18
@@ -70,7 +71,7 @@ events:
       postalCode: 93240
   - name: Waffle Wednesday
     identifier: dae01913-4653-4f38-8f6a-941199aa4fca
-    image: https://i.imgur.com/zVa3hdul.png
+    image: https://i.imgur.com/zVa3hdul.webp
     description: Come into the Kernville Cowork on the First Wednesday of the month for free Waffles, Coworking, and to learn more about the value of shared spaces.
     #url: https://m.facebook.com/events/1582776209164848
     startDate: 2024-02-06 09:00
@@ -84,7 +85,7 @@ events:
       postalCode: 93238
   - name: Poker Tournament
     identifier: 957c8d94-16a6-4c28-ad05-99fc152b1de4
-    image: https://i.imgur.com/KbVFRCll.png
+    image: https://i.imgur.com/KbVFRCll.webp
     startDate: 2024-02-09 16:00
     description: More Info Coming Soon
     url: https://m.facebook.com/events/3688657954748467
