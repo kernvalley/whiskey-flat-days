@@ -98,6 +98,7 @@ events:
   - name: The Big Game
     identifier: c2c51253-b3de-413d-b7e4-50789d1700f7
     description: Come watch the Big Game with us!
+    image: https://i.imgur.com/bvWoCWel.webp
     startDate: '2024-02-11 10:00:00'
     location:
       '@type': Restaurant
@@ -109,6 +110,7 @@ events:
   - name: Valentine's Day Dinner
     identifier: f8df1ee4-bc30-4dbb-b52b-caf33ebe67b7
     description: Details coming soon
+    image: https://i.imgur.com/4zNvGtdl.webp
     startDate: '2024-02-14 17:00:00'
     location:
       '@type': Restaurant
