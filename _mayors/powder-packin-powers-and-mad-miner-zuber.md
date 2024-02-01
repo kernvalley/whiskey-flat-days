@@ -77,7 +77,7 @@ events:
     startDate: 2024-02-06 09:00
     endDate: 2024-02-06 17:00
     location:
-      '@type': BowlingAlley
+      '@type': Organization
       name: Kernville Cowork
       streetAddress: 11113 Kernville Rd.
       addressLocality: Kernville
@@ -91,7 +91,7 @@ events:
     url: https://m.facebook.com/events/3688657954748467
     location:
       name: Kern River Valley Eagles
-      streetAddress: 12251 Hwy 18
+      streetAddress: 12251 Hwy 178
       addressLocality: Lake Isabella
       addressRegion: CA
       postalCode: 93240
