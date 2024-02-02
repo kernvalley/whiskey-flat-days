@@ -87,7 +87,7 @@ events:
     identifier: 957c8d94-16a6-4c28-ad05-99fc152b1de4
     image: https://i.imgur.com/KbVFRCll.webp
     startDate: 2024-02-09 16:00
-    description: More Info Coming Soon
+    description: $100 buy-in. Extra chips for $20. Buy back in for $60 for the first 2 rounds.
     url: https://m.facebook.com/events/3688657954748467
     location:
       name: Kern River Valley Eagles
