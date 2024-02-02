@@ -74,8 +74,8 @@ events:
     image: https://i.imgur.com/zVa3hdul.webp
     description: Come into the Kernville Cowork on the First Wednesday of the month for free Waffles, Coworking, and to learn more about the value of shared spaces.
     #url: https://m.facebook.com/events/1582776209164848
-    startDate: 2024-02-06 09:00
-    endDate: 2024-02-06 17:00
+    startDate: 2024-02-07 09:00
+    endDate: 2024-02-07 17:00
     location:
       '@type': Organization
       name: Kernville Cowork
@@ -87,7 +87,7 @@ events:
     identifier: 957c8d94-16a6-4c28-ad05-99fc152b1de4
     image: https://i.imgur.com/KbVFRCll.webp
     startDate: 2024-02-09 16:00
-    description: More Info Coming Soon
+    description: $100 buy-in. Extra chips for $20. Buy back in for $60 for the first 2 rounds.
     url: https://m.facebook.com/events/3688657954748467
     location:
       name: Kern River Valley Eagles
@@ -97,9 +97,9 @@ events:
       postalCode: 93240
   - name: The Big Game
     identifier: c2c51253-b3de-413d-b7e4-50789d1700f7
-    description: Come watch the Big Game with us!
+    description: Come watch the Superb Owl with us. We will be selling Squares leading up to game day!
     image: https://i.imgur.com/bvWoCWel.webp
-    startDate: '2024-02-11 10:00:00'
+    startDate: '2024-02-11 12:00:00'
     location:
       '@type': Restaurant
       name: Paradise Cove Lodge
@@ -109,7 +109,7 @@ events:
       postalCode: 93240
   - name: Valentine's Day Dinner
     identifier: f8df1ee4-bc30-4dbb-b52b-caf33ebe67b7
-    description: Details coming soon
+    description: "Bring your Valentine to a Dinner at McNally's Lodge. Roses by Designs by Erin will be available for purchase and come with a free bribe."
     image: https://i.imgur.com/4zNvGtdl.webp
     startDate: '2024-02-14 17:00:00'
     location:
