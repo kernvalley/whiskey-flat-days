@@ -107,7 +107,8 @@ exclude:
   - CHANGELOG.md
   - netlify.toml
   - "/api/*"
-  - "./netlify/*"
+  - "./.netlify/"
+  - "./.netlify/*"
   - ".gitkeep"
   - "*.rb"
   - "*.gemspec"
