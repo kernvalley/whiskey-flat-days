@@ -47,7 +47,7 @@ events:
     description: Join us for a night of dancing and fundraising. $15 per person cover charge. Proceeds go to the Whiskey Flat Campaign.
     startDate: 2024-02-03 18:00
     startDate: 2024-02-03 22:00
-    url: https://facebook.com/events/s/just-dance/742538614477181/
+    url: https://facebook.com/events/s/just-dance/1431455890826902/
     image: https://i.imgur.com/Qc9xEbZl.webp
     location:
       name: Kern River Valley Eagles
@@ -59,7 +59,7 @@ events:
     identifier: 112d3178-dc16-4c4e-8d0f-e1283d73b64b
     image: https://i.imgur.com/KfqtcS6l.png
     description: Join yer next Whiskey Flat Mayors in knocking down some pins @ Mt Mesa Lanes
-    url: https://m.facebook.com/events/1582776209164848
+    url: https://facebook.com/events/s/bowling-mt-mesa-lanes/1582776209164848/
     startDate: 2024-02-04 13:00
     endDate: 2024-02-04- 15:00
     location:
@@ -73,7 +73,7 @@ events:
     identifier: dae01913-4653-4f38-8f6a-941199aa4fca
     image: https://i.imgur.com/zVa3hdul.webp
     description: Come into the Kernville Cowork on the First Wednesday of the month for free Waffles, Coworking, and to learn more about the value of shared spaces.
-    #url: https://m.facebook.com/events/1582776209164848
+    url: https://facebook.com/events/s/waffle-wednesday/935105831573020/
     startDate: 2024-02-07 09:00
     endDate: 2024-02-07 17:00
     location:
@@ -88,10 +88,34 @@ events:
     image: https://i.imgur.com/KbVFRCll.webp
     startDate: 2024-02-09 16:00
     description: $100 buy-in. Extra chips for $20. Buy back in for $60 for the first 2 rounds.
-    url: https://m.facebook.com/events/3688657954748467
+    url: https://facebook.com/events/s/poker-tournament/3688657954748467/
     location:
       name: Kern River Valley Eagles
       streetAddress: 12251 Hwy 178
+      addressLocality: Lake Isabella
+      addressRegion: CA
+      postalCode: 93240
+  - name: Axe Throwing & Hot Dogs
+    identifier: 996248db-8a32-4031-80a4-75bddf1d873a
+    #image: https://i.imgur.com/keJVDiHl.webp
+    startDate: 2024-02-12 16:00
+    description: The name says it all! Throw some axes and chow down on hot dogs!
+    #url: https://facebook.com/events/s/ceviche/1584384435711879/
+    location:
+      name: Barber's Guild
+      streetAddress: 5121 Lake Isabella Blvd
+      addressLocality: Lake Isabella
+      addressRegion: CA
+      postalCode: 93240
+  - name: Ceviche!
+    identifier: 651946ec-8ce7-49ae-90d1-2db2cf08cf15
+    image: https://i.imgur.com/keJVDiHl.webp
+    startDate: 2024-02-10 12:00
+    description: "Who doesn't love some nice, fresh ceviche? Mad Miner Zuber might be bribed into taking shots of hot sauce too."
+    url: https://facebook.com/events/s/ceviche/1584384435711879/
+    location:
+      name: Kern River Ceviche Company
+      streetAddress: 36 Nugget Ave
       addressLocality: Lake Isabella
       addressRegion: CA
       postalCode: 93240
@@ -99,7 +123,7 @@ events:
     identifier: c2c51253-b3de-413d-b7e4-50789d1700f7
     description: Come watch the Superb Owl with us. We will be selling Squares leading up to game day!
     image: https://i.imgur.com/bvWoCWel.webp
-    startDate: '2024-02-11 12:00:00'
+    startDate: '2024-02-11 14:30:00'
     location:
       '@type': Restaurant
       name: Paradise Cove Lodge
@@ -107,6 +131,18 @@ events:
       addressLocality: Lake Isabella
       addressRegion: CA
       postalCode: 93240
+  - name: Spaghetti Dinner
+    identifier: 77342fc4-983c-418d-af78-4fe04a13c535
+    description: Join us for a Spaghetti Dinner at the Masonic Lodge. We will be auctioning a custom flower arrangement from Designs by Erin for Valentine's Day.
+    image: https://i.imgur.com/xPunsAZl.webp
+    startDate: '2024-02-13 17:00:00'
+    location:
+      '@type': Organization
+      name: Masonic Lodge
+      streetAddress: 562 James Rd
+      addressLocality: Kernville
+      addressRegion: CA
+      postalCode: 93238
   - name: Valentine's Day Dinner
     identifier: f8df1ee4-bc30-4dbb-b52b-caf33ebe67b7
     description: "Bring your Valentine to a Dinner at McNally's Lodge. Roses by Designs by Erin will be available for purchase and come with a free bribe."
@@ -116,6 +152,18 @@ events:
       '@type': Restaurant
       name: Johnny McNally's Fairview Lodge
       streetAddress: 7300 Kern River Hwy
+      addressLocality: Kernville
+      addressRegion: CA
+      postalCode: 93238
+  - name: Museum & WFD Kick-Off Party
+    identifier: b0740bdc-caf9-48a4-a27d-5d32e0e6e32e
+    description: Details comin' soon.
+    #image: https://i.imgur.com/4zNvGtdl.webp
+    startDate: '2024-02-15 17:00:00'
+    location:
+      '@type': Museum
+      name: Kern Valley Museum
+      streetAddress: 49 Big Blue Rd
       addressLocality: Kernville
       addressRegion: CA
       postalCode: 93238

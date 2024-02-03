@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Update `@kernvalley/components` in `/mayor/embed/`
 
+### Fixed
+- Ignore `.netlify/` in Jekyll to prevent infinite regenrations
+
 ## [v3.0.8] - 2024-01-29
 
 ### Added
