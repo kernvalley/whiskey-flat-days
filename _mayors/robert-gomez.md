@@ -3,6 +3,11 @@ title: Galloping Gomez
 layout: mayor
 year: 2024
 website: https://www.tubatulabal.org/
+image: https://i.imgur.com/MsHcajq.webp
+thumbnail:
+  url: https://i.imgur.com/MsHcajq.webp
+  width: 602
+  height: 431
 sameAs:
   - https://www.facebook.com/TubatulabalIndianTribe/
 memberOf:
