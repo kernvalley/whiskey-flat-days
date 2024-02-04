@@ -140,6 +140,7 @@ events:
   - name: The Big Game
     identifier: c2c51253-b3de-413d-b7e4-50789d1700f7
     description: Come watch the Superb Owl with us. We will be selling Squares leading up to game day!
+    url: https://m.facebook.com/events/1411053569777040
     image: https://i.imgur.com/bvWoCWel.webp
     startDate: '2024-02-11 14:30:00'
     location:
