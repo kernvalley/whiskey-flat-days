@@ -3,6 +3,10 @@ title: "Powder Packin' Powers & Mad Miner Zuber"
 layout: mayor
 year: 2024
 image: https://i.imgur.com/VizQE8b.jpg
+thumbnail:
+  url: https://i.imgur.com/VizQE8b.jpg
+  wiidth: 640
+  height: 360
 description: Building Better Prospects
 memberOf:
   '@type': NGO
@@ -116,6 +120,20 @@ events:
     location:
       name: Kern River Ceviche Company
       streetAddress: 36 Nugget Ave
+      addressLocality: Lake Isabella
+      addressRegion: CA
+      postalCode: 93240
+  - name: Rock Slide Concert
+    identifier: 9711434d-d837-47a5-9062-1abee74c9655
+    description: Head on down to the 178 Bar & Grill to jam out to Rock Slide with us!
+    url: https://facebook.com/events/s/rock-slide-concert/301152962950216/
+    image: https://i.imgur.com/lIl1Ejp.webp
+    startDate: 2024-02-10 18:00
+    endDate: 2024-02-10 21:00
+    location:
+      '@type': BarOrPub
+      name: 178 Bar & Grill
+      streetAddress: 6107 Lake Isabella Blvd.
       addressLocality: Lake Isabella
       addressRegion: CA
       postalCode: 93240
