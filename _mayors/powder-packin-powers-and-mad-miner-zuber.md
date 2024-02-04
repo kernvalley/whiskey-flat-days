@@ -46,7 +46,7 @@ events:
     identifier: 066c0169-99f7-4b16-8efb-fa47208bdbca
     description: Join us for a night of dancing and fundraising. $15 per person cover charge. Proceeds go to the Whiskey Flat Campaign.
     startDate: 2024-02-03 18:00
-    startDate: 2024-02-03 22:00
+    endDate: 2024-02-03 22:00
     url: https://facebook.com/events/s/just-dance/1431455890826902/
     image: https://i.imgur.com/Qc9xEbZl.webp
     location:
@@ -193,3 +193,4 @@ Join us in this rambunctious ride to mayoralty, and let's make history together!
 Yours with gusto and gratitude,
 
 *Powder Packin' Powers & Mad Miner Zuber*
+
