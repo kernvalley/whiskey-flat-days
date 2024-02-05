@@ -150,7 +150,7 @@ events:
       addressLocality: Lake Isabella
       addressRegion: CA
       postalCode: 93240
-  - Fitness 4 Everyone
+  - name: Fitness 4 Everyone
     identifier: 5374ee1d-90b6-4609-8f8d-ceb6f16ac9ee
     startDate: 2024-02-12 12:00
     endDate: 2024-02-12 13:00
