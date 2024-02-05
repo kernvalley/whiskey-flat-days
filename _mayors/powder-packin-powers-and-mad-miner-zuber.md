@@ -150,6 +150,20 @@ events:
       addressLocality: Lake Isabella
       addressRegion: CA
       postalCode: 93240
+  - Fitness 4 Everyone
+    identifier: 5374ee1d-90b6-4609-8f8d-ceb6f16ac9ee
+    startDate: 2024-02-12 12:00
+    endDate: 2024-02-12 13:00
+    image: https://i.imgur.com/wUGs3Dj.webp
+    description: This class will be focusing on the 4 Corners referring to the shoulders and hips as a four corner pattern to understand square posture.
+    url: https://www.riverstonewellness.org/service-page/fitness-4-everyone
+    location:
+      '@type': Organization
+      name: Riverstone Wellness
+      streetAddress: 14 Sierra Drive
+      addressLocality: Kernville
+      addressRegion: CA
+      postalCode: 93238
   - name: Spaghetti Dinner
     identifier: 77342fc4-983c-418d-af78-4fe04a13c535
     description: Join us for a Spaghetti Dinner at the Masonic Lodge. We will be auctioning a custom flower arrangement from Designs by Erin for Valentine's Day.
