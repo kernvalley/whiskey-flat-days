@@ -91,7 +91,7 @@ events:
       postalCode: 93238
   - name: Poker Tournament
     identifier: 957c8d94-16a6-4c28-ad05-99fc152b1de4
-    image: https://i.imgur.com/wEI4HLf.webp
+    image: https://i.imgur.com/xFQF58q.webp
     startDate: 2024-02-09 17:00
     description: Game starts @  6:00 PM. $100 buy-in. Extra chips for $20. Buy back in for $60 for the first 2 rounds.
     url: https://facebook.com/events/s/poker-tournament/3688657954748467/
