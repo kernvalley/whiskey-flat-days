@@ -33,6 +33,13 @@
 	vertical-align: bottom;
 }
 
+a.btn.btn-primary.mayor-cta, a.btn.btn-primary.mayor-cta:visited, a.btn.btn-primary.mayor-cta:hover {
+	max-width: 25ch;
+	text-decoration: none;
+	font-weight: bold;
+	color: var(--button-primary-color);
+}
+
 .grid.mayor-events {
 	grid-template-columns: repeat(auto-fit, minmax(350px, 420px));
 	gap: 1.2rem;

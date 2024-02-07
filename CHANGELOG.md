@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Add mayor bribe + raffle links/buttons (with icons)
+
 ### Changed
 - Update `@kernvalley/components` in `/mayor/embed/`
 
