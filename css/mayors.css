@@ -33,6 +33,10 @@
 	vertical-align: bottom;
 }
 
+.main-fund-links {
+	gap: 1.2rem;
+}
+
 a.btn.btn-primary.mayor-cta, a.btn.btn-primary.mayor-cta:visited, a.btn.btn-primary.mayor-cta:hover {
 	max-width: 25ch;
 	text-decoration: none;
