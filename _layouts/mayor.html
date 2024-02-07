@@ -77,6 +77,23 @@ layout: default
 					</a>
 				{% endif %}
 			</div>
+			{% if page.bribe or page.raffle %}
+				<br />
+				<div id="bribes" class="flex row wrap space-around main-fund-links">
+					{% if page.bribe %}
+						<a href="{{ page.bribe }}" class="btn btn-primary btn-big grow-1 mayor-cta center" target="_blank" rel="noreferrer noopener external">
+							{% include common/icon.html icon="bribe" height="18" width="18" fill="currentColor" %}
+							<span>Bribe Us</span>
+						</a>
+					{% endif %}
+					{% if page.raffle %}
+						<a href="{{ page.raffle }}" class="btn btn-primary btn-big grow-1 mayor-cta center" target="_blank" rel="noreferrer noopener external">
+							{% include common/icon.html icon="raffle" height="18" width="18" fill="currentColor" %}
+							<span>Buy Raffle Tickets</span>
+						</a>
+					{% endif %}
+				</div>
+			{% endif %}
 		</div>
 		<hr />
 		<div id="mayor-contact" class="card">
