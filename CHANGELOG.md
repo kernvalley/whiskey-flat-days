@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v3.0.9] - 2024-02-06
+
 ### Added
 - Add mayor bribe + raffle links/buttons (with icons)
 
@@ -14,7 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update `@kernvalley/components` in `/mayor/embed/`
 
 ### Fixed
-- Ignore `.netlify/` in Jekyll to prevent infinite regenrations
+- Ignore `.netlify/` in Jekyll to prevent infinite regenerations
 
 ## [v3.0.8] - 2024-01-29
 
