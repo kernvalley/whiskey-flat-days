@@ -103,7 +103,7 @@ events:
       postalCode: 93240
   - name: Axe Throwing & Hot Dogs
     identifier: 996248db-8a32-4031-80a4-75bddf1d873a
-    #image: https://i.imgur.com/keJVDiHl.webp
+    image: https://i.imgur.com/xAiIlbf.webp
     startDate: 2024-02-12 16:00
     description: The name says it all! Throw some axes and chow down on hot dogs!
     #url: https://facebook.com/events/s/ceviche/1584384435711879/
