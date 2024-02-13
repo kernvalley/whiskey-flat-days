@@ -181,7 +181,7 @@ events:
   - name: Valentine's Day Dinner
     identifier: f8df1ee4-bc30-4dbb-b52b-caf33ebe67b7
     description: "Bring your Valentine to a Dinner at McNally's Lodge. Roses by Designs by Erin will be available for purchase and come with a free bribe."
-    image: https://i.imgur.com/4zNvGtdl.webp
+    image: https://i.imgur.com/3onNuBb.webp
     startDate: '2024-02-14 17:00:00'
     location:
       '@type': Restaurant
