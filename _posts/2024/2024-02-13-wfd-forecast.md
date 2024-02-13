@@ -54,6 +54,9 @@ at 4 PM.
 - [River Rat Ryan & Deputy Doug](/mayors/river-rat-ryan-and-deputy-doug)
 - [Powder Packin' Powers & Mad Miner Zuber](/mayors/powder-packin-powers-and-mad-miner-zuber)
 
+All of them are supporting excellent causes! Check out their profiles for information
+on what they are supporting and how to contribute ("vote") for them!
+
 ### Ongoing Events
 There will be live bands playing every day of the big weekend, from the [Street Dance](/events//#e8df6782-d0e7-45e1-944e-d16f27ce019b) on Friday at 4 PM and ending with [Music - Main Stage](/events/#c1f8133b-c326-467a-9a28-6a974b8266ba)
 on Sunday from 2 - 4 PM.
