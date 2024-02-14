@@ -148,8 +148,8 @@
       longitude: -118.425114
   performer:
     "@type": MusicGroup
-    name: Vince Galindo and Country Deluxe
-  description: Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Vince Galindo and Country Deluxe</span></span>
+    name: Angels Roost
+  description: Featuring <span itemprop="performer" itemtype="https://schema.org/MusicGroup" itemscope=""><span itemprop="name">Angels Roost</span></span>
 - uuid: 1ec57723-3979-4083-af56-3b04072aa367
   title: Music - Main Stage
   music: true
