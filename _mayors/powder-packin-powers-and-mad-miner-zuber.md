@@ -180,6 +180,7 @@ events:
       postalCode: 93238
   - name: Valentine's Day Dinner
     identifier: f8df1ee4-bc30-4dbb-b52b-caf33ebe67b7
+    url: https://facebook.com/events/s/wfd-kick-off-party/693818472905203/
     description: "Bring your Valentine to a Dinner at McNally's Lodge. Roses by Designs by Erin will be available for purchase and come with a free bribe."
     image: https://i.imgur.com/3onNuBb.webp
     startDate: '2024-02-14 17:00:00'
