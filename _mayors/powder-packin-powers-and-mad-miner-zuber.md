@@ -180,6 +180,7 @@ events:
       postalCode: 93238
   - name: Valentine's Day Dinner
     identifier: f8df1ee4-bc30-4dbb-b52b-caf33ebe67b7
+    url: https://facebook.com/events/s/wfd-kick-off-party/693818472905203/
     description: "Bring your Valentine to a Dinner at McNally's Lodge. Roses by Designs by Erin will be available for purchase and come with a free bribe."
     image: https://i.imgur.com/3onNuBb.webp
     startDate: '2024-02-14 17:00:00'
@@ -190,11 +191,12 @@ events:
       addressLocality: Kernville
       addressRegion: CA
       postalCode: 93238
-  - name: Museum & WFD Kick-Off Party
+  - name: WFD Kick-Off Party + Q&A
     identifier: b0740bdc-caf9-48a4-a27d-5d32e0e6e32e
-    description: Details comin' soon.
-    #image: https://i.imgur.com/4zNvGtdl.webp
-    startDate: '2024-02-15 17:00:00'
+    description: Join Powder Packin' Powers & Mad Miner Zuber at the Kern Valley Museum for our WFD Kick-off Party and a Q&A for the Community Hub we're creating in Lake Isabella!
+    image: https://i.imgur.com/3l15sMi.webp
+    startDate: '2024-02-16 16:00:00'
+    endDate: 2024-02-16 17:00:00
     location:
       '@type': Museum
       name: Kern Valley Museum
