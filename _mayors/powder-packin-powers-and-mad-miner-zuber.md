@@ -2,6 +2,9 @@
 title: "Powder Packin' Powers & Mad Miner Zuber"
 layout: mayor
 year: 2024
+booth:
+  latitude: 35.75518458
+  longitude: -118.42467785
 image: https://i.imgur.com/VizQE8b.jpg
 thumbnail:
   url: https://i.imgur.com/VizQE8b.jpg

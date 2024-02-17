@@ -35,6 +35,16 @@ layout: default
 				</h2>
 			{% endif %}
 			<img src="{{ page.image | default: 'https://cdn.kernvalley.us/img/raster/missing-image.png' }}" alt="{{ page.title }}" crossorigin="anonymous" referrerpolicy="no-referrer" itemprop="image" />
+			<br />
+			{% if page.booth %}
+				<div>
+					<a href="/map/#{{ page.title | slugify }}" class="btn btn-primary btn-big cta-btn">
+						<span>Visit our Booth</span>
+						{% include common/icon.html icon="map" width="18" height="18" fill="currentColor" %}
+					</a>
+				</div>
+				<br />
+			{% endif %}
 		</div>
 		<div id="donations" class="donate-links card" itemprop="seeks" itemtype="https://schema.org/Demand" itemscope="">
 			<meta itemprop="name" content="Donations" />

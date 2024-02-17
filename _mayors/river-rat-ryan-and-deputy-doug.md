@@ -2,6 +2,9 @@
 title: River Rat Ryan & Deputy Doug
 layout: mayor
 year: 2024
+booth:
+  latitude: 35.75523019
+  longitude: -118.42452535
 image: https://i.imgur.com/RGVxc4Al.jpg
 thumbnail:
   url: https://i.imgur.com/RGVxc4Al.jpg
