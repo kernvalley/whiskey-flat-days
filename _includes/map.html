@@ -6,6 +6,27 @@
 			<h3 slot="popup">{{ town.name }}, CA</h3>
 		</leaflet-marker>
 	{% endfor %}
+	{% for mayor in site.mayors and mayor.booth %}
+		{% if mayor.year == 2024 %}
+			<leaflet-marker slot="markers" latitude="{{ mayor.booth.latitude }}" longitude="{{ mayor.booth.longitude }}" title="{{ mayor.title | escape }}" id="{{ mayor.title | slugify }}">
+				<img slot="icon" src="https://cdn.kernvalley.us/img/markers.svg#star" width="30" height="30" crossorigin="anonymous" referrerpolicy="no-referrer" alt="" />
+				<div slot="popup">
+					<h3>
+						<span>{{ mayor.title | escape }}</span>
+					</h3>
+					<div class="center">
+						<img src="{{ mayor.thumbnail.url }}" alt="{{ mayor.title | escape }}" height="{{ mayor.thumbnail.height }}" width="{{ mayor.thumbnail.width }}" crossorigin="anonymous" referrerpolicy="no-referrer" loading="lazy" decoding="async" />
+					</div>
+					<div class="center">
+						<a href="{{ mayor.url }}" class="btn btn-primary btn-big color-inherit">
+							<span>View Our Profile</span>
+							{% include common/icon.html icon="link" height="18" width="18" fill="currentColor" %}
+						</a>
+					</div>
+				</div>
+			</leaflet-marker>
+		{% endif %}
+	{% endfor %}
 	{% for place in site.data.places.businesses %}
 		{% if place.address.addressLocality == "Kernville" and place.geo %}
 			{% include leaflet/local-business-marker.html business=place %}
