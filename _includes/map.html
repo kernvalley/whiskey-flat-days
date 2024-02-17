@@ -23,7 +23,7 @@
 							{% include common/icon.html icon="link" height="18" width="18" fill="currentColor" %}
 						</a>
 					</div>
-					<button type="button" is="share-button" class="btn btn-primary" sharetitle="{{ mayor.title | escape }} | Whiskey Flat Days Map" text="Check out {{ mayor.title | escape }} on Whiskey Flat Days Map" url="{{ mayor.url }}" title="Share {{ mayor.title | escape }}" source="whiskey-flat-days" medium="social" content="map-marker" hidden="">
+					<button type="button" is="share-button" class="btn btn-primary" sharetitle="{{ mayor.title | escape }} | Whiskey Flat Days Map" text="Check out {{ mayor.title | escape }} on Whiskey Flat Days Map" url="{{ page.url }}#{{ mayor.title | slugify }}" title="Share {{ mayor.title | escape }}" source="whiskey-flat-days" medium="social" content="map-marker" hidden="">
 						{% include common/icon.html icon="public-share" height="16" width="16" fill="currentColor" %}
 						<span>Share This</span>
 					</button>
@@ -113,7 +113,7 @@
 				{% if marker.url %}
 					<div>
 						<a href="{{ marker.url }}" rel="external noopener noreferrer">
-							{% include common/icon.html icon="globe"  height="16" width="16" fill="currentColor" %}
+							{% include common/icon.html icon="link-external" height="16" width="16" fill="currentColor" %}
 							<span itemprop="url">{{ marker.url | replace: 'https://', '' | replace: 'http://', '' | replace: 'www.', '' }}</span>
 						</a>
 					</div>
@@ -159,9 +159,7 @@
 				{% if marker.uuid %}
 					<br /><br />
 					<button type="button" is="share-button" url="https://whiskeyflatdays.com/map/#{{ marker.uuid }}" text="Check out {{ marker.title | escape_once }}" title="{{ marker.title | escape_once }} | Whiskey Flat Days Map" source="whiskey-flat-days" medium="social" content="map-marker" hidden="">
-						<svg width="16" height="16" aria-hidden="true" fill="currentColor">
-							<use xlink:href="{{ site.icons }}#public-share"></use>
-						</svg>
+						{% include common/icon.html icon="public-share" height="16" width="16" fill="currentColor" %}
 						<span>Share</span>
 					</button>
 				{% endif %}
@@ -239,9 +237,7 @@
 				{% if marker.description %}<div itemprop="description">{{ marker.description }}</div>{% endif %}
 				{% if marker.uuid %}
 					<button type="button" is="share-button" url="https://whiskeyflatdays.com/map/#{{ marker.uuid }}" text="Check out {{ marker.title | escape_once }}" title="{{ marker.title | escape_once }} | Whiskey Flat Days Map" source="whiskey-flat-days" medium="social" content="map-marker" hidden="">
-						<svg width="16" height="16" aria-hidden="true" fill="currentColor">
-							<use xlink:href="{{ site.icons }}#public-share"></use>
-						</svg>
+						{% include common/icon.html icon="public-share" height="16" width="16" fill="currentColor" %}
 						<span>Share</span>
 					</button>
 				{% endif %}
