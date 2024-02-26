@@ -78,6 +78,6 @@
     "firebase-admin": "^12.0.0",
     "netlify-js-app": "^3.3.1",
     "stripe": "^14.17.0",
-    "yaml": "^2.3.4"
+    "yaml": "^2.4.0"
   }
 }
