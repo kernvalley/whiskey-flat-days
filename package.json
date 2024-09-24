@@ -76,7 +76,7 @@
   "dependencies": {
     "eslint-plugin-frontmatter": "0.0.8",
     "firebase-admin": "^12.5.0",
-    "netlify-js-app": "^3.3.1",
+    "netlify-js-app": "^3.3.2",
     "stripe": "^16.11.0",
     "yaml": "^2.5.1"
   }
