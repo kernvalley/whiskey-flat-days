@@ -1,5 +1,9 @@
 <header id="header" class="background-cover contain-content background-fixed">
 	<div id="main-event" class="event-card center color-alt" itemid="{{ site.data.mainEvent.identifier }}" itemtype="https://schema.org/{{ site.data.mainEvent['@type'] | default: 'Event' }}">
+		<a class="btn btn-primary" href="https://officialwhiskeyflatdays.com">
+			{% include common/icon.html icon="link-external" height="18" width="18" fill="currentColor" %}
+			<span>Visit Official Whiskey Flat Days</span>
+		</a><br /><br />
 		<meta itemprop="identifier" content="{{ site.data.mainEvent.identifier }}" />
 		<meta itemprop="url" content="{{ site.data.mainEvent.url | default: '/' | absolute_url }}" />
 		<meta itemprop="description" content="{{ site.data.mainEvent.description | escape_once }}" />
