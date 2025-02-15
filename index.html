@@ -24,7 +24,7 @@ apps:
 <article itemtype="https://schema.org/Article" itemscope="">
 	<meta itemprop="about" itemref="main-event" itemtype="https://schema.org/{{ site.data.mainEvent['@type'] | default: 'Event' }}" itemscope="" />
 	{% include event-status.html event=site.data.mainEvent %}
-	<h2 itemprop="headline" class="center font-title section-heading">67<sup>th</sup> Annual Whiskey Flat Days</h2>
+	<h2 itemprop="headline" class="center font-title section-heading">{{ site.data.mainEvent.startDate | date: "%Y" | minus: 1957 }}<sup>th</sup> Annual Whiskey Flat Days</h2>
 	<div class="promoted-article card shadow clearfix">
 		{% include common/icon.html icon="weather-few-clouds" height="64" width="64" fill="currentColor" class="float-left" %}
 		<h3 class="center">

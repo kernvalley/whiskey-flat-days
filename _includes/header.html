@@ -7,7 +7,7 @@
 		<meta itemprop="identifier" content="{{ site.data.mainEvent.identifier }}" />
 		<meta itemprop="url" content="{{ site.data.mainEvent.url | default: '/' | absolute_url }}" />
 		<meta itemprop="description" content="{{ site.data.mainEvent.description | escape_once }}" />
-		<b class="font-title color-accent">67<sup>th</sup> Annual</b>
+		<b class="font-title color-accent">{{ site.data.mainEvent.startDate | date: "%Y" | minus: 1957 }}<sup>th</sup> Annual</b>
 		<h1 class="center font-title color-accent uppercase event-title">
 			<span itemprop="name">{{ site.data.mainEvent.name }}</span>
 		</h1>
