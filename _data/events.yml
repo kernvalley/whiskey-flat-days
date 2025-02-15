@@ -464,3 +464,99 @@
     geo:
       latitude: 35.755721
       longitude: -118.425114
+- uuid: 61cb8e92-f247-4dbf-befb-39f8ba97b8fe
+  startDate: 2025-02-15 14:15
+  endDate: 2025-02-15 14:25
+  title: Old West Shootout
+  location:
+    name: Tobias Street in Kernville
+    address:
+      streetAddress: Tobias Street
+      addressLocality: Kernville
+      addressRegion: CA
+      addressCountry: US
+      postalCode: 93238
+    geo:
+      latitude: 35.755721
+      longitude: -118.425114
+  icon: /img/markers/activity.svg
+- uuid: 249e4d5a-c0df-499b-9439-222f4f218bc5
+  startDate: 2025-02-15 15:15
+  endDate: 2025-02-15 15:25
+  title: Old West Shootout
+  location:
+    name: Tobias Street in Kernville
+    address:
+      streetAddress: Tobias Street
+      addressLocality: Kernville
+      addressRegion: CA
+      addressCountry: US
+      postalCode: 93238
+    geo:
+      latitude: 35.755721
+      longitude: -118.425114
+  icon: /img/markers/activity.svg
+- uuid: d82de0a6-8b65-4869-a108-cbc6c2d0e6d7
+  startDate: 2025-02-16 14:15
+  endDate: 2025-02-16 14:25
+  title: Old West Shootout
+  location:
+    name: Tobias Street in Kernville
+    address:
+      streetAddress: Tobias Street
+      addressLocality: Kernville
+      addressRegion: CA
+      addressCountry: US
+      postalCode: 93238
+    geo:
+      latitude: 35.755721
+      longitude: -118.425114
+  icon: /img/markers/activity.svg
+- uuid: 3d4da400-c0ac-4a2a-9396-3c6fd518c603
+  startDate: 2025-02-16 15:15
+  endDate: 2025-02-16 15:25
+  title: Old West Shootout
+  location:
+    name: Tobias Street in Kernville
+    address:
+      streetAddress: Tobias Street
+      addressLocality: Kernville
+      addressRegion: CA
+      addressCountry: US
+      postalCode: 93238
+    geo:
+      latitude: 35.755721
+      longitude: -118.425114
+  icon: /img/markers/activity.svg
+- uuid: 4dd8bd67-8296-4803-ab97-ea1ce3a7e890
+  startDate: 2025-02-16 12:30
+  endDate: 2025-02-16 13:00
+  title: Fiddle Contest
+  location:
+    name: Tobias Street in Kernville
+    address:
+      streetAddress: Tobias Street
+      addressLocality: Kernville
+      addressRegion: CA
+      addressCountry: US
+      postalCode: 93238
+    geo:
+      latitude: 35.755721
+      longitude: -118.425114
+  icon: /img/markers/activity.svg
+- uuid: 299fa11a-acdf-4104-bbaa-e51ed438baeb
+  startDate: 2025-02-16 13:30
+  endDate: 2025-02-16 14:00
+  title: Free Line Dancing Class
+  location:
+    name: Tobias Street in Kernville
+    address:
+      streetAddress: Tobias Street
+      addressLocality: Kernville
+      addressRegion: CA
+      addressCountry: US
+      postalCode: 93238
+    geo:
+      latitude: 35.755721
+      longitude: -118.425114
+  icon: /img/markers/activity.svg
