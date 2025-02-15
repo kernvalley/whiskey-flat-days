@@ -12,7 +12,7 @@
 			<span itemprop="name">{{ site.data.mainEvent.name }}</span>
 		</h1>
 		<meta itemprop="alternateName" content="{{ site.data.mainEvent.alternateName }}" />
-		<h2 class="center font-title color-accent">Whitewater &amp; Whiskey</h2>
+		<h2 class="center font-title color-accent">{{ site.data.mainEvent._theme }}</h2>
 		<b>Est. 1957</b>
 		<link itemprop="eventStatus" href="https://schema.org/{{ site.data.mainEvent.eventStatus | default: 'EventScheduled'}}" />
 		<link itemprop="eventAttendanceMode" href="https://schema.org/{{ site.data.mainEvent.eventAttendanceMode | default: 'OfflineEventAttendanceMode'}}" />
