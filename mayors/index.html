@@ -5,6 +5,7 @@ description: These are your Whiskey Flat Days Mayor candidates
 pinned: true
 index: true
 robots: index,follow
+year: 2025
 permalink: /mayors/
 tags:
   - whiskey flat days
@@ -20,22 +21,22 @@ tags:
 	<div>
 		<h3 class="center">This Year's Whiskey Flat Mayor Candidates</h3>
 		<div id="candidates" class="flex row wrap space-evenly">
-			{% for mayor in site.mayors %}
-					{% if mayor.year == 2025 %}
-					<a href="{{ mayor.url }}" class="card mayor-candidate block section-heading">
-						<h3 class="center mayor-name font-title">
-							{% include common/icon.html icon="link" height="18" width="18" fill="currentColor" %}
-							<span>{{ mayor.title }}</span>
-						</h3>
-						<img src="{{ mayor.image | default: 'https://cdn.kernvalley.us/img/raster/missing-image.png' }}" crossorigin="anonymous" referrerpolicy="no-referrer" height="240" loading="lazy" alt="{{ mayor.title }}" />
-						{% if mayor.memberOf %}
-							<div class="mayor-cause">
-								<span>Supporting:</span>
-								<b>{{ mayor.memberOf.name }}</b>
-							</div>
-						{% endif %}
-					</a>
-				{% endif %}
+			{% assign currentYear = site.data.mainEvent.startDate | date: "%Y" %}
+			{% assign mayors = site.mayors | where: "year", currentYear %}
+			{% for mayor in mayors %}
+				<a href="{{ mayor.url }}" class="card mayor-candidate block section-heading">
+					<h3 class="center mayor-name font-title">
+						{% include common/icon.html icon="link" height="18" width="18" fill="currentColor" %}
+						<span>{{ mayor.title }}</span>
+					</h3>
+					<img src="{{ mayor.image | default: 'https://cdn.kernvalley.us/img/raster/missing-image.png' }}" crossorigin="anonymous" referrerpolicy="no-referrer" height="240" loading="lazy" alt="{{ mayor.title }}" />
+					{% if mayor.memberOf %}
+						<div class="mayor-cause">
+							<span>Supporting:</span>
+							<b>{{ mayor.memberOf.name }}</b>
+						</div>
+					{% endif %}
+				</a>
 			{% endfor %}
 		</div>
 </section>
