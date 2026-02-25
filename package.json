@@ -81,6 +81,6 @@
     "yaml": "^2.8.2"
   },
   "devDependencies": {
-    "@shgysk8zer0/eslint-config": "^1.0.4"
+    "@shgysk8zer0/eslint-config": "^1.0.5"
   }
 }
