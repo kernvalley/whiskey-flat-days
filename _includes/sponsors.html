@@ -1,0 +1,12 @@
+{% for sponsor in site.data.mainEvent.sponsor %}
+	<div class="sponsor" itemprop="sponsor" itemtype="https://schema.org/{{ sponsor['@type'] | default: 'Organization' }}" itemscope="" aria-label="{{ sponsor.name | xml_escape }}">
+		<meta itemprop="name" content="{{ sponsor.name | xml_escape }}" />
+		{% if sponsor.url %}
+			<a href="{{ sponsor.url }}" itemprop="url" rel="noopener noreferrer external" target="_blank">
+				<img src="{{ sponsor.image.url }}" height="{{ sponsor.image.height}}" width="{{ sponsor.image.width}}" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" decoding="async" alt="{{ sponsor.name | xml_escape }}" itemprop="image logo" />
+			</a>
+		{% else %}
+			<img src="{{ sponsor.image.url }}" height="{{ sponsor.image.height}}" width="{{ sponsor.image.width}}" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" decoding="async" alt="{{ sponsor.name | xml_escape }}" itemprop="image logo" />
+		{% endif %}
+	</div>
+{% endfor %}

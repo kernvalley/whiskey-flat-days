@@ -28,7 +28,22 @@ location:
     "@type": GeoCoordinates
     latitude: 35.754960
     longitude: -118.424825
-sponsor: []
+sponsor:
+  - name: Johnny Mcally's Fairview Lodge
+    url: https://www.johnnymcnallys.com/
+    '@type': Restuarant
+    image:
+      url: https://static.wixstatic.com/media/0bde5a_9160bda464aa478b85ab7a2dfecd3dc4~mv2.png/v1/fill/w_870,h_432,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/McNallys%20New.png
+  - name: Pendleton Whiskey
+    '@type': Distillery
+    url: https://pendletonwhisky.com/
+    image:
+      url: https://static.wixstatic.com/media/0bde5a_40c4286fc93c4eb5920712fbd6cfd915~mv2.jpg/v1/fill/w_950,h_290,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Official%20Pendleton.jpg
+  - name: AltaOns Fenderal Credit Union
+    '@type': 'BankOrCreditUnion'
+    image:
+      url: https://static.wixstatic.com/media/0bde5a_b554503648b049cea262b9db8da90f17~mv2.png/v1/fill/w_974,h_264,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Alta%20One.png
+    url: https://altaone.org/
 organizer:
   "@type": Organization
   name: Kernville Chamber of Commerce
