@@ -1,5 +1,3 @@
-/* eslint-env node */
-
 const status = {
 	'CONTINUE': 100,
 

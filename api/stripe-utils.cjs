@@ -1,4 +1,3 @@
-/* eslint-env node */
 const {
 	stripeRate, stripeFlatCharge, taxRate, productsFile, allowedAvailibility,
 } = require('./stripe-consts.cjs');

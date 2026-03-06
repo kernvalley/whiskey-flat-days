@@ -1,5 +1,3 @@
-/* eslint-env node */
-
 exports.HTTPError = class HTTPError extends Error {
 	constructor(message, { status = 500, cause } = {}) {
 		super(message, { cause });

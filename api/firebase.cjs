@@ -1,4 +1,3 @@
-/* eslint-env node */
 const ENV_KEY = 'FIREBASE_CERT';
 
 function getTimestamp(ts = Date.now(), ns = 0) {
