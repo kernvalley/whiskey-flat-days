@@ -1,4 +1,3 @@
-/* eslint-env node */
 const methods = ['GET', 'POST', 'OPTIONS'];
 const { getTotal, createOrder, calculateOrderAmount } = require('./stripe-utils.cjs');
 

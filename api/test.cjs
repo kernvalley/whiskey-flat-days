@@ -1,4 +1,3 @@
-/* eslint-env node */
 const { HTTPError } = require('./http-error.cjs');
 const { status } = require('./http-status.cjs');
 exports.handler = async function() {

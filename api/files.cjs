@@ -1,4 +1,3 @@
-/* eslint-env node */
 async function read(path, { encoding = 'utf-8', signal } = {}) {
 	const { readFile } = require('node:fs');
 

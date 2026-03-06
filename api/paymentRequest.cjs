@@ -1,4 +1,3 @@
-/* eslint-env node */
 const methods = ['GET'];
 const headers = { 'Content-Type': 'application/json' };
 const { HTTPError } = require('./http-error.cjs');

@@ -1,4 +1,3 @@
-/* eslint-env node */
 const stripeRate = 0.029;
 const stripeFlatCharge = 0.3;
 const taxRate = 0.0725;

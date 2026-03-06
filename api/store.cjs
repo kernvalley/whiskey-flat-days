@@ -1,4 +1,3 @@
-/* eslint-env node */
 const PRODUCTS_FILE = './_data/store.yml';
 const { allowedAvailibility } = require('./stripe-consts.cjs');
 
