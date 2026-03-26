@@ -78,7 +78,7 @@
     "firebase-admin": "^13.7.0",
     "netlify-js-app": "^3.3.12",
     "stripe": "^20.4.1",
-    "yaml": "^2.8.2"
+    "yaml": "^2.8.3"
   },
   "devDependencies": {
     "@shgysk8zer0/eslint-config": "^1.0.9"
