@@ -75,10 +75,10 @@
   },
   "dependencies": {
     "eslint-plugin-frontmatter2": "1.0.1",
-    "firebase-admin": "^13.10.0",
+    "firebase-admin": "^14.4.0",
     "netlify-js-app": "^3.4.0",
-    "stripe": "^22.2.0",
-    "yaml": "^2.9.0"
+    "stripe": "^22.6.2",
+    "yaml": "^2.9.1"
   },
   "devDependencies": {
     "@shgysk8zer0/eslint-config": "^1.0.9"
